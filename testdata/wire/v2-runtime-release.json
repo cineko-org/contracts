@@ -1,0 +1,51 @@
+{
+  "client": {
+    "channel": "stable",
+    "platform": "darwin",
+    "arch": "arm64",
+    "version": "2.3.4",
+    "minimumLauncherVersion": "2.0.0",
+    "minimumBrowserRevision": "1228",
+    "playwrightVersion": "1.61.1",
+    "protocol": 3,
+    "artifact": {
+      "url": "https://cdn.example/client/v2.3.4/darwin-arm64/client.tar.gz",
+      "size": 101,
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "executable": "Cineko Client.app/Contents/MacOS/Cineko Client"
+    },
+    "probeBootstrapPublicKeys": {
+      "2026-08": "public-key"
+    },
+    "publishedAt": "2026-08-12T01:02:03Z"
+  },
+  "browser": {
+    "channel": "stable",
+    "platform": "darwin",
+    "arch": "arm64",
+    "revision": "1228",
+    "compatiblePlaywrightVersions": [
+      "1.61.1"
+    ],
+    "artifact": {
+      "url": "https://cdn.example/browser/r1228/darwin-arm64/browser.tar.gz",
+      "size": 202,
+      "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "executable": "chromium/Chromium.app/Contents/MacOS/Chromium"
+    },
+    "publishedAt": "2026-08-12T01:02:04Z"
+  },
+  "playwright": {
+    "channel": "stable",
+    "platform": "darwin",
+    "arch": "arm64",
+    "version": "1.61.1",
+    "artifact": {
+      "url": "https://cdn.example/playwright/v1.61.1/darwin-arm64/playwright.tar.gz",
+      "size": 303,
+      "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "executable": "playwright/node"
+    },
+    "publishedAt": "2026-08-12T01:02:05Z"
+  }
+}

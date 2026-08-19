@@ -1,0 +1,23 @@
+{
+  "iss": "cineko-central",
+  "aud": "cineko-probe",
+  "sub": "user-1",
+  "jti": "ticket-1",
+  "iat": 1786493723,
+  "nbf": 1786493708,
+  "exp": 1786493783,
+  "installationId": "installation-1",
+  "deviceId": "device-1",
+  "kind": "client",
+  "capabilities": [
+    "cgv.schedule.capture.v2"
+  ],
+  "maxConcurrency": 1,
+  "runtime": {
+    "version": "2.3.4",
+    "protocol": 3,
+    "browserRevision": "1228",
+    "platform": "darwin",
+    "arch": "arm64"
+  }
+}
