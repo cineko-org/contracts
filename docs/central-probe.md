@@ -26,14 +26,10 @@ The complete runtime and assignment state machines are defined in `docs/probe-ru
 observation completeness, and canonical identity are defined in `docs/catalog-observation.md`; local proxy selection
 and lease behavior are defined in `docs/egress.md`.
 
-`cgv.catalog.capture.v1` is a Central-owned bootstrap task. Its successful result carries one validated `catalog`
-payload and no schedule `captures`. Central creates at most one active bootstrap assignment, waits when no eligible
-Probe is online, and stores the payload before Clients consume the catalog. Protocol v3 treats this payload as an
-upsert, not proof that omitted catalog entities disappeared.
-
-`cgv.catalog.capture.v1` is a Central-owned bootstrap task. Its successful result carries one complete `catalog`
-snapshot and no schedule `captures`. Central creates at most one active bootstrap assignment, waits when no eligible
-Probe is online, and stores the snapshot before Clients consume the catalog.
+`cgv.catalog.capture.v1` is a Central-owned bootstrap task. Its successful result carries one validated, complete
+`catalog` snapshot and no schedule `captures`. Central creates at most one active bootstrap assignment, waits when no
+eligible Probe is online, and stores the snapshot before Clients consume the catalog. Protocol v3 treats this snapshot
+as an upsert, not proof that omitted catalog entities disappeared.
 
 Registration capabilities describe what a Probe implementation supports. Every heartbeat separately reports
 `availableCapabilities`; Central may assign work only from that current subset.

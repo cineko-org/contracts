@@ -28,10 +28,12 @@ requires a future wire revision that makes scope and completeness explicit.
 - CGV theater identity is `siteNo` from `searchAllRegionAndSite`.
 - CGV movie identity is `movNo` from `searchMovScnInfo` (or the equivalent structured movie response). `prodNo` and
   `movfNo` describe a product/format variant and must remain metadata; they must not split the Movie row.
-- CGV auditorium identity is `siteNo/scnsNo`. The screen number is provider data even when the displayed auditorium name changes.
+- CGV auditorium identity is `siteNo/scnsNo`. The screen number is provider data even when the displayed auditorium
+  name changes.
 - CGV showtime identity is `siteNo/scnYmd/scnsNo/scnSseq`. A displayed title, start-time label, or auditorium name
   change must not create another showtime when this tuple is unchanged.
-- A candidate missing any required provider key is rejected. It must not be silently converted to a display-text identity.
+- A candidate missing any required provider key is rejected and the capture is incomplete. It must not be silently
+  converted to a display-text identity.
 - `CatalogID(provider, kind, sourceKey)` is the only canonical ID derivation. Reporters do not invent opaque IDs.
 - `ObservedAt` records when the reporter saw the value. Central receipt time never replaces it.
 
