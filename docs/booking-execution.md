@@ -15,8 +15,8 @@ flowchart LR
 
 - A scan covers one theater and every date from today through the policy horizon.
 - Results are shared across auditoriums, movies, and users. Matching monitors never create duplicate theater fetches.
-- A booking monitor raises discovery cadence before a showtime is found. Post-discovery work is not a substitute for
-  fast discovery.
+- One booking monitor covers both stages: it raises discovery cadence before a showtime is found, then keeps watching
+  the same target for newly available preferred seats until booking succeeds or the monitor expires.
 - The first observation of a showtime is a detection event, not proof of the exact CGV opening time.
 
 Discovery work is ordered by lane before its due time:
@@ -39,6 +39,9 @@ lane. The scheduler must reserve capacity for ordinary observation so sustained 
 - The Client opens the live seat-selection flow immediately, reads the current layout and availability, applies the
   preset, selects seats, and stops at payment.
 - Losing the execution lease cancels browser work. Another Client may claim a later retry.
+- A missing preferred seat or a showtime that is not yet selectable does not trigger immediate browser retries.
+  Central waits for a later positive availability observation, then rearms that exact command after a short cooldown.
+  Other transient preparation failures retain the bounded execution retry budget.
 
 ## Session readiness
 

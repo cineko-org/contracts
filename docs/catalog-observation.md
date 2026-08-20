@@ -18,6 +18,12 @@ catalog endpoint or fall back to a displayed title merely to make the initial ca
 result upserts that shared catalog and appends availability observations in the same Central transaction.
 Availability, sold-out state, and observed time are observations; they are not authoritative catalog attributes.
 
+Movie rows are permanent analytical identity. Central never removes a Movie merely because it is no longer offered,
+and timestamped availability observations reference its canonical ID. Client catalog responses contain only movies
+with a current bookable showtime; historical movies remain available to Central and observability queries instead of
+cluttering the booking UI. The `movies` array preserves the provider's first-appearance order as a current
+presentation hint. That order never participates in identity or rewrites historical observations.
+
 Protocol v3 does not carry an authoritative scope marker, expected entity count, or tombstone set for catalog capture.
 Therefore, absence from a catalog payload cannot deactivate or delete an existing entity. Authoritative replacement
 requires a future wire revision that makes scope and completeness explicit.
