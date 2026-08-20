@@ -14,7 +14,8 @@ defined in `docs/client-central.md`. The booking critical path and live-seat own
 ## Central and Probe
 
 Probe registration, heartbeat, assignment leasing, captures, and result commits are defined in
-`docs/central-probe.md`.
+`docs/central-probe.md`. Runtime state and retries are defined in `docs/probe-runtime.md`, catalog/observation
+mutation in `docs/catalog-observation.md`, and local proxy lifecycle in `docs/egress.md`.
 
 ## Launcher and Client
 
