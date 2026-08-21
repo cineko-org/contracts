@@ -131,6 +131,9 @@ const (
 	// ReleaseServiceGetLauncherReleaseProcedure is the fully-qualified name of the ReleaseService's
 	// GetLauncherRelease RPC.
 	ReleaseServiceGetLauncherReleaseProcedure = "/cineko.service.ReleaseService/GetLauncherRelease"
+	// ReleaseServiceGetReleaseRegistryProcedure is the fully-qualified name of the ReleaseService's
+	// GetReleaseRegistry RPC.
+	ReleaseServiceGetReleaseRegistryProcedure = "/cineko.service.ReleaseService/GetReleaseRegistry"
 	// ReleaseServicePublishClientProcedure is the fully-qualified name of the ReleaseService's
 	// PublishClient RPC.
 	ReleaseServicePublishClientProcedure = "/cineko.service.ReleaseService/PublishClient"
@@ -1104,6 +1107,7 @@ func (UnimplementedExecutionServiceHandler) Retry(context.Context, *connect.Requ
 type ReleaseServiceClient interface {
 	GetRuntimeRelease(context.Context, *connect.Request[service.GetRuntimeReleaseRequest]) (*connect.Response[service.GetRuntimeReleaseResponse], error)
 	GetLauncherRelease(context.Context, *connect.Request[service.GetLauncherReleaseRequest]) (*connect.Response[service.GetLauncherReleaseResponse], error)
+	GetReleaseRegistry(context.Context, *connect.Request[service.GetReleaseRegistryRequest]) (*connect.Response[service.GetReleaseRegistryResponse], error)
 	PublishClient(context.Context, *connect.Request[service.PublishClientRequest]) (*connect.Response[service.PublishClientResponse], error)
 	PublishBrowser(context.Context, *connect.Request[service.PublishBrowserRequest]) (*connect.Response[service.PublishBrowserResponse], error)
 	PublishPlaywright(context.Context, *connect.Request[service.PublishPlaywrightRequest]) (*connect.Response[service.PublishPlaywrightResponse], error)
@@ -1132,6 +1136,12 @@ func NewReleaseServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			httpClient,
 			baseURL+ReleaseServiceGetLauncherReleaseProcedure,
 			connect.WithSchema(releaseServiceMethods.ByName("GetLauncherRelease")),
+			connect.WithClientOptions(opts...),
+		),
+		getReleaseRegistry: connect.NewClient[service.GetReleaseRegistryRequest, service.GetReleaseRegistryResponse](
+			httpClient,
+			baseURL+ReleaseServiceGetReleaseRegistryProcedure,
+			connect.WithSchema(releaseServiceMethods.ByName("GetReleaseRegistry")),
 			connect.WithClientOptions(opts...),
 		),
 		publishClient: connect.NewClient[service.PublishClientRequest, service.PublishClientResponse](
@@ -1171,6 +1181,7 @@ func NewReleaseServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 type releaseServiceClient struct {
 	getRuntimeRelease  *connect.Client[service.GetRuntimeReleaseRequest, service.GetRuntimeReleaseResponse]
 	getLauncherRelease *connect.Client[service.GetLauncherReleaseRequest, service.GetLauncherReleaseResponse]
+	getReleaseRegistry *connect.Client[service.GetReleaseRegistryRequest, service.GetReleaseRegistryResponse]
 	publishClient      *connect.Client[service.PublishClientRequest, service.PublishClientResponse]
 	publishBrowser     *connect.Client[service.PublishBrowserRequest, service.PublishBrowserResponse]
 	publishPlaywright  *connect.Client[service.PublishPlaywrightRequest, service.PublishPlaywrightResponse]
@@ -1186,6 +1197,11 @@ func (c *releaseServiceClient) GetRuntimeRelease(ctx context.Context, req *conne
 // GetLauncherRelease calls cineko.service.ReleaseService.GetLauncherRelease.
 func (c *releaseServiceClient) GetLauncherRelease(ctx context.Context, req *connect.Request[service.GetLauncherReleaseRequest]) (*connect.Response[service.GetLauncherReleaseResponse], error) {
 	return c.getLauncherRelease.CallUnary(ctx, req)
+}
+
+// GetReleaseRegistry calls cineko.service.ReleaseService.GetReleaseRegistry.
+func (c *releaseServiceClient) GetReleaseRegistry(ctx context.Context, req *connect.Request[service.GetReleaseRegistryRequest]) (*connect.Response[service.GetReleaseRegistryResponse], error) {
+	return c.getReleaseRegistry.CallUnary(ctx, req)
 }
 
 // PublishClient calls cineko.service.ReleaseService.PublishClient.
@@ -1217,6 +1233,7 @@ func (c *releaseServiceClient) PublishProbe(ctx context.Context, req *connect.Re
 type ReleaseServiceHandler interface {
 	GetRuntimeRelease(context.Context, *connect.Request[service.GetRuntimeReleaseRequest]) (*connect.Response[service.GetRuntimeReleaseResponse], error)
 	GetLauncherRelease(context.Context, *connect.Request[service.GetLauncherReleaseRequest]) (*connect.Response[service.GetLauncherReleaseResponse], error)
+	GetReleaseRegistry(context.Context, *connect.Request[service.GetReleaseRegistryRequest]) (*connect.Response[service.GetReleaseRegistryResponse], error)
 	PublishClient(context.Context, *connect.Request[service.PublishClientRequest]) (*connect.Response[service.PublishClientResponse], error)
 	PublishBrowser(context.Context, *connect.Request[service.PublishBrowserRequest]) (*connect.Response[service.PublishBrowserResponse], error)
 	PublishPlaywright(context.Context, *connect.Request[service.PublishPlaywrightRequest]) (*connect.Response[service.PublishPlaywrightResponse], error)
@@ -1241,6 +1258,12 @@ func NewReleaseServiceHandler(svc ReleaseServiceHandler, opts ...connect.Handler
 		ReleaseServiceGetLauncherReleaseProcedure,
 		svc.GetLauncherRelease,
 		connect.WithSchema(releaseServiceMethods.ByName("GetLauncherRelease")),
+		connect.WithHandlerOptions(opts...),
+	)
+	releaseServiceGetReleaseRegistryHandler := connect.NewUnaryHandler(
+		ReleaseServiceGetReleaseRegistryProcedure,
+		svc.GetReleaseRegistry,
+		connect.WithSchema(releaseServiceMethods.ByName("GetReleaseRegistry")),
 		connect.WithHandlerOptions(opts...),
 	)
 	releaseServicePublishClientHandler := connect.NewUnaryHandler(
@@ -1279,6 +1302,8 @@ func NewReleaseServiceHandler(svc ReleaseServiceHandler, opts ...connect.Handler
 			releaseServiceGetRuntimeReleaseHandler.ServeHTTP(w, r)
 		case ReleaseServiceGetLauncherReleaseProcedure:
 			releaseServiceGetLauncherReleaseHandler.ServeHTTP(w, r)
+		case ReleaseServiceGetReleaseRegistryProcedure:
+			releaseServiceGetReleaseRegistryHandler.ServeHTTP(w, r)
 		case ReleaseServicePublishClientProcedure:
 			releaseServicePublishClientHandler.ServeHTTP(w, r)
 		case ReleaseServicePublishBrowserProcedure:
@@ -1304,6 +1329,10 @@ func (UnimplementedReleaseServiceHandler) GetRuntimeRelease(context.Context, *co
 
 func (UnimplementedReleaseServiceHandler) GetLauncherRelease(context.Context, *connect.Request[service.GetLauncherReleaseRequest]) (*connect.Response[service.GetLauncherReleaseResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cineko.service.ReleaseService.GetLauncherRelease is not implemented"))
+}
+
+func (UnimplementedReleaseServiceHandler) GetReleaseRegistry(context.Context, *connect.Request[service.GetReleaseRegistryRequest]) (*connect.Response[service.GetReleaseRegistryResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cineko.service.ReleaseService.GetReleaseRegistry is not implemented"))
 }
 
 func (UnimplementedReleaseServiceHandler) PublishClient(context.Context, *connect.Request[service.PublishClientRequest]) (*connect.Response[service.PublishClientResponse], error) {

@@ -84,3 +84,12 @@ message LauncherReleaseSet {
 message ProbeReleaseSet {
   repeated ProbeRelease releases = 1;
 }
+
+message Registry {
+  int64 generation = 1;
+  ClientReleaseSet clients = 2;
+  BrowserReleaseSet browsers = 3;
+  PlaywrightReleaseSet playwright = 4;
+  LauncherReleaseSet launchers = 5;
+  ProbeReleaseSet probes = 6;
+}

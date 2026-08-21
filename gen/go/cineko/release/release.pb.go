@@ -1878,6 +1878,206 @@ func (b0 ProbeReleaseSet_builder) Build() *ProbeReleaseSet {
 	return m0
 }
 
+type Registry struct {
+	state                  protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_Generation  int64                  `protobuf:"varint,1,opt,name=generation"`
+	xxx_hidden_Clients     *ClientReleaseSet      `protobuf:"bytes,2,opt,name=clients"`
+	xxx_hidden_Browsers    *BrowserReleaseSet     `protobuf:"bytes,3,opt,name=browsers"`
+	xxx_hidden_Playwright  *PlaywrightReleaseSet  `protobuf:"bytes,4,opt,name=playwright"`
+	xxx_hidden_Launchers   *LauncherReleaseSet    `protobuf:"bytes,5,opt,name=launchers"`
+	xxx_hidden_Probes      *ProbeReleaseSet       `protobuf:"bytes,6,opt,name=probes"`
+	XXX_raceDetectHookData protoimpl.RaceDetectHookData
+	XXX_presence           [1]uint32
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
+}
+
+func (x *Registry) Reset() {
+	*x = Registry{}
+	mi := &file_cineko_release_release_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Registry) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Registry) ProtoMessage() {}
+
+func (x *Registry) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_release_release_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *Registry) GetGeneration() int64 {
+	if x != nil {
+		return x.xxx_hidden_Generation
+	}
+	return 0
+}
+
+func (x *Registry) GetClients() *ClientReleaseSet {
+	if x != nil {
+		return x.xxx_hidden_Clients
+	}
+	return nil
+}
+
+func (x *Registry) GetBrowsers() *BrowserReleaseSet {
+	if x != nil {
+		return x.xxx_hidden_Browsers
+	}
+	return nil
+}
+
+func (x *Registry) GetPlaywright() *PlaywrightReleaseSet {
+	if x != nil {
+		return x.xxx_hidden_Playwright
+	}
+	return nil
+}
+
+func (x *Registry) GetLaunchers() *LauncherReleaseSet {
+	if x != nil {
+		return x.xxx_hidden_Launchers
+	}
+	return nil
+}
+
+func (x *Registry) GetProbes() *ProbeReleaseSet {
+	if x != nil {
+		return x.xxx_hidden_Probes
+	}
+	return nil
+}
+
+func (x *Registry) SetGeneration(v int64) {
+	x.xxx_hidden_Generation = v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 6)
+}
+
+func (x *Registry) SetClients(v *ClientReleaseSet) {
+	x.xxx_hidden_Clients = v
+}
+
+func (x *Registry) SetBrowsers(v *BrowserReleaseSet) {
+	x.xxx_hidden_Browsers = v
+}
+
+func (x *Registry) SetPlaywright(v *PlaywrightReleaseSet) {
+	x.xxx_hidden_Playwright = v
+}
+
+func (x *Registry) SetLaunchers(v *LauncherReleaseSet) {
+	x.xxx_hidden_Launchers = v
+}
+
+func (x *Registry) SetProbes(v *ProbeReleaseSet) {
+	x.xxx_hidden_Probes = v
+}
+
+func (x *Registry) HasGeneration() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
+}
+
+func (x *Registry) HasClients() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_Clients != nil
+}
+
+func (x *Registry) HasBrowsers() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_Browsers != nil
+}
+
+func (x *Registry) HasPlaywright() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_Playwright != nil
+}
+
+func (x *Registry) HasLaunchers() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_Launchers != nil
+}
+
+func (x *Registry) HasProbes() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_Probes != nil
+}
+
+func (x *Registry) ClearGeneration() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
+	x.xxx_hidden_Generation = 0
+}
+
+func (x *Registry) ClearClients() {
+	x.xxx_hidden_Clients = nil
+}
+
+func (x *Registry) ClearBrowsers() {
+	x.xxx_hidden_Browsers = nil
+}
+
+func (x *Registry) ClearPlaywright() {
+	x.xxx_hidden_Playwright = nil
+}
+
+func (x *Registry) ClearLaunchers() {
+	x.xxx_hidden_Launchers = nil
+}
+
+func (x *Registry) ClearProbes() {
+	x.xxx_hidden_Probes = nil
+}
+
+type Registry_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	Generation *int64
+	Clients    *ClientReleaseSet
+	Browsers   *BrowserReleaseSet
+	Playwright *PlaywrightReleaseSet
+	Launchers  *LauncherReleaseSet
+	Probes     *ProbeReleaseSet
+}
+
+func (b0 Registry_builder) Build() *Registry {
+	m0 := &Registry{}
+	b, x := &b0, m0
+	_, _ = b, x
+	if b.Generation != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 6)
+		x.xxx_hidden_Generation = *b.Generation
+	}
+	x.xxx_hidden_Clients = b.Clients
+	x.xxx_hidden_Browsers = b.Browsers
+	x.xxx_hidden_Playwright = b.Playwright
+	x.xxx_hidden_Launchers = b.Launchers
+	x.xxx_hidden_Probes = b.Probes
+	return m0
+}
+
 var File_cineko_release_release_proto protoreflect.FileDescriptor
 
 const file_cineko_release_release_proto_rawDesc = "" +
@@ -1949,9 +2149,20 @@ const file_cineko_release_release_proto_rawDesc = "" +
 	"\x12LauncherReleaseSet\x12;\n" +
 	"\breleases\x18\x01 \x03(\v2\x1f.cineko.release.LauncherReleaseR\breleases\"K\n" +
 	"\x0fProbeReleaseSet\x128\n" +
-	"\breleases\x18\x01 \x03(\v2\x1c.cineko.release.ProbeReleaseR\breleasesB?Z=github.com/cineko-org/contracts/gen/go/cineko/release;releaseb\beditionsp\xe9\a"
+	"\breleases\x18\x01 \x03(\v2\x1c.cineko.release.ProbeReleaseR\breleases\"\xe6\x02\n" +
+	"\bRegistry\x12\x1e\n" +
+	"\n" +
+	"generation\x18\x01 \x01(\x03R\n" +
+	"generation\x12:\n" +
+	"\aclients\x18\x02 \x01(\v2 .cineko.release.ClientReleaseSetR\aclients\x12=\n" +
+	"\bbrowsers\x18\x03 \x01(\v2!.cineko.release.BrowserReleaseSetR\bbrowsers\x12D\n" +
+	"\n" +
+	"playwright\x18\x04 \x01(\v2$.cineko.release.PlaywrightReleaseSetR\n" +
+	"playwright\x12@\n" +
+	"\tlaunchers\x18\x05 \x01(\v2\".cineko.release.LauncherReleaseSetR\tlaunchers\x127\n" +
+	"\x06probes\x18\x06 \x01(\v2\x1f.cineko.release.ProbeReleaseSetR\x06probesB?Z=github.com/cineko-org/contracts/gen/go/cineko/release;releaseb\beditionsp\xe9\a"
 
-var file_cineko_release_release_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
+var file_cineko_release_release_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
 var file_cineko_release_release_proto_goTypes = []any{
 	(*Artifact)(nil),              // 0: cineko.release.Artifact
 	(*ClientRelease)(nil),         // 1: cineko.release.ClientRelease
@@ -1965,20 +2176,21 @@ var file_cineko_release_release_proto_goTypes = []any{
 	(*PlaywrightReleaseSet)(nil),  // 9: cineko.release.PlaywrightReleaseSet
 	(*LauncherReleaseSet)(nil),    // 10: cineko.release.LauncherReleaseSet
 	(*ProbeReleaseSet)(nil),       // 11: cineko.release.ProbeReleaseSet
-	nil,                           // 12: cineko.release.ClientRelease.ProbeBootstrapPublicKeysEntry
-	(*timestamppb.Timestamp)(nil), // 13: google.protobuf.Timestamp
+	(*Registry)(nil),              // 12: cineko.release.Registry
+	nil,                           // 13: cineko.release.ClientRelease.ProbeBootstrapPublicKeysEntry
+	(*timestamppb.Timestamp)(nil), // 14: google.protobuf.Timestamp
 }
 var file_cineko_release_release_proto_depIdxs = []int32{
 	0,  // 0: cineko.release.ClientRelease.artifact:type_name -> cineko.release.Artifact
-	12, // 1: cineko.release.ClientRelease.probe_bootstrap_public_keys:type_name -> cineko.release.ClientRelease.ProbeBootstrapPublicKeysEntry
-	13, // 2: cineko.release.ClientRelease.published_at:type_name -> google.protobuf.Timestamp
+	13, // 1: cineko.release.ClientRelease.probe_bootstrap_public_keys:type_name -> cineko.release.ClientRelease.ProbeBootstrapPublicKeysEntry
+	14, // 2: cineko.release.ClientRelease.published_at:type_name -> google.protobuf.Timestamp
 	0,  // 3: cineko.release.BrowserRelease.artifact:type_name -> cineko.release.Artifact
-	13, // 4: cineko.release.BrowserRelease.published_at:type_name -> google.protobuf.Timestamp
+	14, // 4: cineko.release.BrowserRelease.published_at:type_name -> google.protobuf.Timestamp
 	0,  // 5: cineko.release.PlaywrightRelease.artifact:type_name -> cineko.release.Artifact
-	13, // 6: cineko.release.PlaywrightRelease.published_at:type_name -> google.protobuf.Timestamp
+	14, // 6: cineko.release.PlaywrightRelease.published_at:type_name -> google.protobuf.Timestamp
 	0,  // 7: cineko.release.LauncherRelease.launcher:type_name -> cineko.release.Artifact
-	13, // 8: cineko.release.LauncherRelease.published_at:type_name -> google.protobuf.Timestamp
-	13, // 9: cineko.release.ProbeRelease.published_at:type_name -> google.protobuf.Timestamp
+	14, // 8: cineko.release.LauncherRelease.published_at:type_name -> google.protobuf.Timestamp
+	14, // 9: cineko.release.ProbeRelease.published_at:type_name -> google.protobuf.Timestamp
 	1,  // 10: cineko.release.RuntimeRelease.client:type_name -> cineko.release.ClientRelease
 	2,  // 11: cineko.release.RuntimeRelease.browser:type_name -> cineko.release.BrowserRelease
 	3,  // 12: cineko.release.RuntimeRelease.playwright:type_name -> cineko.release.PlaywrightRelease
@@ -1987,11 +2199,16 @@ var file_cineko_release_release_proto_depIdxs = []int32{
 	3,  // 15: cineko.release.PlaywrightReleaseSet.releases:type_name -> cineko.release.PlaywrightRelease
 	4,  // 16: cineko.release.LauncherReleaseSet.releases:type_name -> cineko.release.LauncherRelease
 	5,  // 17: cineko.release.ProbeReleaseSet.releases:type_name -> cineko.release.ProbeRelease
-	18, // [18:18] is the sub-list for method output_type
-	18, // [18:18] is the sub-list for method input_type
-	18, // [18:18] is the sub-list for extension type_name
-	18, // [18:18] is the sub-list for extension extendee
-	0,  // [0:18] is the sub-list for field type_name
+	7,  // 18: cineko.release.Registry.clients:type_name -> cineko.release.ClientReleaseSet
+	8,  // 19: cineko.release.Registry.browsers:type_name -> cineko.release.BrowserReleaseSet
+	9,  // 20: cineko.release.Registry.playwright:type_name -> cineko.release.PlaywrightReleaseSet
+	10, // 21: cineko.release.Registry.launchers:type_name -> cineko.release.LauncherReleaseSet
+	11, // 22: cineko.release.Registry.probes:type_name -> cineko.release.ProbeReleaseSet
+	23, // [23:23] is the sub-list for method output_type
+	23, // [23:23] is the sub-list for method input_type
+	23, // [23:23] is the sub-list for extension type_name
+	23, // [23:23] is the sub-list for extension extendee
+	0,  // [0:23] is the sub-list for field type_name
 }
 
 func init() { file_cineko_release_release_proto_init() }
@@ -2005,7 +2222,7 @@ func file_cineko_release_release_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cineko_release_release_proto_rawDesc), len(file_cineko_release_release_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   13,
+			NumMessages:   14,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
