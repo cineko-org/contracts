@@ -1,0 +1,175 @@
+edition = "2024";
+
+package cineko.service;
+
+import "cineko/catalog/catalog.proto";
+import "cineko/client/client.proto";
+import "cineko/common/common.proto";
+import "cineko/execution/execution.proto";
+import "cineko/observation/observation.proto";
+import "cineko/probe/probe.proto";
+import "cineko/release/release.proto";
+import "cineko/seatmap/seatmap.proto";
+
+option go_package = "github.com/cineko-org/contracts/gen/go/cineko/service;service";
+
+message SubmitAssignmentResultResponse {
+  cineko.observation.ResultReceipt receipt = 1;
+}
+
+service ProbeService {
+  rpc Register(cineko.probe.RegisterRequest) returns (cineko.probe.RegisterResponse);
+  rpc Heartbeat(cineko.probe.HeartbeatRequest) returns (cineko.probe.HeartbeatResponse);
+  rpc ClaimAssignment(cineko.probe.ClaimAssignmentRequest) returns (cineko.probe.ClaimAssignmentResponse);
+  rpc HeartbeatAssignment(cineko.probe.HeartbeatAssignmentRequest) returns (cineko.probe.HeartbeatAssignmentResponse);
+  rpc SubmitAssignmentResult(cineko.probe.SubmitAssignmentResultRequest) returns (SubmitAssignmentResultResponse);
+}
+
+message ExchangePinRequest {
+  cineko.client.PinExchangeRequest request = 1;
+}
+message ExchangePinResponse {
+  cineko.client.AuthenticationResponse authentication = 1;
+}
+message ExchangeTokenRequest {
+  cineko.client.TokenExchangeRequest request = 1;
+}
+message ExchangeTokenResponse {
+  cineko.client.AuthenticationResponse authentication = 1;
+}
+message RefreshTokenRequest {
+  cineko.client.TokenRefreshRequest request = 1;
+}
+message RefreshTokenResponse {
+  cineko.client.AuthenticationResponse authentication = 1;
+}
+message CreateLaunchTicketRequest {
+  cineko.client.LaunchTicketRequest request = 1;
+}
+message CreateLaunchTicketResponse {
+  cineko.client.LaunchTicketResponse response = 1;
+}
+message ExchangeSessionRequest {
+  cineko.client.SessionExchangeRequest request = 1;
+}
+message ExchangeSessionResponse {
+  cineko.client.AuthenticationResponse authentication = 1;
+}
+
+service ClientAuthenticationService {
+  rpc ExchangePin(ExchangePinRequest) returns (ExchangePinResponse);
+  rpc ExchangeToken(ExchangeTokenRequest) returns (ExchangeTokenResponse);
+  rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse);
+  rpc CreateLaunchTicket(CreateLaunchTicketRequest) returns (CreateLaunchTicketResponse);
+  rpc ExchangeSession(ExchangeSessionRequest) returns (ExchangeSessionResponse);
+}
+
+message BootstrapRequest {}
+message BootstrapResponse {
+  cineko.client.Bootstrap bootstrap = 1;
+}
+message GetResourceRequest {
+  string id = 1;
+}
+message GetResourceResponse {
+  cineko.client.Resource resource = 1;
+}
+message ListResourcesRequest {
+  cineko.common.PageRequest page = 1;
+}
+message ListResourcesResponse {
+  repeated cineko.client.Resource resources = 1;
+  cineko.common.PageResponse page = 2;
+}
+message PutResourceRequest {
+  cineko.common.MutationIdentity mutation = 1;
+  cineko.client.Resource resource = 2;
+}
+message PutResourceResponse {
+  cineko.client.Resource resource = 1;
+}
+message DeleteResourceRequest {
+  cineko.common.MutationIdentity mutation = 1;
+  string id = 2;
+}
+message DeleteResourceResponse {}
+
+service ClientResourceService {
+  rpc Bootstrap(BootstrapRequest) returns (BootstrapResponse);
+  rpc GetResource(GetResourceRequest) returns (GetResourceResponse);
+  rpc ListResources(ListResourcesRequest) returns (ListResourcesResponse);
+  rpc PutResource(PutResourceRequest) returns (PutResourceResponse);
+  rpc DeleteResource(DeleteResourceRequest) returns (DeleteResourceResponse);
+}
+
+message GetCatalogRequest {}
+message GetCatalogResponse {
+  cineko.catalog.CatalogIndex catalog = 1;
+}
+message GetAuditoriumsRequest {
+  string theater_id = 1;
+}
+message GetAuditoriumsResponse {
+  repeated cineko.catalog.Auditorium auditoriums = 1;
+}
+message ResolveSeatMapRequest {
+  string auditorium_id = 1;
+}
+message ResolveSeatMapResponse {
+  cineko.seatmap.Resolution resolution = 1;
+}
+
+service CatalogService {
+  rpc GetCatalog(GetCatalogRequest) returns (GetCatalogResponse);
+  rpc GetAuditoriums(GetAuditoriumsRequest) returns (GetAuditoriumsResponse);
+  rpc ResolveSeatMap(ResolveSeatMapRequest) returns (ResolveSeatMapResponse);
+}
+
+message CompleteRequest {
+  cineko.execution.ResultRequest result = 1;
+}
+message CompleteResponse {}
+
+service ExecutionService {
+  rpc Claim(cineko.execution.ClaimRequest) returns (cineko.execution.ClaimResponse);
+  rpc Heartbeat(cineko.execution.HeartbeatRequest) returns (cineko.execution.HeartbeatResponse);
+  rpc Complete(CompleteRequest) returns (CompleteResponse);
+}
+
+message GetRuntimeReleaseRequest {
+  string channel = 1;
+  string platform = 2;
+  string architecture = 3;
+}
+message GetRuntimeReleaseResponse {
+  cineko.release.RuntimeRelease release = 1;
+}
+message PublishClientRequest {
+  cineko.release.ClientReleaseSet release_set = 1;
+}
+message PublishClientResponse {}
+message PublishBrowserRequest {
+  cineko.release.BrowserReleaseSet release_set = 1;
+}
+message PublishBrowserResponse {}
+message PublishPlaywrightRequest {
+  cineko.release.PlaywrightReleaseSet release_set = 1;
+}
+message PublishPlaywrightResponse {}
+message PublishLauncherRequest {
+  cineko.release.LauncherReleaseSet release_set = 1;
+}
+message PublishLauncherResponse {}
+message PublishProbeRequest {
+  cineko.release.ProbeReleaseSet release_set = 1;
+}
+message PublishProbeResponse {}
+
+service ReleaseService {
+  rpc GetRuntimeRelease(GetRuntimeReleaseRequest) returns (GetRuntimeReleaseResponse);
+  rpc PublishClient(PublishClientRequest) returns (PublishClientResponse);
+  rpc PublishBrowser(PublishBrowserRequest) returns (PublishBrowserResponse);
+  rpc PublishPlaywright(PublishPlaywrightRequest) returns (PublishPlaywrightResponse);
+  rpc PublishLauncher(PublishLauncherRequest) returns (PublishLauncherResponse);
+  rpc PublishProbe(PublishProbeRequest) returns (PublishProbeResponse);
+}

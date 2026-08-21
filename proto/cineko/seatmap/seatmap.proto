@@ -1,0 +1,91 @@
+edition = "2024";
+
+package cineko.seatmap;
+
+import "buf/validate/validate.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/cineko-org/contracts/gen/go/cineko/seatmap;seatmap";
+
+message Seat {
+  string id = 1;
+  string auditorium_id = 2;
+  string label = 3;
+  string row = 4;
+  int32 number = 5;
+  double x = 6;
+  double y = 7;
+  string type = 8;
+  string zone_name = 9;
+  string zone_kind = 10;
+  string sale_form_code = 11;
+  string sale_form_name = 12;
+  bool left_aisle = 13;
+  bool right_aisle = 14;
+  repeated string features = 15;
+  string source_label = 16;
+  string source_seat_kind_code = 17;
+  string source_seat_kind_name = 18;
+  repeated string source_classes = 19;
+}
+
+message LayoutZone {
+  string code = 1;
+  string name = 2;
+  string kind_code = 3;
+  string kind_name = 4;
+  double min_x = 5;
+  double max_x = 6;
+  double min_y = 7;
+  double max_y = 8;
+  int32 capacity = 9;
+}
+
+message LayoutBlock {
+  string code = 1;
+  string name = 2;
+  string kind_code = 3;
+  string kind_name = 4;
+  double min_x = 5;
+  double max_x = 6;
+  double min_y = 7;
+  double max_y = 8;
+}
+
+message Layout {
+  repeated Seat seats = 1;
+  repeated LayoutZone zones = 2;
+  repeated LayoutBlock blocks = 3;
+}
+
+message Snapshot {
+  string id = 1;
+  string auditorium_id = 2;
+  string layout_hash = 3;
+  int32 capacity = 4;
+  Layout layout = 5;
+  google.protobuf.Timestamp observed_at = 6;
+}
+
+message Ready {
+  Snapshot snapshot = 1;
+}
+
+message CaptureQueued {
+  string task_id = 1;
+  google.protobuf.Timestamp next_check_at = 2;
+}
+
+message Unverifiable {
+  string reason_code = 1;
+}
+
+message Resolution {
+  oneof result {
+    option (buf.validate.oneof).required = true;
+
+    Ready ready = 1;
+    CaptureQueued capture_queued = 2;
+    Unverifiable unverifiable = 3;
+  }
+}

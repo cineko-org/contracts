@@ -1,5 +1,8 @@
 # Ownership
 
+The proto files own service-boundary shape only. Generated Go and TypeScript are deterministic projections and must
+not be edited. Each service owns its internal domain and persistence representation.
+
 ## Central and Launcher
 
 Authentication exchange, client release discovery, device registration, launch tickets, and runtime artifact

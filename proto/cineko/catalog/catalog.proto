@@ -1,0 +1,70 @@
+edition = "2024";
+
+package cineko.catalog;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/cineko-org/contracts/gen/go/cineko/catalog;catalog";
+
+message Provider {
+  string id = 1;
+  string name = 2;
+}
+
+message Theater {
+  string id = 1;
+  string provider_id = 2;
+  string source_key = 3;
+  string region = 4;
+  string name = 5;
+}
+
+message Movie {
+  string id = 1;
+  string provider_id = 2;
+  string source_key = 3;
+  string title = 4;
+  string poster_url = 5;
+}
+
+message Auditorium {
+  string id = 1;
+  string theater_id = 2;
+  string source_key = 3;
+  string name = 4;
+  repeated string screen_types = 5;
+  int32 capacity = 6;
+  string current_layout_hash = 7;
+}
+
+message Showtime {
+  string id = 1;
+  string provider_id = 2;
+  string source_key = 3;
+  string theater_id = 4;
+  Movie movie = 5;
+  Auditorium auditorium = 6;
+  google.protobuf.Timestamp starts_at = 7;
+  google.protobuf.Timestamp ends_at = 8;
+  int32 available_seats = 9;
+  int32 capacity = 10;
+  bool sold_out = 11;
+}
+
+message CatalogSnapshot {
+  Provider provider = 1;
+  repeated Theater theaters = 2;
+  repeated Movie movies = 3;
+  repeated Auditorium auditoriums = 4;
+  repeated Showtime showtimes = 5;
+  google.protobuf.Timestamp observed_at = 6;
+}
+
+message CatalogIndex {
+  int64 generation = 1;
+  repeated Provider providers = 2;
+  repeated Theater theaters = 3;
+  repeated Movie movies = 4;
+  repeated Auditorium auditoriums = 5;
+  repeated Showtime showtimes = 6;
+}

@@ -1,4 +1,2 @@
-/coverage.out
-**/AGENTS.md
-**/AGENTS.override.md
-**/CLAUDE.md
+node_modules/
+coverage.out

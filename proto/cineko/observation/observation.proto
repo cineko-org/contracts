@@ -1,0 +1,104 @@
+edition = "2024";
+
+package cineko.observation;
+
+import "buf/validate/validate.proto";
+import "cineko/catalog/catalog.proto";
+import "cineko/common/common.proto";
+import "cineko/seatmap/seatmap.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/cineko-org/contracts/gen/go/cineko/observation;observation";
+
+message ScheduleCapture {}
+message CatalogCapture {}
+message SeatMapCapture {}
+
+message Capability {
+  oneof capability {
+    option (buf.validate.oneof).required = true;
+
+    ScheduleCapture schedule_capture = 1;
+    CatalogCapture catalog_capture = 2;
+    SeatMapCapture seat_map_capture = 3;
+  }
+}
+
+message ScheduleTask {
+  cineko.catalog.Theater theater = 1;
+  repeated cineko.common.LocalDate target_dates = 2;
+  string locale = 3;
+  string time_zone = 4;
+}
+
+message CatalogTask {
+  cineko.catalog.Theater theater = 1;
+  repeated cineko.common.LocalDate target_dates = 2;
+  string locale = 3;
+  string time_zone = 4;
+}
+
+message SeatMapTask {
+  cineko.catalog.Theater theater = 1;
+  cineko.catalog.Auditorium auditorium = 2;
+  cineko.catalog.Showtime showtime = 3;
+  string locale = 4;
+  string time_zone = 5;
+}
+
+message AssignmentTask {
+  cineko.common.EgressPolicy egress = 1;
+  oneof task {
+    option (buf.validate.oneof).required = true;
+
+    ScheduleTask schedule = 2;
+    CatalogTask catalog = 3;
+    SeatMapTask seat_map = 4;
+  }
+}
+
+message Capture {
+  cineko.common.LocalDate target_date = 1;
+  bool complete = 2;
+  google.protobuf.Timestamp observed_at = 3;
+  string error_code = 4;
+  repeated cineko.catalog.Showtime showtimes = 5;
+}
+
+message Completed {
+  repeated Capture captures = 1;
+  cineko.catalog.CatalogSnapshot catalog = 2;
+  cineko.seatmap.Snapshot seat_map = 3;
+}
+
+message Failed {
+  string reason_code = 1;
+  bool retryable = 2;
+}
+
+message AssignmentResult {
+  string run_id = 1;
+  google.protobuf.Timestamp started_at = 2;
+  google.protobuf.Timestamp finished_at = 3;
+  oneof outcome {
+    option (buf.validate.oneof).required = true;
+
+    Completed completed = 4;
+    Failed failed = 5;
+  }
+}
+
+message ResultReceipt {
+  string assignment_id = 1;
+  string run_id = 2;
+  string content_hash = 3;
+  oneof disposition {
+    option (buf.validate.oneof).required = true;
+
+    Accepted accepted = 4;
+    Duplicate duplicate = 5;
+  }
+}
+
+message Accepted {}
+message Duplicate {}
