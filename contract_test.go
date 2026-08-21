@@ -2,13 +2,18 @@ package contracts_test
 
 import (
 	"testing"
+	"time"
 
 	"buf.build/go/protovalidate"
+	catalogpb "github.com/cineko-org/contracts/gen/go/cineko/catalog"
+	clientpb "github.com/cineko-org/contracts/gen/go/cineko/client"
 	commonpb "github.com/cineko-org/contracts/gen/go/cineko/common"
 	executionpb "github.com/cineko-org/contracts/gen/go/cineko/execution"
 	observationpb "github.com/cineko-org/contracts/gen/go/cineko/observation"
 	probepb "github.com/cineko-org/contracts/gen/go/cineko/probe"
 	"github.com/cineko-org/contracts/gen/go/cineko/seatmap"
+	"google.golang.org/protobuf/proto"
+	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
 func TestRequiredOneofRejectsUnsetState(t *testing.T) {
@@ -63,6 +68,66 @@ func TestInboundRequestValidationRejectsMissingIdentity(t *testing.T) {
 	}.Build()
 	if err := validator.Validate(heartbeat); err == nil {
 		t.Fatal("execution heartbeat without command identity passed contract validation")
+	}
+}
+
+func TestWebUIContractValidation(t *testing.T) {
+	t.Parallel()
+
+	validator, err := protovalidate.New()
+	if err != nil {
+		t.Fatalf("create validator: %v", err)
+	}
+
+	invalidRequests := []struct {
+		name    string
+		message proto.Message
+	}{
+		{name: "credentials", message: &clientpb.AccountCredentials{}},
+		{name: "task state", message: &clientpb.WebUITaskState{}},
+		{name: "account state", message: &clientpb.WebUIAccountState{}},
+		{name: "action status", message: &clientpb.WebUIActionStatus{}},
+		{name: "resource mutation", message: &clientpb.WebUIResourceMutation{}},
+		{name: "resource deletion", message: &clientpb.WebUIResourceDeletion{}},
+		{name: "monitor retry", message: &clientpb.WebUIMonitorRetryRequest{}},
+		{name: "reservation cancellation", message: &clientpb.WebUIReservationCancellationRequest{}},
+		{name: "event user", message: &clientpb.WebUIAppEventUserRequest{}},
+		{name: "seat-map request", message: &clientpb.SeatMapRequest{}},
+		{name: "auditorium request", message: &clientpb.AuditoriumRequest{}},
+	}
+	for _, test := range invalidRequests {
+		test := test
+		t.Run(test.name, func(t *testing.T) {
+			if err := validator.Validate(test.message); err == nil {
+				t.Fatal("empty WebUI message passed contract validation")
+			}
+		})
+	}
+
+	userID, taskID := "user", "task"
+	updatedAt := timestamppb.New(time.Unix(1, 0).UTC())
+	validTask := clientpb.WebUITaskState_builder{
+		Id:        &taskID,
+		Running:   clientpb.WebUITaskRunning_builder{}.Build(),
+		UpdatedAt: updatedAt,
+	}.Build()
+	if err := validator.Validate(validTask); err != nil {
+		t.Fatalf("valid task state failed contract validation: %v", err)
+	}
+
+	validState := clientpb.WebUIState_builder{
+		UserId:  &userID,
+		Catalog: catalogpb.CatalogIndex_builder{}.Build(),
+	}.Build()
+	if err := validator.Validate(validState); err != nil {
+		t.Fatalf("valid WebUI state failed contract validation: %v", err)
+	}
+
+	validAction := clientpb.WebUIActionStatus_builder{
+		Completed: clientpb.WebUIActionCompleted_builder{}.Build(),
+	}.Build()
+	if err := validator.Validate(validAction); err != nil {
+		t.Fatalf("valid WebUI action failed contract validation: %v", err)
 	}
 }
 

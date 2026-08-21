@@ -1,0 +1,153 @@
+edition = "2024";
+
+package cineko.client;
+
+import "buf/validate/validate.proto";
+import "cineko/catalog/catalog.proto";
+import "cineko/client/client.proto";
+import "cineko/common/common.proto";
+import "cineko/seatmap/seatmap.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/cineko-org/contracts/gen/go/cineko/client;client";
+
+// WebUIState is the complete local application snapshot rendered by the
+// loopback UI. Persistent resources retain their shared Resource envelope so
+// identity and revision are not copied into UI-specific shapes.
+message WebUIState {
+  string user_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  cineko.catalog.CatalogIndex catalog = 2 [(buf.validate.field).required = true];
+  repeated Resource resources = 3;
+}
+
+message WebUIResourceList {
+  repeated Resource resources = 1;
+}
+
+message WebUITaskRunning {}
+message WebUITaskCompleted {}
+message WebUITaskFailed {}
+message WebUITaskStopped {}
+
+message WebUITaskState {
+  string id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  oneof state {
+    option (buf.validate.oneof).required = true;
+
+    WebUITaskRunning running = 2;
+    WebUITaskCompleted completed = 3;
+    WebUITaskFailed failed = 4;
+    WebUITaskStopped stopped = 5;
+  }
+  string message = 6;
+  google.protobuf.Timestamp updated_at = 7 [(buf.validate.field).required = true];
+}
+
+message WebUITaskStatusResponse {
+  repeated WebUITaskState tasks = 1;
+}
+
+message WebUIAccountChecking {}
+message WebUIAccountAuthenticated {}
+message WebUIAccountUnauthenticated {}
+message WebUIAccountError {}
+
+message WebUIAccountState {
+  oneof state {
+    option (buf.validate.oneof).required = true;
+
+    WebUIAccountChecking checking = 1;
+    WebUIAccountAuthenticated authenticated = 2;
+    WebUIAccountUnauthenticated unauthenticated = 3;
+    WebUIAccountError error = 4;
+  }
+  bool credentials_saved = 5;
+  string account_id = 6;
+  string message = 7;
+  google.protobuf.Timestamp checked_at = 8;
+}
+
+// AccountCredentials is accepted only by the local credential-vault
+// endpoint. It is never a Resource and must not be persisted in Central.
+message AccountCredentials {
+  string id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string password = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+}
+
+message WebUIActionStarted {}
+message WebUIActionCompleted {}
+
+message WebUIActionStatus {
+  oneof result {
+    option (buf.validate.oneof).required = true;
+
+    WebUIActionStarted started = 1;
+    WebUIActionCompleted completed = 2;
+  }
+}
+
+// ResourceMutation carries the shared revision/idempotency fence and one of
+// the existing typed resources for preset or monitor create/update. The
+// payload is kept typed so application services can consume the generated
+// message directly without another request DTO.
+message WebUIResourceMutation {
+  cineko.common.MutationIdentity mutation = 1 [(buf.validate.field).required = true];
+  oneof resource {
+    option (buf.validate.oneof).required = true;
+
+    Preset preset = 2;
+    Monitor monitor = 3;
+  }
+}
+
+message WebUIResourceDeletion {
+  cineko.common.MutationIdentity mutation = 1 [(buf.validate.field).required = true];
+  string user_id = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  ResourceKind kind = 3 [(buf.validate.field).required = true];
+  string id = 4 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+}
+
+message WebUIMonitorRetryRequest {
+  Monitor monitor = 1 [(buf.validate.field).required = true];
+  bool headful = 2;
+}
+
+message WebUIReservationCancellationRequest {
+  Reservation reservation = 1 [(buf.validate.field).required = true];
+  bool commit = 2;
+  bool headful = 3;
+}
+
+message WebUICancellationResult {
+  string reservation_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string booking_number = 2;
+  string refund_amount = 3;
+}
+
+message WebUIAppEventUserRequest {
+  string user_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+}
