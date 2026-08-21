@@ -8,7 +8,7 @@ Catalog identity and timestamped observations are separate data.
 | --- | --- | --- | --- |
 | `cgv.catalog.capture.v1` | Provider, locale, time zone, egress policy | One validated catalog payload for the reported scope | Empty or partially parsed provider data fails the task |
 | `cgv.schedule.capture.v2` | One theater and an explicit date set | One `Capture` for every requested date | Every candidate showtime must parse; a failed date is `complete=false` and cannot prove absence |
-| `cgv.seat-map.capture.v1` | Exact auditorium/showtime context | One versioned static layout | Static layout is optional analysis data and never gates booking execution |
+| `cgv.seat-map.capture.v1` | Exact auditorium and future bookable showtime | One versioned static layout | The provider seat page must be visited; stored metadata alone never proves the layout |
 
 The verified full-catalog source currently enumerates theaters only. Movies, auditoriums, and showtimes are added
 from structured schedule responses, where their provider identifiers are present. Reporters must not guess a movie
@@ -51,3 +51,25 @@ requires a future wire revision that makes scope and completeness explicit.
 
 An incomplete capture may carry diagnostic `errorCode`, but it must not remove showtimes or assert that none exist.
 Central deduplicates exact result replays and retains observations independently from catalog revisions.
+
+## Seat-map validation
+
+`layoutHash` is the only evidence that two observations describe the same static
+layout. Central returns its stored current layout immediately to Clients and
+never blocks that read on provider access. Freshness and change detection are a
+separate background concern and require revisiting a provider seat page; Central
+must not invent a time-to-live.
+
+Central requests one validation when any of these objective events occurs:
+
+- an auditorium has no stored layout and gains a future bookable showtime;
+- an active booking monitor gains a new showtime for its auditorium;
+- reported auditorium or showtime capacity differs from the active layout;
+- provider auditorium metadata changes in a way that may describe another layout;
+- an operator explicitly requests validation.
+
+The booking Client consumes only Central's resolved layout and does not choose
+or run the collection mechanism. A matching Probe observation only advances
+`lastSeenAt`; a different hash creates and activates a new immutable version.
+When no future bookable showtime exists, the state is `unverifiable`, not
+`fresh`, and Central waits without retrying an impossible browser task.

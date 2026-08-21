@@ -19,3 +19,13 @@ func TestSeatMapVersionIDBindsAuditoriumAndLayout(t *testing.T) {
 		t.Fatal("seat map version identity is not content-addressed")
 	}
 }
+
+func TestSeatIDNormalizesOnlyTheProviderSeatLabel(t *testing.T) {
+	first := SeatID("auditorium-a", " h10 ")
+	if first != SeatID("auditorium-a", "H10") {
+		t.Fatal("SeatID() did not normalize the provider seat label")
+	}
+	if first == SeatID("auditorium-b", "H10") || first == SeatID("auditorium-a", "H11") {
+		t.Fatal("SeatID() did not bind auditorium and seat label")
+	}
+}
