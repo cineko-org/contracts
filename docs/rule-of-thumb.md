@@ -20,7 +20,8 @@ schema or does not ship.
   explicit presence flag such as `has_password` or `has_secret`; mutation inputs may carry a replacement secret,
   but read responses never do.
 - Every durable state and optimistic-concurrency revision needed to resume a mutation after reload survives a Proto
-  round trip. Collapsing distinct domain states or silently writing revision zero is forbidden.
+  round trip. The same applies to canonical identities needed to render or reconcile the durable record. Collapsing
+  distinct domain states, dropping identity, or silently writing revision zero is forbidden.
 - Launcher, Client, Central, and Probe retain independent application SemVer. Those release versions do not identify
   a contract schema.
 

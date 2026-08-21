@@ -168,6 +168,7 @@ message Reservation {
     ReservationCancellationUnknown cancellation_unknown = 13;
     ReservationCancelled cancelled = 14;
   }
+  cineko.catalog.Showtime showtime = 15;
 }
 
 message ReservationPrepared {}
