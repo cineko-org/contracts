@@ -13,7 +13,9 @@ schema or does not ship.
   strings are forbidden at service boundaries.
 - `Any`, `Struct`, `Value`, and untyped byte or JSON payloads are forbidden at service boundaries.
 - A service validates every inbound message with Protovalidate before mapping it to its internal domain model.
-- Services persist normalized domain data, never serialized protobuf messages.
+- Queryable domain facts are persisted in normalized columns. When an aggregate service payload must be retained,
+  its only allowed representation is ProtoJSON of the current generated message; handwritten persistence DTOs,
+  envelopes, and compatibility shapes are forbidden.
 - Launcher, Client, Central, and Probe retain independent application SemVer. Those release versions do not identify
   a contract schema.
 
