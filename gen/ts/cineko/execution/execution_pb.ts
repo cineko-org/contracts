@@ -15,7 +15,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file cineko/execution/execution.proto.
  */
 export const file_cineko_execution_execution: GenFile = /*@__PURE__*/
-  fileDesc("CiBjaW5la28vZXhlY3V0aW9uL2V4ZWN1dGlvbi5wcm90bxIQY2luZWtvLmV4ZWN1dGlvbiJmCgdQYXlsb2FkEioKCHNob3d0aW1lGAEgASgLMhguY2luZWtvLmNhdGFsb2cuU2hvd3RpbWUSLwoLb2JzZXJ2ZWRfYXQYAiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIvoBCgdDb21tYW5kEgoKAmlkGAEgASgJEhIKCm1vbml0b3JfaWQYAiABKAkSFwoPaW5zdGFsbGF0aW9uX2lkGAMgASgJEg8KB2F0dGVtcHQYBCABKAUSKgoHcGF5bG9hZBgFIAEoCzIZLmNpbmVrby5leGVjdXRpb24uUGF5bG9hZBITCgtsZWFzZV90b2tlbhgGIAEoCRI0ChBsZWFzZV9leHBpcmVzX2F0GAcgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIuCgpjcmVhdGVkX2F0GAggASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCInCgxDbGFpbVJlcXVlc3QSFwoPaW5zdGFsbGF0aW9uX2lkGAEgASgJIjkKCU5vQ29tbWFuZBIsCghyZXRyeV9hdBgBIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAigQEKDUNsYWltUmVzcG9uc2USLAoHY29tbWFuZBgBIAEoCzIZLmNpbmVrby5leGVjdXRpb24uQ29tbWFuZEgAEjEKCm5vX2NvbW1hbmQYAiABKAsyGy5jaW5la28uZXhlY3V0aW9uLk5vQ29tbWFuZEgAQg8KBnJlc3VsdBIFukgCCAEiJwoQSGVhcnRiZWF0UmVxdWVzdBITCgtsZWFzZV90b2tlbhgBIAEoCSJJChFIZWFydGJlYXRSZXNwb25zZRI0ChBsZWFzZV9leHBpcmVzX2F0GAEgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCILCglDb21wbGV0ZWQiHQoGRmFpbGVkEhMKC3JlYXNvbl9jb2RlGAEgASgJIiUKDlJldHJ5UmVxdWVzdGVkEhMKC3JlYXNvbl9jb2RlGAEgASgJItEBCg1SZXN1bHRSZXF1ZXN0EhMKC2xlYXNlX3Rva2VuGAEgASgJEjAKCWNvbXBsZXRlZBgCIAEoCzIbLmNpbmVrby5leGVjdXRpb24uQ29tcGxldGVkSAASKgoGZmFpbGVkGAMgASgLMhguY2luZWtvLmV4ZWN1dGlvbi5GYWlsZWRIABI7Cg9yZXRyeV9yZXF1ZXN0ZWQYBCABKAsyIC5jaW5la28uZXhlY3V0aW9uLlJldHJ5UmVxdWVzdGVkSABCEAoHb3V0Y29tZRIFukgCCAFCQ1pBZ2l0aHViLmNvbS9jaW5la28tb3JnL2NvbnRyYWN0cy9nZW4vZ28vY2luZWtvL2V4ZWN1dGlvbjtleGVjdXRpb25iCGVkaXRpb25zcOkH", [file_buf_validate_validate, file_cineko_catalog_catalog, file_google_protobuf_timestamp]);
+  fileDesc("CiBjaW5la28vZXhlY3V0aW9uL2V4ZWN1dGlvbi5wcm90bxIQY2luZWtvLmV4ZWN1dGlvbiJmCgdQYXlsb2FkEioKCHNob3d0aW1lGAEgASgLMhguY2luZWtvLmNhdGFsb2cuU2hvd3RpbWUSLwoLb2JzZXJ2ZWRfYXQYAiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIvoBCgdDb21tYW5kEgoKAmlkGAEgASgJEhIKCm1vbml0b3JfaWQYAiABKAkSFwoPaW5zdGFsbGF0aW9uX2lkGAMgASgJEg8KB2F0dGVtcHQYBCABKAUSKgoHcGF5bG9hZBgFIAEoCzIZLmNpbmVrby5leGVjdXRpb24uUGF5bG9hZBITCgtsZWFzZV90b2tlbhgGIAEoCRI0ChBsZWFzZV9leHBpcmVzX2F0GAcgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIuCgpjcmVhdGVkX2F0GAggASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCIzCgxDbGFpbVJlcXVlc3QSIwoPaW5zdGFsbGF0aW9uX2lkGAEgASgJQgq6SAfIAQFyAhABIjkKCU5vQ29tbWFuZBIsCghyZXRyeV9hdBgBIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAigQEKDUNsYWltUmVzcG9uc2USLAoHY29tbWFuZBgBIAEoCzIZLmNpbmVrby5leGVjdXRpb24uQ29tbWFuZEgAEjEKCm5vX2NvbW1hbmQYAiABKAsyGy5jaW5la28uZXhlY3V0aW9uLk5vQ29tbWFuZEgAQg8KBnJlc3VsdBIFukgCCAEiUwoQSGVhcnRiZWF0UmVxdWVzdBIeCgpjb21tYW5kX2lkGAEgASgJQgq6SAfIAQFyAhABEh8KC2xlYXNlX3Rva2VuGAIgASgJQgq6SAfIAQFyAhABIkkKEUhlYXJ0YmVhdFJlc3BvbnNlEjQKEGxlYXNlX2V4cGlyZXNfYXQYASABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIgsKCUNvbXBsZXRlZCIdCgZGYWlsZWQSEwoLcmVhc29uX2NvZGUYASABKAkiJQoOUmV0cnlSZXF1ZXN0ZWQSEwoLcmVhc29uX2NvZGUYASABKAki/QEKDVJlc3VsdFJlcXVlc3QSHgoKY29tbWFuZF9pZBgBIAEoCUIKukgHyAEBcgIQARIfCgtsZWFzZV90b2tlbhgCIAEoCUIKukgHyAEBcgIQARIwCgljb21wbGV0ZWQYAyABKAsyGy5jaW5la28uZXhlY3V0aW9uLkNvbXBsZXRlZEgAEioKBmZhaWxlZBgEIAEoCzIYLmNpbmVrby5leGVjdXRpb24uRmFpbGVkSAASOwoPcmV0cnlfcmVxdWVzdGVkGAUgASgLMiAuY2luZWtvLmV4ZWN1dGlvbi5SZXRyeVJlcXVlc3RlZEgAQhAKB291dGNvbWUSBbpIAggBIi4KDFJldHJ5UmVxdWVzdBIeCgpjb21tYW5kX2lkGAEgASgJQgq6SAfIAQFyAhABQkNaQWdpdGh1Yi5jb20vY2luZWtvLW9yZy9jb250cmFjdHMvZ2VuL2dvL2NpbmVrby9leGVjdXRpb247ZXhlY3V0aW9uYghlZGl0aW9uc3DpBw", [file_buf_validate_validate, file_cineko_catalog_catalog, file_google_protobuf_timestamp]);
 
 /**
  * @generated from message cineko.execution.Payload
@@ -159,7 +159,12 @@ export const ClaimResponseSchema: GenMessage<ClaimResponse> = /*@__PURE__*/
  */
 export type HeartbeatRequest = Message<"cineko.execution.HeartbeatRequest"> & {
   /**
-   * @generated from field: string lease_token = 1;
+   * @generated from field: string command_id = 1;
+   */
+  commandId: string;
+
+  /**
+   * @generated from field: string lease_token = 2;
    */
   leaseToken: string;
 };
@@ -240,7 +245,12 @@ export const RetryRequestedSchema: GenMessage<RetryRequested> = /*@__PURE__*/
  */
 export type ResultRequest = Message<"cineko.execution.ResultRequest"> & {
   /**
-   * @generated from field: string lease_token = 1;
+   * @generated from field: string command_id = 1;
+   */
+  commandId: string;
+
+  /**
+   * @generated from field: string lease_token = 2;
    */
   leaseToken: string;
 
@@ -249,19 +259,19 @@ export type ResultRequest = Message<"cineko.execution.ResultRequest"> & {
    */
   outcome: {
     /**
-     * @generated from field: cineko.execution.Completed completed = 2;
+     * @generated from field: cineko.execution.Completed completed = 3;
      */
     value: Completed;
     case: "completed";
   } | {
     /**
-     * @generated from field: cineko.execution.Failed failed = 3;
+     * @generated from field: cineko.execution.Failed failed = 4;
      */
     value: Failed;
     case: "failed";
   } | {
     /**
-     * @generated from field: cineko.execution.RetryRequested retry_requested = 4;
+     * @generated from field: cineko.execution.RetryRequested retry_requested = 5;
      */
     value: RetryRequested;
     case: "retryRequested";
@@ -274,3 +284,20 @@ export type ResultRequest = Message<"cineko.execution.ResultRequest"> & {
  */
 export const ResultRequestSchema: GenMessage<ResultRequest> = /*@__PURE__*/
   messageDesc(file_cineko_execution_execution, 10);
+
+/**
+ * @generated from message cineko.execution.RetryRequest
+ */
+export type RetryRequest = Message<"cineko.execution.RetryRequest"> & {
+  /**
+   * @generated from field: string command_id = 1;
+   */
+  commandId: string;
+};
+
+/**
+ * Describes the message cineko.execution.RetryRequest.
+ * Use `create(RetryRequestSchema)` to create a new message.
+ */
+export const RetryRequestSchema: GenMessage<RetryRequest> = /*@__PURE__*/
+  messageDesc(file_cineko_execution_execution, 11);

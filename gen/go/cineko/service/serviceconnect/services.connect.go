@@ -59,6 +59,8 @@ const (
 	// ProbeServiceSubmitAssignmentResultProcedure is the fully-qualified name of the ProbeService's
 	// SubmitAssignmentResult RPC.
 	ProbeServiceSubmitAssignmentResultProcedure = "/cineko.service.ProbeService/SubmitAssignmentResult"
+	// ProbeServiceDisconnectProcedure is the fully-qualified name of the ProbeService's Disconnect RPC.
+	ProbeServiceDisconnectProcedure = "/cineko.service.ProbeService/Disconnect"
 	// ClientAuthenticationServiceExchangePinProcedure is the fully-qualified name of the
 	// ClientAuthenticationService's ExchangePin RPC.
 	ClientAuthenticationServiceExchangePinProcedure = "/cineko.service.ClientAuthenticationService/ExchangePin"
@@ -74,6 +76,12 @@ const (
 	// ClientAuthenticationServiceExchangeSessionProcedure is the fully-qualified name of the
 	// ClientAuthenticationService's ExchangeSession RPC.
 	ClientAuthenticationServiceExchangeSessionProcedure = "/cineko.service.ClientAuthenticationService/ExchangeSession"
+	// ClientAuthenticationServiceLogoutProcedure is the fully-qualified name of the
+	// ClientAuthenticationService's Logout RPC.
+	ClientAuthenticationServiceLogoutProcedure = "/cineko.service.ClientAuthenticationService/Logout"
+	// ClientAuthenticationServiceCreateProbeBootstrapTicketProcedure is the fully-qualified name of the
+	// ClientAuthenticationService's CreateProbeBootstrapTicket RPC.
+	ClientAuthenticationServiceCreateProbeBootstrapTicketProcedure = "/cineko.service.ClientAuthenticationService/CreateProbeBootstrapTicket"
 	// ClientResourceServiceBootstrapProcedure is the fully-qualified name of the
 	// ClientResourceService's Bootstrap RPC.
 	ClientResourceServiceBootstrapProcedure = "/cineko.service.ClientResourceService/Bootstrap"
@@ -89,6 +97,12 @@ const (
 	// ClientResourceServiceDeleteResourceProcedure is the fully-qualified name of the
 	// ClientResourceService's DeleteResource RPC.
 	ClientResourceServiceDeleteResourceProcedure = "/cineko.service.ClientResourceService/DeleteResource"
+	// ClientResourceServiceUpsertDeviceProcedure is the fully-qualified name of the
+	// ClientResourceService's UpsertDevice RPC.
+	ClientResourceServiceUpsertDeviceProcedure = "/cineko.service.ClientResourceService/UpsertDevice"
+	// ClientResourceServiceStreamEventsProcedure is the fully-qualified name of the
+	// ClientResourceService's StreamEvents RPC.
+	ClientResourceServiceStreamEventsProcedure = "/cineko.service.ClientResourceService/StreamEvents"
 	// CatalogServiceGetCatalogProcedure is the fully-qualified name of the CatalogService's GetCatalog
 	// RPC.
 	CatalogServiceGetCatalogProcedure = "/cineko.service.CatalogService/GetCatalog"
@@ -98,6 +112,9 @@ const (
 	// CatalogServiceResolveSeatMapProcedure is the fully-qualified name of the CatalogService's
 	// ResolveSeatMap RPC.
 	CatalogServiceResolveSeatMapProcedure = "/cineko.service.CatalogService/ResolveSeatMap"
+	// CatalogServiceSubmitCatalogSnapshotProcedure is the fully-qualified name of the CatalogService's
+	// SubmitCatalogSnapshot RPC.
+	CatalogServiceSubmitCatalogSnapshotProcedure = "/cineko.service.CatalogService/SubmitCatalogSnapshot"
 	// ExecutionServiceClaimProcedure is the fully-qualified name of the ExecutionService's Claim RPC.
 	ExecutionServiceClaimProcedure = "/cineko.service.ExecutionService/Claim"
 	// ExecutionServiceHeartbeatProcedure is the fully-qualified name of the ExecutionService's
@@ -106,9 +123,14 @@ const (
 	// ExecutionServiceCompleteProcedure is the fully-qualified name of the ExecutionService's Complete
 	// RPC.
 	ExecutionServiceCompleteProcedure = "/cineko.service.ExecutionService/Complete"
+	// ExecutionServiceRetryProcedure is the fully-qualified name of the ExecutionService's Retry RPC.
+	ExecutionServiceRetryProcedure = "/cineko.service.ExecutionService/Retry"
 	// ReleaseServiceGetRuntimeReleaseProcedure is the fully-qualified name of the ReleaseService's
 	// GetRuntimeRelease RPC.
 	ReleaseServiceGetRuntimeReleaseProcedure = "/cineko.service.ReleaseService/GetRuntimeRelease"
+	// ReleaseServiceGetLauncherReleaseProcedure is the fully-qualified name of the ReleaseService's
+	// GetLauncherRelease RPC.
+	ReleaseServiceGetLauncherReleaseProcedure = "/cineko.service.ReleaseService/GetLauncherRelease"
 	// ReleaseServicePublishClientProcedure is the fully-qualified name of the ReleaseService's
 	// PublishClient RPC.
 	ReleaseServicePublishClientProcedure = "/cineko.service.ReleaseService/PublishClient"
@@ -133,6 +155,7 @@ type ProbeServiceClient interface {
 	ClaimAssignment(context.Context, *connect.Request[probe.ClaimAssignmentRequest]) (*connect.Response[probe.ClaimAssignmentResponse], error)
 	HeartbeatAssignment(context.Context, *connect.Request[probe.HeartbeatAssignmentRequest]) (*connect.Response[probe.HeartbeatAssignmentResponse], error)
 	SubmitAssignmentResult(context.Context, *connect.Request[probe.SubmitAssignmentResultRequest]) (*connect.Response[service.SubmitAssignmentResultResponse], error)
+	Disconnect(context.Context, *connect.Request[service.DisconnectRequest]) (*connect.Response[service.DisconnectResponse], error)
 }
 
 // NewProbeServiceClient constructs a client for the cineko.service.ProbeService service. By
@@ -176,6 +199,12 @@ func NewProbeServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 			connect.WithSchema(probeServiceMethods.ByName("SubmitAssignmentResult")),
 			connect.WithClientOptions(opts...),
 		),
+		disconnect: connect.NewClient[service.DisconnectRequest, service.DisconnectResponse](
+			httpClient,
+			baseURL+ProbeServiceDisconnectProcedure,
+			connect.WithSchema(probeServiceMethods.ByName("Disconnect")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -186,6 +215,7 @@ type probeServiceClient struct {
 	claimAssignment        *connect.Client[probe.ClaimAssignmentRequest, probe.ClaimAssignmentResponse]
 	heartbeatAssignment    *connect.Client[probe.HeartbeatAssignmentRequest, probe.HeartbeatAssignmentResponse]
 	submitAssignmentResult *connect.Client[probe.SubmitAssignmentResultRequest, service.SubmitAssignmentResultResponse]
+	disconnect             *connect.Client[service.DisconnectRequest, service.DisconnectResponse]
 }
 
 // Register calls cineko.service.ProbeService.Register.
@@ -213,6 +243,11 @@ func (c *probeServiceClient) SubmitAssignmentResult(ctx context.Context, req *co
 	return c.submitAssignmentResult.CallUnary(ctx, req)
 }
 
+// Disconnect calls cineko.service.ProbeService.Disconnect.
+func (c *probeServiceClient) Disconnect(ctx context.Context, req *connect.Request[service.DisconnectRequest]) (*connect.Response[service.DisconnectResponse], error) {
+	return c.disconnect.CallUnary(ctx, req)
+}
+
 // ProbeServiceHandler is an implementation of the cineko.service.ProbeService service.
 type ProbeServiceHandler interface {
 	Register(context.Context, *connect.Request[probe.RegisterRequest]) (*connect.Response[probe.RegisterResponse], error)
@@ -220,6 +255,7 @@ type ProbeServiceHandler interface {
 	ClaimAssignment(context.Context, *connect.Request[probe.ClaimAssignmentRequest]) (*connect.Response[probe.ClaimAssignmentResponse], error)
 	HeartbeatAssignment(context.Context, *connect.Request[probe.HeartbeatAssignmentRequest]) (*connect.Response[probe.HeartbeatAssignmentResponse], error)
 	SubmitAssignmentResult(context.Context, *connect.Request[probe.SubmitAssignmentResultRequest]) (*connect.Response[service.SubmitAssignmentResultResponse], error)
+	Disconnect(context.Context, *connect.Request[service.DisconnectRequest]) (*connect.Response[service.DisconnectResponse], error)
 }
 
 // NewProbeServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -259,6 +295,12 @@ func NewProbeServiceHandler(svc ProbeServiceHandler, opts ...connect.HandlerOpti
 		connect.WithSchema(probeServiceMethods.ByName("SubmitAssignmentResult")),
 		connect.WithHandlerOptions(opts...),
 	)
+	probeServiceDisconnectHandler := connect.NewUnaryHandler(
+		ProbeServiceDisconnectProcedure,
+		svc.Disconnect,
+		connect.WithSchema(probeServiceMethods.ByName("Disconnect")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cineko.service.ProbeService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case ProbeServiceRegisterProcedure:
@@ -271,6 +313,8 @@ func NewProbeServiceHandler(svc ProbeServiceHandler, opts ...connect.HandlerOpti
 			probeServiceHeartbeatAssignmentHandler.ServeHTTP(w, r)
 		case ProbeServiceSubmitAssignmentResultProcedure:
 			probeServiceSubmitAssignmentResultHandler.ServeHTTP(w, r)
+		case ProbeServiceDisconnectProcedure:
+			probeServiceDisconnectHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -300,6 +344,10 @@ func (UnimplementedProbeServiceHandler) SubmitAssignmentResult(context.Context, 
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cineko.service.ProbeService.SubmitAssignmentResult is not implemented"))
 }
 
+func (UnimplementedProbeServiceHandler) Disconnect(context.Context, *connect.Request[service.DisconnectRequest]) (*connect.Response[service.DisconnectResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cineko.service.ProbeService.Disconnect is not implemented"))
+}
+
 // ClientAuthenticationServiceClient is a client for the cineko.service.ClientAuthenticationService
 // service.
 type ClientAuthenticationServiceClient interface {
@@ -308,6 +356,8 @@ type ClientAuthenticationServiceClient interface {
 	RefreshToken(context.Context, *connect.Request[service.RefreshTokenRequest]) (*connect.Response[service.RefreshTokenResponse], error)
 	CreateLaunchTicket(context.Context, *connect.Request[service.CreateLaunchTicketRequest]) (*connect.Response[service.CreateLaunchTicketResponse], error)
 	ExchangeSession(context.Context, *connect.Request[service.ExchangeSessionRequest]) (*connect.Response[service.ExchangeSessionResponse], error)
+	Logout(context.Context, *connect.Request[service.LogoutRequest]) (*connect.Response[service.LogoutResponse], error)
+	CreateProbeBootstrapTicket(context.Context, *connect.Request[service.CreateProbeBootstrapTicketRequest]) (*connect.Response[service.CreateProbeBootstrapTicketResponse], error)
 }
 
 // NewClientAuthenticationServiceClient constructs a client for the
@@ -351,16 +401,30 @@ func NewClientAuthenticationServiceClient(httpClient connect.HTTPClient, baseURL
 			connect.WithSchema(clientAuthenticationServiceMethods.ByName("ExchangeSession")),
 			connect.WithClientOptions(opts...),
 		),
+		logout: connect.NewClient[service.LogoutRequest, service.LogoutResponse](
+			httpClient,
+			baseURL+ClientAuthenticationServiceLogoutProcedure,
+			connect.WithSchema(clientAuthenticationServiceMethods.ByName("Logout")),
+			connect.WithClientOptions(opts...),
+		),
+		createProbeBootstrapTicket: connect.NewClient[service.CreateProbeBootstrapTicketRequest, service.CreateProbeBootstrapTicketResponse](
+			httpClient,
+			baseURL+ClientAuthenticationServiceCreateProbeBootstrapTicketProcedure,
+			connect.WithSchema(clientAuthenticationServiceMethods.ByName("CreateProbeBootstrapTicket")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // clientAuthenticationServiceClient implements ClientAuthenticationServiceClient.
 type clientAuthenticationServiceClient struct {
-	exchangePin        *connect.Client[service.ExchangePinRequest, service.ExchangePinResponse]
-	exchangeToken      *connect.Client[service.ExchangeTokenRequest, service.ExchangeTokenResponse]
-	refreshToken       *connect.Client[service.RefreshTokenRequest, service.RefreshTokenResponse]
-	createLaunchTicket *connect.Client[service.CreateLaunchTicketRequest, service.CreateLaunchTicketResponse]
-	exchangeSession    *connect.Client[service.ExchangeSessionRequest, service.ExchangeSessionResponse]
+	exchangePin                *connect.Client[service.ExchangePinRequest, service.ExchangePinResponse]
+	exchangeToken              *connect.Client[service.ExchangeTokenRequest, service.ExchangeTokenResponse]
+	refreshToken               *connect.Client[service.RefreshTokenRequest, service.RefreshTokenResponse]
+	createLaunchTicket         *connect.Client[service.CreateLaunchTicketRequest, service.CreateLaunchTicketResponse]
+	exchangeSession            *connect.Client[service.ExchangeSessionRequest, service.ExchangeSessionResponse]
+	logout                     *connect.Client[service.LogoutRequest, service.LogoutResponse]
+	createProbeBootstrapTicket *connect.Client[service.CreateProbeBootstrapTicketRequest, service.CreateProbeBootstrapTicketResponse]
 }
 
 // ExchangePin calls cineko.service.ClientAuthenticationService.ExchangePin.
@@ -388,6 +452,17 @@ func (c *clientAuthenticationServiceClient) ExchangeSession(ctx context.Context,
 	return c.exchangeSession.CallUnary(ctx, req)
 }
 
+// Logout calls cineko.service.ClientAuthenticationService.Logout.
+func (c *clientAuthenticationServiceClient) Logout(ctx context.Context, req *connect.Request[service.LogoutRequest]) (*connect.Response[service.LogoutResponse], error) {
+	return c.logout.CallUnary(ctx, req)
+}
+
+// CreateProbeBootstrapTicket calls
+// cineko.service.ClientAuthenticationService.CreateProbeBootstrapTicket.
+func (c *clientAuthenticationServiceClient) CreateProbeBootstrapTicket(ctx context.Context, req *connect.Request[service.CreateProbeBootstrapTicketRequest]) (*connect.Response[service.CreateProbeBootstrapTicketResponse], error) {
+	return c.createProbeBootstrapTicket.CallUnary(ctx, req)
+}
+
 // ClientAuthenticationServiceHandler is an implementation of the
 // cineko.service.ClientAuthenticationService service.
 type ClientAuthenticationServiceHandler interface {
@@ -396,6 +471,8 @@ type ClientAuthenticationServiceHandler interface {
 	RefreshToken(context.Context, *connect.Request[service.RefreshTokenRequest]) (*connect.Response[service.RefreshTokenResponse], error)
 	CreateLaunchTicket(context.Context, *connect.Request[service.CreateLaunchTicketRequest]) (*connect.Response[service.CreateLaunchTicketResponse], error)
 	ExchangeSession(context.Context, *connect.Request[service.ExchangeSessionRequest]) (*connect.Response[service.ExchangeSessionResponse], error)
+	Logout(context.Context, *connect.Request[service.LogoutRequest]) (*connect.Response[service.LogoutResponse], error)
+	CreateProbeBootstrapTicket(context.Context, *connect.Request[service.CreateProbeBootstrapTicketRequest]) (*connect.Response[service.CreateProbeBootstrapTicketResponse], error)
 }
 
 // NewClientAuthenticationServiceHandler builds an HTTP handler from the service implementation. It
@@ -435,6 +512,18 @@ func NewClientAuthenticationServiceHandler(svc ClientAuthenticationServiceHandle
 		connect.WithSchema(clientAuthenticationServiceMethods.ByName("ExchangeSession")),
 		connect.WithHandlerOptions(opts...),
 	)
+	clientAuthenticationServiceLogoutHandler := connect.NewUnaryHandler(
+		ClientAuthenticationServiceLogoutProcedure,
+		svc.Logout,
+		connect.WithSchema(clientAuthenticationServiceMethods.ByName("Logout")),
+		connect.WithHandlerOptions(opts...),
+	)
+	clientAuthenticationServiceCreateProbeBootstrapTicketHandler := connect.NewUnaryHandler(
+		ClientAuthenticationServiceCreateProbeBootstrapTicketProcedure,
+		svc.CreateProbeBootstrapTicket,
+		connect.WithSchema(clientAuthenticationServiceMethods.ByName("CreateProbeBootstrapTicket")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cineko.service.ClientAuthenticationService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case ClientAuthenticationServiceExchangePinProcedure:
@@ -447,6 +536,10 @@ func NewClientAuthenticationServiceHandler(svc ClientAuthenticationServiceHandle
 			clientAuthenticationServiceCreateLaunchTicketHandler.ServeHTTP(w, r)
 		case ClientAuthenticationServiceExchangeSessionProcedure:
 			clientAuthenticationServiceExchangeSessionHandler.ServeHTTP(w, r)
+		case ClientAuthenticationServiceLogoutProcedure:
+			clientAuthenticationServiceLogoutHandler.ServeHTTP(w, r)
+		case ClientAuthenticationServiceCreateProbeBootstrapTicketProcedure:
+			clientAuthenticationServiceCreateProbeBootstrapTicketHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -476,6 +569,14 @@ func (UnimplementedClientAuthenticationServiceHandler) ExchangeSession(context.C
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cineko.service.ClientAuthenticationService.ExchangeSession is not implemented"))
 }
 
+func (UnimplementedClientAuthenticationServiceHandler) Logout(context.Context, *connect.Request[service.LogoutRequest]) (*connect.Response[service.LogoutResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cineko.service.ClientAuthenticationService.Logout is not implemented"))
+}
+
+func (UnimplementedClientAuthenticationServiceHandler) CreateProbeBootstrapTicket(context.Context, *connect.Request[service.CreateProbeBootstrapTicketRequest]) (*connect.Response[service.CreateProbeBootstrapTicketResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cineko.service.ClientAuthenticationService.CreateProbeBootstrapTicket is not implemented"))
+}
+
 // ClientResourceServiceClient is a client for the cineko.service.ClientResourceService service.
 type ClientResourceServiceClient interface {
 	Bootstrap(context.Context, *connect.Request[service.BootstrapRequest]) (*connect.Response[service.BootstrapResponse], error)
@@ -483,6 +584,8 @@ type ClientResourceServiceClient interface {
 	ListResources(context.Context, *connect.Request[service.ListResourcesRequest]) (*connect.Response[service.ListResourcesResponse], error)
 	PutResource(context.Context, *connect.Request[service.PutResourceRequest]) (*connect.Response[service.PutResourceResponse], error)
 	DeleteResource(context.Context, *connect.Request[service.DeleteResourceRequest]) (*connect.Response[service.DeleteResourceResponse], error)
+	UpsertDevice(context.Context, *connect.Request[service.UpsertDeviceRequest]) (*connect.Response[service.UpsertDeviceResponse], error)
+	StreamEvents(context.Context, *connect.Request[service.StreamEventsRequest]) (*connect.ServerStreamForClient[service.StreamEventsResponse], error)
 }
 
 // NewClientResourceServiceClient constructs a client for the cineko.service.ClientResourceService
@@ -526,6 +629,18 @@ func NewClientResourceServiceClient(httpClient connect.HTTPClient, baseURL strin
 			connect.WithSchema(clientResourceServiceMethods.ByName("DeleteResource")),
 			connect.WithClientOptions(opts...),
 		),
+		upsertDevice: connect.NewClient[service.UpsertDeviceRequest, service.UpsertDeviceResponse](
+			httpClient,
+			baseURL+ClientResourceServiceUpsertDeviceProcedure,
+			connect.WithSchema(clientResourceServiceMethods.ByName("UpsertDevice")),
+			connect.WithClientOptions(opts...),
+		),
+		streamEvents: connect.NewClient[service.StreamEventsRequest, service.StreamEventsResponse](
+			httpClient,
+			baseURL+ClientResourceServiceStreamEventsProcedure,
+			connect.WithSchema(clientResourceServiceMethods.ByName("StreamEvents")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -536,6 +651,8 @@ type clientResourceServiceClient struct {
 	listResources  *connect.Client[service.ListResourcesRequest, service.ListResourcesResponse]
 	putResource    *connect.Client[service.PutResourceRequest, service.PutResourceResponse]
 	deleteResource *connect.Client[service.DeleteResourceRequest, service.DeleteResourceResponse]
+	upsertDevice   *connect.Client[service.UpsertDeviceRequest, service.UpsertDeviceResponse]
+	streamEvents   *connect.Client[service.StreamEventsRequest, service.StreamEventsResponse]
 }
 
 // Bootstrap calls cineko.service.ClientResourceService.Bootstrap.
@@ -563,6 +680,16 @@ func (c *clientResourceServiceClient) DeleteResource(ctx context.Context, req *c
 	return c.deleteResource.CallUnary(ctx, req)
 }
 
+// UpsertDevice calls cineko.service.ClientResourceService.UpsertDevice.
+func (c *clientResourceServiceClient) UpsertDevice(ctx context.Context, req *connect.Request[service.UpsertDeviceRequest]) (*connect.Response[service.UpsertDeviceResponse], error) {
+	return c.upsertDevice.CallUnary(ctx, req)
+}
+
+// StreamEvents calls cineko.service.ClientResourceService.StreamEvents.
+func (c *clientResourceServiceClient) StreamEvents(ctx context.Context, req *connect.Request[service.StreamEventsRequest]) (*connect.ServerStreamForClient[service.StreamEventsResponse], error) {
+	return c.streamEvents.CallServerStream(ctx, req)
+}
+
 // ClientResourceServiceHandler is an implementation of the cineko.service.ClientResourceService
 // service.
 type ClientResourceServiceHandler interface {
@@ -571,6 +698,8 @@ type ClientResourceServiceHandler interface {
 	ListResources(context.Context, *connect.Request[service.ListResourcesRequest]) (*connect.Response[service.ListResourcesResponse], error)
 	PutResource(context.Context, *connect.Request[service.PutResourceRequest]) (*connect.Response[service.PutResourceResponse], error)
 	DeleteResource(context.Context, *connect.Request[service.DeleteResourceRequest]) (*connect.Response[service.DeleteResourceResponse], error)
+	UpsertDevice(context.Context, *connect.Request[service.UpsertDeviceRequest]) (*connect.Response[service.UpsertDeviceResponse], error)
+	StreamEvents(context.Context, *connect.Request[service.StreamEventsRequest], *connect.ServerStream[service.StreamEventsResponse]) error
 }
 
 // NewClientResourceServiceHandler builds an HTTP handler from the service implementation. It
@@ -610,6 +739,18 @@ func NewClientResourceServiceHandler(svc ClientResourceServiceHandler, opts ...c
 		connect.WithSchema(clientResourceServiceMethods.ByName("DeleteResource")),
 		connect.WithHandlerOptions(opts...),
 	)
+	clientResourceServiceUpsertDeviceHandler := connect.NewUnaryHandler(
+		ClientResourceServiceUpsertDeviceProcedure,
+		svc.UpsertDevice,
+		connect.WithSchema(clientResourceServiceMethods.ByName("UpsertDevice")),
+		connect.WithHandlerOptions(opts...),
+	)
+	clientResourceServiceStreamEventsHandler := connect.NewServerStreamHandler(
+		ClientResourceServiceStreamEventsProcedure,
+		svc.StreamEvents,
+		connect.WithSchema(clientResourceServiceMethods.ByName("StreamEvents")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cineko.service.ClientResourceService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case ClientResourceServiceBootstrapProcedure:
@@ -622,6 +763,10 @@ func NewClientResourceServiceHandler(svc ClientResourceServiceHandler, opts ...c
 			clientResourceServicePutResourceHandler.ServeHTTP(w, r)
 		case ClientResourceServiceDeleteResourceProcedure:
 			clientResourceServiceDeleteResourceHandler.ServeHTTP(w, r)
+		case ClientResourceServiceUpsertDeviceProcedure:
+			clientResourceServiceUpsertDeviceHandler.ServeHTTP(w, r)
+		case ClientResourceServiceStreamEventsProcedure:
+			clientResourceServiceStreamEventsHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -651,11 +796,20 @@ func (UnimplementedClientResourceServiceHandler) DeleteResource(context.Context,
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cineko.service.ClientResourceService.DeleteResource is not implemented"))
 }
 
+func (UnimplementedClientResourceServiceHandler) UpsertDevice(context.Context, *connect.Request[service.UpsertDeviceRequest]) (*connect.Response[service.UpsertDeviceResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cineko.service.ClientResourceService.UpsertDevice is not implemented"))
+}
+
+func (UnimplementedClientResourceServiceHandler) StreamEvents(context.Context, *connect.Request[service.StreamEventsRequest], *connect.ServerStream[service.StreamEventsResponse]) error {
+	return connect.NewError(connect.CodeUnimplemented, errors.New("cineko.service.ClientResourceService.StreamEvents is not implemented"))
+}
+
 // CatalogServiceClient is a client for the cineko.service.CatalogService service.
 type CatalogServiceClient interface {
 	GetCatalog(context.Context, *connect.Request[service.GetCatalogRequest]) (*connect.Response[service.GetCatalogResponse], error)
 	GetAuditoriums(context.Context, *connect.Request[service.GetAuditoriumsRequest]) (*connect.Response[service.GetAuditoriumsResponse], error)
 	ResolveSeatMap(context.Context, *connect.Request[service.ResolveSeatMapRequest]) (*connect.Response[service.ResolveSeatMapResponse], error)
+	SubmitCatalogSnapshot(context.Context, *connect.Request[service.SubmitCatalogSnapshotRequest]) (*connect.Response[service.SubmitCatalogSnapshotResponse], error)
 }
 
 // NewCatalogServiceClient constructs a client for the cineko.service.CatalogService service. By
@@ -687,14 +841,21 @@ func NewCatalogServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(catalogServiceMethods.ByName("ResolveSeatMap")),
 			connect.WithClientOptions(opts...),
 		),
+		submitCatalogSnapshot: connect.NewClient[service.SubmitCatalogSnapshotRequest, service.SubmitCatalogSnapshotResponse](
+			httpClient,
+			baseURL+CatalogServiceSubmitCatalogSnapshotProcedure,
+			connect.WithSchema(catalogServiceMethods.ByName("SubmitCatalogSnapshot")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // catalogServiceClient implements CatalogServiceClient.
 type catalogServiceClient struct {
-	getCatalog     *connect.Client[service.GetCatalogRequest, service.GetCatalogResponse]
-	getAuditoriums *connect.Client[service.GetAuditoriumsRequest, service.GetAuditoriumsResponse]
-	resolveSeatMap *connect.Client[service.ResolveSeatMapRequest, service.ResolveSeatMapResponse]
+	getCatalog            *connect.Client[service.GetCatalogRequest, service.GetCatalogResponse]
+	getAuditoriums        *connect.Client[service.GetAuditoriumsRequest, service.GetAuditoriumsResponse]
+	resolveSeatMap        *connect.Client[service.ResolveSeatMapRequest, service.ResolveSeatMapResponse]
+	submitCatalogSnapshot *connect.Client[service.SubmitCatalogSnapshotRequest, service.SubmitCatalogSnapshotResponse]
 }
 
 // GetCatalog calls cineko.service.CatalogService.GetCatalog.
@@ -712,11 +873,17 @@ func (c *catalogServiceClient) ResolveSeatMap(ctx context.Context, req *connect.
 	return c.resolveSeatMap.CallUnary(ctx, req)
 }
 
+// SubmitCatalogSnapshot calls cineko.service.CatalogService.SubmitCatalogSnapshot.
+func (c *catalogServiceClient) SubmitCatalogSnapshot(ctx context.Context, req *connect.Request[service.SubmitCatalogSnapshotRequest]) (*connect.Response[service.SubmitCatalogSnapshotResponse], error) {
+	return c.submitCatalogSnapshot.CallUnary(ctx, req)
+}
+
 // CatalogServiceHandler is an implementation of the cineko.service.CatalogService service.
 type CatalogServiceHandler interface {
 	GetCatalog(context.Context, *connect.Request[service.GetCatalogRequest]) (*connect.Response[service.GetCatalogResponse], error)
 	GetAuditoriums(context.Context, *connect.Request[service.GetAuditoriumsRequest]) (*connect.Response[service.GetAuditoriumsResponse], error)
 	ResolveSeatMap(context.Context, *connect.Request[service.ResolveSeatMapRequest]) (*connect.Response[service.ResolveSeatMapResponse], error)
+	SubmitCatalogSnapshot(context.Context, *connect.Request[service.SubmitCatalogSnapshotRequest]) (*connect.Response[service.SubmitCatalogSnapshotResponse], error)
 }
 
 // NewCatalogServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -744,6 +911,12 @@ func NewCatalogServiceHandler(svc CatalogServiceHandler, opts ...connect.Handler
 		connect.WithSchema(catalogServiceMethods.ByName("ResolveSeatMap")),
 		connect.WithHandlerOptions(opts...),
 	)
+	catalogServiceSubmitCatalogSnapshotHandler := connect.NewUnaryHandler(
+		CatalogServiceSubmitCatalogSnapshotProcedure,
+		svc.SubmitCatalogSnapshot,
+		connect.WithSchema(catalogServiceMethods.ByName("SubmitCatalogSnapshot")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cineko.service.CatalogService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case CatalogServiceGetCatalogProcedure:
@@ -752,6 +925,8 @@ func NewCatalogServiceHandler(svc CatalogServiceHandler, opts ...connect.Handler
 			catalogServiceGetAuditoriumsHandler.ServeHTTP(w, r)
 		case CatalogServiceResolveSeatMapProcedure:
 			catalogServiceResolveSeatMapHandler.ServeHTTP(w, r)
+		case CatalogServiceSubmitCatalogSnapshotProcedure:
+			catalogServiceSubmitCatalogSnapshotHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -773,11 +948,16 @@ func (UnimplementedCatalogServiceHandler) ResolveSeatMap(context.Context, *conne
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cineko.service.CatalogService.ResolveSeatMap is not implemented"))
 }
 
+func (UnimplementedCatalogServiceHandler) SubmitCatalogSnapshot(context.Context, *connect.Request[service.SubmitCatalogSnapshotRequest]) (*connect.Response[service.SubmitCatalogSnapshotResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cineko.service.CatalogService.SubmitCatalogSnapshot is not implemented"))
+}
+
 // ExecutionServiceClient is a client for the cineko.service.ExecutionService service.
 type ExecutionServiceClient interface {
 	Claim(context.Context, *connect.Request[execution.ClaimRequest]) (*connect.Response[execution.ClaimResponse], error)
 	Heartbeat(context.Context, *connect.Request[execution.HeartbeatRequest]) (*connect.Response[execution.HeartbeatResponse], error)
 	Complete(context.Context, *connect.Request[service.CompleteRequest]) (*connect.Response[service.CompleteResponse], error)
+	Retry(context.Context, *connect.Request[execution.RetryRequest]) (*connect.Response[service.RetryResponse], error)
 }
 
 // NewExecutionServiceClient constructs a client for the cineko.service.ExecutionService service. By
@@ -809,6 +989,12 @@ func NewExecutionServiceClient(httpClient connect.HTTPClient, baseURL string, op
 			connect.WithSchema(executionServiceMethods.ByName("Complete")),
 			connect.WithClientOptions(opts...),
 		),
+		retry: connect.NewClient[execution.RetryRequest, service.RetryResponse](
+			httpClient,
+			baseURL+ExecutionServiceRetryProcedure,
+			connect.WithSchema(executionServiceMethods.ByName("Retry")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -817,6 +1003,7 @@ type executionServiceClient struct {
 	claim     *connect.Client[execution.ClaimRequest, execution.ClaimResponse]
 	heartbeat *connect.Client[execution.HeartbeatRequest, execution.HeartbeatResponse]
 	complete  *connect.Client[service.CompleteRequest, service.CompleteResponse]
+	retry     *connect.Client[execution.RetryRequest, service.RetryResponse]
 }
 
 // Claim calls cineko.service.ExecutionService.Claim.
@@ -834,11 +1021,17 @@ func (c *executionServiceClient) Complete(ctx context.Context, req *connect.Requ
 	return c.complete.CallUnary(ctx, req)
 }
 
+// Retry calls cineko.service.ExecutionService.Retry.
+func (c *executionServiceClient) Retry(ctx context.Context, req *connect.Request[execution.RetryRequest]) (*connect.Response[service.RetryResponse], error) {
+	return c.retry.CallUnary(ctx, req)
+}
+
 // ExecutionServiceHandler is an implementation of the cineko.service.ExecutionService service.
 type ExecutionServiceHandler interface {
 	Claim(context.Context, *connect.Request[execution.ClaimRequest]) (*connect.Response[execution.ClaimResponse], error)
 	Heartbeat(context.Context, *connect.Request[execution.HeartbeatRequest]) (*connect.Response[execution.HeartbeatResponse], error)
 	Complete(context.Context, *connect.Request[service.CompleteRequest]) (*connect.Response[service.CompleteResponse], error)
+	Retry(context.Context, *connect.Request[execution.RetryRequest]) (*connect.Response[service.RetryResponse], error)
 }
 
 // NewExecutionServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -866,6 +1059,12 @@ func NewExecutionServiceHandler(svc ExecutionServiceHandler, opts ...connect.Han
 		connect.WithSchema(executionServiceMethods.ByName("Complete")),
 		connect.WithHandlerOptions(opts...),
 	)
+	executionServiceRetryHandler := connect.NewUnaryHandler(
+		ExecutionServiceRetryProcedure,
+		svc.Retry,
+		connect.WithSchema(executionServiceMethods.ByName("Retry")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cineko.service.ExecutionService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case ExecutionServiceClaimProcedure:
@@ -874,6 +1073,8 @@ func NewExecutionServiceHandler(svc ExecutionServiceHandler, opts ...connect.Han
 			executionServiceHeartbeatHandler.ServeHTTP(w, r)
 		case ExecutionServiceCompleteProcedure:
 			executionServiceCompleteHandler.ServeHTTP(w, r)
+		case ExecutionServiceRetryProcedure:
+			executionServiceRetryHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -895,9 +1096,14 @@ func (UnimplementedExecutionServiceHandler) Complete(context.Context, *connect.R
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cineko.service.ExecutionService.Complete is not implemented"))
 }
 
+func (UnimplementedExecutionServiceHandler) Retry(context.Context, *connect.Request[execution.RetryRequest]) (*connect.Response[service.RetryResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cineko.service.ExecutionService.Retry is not implemented"))
+}
+
 // ReleaseServiceClient is a client for the cineko.service.ReleaseService service.
 type ReleaseServiceClient interface {
 	GetRuntimeRelease(context.Context, *connect.Request[service.GetRuntimeReleaseRequest]) (*connect.Response[service.GetRuntimeReleaseResponse], error)
+	GetLauncherRelease(context.Context, *connect.Request[service.GetLauncherReleaseRequest]) (*connect.Response[service.GetLauncherReleaseResponse], error)
 	PublishClient(context.Context, *connect.Request[service.PublishClientRequest]) (*connect.Response[service.PublishClientResponse], error)
 	PublishBrowser(context.Context, *connect.Request[service.PublishBrowserRequest]) (*connect.Response[service.PublishBrowserResponse], error)
 	PublishPlaywright(context.Context, *connect.Request[service.PublishPlaywrightRequest]) (*connect.Response[service.PublishPlaywrightResponse], error)
@@ -920,6 +1126,12 @@ func NewReleaseServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			httpClient,
 			baseURL+ReleaseServiceGetRuntimeReleaseProcedure,
 			connect.WithSchema(releaseServiceMethods.ByName("GetRuntimeRelease")),
+			connect.WithClientOptions(opts...),
+		),
+		getLauncherRelease: connect.NewClient[service.GetLauncherReleaseRequest, service.GetLauncherReleaseResponse](
+			httpClient,
+			baseURL+ReleaseServiceGetLauncherReleaseProcedure,
+			connect.WithSchema(releaseServiceMethods.ByName("GetLauncherRelease")),
 			connect.WithClientOptions(opts...),
 		),
 		publishClient: connect.NewClient[service.PublishClientRequest, service.PublishClientResponse](
@@ -957,17 +1169,23 @@ func NewReleaseServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 
 // releaseServiceClient implements ReleaseServiceClient.
 type releaseServiceClient struct {
-	getRuntimeRelease *connect.Client[service.GetRuntimeReleaseRequest, service.GetRuntimeReleaseResponse]
-	publishClient     *connect.Client[service.PublishClientRequest, service.PublishClientResponse]
-	publishBrowser    *connect.Client[service.PublishBrowserRequest, service.PublishBrowserResponse]
-	publishPlaywright *connect.Client[service.PublishPlaywrightRequest, service.PublishPlaywrightResponse]
-	publishLauncher   *connect.Client[service.PublishLauncherRequest, service.PublishLauncherResponse]
-	publishProbe      *connect.Client[service.PublishProbeRequest, service.PublishProbeResponse]
+	getRuntimeRelease  *connect.Client[service.GetRuntimeReleaseRequest, service.GetRuntimeReleaseResponse]
+	getLauncherRelease *connect.Client[service.GetLauncherReleaseRequest, service.GetLauncherReleaseResponse]
+	publishClient      *connect.Client[service.PublishClientRequest, service.PublishClientResponse]
+	publishBrowser     *connect.Client[service.PublishBrowserRequest, service.PublishBrowserResponse]
+	publishPlaywright  *connect.Client[service.PublishPlaywrightRequest, service.PublishPlaywrightResponse]
+	publishLauncher    *connect.Client[service.PublishLauncherRequest, service.PublishLauncherResponse]
+	publishProbe       *connect.Client[service.PublishProbeRequest, service.PublishProbeResponse]
 }
 
 // GetRuntimeRelease calls cineko.service.ReleaseService.GetRuntimeRelease.
 func (c *releaseServiceClient) GetRuntimeRelease(ctx context.Context, req *connect.Request[service.GetRuntimeReleaseRequest]) (*connect.Response[service.GetRuntimeReleaseResponse], error) {
 	return c.getRuntimeRelease.CallUnary(ctx, req)
+}
+
+// GetLauncherRelease calls cineko.service.ReleaseService.GetLauncherRelease.
+func (c *releaseServiceClient) GetLauncherRelease(ctx context.Context, req *connect.Request[service.GetLauncherReleaseRequest]) (*connect.Response[service.GetLauncherReleaseResponse], error) {
+	return c.getLauncherRelease.CallUnary(ctx, req)
 }
 
 // PublishClient calls cineko.service.ReleaseService.PublishClient.
@@ -998,6 +1216,7 @@ func (c *releaseServiceClient) PublishProbe(ctx context.Context, req *connect.Re
 // ReleaseServiceHandler is an implementation of the cineko.service.ReleaseService service.
 type ReleaseServiceHandler interface {
 	GetRuntimeRelease(context.Context, *connect.Request[service.GetRuntimeReleaseRequest]) (*connect.Response[service.GetRuntimeReleaseResponse], error)
+	GetLauncherRelease(context.Context, *connect.Request[service.GetLauncherReleaseRequest]) (*connect.Response[service.GetLauncherReleaseResponse], error)
 	PublishClient(context.Context, *connect.Request[service.PublishClientRequest]) (*connect.Response[service.PublishClientResponse], error)
 	PublishBrowser(context.Context, *connect.Request[service.PublishBrowserRequest]) (*connect.Response[service.PublishBrowserResponse], error)
 	PublishPlaywright(context.Context, *connect.Request[service.PublishPlaywrightRequest]) (*connect.Response[service.PublishPlaywrightResponse], error)
@@ -1016,6 +1235,12 @@ func NewReleaseServiceHandler(svc ReleaseServiceHandler, opts ...connect.Handler
 		ReleaseServiceGetRuntimeReleaseProcedure,
 		svc.GetRuntimeRelease,
 		connect.WithSchema(releaseServiceMethods.ByName("GetRuntimeRelease")),
+		connect.WithHandlerOptions(opts...),
+	)
+	releaseServiceGetLauncherReleaseHandler := connect.NewUnaryHandler(
+		ReleaseServiceGetLauncherReleaseProcedure,
+		svc.GetLauncherRelease,
+		connect.WithSchema(releaseServiceMethods.ByName("GetLauncherRelease")),
 		connect.WithHandlerOptions(opts...),
 	)
 	releaseServicePublishClientHandler := connect.NewUnaryHandler(
@@ -1052,6 +1277,8 @@ func NewReleaseServiceHandler(svc ReleaseServiceHandler, opts ...connect.Handler
 		switch r.URL.Path {
 		case ReleaseServiceGetRuntimeReleaseProcedure:
 			releaseServiceGetRuntimeReleaseHandler.ServeHTTP(w, r)
+		case ReleaseServiceGetLauncherReleaseProcedure:
+			releaseServiceGetLauncherReleaseHandler.ServeHTTP(w, r)
 		case ReleaseServicePublishClientProcedure:
 			releaseServicePublishClientHandler.ServeHTTP(w, r)
 		case ReleaseServicePublishBrowserProcedure:
@@ -1073,6 +1300,10 @@ type UnimplementedReleaseServiceHandler struct{}
 
 func (UnimplementedReleaseServiceHandler) GetRuntimeRelease(context.Context, *connect.Request[service.GetRuntimeReleaseRequest]) (*connect.Response[service.GetRuntimeReleaseResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cineko.service.ReleaseService.GetRuntimeRelease is not implemented"))
+}
+
+func (UnimplementedReleaseServiceHandler) GetLauncherRelease(context.Context, *connect.Request[service.GetLauncherReleaseRequest]) (*connect.Response[service.GetLauncherReleaseResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cineko.service.ReleaseService.GetLauncherRelease is not implemented"))
 }
 
 func (UnimplementedReleaseServiceHandler) PublishClient(context.Context, *connect.Request[service.PublishClientRequest]) (*connect.Response[service.PublishClientResponse], error) {

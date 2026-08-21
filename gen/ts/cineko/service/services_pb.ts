@@ -4,19 +4,20 @@
 
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2";
-import type { Auditorium, CatalogIndex } from "../catalog/catalog_pb";
+import { file_buf_validate_validate } from "../../buf/validate/validate_pb";
+import type { Auditorium, CatalogIndex, CatalogSnapshot } from "../catalog/catalog_pb";
 import { file_cineko_catalog_catalog } from "../catalog/catalog_pb";
-import type { AuthenticationResponse, Bootstrap, LaunchTicketRequest, LaunchTicketResponse, PinExchangeRequest, Resource, SessionExchangeRequest, TokenExchangeRequest, TokenRefreshRequest } from "../client/client_pb";
+import type { AuthenticationResponse, Bootstrap, ClientEvent, Device, LaunchTicketRequest, LaunchTicketResponse, PinExchangeRequest, ProbeBootstrapTicketRequest, ProbeBootstrapTicketResponse, Resource, ResourceKind, SessionExchangeRequest, StreamControl, TokenExchangeRequest, TokenRefreshRequest } from "../client/client_pb";
 import { file_cineko_client_client } from "../client/client_pb";
 import type { MutationIdentity, PageRequest, PageResponse } from "../common/common_pb";
 import { file_cineko_common_common } from "../common/common_pb";
-import type { ClaimRequestSchema, ClaimResponseSchema, HeartbeatRequestSchema as HeartbeatRequestSchema$1, HeartbeatResponseSchema as HeartbeatResponseSchema$1, ResultRequest } from "../execution/execution_pb";
+import type { ClaimRequestSchema, ClaimResponseSchema, HeartbeatRequestSchema as HeartbeatRequestSchema$1, HeartbeatResponseSchema as HeartbeatResponseSchema$1, ResultRequest, RetryRequestSchema } from "../execution/execution_pb";
 import { file_cineko_execution_execution } from "../execution/execution_pb";
 import type { ResultReceipt } from "../observation/observation_pb";
 import { file_cineko_observation_observation } from "../observation/observation_pb";
 import type { ClaimAssignmentRequestSchema, ClaimAssignmentResponseSchema, HeartbeatAssignmentRequestSchema, HeartbeatAssignmentResponseSchema, HeartbeatRequestSchema, HeartbeatResponseSchema, RegisterRequestSchema, RegisterResponseSchema, SubmitAssignmentResultRequestSchema } from "../probe/probe_pb";
 import { file_cineko_probe_probe } from "../probe/probe_pb";
-import type { BrowserReleaseSet, ClientReleaseSet, LauncherReleaseSet, PlaywrightReleaseSet, ProbeReleaseSet, RuntimeRelease } from "../release/release_pb";
+import type { BrowserReleaseSet, ClientReleaseSet, LauncherRelease, LauncherReleaseSet, PlaywrightReleaseSet, ProbeReleaseSet, RuntimeRelease } from "../release/release_pb";
 import { file_cineko_release_release } from "../release/release_pb";
 import type { Resolution } from "../seatmap/seatmap_pb";
 import { file_cineko_seatmap_seatmap } from "../seatmap/seatmap_pb";
@@ -26,7 +27,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file cineko/service/services.proto.
  */
 export const file_cineko_service_services: GenFile = /*@__PURE__*/
-  fileDesc("Ch1jaW5la28vc2VydmljZS9zZXJ2aWNlcy5wcm90bxIOY2luZWtvLnNlcnZpY2UiVAoeU3VibWl0QXNzaWdubWVudFJlc3VsdFJlc3BvbnNlEjIKB3JlY2VpcHQYASABKAsyIS5jaW5la28ub2JzZXJ2YXRpb24uUmVzdWx0UmVjZWlwdCJIChJFeGNoYW5nZVBpblJlcXVlc3QSMgoHcmVxdWVzdBgBIAEoCzIhLmNpbmVrby5jbGllbnQuUGluRXhjaGFuZ2VSZXF1ZXN0IlQKE0V4Y2hhbmdlUGluUmVzcG9uc2USPQoOYXV0aGVudGljYXRpb24YASABKAsyJS5jaW5la28uY2xpZW50LkF1dGhlbnRpY2F0aW9uUmVzcG9uc2UiTAoURXhjaGFuZ2VUb2tlblJlcXVlc3QSNAoHcmVxdWVzdBgBIAEoCzIjLmNpbmVrby5jbGllbnQuVG9rZW5FeGNoYW5nZVJlcXVlc3QiVgoVRXhjaGFuZ2VUb2tlblJlc3BvbnNlEj0KDmF1dGhlbnRpY2F0aW9uGAEgASgLMiUuY2luZWtvLmNsaWVudC5BdXRoZW50aWNhdGlvblJlc3BvbnNlIkoKE1JlZnJlc2hUb2tlblJlcXVlc3QSMwoHcmVxdWVzdBgBIAEoCzIiLmNpbmVrby5jbGllbnQuVG9rZW5SZWZyZXNoUmVxdWVzdCJVChRSZWZyZXNoVG9rZW5SZXNwb25zZRI9Cg5hdXRoZW50aWNhdGlvbhgBIAEoCzIlLmNpbmVrby5jbGllbnQuQXV0aGVudGljYXRpb25SZXNwb25zZSJQChlDcmVhdGVMYXVuY2hUaWNrZXRSZXF1ZXN0EjMKB3JlcXVlc3QYASABKAsyIi5jaW5la28uY2xpZW50LkxhdW5jaFRpY2tldFJlcXVlc3QiUwoaQ3JlYXRlTGF1bmNoVGlja2V0UmVzcG9uc2USNQoIcmVzcG9uc2UYASABKAsyIy5jaW5la28uY2xpZW50LkxhdW5jaFRpY2tldFJlc3BvbnNlIlAKFkV4Y2hhbmdlU2Vzc2lvblJlcXVlc3QSNgoHcmVxdWVzdBgBIAEoCzIlLmNpbmVrby5jbGllbnQuU2Vzc2lvbkV4Y2hhbmdlUmVxdWVzdCJYChdFeGNoYW5nZVNlc3Npb25SZXNwb25zZRI9Cg5hdXRoZW50aWNhdGlvbhgBIAEoCzIlLmNpbmVrby5jbGllbnQuQXV0aGVudGljYXRpb25SZXNwb25zZSISChBCb290c3RyYXBSZXF1ZXN0IkAKEUJvb3RzdHJhcFJlc3BvbnNlEisKCWJvb3RzdHJhcBgBIAEoCzIYLmNpbmVrby5jbGllbnQuQm9vdHN0cmFwIiAKEkdldFJlc291cmNlUmVxdWVzdBIKCgJpZBgBIAEoCSJAChNHZXRSZXNvdXJjZVJlc3BvbnNlEikKCHJlc291cmNlGAEgASgLMhcuY2luZWtvLmNsaWVudC5SZXNvdXJjZSJAChRMaXN0UmVzb3VyY2VzUmVxdWVzdBIoCgRwYWdlGAEgASgLMhouY2luZWtvLmNvbW1vbi5QYWdlUmVxdWVzdCJuChVMaXN0UmVzb3VyY2VzUmVzcG9uc2USKgoJcmVzb3VyY2VzGAEgAygLMhcuY2luZWtvLmNsaWVudC5SZXNvdXJjZRIpCgRwYWdlGAIgASgLMhsuY2luZWtvLmNvbW1vbi5QYWdlUmVzcG9uc2UicgoSUHV0UmVzb3VyY2VSZXF1ZXN0EjEKCG11dGF0aW9uGAEgASgLMh8uY2luZWtvLmNvbW1vbi5NdXRhdGlvbklkZW50aXR5EikKCHJlc291cmNlGAIgASgLMhcuY2luZWtvLmNsaWVudC5SZXNvdXJjZSJAChNQdXRSZXNvdXJjZVJlc3BvbnNlEikKCHJlc291cmNlGAEgASgLMhcuY2luZWtvLmNsaWVudC5SZXNvdXJjZSJWChVEZWxldGVSZXNvdXJjZVJlcXVlc3QSMQoIbXV0YXRpb24YASABKAsyHy5jaW5la28uY29tbW9uLk11dGF0aW9uSWRlbnRpdHkSCgoCaWQYAiABKAkiGAoWRGVsZXRlUmVzb3VyY2VSZXNwb25zZSITChFHZXRDYXRhbG9nUmVxdWVzdCJDChJHZXRDYXRhbG9nUmVzcG9uc2USLQoHY2F0YWxvZxgBIAEoCzIcLmNpbmVrby5jYXRhbG9nLkNhdGFsb2dJbmRleCIrChVHZXRBdWRpdG9yaXVtc1JlcXVlc3QSEgoKdGhlYXRlcl9pZBgBIAEoCSJJChZHZXRBdWRpdG9yaXVtc1Jlc3BvbnNlEi8KC2F1ZGl0b3JpdW1zGAEgAygLMhouY2luZWtvLmNhdGFsb2cuQXVkaXRvcml1bSIuChVSZXNvbHZlU2VhdE1hcFJlcXVlc3QSFQoNYXVkaXRvcml1bV9pZBgBIAEoCSJIChZSZXNvbHZlU2VhdE1hcFJlc3BvbnNlEi4KCnJlc29sdXRpb24YASABKAsyGi5jaW5la28uc2VhdG1hcC5SZXNvbHV0aW9uIkIKD0NvbXBsZXRlUmVxdWVzdBIvCgZyZXN1bHQYASABKAsyHy5jaW5la28uZXhlY3V0aW9uLlJlc3VsdFJlcXVlc3QiEgoQQ29tcGxldGVSZXNwb25zZSJTChhHZXRSdW50aW1lUmVsZWFzZVJlcXVlc3QSDwoHY2hhbm5lbBgBIAEoCRIQCghwbGF0Zm9ybRgCIAEoCRIUCgxhcmNoaXRlY3R1cmUYAyABKAkiTAoZR2V0UnVudGltZVJlbGVhc2VSZXNwb25zZRIvCgdyZWxlYXNlGAEgASgLMh4uY2luZWtvLnJlbGVhc2UuUnVudGltZVJlbGVhc2UiTQoUUHVibGlzaENsaWVudFJlcXVlc3QSNQoLcmVsZWFzZV9zZXQYASABKAsyIC5jaW5la28ucmVsZWFzZS5DbGllbnRSZWxlYXNlU2V0IhcKFVB1Ymxpc2hDbGllbnRSZXNwb25zZSJPChVQdWJsaXNoQnJvd3NlclJlcXVlc3QSNgoLcmVsZWFzZV9zZXQYASABKAsyIS5jaW5la28ucmVsZWFzZS5Ccm93c2VyUmVsZWFzZVNldCIYChZQdWJsaXNoQnJvd3NlclJlc3BvbnNlIlUKGFB1Ymxpc2hQbGF5d3JpZ2h0UmVxdWVzdBI5CgtyZWxlYXNlX3NldBgBIAEoCzIkLmNpbmVrby5yZWxlYXNlLlBsYXl3cmlnaHRSZWxlYXNlU2V0IhsKGVB1Ymxpc2hQbGF5d3JpZ2h0UmVzcG9uc2UiUQoWUHVibGlzaExhdW5jaGVyUmVxdWVzdBI3CgtyZWxlYXNlX3NldBgBIAEoCzIiLmNpbmVrby5yZWxlYXNlLkxhdW5jaGVyUmVsZWFzZVNldCIZChdQdWJsaXNoTGF1bmNoZXJSZXNwb25zZSJLChNQdWJsaXNoUHJvYmVSZXF1ZXN0EjQKC3JlbGVhc2Vfc2V0GAEgASgLMh8uY2luZWtvLnJlbGVhc2UuUHJvYmVSZWxlYXNlU2V0IhYKFFB1Ymxpc2hQcm9iZVJlc3BvbnNlMuoDCgxQcm9iZVNlcnZpY2USSQoIUmVnaXN0ZXISHS5jaW5la28ucHJvYmUuUmVnaXN0ZXJSZXF1ZXN0Gh4uY2luZWtvLnByb2JlLlJlZ2lzdGVyUmVzcG9uc2USTAoJSGVhcnRiZWF0Eh4uY2luZWtvLnByb2JlLkhlYXJ0YmVhdFJlcXVlc3QaHy5jaW5la28ucHJvYmUuSGVhcnRiZWF0UmVzcG9uc2USXgoPQ2xhaW1Bc3NpZ25tZW50EiQuY2luZWtvLnByb2JlLkNsYWltQXNzaWdubWVudFJlcXVlc3QaJS5jaW5la28ucHJvYmUuQ2xhaW1Bc3NpZ25tZW50UmVzcG9uc2USagoTSGVhcnRiZWF0QXNzaWdubWVudBIoLmNpbmVrby5wcm9iZS5IZWFydGJlYXRBc3NpZ25tZW50UmVxdWVzdBopLmNpbmVrby5wcm9iZS5IZWFydGJlYXRBc3NpZ25tZW50UmVzcG9uc2USdQoWU3VibWl0QXNzaWdubWVudFJlc3VsdBIrLmNpbmVrby5wcm9iZS5TdWJtaXRBc3NpZ25tZW50UmVzdWx0UmVxdWVzdBouLmNpbmVrby5zZXJ2aWNlLlN1Ym1pdEFzc2lnbm1lbnRSZXN1bHRSZXNwb25zZTL/AwobQ2xpZW50QXV0aGVudGljYXRpb25TZXJ2aWNlElYKC0V4Y2hhbmdlUGluEiIuY2luZWtvLnNlcnZpY2UuRXhjaGFuZ2VQaW5SZXF1ZXN0GiMuY2luZWtvLnNlcnZpY2UuRXhjaGFuZ2VQaW5SZXNwb25zZRJcCg1FeGNoYW5nZVRva2VuEiQuY2luZWtvLnNlcnZpY2UuRXhjaGFuZ2VUb2tlblJlcXVlc3QaJS5jaW5la28uc2VydmljZS5FeGNoYW5nZVRva2VuUmVzcG9uc2USWQoMUmVmcmVzaFRva2VuEiMuY2luZWtvLnNlcnZpY2UuUmVmcmVzaFRva2VuUmVxdWVzdBokLmNpbmVrby5zZXJ2aWNlLlJlZnJlc2hUb2tlblJlc3BvbnNlEmsKEkNyZWF0ZUxhdW5jaFRpY2tldBIpLmNpbmVrby5zZXJ2aWNlLkNyZWF0ZUxhdW5jaFRpY2tldFJlcXVlc3QaKi5jaW5la28uc2VydmljZS5DcmVhdGVMYXVuY2hUaWNrZXRSZXNwb25zZRJiCg9FeGNoYW5nZVNlc3Npb24SJi5jaW5la28uc2VydmljZS5FeGNoYW5nZVNlc3Npb25SZXF1ZXN0GicuY2luZWtvLnNlcnZpY2UuRXhjaGFuZ2VTZXNzaW9uUmVzcG9uc2Uy2AMKFUNsaWVudFJlc291cmNlU2VydmljZRJQCglCb290c3RyYXASIC5jaW5la28uc2VydmljZS5Cb290c3RyYXBSZXF1ZXN0GiEuY2luZWtvLnNlcnZpY2UuQm9vdHN0cmFwUmVzcG9uc2USVgoLR2V0UmVzb3VyY2USIi5jaW5la28uc2VydmljZS5HZXRSZXNvdXJjZVJlcXVlc3QaIy5jaW5la28uc2VydmljZS5HZXRSZXNvdXJjZVJlc3BvbnNlElwKDUxpc3RSZXNvdXJjZXMSJC5jaW5la28uc2VydmljZS5MaXN0UmVzb3VyY2VzUmVxdWVzdBolLmNpbmVrby5zZXJ2aWNlLkxpc3RSZXNvdXJjZXNSZXNwb25zZRJWCgtQdXRSZXNvdXJjZRIiLmNpbmVrby5zZXJ2aWNlLlB1dFJlc291cmNlUmVxdWVzdBojLmNpbmVrby5zZXJ2aWNlLlB1dFJlc291cmNlUmVzcG9uc2USXwoORGVsZXRlUmVzb3VyY2USJS5jaW5la28uc2VydmljZS5EZWxldGVSZXNvdXJjZVJlcXVlc3QaJi5jaW5la28uc2VydmljZS5EZWxldGVSZXNvdXJjZVJlc3BvbnNlMqcCCg5DYXRhbG9nU2VydmljZRJTCgpHZXRDYXRhbG9nEiEuY2luZWtvLnNlcnZpY2UuR2V0Q2F0YWxvZ1JlcXVlc3QaIi5jaW5la28uc2VydmljZS5HZXRDYXRhbG9nUmVzcG9uc2USXwoOR2V0QXVkaXRvcml1bXMSJS5jaW5la28uc2VydmljZS5HZXRBdWRpdG9yaXVtc1JlcXVlc3QaJi5jaW5la28uc2VydmljZS5HZXRBdWRpdG9yaXVtc1Jlc3BvbnNlEl8KDlJlc29sdmVTZWF0TWFwEiUuY2luZWtvLnNlcnZpY2UuUmVzb2x2ZVNlYXRNYXBSZXF1ZXN0GiYuY2luZWtvLnNlcnZpY2UuUmVzb2x2ZVNlYXRNYXBSZXNwb25zZTKBAgoQRXhlY3V0aW9uU2VydmljZRJICgVDbGFpbRIeLmNpbmVrby5leGVjdXRpb24uQ2xhaW1SZXF1ZXN0Gh8uY2luZWtvLmV4ZWN1dGlvbi5DbGFpbVJlc3BvbnNlElQKCUhlYXJ0YmVhdBIiLmNpbmVrby5leGVjdXRpb24uSGVhcnRiZWF0UmVxdWVzdBojLmNpbmVrby5leGVjdXRpb24uSGVhcnRiZWF0UmVzcG9uc2USTQoIQ29tcGxldGUSHy5jaW5la28uc2VydmljZS5Db21wbGV0ZVJlcXVlc3QaIC5jaW5la28uc2VydmljZS5Db21wbGV0ZVJlc3BvbnNlMuIECg5SZWxlYXNlU2VydmljZRJoChFHZXRSdW50aW1lUmVsZWFzZRIoLmNpbmVrby5zZXJ2aWNlLkdldFJ1bnRpbWVSZWxlYXNlUmVxdWVzdBopLmNpbmVrby5zZXJ2aWNlLkdldFJ1bnRpbWVSZWxlYXNlUmVzcG9uc2USXAoNUHVibGlzaENsaWVudBIkLmNpbmVrby5zZXJ2aWNlLlB1Ymxpc2hDbGllbnRSZXF1ZXN0GiUuY2luZWtvLnNlcnZpY2UuUHVibGlzaENsaWVudFJlc3BvbnNlEl8KDlB1Ymxpc2hCcm93c2VyEiUuY2luZWtvLnNlcnZpY2UuUHVibGlzaEJyb3dzZXJSZXF1ZXN0GiYuY2luZWtvLnNlcnZpY2UuUHVibGlzaEJyb3dzZXJSZXNwb25zZRJoChFQdWJsaXNoUGxheXdyaWdodBIoLmNpbmVrby5zZXJ2aWNlLlB1Ymxpc2hQbGF5d3JpZ2h0UmVxdWVzdBopLmNpbmVrby5zZXJ2aWNlLlB1Ymxpc2hQbGF5d3JpZ2h0UmVzcG9uc2USYgoPUHVibGlzaExhdW5jaGVyEiYuY2luZWtvLnNlcnZpY2UuUHVibGlzaExhdW5jaGVyUmVxdWVzdBonLmNpbmVrby5zZXJ2aWNlLlB1Ymxpc2hMYXVuY2hlclJlc3BvbnNlElkKDFB1Ymxpc2hQcm9iZRIjLmNpbmVrby5zZXJ2aWNlLlB1Ymxpc2hQcm9iZVJlcXVlc3QaJC5jaW5la28uc2VydmljZS5QdWJsaXNoUHJvYmVSZXNwb25zZUI/Wj1naXRodWIuY29tL2NpbmVrby1vcmcvY29udHJhY3RzL2dlbi9nby9jaW5la28vc2VydmljZTtzZXJ2aWNlYghlZGl0aW9uc3DpBw", [file_cineko_catalog_catalog, file_cineko_client_client, file_cineko_common_common, file_cineko_execution_execution, file_cineko_observation_observation, file_cineko_probe_probe, file_cineko_release_release, file_cineko_seatmap_seatmap]);
+  fileDesc("Ch1jaW5la28vc2VydmljZS9zZXJ2aWNlcy5wcm90bxIOY2luZWtvLnNlcnZpY2UiVAoeU3VibWl0QXNzaWdubWVudFJlc3VsdFJlc3BvbnNlEjIKB3JlY2VpcHQYASABKAsyIS5jaW5la28ub2JzZXJ2YXRpb24uUmVzdWx0UmVjZWlwdCITChFEaXNjb25uZWN0UmVxdWVzdCIUChJEaXNjb25uZWN0UmVzcG9uc2UiUAoSRXhjaGFuZ2VQaW5SZXF1ZXN0EjoKB3JlcXVlc3QYASABKAsyIS5jaW5la28uY2xpZW50LlBpbkV4Y2hhbmdlUmVxdWVzdEIGukgDyAEBIlQKE0V4Y2hhbmdlUGluUmVzcG9uc2USPQoOYXV0aGVudGljYXRpb24YASABKAsyJS5jaW5la28uY2xpZW50LkF1dGhlbnRpY2F0aW9uUmVzcG9uc2UiVAoURXhjaGFuZ2VUb2tlblJlcXVlc3QSPAoHcmVxdWVzdBgBIAEoCzIjLmNpbmVrby5jbGllbnQuVG9rZW5FeGNoYW5nZVJlcXVlc3RCBrpIA8gBASJWChVFeGNoYW5nZVRva2VuUmVzcG9uc2USPQoOYXV0aGVudGljYXRpb24YASABKAsyJS5jaW5la28uY2xpZW50LkF1dGhlbnRpY2F0aW9uUmVzcG9uc2UiUgoTUmVmcmVzaFRva2VuUmVxdWVzdBI7CgdyZXF1ZXN0GAEgASgLMiIuY2luZWtvLmNsaWVudC5Ub2tlblJlZnJlc2hSZXF1ZXN0Qga6SAPIAQEiVQoUUmVmcmVzaFRva2VuUmVzcG9uc2USPQoOYXV0aGVudGljYXRpb24YASABKAsyJS5jaW5la28uY2xpZW50LkF1dGhlbnRpY2F0aW9uUmVzcG9uc2UiWAoZQ3JlYXRlTGF1bmNoVGlja2V0UmVxdWVzdBI7CgdyZXF1ZXN0GAEgASgLMiIuY2luZWtvLmNsaWVudC5MYXVuY2hUaWNrZXRSZXF1ZXN0Qga6SAPIAQEiUwoaQ3JlYXRlTGF1bmNoVGlja2V0UmVzcG9uc2USNQoIcmVzcG9uc2UYASABKAsyIy5jaW5la28uY2xpZW50LkxhdW5jaFRpY2tldFJlc3BvbnNlIlgKFkV4Y2hhbmdlU2Vzc2lvblJlcXVlc3QSPgoHcmVxdWVzdBgBIAEoCzIlLmNpbmVrby5jbGllbnQuU2Vzc2lvbkV4Y2hhbmdlUmVxdWVzdEIGukgDyAEBIlgKF0V4Y2hhbmdlU2Vzc2lvblJlc3BvbnNlEj0KDmF1dGhlbnRpY2F0aW9uGAEgASgLMiUuY2luZWtvLmNsaWVudC5BdXRoZW50aWNhdGlvblJlc3BvbnNlIg8KDUxvZ291dFJlcXVlc3QiEAoOTG9nb3V0UmVzcG9uc2UiaAohQ3JlYXRlUHJvYmVCb290c3RyYXBUaWNrZXRSZXF1ZXN0EkMKB3JlcXVlc3QYASABKAsyKi5jaW5la28uY2xpZW50LlByb2JlQm9vdHN0cmFwVGlja2V0UmVxdWVzdEIGukgDyAEBImMKIkNyZWF0ZVByb2JlQm9vdHN0cmFwVGlja2V0UmVzcG9uc2USPQoIcmVzcG9uc2UYASABKAsyKy5jaW5la28uY2xpZW50LlByb2JlQm9vdHN0cmFwVGlja2V0UmVzcG9uc2UiNwoQQm9vdHN0cmFwUmVxdWVzdBIjCg9pbnN0YWxsYXRpb25faWQYASABKAlCCrpIB8gBAXICEAEiQAoRQm9vdHN0cmFwUmVzcG9uc2USKwoJYm9vdHN0cmFwGAEgASgLMhguY2luZWtvLmNsaWVudC5Cb290c3RyYXAiXwoSR2V0UmVzb3VyY2VSZXF1ZXN0EjEKBGtpbmQYASABKAsyGy5jaW5la28uY2xpZW50LlJlc291cmNlS2luZEIGukgDyAEBEhYKAmlkGAIgASgJQgq6SAfIAQFyAhABIkAKE0dldFJlc291cmNlUmVzcG9uc2USKQoIcmVzb3VyY2UYASABKAsyFy5jaW5la28uY2xpZW50LlJlc291cmNlInMKFExpc3RSZXNvdXJjZXNSZXF1ZXN0EjEKBGtpbmQYASABKAsyGy5jaW5la28uY2xpZW50LlJlc291cmNlS2luZEIGukgDyAEBEigKBHBhZ2UYAiABKAsyGi5jaW5la28uY29tbW9uLlBhZ2VSZXF1ZXN0Im4KFUxpc3RSZXNvdXJjZXNSZXNwb25zZRIqCglyZXNvdXJjZXMYASADKAsyFy5jaW5la28uY2xpZW50LlJlc291cmNlEikKBHBhZ2UYAiABKAsyGy5jaW5la28uY29tbW9uLlBhZ2VSZXNwb25zZSKCAQoSUHV0UmVzb3VyY2VSZXF1ZXN0EjkKCG11dGF0aW9uGAEgASgLMh8uY2luZWtvLmNvbW1vbi5NdXRhdGlvbklkZW50aXR5Qga6SAPIAQESMQoIcmVzb3VyY2UYAiABKAsyFy5jaW5la28uY2xpZW50LlJlc291cmNlQga6SAPIAQEiQAoTUHV0UmVzb3VyY2VSZXNwb25zZRIpCghyZXNvdXJjZRgBIAEoCzIXLmNpbmVrby5jbGllbnQuUmVzb3VyY2UinQEKFURlbGV0ZVJlc291cmNlUmVxdWVzdBI5CghtdXRhdGlvbhgBIAEoCzIfLmNpbmVrby5jb21tb24uTXV0YXRpb25JZGVudGl0eUIGukgDyAEBEjEKBGtpbmQYAiABKAsyGy5jaW5la28uY2xpZW50LlJlc291cmNlS2luZEIGukgDyAEBEhYKAmlkGAMgASgJQgq6SAfIAQFyAhABIhgKFkRlbGV0ZVJlc291cmNlUmVzcG9uc2UiRAoTVXBzZXJ0RGV2aWNlUmVxdWVzdBItCgZkZXZpY2UYASABKAsyFS5jaW5la28uY2xpZW50LkRldmljZUIGukgDyAEBIj0KFFVwc2VydERldmljZVJlc3BvbnNlEiUKBmRldmljZRgBIAEoCzIVLmNpbmVrby5jbGllbnQuRGV2aWNlIjkKE1N0cmVhbUV2ZW50c1JlcXVlc3QSIgoOYWZ0ZXJfc2VxdWVuY2UYASABKANCCrpIB8gBASICKAAigwEKFFN0cmVhbUV2ZW50c1Jlc3BvbnNlEioKBGRhdGEYASABKAsyGi5jaW5la28uY2xpZW50LkNsaWVudEV2ZW50SAASLwoHY29udHJvbBgCIAEoCzIcLmNpbmVrby5jbGllbnQuU3RyZWFtQ29udHJvbEgAQg4KBWV2ZW50EgW6SAIIASITChFHZXRDYXRhbG9nUmVxdWVzdCJDChJHZXRDYXRhbG9nUmVzcG9uc2USLQoHY2F0YWxvZxgBIAEoCzIcLmNpbmVrby5jYXRhbG9nLkNhdGFsb2dJbmRleCI3ChVHZXRBdWRpdG9yaXVtc1JlcXVlc3QSHgoKdGhlYXRlcl9pZBgBIAEoCUIKukgHyAEBcgIQASJJChZHZXRBdWRpdG9yaXVtc1Jlc3BvbnNlEi8KC2F1ZGl0b3JpdW1zGAEgAygLMhouY2luZWtvLmNhdGFsb2cuQXVkaXRvcml1bSI6ChVSZXNvbHZlU2VhdE1hcFJlcXVlc3QSIQoNYXVkaXRvcml1bV9pZBgBIAEoCUIKukgHyAEBcgIQASJIChZSZXNvbHZlU2VhdE1hcFJlc3BvbnNlEi4KCnJlc29sdXRpb24YASABKAsyGi5jaW5la28uc2VhdG1hcC5SZXNvbHV0aW9uIlkKHFN1Ym1pdENhdGFsb2dTbmFwc2hvdFJlcXVlc3QSOQoIc25hcHNob3QYASABKAsyHy5jaW5la28uY2F0YWxvZy5DYXRhbG9nU25hcHNob3RCBrpIA8gBASIfCh1TdWJtaXRDYXRhbG9nU25hcHNob3RSZXNwb25zZSJKCg9Db21wbGV0ZVJlcXVlc3QSNwoGcmVzdWx0GAEgASgLMh8uY2luZWtvLmV4ZWN1dGlvbi5SZXN1bHRSZXF1ZXN0Qga6SAPIAQEiEgoQQ29tcGxldGVSZXNwb25zZSIPCg1SZXRyeVJlc3BvbnNlIlMKGEdldFJ1bnRpbWVSZWxlYXNlUmVxdWVzdBIPCgdjaGFubmVsGAEgASgJEhAKCHBsYXRmb3JtGAIgASgJEhQKDGFyY2hpdGVjdHVyZRgDIAEoCSJMChlHZXRSdW50aW1lUmVsZWFzZVJlc3BvbnNlEi8KB3JlbGVhc2UYASABKAsyHi5jaW5la28ucmVsZWFzZS5SdW50aW1lUmVsZWFzZSJUChlHZXRMYXVuY2hlclJlbGVhc2VSZXF1ZXN0Eg8KB2NoYW5uZWwYASABKAkSEAoIcGxhdGZvcm0YAiABKAkSFAoMYXJjaGl0ZWN0dXJlGAMgASgJIk4KGkdldExhdW5jaGVyUmVsZWFzZVJlc3BvbnNlEjAKB3JlbGVhc2UYASABKAsyHy5jaW5la28ucmVsZWFzZS5MYXVuY2hlclJlbGVhc2UiTQoUUHVibGlzaENsaWVudFJlcXVlc3QSNQoLcmVsZWFzZV9zZXQYASABKAsyIC5jaW5la28ucmVsZWFzZS5DbGllbnRSZWxlYXNlU2V0IhcKFVB1Ymxpc2hDbGllbnRSZXNwb25zZSJPChVQdWJsaXNoQnJvd3NlclJlcXVlc3QSNgoLcmVsZWFzZV9zZXQYASABKAsyIS5jaW5la28ucmVsZWFzZS5Ccm93c2VyUmVsZWFzZVNldCIYChZQdWJsaXNoQnJvd3NlclJlc3BvbnNlIlUKGFB1Ymxpc2hQbGF5d3JpZ2h0UmVxdWVzdBI5CgtyZWxlYXNlX3NldBgBIAEoCzIkLmNpbmVrby5yZWxlYXNlLlBsYXl3cmlnaHRSZWxlYXNlU2V0IhsKGVB1Ymxpc2hQbGF5d3JpZ2h0UmVzcG9uc2UiUQoWUHVibGlzaExhdW5jaGVyUmVxdWVzdBI3CgtyZWxlYXNlX3NldBgBIAEoCzIiLmNpbmVrby5yZWxlYXNlLkxhdW5jaGVyUmVsZWFzZVNldCIZChdQdWJsaXNoTGF1bmNoZXJSZXNwb25zZSJLChNQdWJsaXNoUHJvYmVSZXF1ZXN0EjQKC3JlbGVhc2Vfc2V0GAEgASgLMh8uY2luZWtvLnJlbGVhc2UuUHJvYmVSZWxlYXNlU2V0IhYKFFB1Ymxpc2hQcm9iZVJlc3BvbnNlMr8ECgxQcm9iZVNlcnZpY2USSQoIUmVnaXN0ZXISHS5jaW5la28ucHJvYmUuUmVnaXN0ZXJSZXF1ZXN0Gh4uY2luZWtvLnByb2JlLlJlZ2lzdGVyUmVzcG9uc2USTAoJSGVhcnRiZWF0Eh4uY2luZWtvLnByb2JlLkhlYXJ0YmVhdFJlcXVlc3QaHy5jaW5la28ucHJvYmUuSGVhcnRiZWF0UmVzcG9uc2USXgoPQ2xhaW1Bc3NpZ25tZW50EiQuY2luZWtvLnByb2JlLkNsYWltQXNzaWdubWVudFJlcXVlc3QaJS5jaW5la28ucHJvYmUuQ2xhaW1Bc3NpZ25tZW50UmVzcG9uc2USagoTSGVhcnRiZWF0QXNzaWdubWVudBIoLmNpbmVrby5wcm9iZS5IZWFydGJlYXRBc3NpZ25tZW50UmVxdWVzdBopLmNpbmVrby5wcm9iZS5IZWFydGJlYXRBc3NpZ25tZW50UmVzcG9uc2USdQoWU3VibWl0QXNzaWdubWVudFJlc3VsdBIrLmNpbmVrby5wcm9iZS5TdWJtaXRBc3NpZ25tZW50UmVzdWx0UmVxdWVzdBouLmNpbmVrby5zZXJ2aWNlLlN1Ym1pdEFzc2lnbm1lbnRSZXN1bHRSZXNwb25zZRJTCgpEaXNjb25uZWN0EiEuY2luZWtvLnNlcnZpY2UuRGlzY29ubmVjdFJlcXVlc3QaIi5jaW5la28uc2VydmljZS5EaXNjb25uZWN0UmVzcG9uc2UyzgUKG0NsaWVudEF1dGhlbnRpY2F0aW9uU2VydmljZRJWCgtFeGNoYW5nZVBpbhIiLmNpbmVrby5zZXJ2aWNlLkV4Y2hhbmdlUGluUmVxdWVzdBojLmNpbmVrby5zZXJ2aWNlLkV4Y2hhbmdlUGluUmVzcG9uc2USXAoNRXhjaGFuZ2VUb2tlbhIkLmNpbmVrby5zZXJ2aWNlLkV4Y2hhbmdlVG9rZW5SZXF1ZXN0GiUuY2luZWtvLnNlcnZpY2UuRXhjaGFuZ2VUb2tlblJlc3BvbnNlElkKDFJlZnJlc2hUb2tlbhIjLmNpbmVrby5zZXJ2aWNlLlJlZnJlc2hUb2tlblJlcXVlc3QaJC5jaW5la28uc2VydmljZS5SZWZyZXNoVG9rZW5SZXNwb25zZRJrChJDcmVhdGVMYXVuY2hUaWNrZXQSKS5jaW5la28uc2VydmljZS5DcmVhdGVMYXVuY2hUaWNrZXRSZXF1ZXN0GiouY2luZWtvLnNlcnZpY2UuQ3JlYXRlTGF1bmNoVGlja2V0UmVzcG9uc2USYgoPRXhjaGFuZ2VTZXNzaW9uEiYuY2luZWtvLnNlcnZpY2UuRXhjaGFuZ2VTZXNzaW9uUmVxdWVzdBonLmNpbmVrby5zZXJ2aWNlLkV4Y2hhbmdlU2Vzc2lvblJlc3BvbnNlEkcKBkxvZ291dBIdLmNpbmVrby5zZXJ2aWNlLkxvZ291dFJlcXVlc3QaHi5jaW5la28uc2VydmljZS5Mb2dvdXRSZXNwb25zZRKDAQoaQ3JlYXRlUHJvYmVCb290c3RyYXBUaWNrZXQSMS5jaW5la28uc2VydmljZS5DcmVhdGVQcm9iZUJvb3RzdHJhcFRpY2tldFJlcXVlc3QaMi5jaW5la28uc2VydmljZS5DcmVhdGVQcm9iZUJvb3RzdHJhcFRpY2tldFJlc3BvbnNlMpAFChVDbGllbnRSZXNvdXJjZVNlcnZpY2USUAoJQm9vdHN0cmFwEiAuY2luZWtvLnNlcnZpY2UuQm9vdHN0cmFwUmVxdWVzdBohLmNpbmVrby5zZXJ2aWNlLkJvb3RzdHJhcFJlc3BvbnNlElYKC0dldFJlc291cmNlEiIuY2luZWtvLnNlcnZpY2UuR2V0UmVzb3VyY2VSZXF1ZXN0GiMuY2luZWtvLnNlcnZpY2UuR2V0UmVzb3VyY2VSZXNwb25zZRJcCg1MaXN0UmVzb3VyY2VzEiQuY2luZWtvLnNlcnZpY2UuTGlzdFJlc291cmNlc1JlcXVlc3QaJS5jaW5la28uc2VydmljZS5MaXN0UmVzb3VyY2VzUmVzcG9uc2USVgoLUHV0UmVzb3VyY2USIi5jaW5la28uc2VydmljZS5QdXRSZXNvdXJjZVJlcXVlc3QaIy5jaW5la28uc2VydmljZS5QdXRSZXNvdXJjZVJlc3BvbnNlEl8KDkRlbGV0ZVJlc291cmNlEiUuY2luZWtvLnNlcnZpY2UuRGVsZXRlUmVzb3VyY2VSZXF1ZXN0GiYuY2luZWtvLnNlcnZpY2UuRGVsZXRlUmVzb3VyY2VSZXNwb25zZRJZCgxVcHNlcnREZXZpY2USIy5jaW5la28uc2VydmljZS5VcHNlcnREZXZpY2VSZXF1ZXN0GiQuY2luZWtvLnNlcnZpY2UuVXBzZXJ0RGV2aWNlUmVzcG9uc2USWwoMU3RyZWFtRXZlbnRzEiMuY2luZWtvLnNlcnZpY2UuU3RyZWFtRXZlbnRzUmVxdWVzdBokLmNpbmVrby5zZXJ2aWNlLlN0cmVhbUV2ZW50c1Jlc3BvbnNlMAEynQMKDkNhdGFsb2dTZXJ2aWNlElMKCkdldENhdGFsb2cSIS5jaW5la28uc2VydmljZS5HZXRDYXRhbG9nUmVxdWVzdBoiLmNpbmVrby5zZXJ2aWNlLkdldENhdGFsb2dSZXNwb25zZRJfCg5HZXRBdWRpdG9yaXVtcxIlLmNpbmVrby5zZXJ2aWNlLkdldEF1ZGl0b3JpdW1zUmVxdWVzdBomLmNpbmVrby5zZXJ2aWNlLkdldEF1ZGl0b3JpdW1zUmVzcG9uc2USXwoOUmVzb2x2ZVNlYXRNYXASJS5jaW5la28uc2VydmljZS5SZXNvbHZlU2VhdE1hcFJlcXVlc3QaJi5jaW5la28uc2VydmljZS5SZXNvbHZlU2VhdE1hcFJlc3BvbnNlEnQKFVN1Ym1pdENhdGFsb2dTbmFwc2hvdBIsLmNpbmVrby5zZXJ2aWNlLlN1Ym1pdENhdGFsb2dTbmFwc2hvdFJlcXVlc3QaLS5jaW5la28uc2VydmljZS5TdWJtaXRDYXRhbG9nU25hcHNob3RSZXNwb25zZTLJAgoQRXhlY3V0aW9uU2VydmljZRJICgVDbGFpbRIeLmNpbmVrby5leGVjdXRpb24uQ2xhaW1SZXF1ZXN0Gh8uY2luZWtvLmV4ZWN1dGlvbi5DbGFpbVJlc3BvbnNlElQKCUhlYXJ0YmVhdBIiLmNpbmVrby5leGVjdXRpb24uSGVhcnRiZWF0UmVxdWVzdBojLmNpbmVrby5leGVjdXRpb24uSGVhcnRiZWF0UmVzcG9uc2USTQoIQ29tcGxldGUSHy5jaW5la28uc2VydmljZS5Db21wbGV0ZVJlcXVlc3QaIC5jaW5la28uc2VydmljZS5Db21wbGV0ZVJlc3BvbnNlEkYKBVJldHJ5Eh4uY2luZWtvLmV4ZWN1dGlvbi5SZXRyeVJlcXVlc3QaHS5jaW5la28uc2VydmljZS5SZXRyeVJlc3BvbnNlMs8FCg5SZWxlYXNlU2VydmljZRJoChFHZXRSdW50aW1lUmVsZWFzZRIoLmNpbmVrby5zZXJ2aWNlLkdldFJ1bnRpbWVSZWxlYXNlUmVxdWVzdBopLmNpbmVrby5zZXJ2aWNlLkdldFJ1bnRpbWVSZWxlYXNlUmVzcG9uc2USawoSR2V0TGF1bmNoZXJSZWxlYXNlEikuY2luZWtvLnNlcnZpY2UuR2V0TGF1bmNoZXJSZWxlYXNlUmVxdWVzdBoqLmNpbmVrby5zZXJ2aWNlLkdldExhdW5jaGVyUmVsZWFzZVJlc3BvbnNlElwKDVB1Ymxpc2hDbGllbnQSJC5jaW5la28uc2VydmljZS5QdWJsaXNoQ2xpZW50UmVxdWVzdBolLmNpbmVrby5zZXJ2aWNlLlB1Ymxpc2hDbGllbnRSZXNwb25zZRJfCg5QdWJsaXNoQnJvd3NlchIlLmNpbmVrby5zZXJ2aWNlLlB1Ymxpc2hCcm93c2VyUmVxdWVzdBomLmNpbmVrby5zZXJ2aWNlLlB1Ymxpc2hCcm93c2VyUmVzcG9uc2USaAoRUHVibGlzaFBsYXl3cmlnaHQSKC5jaW5la28uc2VydmljZS5QdWJsaXNoUGxheXdyaWdodFJlcXVlc3QaKS5jaW5la28uc2VydmljZS5QdWJsaXNoUGxheXdyaWdodFJlc3BvbnNlEmIKD1B1Ymxpc2hMYXVuY2hlchImLmNpbmVrby5zZXJ2aWNlLlB1Ymxpc2hMYXVuY2hlclJlcXVlc3QaJy5jaW5la28uc2VydmljZS5QdWJsaXNoTGF1bmNoZXJSZXNwb25zZRJZCgxQdWJsaXNoUHJvYmUSIy5jaW5la28uc2VydmljZS5QdWJsaXNoUHJvYmVSZXF1ZXN0GiQuY2luZWtvLnNlcnZpY2UuUHVibGlzaFByb2JlUmVzcG9uc2VCP1o9Z2l0aHViLmNvbS9jaW5la28tb3JnL2NvbnRyYWN0cy9nZW4vZ28vY2luZWtvL3NlcnZpY2U7c2VydmljZWIIZWRpdGlvbnNw6Qc", [file_buf_validate_validate, file_cineko_catalog_catalog, file_cineko_client_client, file_cineko_common_common, file_cineko_execution_execution, file_cineko_observation_observation, file_cineko_probe_probe, file_cineko_release_release, file_cineko_seatmap_seatmap]);
 
 /**
  * @generated from message cineko.service.SubmitAssignmentResultResponse
@@ -46,6 +47,32 @@ export const SubmitAssignmentResultResponseSchema: GenMessage<SubmitAssignmentRe
   messageDesc(file_cineko_service_services, 0);
 
 /**
+ * @generated from message cineko.service.DisconnectRequest
+ */
+export type DisconnectRequest = Message<"cineko.service.DisconnectRequest"> & {
+};
+
+/**
+ * Describes the message cineko.service.DisconnectRequest.
+ * Use `create(DisconnectRequestSchema)` to create a new message.
+ */
+export const DisconnectRequestSchema: GenMessage<DisconnectRequest> = /*@__PURE__*/
+  messageDesc(file_cineko_service_services, 1);
+
+/**
+ * @generated from message cineko.service.DisconnectResponse
+ */
+export type DisconnectResponse = Message<"cineko.service.DisconnectResponse"> & {
+};
+
+/**
+ * Describes the message cineko.service.DisconnectResponse.
+ * Use `create(DisconnectResponseSchema)` to create a new message.
+ */
+export const DisconnectResponseSchema: GenMessage<DisconnectResponse> = /*@__PURE__*/
+  messageDesc(file_cineko_service_services, 2);
+
+/**
  * @generated from message cineko.service.ExchangePinRequest
  */
 export type ExchangePinRequest = Message<"cineko.service.ExchangePinRequest"> & {
@@ -60,7 +87,7 @@ export type ExchangePinRequest = Message<"cineko.service.ExchangePinRequest"> & 
  * Use `create(ExchangePinRequestSchema)` to create a new message.
  */
 export const ExchangePinRequestSchema: GenMessage<ExchangePinRequest> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 1);
+  messageDesc(file_cineko_service_services, 3);
 
 /**
  * @generated from message cineko.service.ExchangePinResponse
@@ -77,7 +104,7 @@ export type ExchangePinResponse = Message<"cineko.service.ExchangePinResponse"> 
  * Use `create(ExchangePinResponseSchema)` to create a new message.
  */
 export const ExchangePinResponseSchema: GenMessage<ExchangePinResponse> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 2);
+  messageDesc(file_cineko_service_services, 4);
 
 /**
  * @generated from message cineko.service.ExchangeTokenRequest
@@ -94,7 +121,7 @@ export type ExchangeTokenRequest = Message<"cineko.service.ExchangeTokenRequest"
  * Use `create(ExchangeTokenRequestSchema)` to create a new message.
  */
 export const ExchangeTokenRequestSchema: GenMessage<ExchangeTokenRequest> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 3);
+  messageDesc(file_cineko_service_services, 5);
 
 /**
  * @generated from message cineko.service.ExchangeTokenResponse
@@ -111,7 +138,7 @@ export type ExchangeTokenResponse = Message<"cineko.service.ExchangeTokenRespons
  * Use `create(ExchangeTokenResponseSchema)` to create a new message.
  */
 export const ExchangeTokenResponseSchema: GenMessage<ExchangeTokenResponse> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 4);
+  messageDesc(file_cineko_service_services, 6);
 
 /**
  * @generated from message cineko.service.RefreshTokenRequest
@@ -128,7 +155,7 @@ export type RefreshTokenRequest = Message<"cineko.service.RefreshTokenRequest"> 
  * Use `create(RefreshTokenRequestSchema)` to create a new message.
  */
 export const RefreshTokenRequestSchema: GenMessage<RefreshTokenRequest> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 5);
+  messageDesc(file_cineko_service_services, 7);
 
 /**
  * @generated from message cineko.service.RefreshTokenResponse
@@ -145,7 +172,7 @@ export type RefreshTokenResponse = Message<"cineko.service.RefreshTokenResponse"
  * Use `create(RefreshTokenResponseSchema)` to create a new message.
  */
 export const RefreshTokenResponseSchema: GenMessage<RefreshTokenResponse> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 6);
+  messageDesc(file_cineko_service_services, 8);
 
 /**
  * @generated from message cineko.service.CreateLaunchTicketRequest
@@ -162,7 +189,7 @@ export type CreateLaunchTicketRequest = Message<"cineko.service.CreateLaunchTick
  * Use `create(CreateLaunchTicketRequestSchema)` to create a new message.
  */
 export const CreateLaunchTicketRequestSchema: GenMessage<CreateLaunchTicketRequest> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 7);
+  messageDesc(file_cineko_service_services, 9);
 
 /**
  * @generated from message cineko.service.CreateLaunchTicketResponse
@@ -179,7 +206,7 @@ export type CreateLaunchTicketResponse = Message<"cineko.service.CreateLaunchTic
  * Use `create(CreateLaunchTicketResponseSchema)` to create a new message.
  */
 export const CreateLaunchTicketResponseSchema: GenMessage<CreateLaunchTicketResponse> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 8);
+  messageDesc(file_cineko_service_services, 10);
 
 /**
  * @generated from message cineko.service.ExchangeSessionRequest
@@ -196,7 +223,7 @@ export type ExchangeSessionRequest = Message<"cineko.service.ExchangeSessionRequ
  * Use `create(ExchangeSessionRequestSchema)` to create a new message.
  */
 export const ExchangeSessionRequestSchema: GenMessage<ExchangeSessionRequest> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 9);
+  messageDesc(file_cineko_service_services, 11);
 
 /**
  * @generated from message cineko.service.ExchangeSessionResponse
@@ -213,12 +240,76 @@ export type ExchangeSessionResponse = Message<"cineko.service.ExchangeSessionRes
  * Use `create(ExchangeSessionResponseSchema)` to create a new message.
  */
 export const ExchangeSessionResponseSchema: GenMessage<ExchangeSessionResponse> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 10);
+  messageDesc(file_cineko_service_services, 12);
+
+/**
+ * @generated from message cineko.service.LogoutRequest
+ */
+export type LogoutRequest = Message<"cineko.service.LogoutRequest"> & {
+};
+
+/**
+ * Describes the message cineko.service.LogoutRequest.
+ * Use `create(LogoutRequestSchema)` to create a new message.
+ */
+export const LogoutRequestSchema: GenMessage<LogoutRequest> = /*@__PURE__*/
+  messageDesc(file_cineko_service_services, 13);
+
+/**
+ * @generated from message cineko.service.LogoutResponse
+ */
+export type LogoutResponse = Message<"cineko.service.LogoutResponse"> & {
+};
+
+/**
+ * Describes the message cineko.service.LogoutResponse.
+ * Use `create(LogoutResponseSchema)` to create a new message.
+ */
+export const LogoutResponseSchema: GenMessage<LogoutResponse> = /*@__PURE__*/
+  messageDesc(file_cineko_service_services, 14);
+
+/**
+ * @generated from message cineko.service.CreateProbeBootstrapTicketRequest
+ */
+export type CreateProbeBootstrapTicketRequest = Message<"cineko.service.CreateProbeBootstrapTicketRequest"> & {
+  /**
+   * @generated from field: cineko.client.ProbeBootstrapTicketRequest request = 1;
+   */
+  request?: ProbeBootstrapTicketRequest | undefined;
+};
+
+/**
+ * Describes the message cineko.service.CreateProbeBootstrapTicketRequest.
+ * Use `create(CreateProbeBootstrapTicketRequestSchema)` to create a new message.
+ */
+export const CreateProbeBootstrapTicketRequestSchema: GenMessage<CreateProbeBootstrapTicketRequest> = /*@__PURE__*/
+  messageDesc(file_cineko_service_services, 15);
+
+/**
+ * @generated from message cineko.service.CreateProbeBootstrapTicketResponse
+ */
+export type CreateProbeBootstrapTicketResponse = Message<"cineko.service.CreateProbeBootstrapTicketResponse"> & {
+  /**
+   * @generated from field: cineko.client.ProbeBootstrapTicketResponse response = 1;
+   */
+  response?: ProbeBootstrapTicketResponse | undefined;
+};
+
+/**
+ * Describes the message cineko.service.CreateProbeBootstrapTicketResponse.
+ * Use `create(CreateProbeBootstrapTicketResponseSchema)` to create a new message.
+ */
+export const CreateProbeBootstrapTicketResponseSchema: GenMessage<CreateProbeBootstrapTicketResponse> = /*@__PURE__*/
+  messageDesc(file_cineko_service_services, 16);
 
 /**
  * @generated from message cineko.service.BootstrapRequest
  */
 export type BootstrapRequest = Message<"cineko.service.BootstrapRequest"> & {
+  /**
+   * @generated from field: string installation_id = 1;
+   */
+  installationId: string;
 };
 
 /**
@@ -226,7 +317,7 @@ export type BootstrapRequest = Message<"cineko.service.BootstrapRequest"> & {
  * Use `create(BootstrapRequestSchema)` to create a new message.
  */
 export const BootstrapRequestSchema: GenMessage<BootstrapRequest> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 11);
+  messageDesc(file_cineko_service_services, 17);
 
 /**
  * @generated from message cineko.service.BootstrapResponse
@@ -243,14 +334,19 @@ export type BootstrapResponse = Message<"cineko.service.BootstrapResponse"> & {
  * Use `create(BootstrapResponseSchema)` to create a new message.
  */
 export const BootstrapResponseSchema: GenMessage<BootstrapResponse> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 12);
+  messageDesc(file_cineko_service_services, 18);
 
 /**
  * @generated from message cineko.service.GetResourceRequest
  */
 export type GetResourceRequest = Message<"cineko.service.GetResourceRequest"> & {
   /**
-   * @generated from field: string id = 1;
+   * @generated from field: cineko.client.ResourceKind kind = 1;
+   */
+  kind?: ResourceKind | undefined;
+
+  /**
+   * @generated from field: string id = 2;
    */
   id: string;
 };
@@ -260,7 +356,7 @@ export type GetResourceRequest = Message<"cineko.service.GetResourceRequest"> & 
  * Use `create(GetResourceRequestSchema)` to create a new message.
  */
 export const GetResourceRequestSchema: GenMessage<GetResourceRequest> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 13);
+  messageDesc(file_cineko_service_services, 19);
 
 /**
  * @generated from message cineko.service.GetResourceResponse
@@ -277,14 +373,19 @@ export type GetResourceResponse = Message<"cineko.service.GetResourceResponse"> 
  * Use `create(GetResourceResponseSchema)` to create a new message.
  */
 export const GetResourceResponseSchema: GenMessage<GetResourceResponse> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 14);
+  messageDesc(file_cineko_service_services, 20);
 
 /**
  * @generated from message cineko.service.ListResourcesRequest
  */
 export type ListResourcesRequest = Message<"cineko.service.ListResourcesRequest"> & {
   /**
-   * @generated from field: cineko.common.PageRequest page = 1;
+   * @generated from field: cineko.client.ResourceKind kind = 1;
+   */
+  kind?: ResourceKind | undefined;
+
+  /**
+   * @generated from field: cineko.common.PageRequest page = 2;
    */
   page?: PageRequest | undefined;
 };
@@ -294,7 +395,7 @@ export type ListResourcesRequest = Message<"cineko.service.ListResourcesRequest"
  * Use `create(ListResourcesRequestSchema)` to create a new message.
  */
 export const ListResourcesRequestSchema: GenMessage<ListResourcesRequest> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 15);
+  messageDesc(file_cineko_service_services, 21);
 
 /**
  * @generated from message cineko.service.ListResourcesResponse
@@ -316,7 +417,7 @@ export type ListResourcesResponse = Message<"cineko.service.ListResourcesRespons
  * Use `create(ListResourcesResponseSchema)` to create a new message.
  */
 export const ListResourcesResponseSchema: GenMessage<ListResourcesResponse> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 16);
+  messageDesc(file_cineko_service_services, 22);
 
 /**
  * @generated from message cineko.service.PutResourceRequest
@@ -338,7 +439,7 @@ export type PutResourceRequest = Message<"cineko.service.PutResourceRequest"> & 
  * Use `create(PutResourceRequestSchema)` to create a new message.
  */
 export const PutResourceRequestSchema: GenMessage<PutResourceRequest> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 17);
+  messageDesc(file_cineko_service_services, 23);
 
 /**
  * @generated from message cineko.service.PutResourceResponse
@@ -355,7 +456,7 @@ export type PutResourceResponse = Message<"cineko.service.PutResourceResponse"> 
  * Use `create(PutResourceResponseSchema)` to create a new message.
  */
 export const PutResourceResponseSchema: GenMessage<PutResourceResponse> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 18);
+  messageDesc(file_cineko_service_services, 24);
 
 /**
  * @generated from message cineko.service.DeleteResourceRequest
@@ -367,7 +468,12 @@ export type DeleteResourceRequest = Message<"cineko.service.DeleteResourceReques
   mutation?: MutationIdentity | undefined;
 
   /**
-   * @generated from field: string id = 2;
+   * @generated from field: cineko.client.ResourceKind kind = 2;
+   */
+  kind?: ResourceKind | undefined;
+
+  /**
+   * @generated from field: string id = 3;
    */
   id: string;
 };
@@ -377,7 +483,7 @@ export type DeleteResourceRequest = Message<"cineko.service.DeleteResourceReques
  * Use `create(DeleteResourceRequestSchema)` to create a new message.
  */
 export const DeleteResourceRequestSchema: GenMessage<DeleteResourceRequest> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 19);
+  messageDesc(file_cineko_service_services, 25);
 
 /**
  * @generated from message cineko.service.DeleteResourceResponse
@@ -390,7 +496,87 @@ export type DeleteResourceResponse = Message<"cineko.service.DeleteResourceRespo
  * Use `create(DeleteResourceResponseSchema)` to create a new message.
  */
 export const DeleteResourceResponseSchema: GenMessage<DeleteResourceResponse> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 20);
+  messageDesc(file_cineko_service_services, 26);
+
+/**
+ * @generated from message cineko.service.UpsertDeviceRequest
+ */
+export type UpsertDeviceRequest = Message<"cineko.service.UpsertDeviceRequest"> & {
+  /**
+   * @generated from field: cineko.client.Device device = 1;
+   */
+  device?: Device | undefined;
+};
+
+/**
+ * Describes the message cineko.service.UpsertDeviceRequest.
+ * Use `create(UpsertDeviceRequestSchema)` to create a new message.
+ */
+export const UpsertDeviceRequestSchema: GenMessage<UpsertDeviceRequest> = /*@__PURE__*/
+  messageDesc(file_cineko_service_services, 27);
+
+/**
+ * @generated from message cineko.service.UpsertDeviceResponse
+ */
+export type UpsertDeviceResponse = Message<"cineko.service.UpsertDeviceResponse"> & {
+  /**
+   * @generated from field: cineko.client.Device device = 1;
+   */
+  device?: Device | undefined;
+};
+
+/**
+ * Describes the message cineko.service.UpsertDeviceResponse.
+ * Use `create(UpsertDeviceResponseSchema)` to create a new message.
+ */
+export const UpsertDeviceResponseSchema: GenMessage<UpsertDeviceResponse> = /*@__PURE__*/
+  messageDesc(file_cineko_service_services, 28);
+
+/**
+ * @generated from message cineko.service.StreamEventsRequest
+ */
+export type StreamEventsRequest = Message<"cineko.service.StreamEventsRequest"> & {
+  /**
+   * @generated from field: int64 after_sequence = 1;
+   */
+  afterSequence: bigint;
+};
+
+/**
+ * Describes the message cineko.service.StreamEventsRequest.
+ * Use `create(StreamEventsRequestSchema)` to create a new message.
+ */
+export const StreamEventsRequestSchema: GenMessage<StreamEventsRequest> = /*@__PURE__*/
+  messageDesc(file_cineko_service_services, 29);
+
+/**
+ * @generated from message cineko.service.StreamEventsResponse
+ */
+export type StreamEventsResponse = Message<"cineko.service.StreamEventsResponse"> & {
+  /**
+   * @generated from oneof cineko.service.StreamEventsResponse.event
+   */
+  event: {
+    /**
+     * @generated from field: cineko.client.ClientEvent data = 1;
+     */
+    value: ClientEvent;
+    case: "data";
+  } | {
+    /**
+     * @generated from field: cineko.client.StreamControl control = 2;
+     */
+    value: StreamControl;
+    case: "control";
+  } | { case: undefined; value?: undefined };
+};
+
+/**
+ * Describes the message cineko.service.StreamEventsResponse.
+ * Use `create(StreamEventsResponseSchema)` to create a new message.
+ */
+export const StreamEventsResponseSchema: GenMessage<StreamEventsResponse> = /*@__PURE__*/
+  messageDesc(file_cineko_service_services, 30);
 
 /**
  * @generated from message cineko.service.GetCatalogRequest
@@ -403,7 +589,7 @@ export type GetCatalogRequest = Message<"cineko.service.GetCatalogRequest"> & {
  * Use `create(GetCatalogRequestSchema)` to create a new message.
  */
 export const GetCatalogRequestSchema: GenMessage<GetCatalogRequest> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 21);
+  messageDesc(file_cineko_service_services, 31);
 
 /**
  * @generated from message cineko.service.GetCatalogResponse
@@ -420,7 +606,7 @@ export type GetCatalogResponse = Message<"cineko.service.GetCatalogResponse"> & 
  * Use `create(GetCatalogResponseSchema)` to create a new message.
  */
 export const GetCatalogResponseSchema: GenMessage<GetCatalogResponse> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 22);
+  messageDesc(file_cineko_service_services, 32);
 
 /**
  * @generated from message cineko.service.GetAuditoriumsRequest
@@ -437,7 +623,7 @@ export type GetAuditoriumsRequest = Message<"cineko.service.GetAuditoriumsReques
  * Use `create(GetAuditoriumsRequestSchema)` to create a new message.
  */
 export const GetAuditoriumsRequestSchema: GenMessage<GetAuditoriumsRequest> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 23);
+  messageDesc(file_cineko_service_services, 33);
 
 /**
  * @generated from message cineko.service.GetAuditoriumsResponse
@@ -454,7 +640,7 @@ export type GetAuditoriumsResponse = Message<"cineko.service.GetAuditoriumsRespo
  * Use `create(GetAuditoriumsResponseSchema)` to create a new message.
  */
 export const GetAuditoriumsResponseSchema: GenMessage<GetAuditoriumsResponse> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 24);
+  messageDesc(file_cineko_service_services, 34);
 
 /**
  * @generated from message cineko.service.ResolveSeatMapRequest
@@ -471,7 +657,7 @@ export type ResolveSeatMapRequest = Message<"cineko.service.ResolveSeatMapReques
  * Use `create(ResolveSeatMapRequestSchema)` to create a new message.
  */
 export const ResolveSeatMapRequestSchema: GenMessage<ResolveSeatMapRequest> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 25);
+  messageDesc(file_cineko_service_services, 35);
 
 /**
  * @generated from message cineko.service.ResolveSeatMapResponse
@@ -488,7 +674,37 @@ export type ResolveSeatMapResponse = Message<"cineko.service.ResolveSeatMapRespo
  * Use `create(ResolveSeatMapResponseSchema)` to create a new message.
  */
 export const ResolveSeatMapResponseSchema: GenMessage<ResolveSeatMapResponse> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 26);
+  messageDesc(file_cineko_service_services, 36);
+
+/**
+ * @generated from message cineko.service.SubmitCatalogSnapshotRequest
+ */
+export type SubmitCatalogSnapshotRequest = Message<"cineko.service.SubmitCatalogSnapshotRequest"> & {
+  /**
+   * @generated from field: cineko.catalog.CatalogSnapshot snapshot = 1;
+   */
+  snapshot?: CatalogSnapshot | undefined;
+};
+
+/**
+ * Describes the message cineko.service.SubmitCatalogSnapshotRequest.
+ * Use `create(SubmitCatalogSnapshotRequestSchema)` to create a new message.
+ */
+export const SubmitCatalogSnapshotRequestSchema: GenMessage<SubmitCatalogSnapshotRequest> = /*@__PURE__*/
+  messageDesc(file_cineko_service_services, 37);
+
+/**
+ * @generated from message cineko.service.SubmitCatalogSnapshotResponse
+ */
+export type SubmitCatalogSnapshotResponse = Message<"cineko.service.SubmitCatalogSnapshotResponse"> & {
+};
+
+/**
+ * Describes the message cineko.service.SubmitCatalogSnapshotResponse.
+ * Use `create(SubmitCatalogSnapshotResponseSchema)` to create a new message.
+ */
+export const SubmitCatalogSnapshotResponseSchema: GenMessage<SubmitCatalogSnapshotResponse> = /*@__PURE__*/
+  messageDesc(file_cineko_service_services, 38);
 
 /**
  * @generated from message cineko.service.CompleteRequest
@@ -505,7 +721,7 @@ export type CompleteRequest = Message<"cineko.service.CompleteRequest"> & {
  * Use `create(CompleteRequestSchema)` to create a new message.
  */
 export const CompleteRequestSchema: GenMessage<CompleteRequest> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 27);
+  messageDesc(file_cineko_service_services, 39);
 
 /**
  * @generated from message cineko.service.CompleteResponse
@@ -518,7 +734,20 @@ export type CompleteResponse = Message<"cineko.service.CompleteResponse"> & {
  * Use `create(CompleteResponseSchema)` to create a new message.
  */
 export const CompleteResponseSchema: GenMessage<CompleteResponse> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 28);
+  messageDesc(file_cineko_service_services, 40);
+
+/**
+ * @generated from message cineko.service.RetryResponse
+ */
+export type RetryResponse = Message<"cineko.service.RetryResponse"> & {
+};
+
+/**
+ * Describes the message cineko.service.RetryResponse.
+ * Use `create(RetryResponseSchema)` to create a new message.
+ */
+export const RetryResponseSchema: GenMessage<RetryResponse> = /*@__PURE__*/
+  messageDesc(file_cineko_service_services, 41);
 
 /**
  * @generated from message cineko.service.GetRuntimeReleaseRequest
@@ -545,7 +774,7 @@ export type GetRuntimeReleaseRequest = Message<"cineko.service.GetRuntimeRelease
  * Use `create(GetRuntimeReleaseRequestSchema)` to create a new message.
  */
 export const GetRuntimeReleaseRequestSchema: GenMessage<GetRuntimeReleaseRequest> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 29);
+  messageDesc(file_cineko_service_services, 42);
 
 /**
  * @generated from message cineko.service.GetRuntimeReleaseResponse
@@ -562,7 +791,51 @@ export type GetRuntimeReleaseResponse = Message<"cineko.service.GetRuntimeReleas
  * Use `create(GetRuntimeReleaseResponseSchema)` to create a new message.
  */
 export const GetRuntimeReleaseResponseSchema: GenMessage<GetRuntimeReleaseResponse> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 30);
+  messageDesc(file_cineko_service_services, 43);
+
+/**
+ * @generated from message cineko.service.GetLauncherReleaseRequest
+ */
+export type GetLauncherReleaseRequest = Message<"cineko.service.GetLauncherReleaseRequest"> & {
+  /**
+   * @generated from field: string channel = 1;
+   */
+  channel: string;
+
+  /**
+   * @generated from field: string platform = 2;
+   */
+  platform: string;
+
+  /**
+   * @generated from field: string architecture = 3;
+   */
+  architecture: string;
+};
+
+/**
+ * Describes the message cineko.service.GetLauncherReleaseRequest.
+ * Use `create(GetLauncherReleaseRequestSchema)` to create a new message.
+ */
+export const GetLauncherReleaseRequestSchema: GenMessage<GetLauncherReleaseRequest> = /*@__PURE__*/
+  messageDesc(file_cineko_service_services, 44);
+
+/**
+ * @generated from message cineko.service.GetLauncherReleaseResponse
+ */
+export type GetLauncherReleaseResponse = Message<"cineko.service.GetLauncherReleaseResponse"> & {
+  /**
+   * @generated from field: cineko.release.LauncherRelease release = 1;
+   */
+  release?: LauncherRelease | undefined;
+};
+
+/**
+ * Describes the message cineko.service.GetLauncherReleaseResponse.
+ * Use `create(GetLauncherReleaseResponseSchema)` to create a new message.
+ */
+export const GetLauncherReleaseResponseSchema: GenMessage<GetLauncherReleaseResponse> = /*@__PURE__*/
+  messageDesc(file_cineko_service_services, 45);
 
 /**
  * @generated from message cineko.service.PublishClientRequest
@@ -579,7 +852,7 @@ export type PublishClientRequest = Message<"cineko.service.PublishClientRequest"
  * Use `create(PublishClientRequestSchema)` to create a new message.
  */
 export const PublishClientRequestSchema: GenMessage<PublishClientRequest> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 31);
+  messageDesc(file_cineko_service_services, 46);
 
 /**
  * @generated from message cineko.service.PublishClientResponse
@@ -592,7 +865,7 @@ export type PublishClientResponse = Message<"cineko.service.PublishClientRespons
  * Use `create(PublishClientResponseSchema)` to create a new message.
  */
 export const PublishClientResponseSchema: GenMessage<PublishClientResponse> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 32);
+  messageDesc(file_cineko_service_services, 47);
 
 /**
  * @generated from message cineko.service.PublishBrowserRequest
@@ -609,7 +882,7 @@ export type PublishBrowserRequest = Message<"cineko.service.PublishBrowserReques
  * Use `create(PublishBrowserRequestSchema)` to create a new message.
  */
 export const PublishBrowserRequestSchema: GenMessage<PublishBrowserRequest> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 33);
+  messageDesc(file_cineko_service_services, 48);
 
 /**
  * @generated from message cineko.service.PublishBrowserResponse
@@ -622,7 +895,7 @@ export type PublishBrowserResponse = Message<"cineko.service.PublishBrowserRespo
  * Use `create(PublishBrowserResponseSchema)` to create a new message.
  */
 export const PublishBrowserResponseSchema: GenMessage<PublishBrowserResponse> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 34);
+  messageDesc(file_cineko_service_services, 49);
 
 /**
  * @generated from message cineko.service.PublishPlaywrightRequest
@@ -639,7 +912,7 @@ export type PublishPlaywrightRequest = Message<"cineko.service.PublishPlaywright
  * Use `create(PublishPlaywrightRequestSchema)` to create a new message.
  */
 export const PublishPlaywrightRequestSchema: GenMessage<PublishPlaywrightRequest> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 35);
+  messageDesc(file_cineko_service_services, 50);
 
 /**
  * @generated from message cineko.service.PublishPlaywrightResponse
@@ -652,7 +925,7 @@ export type PublishPlaywrightResponse = Message<"cineko.service.PublishPlaywrigh
  * Use `create(PublishPlaywrightResponseSchema)` to create a new message.
  */
 export const PublishPlaywrightResponseSchema: GenMessage<PublishPlaywrightResponse> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 36);
+  messageDesc(file_cineko_service_services, 51);
 
 /**
  * @generated from message cineko.service.PublishLauncherRequest
@@ -669,7 +942,7 @@ export type PublishLauncherRequest = Message<"cineko.service.PublishLauncherRequ
  * Use `create(PublishLauncherRequestSchema)` to create a new message.
  */
 export const PublishLauncherRequestSchema: GenMessage<PublishLauncherRequest> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 37);
+  messageDesc(file_cineko_service_services, 52);
 
 /**
  * @generated from message cineko.service.PublishLauncherResponse
@@ -682,7 +955,7 @@ export type PublishLauncherResponse = Message<"cineko.service.PublishLauncherRes
  * Use `create(PublishLauncherResponseSchema)` to create a new message.
  */
 export const PublishLauncherResponseSchema: GenMessage<PublishLauncherResponse> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 38);
+  messageDesc(file_cineko_service_services, 53);
 
 /**
  * @generated from message cineko.service.PublishProbeRequest
@@ -699,7 +972,7 @@ export type PublishProbeRequest = Message<"cineko.service.PublishProbeRequest"> 
  * Use `create(PublishProbeRequestSchema)` to create a new message.
  */
 export const PublishProbeRequestSchema: GenMessage<PublishProbeRequest> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 39);
+  messageDesc(file_cineko_service_services, 54);
 
 /**
  * @generated from message cineko.service.PublishProbeResponse
@@ -712,7 +985,7 @@ export type PublishProbeResponse = Message<"cineko.service.PublishProbeResponse"
  * Use `create(PublishProbeResponseSchema)` to create a new message.
  */
 export const PublishProbeResponseSchema: GenMessage<PublishProbeResponse> = /*@__PURE__*/
-  messageDesc(file_cineko_service_services, 40);
+  messageDesc(file_cineko_service_services, 55);
 
 /**
  * @generated from service cineko.service.ProbeService
@@ -757,6 +1030,14 @@ export const ProbeService: GenService<{
     methodKind: "unary";
     input: typeof SubmitAssignmentResultRequestSchema;
     output: typeof SubmitAssignmentResultResponseSchema;
+  },
+  /**
+   * @generated from rpc cineko.service.ProbeService.Disconnect
+   */
+  disconnect: {
+    methodKind: "unary";
+    input: typeof DisconnectRequestSchema;
+    output: typeof DisconnectResponseSchema;
   },
 }> = /*@__PURE__*/
   serviceDesc(file_cineko_service_services, 0);
@@ -805,6 +1086,22 @@ export const ClientAuthenticationService: GenService<{
     input: typeof ExchangeSessionRequestSchema;
     output: typeof ExchangeSessionResponseSchema;
   },
+  /**
+   * @generated from rpc cineko.service.ClientAuthenticationService.Logout
+   */
+  logout: {
+    methodKind: "unary";
+    input: typeof LogoutRequestSchema;
+    output: typeof LogoutResponseSchema;
+  },
+  /**
+   * @generated from rpc cineko.service.ClientAuthenticationService.CreateProbeBootstrapTicket
+   */
+  createProbeBootstrapTicket: {
+    methodKind: "unary";
+    input: typeof CreateProbeBootstrapTicketRequestSchema;
+    output: typeof CreateProbeBootstrapTicketResponseSchema;
+  },
 }> = /*@__PURE__*/
   serviceDesc(file_cineko_service_services, 1);
 
@@ -852,6 +1149,22 @@ export const ClientResourceService: GenService<{
     input: typeof DeleteResourceRequestSchema;
     output: typeof DeleteResourceResponseSchema;
   },
+  /**
+   * @generated from rpc cineko.service.ClientResourceService.UpsertDevice
+   */
+  upsertDevice: {
+    methodKind: "unary";
+    input: typeof UpsertDeviceRequestSchema;
+    output: typeof UpsertDeviceResponseSchema;
+  },
+  /**
+   * @generated from rpc cineko.service.ClientResourceService.StreamEvents
+   */
+  streamEvents: {
+    methodKind: "server_streaming";
+    input: typeof StreamEventsRequestSchema;
+    output: typeof StreamEventsResponseSchema;
+  },
 }> = /*@__PURE__*/
   serviceDesc(file_cineko_service_services, 2);
 
@@ -882,6 +1195,14 @@ export const CatalogService: GenService<{
     methodKind: "unary";
     input: typeof ResolveSeatMapRequestSchema;
     output: typeof ResolveSeatMapResponseSchema;
+  },
+  /**
+   * @generated from rpc cineko.service.CatalogService.SubmitCatalogSnapshot
+   */
+  submitCatalogSnapshot: {
+    methodKind: "unary";
+    input: typeof SubmitCatalogSnapshotRequestSchema;
+    output: typeof SubmitCatalogSnapshotResponseSchema;
   },
 }> = /*@__PURE__*/
   serviceDesc(file_cineko_service_services, 3);
@@ -914,6 +1235,14 @@ export const ExecutionService: GenService<{
     input: typeof CompleteRequestSchema;
     output: typeof CompleteResponseSchema;
   },
+  /**
+   * @generated from rpc cineko.service.ExecutionService.Retry
+   */
+  retry: {
+    methodKind: "unary";
+    input: typeof RetryRequestSchema;
+    output: typeof RetryResponseSchema;
+  },
 }> = /*@__PURE__*/
   serviceDesc(file_cineko_service_services, 4);
 
@@ -928,6 +1257,14 @@ export const ReleaseService: GenService<{
     methodKind: "unary";
     input: typeof GetRuntimeReleaseRequestSchema;
     output: typeof GetRuntimeReleaseResponseSchema;
+  },
+  /**
+   * @generated from rpc cineko.service.ReleaseService.GetLauncherRelease
+   */
+  getLauncherRelease: {
+    methodKind: "unary";
+    input: typeof GetLauncherReleaseRequestSchema;
+    output: typeof GetLauncherReleaseResponseSchema;
   },
   /**
    * @generated from rpc cineko.service.ReleaseService.PublishClient

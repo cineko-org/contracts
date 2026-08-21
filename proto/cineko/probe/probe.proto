@@ -40,12 +40,18 @@ message ProbeHealth {
 }
 
 message RegisterRequest {
-  string installation_id = 1;
-  ProbeKind kind = 2;
+  string installation_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  ProbeKind kind = 2 [(buf.validate.field).required = true];
   string network_hint = 3;
-  repeated cineko.observation.Capability capabilities = 4;
-  int32 max_concurrency = 5;
-  cineko.common.Runtime runtime = 6;
+  repeated cineko.observation.Capability capabilities = 4 [(buf.validate.field).repeated.min_items = 1];
+  int32 max_concurrency = 5 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).int32.gt = 0
+  ];
+  cineko.common.Runtime runtime = 6 [(buf.validate.field).required = true];
 }
 
 message RegisterResponse {
@@ -60,8 +66,11 @@ message HeartbeatRequest {
   bool draining = 1;
   repeated string active_assignment_ids = 2;
   repeated cineko.observation.Capability available_capabilities = 3;
-  int32 available_slots = 4;
-  ProbeHealth health = 5;
+  int32 available_slots = 4 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).int32.gte = 0
+  ];
+  ProbeHealth health = 5 [(buf.validate.field).required = true];
 }
 
 message HeartbeatResponse {
@@ -96,8 +105,14 @@ message ClaimAssignmentResponse {
 }
 
 message HeartbeatAssignmentRequest {
-  string assignment_id = 1;
-  string lease_token = 2;
+  string assignment_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string lease_token = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
 }
 
 message HeartbeatAssignmentResponse {
@@ -105,7 +120,13 @@ message HeartbeatAssignmentResponse {
 }
 
 message SubmitAssignmentResultRequest {
-  string assignment_id = 1;
-  string lease_token = 2;
-  cineko.observation.AssignmentResult result = 3;
+  string assignment_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string lease_token = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  cineko.observation.AssignmentResult result = 3 [(buf.validate.field).required = true];
 }
