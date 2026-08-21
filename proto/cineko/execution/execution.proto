@@ -25,7 +25,10 @@ message Command {
 }
 
 message ClaimRequest {
-  string installation_id = 1;
+  string installation_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
 }
 message NoCommand {
   google.protobuf.Timestamp retry_at = 1;
@@ -41,7 +44,14 @@ message ClaimResponse {
 }
 
 message HeartbeatRequest {
-  string lease_token = 1;
+  string command_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string lease_token = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
 }
 message HeartbeatResponse {
   google.protobuf.Timestamp lease_expires_at = 1;
@@ -56,12 +66,26 @@ message RetryRequested {
 }
 
 message ResultRequest {
-  string lease_token = 1;
+  string command_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string lease_token = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
   oneof outcome {
     option (buf.validate.oneof).required = true;
 
-    Completed completed = 2;
-    Failed failed = 3;
-    RetryRequested retry_requested = 4;
+    Completed completed = 3;
+    Failed failed = 4;
+    RetryRequested retry_requested = 5;
   }
+}
+
+message RetryRequest {
+  string command_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
 }

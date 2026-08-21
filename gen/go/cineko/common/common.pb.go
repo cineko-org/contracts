@@ -1159,22 +1159,28 @@ const file_cineko_common_common_proto_rawDesc = "" +
 	"\x03day\x18\x03 \x01(\x05R\x03day\"7\n" +
 	"\tLocalTime\x12\x12\n" +
 	"\x04hour\x18\x01 \x01(\x05R\x04hour\x12\x16\n" +
-	"\x06minute\x18\x02 \x01(\x05R\x06minute\"\xa1\x01\n" +
-	"\aRuntime\x12+\n" +
-	"\x11component_version\x18\x01 \x01(\tR\x10componentVersion\x12)\n" +
-	"\x10browser_revision\x18\x02 \x01(\tR\x0fbrowserRevision\x12\x1a\n" +
-	"\bplatform\x18\x03 \x01(\tR\bplatform\x12\"\n" +
-	"\farchitecture\x18\x04 \x01(\tR\farchitecture\"I\n" +
+	"\x06minute\x18\x02 \x01(\x05R\x06minute\"\xd1\x01\n" +
+	"\aRuntime\x127\n" +
+	"\x11component_version\x18\x01 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\x10componentVersion\x125\n" +
+	"\x10browser_revision\x18\x02 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\x0fbrowserRevision\x12&\n" +
+	"\bplatform\x18\x03 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\bplatform\x12.\n" +
+	"\farchitecture\x18\x04 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\farchitecture\"I\n" +
 	"\vPageRequest\x12\x1b\n" +
 	"\tpage_size\x18\x01 \x01(\x05R\bpageSize\x12\x1d\n" +
 	"\n" +
 	"page_token\x18\x02 \x01(\tR\tpageToken\"6\n" +
 	"\fPageResponse\x12&\n" +
-	"\x0fnext_page_token\x18\x01 \x01(\tR\rnextPageToken\"^\n" +
-	"\x10MutationIdentity\x12\x1d\n" +
+	"\x0fnext_page_token\x18\x01 \x01(\tR\rnextPageToken\"v\n" +
+	"\x10MutationIdentity\x12)\n" +
 	"\n" +
-	"command_id\x18\x01 \x01(\tR\tcommandId\x12+\n" +
-	"\x11expected_revision\x18\x02 \x01(\x03R\x10expectedRevision\"\xb4\x01\n" +
+	"command_id\x18\x01 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\tcommandId\x127\n" +
+	"\x11expected_revision\x18\x02 \x01(\x03B\n" +
+	"\xbaH\a\xc8\x01\x01\"\x02(\x00R\x10expectedRevision\"\xb4\x01\n" +
 	"\x10ResourceIdentity\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1a\n" +
 	"\brevision\x18\x02 \x01(\x03R\brevision\x129\n" +

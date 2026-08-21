@@ -19,10 +19,22 @@ message LocalTime {
 }
 
 message Runtime {
-  string component_version = 1;
-  string browser_revision = 2;
-  string platform = 3;
-  string architecture = 4;
+  string component_version = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string browser_revision = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string platform = 3 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string architecture = 4 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
 }
 
 message PageRequest {
@@ -35,8 +47,14 @@ message PageResponse {
 }
 
 message MutationIdentity {
-  string command_id = 1;
-  int64 expected_revision = 2;
+  string command_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  int64 expected_revision = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).int64.gte = 0
+  ];
 }
 
 message ResourceIdentity {

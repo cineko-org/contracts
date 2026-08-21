@@ -3587,6 +3587,1516 @@ func (b0 Reservation_builder) Build() *Reservation {
 	return m0
 }
 
+type ExternalOperation struct {
+	state                    protoimpl.MessageState    `protogen:"opaque.v1"`
+	xxx_hidden_Id            *string                   `protobuf:"bytes,1,opt,name=id"`
+	xxx_hidden_UserId        *string                   `protobuf:"bytes,2,opt,name=user_id,json=userId"`
+	xxx_hidden_MonitorId     *string                   `protobuf:"bytes,3,opt,name=monitor_id,json=monitorId"`
+	xxx_hidden_ReservationId *string                   `protobuf:"bytes,4,opt,name=reservation_id,json=reservationId"`
+	xxx_hidden_RefundAmount  *string                   `protobuf:"bytes,5,opt,name=refund_amount,json=refundAmount"`
+	xxx_hidden_LastError     *string                   `protobuf:"bytes,6,opt,name=last_error,json=lastError"`
+	xxx_hidden_CreatedAt     *timestamppb.Timestamp    `protobuf:"bytes,7,opt,name=created_at,json=createdAt"`
+	xxx_hidden_UpdatedAt     *timestamppb.Timestamp    `protobuf:"bytes,8,opt,name=updated_at,json=updatedAt"`
+	xxx_hidden_Kind          isExternalOperation_Kind  `protobuf_oneof:"kind"`
+	xxx_hidden_State         isExternalOperation_State `protobuf_oneof:"state"`
+	XXX_raceDetectHookData   protoimpl.RaceDetectHookData
+	XXX_presence             [1]uint32
+	unknownFields            protoimpl.UnknownFields
+	sizeCache                protoimpl.SizeCache
+}
+
+func (x *ExternalOperation) Reset() {
+	*x = ExternalOperation{}
+	mi := &file_cineko_client_client_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ExternalOperation) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ExternalOperation) ProtoMessage() {}
+
+func (x *ExternalOperation) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_client_client_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *ExternalOperation) GetId() string {
+	if x != nil {
+		if x.xxx_hidden_Id != nil {
+			return *x.xxx_hidden_Id
+		}
+		return ""
+	}
+	return ""
+}
+
+func (x *ExternalOperation) GetUserId() string {
+	if x != nil {
+		if x.xxx_hidden_UserId != nil {
+			return *x.xxx_hidden_UserId
+		}
+		return ""
+	}
+	return ""
+}
+
+func (x *ExternalOperation) GetMonitorId() string {
+	if x != nil {
+		if x.xxx_hidden_MonitorId != nil {
+			return *x.xxx_hidden_MonitorId
+		}
+		return ""
+	}
+	return ""
+}
+
+func (x *ExternalOperation) GetReservationId() string {
+	if x != nil {
+		if x.xxx_hidden_ReservationId != nil {
+			return *x.xxx_hidden_ReservationId
+		}
+		return ""
+	}
+	return ""
+}
+
+func (x *ExternalOperation) GetRefundAmount() string {
+	if x != nil {
+		if x.xxx_hidden_RefundAmount != nil {
+			return *x.xxx_hidden_RefundAmount
+		}
+		return ""
+	}
+	return ""
+}
+
+func (x *ExternalOperation) GetLastError() string {
+	if x != nil {
+		if x.xxx_hidden_LastError != nil {
+			return *x.xxx_hidden_LastError
+		}
+		return ""
+	}
+	return ""
+}
+
+func (x *ExternalOperation) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.xxx_hidden_CreatedAt
+	}
+	return nil
+}
+
+func (x *ExternalOperation) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.xxx_hidden_UpdatedAt
+	}
+	return nil
+}
+
+func (x *ExternalOperation) GetCancellation() *CancellationOperation {
+	if x != nil {
+		if x, ok := x.xxx_hidden_Kind.(*externalOperation_Cancellation); ok {
+			return x.Cancellation
+		}
+	}
+	return nil
+}
+
+func (x *ExternalOperation) GetPrepared() *OperationPrepared {
+	if x != nil {
+		if x, ok := x.xxx_hidden_State.(*externalOperation_Prepared); ok {
+			return x.Prepared
+		}
+	}
+	return nil
+}
+
+func (x *ExternalOperation) GetUnknown() *OperationUnknown {
+	if x != nil {
+		if x, ok := x.xxx_hidden_State.(*externalOperation_Unknown); ok {
+			return x.Unknown
+		}
+	}
+	return nil
+}
+
+func (x *ExternalOperation) GetAttentionRequired() *OperationAttentionRequired {
+	if x != nil {
+		if x, ok := x.xxx_hidden_State.(*externalOperation_AttentionRequired); ok {
+			return x.AttentionRequired
+		}
+	}
+	return nil
+}
+
+func (x *ExternalOperation) GetConfirmed() *OperationConfirmed {
+	if x != nil {
+		if x, ok := x.xxx_hidden_State.(*externalOperation_Confirmed); ok {
+			return x.Confirmed
+		}
+	}
+	return nil
+}
+
+func (x *ExternalOperation) GetReconciled() *OperationReconciled {
+	if x != nil {
+		if x, ok := x.xxx_hidden_State.(*externalOperation_Reconciled); ok {
+			return x.Reconciled
+		}
+	}
+	return nil
+}
+
+func (x *ExternalOperation) SetId(v string) {
+	x.xxx_hidden_Id = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 10)
+}
+
+func (x *ExternalOperation) SetUserId(v string) {
+	x.xxx_hidden_UserId = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 10)
+}
+
+func (x *ExternalOperation) SetMonitorId(v string) {
+	x.xxx_hidden_MonitorId = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 10)
+}
+
+func (x *ExternalOperation) SetReservationId(v string) {
+	x.xxx_hidden_ReservationId = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 10)
+}
+
+func (x *ExternalOperation) SetRefundAmount(v string) {
+	x.xxx_hidden_RefundAmount = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 4, 10)
+}
+
+func (x *ExternalOperation) SetLastError(v string) {
+	x.xxx_hidden_LastError = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 5, 10)
+}
+
+func (x *ExternalOperation) SetCreatedAt(v *timestamppb.Timestamp) {
+	x.xxx_hidden_CreatedAt = v
+}
+
+func (x *ExternalOperation) SetUpdatedAt(v *timestamppb.Timestamp) {
+	x.xxx_hidden_UpdatedAt = v
+}
+
+func (x *ExternalOperation) SetCancellation(v *CancellationOperation) {
+	if v == nil {
+		x.xxx_hidden_Kind = nil
+		return
+	}
+	x.xxx_hidden_Kind = &externalOperation_Cancellation{v}
+}
+
+func (x *ExternalOperation) SetPrepared(v *OperationPrepared) {
+	if v == nil {
+		x.xxx_hidden_State = nil
+		return
+	}
+	x.xxx_hidden_State = &externalOperation_Prepared{v}
+}
+
+func (x *ExternalOperation) SetUnknown(v *OperationUnknown) {
+	if v == nil {
+		x.xxx_hidden_State = nil
+		return
+	}
+	x.xxx_hidden_State = &externalOperation_Unknown{v}
+}
+
+func (x *ExternalOperation) SetAttentionRequired(v *OperationAttentionRequired) {
+	if v == nil {
+		x.xxx_hidden_State = nil
+		return
+	}
+	x.xxx_hidden_State = &externalOperation_AttentionRequired{v}
+}
+
+func (x *ExternalOperation) SetConfirmed(v *OperationConfirmed) {
+	if v == nil {
+		x.xxx_hidden_State = nil
+		return
+	}
+	x.xxx_hidden_State = &externalOperation_Confirmed{v}
+}
+
+func (x *ExternalOperation) SetReconciled(v *OperationReconciled) {
+	if v == nil {
+		x.xxx_hidden_State = nil
+		return
+	}
+	x.xxx_hidden_State = &externalOperation_Reconciled{v}
+}
+
+func (x *ExternalOperation) HasId() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
+}
+
+func (x *ExternalOperation) HasUserId() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 1)
+}
+
+func (x *ExternalOperation) HasMonitorId() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 2)
+}
+
+func (x *ExternalOperation) HasReservationId() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 3)
+}
+
+func (x *ExternalOperation) HasRefundAmount() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 4)
+}
+
+func (x *ExternalOperation) HasLastError() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 5)
+}
+
+func (x *ExternalOperation) HasCreatedAt() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_CreatedAt != nil
+}
+
+func (x *ExternalOperation) HasUpdatedAt() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_UpdatedAt != nil
+}
+
+func (x *ExternalOperation) HasKind() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_Kind != nil
+}
+
+func (x *ExternalOperation) HasCancellation() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_Kind.(*externalOperation_Cancellation)
+	return ok
+}
+
+func (x *ExternalOperation) HasState() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_State != nil
+}
+
+func (x *ExternalOperation) HasPrepared() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_State.(*externalOperation_Prepared)
+	return ok
+}
+
+func (x *ExternalOperation) HasUnknown() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_State.(*externalOperation_Unknown)
+	return ok
+}
+
+func (x *ExternalOperation) HasAttentionRequired() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_State.(*externalOperation_AttentionRequired)
+	return ok
+}
+
+func (x *ExternalOperation) HasConfirmed() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_State.(*externalOperation_Confirmed)
+	return ok
+}
+
+func (x *ExternalOperation) HasReconciled() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_State.(*externalOperation_Reconciled)
+	return ok
+}
+
+func (x *ExternalOperation) ClearId() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
+	x.xxx_hidden_Id = nil
+}
+
+func (x *ExternalOperation) ClearUserId() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 1)
+	x.xxx_hidden_UserId = nil
+}
+
+func (x *ExternalOperation) ClearMonitorId() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 2)
+	x.xxx_hidden_MonitorId = nil
+}
+
+func (x *ExternalOperation) ClearReservationId() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 3)
+	x.xxx_hidden_ReservationId = nil
+}
+
+func (x *ExternalOperation) ClearRefundAmount() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 4)
+	x.xxx_hidden_RefundAmount = nil
+}
+
+func (x *ExternalOperation) ClearLastError() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 5)
+	x.xxx_hidden_LastError = nil
+}
+
+func (x *ExternalOperation) ClearCreatedAt() {
+	x.xxx_hidden_CreatedAt = nil
+}
+
+func (x *ExternalOperation) ClearUpdatedAt() {
+	x.xxx_hidden_UpdatedAt = nil
+}
+
+func (x *ExternalOperation) ClearKind() {
+	x.xxx_hidden_Kind = nil
+}
+
+func (x *ExternalOperation) ClearCancellation() {
+	if _, ok := x.xxx_hidden_Kind.(*externalOperation_Cancellation); ok {
+		x.xxx_hidden_Kind = nil
+	}
+}
+
+func (x *ExternalOperation) ClearState() {
+	x.xxx_hidden_State = nil
+}
+
+func (x *ExternalOperation) ClearPrepared() {
+	if _, ok := x.xxx_hidden_State.(*externalOperation_Prepared); ok {
+		x.xxx_hidden_State = nil
+	}
+}
+
+func (x *ExternalOperation) ClearUnknown() {
+	if _, ok := x.xxx_hidden_State.(*externalOperation_Unknown); ok {
+		x.xxx_hidden_State = nil
+	}
+}
+
+func (x *ExternalOperation) ClearAttentionRequired() {
+	if _, ok := x.xxx_hidden_State.(*externalOperation_AttentionRequired); ok {
+		x.xxx_hidden_State = nil
+	}
+}
+
+func (x *ExternalOperation) ClearConfirmed() {
+	if _, ok := x.xxx_hidden_State.(*externalOperation_Confirmed); ok {
+		x.xxx_hidden_State = nil
+	}
+}
+
+func (x *ExternalOperation) ClearReconciled() {
+	if _, ok := x.xxx_hidden_State.(*externalOperation_Reconciled); ok {
+		x.xxx_hidden_State = nil
+	}
+}
+
+const ExternalOperation_Kind_not_set_case case_ExternalOperation_Kind = 0
+const ExternalOperation_Cancellation_case case_ExternalOperation_Kind = 9
+
+func (x *ExternalOperation) WhichKind() case_ExternalOperation_Kind {
+	if x == nil {
+		return ExternalOperation_Kind_not_set_case
+	}
+	switch x.xxx_hidden_Kind.(type) {
+	case *externalOperation_Cancellation:
+		return ExternalOperation_Cancellation_case
+	default:
+		return ExternalOperation_Kind_not_set_case
+	}
+}
+
+const ExternalOperation_State_not_set_case case_ExternalOperation_State = 0
+const ExternalOperation_Prepared_case case_ExternalOperation_State = 10
+const ExternalOperation_Unknown_case case_ExternalOperation_State = 11
+const ExternalOperation_AttentionRequired_case case_ExternalOperation_State = 12
+const ExternalOperation_Confirmed_case case_ExternalOperation_State = 13
+const ExternalOperation_Reconciled_case case_ExternalOperation_State = 14
+
+func (x *ExternalOperation) WhichState() case_ExternalOperation_State {
+	if x == nil {
+		return ExternalOperation_State_not_set_case
+	}
+	switch x.xxx_hidden_State.(type) {
+	case *externalOperation_Prepared:
+		return ExternalOperation_Prepared_case
+	case *externalOperation_Unknown:
+		return ExternalOperation_Unknown_case
+	case *externalOperation_AttentionRequired:
+		return ExternalOperation_AttentionRequired_case
+	case *externalOperation_Confirmed:
+		return ExternalOperation_Confirmed_case
+	case *externalOperation_Reconciled:
+		return ExternalOperation_Reconciled_case
+	default:
+		return ExternalOperation_State_not_set_case
+	}
+}
+
+type ExternalOperation_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	Id            *string
+	UserId        *string
+	MonitorId     *string
+	ReservationId *string
+	RefundAmount  *string
+	LastError     *string
+	CreatedAt     *timestamppb.Timestamp
+	UpdatedAt     *timestamppb.Timestamp
+	// Fields of oneof xxx_hidden_Kind:
+	Cancellation *CancellationOperation
+	// -- end of xxx_hidden_Kind
+	// Fields of oneof xxx_hidden_State:
+	Prepared          *OperationPrepared
+	Unknown           *OperationUnknown
+	AttentionRequired *OperationAttentionRequired
+	Confirmed         *OperationConfirmed
+	Reconciled        *OperationReconciled
+	// -- end of xxx_hidden_State
+}
+
+func (b0 ExternalOperation_builder) Build() *ExternalOperation {
+	m0 := &ExternalOperation{}
+	b, x := &b0, m0
+	_, _ = b, x
+	if b.Id != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 10)
+		x.xxx_hidden_Id = b.Id
+	}
+	if b.UserId != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 10)
+		x.xxx_hidden_UserId = b.UserId
+	}
+	if b.MonitorId != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 10)
+		x.xxx_hidden_MonitorId = b.MonitorId
+	}
+	if b.ReservationId != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 10)
+		x.xxx_hidden_ReservationId = b.ReservationId
+	}
+	if b.RefundAmount != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 4, 10)
+		x.xxx_hidden_RefundAmount = b.RefundAmount
+	}
+	if b.LastError != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 5, 10)
+		x.xxx_hidden_LastError = b.LastError
+	}
+	x.xxx_hidden_CreatedAt = b.CreatedAt
+	x.xxx_hidden_UpdatedAt = b.UpdatedAt
+	if b.Cancellation != nil {
+		x.xxx_hidden_Kind = &externalOperation_Cancellation{b.Cancellation}
+	}
+	if b.Prepared != nil {
+		x.xxx_hidden_State = &externalOperation_Prepared{b.Prepared}
+	}
+	if b.Unknown != nil {
+		x.xxx_hidden_State = &externalOperation_Unknown{b.Unknown}
+	}
+	if b.AttentionRequired != nil {
+		x.xxx_hidden_State = &externalOperation_AttentionRequired{b.AttentionRequired}
+	}
+	if b.Confirmed != nil {
+		x.xxx_hidden_State = &externalOperation_Confirmed{b.Confirmed}
+	}
+	if b.Reconciled != nil {
+		x.xxx_hidden_State = &externalOperation_Reconciled{b.Reconciled}
+	}
+	return m0
+}
+
+type case_ExternalOperation_Kind protoreflect.FieldNumber
+
+func (x case_ExternalOperation_Kind) String() string {
+	md := file_cineko_client_client_proto_msgTypes[22].Descriptor()
+	if x == 0 {
+		return "not set"
+	}
+	return protoimpl.X.MessageFieldStringOf(md, protoreflect.FieldNumber(x))
+}
+
+type case_ExternalOperation_State protoreflect.FieldNumber
+
+func (x case_ExternalOperation_State) String() string {
+	md := file_cineko_client_client_proto_msgTypes[22].Descriptor()
+	if x == 0 {
+		return "not set"
+	}
+	return protoimpl.X.MessageFieldStringOf(md, protoreflect.FieldNumber(x))
+}
+
+type isExternalOperation_Kind interface {
+	isExternalOperation_Kind()
+}
+
+type externalOperation_Cancellation struct {
+	Cancellation *CancellationOperation `protobuf:"bytes,9,opt,name=cancellation,oneof"`
+}
+
+func (*externalOperation_Cancellation) isExternalOperation_Kind() {}
+
+type isExternalOperation_State interface {
+	isExternalOperation_State()
+}
+
+type externalOperation_Prepared struct {
+	Prepared *OperationPrepared `protobuf:"bytes,10,opt,name=prepared,oneof"`
+}
+
+type externalOperation_Unknown struct {
+	Unknown *OperationUnknown `protobuf:"bytes,11,opt,name=unknown,oneof"`
+}
+
+type externalOperation_AttentionRequired struct {
+	AttentionRequired *OperationAttentionRequired `protobuf:"bytes,12,opt,name=attention_required,json=attentionRequired,oneof"`
+}
+
+type externalOperation_Confirmed struct {
+	Confirmed *OperationConfirmed `protobuf:"bytes,13,opt,name=confirmed,oneof"`
+}
+
+type externalOperation_Reconciled struct {
+	Reconciled *OperationReconciled `protobuf:"bytes,14,opt,name=reconciled,oneof"`
+}
+
+func (*externalOperation_Prepared) isExternalOperation_State() {}
+
+func (*externalOperation_Unknown) isExternalOperation_State() {}
+
+func (*externalOperation_AttentionRequired) isExternalOperation_State() {}
+
+func (*externalOperation_Confirmed) isExternalOperation_State() {}
+
+func (*externalOperation_Reconciled) isExternalOperation_State() {}
+
+type CancellationOperation struct {
+	state         protoimpl.MessageState `protogen:"opaque.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CancellationOperation) Reset() {
+	*x = CancellationOperation{}
+	mi := &file_cineko_client_client_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CancellationOperation) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CancellationOperation) ProtoMessage() {}
+
+func (x *CancellationOperation) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_client_client_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+type CancellationOperation_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+}
+
+func (b0 CancellationOperation_builder) Build() *CancellationOperation {
+	m0 := &CancellationOperation{}
+	b, x := &b0, m0
+	_, _ = b, x
+	return m0
+}
+
+type OperationPrepared struct {
+	state         protoimpl.MessageState `protogen:"opaque.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *OperationPrepared) Reset() {
+	*x = OperationPrepared{}
+	mi := &file_cineko_client_client_proto_msgTypes[24]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *OperationPrepared) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OperationPrepared) ProtoMessage() {}
+
+func (x *OperationPrepared) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_client_client_proto_msgTypes[24]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+type OperationPrepared_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+}
+
+func (b0 OperationPrepared_builder) Build() *OperationPrepared {
+	m0 := &OperationPrepared{}
+	b, x := &b0, m0
+	_, _ = b, x
+	return m0
+}
+
+type OperationUnknown struct {
+	state         protoimpl.MessageState `protogen:"opaque.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *OperationUnknown) Reset() {
+	*x = OperationUnknown{}
+	mi := &file_cineko_client_client_proto_msgTypes[25]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *OperationUnknown) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OperationUnknown) ProtoMessage() {}
+
+func (x *OperationUnknown) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_client_client_proto_msgTypes[25]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+type OperationUnknown_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+}
+
+func (b0 OperationUnknown_builder) Build() *OperationUnknown {
+	m0 := &OperationUnknown{}
+	b, x := &b0, m0
+	_, _ = b, x
+	return m0
+}
+
+type OperationAttentionRequired struct {
+	state         protoimpl.MessageState `protogen:"opaque.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *OperationAttentionRequired) Reset() {
+	*x = OperationAttentionRequired{}
+	mi := &file_cineko_client_client_proto_msgTypes[26]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *OperationAttentionRequired) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OperationAttentionRequired) ProtoMessage() {}
+
+func (x *OperationAttentionRequired) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_client_client_proto_msgTypes[26]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+type OperationAttentionRequired_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+}
+
+func (b0 OperationAttentionRequired_builder) Build() *OperationAttentionRequired {
+	m0 := &OperationAttentionRequired{}
+	b, x := &b0, m0
+	_, _ = b, x
+	return m0
+}
+
+type OperationConfirmed struct {
+	state         protoimpl.MessageState `protogen:"opaque.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *OperationConfirmed) Reset() {
+	*x = OperationConfirmed{}
+	mi := &file_cineko_client_client_proto_msgTypes[27]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *OperationConfirmed) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OperationConfirmed) ProtoMessage() {}
+
+func (x *OperationConfirmed) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_client_client_proto_msgTypes[27]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+type OperationConfirmed_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+}
+
+func (b0 OperationConfirmed_builder) Build() *OperationConfirmed {
+	m0 := &OperationConfirmed{}
+	b, x := &b0, m0
+	_, _ = b, x
+	return m0
+}
+
+type OperationReconciled struct {
+	state         protoimpl.MessageState `protogen:"opaque.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *OperationReconciled) Reset() {
+	*x = OperationReconciled{}
+	mi := &file_cineko_client_client_proto_msgTypes[28]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *OperationReconciled) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*OperationReconciled) ProtoMessage() {}
+
+func (x *OperationReconciled) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_client_client_proto_msgTypes[28]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+type OperationReconciled_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+}
+
+func (b0 OperationReconciled_builder) Build() *OperationReconciled {
+	m0 := &OperationReconciled{}
+	b, x := &b0, m0
+	_, _ = b, x
+	return m0
+}
+
+type AppEvent struct {
+	state                  protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_Id          *string                `protobuf:"bytes,1,opt,name=id"`
+	xxx_hidden_UserId      *string                `protobuf:"bytes,2,opt,name=user_id,json=userId"`
+	xxx_hidden_Kind        *string                `protobuf:"bytes,3,opt,name=kind"`
+	xxx_hidden_Message     *string                `protobuf:"bytes,4,opt,name=message"`
+	xxx_hidden_CreatedAt   *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt"`
+	xxx_hidden_ReadAt      *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=read_at,json=readAt"`
+	xxx_hidden_Tone        isAppEvent_Tone        `protobuf_oneof:"tone"`
+	XXX_raceDetectHookData protoimpl.RaceDetectHookData
+	XXX_presence           [1]uint32
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
+}
+
+func (x *AppEvent) Reset() {
+	*x = AppEvent{}
+	mi := &file_cineko_client_client_proto_msgTypes[29]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AppEvent) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AppEvent) ProtoMessage() {}
+
+func (x *AppEvent) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_client_client_proto_msgTypes[29]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *AppEvent) GetId() string {
+	if x != nil {
+		if x.xxx_hidden_Id != nil {
+			return *x.xxx_hidden_Id
+		}
+		return ""
+	}
+	return ""
+}
+
+func (x *AppEvent) GetUserId() string {
+	if x != nil {
+		if x.xxx_hidden_UserId != nil {
+			return *x.xxx_hidden_UserId
+		}
+		return ""
+	}
+	return ""
+}
+
+func (x *AppEvent) GetKind() string {
+	if x != nil {
+		if x.xxx_hidden_Kind != nil {
+			return *x.xxx_hidden_Kind
+		}
+		return ""
+	}
+	return ""
+}
+
+func (x *AppEvent) GetMessage() string {
+	if x != nil {
+		if x.xxx_hidden_Message != nil {
+			return *x.xxx_hidden_Message
+		}
+		return ""
+	}
+	return ""
+}
+
+func (x *AppEvent) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.xxx_hidden_CreatedAt
+	}
+	return nil
+}
+
+func (x *AppEvent) GetReadAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.xxx_hidden_ReadAt
+	}
+	return nil
+}
+
+func (x *AppEvent) GetInfo() *EventInfo {
+	if x != nil {
+		if x, ok := x.xxx_hidden_Tone.(*appEvent_Info); ok {
+			return x.Info
+		}
+	}
+	return nil
+}
+
+func (x *AppEvent) GetSuccess() *EventSuccess {
+	if x != nil {
+		if x, ok := x.xxx_hidden_Tone.(*appEvent_Success); ok {
+			return x.Success
+		}
+	}
+	return nil
+}
+
+func (x *AppEvent) GetWarning() *EventWarning {
+	if x != nil {
+		if x, ok := x.xxx_hidden_Tone.(*appEvent_Warning); ok {
+			return x.Warning
+		}
+	}
+	return nil
+}
+
+func (x *AppEvent) GetError() *EventError {
+	if x != nil {
+		if x, ok := x.xxx_hidden_Tone.(*appEvent_Error); ok {
+			return x.Error
+		}
+	}
+	return nil
+}
+
+func (x *AppEvent) SetId(v string) {
+	x.xxx_hidden_Id = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 7)
+}
+
+func (x *AppEvent) SetUserId(v string) {
+	x.xxx_hidden_UserId = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 7)
+}
+
+func (x *AppEvent) SetKind(v string) {
+	x.xxx_hidden_Kind = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 7)
+}
+
+func (x *AppEvent) SetMessage(v string) {
+	x.xxx_hidden_Message = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 7)
+}
+
+func (x *AppEvent) SetCreatedAt(v *timestamppb.Timestamp) {
+	x.xxx_hidden_CreatedAt = v
+}
+
+func (x *AppEvent) SetReadAt(v *timestamppb.Timestamp) {
+	x.xxx_hidden_ReadAt = v
+}
+
+func (x *AppEvent) SetInfo(v *EventInfo) {
+	if v == nil {
+		x.xxx_hidden_Tone = nil
+		return
+	}
+	x.xxx_hidden_Tone = &appEvent_Info{v}
+}
+
+func (x *AppEvent) SetSuccess(v *EventSuccess) {
+	if v == nil {
+		x.xxx_hidden_Tone = nil
+		return
+	}
+	x.xxx_hidden_Tone = &appEvent_Success{v}
+}
+
+func (x *AppEvent) SetWarning(v *EventWarning) {
+	if v == nil {
+		x.xxx_hidden_Tone = nil
+		return
+	}
+	x.xxx_hidden_Tone = &appEvent_Warning{v}
+}
+
+func (x *AppEvent) SetError(v *EventError) {
+	if v == nil {
+		x.xxx_hidden_Tone = nil
+		return
+	}
+	x.xxx_hidden_Tone = &appEvent_Error{v}
+}
+
+func (x *AppEvent) HasId() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
+}
+
+func (x *AppEvent) HasUserId() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 1)
+}
+
+func (x *AppEvent) HasKind() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 2)
+}
+
+func (x *AppEvent) HasMessage() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 3)
+}
+
+func (x *AppEvent) HasCreatedAt() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_CreatedAt != nil
+}
+
+func (x *AppEvent) HasReadAt() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_ReadAt != nil
+}
+
+func (x *AppEvent) HasTone() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_Tone != nil
+}
+
+func (x *AppEvent) HasInfo() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_Tone.(*appEvent_Info)
+	return ok
+}
+
+func (x *AppEvent) HasSuccess() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_Tone.(*appEvent_Success)
+	return ok
+}
+
+func (x *AppEvent) HasWarning() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_Tone.(*appEvent_Warning)
+	return ok
+}
+
+func (x *AppEvent) HasError() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_Tone.(*appEvent_Error)
+	return ok
+}
+
+func (x *AppEvent) ClearId() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
+	x.xxx_hidden_Id = nil
+}
+
+func (x *AppEvent) ClearUserId() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 1)
+	x.xxx_hidden_UserId = nil
+}
+
+func (x *AppEvent) ClearKind() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 2)
+	x.xxx_hidden_Kind = nil
+}
+
+func (x *AppEvent) ClearMessage() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 3)
+	x.xxx_hidden_Message = nil
+}
+
+func (x *AppEvent) ClearCreatedAt() {
+	x.xxx_hidden_CreatedAt = nil
+}
+
+func (x *AppEvent) ClearReadAt() {
+	x.xxx_hidden_ReadAt = nil
+}
+
+func (x *AppEvent) ClearTone() {
+	x.xxx_hidden_Tone = nil
+}
+
+func (x *AppEvent) ClearInfo() {
+	if _, ok := x.xxx_hidden_Tone.(*appEvent_Info); ok {
+		x.xxx_hidden_Tone = nil
+	}
+}
+
+func (x *AppEvent) ClearSuccess() {
+	if _, ok := x.xxx_hidden_Tone.(*appEvent_Success); ok {
+		x.xxx_hidden_Tone = nil
+	}
+}
+
+func (x *AppEvent) ClearWarning() {
+	if _, ok := x.xxx_hidden_Tone.(*appEvent_Warning); ok {
+		x.xxx_hidden_Tone = nil
+	}
+}
+
+func (x *AppEvent) ClearError() {
+	if _, ok := x.xxx_hidden_Tone.(*appEvent_Error); ok {
+		x.xxx_hidden_Tone = nil
+	}
+}
+
+const AppEvent_Tone_not_set_case case_AppEvent_Tone = 0
+const AppEvent_Info_case case_AppEvent_Tone = 7
+const AppEvent_Success_case case_AppEvent_Tone = 8
+const AppEvent_Warning_case case_AppEvent_Tone = 9
+const AppEvent_Error_case case_AppEvent_Tone = 10
+
+func (x *AppEvent) WhichTone() case_AppEvent_Tone {
+	if x == nil {
+		return AppEvent_Tone_not_set_case
+	}
+	switch x.xxx_hidden_Tone.(type) {
+	case *appEvent_Info:
+		return AppEvent_Info_case
+	case *appEvent_Success:
+		return AppEvent_Success_case
+	case *appEvent_Warning:
+		return AppEvent_Warning_case
+	case *appEvent_Error:
+		return AppEvent_Error_case
+	default:
+		return AppEvent_Tone_not_set_case
+	}
+}
+
+type AppEvent_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	Id        *string
+	UserId    *string
+	Kind      *string
+	Message   *string
+	CreatedAt *timestamppb.Timestamp
+	ReadAt    *timestamppb.Timestamp
+	// Fields of oneof xxx_hidden_Tone:
+	Info    *EventInfo
+	Success *EventSuccess
+	Warning *EventWarning
+	Error   *EventError
+	// -- end of xxx_hidden_Tone
+}
+
+func (b0 AppEvent_builder) Build() *AppEvent {
+	m0 := &AppEvent{}
+	b, x := &b0, m0
+	_, _ = b, x
+	if b.Id != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 7)
+		x.xxx_hidden_Id = b.Id
+	}
+	if b.UserId != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 7)
+		x.xxx_hidden_UserId = b.UserId
+	}
+	if b.Kind != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 7)
+		x.xxx_hidden_Kind = b.Kind
+	}
+	if b.Message != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 7)
+		x.xxx_hidden_Message = b.Message
+	}
+	x.xxx_hidden_CreatedAt = b.CreatedAt
+	x.xxx_hidden_ReadAt = b.ReadAt
+	if b.Info != nil {
+		x.xxx_hidden_Tone = &appEvent_Info{b.Info}
+	}
+	if b.Success != nil {
+		x.xxx_hidden_Tone = &appEvent_Success{b.Success}
+	}
+	if b.Warning != nil {
+		x.xxx_hidden_Tone = &appEvent_Warning{b.Warning}
+	}
+	if b.Error != nil {
+		x.xxx_hidden_Tone = &appEvent_Error{b.Error}
+	}
+	return m0
+}
+
+type case_AppEvent_Tone protoreflect.FieldNumber
+
+func (x case_AppEvent_Tone) String() string {
+	md := file_cineko_client_client_proto_msgTypes[29].Descriptor()
+	if x == 0 {
+		return "not set"
+	}
+	return protoimpl.X.MessageFieldStringOf(md, protoreflect.FieldNumber(x))
+}
+
+type isAppEvent_Tone interface {
+	isAppEvent_Tone()
+}
+
+type appEvent_Info struct {
+	Info *EventInfo `protobuf:"bytes,7,opt,name=info,oneof"`
+}
+
+type appEvent_Success struct {
+	Success *EventSuccess `protobuf:"bytes,8,opt,name=success,oneof"`
+}
+
+type appEvent_Warning struct {
+	Warning *EventWarning `protobuf:"bytes,9,opt,name=warning,oneof"`
+}
+
+type appEvent_Error struct {
+	Error *EventError `protobuf:"bytes,10,opt,name=error,oneof"`
+}
+
+func (*appEvent_Info) isAppEvent_Tone() {}
+
+func (*appEvent_Success) isAppEvent_Tone() {}
+
+func (*appEvent_Warning) isAppEvent_Tone() {}
+
+func (*appEvent_Error) isAppEvent_Tone() {}
+
+type EventInfo struct {
+	state         protoimpl.MessageState `protogen:"opaque.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EventInfo) Reset() {
+	*x = EventInfo{}
+	mi := &file_cineko_client_client_proto_msgTypes[30]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EventInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventInfo) ProtoMessage() {}
+
+func (x *EventInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_client_client_proto_msgTypes[30]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+type EventInfo_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+}
+
+func (b0 EventInfo_builder) Build() *EventInfo {
+	m0 := &EventInfo{}
+	b, x := &b0, m0
+	_, _ = b, x
+	return m0
+}
+
+type EventSuccess struct {
+	state         protoimpl.MessageState `protogen:"opaque.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EventSuccess) Reset() {
+	*x = EventSuccess{}
+	mi := &file_cineko_client_client_proto_msgTypes[31]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EventSuccess) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventSuccess) ProtoMessage() {}
+
+func (x *EventSuccess) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_client_client_proto_msgTypes[31]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+type EventSuccess_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+}
+
+func (b0 EventSuccess_builder) Build() *EventSuccess {
+	m0 := &EventSuccess{}
+	b, x := &b0, m0
+	_, _ = b, x
+	return m0
+}
+
+type EventWarning struct {
+	state         protoimpl.MessageState `protogen:"opaque.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EventWarning) Reset() {
+	*x = EventWarning{}
+	mi := &file_cineko_client_client_proto_msgTypes[32]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EventWarning) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventWarning) ProtoMessage() {}
+
+func (x *EventWarning) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_client_client_proto_msgTypes[32]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+type EventWarning_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+}
+
+func (b0 EventWarning_builder) Build() *EventWarning {
+	m0 := &EventWarning{}
+	b, x := &b0, m0
+	_, _ = b, x
+	return m0
+}
+
+type EventError struct {
+	state         protoimpl.MessageState `protogen:"opaque.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EventError) Reset() {
+	*x = EventError{}
+	mi := &file_cineko_client_client_proto_msgTypes[33]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EventError) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventError) ProtoMessage() {}
+
+func (x *EventError) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_client_client_proto_msgTypes[33]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+type EventError_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+}
+
+func (b0 EventError_builder) Build() *EventError {
+	m0 := &EventError{}
+	b, x := &b0, m0
+	_, _ = b, x
+	return m0
+}
+
 type Resource struct {
 	state               protoimpl.MessageState   `protogen:"opaque.v1"`
 	xxx_hidden_Identity *common.ResourceIdentity `protobuf:"bytes,1,opt,name=identity"`
@@ -3597,7 +5107,7 @@ type Resource struct {
 
 func (x *Resource) Reset() {
 	*x = Resource{}
-	mi := &file_cineko_client_client_proto_msgTypes[22]
+	mi := &file_cineko_client_client_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3609,7 +5119,7 @@ func (x *Resource) String() string {
 func (*Resource) ProtoMessage() {}
 
 func (x *Resource) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_client_client_proto_msgTypes[22]
+	mi := &file_cineko_client_client_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3663,6 +5173,24 @@ func (x *Resource) GetReservation() *Reservation {
 	return nil
 }
 
+func (x *Resource) GetExternalOperation() *ExternalOperation {
+	if x != nil {
+		if x, ok := x.xxx_hidden_Resource.(*resource_ExternalOperation); ok {
+			return x.ExternalOperation
+		}
+	}
+	return nil
+}
+
+func (x *Resource) GetAppEvent() *AppEvent {
+	if x != nil {
+		if x, ok := x.xxx_hidden_Resource.(*resource_AppEvent); ok {
+			return x.AppEvent
+		}
+	}
+	return nil
+}
+
 func (x *Resource) SetIdentity(v *common.ResourceIdentity) {
 	x.xxx_hidden_Identity = v
 }
@@ -3697,6 +5225,22 @@ func (x *Resource) SetReservation(v *Reservation) {
 		return
 	}
 	x.xxx_hidden_Resource = &resource_Reservation{v}
+}
+
+func (x *Resource) SetExternalOperation(v *ExternalOperation) {
+	if v == nil {
+		x.xxx_hidden_Resource = nil
+		return
+	}
+	x.xxx_hidden_Resource = &resource_ExternalOperation{v}
+}
+
+func (x *Resource) SetAppEvent(v *AppEvent) {
+	if v == nil {
+		x.xxx_hidden_Resource = nil
+		return
+	}
+	x.xxx_hidden_Resource = &resource_AppEvent{v}
 }
 
 func (x *Resource) HasIdentity() bool {
@@ -3745,6 +5289,22 @@ func (x *Resource) HasReservation() bool {
 	return ok
 }
 
+func (x *Resource) HasExternalOperation() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_Resource.(*resource_ExternalOperation)
+	return ok
+}
+
+func (x *Resource) HasAppEvent() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_Resource.(*resource_AppEvent)
+	return ok
+}
+
 func (x *Resource) ClearIdentity() {
 	x.xxx_hidden_Identity = nil
 }
@@ -3777,11 +5337,25 @@ func (x *Resource) ClearReservation() {
 	}
 }
 
+func (x *Resource) ClearExternalOperation() {
+	if _, ok := x.xxx_hidden_Resource.(*resource_ExternalOperation); ok {
+		x.xxx_hidden_Resource = nil
+	}
+}
+
+func (x *Resource) ClearAppEvent() {
+	if _, ok := x.xxx_hidden_Resource.(*resource_AppEvent); ok {
+		x.xxx_hidden_Resource = nil
+	}
+}
+
 const Resource_Resource_not_set_case case_Resource_Resource = 0
 const Resource_Settings_case case_Resource_Resource = 2
 const Resource_Preset_case case_Resource_Resource = 3
 const Resource_Monitor_case case_Resource_Resource = 4
 const Resource_Reservation_case case_Resource_Resource = 5
+const Resource_ExternalOperation_case case_Resource_Resource = 6
+const Resource_AppEvent_case case_Resource_Resource = 7
 
 func (x *Resource) WhichResource() case_Resource_Resource {
 	if x == nil {
@@ -3796,6 +5370,10 @@ func (x *Resource) WhichResource() case_Resource_Resource {
 		return Resource_Monitor_case
 	case *resource_Reservation:
 		return Resource_Reservation_case
+	case *resource_ExternalOperation:
+		return Resource_ExternalOperation_case
+	case *resource_AppEvent:
+		return Resource_AppEvent_case
 	default:
 		return Resource_Resource_not_set_case
 	}
@@ -3806,10 +5384,12 @@ type Resource_builder struct {
 
 	Identity *common.ResourceIdentity
 	// Fields of oneof xxx_hidden_Resource:
-	Settings    *Settings
-	Preset      *Preset
-	Monitor     *Monitor
-	Reservation *Reservation
+	Settings          *Settings
+	Preset            *Preset
+	Monitor           *Monitor
+	Reservation       *Reservation
+	ExternalOperation *ExternalOperation
+	AppEvent          *AppEvent
 	// -- end of xxx_hidden_Resource
 }
 
@@ -3830,13 +5410,19 @@ func (b0 Resource_builder) Build() *Resource {
 	if b.Reservation != nil {
 		x.xxx_hidden_Resource = &resource_Reservation{b.Reservation}
 	}
+	if b.ExternalOperation != nil {
+		x.xxx_hidden_Resource = &resource_ExternalOperation{b.ExternalOperation}
+	}
+	if b.AppEvent != nil {
+		x.xxx_hidden_Resource = &resource_AppEvent{b.AppEvent}
+	}
 	return m0
 }
 
 type case_Resource_Resource protoreflect.FieldNumber
 
 func (x case_Resource_Resource) String() string {
-	md := file_cineko_client_client_proto_msgTypes[22].Descriptor()
+	md := file_cineko_client_client_proto_msgTypes[34].Descriptor()
 	if x == 0 {
 		return "not set"
 	}
@@ -3863,6 +5449,14 @@ type resource_Reservation struct {
 	Reservation *Reservation `protobuf:"bytes,5,opt,name=reservation,oneof"`
 }
 
+type resource_ExternalOperation struct {
+	ExternalOperation *ExternalOperation `protobuf:"bytes,6,opt,name=external_operation,json=externalOperation,oneof"`
+}
+
+type resource_AppEvent struct {
+	AppEvent *AppEvent `protobuf:"bytes,7,opt,name=app_event,json=appEvent,oneof"`
+}
+
 func (*resource_Settings) isResource_Resource() {}
 
 func (*resource_Preset) isResource_Resource() {}
@@ -3870,6 +5464,615 @@ func (*resource_Preset) isResource_Resource() {}
 func (*resource_Monitor) isResource_Resource() {}
 
 func (*resource_Reservation) isResource_Resource() {}
+
+func (*resource_ExternalOperation) isResource_Resource() {}
+
+func (*resource_AppEvent) isResource_Resource() {}
+
+type SettingsResource struct {
+	state         protoimpl.MessageState `protogen:"opaque.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SettingsResource) Reset() {
+	*x = SettingsResource{}
+	mi := &file_cineko_client_client_proto_msgTypes[35]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SettingsResource) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SettingsResource) ProtoMessage() {}
+
+func (x *SettingsResource) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_client_client_proto_msgTypes[35]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+type SettingsResource_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+}
+
+func (b0 SettingsResource_builder) Build() *SettingsResource {
+	m0 := &SettingsResource{}
+	b, x := &b0, m0
+	_, _ = b, x
+	return m0
+}
+
+type PresetResource struct {
+	state         protoimpl.MessageState `protogen:"opaque.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PresetResource) Reset() {
+	*x = PresetResource{}
+	mi := &file_cineko_client_client_proto_msgTypes[36]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PresetResource) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PresetResource) ProtoMessage() {}
+
+func (x *PresetResource) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_client_client_proto_msgTypes[36]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+type PresetResource_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+}
+
+func (b0 PresetResource_builder) Build() *PresetResource {
+	m0 := &PresetResource{}
+	b, x := &b0, m0
+	_, _ = b, x
+	return m0
+}
+
+type MonitorResource struct {
+	state         protoimpl.MessageState `protogen:"opaque.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MonitorResource) Reset() {
+	*x = MonitorResource{}
+	mi := &file_cineko_client_client_proto_msgTypes[37]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MonitorResource) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MonitorResource) ProtoMessage() {}
+
+func (x *MonitorResource) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_client_client_proto_msgTypes[37]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+type MonitorResource_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+}
+
+func (b0 MonitorResource_builder) Build() *MonitorResource {
+	m0 := &MonitorResource{}
+	b, x := &b0, m0
+	_, _ = b, x
+	return m0
+}
+
+type ReservationResource struct {
+	state         protoimpl.MessageState `protogen:"opaque.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ReservationResource) Reset() {
+	*x = ReservationResource{}
+	mi := &file_cineko_client_client_proto_msgTypes[38]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ReservationResource) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ReservationResource) ProtoMessage() {}
+
+func (x *ReservationResource) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_client_client_proto_msgTypes[38]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+type ReservationResource_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+}
+
+func (b0 ReservationResource_builder) Build() *ReservationResource {
+	m0 := &ReservationResource{}
+	b, x := &b0, m0
+	_, _ = b, x
+	return m0
+}
+
+type ExternalOperationResource struct {
+	state         protoimpl.MessageState `protogen:"opaque.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ExternalOperationResource) Reset() {
+	*x = ExternalOperationResource{}
+	mi := &file_cineko_client_client_proto_msgTypes[39]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ExternalOperationResource) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ExternalOperationResource) ProtoMessage() {}
+
+func (x *ExternalOperationResource) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_client_client_proto_msgTypes[39]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+type ExternalOperationResource_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+}
+
+func (b0 ExternalOperationResource_builder) Build() *ExternalOperationResource {
+	m0 := &ExternalOperationResource{}
+	b, x := &b0, m0
+	_, _ = b, x
+	return m0
+}
+
+type AppEventResource struct {
+	state         protoimpl.MessageState `protogen:"opaque.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AppEventResource) Reset() {
+	*x = AppEventResource{}
+	mi := &file_cineko_client_client_proto_msgTypes[40]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AppEventResource) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AppEventResource) ProtoMessage() {}
+
+func (x *AppEventResource) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_client_client_proto_msgTypes[40]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+type AppEventResource_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+}
+
+func (b0 AppEventResource_builder) Build() *AppEventResource {
+	m0 := &AppEventResource{}
+	b, x := &b0, m0
+	_, _ = b, x
+	return m0
+}
+
+type ResourceKind struct {
+	state           protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_Kind isResourceKind_Kind    `protobuf_oneof:"kind"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *ResourceKind) Reset() {
+	*x = ResourceKind{}
+	mi := &file_cineko_client_client_proto_msgTypes[41]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ResourceKind) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ResourceKind) ProtoMessage() {}
+
+func (x *ResourceKind) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_client_client_proto_msgTypes[41]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *ResourceKind) GetSettings() *SettingsResource {
+	if x != nil {
+		if x, ok := x.xxx_hidden_Kind.(*resourceKind_Settings); ok {
+			return x.Settings
+		}
+	}
+	return nil
+}
+
+func (x *ResourceKind) GetPreset() *PresetResource {
+	if x != nil {
+		if x, ok := x.xxx_hidden_Kind.(*resourceKind_Preset); ok {
+			return x.Preset
+		}
+	}
+	return nil
+}
+
+func (x *ResourceKind) GetMonitor() *MonitorResource {
+	if x != nil {
+		if x, ok := x.xxx_hidden_Kind.(*resourceKind_Monitor); ok {
+			return x.Monitor
+		}
+	}
+	return nil
+}
+
+func (x *ResourceKind) GetReservation() *ReservationResource {
+	if x != nil {
+		if x, ok := x.xxx_hidden_Kind.(*resourceKind_Reservation); ok {
+			return x.Reservation
+		}
+	}
+	return nil
+}
+
+func (x *ResourceKind) GetExternalOperation() *ExternalOperationResource {
+	if x != nil {
+		if x, ok := x.xxx_hidden_Kind.(*resourceKind_ExternalOperation); ok {
+			return x.ExternalOperation
+		}
+	}
+	return nil
+}
+
+func (x *ResourceKind) GetAppEvent() *AppEventResource {
+	if x != nil {
+		if x, ok := x.xxx_hidden_Kind.(*resourceKind_AppEvent); ok {
+			return x.AppEvent
+		}
+	}
+	return nil
+}
+
+func (x *ResourceKind) SetSettings(v *SettingsResource) {
+	if v == nil {
+		x.xxx_hidden_Kind = nil
+		return
+	}
+	x.xxx_hidden_Kind = &resourceKind_Settings{v}
+}
+
+func (x *ResourceKind) SetPreset(v *PresetResource) {
+	if v == nil {
+		x.xxx_hidden_Kind = nil
+		return
+	}
+	x.xxx_hidden_Kind = &resourceKind_Preset{v}
+}
+
+func (x *ResourceKind) SetMonitor(v *MonitorResource) {
+	if v == nil {
+		x.xxx_hidden_Kind = nil
+		return
+	}
+	x.xxx_hidden_Kind = &resourceKind_Monitor{v}
+}
+
+func (x *ResourceKind) SetReservation(v *ReservationResource) {
+	if v == nil {
+		x.xxx_hidden_Kind = nil
+		return
+	}
+	x.xxx_hidden_Kind = &resourceKind_Reservation{v}
+}
+
+func (x *ResourceKind) SetExternalOperation(v *ExternalOperationResource) {
+	if v == nil {
+		x.xxx_hidden_Kind = nil
+		return
+	}
+	x.xxx_hidden_Kind = &resourceKind_ExternalOperation{v}
+}
+
+func (x *ResourceKind) SetAppEvent(v *AppEventResource) {
+	if v == nil {
+		x.xxx_hidden_Kind = nil
+		return
+	}
+	x.xxx_hidden_Kind = &resourceKind_AppEvent{v}
+}
+
+func (x *ResourceKind) HasKind() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_Kind != nil
+}
+
+func (x *ResourceKind) HasSettings() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_Kind.(*resourceKind_Settings)
+	return ok
+}
+
+func (x *ResourceKind) HasPreset() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_Kind.(*resourceKind_Preset)
+	return ok
+}
+
+func (x *ResourceKind) HasMonitor() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_Kind.(*resourceKind_Monitor)
+	return ok
+}
+
+func (x *ResourceKind) HasReservation() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_Kind.(*resourceKind_Reservation)
+	return ok
+}
+
+func (x *ResourceKind) HasExternalOperation() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_Kind.(*resourceKind_ExternalOperation)
+	return ok
+}
+
+func (x *ResourceKind) HasAppEvent() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_Kind.(*resourceKind_AppEvent)
+	return ok
+}
+
+func (x *ResourceKind) ClearKind() {
+	x.xxx_hidden_Kind = nil
+}
+
+func (x *ResourceKind) ClearSettings() {
+	if _, ok := x.xxx_hidden_Kind.(*resourceKind_Settings); ok {
+		x.xxx_hidden_Kind = nil
+	}
+}
+
+func (x *ResourceKind) ClearPreset() {
+	if _, ok := x.xxx_hidden_Kind.(*resourceKind_Preset); ok {
+		x.xxx_hidden_Kind = nil
+	}
+}
+
+func (x *ResourceKind) ClearMonitor() {
+	if _, ok := x.xxx_hidden_Kind.(*resourceKind_Monitor); ok {
+		x.xxx_hidden_Kind = nil
+	}
+}
+
+func (x *ResourceKind) ClearReservation() {
+	if _, ok := x.xxx_hidden_Kind.(*resourceKind_Reservation); ok {
+		x.xxx_hidden_Kind = nil
+	}
+}
+
+func (x *ResourceKind) ClearExternalOperation() {
+	if _, ok := x.xxx_hidden_Kind.(*resourceKind_ExternalOperation); ok {
+		x.xxx_hidden_Kind = nil
+	}
+}
+
+func (x *ResourceKind) ClearAppEvent() {
+	if _, ok := x.xxx_hidden_Kind.(*resourceKind_AppEvent); ok {
+		x.xxx_hidden_Kind = nil
+	}
+}
+
+const ResourceKind_Kind_not_set_case case_ResourceKind_Kind = 0
+const ResourceKind_Settings_case case_ResourceKind_Kind = 1
+const ResourceKind_Preset_case case_ResourceKind_Kind = 2
+const ResourceKind_Monitor_case case_ResourceKind_Kind = 3
+const ResourceKind_Reservation_case case_ResourceKind_Kind = 4
+const ResourceKind_ExternalOperation_case case_ResourceKind_Kind = 5
+const ResourceKind_AppEvent_case case_ResourceKind_Kind = 6
+
+func (x *ResourceKind) WhichKind() case_ResourceKind_Kind {
+	if x == nil {
+		return ResourceKind_Kind_not_set_case
+	}
+	switch x.xxx_hidden_Kind.(type) {
+	case *resourceKind_Settings:
+		return ResourceKind_Settings_case
+	case *resourceKind_Preset:
+		return ResourceKind_Preset_case
+	case *resourceKind_Monitor:
+		return ResourceKind_Monitor_case
+	case *resourceKind_Reservation:
+		return ResourceKind_Reservation_case
+	case *resourceKind_ExternalOperation:
+		return ResourceKind_ExternalOperation_case
+	case *resourceKind_AppEvent:
+		return ResourceKind_AppEvent_case
+	default:
+		return ResourceKind_Kind_not_set_case
+	}
+}
+
+type ResourceKind_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	// Fields of oneof xxx_hidden_Kind:
+	Settings          *SettingsResource
+	Preset            *PresetResource
+	Monitor           *MonitorResource
+	Reservation       *ReservationResource
+	ExternalOperation *ExternalOperationResource
+	AppEvent          *AppEventResource
+	// -- end of xxx_hidden_Kind
+}
+
+func (b0 ResourceKind_builder) Build() *ResourceKind {
+	m0 := &ResourceKind{}
+	b, x := &b0, m0
+	_, _ = b, x
+	if b.Settings != nil {
+		x.xxx_hidden_Kind = &resourceKind_Settings{b.Settings}
+	}
+	if b.Preset != nil {
+		x.xxx_hidden_Kind = &resourceKind_Preset{b.Preset}
+	}
+	if b.Monitor != nil {
+		x.xxx_hidden_Kind = &resourceKind_Monitor{b.Monitor}
+	}
+	if b.Reservation != nil {
+		x.xxx_hidden_Kind = &resourceKind_Reservation{b.Reservation}
+	}
+	if b.ExternalOperation != nil {
+		x.xxx_hidden_Kind = &resourceKind_ExternalOperation{b.ExternalOperation}
+	}
+	if b.AppEvent != nil {
+		x.xxx_hidden_Kind = &resourceKind_AppEvent{b.AppEvent}
+	}
+	return m0
+}
+
+type case_ResourceKind_Kind protoreflect.FieldNumber
+
+func (x case_ResourceKind_Kind) String() string {
+	md := file_cineko_client_client_proto_msgTypes[41].Descriptor()
+	if x == 0 {
+		return "not set"
+	}
+	return protoimpl.X.MessageFieldStringOf(md, protoreflect.FieldNumber(x))
+}
+
+type isResourceKind_Kind interface {
+	isResourceKind_Kind()
+}
+
+type resourceKind_Settings struct {
+	Settings *SettingsResource `protobuf:"bytes,1,opt,name=settings,oneof"`
+}
+
+type resourceKind_Preset struct {
+	Preset *PresetResource `protobuf:"bytes,2,opt,name=preset,oneof"`
+}
+
+type resourceKind_Monitor struct {
+	Monitor *MonitorResource `protobuf:"bytes,3,opt,name=monitor,oneof"`
+}
+
+type resourceKind_Reservation struct {
+	Reservation *ReservationResource `protobuf:"bytes,4,opt,name=reservation,oneof"`
+}
+
+type resourceKind_ExternalOperation struct {
+	ExternalOperation *ExternalOperationResource `protobuf:"bytes,5,opt,name=external_operation,json=externalOperation,oneof"`
+}
+
+type resourceKind_AppEvent struct {
+	AppEvent *AppEventResource `protobuf:"bytes,6,opt,name=app_event,json=appEvent,oneof"`
+}
+
+func (*resourceKind_Settings) isResourceKind_Kind() {}
+
+func (*resourceKind_Preset) isResourceKind_Kind() {}
+
+func (*resourceKind_Monitor) isResourceKind_Kind() {}
+
+func (*resourceKind_Reservation) isResourceKind_Kind() {}
+
+func (*resourceKind_ExternalOperation) isResourceKind_Kind() {}
+
+func (*resourceKind_AppEvent) isResourceKind_Kind() {}
 
 type Bootstrap struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
@@ -3886,7 +6089,7 @@ type Bootstrap struct {
 
 func (x *Bootstrap) Reset() {
 	*x = Bootstrap{}
-	mi := &file_cineko_client_client_proto_msgTypes[23]
+	mi := &file_cineko_client_client_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3898,7 +6101,7 @@ func (x *Bootstrap) String() string {
 func (*Bootstrap) ProtoMessage() {}
 
 func (x *Bootstrap) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_client_client_proto_msgTypes[23]
+	mi := &file_cineko_client_client_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4037,7 +6240,7 @@ type EventResource struct {
 
 func (x *EventResource) Reset() {
 	*x = EventResource{}
-	mi := &file_cineko_client_client_proto_msgTypes[24]
+	mi := &file_cineko_client_client_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4049,7 +6252,7 @@ func (x *EventResource) String() string {
 func (*EventResource) ProtoMessage() {}
 
 func (x *EventResource) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_client_client_proto_msgTypes[24]
+	mi := &file_cineko_client_client_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4113,6 +6316,24 @@ func (x *EventResource) GetReservation() *Reservation {
 	return nil
 }
 
+func (x *EventResource) GetExternalOperation() *ExternalOperation {
+	if x != nil {
+		if x, ok := x.xxx_hidden_Kind.(*eventResource_ExternalOperation); ok {
+			return x.ExternalOperation
+		}
+	}
+	return nil
+}
+
+func (x *EventResource) GetAppEvent() *AppEvent {
+	if x != nil {
+		if x, ok := x.xxx_hidden_Kind.(*eventResource_AppEvent); ok {
+			return x.AppEvent
+		}
+	}
+	return nil
+}
+
 func (x *EventResource) SetId(v string) {
 	x.xxx_hidden_Id = &v
 	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 3)
@@ -4153,6 +6374,22 @@ func (x *EventResource) SetReservation(v *Reservation) {
 		return
 	}
 	x.xxx_hidden_Kind = &eventResource_Reservation{v}
+}
+
+func (x *EventResource) SetExternalOperation(v *ExternalOperation) {
+	if v == nil {
+		x.xxx_hidden_Kind = nil
+		return
+	}
+	x.xxx_hidden_Kind = &eventResource_ExternalOperation{v}
+}
+
+func (x *EventResource) SetAppEvent(v *AppEvent) {
+	if v == nil {
+		x.xxx_hidden_Kind = nil
+		return
+	}
+	x.xxx_hidden_Kind = &eventResource_AppEvent{v}
 }
 
 func (x *EventResource) HasId() bool {
@@ -4208,6 +6445,22 @@ func (x *EventResource) HasReservation() bool {
 	return ok
 }
 
+func (x *EventResource) HasExternalOperation() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_Kind.(*eventResource_ExternalOperation)
+	return ok
+}
+
+func (x *EventResource) HasAppEvent() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_Kind.(*eventResource_AppEvent)
+	return ok
+}
+
 func (x *EventResource) ClearId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
 	x.xxx_hidden_Id = nil
@@ -4246,11 +6499,25 @@ func (x *EventResource) ClearReservation() {
 	}
 }
 
+func (x *EventResource) ClearExternalOperation() {
+	if _, ok := x.xxx_hidden_Kind.(*eventResource_ExternalOperation); ok {
+		x.xxx_hidden_Kind = nil
+	}
+}
+
+func (x *EventResource) ClearAppEvent() {
+	if _, ok := x.xxx_hidden_Kind.(*eventResource_AppEvent); ok {
+		x.xxx_hidden_Kind = nil
+	}
+}
+
 const EventResource_Kind_not_set_case case_EventResource_Kind = 0
 const EventResource_Settings_case case_EventResource_Kind = 3
 const EventResource_Preset_case case_EventResource_Kind = 4
 const EventResource_Monitor_case case_EventResource_Kind = 5
 const EventResource_Reservation_case case_EventResource_Kind = 6
+const EventResource_ExternalOperation_case case_EventResource_Kind = 7
+const EventResource_AppEvent_case case_EventResource_Kind = 8
 
 func (x *EventResource) WhichKind() case_EventResource_Kind {
 	if x == nil {
@@ -4265,6 +6532,10 @@ func (x *EventResource) WhichKind() case_EventResource_Kind {
 		return EventResource_Monitor_case
 	case *eventResource_Reservation:
 		return EventResource_Reservation_case
+	case *eventResource_ExternalOperation:
+		return EventResource_ExternalOperation_case
+	case *eventResource_AppEvent:
+		return EventResource_AppEvent_case
 	default:
 		return EventResource_Kind_not_set_case
 	}
@@ -4276,10 +6547,12 @@ type EventResource_builder struct {
 	Id       *string
 	Revision *int64
 	// Fields of oneof xxx_hidden_Kind:
-	Settings    *Settings
-	Preset      *Preset
-	Monitor     *Monitor
-	Reservation *Reservation
+	Settings          *Settings
+	Preset            *Preset
+	Monitor           *Monitor
+	Reservation       *Reservation
+	ExternalOperation *ExternalOperation
+	AppEvent          *AppEvent
 	// -- end of xxx_hidden_Kind
 }
 
@@ -4307,13 +6580,19 @@ func (b0 EventResource_builder) Build() *EventResource {
 	if b.Reservation != nil {
 		x.xxx_hidden_Kind = &eventResource_Reservation{b.Reservation}
 	}
+	if b.ExternalOperation != nil {
+		x.xxx_hidden_Kind = &eventResource_ExternalOperation{b.ExternalOperation}
+	}
+	if b.AppEvent != nil {
+		x.xxx_hidden_Kind = &eventResource_AppEvent{b.AppEvent}
+	}
 	return m0
 }
 
 type case_EventResource_Kind protoreflect.FieldNumber
 
 func (x case_EventResource_Kind) String() string {
-	md := file_cineko_client_client_proto_msgTypes[24].Descriptor()
+	md := file_cineko_client_client_proto_msgTypes[43].Descriptor()
 	if x == 0 {
 		return "not set"
 	}
@@ -4340,6 +6619,14 @@ type eventResource_Reservation struct {
 	Reservation *Reservation `protobuf:"bytes,6,opt,name=reservation,oneof"`
 }
 
+type eventResource_ExternalOperation struct {
+	ExternalOperation *ExternalOperation `protobuf:"bytes,7,opt,name=external_operation,json=externalOperation,oneof"`
+}
+
+type eventResource_AppEvent struct {
+	AppEvent *AppEvent `protobuf:"bytes,8,opt,name=app_event,json=appEvent,oneof"`
+}
+
 func (*eventResource_Settings) isEventResource_Kind() {}
 
 func (*eventResource_Preset) isEventResource_Kind() {}
@@ -4347,6 +6634,10 @@ func (*eventResource_Preset) isEventResource_Kind() {}
 func (*eventResource_Monitor) isEventResource_Kind() {}
 
 func (*eventResource_Reservation) isEventResource_Kind() {}
+
+func (*eventResource_ExternalOperation) isEventResource_Kind() {}
+
+func (*eventResource_AppEvent) isEventResource_Kind() {}
 
 type ClientEvent struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
@@ -4362,7 +6653,7 @@ type ClientEvent struct {
 
 func (x *ClientEvent) Reset() {
 	*x = ClientEvent{}
-	mi := &file_cineko_client_client_proto_msgTypes[25]
+	mi := &file_cineko_client_client_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4374,7 +6665,7 @@ func (x *ClientEvent) String() string {
 func (*ClientEvent) ProtoMessage() {}
 
 func (x *ClientEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_client_client_proto_msgTypes[25]
+	mi := &file_cineko_client_client_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4517,7 +6808,7 @@ type StreamReady struct {
 
 func (x *StreamReady) Reset() {
 	*x = StreamReady{}
-	mi := &file_cineko_client_client_proto_msgTypes[26]
+	mi := &file_cineko_client_client_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4529,7 +6820,7 @@ func (x *StreamReady) String() string {
 func (*StreamReady) ProtoMessage() {}
 
 func (x *StreamReady) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_client_client_proto_msgTypes[26]
+	mi := &file_cineko_client_client_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4592,7 +6883,7 @@ type StreamHeartbeat struct {
 
 func (x *StreamHeartbeat) Reset() {
 	*x = StreamHeartbeat{}
-	mi := &file_cineko_client_client_proto_msgTypes[27]
+	mi := &file_cineko_client_client_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4604,7 +6895,7 @@ func (x *StreamHeartbeat) String() string {
 func (*StreamHeartbeat) ProtoMessage() {}
 
 func (x *StreamHeartbeat) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_client_client_proto_msgTypes[27]
+	mi := &file_cineko_client_client_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4667,7 +6958,7 @@ type RetentionGap struct {
 
 func (x *RetentionGap) Reset() {
 	*x = RetentionGap{}
-	mi := &file_cineko_client_client_proto_msgTypes[28]
+	mi := &file_cineko_client_client_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4679,7 +6970,7 @@ func (x *RetentionGap) String() string {
 func (*RetentionGap) ProtoMessage() {}
 
 func (x *RetentionGap) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_client_client_proto_msgTypes[28]
+	mi := &file_cineko_client_client_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4742,7 +7033,7 @@ type InvalidCursor struct {
 
 func (x *InvalidCursor) Reset() {
 	*x = InvalidCursor{}
-	mi := &file_cineko_client_client_proto_msgTypes[29]
+	mi := &file_cineko_client_client_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4754,7 +7045,7 @@ func (x *InvalidCursor) String() string {
 func (*InvalidCursor) ProtoMessage() {}
 
 func (x *InvalidCursor) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_client_client_proto_msgTypes[29]
+	mi := &file_cineko_client_client_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4818,7 +7109,7 @@ type StreamControl struct {
 
 func (x *StreamControl) Reset() {
 	*x = StreamControl{}
-	mi := &file_cineko_client_client_proto_msgTypes[30]
+	mi := &file_cineko_client_client_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4830,7 +7121,7 @@ func (x *StreamControl) String() string {
 func (*StreamControl) ProtoMessage() {}
 
 func (x *StreamControl) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_client_client_proto_msgTypes[30]
+	mi := &file_cineko_client_client_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5062,7 +7353,7 @@ func (b0 StreamControl_builder) Build() *StreamControl {
 type case_StreamControl_Control protoreflect.FieldNumber
 
 func (x case_StreamControl_Control) String() string {
-	md := file_cineko_client_client_proto_msgTypes[30].Descriptor()
+	md := file_cineko_client_client_proto_msgTypes[49].Descriptor()
 	if x == 0 {
 		return "not set"
 	}
@@ -5116,7 +7407,7 @@ type LaunchContext struct {
 
 func (x *LaunchContext) Reset() {
 	*x = LaunchContext{}
-	mi := &file_cineko_client_client_proto_msgTypes[31]
+	mi := &file_cineko_client_client_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5128,7 +7419,7 @@ func (x *LaunchContext) String() string {
 func (*LaunchContext) ProtoMessage() {}
 
 func (x *LaunchContext) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_client_client_proto_msgTypes[31]
+	mi := &file_cineko_client_client_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5448,7 +7739,7 @@ type LaunchEnvelope struct {
 
 func (x *LaunchEnvelope) Reset() {
 	*x = LaunchEnvelope{}
-	mi := &file_cineko_client_client_proto_msgTypes[32]
+	mi := &file_cineko_client_client_proto_msgTypes[51]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5460,7 +7751,7 @@ func (x *LaunchEnvelope) String() string {
 func (*LaunchEnvelope) ProtoMessage() {}
 
 func (x *LaunchEnvelope) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_client_client_proto_msgTypes[32]
+	mi := &file_cineko_client_client_proto_msgTypes[51]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5552,7 +7843,7 @@ type PinExchangeRequest struct {
 
 func (x *PinExchangeRequest) Reset() {
 	*x = PinExchangeRequest{}
-	mi := &file_cineko_client_client_proto_msgTypes[33]
+	mi := &file_cineko_client_client_proto_msgTypes[52]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5564,7 +7855,7 @@ func (x *PinExchangeRequest) String() string {
 func (*PinExchangeRequest) ProtoMessage() {}
 
 func (x *PinExchangeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_client_client_proto_msgTypes[33]
+	mi := &file_cineko_client_client_proto_msgTypes[52]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5695,7 +7986,7 @@ type TokenExchangeRequest struct {
 
 func (x *TokenExchangeRequest) Reset() {
 	*x = TokenExchangeRequest{}
-	mi := &file_cineko_client_client_proto_msgTypes[34]
+	mi := &file_cineko_client_client_proto_msgTypes[53]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5707,7 +7998,7 @@ func (x *TokenExchangeRequest) String() string {
 func (*TokenExchangeRequest) ProtoMessage() {}
 
 func (x *TokenExchangeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_client_client_proto_msgTypes[34]
+	mi := &file_cineko_client_client_proto_msgTypes[53]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5805,7 +8096,7 @@ type TokenRefreshRequest struct {
 
 func (x *TokenRefreshRequest) Reset() {
 	*x = TokenRefreshRequest{}
-	mi := &file_cineko_client_client_proto_msgTypes[35]
+	mi := &file_cineko_client_client_proto_msgTypes[54]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5817,7 +8108,7 @@ func (x *TokenRefreshRequest) String() string {
 func (*TokenRefreshRequest) ProtoMessage() {}
 
 func (x *TokenRefreshRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_client_client_proto_msgTypes[35]
+	mi := &file_cineko_client_client_proto_msgTypes[54]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5888,7 +8179,7 @@ type AuthenticationResponse struct {
 
 func (x *AuthenticationResponse) Reset() {
 	*x = AuthenticationResponse{}
-	mi := &file_cineko_client_client_proto_msgTypes[36]
+	mi := &file_cineko_client_client_proto_msgTypes[55]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5900,7 +8191,7 @@ func (x *AuthenticationResponse) String() string {
 func (*AuthenticationResponse) ProtoMessage() {}
 
 func (x *AuthenticationResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_client_client_proto_msgTypes[36]
+	mi := &file_cineko_client_client_proto_msgTypes[55]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6095,7 +8386,7 @@ type LaunchTicketRequest struct {
 
 func (x *LaunchTicketRequest) Reset() {
 	*x = LaunchTicketRequest{}
-	mi := &file_cineko_client_client_proto_msgTypes[37]
+	mi := &file_cineko_client_client_proto_msgTypes[56]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6107,7 +8398,7 @@ func (x *LaunchTicketRequest) String() string {
 func (*LaunchTicketRequest) ProtoMessage() {}
 
 func (x *LaunchTicketRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_client_client_proto_msgTypes[37]
+	mi := &file_cineko_client_client_proto_msgTypes[56]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6198,7 +8489,7 @@ type LaunchTicketResponse struct {
 
 func (x *LaunchTicketResponse) Reset() {
 	*x = LaunchTicketResponse{}
-	mi := &file_cineko_client_client_proto_msgTypes[38]
+	mi := &file_cineko_client_client_proto_msgTypes[57]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6210,7 +8501,7 @@ func (x *LaunchTicketResponse) String() string {
 func (*LaunchTicketResponse) ProtoMessage() {}
 
 func (x *LaunchTicketResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_client_client_proto_msgTypes[38]
+	mi := &file_cineko_client_client_proto_msgTypes[57]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6304,7 +8595,7 @@ type ProbeBootstrapTicketRequest struct {
 
 func (x *ProbeBootstrapTicketRequest) Reset() {
 	*x = ProbeBootstrapTicketRequest{}
-	mi := &file_cineko_client_client_proto_msgTypes[39]
+	mi := &file_cineko_client_client_proto_msgTypes[58]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6316,7 +8607,7 @@ func (x *ProbeBootstrapTicketRequest) String() string {
 func (*ProbeBootstrapTicketRequest) ProtoMessage() {}
 
 func (x *ProbeBootstrapTicketRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_client_client_proto_msgTypes[39]
+	mi := &file_cineko_client_client_proto_msgTypes[58]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6483,7 +8774,7 @@ type ProbeBootstrapTicketResponse struct {
 
 func (x *ProbeBootstrapTicketResponse) Reset() {
 	*x = ProbeBootstrapTicketResponse{}
-	mi := &file_cineko_client_client_proto_msgTypes[40]
+	mi := &file_cineko_client_client_proto_msgTypes[59]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6495,7 +8786,7 @@ func (x *ProbeBootstrapTicketResponse) String() string {
 func (*ProbeBootstrapTicketResponse) ProtoMessage() {}
 
 func (x *ProbeBootstrapTicketResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_client_client_proto_msgTypes[40]
+	mi := &file_cineko_client_client_proto_msgTypes[59]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6586,7 +8877,7 @@ type SessionExchangeRequest struct {
 
 func (x *SessionExchangeRequest) Reset() {
 	*x = SessionExchangeRequest{}
-	mi := &file_cineko_client_client_proto_msgTypes[41]
+	mi := &file_cineko_client_client_proto_msgTypes[60]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6598,7 +8889,7 @@ func (x *SessionExchangeRequest) String() string {
 func (*SessionExchangeRequest) ProtoMessage() {}
 
 func (x *SessionExchangeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_client_client_proto_msgTypes[41]
+	mi := &file_cineko_client_client_proto_msgTypes[60]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6693,7 +8984,7 @@ type CatalogRequest struct {
 
 func (x *CatalogRequest) Reset() {
 	*x = CatalogRequest{}
-	mi := &file_cineko_client_client_proto_msgTypes[42]
+	mi := &file_cineko_client_client_proto_msgTypes[61]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6705,7 +8996,7 @@ func (x *CatalogRequest) String() string {
 func (*CatalogRequest) ProtoMessage() {}
 
 func (x *CatalogRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_client_client_proto_msgTypes[42]
+	mi := &file_cineko_client_client_proto_msgTypes[61]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6739,7 +9030,7 @@ type SeatMapRequest struct {
 
 func (x *SeatMapRequest) Reset() {
 	*x = SeatMapRequest{}
-	mi := &file_cineko_client_client_proto_msgTypes[43]
+	mi := &file_cineko_client_client_proto_msgTypes[62]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6751,7 +9042,7 @@ func (x *SeatMapRequest) String() string {
 func (*SeatMapRequest) ProtoMessage() {}
 
 func (x *SeatMapRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_client_client_proto_msgTypes[43]
+	mi := &file_cineko_client_client_proto_msgTypes[62]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6817,7 +9108,7 @@ type AuditoriumRequest struct {
 
 func (x *AuditoriumRequest) Reset() {
 	*x = AuditoriumRequest{}
-	mi := &file_cineko_client_client_proto_msgTypes[44]
+	mi := &file_cineko_client_client_proto_msgTypes[63]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6829,7 +9120,7 @@ func (x *AuditoriumRequest) String() string {
 func (*AuditoriumRequest) ProtoMessage() {}
 
 func (x *AuditoriumRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_client_client_proto_msgTypes[44]
+	mi := &file_cineko_client_client_proto_msgTypes[63]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6893,7 +9184,7 @@ type AuditoriumResponse struct {
 
 func (x *AuditoriumResponse) Reset() {
 	*x = AuditoriumResponse{}
-	mi := &file_cineko_client_client_proto_msgTypes[45]
+	mi := &file_cineko_client_client_proto_msgTypes[64]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6905,7 +9196,7 @@ func (x *AuditoriumResponse) String() string {
 func (*AuditoriumResponse) ProtoMessage() {}
 
 func (x *AuditoriumResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_client_client_proto_msgTypes[45]
+	mi := &file_cineko_client_client_proto_msgTypes[64]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7075,14 +9366,79 @@ const file_cineko_client_client_proto_rawDesc = "" +
 	"totalPrice\x127\n" +
 	"\tbooked_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\bbookedAt\x12=\n" +
 	"\fcancelled_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\vcancelledAt\x12#\n" +
-	"\rrefund_amount\x18\t \x01(\tR\frefundAmount\"\xb6\x02\n" +
+	"\rrefund_amount\x18\t \x01(\tR\frefundAmount\"\x89\x06\n" +
+	"\x11ExternalOperation\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n" +
+	"\auser_id\x18\x02 \x01(\tR\x06userId\x12\x1d\n" +
+	"\n" +
+	"monitor_id\x18\x03 \x01(\tR\tmonitorId\x12%\n" +
+	"\x0ereservation_id\x18\x04 \x01(\tR\rreservationId\x12#\n" +
+	"\rrefund_amount\x18\x05 \x01(\tR\frefundAmount\x12\x1d\n" +
+	"\n" +
+	"last_error\x18\x06 \x01(\tR\tlastError\x129\n" +
+	"\n" +
+	"created_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12J\n" +
+	"\fcancellation\x18\t \x01(\v2$.cineko.client.CancellationOperationH\x00R\fcancellation\x12>\n" +
+	"\bprepared\x18\n" +
+	" \x01(\v2 .cineko.client.OperationPreparedH\x01R\bprepared\x12;\n" +
+	"\aunknown\x18\v \x01(\v2\x1f.cineko.client.OperationUnknownH\x01R\aunknown\x12Z\n" +
+	"\x12attention_required\x18\f \x01(\v2).cineko.client.OperationAttentionRequiredH\x01R\x11attentionRequired\x12A\n" +
+	"\tconfirmed\x18\r \x01(\v2!.cineko.client.OperationConfirmedH\x01R\tconfirmed\x12D\n" +
+	"\n" +
+	"reconciled\x18\x0e \x01(\v2\".cineko.client.OperationReconciledH\x01R\n" +
+	"reconciledB\r\n" +
+	"\x04kind\x12\x05\xbaH\x02\b\x01B\x0e\n" +
+	"\x05state\x12\x05\xbaH\x02\b\x01\"\x17\n" +
+	"\x15CancellationOperation\"\x13\n" +
+	"\x11OperationPrepared\"\x12\n" +
+	"\x10OperationUnknown\"\x1c\n" +
+	"\x1aOperationAttentionRequired\"\x14\n" +
+	"\x12OperationConfirmed\"\x15\n" +
+	"\x13OperationReconciled\"\xb5\x03\n" +
+	"\bAppEvent\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n" +
+	"\auser_id\x18\x02 \x01(\tR\x06userId\x12\x12\n" +
+	"\x04kind\x18\x03 \x01(\tR\x04kind\x12\x18\n" +
+	"\amessage\x18\x04 \x01(\tR\amessage\x129\n" +
+	"\n" +
+	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x123\n" +
+	"\aread_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\x06readAt\x12.\n" +
+	"\x04info\x18\a \x01(\v2\x18.cineko.client.EventInfoH\x00R\x04info\x127\n" +
+	"\asuccess\x18\b \x01(\v2\x1b.cineko.client.EventSuccessH\x00R\asuccess\x127\n" +
+	"\awarning\x18\t \x01(\v2\x1b.cineko.client.EventWarningH\x00R\awarning\x121\n" +
+	"\x05error\x18\n" +
+	" \x01(\v2\x19.cineko.client.EventErrorH\x00R\x05errorB\r\n" +
+	"\x04tone\x12\x05\xbaH\x02\b\x01\"\v\n" +
+	"\tEventInfo\"\x0e\n" +
+	"\fEventSuccess\"\x0e\n" +
+	"\fEventWarning\"\f\n" +
+	"\n" +
+	"EventError\"\xc1\x03\n" +
 	"\bResource\x12;\n" +
 	"\bidentity\x18\x01 \x01(\v2\x1f.cineko.common.ResourceIdentityR\bidentity\x125\n" +
 	"\bsettings\x18\x02 \x01(\v2\x17.cineko.client.SettingsH\x00R\bsettings\x12/\n" +
 	"\x06preset\x18\x03 \x01(\v2\x15.cineko.client.PresetH\x00R\x06preset\x122\n" +
 	"\amonitor\x18\x04 \x01(\v2\x16.cineko.client.MonitorH\x00R\amonitor\x12>\n" +
-	"\vreservation\x18\x05 \x01(\v2\x1a.cineko.client.ReservationH\x00R\vreservationB\x11\n" +
-	"\bresource\x12\x05\xbaH\x02\b\x01\"\x8c\x03\n" +
+	"\vreservation\x18\x05 \x01(\v2\x1a.cineko.client.ReservationH\x00R\vreservation\x12Q\n" +
+	"\x12external_operation\x18\x06 \x01(\v2 .cineko.client.ExternalOperationH\x00R\x11externalOperation\x126\n" +
+	"\tapp_event\x18\a \x01(\v2\x17.cineko.client.AppEventH\x00R\bappEventB\x11\n" +
+	"\bresource\x12\x05\xbaH\x02\b\x01\"\x12\n" +
+	"\x10SettingsResource\"\x10\n" +
+	"\x0ePresetResource\"\x11\n" +
+	"\x0fMonitorResource\"\x15\n" +
+	"\x13ReservationResource\"\x1b\n" +
+	"\x19ExternalOperationResource\"\x12\n" +
+	"\x10AppEventResource\"\xb4\x03\n" +
+	"\fResourceKind\x12=\n" +
+	"\bsettings\x18\x01 \x01(\v2\x1f.cineko.client.SettingsResourceH\x00R\bsettings\x127\n" +
+	"\x06preset\x18\x02 \x01(\v2\x1d.cineko.client.PresetResourceH\x00R\x06preset\x12:\n" +
+	"\amonitor\x18\x03 \x01(\v2\x1e.cineko.client.MonitorResourceH\x00R\amonitor\x12F\n" +
+	"\vreservation\x18\x04 \x01(\v2\".cineko.client.ReservationResourceH\x00R\vreservation\x12Y\n" +
+	"\x12external_operation\x18\x05 \x01(\v2(.cineko.client.ExternalOperationResourceH\x00R\x11externalOperation\x12>\n" +
+	"\tapp_event\x18\x06 \x01(\v2\x1f.cineko.client.AppEventResourceH\x00R\bappEventB\r\n" +
+	"\x04kind\x12\x05\xbaH\x02\b\x01\"\x8c\x03\n" +
 	"\tBootstrap\x12'\n" +
 	"\x04user\x18\x01 \x01(\v2\x13.cineko.client.UserR\x04user\x12!\n" +
 	"\fevent_cursor\x18\x02 \x01(\x03R\veventCursor\x12E\n" +
@@ -7094,14 +9450,16 @@ const file_cineko_client_client_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\x03R\x05value:\x028\x01\x1a;\n" +
 	"\rFeaturesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\bR\x05value:\x028\x01\"\xa6\x02\n" +
+	"\x05value\x18\x02 \x01(\bR\x05value:\x028\x01\"\xb1\x03\n" +
 	"\rEventResource\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1a\n" +
 	"\brevision\x18\x02 \x01(\x03R\brevision\x125\n" +
 	"\bsettings\x18\x03 \x01(\v2\x17.cineko.client.SettingsH\x00R\bsettings\x12/\n" +
 	"\x06preset\x18\x04 \x01(\v2\x15.cineko.client.PresetH\x00R\x06preset\x122\n" +
 	"\amonitor\x18\x05 \x01(\v2\x16.cineko.client.MonitorH\x00R\amonitor\x12>\n" +
-	"\vreservation\x18\x06 \x01(\v2\x1a.cineko.client.ReservationH\x00R\vreservationB\r\n" +
+	"\vreservation\x18\x06 \x01(\v2\x1a.cineko.client.ReservationH\x00R\vreservation\x12Q\n" +
+	"\x12external_operation\x18\a \x01(\v2 .cineko.client.ExternalOperationH\x00R\x11externalOperation\x126\n" +
+	"\tapp_event\x18\b \x01(\v2\x17.cineko.client.AppEventH\x00R\bappEventB\r\n" +
 	"\x04kind\x12\x05\xbaH\x02\b\x01\"\xb0\x01\n" +
 	"\vClientEvent\x12\x1a\n" +
 	"\bsequence\x18\x01 \x01(\x03R\bsequence\x12\x0e\n" +
@@ -7136,16 +9494,21 @@ const file_cineko_client_client_proto_rawDesc = "" +
 	"\x1aplaywright_artifact_sha256\x18\t \x01(\tR\x18playwrightArtifactSha256\"m\n" +
 	"\x0eLaunchEnvelope\x12#\n" +
 	"\rlaunch_ticket\x18\x01 \x01(\tR\flaunchTicket\x126\n" +
-	"\acontext\x18\x02 \x01(\v2\x1c.cineko.client.LaunchContextR\acontext\"l\n" +
-	"\x12PinExchangeRequest\x12\x10\n" +
-	"\x03pin\x18\x01 \x01(\tR\x03pin\x12'\n" +
-	"\x0finstallation_id\x18\x02 \x01(\tR\x0einstallationId\x12\x1b\n" +
-	"\tdevice_id\x18\x03 \x01(\tR\bdeviceId\"R\n" +
-	"\x14TokenExchangeRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\tR\x06userId\x12!\n" +
-	"\faccess_token\x18\x02 \x01(\tR\vaccessToken\":\n" +
-	"\x13TokenRefreshRequest\x12#\n" +
-	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\"\xc4\x02\n" +
+	"\acontext\x18\x02 \x01(\v2\x1c.cineko.client.LaunchContextR\acontext\"\x91\x01\n" +
+	"\x12PinExchangeRequest\x12\x1d\n" +
+	"\x03pin\x18\x01 \x01(\tB\v\xbaH\b\xc8\x01\x01r\x03\x98\x01\x06R\x03pin\x123\n" +
+	"\x0finstallation_id\x18\x02 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\x0einstallationId\x12'\n" +
+	"\tdevice_id\x18\x03 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\bdeviceId\"j\n" +
+	"\x14TokenExchangeRequest\x12#\n" +
+	"\auser_id\x18\x01 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\x06userId\x12-\n" +
+	"\faccess_token\x18\x02 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\vaccessToken\"F\n" +
+	"\x13TokenRefreshRequest\x12/\n" +
+	"\rrefresh_token\x18\x01 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\frefreshToken\"\xc4\x02\n" +
 	"\x16AuthenticationResponse\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x129\n" +
 	"\n" +
@@ -7153,27 +9516,33 @@ const file_cineko_client_client_proto_rawDesc = "" +
 	"\rrefresh_token\x18\x03 \x01(\tR\frefreshToken\x12H\n" +
 	"\x12refresh_expires_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\x10refreshExpiresAt\x12'\n" +
 	"\x04user\x18\x05 \x01(\v2\x13.cineko.client.UserR\x04user\x124\n" +
-	"\x06launch\x18\x06 \x01(\v2\x1c.cineko.client.LaunchContextR\x06launch\"c\n" +
-	"\x13LaunchTicketRequest\x126\n" +
-	"\acontext\x18\x01 \x01(\v2\x1c.cineko.client.LaunchContextR\acontext\x12\x14\n" +
-	"\x05nonce\x18\x02 \x01(\tR\x05nonce\"v\n" +
+	"\x06launch\x18\x06 \x01(\v2\x1c.cineko.client.LaunchContextR\x06launch\"w\n" +
+	"\x13LaunchTicketRequest\x12>\n" +
+	"\acontext\x18\x01 \x01(\v2\x1c.cineko.client.LaunchContextB\x06\xbaH\x03\xc8\x01\x01R\acontext\x12 \n" +
+	"\x05nonce\x18\x02 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\x05nonce\"v\n" +
 	"\x14LaunchTicketResponse\x12#\n" +
 	"\rlaunch_ticket\x18\x01 \x01(\tR\flaunchTicket\x129\n" +
 	"\n" +
-	"expires_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\"\x82\x02\n" +
-	"\x1bProbeBootstrapTicketRequest\x12'\n" +
-	"\x0finstallation_id\x18\x01 \x01(\tR\x0einstallationId\x12\x1b\n" +
-	"\tdevice_id\x18\x02 \x01(\tR\bdeviceId\x12B\n" +
-	"\fcapabilities\x18\x03 \x03(\v2\x1e.cineko.observation.CapabilityR\fcapabilities\x12'\n" +
-	"\x0fmax_concurrency\x18\x04 \x01(\x05R\x0emaxConcurrency\x120\n" +
-	"\aruntime\x18\x05 \x01(\v2\x16.cineko.common.RuntimeR\aruntime\"q\n" +
+	"expires_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\"\xb8\x02\n" +
+	"\x1bProbeBootstrapTicketRequest\x123\n" +
+	"\x0finstallation_id\x18\x01 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\x0einstallationId\x12'\n" +
+	"\tdevice_id\x18\x02 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\bdeviceId\x12L\n" +
+	"\fcapabilities\x18\x03 \x03(\v2\x1e.cineko.observation.CapabilityB\b\xbaH\x05\x92\x01\x02\b\x01R\fcapabilities\x123\n" +
+	"\x0fmax_concurrency\x18\x04 \x01(\x05B\n" +
+	"\xbaH\a\xc8\x01\x01\x1a\x02 \x00R\x0emaxConcurrency\x128\n" +
+	"\aruntime\x18\x05 \x01(\v2\x16.cineko.common.RuntimeB\x06\xbaH\x03\xc8\x01\x01R\aruntime\"q\n" +
 	"\x1cProbeBootstrapTicketResponse\x12\x16\n" +
 	"\x06ticket\x18\x01 \x01(\tR\x06ticket\x129\n" +
 	"\n" +
-	"expires_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\"`\n" +
-	"\x16SessionExchangeRequest\x12#\n" +
-	"\rlaunch_ticket\x18\x01 \x01(\tR\flaunchTicket\x12!\n" +
-	"\fclient_nonce\x18\x02 \x01(\tR\vclientNonce\"\x10\n" +
+	"expires_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\"x\n" +
+	"\x16SessionExchangeRequest\x12/\n" +
+	"\rlaunch_ticket\x18\x01 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\flaunchTicket\x12-\n" +
+	"\fclient_nonce\x18\x02 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\vclientNonce\"\x10\n" +
 	"\x0eCatalogRequest\"5\n" +
 	"\x0eSeatMapRequest\x12#\n" +
 	"\rauditorium_id\x18\x01 \x01(\tR\fauditoriumId\"2\n" +
@@ -7183,7 +9552,7 @@ const file_cineko_client_client_proto_rawDesc = "" +
 	"\x12AuditoriumResponse\x12<\n" +
 	"\vauditoriums\x18\x01 \x03(\v2\x1a.cineko.catalog.AuditoriumR\vauditoriumsB=Z;github.com/cineko-org/contracts/gen/go/cineko/client;clientb\beditionsp\xe9\a"
 
-var file_cineko_client_client_proto_msgTypes = make([]protoimpl.MessageInfo, 48)
+var file_cineko_client_client_proto_msgTypes = make([]protoimpl.MessageInfo, 67)
 var file_cineko_client_client_proto_goTypes = []any{
 	(*User)(nil),                         // 0: cineko.client.User
 	(*Device)(nil),                       // 1: cineko.client.Device
@@ -7207,55 +9576,74 @@ var file_cineko_client_client_proto_goTypes = []any{
 	(*MonitorState)(nil),                 // 19: cineko.client.MonitorState
 	(*Monitor)(nil),                      // 20: cineko.client.Monitor
 	(*Reservation)(nil),                  // 21: cineko.client.Reservation
-	(*Resource)(nil),                     // 22: cineko.client.Resource
-	(*Bootstrap)(nil),                    // 23: cineko.client.Bootstrap
-	(*EventResource)(nil),                // 24: cineko.client.EventResource
-	(*ClientEvent)(nil),                  // 25: cineko.client.ClientEvent
-	(*StreamReady)(nil),                  // 26: cineko.client.StreamReady
-	(*StreamHeartbeat)(nil),              // 27: cineko.client.StreamHeartbeat
-	(*RetentionGap)(nil),                 // 28: cineko.client.RetentionGap
-	(*InvalidCursor)(nil),                // 29: cineko.client.InvalidCursor
-	(*StreamControl)(nil),                // 30: cineko.client.StreamControl
-	(*LaunchContext)(nil),                // 31: cineko.client.LaunchContext
-	(*LaunchEnvelope)(nil),               // 32: cineko.client.LaunchEnvelope
-	(*PinExchangeRequest)(nil),           // 33: cineko.client.PinExchangeRequest
-	(*TokenExchangeRequest)(nil),         // 34: cineko.client.TokenExchangeRequest
-	(*TokenRefreshRequest)(nil),          // 35: cineko.client.TokenRefreshRequest
-	(*AuthenticationResponse)(nil),       // 36: cineko.client.AuthenticationResponse
-	(*LaunchTicketRequest)(nil),          // 37: cineko.client.LaunchTicketRequest
-	(*LaunchTicketResponse)(nil),         // 38: cineko.client.LaunchTicketResponse
-	(*ProbeBootstrapTicketRequest)(nil),  // 39: cineko.client.ProbeBootstrapTicketRequest
-	(*ProbeBootstrapTicketResponse)(nil), // 40: cineko.client.ProbeBootstrapTicketResponse
-	(*SessionExchangeRequest)(nil),       // 41: cineko.client.SessionExchangeRequest
-	(*CatalogRequest)(nil),               // 42: cineko.client.CatalogRequest
-	(*SeatMapRequest)(nil),               // 43: cineko.client.SeatMapRequest
-	(*AuditoriumRequest)(nil),            // 44: cineko.client.AuditoriumRequest
-	(*AuditoriumResponse)(nil),           // 45: cineko.client.AuditoriumResponse
-	nil,                                  // 46: cineko.client.Bootstrap.RevisionsEntry
-	nil,                                  // 47: cineko.client.Bootstrap.FeaturesEntry
-	(*timestamppb.Timestamp)(nil),        // 48: google.protobuf.Timestamp
-	(*common.LocalDate)(nil),             // 49: cineko.common.LocalDate
-	(*common.LocalTime)(nil),             // 50: cineko.common.LocalTime
-	(*durationpb.Duration)(nil),          // 51: google.protobuf.Duration
-	(*common.ResourceIdentity)(nil),      // 52: cineko.common.ResourceIdentity
-	(*observation.Capability)(nil),       // 53: cineko.observation.Capability
-	(*common.Runtime)(nil),               // 54: cineko.common.Runtime
-	(*catalog.Auditorium)(nil),           // 55: cineko.catalog.Auditorium
+	(*ExternalOperation)(nil),            // 22: cineko.client.ExternalOperation
+	(*CancellationOperation)(nil),        // 23: cineko.client.CancellationOperation
+	(*OperationPrepared)(nil),            // 24: cineko.client.OperationPrepared
+	(*OperationUnknown)(nil),             // 25: cineko.client.OperationUnknown
+	(*OperationAttentionRequired)(nil),   // 26: cineko.client.OperationAttentionRequired
+	(*OperationConfirmed)(nil),           // 27: cineko.client.OperationConfirmed
+	(*OperationReconciled)(nil),          // 28: cineko.client.OperationReconciled
+	(*AppEvent)(nil),                     // 29: cineko.client.AppEvent
+	(*EventInfo)(nil),                    // 30: cineko.client.EventInfo
+	(*EventSuccess)(nil),                 // 31: cineko.client.EventSuccess
+	(*EventWarning)(nil),                 // 32: cineko.client.EventWarning
+	(*EventError)(nil),                   // 33: cineko.client.EventError
+	(*Resource)(nil),                     // 34: cineko.client.Resource
+	(*SettingsResource)(nil),             // 35: cineko.client.SettingsResource
+	(*PresetResource)(nil),               // 36: cineko.client.PresetResource
+	(*MonitorResource)(nil),              // 37: cineko.client.MonitorResource
+	(*ReservationResource)(nil),          // 38: cineko.client.ReservationResource
+	(*ExternalOperationResource)(nil),    // 39: cineko.client.ExternalOperationResource
+	(*AppEventResource)(nil),             // 40: cineko.client.AppEventResource
+	(*ResourceKind)(nil),                 // 41: cineko.client.ResourceKind
+	(*Bootstrap)(nil),                    // 42: cineko.client.Bootstrap
+	(*EventResource)(nil),                // 43: cineko.client.EventResource
+	(*ClientEvent)(nil),                  // 44: cineko.client.ClientEvent
+	(*StreamReady)(nil),                  // 45: cineko.client.StreamReady
+	(*StreamHeartbeat)(nil),              // 46: cineko.client.StreamHeartbeat
+	(*RetentionGap)(nil),                 // 47: cineko.client.RetentionGap
+	(*InvalidCursor)(nil),                // 48: cineko.client.InvalidCursor
+	(*StreamControl)(nil),                // 49: cineko.client.StreamControl
+	(*LaunchContext)(nil),                // 50: cineko.client.LaunchContext
+	(*LaunchEnvelope)(nil),               // 51: cineko.client.LaunchEnvelope
+	(*PinExchangeRequest)(nil),           // 52: cineko.client.PinExchangeRequest
+	(*TokenExchangeRequest)(nil),         // 53: cineko.client.TokenExchangeRequest
+	(*TokenRefreshRequest)(nil),          // 54: cineko.client.TokenRefreshRequest
+	(*AuthenticationResponse)(nil),       // 55: cineko.client.AuthenticationResponse
+	(*LaunchTicketRequest)(nil),          // 56: cineko.client.LaunchTicketRequest
+	(*LaunchTicketResponse)(nil),         // 57: cineko.client.LaunchTicketResponse
+	(*ProbeBootstrapTicketRequest)(nil),  // 58: cineko.client.ProbeBootstrapTicketRequest
+	(*ProbeBootstrapTicketResponse)(nil), // 59: cineko.client.ProbeBootstrapTicketResponse
+	(*SessionExchangeRequest)(nil),       // 60: cineko.client.SessionExchangeRequest
+	(*CatalogRequest)(nil),               // 61: cineko.client.CatalogRequest
+	(*SeatMapRequest)(nil),               // 62: cineko.client.SeatMapRequest
+	(*AuditoriumRequest)(nil),            // 63: cineko.client.AuditoriumRequest
+	(*AuditoriumResponse)(nil),           // 64: cineko.client.AuditoriumResponse
+	nil,                                  // 65: cineko.client.Bootstrap.RevisionsEntry
+	nil,                                  // 66: cineko.client.Bootstrap.FeaturesEntry
+	(*timestamppb.Timestamp)(nil),        // 67: google.protobuf.Timestamp
+	(*common.LocalDate)(nil),             // 68: cineko.common.LocalDate
+	(*common.LocalTime)(nil),             // 69: cineko.common.LocalTime
+	(*durationpb.Duration)(nil),          // 70: google.protobuf.Duration
+	(*common.ResourceIdentity)(nil),      // 71: cineko.common.ResourceIdentity
+	(*observation.Capability)(nil),       // 72: cineko.observation.Capability
+	(*common.Runtime)(nil),               // 73: cineko.common.Runtime
+	(*catalog.Auditorium)(nil),           // 74: cineko.catalog.Auditorium
 }
 var file_cineko_client_client_proto_depIdxs = []int32{
-	48, // 0: cineko.client.User.created_at:type_name -> google.protobuf.Timestamp
-	48, // 1: cineko.client.User.updated_at:type_name -> google.protobuf.Timestamp
-	48, // 2: cineko.client.Device.last_seen_at:type_name -> google.protobuf.Timestamp
-	48, // 3: cineko.client.Device.created_at:type_name -> google.protobuf.Timestamp
-	48, // 4: cineko.client.Device.updated_at:type_name -> google.protobuf.Timestamp
+	67, // 0: cineko.client.User.created_at:type_name -> google.protobuf.Timestamp
+	67, // 1: cineko.client.User.updated_at:type_name -> google.protobuf.Timestamp
+	67, // 2: cineko.client.Device.last_seen_at:type_name -> google.protobuf.Timestamp
+	67, // 3: cineko.client.Device.created_at:type_name -> google.protobuf.Timestamp
+	67, // 4: cineko.client.Device.updated_at:type_name -> google.protobuf.Timestamp
 	2,  // 5: cineko.client.NetworkSettings.direct:type_name -> cineko.client.DirectNetwork
 	3,  // 6: cineko.client.NetworkSettings.proxy:type_name -> cineko.client.ProxyNetwork
 	4,  // 7: cineko.client.Settings.network:type_name -> cineko.client.NetworkSettings
 	5,  // 8: cineko.client.Settings.webhooks:type_name -> cineko.client.WebhookTarget
 	7,  // 9: cineko.client.SeatPreference.preferred_zones:type_name -> cineko.client.SeatZone
 	8,  // 10: cineko.client.Preset.seat_preference:type_name -> cineko.client.SeatPreference
-	48, // 11: cineko.client.Preset.created_at:type_name -> google.protobuf.Timestamp
-	48, // 12: cineko.client.Preset.updated_at:type_name -> google.protobuf.Timestamp
+	67, // 11: cineko.client.Preset.created_at:type_name -> google.protobuf.Timestamp
+	67, // 12: cineko.client.Preset.updated_at:type_name -> google.protobuf.Timestamp
 	10, // 13: cineko.client.MonitorMode.opening:type_name -> cineko.client.OpeningMonitor
 	11, // 14: cineko.client.MonitorMode.cancellation:type_name -> cineko.client.CancellationMonitor
 	13, // 15: cineko.client.MonitorState.pending:type_name -> cineko.client.MonitorPending
@@ -7265,52 +9653,76 @@ var file_cineko_client_client_proto_depIdxs = []int32{
 	17, // 19: cineko.client.MonitorState.failed:type_name -> cineko.client.MonitorFailed
 	18, // 20: cineko.client.MonitorState.stopped:type_name -> cineko.client.MonitorStopped
 	12, // 21: cineko.client.Monitor.mode:type_name -> cineko.client.MonitorMode
-	49, // 22: cineko.client.Monitor.target_dates:type_name -> cineko.common.LocalDate
-	50, // 23: cineko.client.Monitor.earliest_time:type_name -> cineko.common.LocalTime
-	50, // 24: cineko.client.Monitor.latest_time:type_name -> cineko.common.LocalTime
-	51, // 25: cineko.client.Monitor.poll_interval:type_name -> google.protobuf.Duration
-	51, // 26: cineko.client.Monitor.maximum_poll_interval:type_name -> google.protobuf.Duration
+	68, // 22: cineko.client.Monitor.target_dates:type_name -> cineko.common.LocalDate
+	69, // 23: cineko.client.Monitor.earliest_time:type_name -> cineko.common.LocalTime
+	69, // 24: cineko.client.Monitor.latest_time:type_name -> cineko.common.LocalTime
+	70, // 25: cineko.client.Monitor.poll_interval:type_name -> google.protobuf.Duration
+	70, // 26: cineko.client.Monitor.maximum_poll_interval:type_name -> google.protobuf.Duration
 	19, // 27: cineko.client.Monitor.state:type_name -> cineko.client.MonitorState
-	48, // 28: cineko.client.Monitor.last_checked_at:type_name -> google.protobuf.Timestamp
-	48, // 29: cineko.client.Monitor.created_at:type_name -> google.protobuf.Timestamp
-	48, // 30: cineko.client.Monitor.updated_at:type_name -> google.protobuf.Timestamp
-	48, // 31: cineko.client.Reservation.booked_at:type_name -> google.protobuf.Timestamp
-	48, // 32: cineko.client.Reservation.cancelled_at:type_name -> google.protobuf.Timestamp
-	52, // 33: cineko.client.Resource.identity:type_name -> cineko.common.ResourceIdentity
-	6,  // 34: cineko.client.Resource.settings:type_name -> cineko.client.Settings
-	9,  // 35: cineko.client.Resource.preset:type_name -> cineko.client.Preset
-	20, // 36: cineko.client.Resource.monitor:type_name -> cineko.client.Monitor
-	21, // 37: cineko.client.Resource.reservation:type_name -> cineko.client.Reservation
-	0,  // 38: cineko.client.Bootstrap.user:type_name -> cineko.client.User
-	46, // 39: cineko.client.Bootstrap.revisions:type_name -> cineko.client.Bootstrap.RevisionsEntry
-	47, // 40: cineko.client.Bootstrap.features:type_name -> cineko.client.Bootstrap.FeaturesEntry
-	1,  // 41: cineko.client.Bootstrap.device:type_name -> cineko.client.Device
-	6,  // 42: cineko.client.EventResource.settings:type_name -> cineko.client.Settings
-	9,  // 43: cineko.client.EventResource.preset:type_name -> cineko.client.Preset
-	20, // 44: cineko.client.EventResource.monitor:type_name -> cineko.client.Monitor
-	21, // 45: cineko.client.EventResource.reservation:type_name -> cineko.client.Reservation
-	48, // 46: cineko.client.ClientEvent.occurred_at:type_name -> google.protobuf.Timestamp
-	24, // 47: cineko.client.ClientEvent.resource:type_name -> cineko.client.EventResource
-	26, // 48: cineko.client.StreamControl.ready:type_name -> cineko.client.StreamReady
-	27, // 49: cineko.client.StreamControl.heartbeat:type_name -> cineko.client.StreamHeartbeat
-	28, // 50: cineko.client.StreamControl.retention_gap:type_name -> cineko.client.RetentionGap
-	29, // 51: cineko.client.StreamControl.invalid_cursor:type_name -> cineko.client.InvalidCursor
-	31, // 52: cineko.client.LaunchEnvelope.context:type_name -> cineko.client.LaunchContext
-	48, // 53: cineko.client.AuthenticationResponse.expires_at:type_name -> google.protobuf.Timestamp
-	48, // 54: cineko.client.AuthenticationResponse.refresh_expires_at:type_name -> google.protobuf.Timestamp
-	0,  // 55: cineko.client.AuthenticationResponse.user:type_name -> cineko.client.User
-	31, // 56: cineko.client.AuthenticationResponse.launch:type_name -> cineko.client.LaunchContext
-	31, // 57: cineko.client.LaunchTicketRequest.context:type_name -> cineko.client.LaunchContext
-	48, // 58: cineko.client.LaunchTicketResponse.expires_at:type_name -> google.protobuf.Timestamp
-	53, // 59: cineko.client.ProbeBootstrapTicketRequest.capabilities:type_name -> cineko.observation.Capability
-	54, // 60: cineko.client.ProbeBootstrapTicketRequest.runtime:type_name -> cineko.common.Runtime
-	48, // 61: cineko.client.ProbeBootstrapTicketResponse.expires_at:type_name -> google.protobuf.Timestamp
-	55, // 62: cineko.client.AuditoriumResponse.auditoriums:type_name -> cineko.catalog.Auditorium
-	63, // [63:63] is the sub-list for method output_type
-	63, // [63:63] is the sub-list for method input_type
-	63, // [63:63] is the sub-list for extension type_name
-	63, // [63:63] is the sub-list for extension extendee
-	0,  // [0:63] is the sub-list for field type_name
+	67, // 28: cineko.client.Monitor.last_checked_at:type_name -> google.protobuf.Timestamp
+	67, // 29: cineko.client.Monitor.created_at:type_name -> google.protobuf.Timestamp
+	67, // 30: cineko.client.Monitor.updated_at:type_name -> google.protobuf.Timestamp
+	67, // 31: cineko.client.Reservation.booked_at:type_name -> google.protobuf.Timestamp
+	67, // 32: cineko.client.Reservation.cancelled_at:type_name -> google.protobuf.Timestamp
+	67, // 33: cineko.client.ExternalOperation.created_at:type_name -> google.protobuf.Timestamp
+	67, // 34: cineko.client.ExternalOperation.updated_at:type_name -> google.protobuf.Timestamp
+	23, // 35: cineko.client.ExternalOperation.cancellation:type_name -> cineko.client.CancellationOperation
+	24, // 36: cineko.client.ExternalOperation.prepared:type_name -> cineko.client.OperationPrepared
+	25, // 37: cineko.client.ExternalOperation.unknown:type_name -> cineko.client.OperationUnknown
+	26, // 38: cineko.client.ExternalOperation.attention_required:type_name -> cineko.client.OperationAttentionRequired
+	27, // 39: cineko.client.ExternalOperation.confirmed:type_name -> cineko.client.OperationConfirmed
+	28, // 40: cineko.client.ExternalOperation.reconciled:type_name -> cineko.client.OperationReconciled
+	67, // 41: cineko.client.AppEvent.created_at:type_name -> google.protobuf.Timestamp
+	67, // 42: cineko.client.AppEvent.read_at:type_name -> google.protobuf.Timestamp
+	30, // 43: cineko.client.AppEvent.info:type_name -> cineko.client.EventInfo
+	31, // 44: cineko.client.AppEvent.success:type_name -> cineko.client.EventSuccess
+	32, // 45: cineko.client.AppEvent.warning:type_name -> cineko.client.EventWarning
+	33, // 46: cineko.client.AppEvent.error:type_name -> cineko.client.EventError
+	71, // 47: cineko.client.Resource.identity:type_name -> cineko.common.ResourceIdentity
+	6,  // 48: cineko.client.Resource.settings:type_name -> cineko.client.Settings
+	9,  // 49: cineko.client.Resource.preset:type_name -> cineko.client.Preset
+	20, // 50: cineko.client.Resource.monitor:type_name -> cineko.client.Monitor
+	21, // 51: cineko.client.Resource.reservation:type_name -> cineko.client.Reservation
+	22, // 52: cineko.client.Resource.external_operation:type_name -> cineko.client.ExternalOperation
+	29, // 53: cineko.client.Resource.app_event:type_name -> cineko.client.AppEvent
+	35, // 54: cineko.client.ResourceKind.settings:type_name -> cineko.client.SettingsResource
+	36, // 55: cineko.client.ResourceKind.preset:type_name -> cineko.client.PresetResource
+	37, // 56: cineko.client.ResourceKind.monitor:type_name -> cineko.client.MonitorResource
+	38, // 57: cineko.client.ResourceKind.reservation:type_name -> cineko.client.ReservationResource
+	39, // 58: cineko.client.ResourceKind.external_operation:type_name -> cineko.client.ExternalOperationResource
+	40, // 59: cineko.client.ResourceKind.app_event:type_name -> cineko.client.AppEventResource
+	0,  // 60: cineko.client.Bootstrap.user:type_name -> cineko.client.User
+	65, // 61: cineko.client.Bootstrap.revisions:type_name -> cineko.client.Bootstrap.RevisionsEntry
+	66, // 62: cineko.client.Bootstrap.features:type_name -> cineko.client.Bootstrap.FeaturesEntry
+	1,  // 63: cineko.client.Bootstrap.device:type_name -> cineko.client.Device
+	6,  // 64: cineko.client.EventResource.settings:type_name -> cineko.client.Settings
+	9,  // 65: cineko.client.EventResource.preset:type_name -> cineko.client.Preset
+	20, // 66: cineko.client.EventResource.monitor:type_name -> cineko.client.Monitor
+	21, // 67: cineko.client.EventResource.reservation:type_name -> cineko.client.Reservation
+	22, // 68: cineko.client.EventResource.external_operation:type_name -> cineko.client.ExternalOperation
+	29, // 69: cineko.client.EventResource.app_event:type_name -> cineko.client.AppEvent
+	67, // 70: cineko.client.ClientEvent.occurred_at:type_name -> google.protobuf.Timestamp
+	43, // 71: cineko.client.ClientEvent.resource:type_name -> cineko.client.EventResource
+	45, // 72: cineko.client.StreamControl.ready:type_name -> cineko.client.StreamReady
+	46, // 73: cineko.client.StreamControl.heartbeat:type_name -> cineko.client.StreamHeartbeat
+	47, // 74: cineko.client.StreamControl.retention_gap:type_name -> cineko.client.RetentionGap
+	48, // 75: cineko.client.StreamControl.invalid_cursor:type_name -> cineko.client.InvalidCursor
+	50, // 76: cineko.client.LaunchEnvelope.context:type_name -> cineko.client.LaunchContext
+	67, // 77: cineko.client.AuthenticationResponse.expires_at:type_name -> google.protobuf.Timestamp
+	67, // 78: cineko.client.AuthenticationResponse.refresh_expires_at:type_name -> google.protobuf.Timestamp
+	0,  // 79: cineko.client.AuthenticationResponse.user:type_name -> cineko.client.User
+	50, // 80: cineko.client.AuthenticationResponse.launch:type_name -> cineko.client.LaunchContext
+	50, // 81: cineko.client.LaunchTicketRequest.context:type_name -> cineko.client.LaunchContext
+	67, // 82: cineko.client.LaunchTicketResponse.expires_at:type_name -> google.protobuf.Timestamp
+	72, // 83: cineko.client.ProbeBootstrapTicketRequest.capabilities:type_name -> cineko.observation.Capability
+	73, // 84: cineko.client.ProbeBootstrapTicketRequest.runtime:type_name -> cineko.common.Runtime
+	67, // 85: cineko.client.ProbeBootstrapTicketResponse.expires_at:type_name -> google.protobuf.Timestamp
+	74, // 86: cineko.client.AuditoriumResponse.auditoriums:type_name -> cineko.catalog.Auditorium
+	87, // [87:87] is the sub-list for method output_type
+	87, // [87:87] is the sub-list for method input_type
+	87, // [87:87] is the sub-list for extension type_name
+	87, // [87:87] is the sub-list for extension extendee
+	0,  // [0:87] is the sub-list for field type_name
 }
 
 func init() { file_cineko_client_client_proto_init() }
@@ -7335,18 +9747,44 @@ func file_cineko_client_client_proto_init() {
 		(*monitorState_Stopped)(nil),
 	}
 	file_cineko_client_client_proto_msgTypes[22].OneofWrappers = []any{
+		(*externalOperation_Cancellation)(nil),
+		(*externalOperation_Prepared)(nil),
+		(*externalOperation_Unknown)(nil),
+		(*externalOperation_AttentionRequired)(nil),
+		(*externalOperation_Confirmed)(nil),
+		(*externalOperation_Reconciled)(nil),
+	}
+	file_cineko_client_client_proto_msgTypes[29].OneofWrappers = []any{
+		(*appEvent_Info)(nil),
+		(*appEvent_Success)(nil),
+		(*appEvent_Warning)(nil),
+		(*appEvent_Error)(nil),
+	}
+	file_cineko_client_client_proto_msgTypes[34].OneofWrappers = []any{
 		(*resource_Settings)(nil),
 		(*resource_Preset)(nil),
 		(*resource_Monitor)(nil),
 		(*resource_Reservation)(nil),
+		(*resource_ExternalOperation)(nil),
+		(*resource_AppEvent)(nil),
 	}
-	file_cineko_client_client_proto_msgTypes[24].OneofWrappers = []any{
+	file_cineko_client_client_proto_msgTypes[41].OneofWrappers = []any{
+		(*resourceKind_Settings)(nil),
+		(*resourceKind_Preset)(nil),
+		(*resourceKind_Monitor)(nil),
+		(*resourceKind_Reservation)(nil),
+		(*resourceKind_ExternalOperation)(nil),
+		(*resourceKind_AppEvent)(nil),
+	}
+	file_cineko_client_client_proto_msgTypes[43].OneofWrappers = []any{
 		(*eventResource_Settings)(nil),
 		(*eventResource_Preset)(nil),
 		(*eventResource_Monitor)(nil),
 		(*eventResource_Reservation)(nil),
+		(*eventResource_ExternalOperation)(nil),
+		(*eventResource_AppEvent)(nil),
 	}
-	file_cineko_client_client_proto_msgTypes[30].OneofWrappers = []any{
+	file_cineko_client_client_proto_msgTypes[49].OneofWrappers = []any{
 		(*streamControl_Ready)(nil),
 		(*streamControl_Heartbeat)(nil),
 		(*streamControl_RetentionGap)(nil),
@@ -7358,7 +9796,7 @@ func file_cineko_client_client_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cineko_client_client_proto_rawDesc), len(file_cineko_client_client_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   48,
+			NumMessages:   67,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

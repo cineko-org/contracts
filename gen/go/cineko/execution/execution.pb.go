@@ -717,7 +717,8 @@ func (*claimResponse_NoCommand) isClaimResponse_Result() {}
 
 type HeartbeatRequest struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_LeaseToken  *string                `protobuf:"bytes,1,opt,name=lease_token,json=leaseToken"`
+	xxx_hidden_CommandId   *string                `protobuf:"bytes,1,opt,name=command_id,json=commandId"`
+	xxx_hidden_LeaseToken  *string                `protobuf:"bytes,2,opt,name=lease_token,json=leaseToken"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -749,6 +750,16 @@ func (x *HeartbeatRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
+func (x *HeartbeatRequest) GetCommandId() string {
+	if x != nil {
+		if x.xxx_hidden_CommandId != nil {
+			return *x.xxx_hidden_CommandId
+		}
+		return ""
+	}
+	return ""
+}
+
 func (x *HeartbeatRequest) GetLeaseToken() string {
 	if x != nil {
 		if x.xxx_hidden_LeaseToken != nil {
@@ -759,26 +770,44 @@ func (x *HeartbeatRequest) GetLeaseToken() string {
 	return ""
 }
 
-func (x *HeartbeatRequest) SetLeaseToken(v string) {
-	x.xxx_hidden_LeaseToken = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 1)
+func (x *HeartbeatRequest) SetCommandId(v string) {
+	x.xxx_hidden_CommandId = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 2)
 }
 
-func (x *HeartbeatRequest) HasLeaseToken() bool {
+func (x *HeartbeatRequest) SetLeaseToken(v string) {
+	x.xxx_hidden_LeaseToken = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 2)
+}
+
+func (x *HeartbeatRequest) HasCommandId() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
 }
 
-func (x *HeartbeatRequest) ClearLeaseToken() {
+func (x *HeartbeatRequest) HasLeaseToken() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 1)
+}
+
+func (x *HeartbeatRequest) ClearCommandId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
+	x.xxx_hidden_CommandId = nil
+}
+
+func (x *HeartbeatRequest) ClearLeaseToken() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 1)
 	x.xxx_hidden_LeaseToken = nil
 }
 
 type HeartbeatRequest_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
+	CommandId  *string
 	LeaseToken *string
 }
 
@@ -786,8 +815,12 @@ func (b0 HeartbeatRequest_builder) Build() *HeartbeatRequest {
 	m0 := &HeartbeatRequest{}
 	b, x := &b0, m0
 	_, _ = b, x
+	if b.CommandId != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 2)
+		x.xxx_hidden_CommandId = b.CommandId
+	}
 	if b.LeaseToken != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 1)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 2)
 		x.xxx_hidden_LeaseToken = b.LeaseToken
 	}
 	return m0
@@ -1062,7 +1095,8 @@ func (b0 RetryRequested_builder) Build() *RetryRequested {
 
 type ResultRequest struct {
 	state                  protoimpl.MessageState  `protogen:"opaque.v1"`
-	xxx_hidden_LeaseToken  *string                 `protobuf:"bytes,1,opt,name=lease_token,json=leaseToken"`
+	xxx_hidden_CommandId   *string                 `protobuf:"bytes,1,opt,name=command_id,json=commandId"`
+	xxx_hidden_LeaseToken  *string                 `protobuf:"bytes,2,opt,name=lease_token,json=leaseToken"`
 	xxx_hidden_Outcome     isResultRequest_Outcome `protobuf_oneof:"outcome"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
@@ -1093,6 +1127,16 @@ func (x *ResultRequest) ProtoReflect() protoreflect.Message {
 		return ms
 	}
 	return mi.MessageOf(x)
+}
+
+func (x *ResultRequest) GetCommandId() string {
+	if x != nil {
+		if x.xxx_hidden_CommandId != nil {
+			return *x.xxx_hidden_CommandId
+		}
+		return ""
+	}
+	return ""
 }
 
 func (x *ResultRequest) GetLeaseToken() string {
@@ -1132,9 +1176,14 @@ func (x *ResultRequest) GetRetryRequested() *RetryRequested {
 	return nil
 }
 
+func (x *ResultRequest) SetCommandId(v string) {
+	x.xxx_hidden_CommandId = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 3)
+}
+
 func (x *ResultRequest) SetLeaseToken(v string) {
 	x.xxx_hidden_LeaseToken = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 2)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 3)
 }
 
 func (x *ResultRequest) SetCompleted(v *Completed) {
@@ -1161,11 +1210,18 @@ func (x *ResultRequest) SetRetryRequested(v *RetryRequested) {
 	x.xxx_hidden_Outcome = &resultRequest_RetryRequested{v}
 }
 
-func (x *ResultRequest) HasLeaseToken() bool {
+func (x *ResultRequest) HasCommandId() bool {
 	if x == nil {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
+}
+
+func (x *ResultRequest) HasLeaseToken() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 1)
 }
 
 func (x *ResultRequest) HasOutcome() bool {
@@ -1199,8 +1255,13 @@ func (x *ResultRequest) HasRetryRequested() bool {
 	return ok
 }
 
-func (x *ResultRequest) ClearLeaseToken() {
+func (x *ResultRequest) ClearCommandId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
+	x.xxx_hidden_CommandId = nil
+}
+
+func (x *ResultRequest) ClearLeaseToken() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 1)
 	x.xxx_hidden_LeaseToken = nil
 }
 
@@ -1227,9 +1288,9 @@ func (x *ResultRequest) ClearRetryRequested() {
 }
 
 const ResultRequest_Outcome_not_set_case case_ResultRequest_Outcome = 0
-const ResultRequest_Completed_case case_ResultRequest_Outcome = 2
-const ResultRequest_Failed_case case_ResultRequest_Outcome = 3
-const ResultRequest_RetryRequested_case case_ResultRequest_Outcome = 4
+const ResultRequest_Completed_case case_ResultRequest_Outcome = 3
+const ResultRequest_Failed_case case_ResultRequest_Outcome = 4
+const ResultRequest_RetryRequested_case case_ResultRequest_Outcome = 5
 
 func (x *ResultRequest) WhichOutcome() case_ResultRequest_Outcome {
 	if x == nil {
@@ -1250,6 +1311,7 @@ func (x *ResultRequest) WhichOutcome() case_ResultRequest_Outcome {
 type ResultRequest_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
+	CommandId  *string
 	LeaseToken *string
 	// Fields of oneof xxx_hidden_Outcome:
 	Completed      *Completed
@@ -1262,8 +1324,12 @@ func (b0 ResultRequest_builder) Build() *ResultRequest {
 	m0 := &ResultRequest{}
 	b, x := &b0, m0
 	_, _ = b, x
+	if b.CommandId != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 3)
+		x.xxx_hidden_CommandId = b.CommandId
+	}
 	if b.LeaseToken != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 2)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 3)
 		x.xxx_hidden_LeaseToken = b.LeaseToken
 	}
 	if b.Completed != nil {
@@ -1293,15 +1359,15 @@ type isResultRequest_Outcome interface {
 }
 
 type resultRequest_Completed struct {
-	Completed *Completed `protobuf:"bytes,2,opt,name=completed,oneof"`
+	Completed *Completed `protobuf:"bytes,3,opt,name=completed,oneof"`
 }
 
 type resultRequest_Failed struct {
-	Failed *Failed `protobuf:"bytes,3,opt,name=failed,oneof"`
+	Failed *Failed `protobuf:"bytes,4,opt,name=failed,oneof"`
 }
 
 type resultRequest_RetryRequested struct {
-	RetryRequested *RetryRequested `protobuf:"bytes,4,opt,name=retry_requested,json=retryRequested,oneof"`
+	RetryRequested *RetryRequested `protobuf:"bytes,5,opt,name=retry_requested,json=retryRequested,oneof"`
 }
 
 func (*resultRequest_Completed) isResultRequest_Outcome() {}
@@ -1309,6 +1375,84 @@ func (*resultRequest_Completed) isResultRequest_Outcome() {}
 func (*resultRequest_Failed) isResultRequest_Outcome() {}
 
 func (*resultRequest_RetryRequested) isResultRequest_Outcome() {}
+
+type RetryRequest struct {
+	state                  protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_CommandId   *string                `protobuf:"bytes,1,opt,name=command_id,json=commandId"`
+	XXX_raceDetectHookData protoimpl.RaceDetectHookData
+	XXX_presence           [1]uint32
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
+}
+
+func (x *RetryRequest) Reset() {
+	*x = RetryRequest{}
+	mi := &file_cineko_execution_execution_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RetryRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RetryRequest) ProtoMessage() {}
+
+func (x *RetryRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_execution_execution_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *RetryRequest) GetCommandId() string {
+	if x != nil {
+		if x.xxx_hidden_CommandId != nil {
+			return *x.xxx_hidden_CommandId
+		}
+		return ""
+	}
+	return ""
+}
+
+func (x *RetryRequest) SetCommandId(v string) {
+	x.xxx_hidden_CommandId = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 1)
+}
+
+func (x *RetryRequest) HasCommandId() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
+}
+
+func (x *RetryRequest) ClearCommandId() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
+	x.xxx_hidden_CommandId = nil
+}
+
+type RetryRequest_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	CommandId *string
+}
+
+func (b0 RetryRequest_builder) Build() *RetryRequest {
+	m0 := &RetryRequest{}
+	b, x := &b0, m0
+	_, _ = b, x
+	if b.CommandId != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 1)
+		x.xxx_hidden_CommandId = b.CommandId
+	}
+	return m0
+}
 
 var File_cineko_execution_execution_proto protoreflect.FileDescriptor
 
@@ -1330,18 +1474,23 @@ const file_cineko_execution_execution_proto_rawDesc = "" +
 	"leaseToken\x12D\n" +
 	"\x10lease_expires_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\x0eleaseExpiresAt\x129\n" +
 	"\n" +
-	"created_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"7\n" +
-	"\fClaimRequest\x12'\n" +
-	"\x0finstallation_id\x18\x01 \x01(\tR\x0einstallationId\"B\n" +
+	"created_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"C\n" +
+	"\fClaimRequest\x123\n" +
+	"\x0finstallation_id\x18\x01 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\x0einstallationId\"B\n" +
 	"\tNoCommand\x125\n" +
 	"\bretry_at\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\aretryAt\"\x95\x01\n" +
 	"\rClaimResponse\x125\n" +
 	"\acommand\x18\x01 \x01(\v2\x19.cineko.execution.CommandH\x00R\acommand\x12<\n" +
 	"\n" +
 	"no_command\x18\x02 \x01(\v2\x1b.cineko.execution.NoCommandH\x00R\tnoCommandB\x0f\n" +
-	"\x06result\x12\x05\xbaH\x02\b\x01\"3\n" +
-	"\x10HeartbeatRequest\x12\x1f\n" +
-	"\vlease_token\x18\x01 \x01(\tR\n" +
+	"\x06result\x12\x05\xbaH\x02\b\x01\"j\n" +
+	"\x10HeartbeatRequest\x12)\n" +
+	"\n" +
+	"command_id\x18\x01 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\tcommandId\x12+\n" +
+	"\vlease_token\x18\x02 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\n" +
 	"leaseToken\"Y\n" +
 	"\x11HeartbeatResponse\x12D\n" +
 	"\x10lease_expires_at\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\x0eleaseExpiresAt\"\v\n" +
@@ -1351,16 +1500,24 @@ const file_cineko_execution_execution_proto_rawDesc = "" +
 	"reasonCode\"1\n" +
 	"\x0eRetryRequested\x12\x1f\n" +
 	"\vreason_code\x18\x01 \x01(\tR\n" +
-	"reasonCode\"\x80\x02\n" +
-	"\rResultRequest\x12\x1f\n" +
-	"\vlease_token\x18\x01 \x01(\tR\n" +
+	"reasonCode\"\xb7\x02\n" +
+	"\rResultRequest\x12)\n" +
+	"\n" +
+	"command_id\x18\x01 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\tcommandId\x12+\n" +
+	"\vlease_token\x18\x02 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\n" +
 	"leaseToken\x12;\n" +
-	"\tcompleted\x18\x02 \x01(\v2\x1b.cineko.execution.CompletedH\x00R\tcompleted\x122\n" +
-	"\x06failed\x18\x03 \x01(\v2\x18.cineko.execution.FailedH\x00R\x06failed\x12K\n" +
-	"\x0fretry_requested\x18\x04 \x01(\v2 .cineko.execution.RetryRequestedH\x00R\x0eretryRequestedB\x10\n" +
-	"\aoutcome\x12\x05\xbaH\x02\b\x01BCZAgithub.com/cineko-org/contracts/gen/go/cineko/execution;executionb\beditionsp\xe9\a"
+	"\tcompleted\x18\x03 \x01(\v2\x1b.cineko.execution.CompletedH\x00R\tcompleted\x122\n" +
+	"\x06failed\x18\x04 \x01(\v2\x18.cineko.execution.FailedH\x00R\x06failed\x12K\n" +
+	"\x0fretry_requested\x18\x05 \x01(\v2 .cineko.execution.RetryRequestedH\x00R\x0eretryRequestedB\x10\n" +
+	"\aoutcome\x12\x05\xbaH\x02\b\x01\"9\n" +
+	"\fRetryRequest\x12)\n" +
+	"\n" +
+	"command_id\x18\x01 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\tcommandIdBCZAgithub.com/cineko-org/contracts/gen/go/cineko/execution;executionb\beditionsp\xe9\a"
 
-var file_cineko_execution_execution_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_cineko_execution_execution_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_cineko_execution_execution_proto_goTypes = []any{
 	(*Payload)(nil),               // 0: cineko.execution.Payload
 	(*Command)(nil),               // 1: cineko.execution.Command
@@ -1373,19 +1530,20 @@ var file_cineko_execution_execution_proto_goTypes = []any{
 	(*Failed)(nil),                // 8: cineko.execution.Failed
 	(*RetryRequested)(nil),        // 9: cineko.execution.RetryRequested
 	(*ResultRequest)(nil),         // 10: cineko.execution.ResultRequest
-	(*catalog.Showtime)(nil),      // 11: cineko.catalog.Showtime
-	(*timestamppb.Timestamp)(nil), // 12: google.protobuf.Timestamp
+	(*RetryRequest)(nil),          // 11: cineko.execution.RetryRequest
+	(*catalog.Showtime)(nil),      // 12: cineko.catalog.Showtime
+	(*timestamppb.Timestamp)(nil), // 13: google.protobuf.Timestamp
 }
 var file_cineko_execution_execution_proto_depIdxs = []int32{
-	11, // 0: cineko.execution.Payload.showtime:type_name -> cineko.catalog.Showtime
-	12, // 1: cineko.execution.Payload.observed_at:type_name -> google.protobuf.Timestamp
+	12, // 0: cineko.execution.Payload.showtime:type_name -> cineko.catalog.Showtime
+	13, // 1: cineko.execution.Payload.observed_at:type_name -> google.protobuf.Timestamp
 	0,  // 2: cineko.execution.Command.payload:type_name -> cineko.execution.Payload
-	12, // 3: cineko.execution.Command.lease_expires_at:type_name -> google.protobuf.Timestamp
-	12, // 4: cineko.execution.Command.created_at:type_name -> google.protobuf.Timestamp
-	12, // 5: cineko.execution.NoCommand.retry_at:type_name -> google.protobuf.Timestamp
+	13, // 3: cineko.execution.Command.lease_expires_at:type_name -> google.protobuf.Timestamp
+	13, // 4: cineko.execution.Command.created_at:type_name -> google.protobuf.Timestamp
+	13, // 5: cineko.execution.NoCommand.retry_at:type_name -> google.protobuf.Timestamp
 	1,  // 6: cineko.execution.ClaimResponse.command:type_name -> cineko.execution.Command
 	3,  // 7: cineko.execution.ClaimResponse.no_command:type_name -> cineko.execution.NoCommand
-	12, // 8: cineko.execution.HeartbeatResponse.lease_expires_at:type_name -> google.protobuf.Timestamp
+	13, // 8: cineko.execution.HeartbeatResponse.lease_expires_at:type_name -> google.protobuf.Timestamp
 	7,  // 9: cineko.execution.ResultRequest.completed:type_name -> cineko.execution.Completed
 	8,  // 10: cineko.execution.ResultRequest.failed:type_name -> cineko.execution.Failed
 	9,  // 11: cineko.execution.ResultRequest.retry_requested:type_name -> cineko.execution.RetryRequested
@@ -1416,7 +1574,7 @@ func file_cineko_execution_execution_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cineko_execution_execution_proto_rawDesc), len(file_cineko_execution_execution_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   11,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

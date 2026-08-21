@@ -2257,27 +2257,30 @@ const file_cineko_probe_probe_proto_rawDesc = "" +
 	"\ahealthy\x18\x01 \x01(\v2\x15.cineko.probe.HealthyH\x00R\ahealthy\x124\n" +
 	"\bdegraded\x18\x02 \x01(\v2\x16.cineko.probe.DegradedH\x00R\bdegraded\x127\n" +
 	"\tunhealthy\x18\x03 \x01(\v2\x17.cineko.probe.UnhealthyH\x00R\tunhealthyB\x0f\n" +
-	"\x06health\x12\x05\xbaH\x02\b\x01\"\xa9\x02\n" +
-	"\x0fRegisterRequest\x12'\n" +
-	"\x0finstallation_id\x18\x01 \x01(\tR\x0einstallationId\x12+\n" +
-	"\x04kind\x18\x02 \x01(\v2\x17.cineko.probe.ProbeKindR\x04kind\x12!\n" +
-	"\fnetwork_hint\x18\x03 \x01(\tR\vnetworkHint\x12B\n" +
-	"\fcapabilities\x18\x04 \x03(\v2\x1e.cineko.observation.CapabilityR\fcapabilities\x12'\n" +
-	"\x0fmax_concurrency\x18\x05 \x01(\x05R\x0emaxConcurrency\x120\n" +
-	"\aruntime\x18\x06 \x01(\v2\x16.cineko.common.RuntimeR\aruntime\"\xf3\x01\n" +
+	"\x06health\x12\x05\xbaH\x02\b\x01\"\xdb\x02\n" +
+	"\x0fRegisterRequest\x123\n" +
+	"\x0finstallation_id\x18\x01 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\x0einstallationId\x123\n" +
+	"\x04kind\x18\x02 \x01(\v2\x17.cineko.probe.ProbeKindB\x06\xbaH\x03\xc8\x01\x01R\x04kind\x12!\n" +
+	"\fnetwork_hint\x18\x03 \x01(\tR\vnetworkHint\x12L\n" +
+	"\fcapabilities\x18\x04 \x03(\v2\x1e.cineko.observation.CapabilityB\b\xbaH\x05\x92\x01\x02\b\x01R\fcapabilities\x123\n" +
+	"\x0fmax_concurrency\x18\x05 \x01(\x05B\n" +
+	"\xbaH\a\xc8\x01\x01\x1a\x02 \x00R\x0emaxConcurrency\x128\n" +
+	"\aruntime\x18\x06 \x01(\v2\x16.cineko.common.RuntimeB\x06\xbaH\x03\xc8\x01\x01R\aruntime\"\xf3\x01\n" +
 	"\x10RegisterResponse\x12\x19\n" +
 	"\bprobe_id\x18\x01 \x01(\tR\aprobeId\x12\x1d\n" +
 	"\n" +
 	"network_id\x18\x02 \x01(\tR\tnetworkId\x12!\n" +
 	"\faccess_token\x18\x03 \x01(\tR\vaccessToken\x12D\n" +
 	"\x10token_expires_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\x0etokenExpiresAt\x12<\n" +
-	"\x1aheartbeat_interval_seconds\x18\x05 \x01(\x05R\x18heartbeatIntervalSeconds\"\x95\x02\n" +
+	"\x1aheartbeat_interval_seconds\x18\x05 \x01(\x05R\x18heartbeatIntervalSeconds\"\xa9\x02\n" +
 	"\x10HeartbeatRequest\x12\x1a\n" +
 	"\bdraining\x18\x01 \x01(\bR\bdraining\x122\n" +
 	"\x15active_assignment_ids\x18\x02 \x03(\tR\x13activeAssignmentIds\x12U\n" +
-	"\x16available_capabilities\x18\x03 \x03(\v2\x1e.cineko.observation.CapabilityR\x15availableCapabilities\x12'\n" +
-	"\x0favailable_slots\x18\x04 \x01(\x05R\x0eavailableSlots\x121\n" +
-	"\x06health\x18\x05 \x01(\v2\x19.cineko.probe.ProbeHealthR\x06health\"\xd8\x01\n" +
+	"\x16available_capabilities\x18\x03 \x03(\v2\x1e.cineko.observation.CapabilityR\x15availableCapabilities\x123\n" +
+	"\x0favailable_slots\x18\x04 \x01(\x05B\n" +
+	"\xbaH\a\xc8\x01\x01\x1a\x02(\x00R\x0eavailableSlots\x129\n" +
+	"\x06health\x18\x05 \x01(\v2\x19.cineko.probe.ProbeHealthB\x06\xbaH\x03\xc8\x01\x01R\x06health\"\xd8\x01\n" +
 	"\x11HeartbeatResponse\x12;\n" +
 	"\vserver_time\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\n" +
 	"serverTime\x12\x14\n" +
@@ -2301,18 +2304,22 @@ const file_cineko_probe_probe_proto_rawDesc = "" +
 	"assignment\x18\x01 \x01(\v2\x1d.cineko.probe.AssignmentLeaseH\x00R\n" +
 	"assignment\x12A\n" +
 	"\rno_assignment\x18\x02 \x01(\v2\x1a.cineko.probe.NoAssignmentH\x00R\fnoAssignmentB\x0f\n" +
-	"\x06result\x12\x05\xbaH\x02\b\x01\"b\n" +
-	"\x1aHeartbeatAssignmentRequest\x12#\n" +
-	"\rassignment_id\x18\x01 \x01(\tR\fassignmentId\x12\x1f\n" +
-	"\vlease_token\x18\x02 \x01(\tR\n" +
+	"\x06result\x12\x05\xbaH\x02\b\x01\"z\n" +
+	"\x1aHeartbeatAssignmentRequest\x12/\n" +
+	"\rassignment_id\x18\x01 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\fassignmentId\x12+\n" +
+	"\vlease_token\x18\x02 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\n" +
 	"leaseToken\"c\n" +
 	"\x1bHeartbeatAssignmentResponse\x12D\n" +
-	"\x10lease_expires_at\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\x0eleaseExpiresAt\"\xa3\x01\n" +
-	"\x1dSubmitAssignmentResultRequest\x12#\n" +
-	"\rassignment_id\x18\x01 \x01(\tR\fassignmentId\x12\x1f\n" +
-	"\vlease_token\x18\x02 \x01(\tR\n" +
-	"leaseToken\x12<\n" +
-	"\x06result\x18\x03 \x01(\v2$.cineko.observation.AssignmentResultR\x06resultB;Z9github.com/cineko-org/contracts/gen/go/cineko/probe;probeb\beditionsp\xe9\a"
+	"\x10lease_expires_at\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\x0eleaseExpiresAt\"\xc3\x01\n" +
+	"\x1dSubmitAssignmentResultRequest\x12/\n" +
+	"\rassignment_id\x18\x01 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\fassignmentId\x12+\n" +
+	"\vlease_token\x18\x02 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\n" +
+	"leaseToken\x12D\n" +
+	"\x06result\x18\x03 \x01(\v2$.cineko.observation.AssignmentResultB\x06\xbaH\x03\xc8\x01\x01R\x06resultB;Z9github.com/cineko-org/contracts/gen/go/cineko/probe;probeb\beditionsp\xe9\a"
 
 var file_cineko_probe_probe_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
 var file_cineko_probe_probe_proto_goTypes = []any{

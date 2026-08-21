@@ -157,6 +157,60 @@ message Reservation {
   string refund_amount = 9;
 }
 
+message ExternalOperation {
+  string id = 1;
+  string user_id = 2;
+  string monitor_id = 3;
+  string reservation_id = 4;
+  string refund_amount = 5;
+  string last_error = 6;
+  google.protobuf.Timestamp created_at = 7;
+  google.protobuf.Timestamp updated_at = 8;
+  oneof kind {
+    option (buf.validate.oneof).required = true;
+
+    CancellationOperation cancellation = 9;
+  }
+  oneof state {
+    option (buf.validate.oneof).required = true;
+
+    OperationPrepared prepared = 10;
+    OperationUnknown unknown = 11;
+    OperationAttentionRequired attention_required = 12;
+    OperationConfirmed confirmed = 13;
+    OperationReconciled reconciled = 14;
+  }
+}
+
+message CancellationOperation {}
+message OperationPrepared {}
+message OperationUnknown {}
+message OperationAttentionRequired {}
+message OperationConfirmed {}
+message OperationReconciled {}
+
+message AppEvent {
+  string id = 1;
+  string user_id = 2;
+  string kind = 3;
+  string message = 4;
+  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp read_at = 6;
+  oneof tone {
+    option (buf.validate.oneof).required = true;
+
+    EventInfo info = 7;
+    EventSuccess success = 8;
+    EventWarning warning = 9;
+    EventError error = 10;
+  }
+}
+
+message EventInfo {}
+message EventSuccess {}
+message EventWarning {}
+message EventError {}
+
 message Resource {
   cineko.common.ResourceIdentity identity = 1;
   oneof resource {
@@ -166,6 +220,28 @@ message Resource {
     Preset preset = 3;
     Monitor monitor = 4;
     Reservation reservation = 5;
+    ExternalOperation external_operation = 6;
+    AppEvent app_event = 7;
+  }
+}
+
+message SettingsResource {}
+message PresetResource {}
+message MonitorResource {}
+message ReservationResource {}
+message ExternalOperationResource {}
+message AppEventResource {}
+
+message ResourceKind {
+  oneof kind {
+    option (buf.validate.oneof).required = true;
+
+    SettingsResource settings = 1;
+    PresetResource preset = 2;
+    MonitorResource monitor = 3;
+    ReservationResource reservation = 4;
+    ExternalOperationResource external_operation = 5;
+    AppEventResource app_event = 6;
   }
 }
 
@@ -187,6 +263,8 @@ message EventResource {
     Preset preset = 4;
     Monitor monitor = 5;
     Reservation reservation = 6;
+    ExternalOperation external_operation = 7;
+    AppEvent app_event = 8;
   }
 }
 
@@ -240,18 +318,36 @@ message LaunchEnvelope {
 }
 
 message PinExchangeRequest {
-  string pin = 1;
-  string installation_id = 2;
-  string device_id = 3;
+  string pin = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.len = 6
+  ];
+  string installation_id = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string device_id = 3 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
 }
 
 message TokenExchangeRequest {
-  string user_id = 1;
-  string access_token = 2;
+  string user_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string access_token = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
 }
 
 message TokenRefreshRequest {
-  string refresh_token = 1;
+  string refresh_token = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
 }
 
 message AuthenticationResponse {
@@ -264,8 +360,11 @@ message AuthenticationResponse {
 }
 
 message LaunchTicketRequest {
-  LaunchContext context = 1;
-  string nonce = 2;
+  LaunchContext context = 1 [(buf.validate.field).required = true];
+  string nonce = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
 }
 
 message LaunchTicketResponse {
@@ -274,11 +373,20 @@ message LaunchTicketResponse {
 }
 
 message ProbeBootstrapTicketRequest {
-  string installation_id = 1;
-  string device_id = 2;
-  repeated cineko.observation.Capability capabilities = 3;
-  int32 max_concurrency = 4;
-  cineko.common.Runtime runtime = 5;
+  string installation_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string device_id = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  repeated cineko.observation.Capability capabilities = 3 [(buf.validate.field).repeated.min_items = 1];
+  int32 max_concurrency = 4 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).int32.gt = 0
+  ];
+  cineko.common.Runtime runtime = 5 [(buf.validate.field).required = true];
 }
 
 message ProbeBootstrapTicketResponse {
@@ -287,8 +395,14 @@ message ProbeBootstrapTicketResponse {
 }
 
 message SessionExchangeRequest {
-  string launch_ticket = 1;
-  string client_nonce = 2;
+  string launch_ticket = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string client_nonce = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
 }
 
 message CatalogRequest {}

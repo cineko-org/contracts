@@ -7,6 +7,7 @@
 package service
 
 import (
+	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
 	catalog "github.com/cineko-org/contracts/gen/go/cineko/catalog"
 	client "github.com/cineko-org/contracts/gen/go/cineko/client"
 	common "github.com/cineko-org/contracts/gen/go/cineko/common"
@@ -96,6 +97,92 @@ func (b0 SubmitAssignmentResultResponse_builder) Build() *SubmitAssignmentResult
 	return m0
 }
 
+type DisconnectRequest struct {
+	state         protoimpl.MessageState `protogen:"opaque.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DisconnectRequest) Reset() {
+	*x = DisconnectRequest{}
+	mi := &file_cineko_service_services_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DisconnectRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DisconnectRequest) ProtoMessage() {}
+
+func (x *DisconnectRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_service_services_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+type DisconnectRequest_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+}
+
+func (b0 DisconnectRequest_builder) Build() *DisconnectRequest {
+	m0 := &DisconnectRequest{}
+	b, x := &b0, m0
+	_, _ = b, x
+	return m0
+}
+
+type DisconnectResponse struct {
+	state         protoimpl.MessageState `protogen:"opaque.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DisconnectResponse) Reset() {
+	*x = DisconnectResponse{}
+	mi := &file_cineko_service_services_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DisconnectResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DisconnectResponse) ProtoMessage() {}
+
+func (x *DisconnectResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_service_services_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+type DisconnectResponse_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+}
+
+func (b0 DisconnectResponse_builder) Build() *DisconnectResponse {
+	m0 := &DisconnectResponse{}
+	b, x := &b0, m0
+	_, _ = b, x
+	return m0
+}
+
 type ExchangePinRequest struct {
 	state              protoimpl.MessageState     `protogen:"opaque.v1"`
 	xxx_hidden_Request *client.PinExchangeRequest `protobuf:"bytes,1,opt,name=request"`
@@ -105,7 +192,7 @@ type ExchangePinRequest struct {
 
 func (x *ExchangePinRequest) Reset() {
 	*x = ExchangePinRequest{}
-	mi := &file_cineko_service_services_proto_msgTypes[1]
+	mi := &file_cineko_service_services_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -117,7 +204,7 @@ func (x *ExchangePinRequest) String() string {
 func (*ExchangePinRequest) ProtoMessage() {}
 
 func (x *ExchangePinRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[1]
+	mi := &file_cineko_service_services_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -173,7 +260,7 @@ type ExchangePinResponse struct {
 
 func (x *ExchangePinResponse) Reset() {
 	*x = ExchangePinResponse{}
-	mi := &file_cineko_service_services_proto_msgTypes[2]
+	mi := &file_cineko_service_services_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -185,7 +272,7 @@ func (x *ExchangePinResponse) String() string {
 func (*ExchangePinResponse) ProtoMessage() {}
 
 func (x *ExchangePinResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[2]
+	mi := &file_cineko_service_services_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -241,7 +328,7 @@ type ExchangeTokenRequest struct {
 
 func (x *ExchangeTokenRequest) Reset() {
 	*x = ExchangeTokenRequest{}
-	mi := &file_cineko_service_services_proto_msgTypes[3]
+	mi := &file_cineko_service_services_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -253,7 +340,7 @@ func (x *ExchangeTokenRequest) String() string {
 func (*ExchangeTokenRequest) ProtoMessage() {}
 
 func (x *ExchangeTokenRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[3]
+	mi := &file_cineko_service_services_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -309,7 +396,7 @@ type ExchangeTokenResponse struct {
 
 func (x *ExchangeTokenResponse) Reset() {
 	*x = ExchangeTokenResponse{}
-	mi := &file_cineko_service_services_proto_msgTypes[4]
+	mi := &file_cineko_service_services_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -321,7 +408,7 @@ func (x *ExchangeTokenResponse) String() string {
 func (*ExchangeTokenResponse) ProtoMessage() {}
 
 func (x *ExchangeTokenResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[4]
+	mi := &file_cineko_service_services_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -377,7 +464,7 @@ type RefreshTokenRequest struct {
 
 func (x *RefreshTokenRequest) Reset() {
 	*x = RefreshTokenRequest{}
-	mi := &file_cineko_service_services_proto_msgTypes[5]
+	mi := &file_cineko_service_services_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -389,7 +476,7 @@ func (x *RefreshTokenRequest) String() string {
 func (*RefreshTokenRequest) ProtoMessage() {}
 
 func (x *RefreshTokenRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[5]
+	mi := &file_cineko_service_services_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -445,7 +532,7 @@ type RefreshTokenResponse struct {
 
 func (x *RefreshTokenResponse) Reset() {
 	*x = RefreshTokenResponse{}
-	mi := &file_cineko_service_services_proto_msgTypes[6]
+	mi := &file_cineko_service_services_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -457,7 +544,7 @@ func (x *RefreshTokenResponse) String() string {
 func (*RefreshTokenResponse) ProtoMessage() {}
 
 func (x *RefreshTokenResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[6]
+	mi := &file_cineko_service_services_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -513,7 +600,7 @@ type CreateLaunchTicketRequest struct {
 
 func (x *CreateLaunchTicketRequest) Reset() {
 	*x = CreateLaunchTicketRequest{}
-	mi := &file_cineko_service_services_proto_msgTypes[7]
+	mi := &file_cineko_service_services_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -525,7 +612,7 @@ func (x *CreateLaunchTicketRequest) String() string {
 func (*CreateLaunchTicketRequest) ProtoMessage() {}
 
 func (x *CreateLaunchTicketRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[7]
+	mi := &file_cineko_service_services_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -581,7 +668,7 @@ type CreateLaunchTicketResponse struct {
 
 func (x *CreateLaunchTicketResponse) Reset() {
 	*x = CreateLaunchTicketResponse{}
-	mi := &file_cineko_service_services_proto_msgTypes[8]
+	mi := &file_cineko_service_services_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -593,7 +680,7 @@ func (x *CreateLaunchTicketResponse) String() string {
 func (*CreateLaunchTicketResponse) ProtoMessage() {}
 
 func (x *CreateLaunchTicketResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[8]
+	mi := &file_cineko_service_services_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -649,7 +736,7 @@ type ExchangeSessionRequest struct {
 
 func (x *ExchangeSessionRequest) Reset() {
 	*x = ExchangeSessionRequest{}
-	mi := &file_cineko_service_services_proto_msgTypes[9]
+	mi := &file_cineko_service_services_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -661,7 +748,7 @@ func (x *ExchangeSessionRequest) String() string {
 func (*ExchangeSessionRequest) ProtoMessage() {}
 
 func (x *ExchangeSessionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[9]
+	mi := &file_cineko_service_services_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -717,7 +804,7 @@ type ExchangeSessionResponse struct {
 
 func (x *ExchangeSessionResponse) Reset() {
 	*x = ExchangeSessionResponse{}
-	mi := &file_cineko_service_services_proto_msgTypes[10]
+	mi := &file_cineko_service_services_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -729,7 +816,7 @@ func (x *ExchangeSessionResponse) String() string {
 func (*ExchangeSessionResponse) ProtoMessage() {}
 
 func (x *ExchangeSessionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[10]
+	mi := &file_cineko_service_services_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -776,15 +863,240 @@ func (b0 ExchangeSessionResponse_builder) Build() *ExchangeSessionResponse {
 	return m0
 }
 
-type BootstrapRequest struct {
+type LogoutRequest struct {
 	state         protoimpl.MessageState `protogen:"opaque.v1"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
+func (x *LogoutRequest) Reset() {
+	*x = LogoutRequest{}
+	mi := &file_cineko_service_services_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *LogoutRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LogoutRequest) ProtoMessage() {}
+
+func (x *LogoutRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_service_services_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+type LogoutRequest_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+}
+
+func (b0 LogoutRequest_builder) Build() *LogoutRequest {
+	m0 := &LogoutRequest{}
+	b, x := &b0, m0
+	_, _ = b, x
+	return m0
+}
+
+type LogoutResponse struct {
+	state         protoimpl.MessageState `protogen:"opaque.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *LogoutResponse) Reset() {
+	*x = LogoutResponse{}
+	mi := &file_cineko_service_services_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *LogoutResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LogoutResponse) ProtoMessage() {}
+
+func (x *LogoutResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_service_services_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+type LogoutResponse_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+}
+
+func (b0 LogoutResponse_builder) Build() *LogoutResponse {
+	m0 := &LogoutResponse{}
+	b, x := &b0, m0
+	_, _ = b, x
+	return m0
+}
+
+type CreateProbeBootstrapTicketRequest struct {
+	state              protoimpl.MessageState              `protogen:"opaque.v1"`
+	xxx_hidden_Request *client.ProbeBootstrapTicketRequest `protobuf:"bytes,1,opt,name=request"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
+}
+
+func (x *CreateProbeBootstrapTicketRequest) Reset() {
+	*x = CreateProbeBootstrapTicketRequest{}
+	mi := &file_cineko_service_services_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateProbeBootstrapTicketRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateProbeBootstrapTicketRequest) ProtoMessage() {}
+
+func (x *CreateProbeBootstrapTicketRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_service_services_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *CreateProbeBootstrapTicketRequest) GetRequest() *client.ProbeBootstrapTicketRequest {
+	if x != nil {
+		return x.xxx_hidden_Request
+	}
+	return nil
+}
+
+func (x *CreateProbeBootstrapTicketRequest) SetRequest(v *client.ProbeBootstrapTicketRequest) {
+	x.xxx_hidden_Request = v
+}
+
+func (x *CreateProbeBootstrapTicketRequest) HasRequest() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_Request != nil
+}
+
+func (x *CreateProbeBootstrapTicketRequest) ClearRequest() {
+	x.xxx_hidden_Request = nil
+}
+
+type CreateProbeBootstrapTicketRequest_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	Request *client.ProbeBootstrapTicketRequest
+}
+
+func (b0 CreateProbeBootstrapTicketRequest_builder) Build() *CreateProbeBootstrapTicketRequest {
+	m0 := &CreateProbeBootstrapTicketRequest{}
+	b, x := &b0, m0
+	_, _ = b, x
+	x.xxx_hidden_Request = b.Request
+	return m0
+}
+
+type CreateProbeBootstrapTicketResponse struct {
+	state               protoimpl.MessageState               `protogen:"opaque.v1"`
+	xxx_hidden_Response *client.ProbeBootstrapTicketResponse `protobuf:"bytes,1,opt,name=response"`
+	unknownFields       protoimpl.UnknownFields
+	sizeCache           protoimpl.SizeCache
+}
+
+func (x *CreateProbeBootstrapTicketResponse) Reset() {
+	*x = CreateProbeBootstrapTicketResponse{}
+	mi := &file_cineko_service_services_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateProbeBootstrapTicketResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateProbeBootstrapTicketResponse) ProtoMessage() {}
+
+func (x *CreateProbeBootstrapTicketResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_service_services_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *CreateProbeBootstrapTicketResponse) GetResponse() *client.ProbeBootstrapTicketResponse {
+	if x != nil {
+		return x.xxx_hidden_Response
+	}
+	return nil
+}
+
+func (x *CreateProbeBootstrapTicketResponse) SetResponse(v *client.ProbeBootstrapTicketResponse) {
+	x.xxx_hidden_Response = v
+}
+
+func (x *CreateProbeBootstrapTicketResponse) HasResponse() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_Response != nil
+}
+
+func (x *CreateProbeBootstrapTicketResponse) ClearResponse() {
+	x.xxx_hidden_Response = nil
+}
+
+type CreateProbeBootstrapTicketResponse_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	Response *client.ProbeBootstrapTicketResponse
+}
+
+func (b0 CreateProbeBootstrapTicketResponse_builder) Build() *CreateProbeBootstrapTicketResponse {
+	m0 := &CreateProbeBootstrapTicketResponse{}
+	b, x := &b0, m0
+	_, _ = b, x
+	x.xxx_hidden_Response = b.Response
+	return m0
+}
+
+type BootstrapRequest struct {
+	state                     protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_InstallationId *string                `protobuf:"bytes,1,opt,name=installation_id,json=installationId"`
+	XXX_raceDetectHookData    protoimpl.RaceDetectHookData
+	XXX_presence              [1]uint32
+	unknownFields             protoimpl.UnknownFields
+	sizeCache                 protoimpl.SizeCache
+}
+
 func (x *BootstrapRequest) Reset() {
 	*x = BootstrapRequest{}
-	mi := &file_cineko_service_services_proto_msgTypes[11]
+	mi := &file_cineko_service_services_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -796,7 +1108,7 @@ func (x *BootstrapRequest) String() string {
 func (*BootstrapRequest) ProtoMessage() {}
 
 func (x *BootstrapRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[11]
+	mi := &file_cineko_service_services_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -807,15 +1119,47 @@ func (x *BootstrapRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
+func (x *BootstrapRequest) GetInstallationId() string {
+	if x != nil {
+		if x.xxx_hidden_InstallationId != nil {
+			return *x.xxx_hidden_InstallationId
+		}
+		return ""
+	}
+	return ""
+}
+
+func (x *BootstrapRequest) SetInstallationId(v string) {
+	x.xxx_hidden_InstallationId = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 1)
+}
+
+func (x *BootstrapRequest) HasInstallationId() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
+}
+
+func (x *BootstrapRequest) ClearInstallationId() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
+	x.xxx_hidden_InstallationId = nil
+}
+
 type BootstrapRequest_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
+	InstallationId *string
 }
 
 func (b0 BootstrapRequest_builder) Build() *BootstrapRequest {
 	m0 := &BootstrapRequest{}
 	b, x := &b0, m0
 	_, _ = b, x
+	if b.InstallationId != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 1)
+		x.xxx_hidden_InstallationId = b.InstallationId
+	}
 	return m0
 }
 
@@ -828,7 +1172,7 @@ type BootstrapResponse struct {
 
 func (x *BootstrapResponse) Reset() {
 	*x = BootstrapResponse{}
-	mi := &file_cineko_service_services_proto_msgTypes[12]
+	mi := &file_cineko_service_services_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -840,7 +1184,7 @@ func (x *BootstrapResponse) String() string {
 func (*BootstrapResponse) ProtoMessage() {}
 
 func (x *BootstrapResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[12]
+	mi := &file_cineko_service_services_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -889,7 +1233,8 @@ func (b0 BootstrapResponse_builder) Build() *BootstrapResponse {
 
 type GetResourceRequest struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_Id          *string                `protobuf:"bytes,1,opt,name=id"`
+	xxx_hidden_Kind        *client.ResourceKind   `protobuf:"bytes,1,opt,name=kind"`
+	xxx_hidden_Id          *string                `protobuf:"bytes,2,opt,name=id"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -898,7 +1243,7 @@ type GetResourceRequest struct {
 
 func (x *GetResourceRequest) Reset() {
 	*x = GetResourceRequest{}
-	mi := &file_cineko_service_services_proto_msgTypes[13]
+	mi := &file_cineko_service_services_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -910,7 +1255,7 @@ func (x *GetResourceRequest) String() string {
 func (*GetResourceRequest) ProtoMessage() {}
 
 func (x *GetResourceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[13]
+	mi := &file_cineko_service_services_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -919,6 +1264,13 @@ func (x *GetResourceRequest) ProtoReflect() protoreflect.Message {
 		return ms
 	}
 	return mi.MessageOf(x)
+}
+
+func (x *GetResourceRequest) GetKind() *client.ResourceKind {
+	if x != nil {
+		return x.xxx_hidden_Kind
+	}
+	return nil
 }
 
 func (x *GetResourceRequest) GetId() string {
@@ -931,35 +1283,52 @@ func (x *GetResourceRequest) GetId() string {
 	return ""
 }
 
+func (x *GetResourceRequest) SetKind(v *client.ResourceKind) {
+	x.xxx_hidden_Kind = v
+}
+
 func (x *GetResourceRequest) SetId(v string) {
 	x.xxx_hidden_Id = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 1)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 2)
+}
+
+func (x *GetResourceRequest) HasKind() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_Kind != nil
 }
 
 func (x *GetResourceRequest) HasId() bool {
 	if x == nil {
 		return false
 	}
-	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 1)
+}
+
+func (x *GetResourceRequest) ClearKind() {
+	x.xxx_hidden_Kind = nil
 }
 
 func (x *GetResourceRequest) ClearId() {
-	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 1)
 	x.xxx_hidden_Id = nil
 }
 
 type GetResourceRequest_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
-	Id *string
+	Kind *client.ResourceKind
+	Id   *string
 }
 
 func (b0 GetResourceRequest_builder) Build() *GetResourceRequest {
 	m0 := &GetResourceRequest{}
 	b, x := &b0, m0
 	_, _ = b, x
+	x.xxx_hidden_Kind = b.Kind
 	if b.Id != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 1)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 2)
 		x.xxx_hidden_Id = b.Id
 	}
 	return m0
@@ -974,7 +1343,7 @@ type GetResourceResponse struct {
 
 func (x *GetResourceResponse) Reset() {
 	*x = GetResourceResponse{}
-	mi := &file_cineko_service_services_proto_msgTypes[14]
+	mi := &file_cineko_service_services_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -986,7 +1355,7 @@ func (x *GetResourceResponse) String() string {
 func (*GetResourceResponse) ProtoMessage() {}
 
 func (x *GetResourceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[14]
+	mi := &file_cineko_service_services_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1035,14 +1404,15 @@ func (b0 GetResourceResponse_builder) Build() *GetResourceResponse {
 
 type ListResourcesRequest struct {
 	state           protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_Page *common.PageRequest    `protobuf:"bytes,1,opt,name=page"`
+	xxx_hidden_Kind *client.ResourceKind   `protobuf:"bytes,1,opt,name=kind"`
+	xxx_hidden_Page *common.PageRequest    `protobuf:"bytes,2,opt,name=page"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
 
 func (x *ListResourcesRequest) Reset() {
 	*x = ListResourcesRequest{}
-	mi := &file_cineko_service_services_proto_msgTypes[15]
+	mi := &file_cineko_service_services_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1054,7 +1424,7 @@ func (x *ListResourcesRequest) String() string {
 func (*ListResourcesRequest) ProtoMessage() {}
 
 func (x *ListResourcesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[15]
+	mi := &file_cineko_service_services_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1065,6 +1435,13 @@ func (x *ListResourcesRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
+func (x *ListResourcesRequest) GetKind() *client.ResourceKind {
+	if x != nil {
+		return x.xxx_hidden_Kind
+	}
+	return nil
+}
+
 func (x *ListResourcesRequest) GetPage() *common.PageRequest {
 	if x != nil {
 		return x.xxx_hidden_Page
@@ -1072,8 +1449,19 @@ func (x *ListResourcesRequest) GetPage() *common.PageRequest {
 	return nil
 }
 
+func (x *ListResourcesRequest) SetKind(v *client.ResourceKind) {
+	x.xxx_hidden_Kind = v
+}
+
 func (x *ListResourcesRequest) SetPage(v *common.PageRequest) {
 	x.xxx_hidden_Page = v
+}
+
+func (x *ListResourcesRequest) HasKind() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_Kind != nil
 }
 
 func (x *ListResourcesRequest) HasPage() bool {
@@ -1083,6 +1471,10 @@ func (x *ListResourcesRequest) HasPage() bool {
 	return x.xxx_hidden_Page != nil
 }
 
+func (x *ListResourcesRequest) ClearKind() {
+	x.xxx_hidden_Kind = nil
+}
+
 func (x *ListResourcesRequest) ClearPage() {
 	x.xxx_hidden_Page = nil
 }
@@ -1090,6 +1482,7 @@ func (x *ListResourcesRequest) ClearPage() {
 type ListResourcesRequest_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
+	Kind *client.ResourceKind
 	Page *common.PageRequest
 }
 
@@ -1097,6 +1490,7 @@ func (b0 ListResourcesRequest_builder) Build() *ListResourcesRequest {
 	m0 := &ListResourcesRequest{}
 	b, x := &b0, m0
 	_, _ = b, x
+	x.xxx_hidden_Kind = b.Kind
 	x.xxx_hidden_Page = b.Page
 	return m0
 }
@@ -1111,7 +1505,7 @@ type ListResourcesResponse struct {
 
 func (x *ListResourcesResponse) Reset() {
 	*x = ListResourcesResponse{}
-	mi := &file_cineko_service_services_proto_msgTypes[16]
+	mi := &file_cineko_service_services_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1123,7 +1517,7 @@ func (x *ListResourcesResponse) String() string {
 func (*ListResourcesResponse) ProtoMessage() {}
 
 func (x *ListResourcesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[16]
+	mi := &file_cineko_service_services_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1195,7 +1589,7 @@ type PutResourceRequest struct {
 
 func (x *PutResourceRequest) Reset() {
 	*x = PutResourceRequest{}
-	mi := &file_cineko_service_services_proto_msgTypes[17]
+	mi := &file_cineko_service_services_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1207,7 +1601,7 @@ func (x *PutResourceRequest) String() string {
 func (*PutResourceRequest) ProtoMessage() {}
 
 func (x *PutResourceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[17]
+	mi := &file_cineko_service_services_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1287,7 +1681,7 @@ type PutResourceResponse struct {
 
 func (x *PutResourceResponse) Reset() {
 	*x = PutResourceResponse{}
-	mi := &file_cineko_service_services_proto_msgTypes[18]
+	mi := &file_cineko_service_services_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1299,7 +1693,7 @@ func (x *PutResourceResponse) String() string {
 func (*PutResourceResponse) ProtoMessage() {}
 
 func (x *PutResourceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[18]
+	mi := &file_cineko_service_services_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1349,7 +1743,8 @@ func (b0 PutResourceResponse_builder) Build() *PutResourceResponse {
 type DeleteResourceRequest struct {
 	state                  protoimpl.MessageState   `protogen:"opaque.v1"`
 	xxx_hidden_Mutation    *common.MutationIdentity `protobuf:"bytes,1,opt,name=mutation"`
-	xxx_hidden_Id          *string                  `protobuf:"bytes,2,opt,name=id"`
+	xxx_hidden_Kind        *client.ResourceKind     `protobuf:"bytes,2,opt,name=kind"`
+	xxx_hidden_Id          *string                  `protobuf:"bytes,3,opt,name=id"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -1358,7 +1753,7 @@ type DeleteResourceRequest struct {
 
 func (x *DeleteResourceRequest) Reset() {
 	*x = DeleteResourceRequest{}
-	mi := &file_cineko_service_services_proto_msgTypes[19]
+	mi := &file_cineko_service_services_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1370,7 +1765,7 @@ func (x *DeleteResourceRequest) String() string {
 func (*DeleteResourceRequest) ProtoMessage() {}
 
 func (x *DeleteResourceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[19]
+	mi := &file_cineko_service_services_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1384,6 +1779,13 @@ func (x *DeleteResourceRequest) ProtoReflect() protoreflect.Message {
 func (x *DeleteResourceRequest) GetMutation() *common.MutationIdentity {
 	if x != nil {
 		return x.xxx_hidden_Mutation
+	}
+	return nil
+}
+
+func (x *DeleteResourceRequest) GetKind() *client.ResourceKind {
+	if x != nil {
+		return x.xxx_hidden_Kind
 	}
 	return nil
 }
@@ -1402,9 +1804,13 @@ func (x *DeleteResourceRequest) SetMutation(v *common.MutationIdentity) {
 	x.xxx_hidden_Mutation = v
 }
 
+func (x *DeleteResourceRequest) SetKind(v *client.ResourceKind) {
+	x.xxx_hidden_Kind = v
+}
+
 func (x *DeleteResourceRequest) SetId(v string) {
 	x.xxx_hidden_Id = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 2)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 3)
 }
 
 func (x *DeleteResourceRequest) HasMutation() bool {
@@ -1414,19 +1820,30 @@ func (x *DeleteResourceRequest) HasMutation() bool {
 	return x.xxx_hidden_Mutation != nil
 }
 
+func (x *DeleteResourceRequest) HasKind() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_Kind != nil
+}
+
 func (x *DeleteResourceRequest) HasId() bool {
 	if x == nil {
 		return false
 	}
-	return protoimpl.X.Present(&(x.XXX_presence[0]), 1)
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 2)
 }
 
 func (x *DeleteResourceRequest) ClearMutation() {
 	x.xxx_hidden_Mutation = nil
 }
 
+func (x *DeleteResourceRequest) ClearKind() {
+	x.xxx_hidden_Kind = nil
+}
+
 func (x *DeleteResourceRequest) ClearId() {
-	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 1)
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 2)
 	x.xxx_hidden_Id = nil
 }
 
@@ -1434,6 +1851,7 @@ type DeleteResourceRequest_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
 	Mutation *common.MutationIdentity
+	Kind     *client.ResourceKind
 	Id       *string
 }
 
@@ -1442,8 +1860,9 @@ func (b0 DeleteResourceRequest_builder) Build() *DeleteResourceRequest {
 	b, x := &b0, m0
 	_, _ = b, x
 	x.xxx_hidden_Mutation = b.Mutation
+	x.xxx_hidden_Kind = b.Kind
 	if b.Id != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 2)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 3)
 		x.xxx_hidden_Id = b.Id
 	}
 	return m0
@@ -1457,7 +1876,7 @@ type DeleteResourceResponse struct {
 
 func (x *DeleteResourceResponse) Reset() {
 	*x = DeleteResourceResponse{}
-	mi := &file_cineko_service_services_proto_msgTypes[20]
+	mi := &file_cineko_service_services_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1469,7 +1888,7 @@ func (x *DeleteResourceResponse) String() string {
 func (*DeleteResourceResponse) ProtoMessage() {}
 
 func (x *DeleteResourceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[20]
+	mi := &file_cineko_service_services_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1492,6 +1911,388 @@ func (b0 DeleteResourceResponse_builder) Build() *DeleteResourceResponse {
 	return m0
 }
 
+type UpsertDeviceRequest struct {
+	state             protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_Device *client.Device         `protobuf:"bytes,1,opt,name=device"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
+}
+
+func (x *UpsertDeviceRequest) Reset() {
+	*x = UpsertDeviceRequest{}
+	mi := &file_cineko_service_services_proto_msgTypes[27]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpsertDeviceRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpsertDeviceRequest) ProtoMessage() {}
+
+func (x *UpsertDeviceRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_service_services_proto_msgTypes[27]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *UpsertDeviceRequest) GetDevice() *client.Device {
+	if x != nil {
+		return x.xxx_hidden_Device
+	}
+	return nil
+}
+
+func (x *UpsertDeviceRequest) SetDevice(v *client.Device) {
+	x.xxx_hidden_Device = v
+}
+
+func (x *UpsertDeviceRequest) HasDevice() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_Device != nil
+}
+
+func (x *UpsertDeviceRequest) ClearDevice() {
+	x.xxx_hidden_Device = nil
+}
+
+type UpsertDeviceRequest_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	Device *client.Device
+}
+
+func (b0 UpsertDeviceRequest_builder) Build() *UpsertDeviceRequest {
+	m0 := &UpsertDeviceRequest{}
+	b, x := &b0, m0
+	_, _ = b, x
+	x.xxx_hidden_Device = b.Device
+	return m0
+}
+
+type UpsertDeviceResponse struct {
+	state             protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_Device *client.Device         `protobuf:"bytes,1,opt,name=device"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
+}
+
+func (x *UpsertDeviceResponse) Reset() {
+	*x = UpsertDeviceResponse{}
+	mi := &file_cineko_service_services_proto_msgTypes[28]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpsertDeviceResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpsertDeviceResponse) ProtoMessage() {}
+
+func (x *UpsertDeviceResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_service_services_proto_msgTypes[28]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *UpsertDeviceResponse) GetDevice() *client.Device {
+	if x != nil {
+		return x.xxx_hidden_Device
+	}
+	return nil
+}
+
+func (x *UpsertDeviceResponse) SetDevice(v *client.Device) {
+	x.xxx_hidden_Device = v
+}
+
+func (x *UpsertDeviceResponse) HasDevice() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_Device != nil
+}
+
+func (x *UpsertDeviceResponse) ClearDevice() {
+	x.xxx_hidden_Device = nil
+}
+
+type UpsertDeviceResponse_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	Device *client.Device
+}
+
+func (b0 UpsertDeviceResponse_builder) Build() *UpsertDeviceResponse {
+	m0 := &UpsertDeviceResponse{}
+	b, x := &b0, m0
+	_, _ = b, x
+	x.xxx_hidden_Device = b.Device
+	return m0
+}
+
+type StreamEventsRequest struct {
+	state                    protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_AfterSequence int64                  `protobuf:"varint,1,opt,name=after_sequence,json=afterSequence"`
+	XXX_raceDetectHookData   protoimpl.RaceDetectHookData
+	XXX_presence             [1]uint32
+	unknownFields            protoimpl.UnknownFields
+	sizeCache                protoimpl.SizeCache
+}
+
+func (x *StreamEventsRequest) Reset() {
+	*x = StreamEventsRequest{}
+	mi := &file_cineko_service_services_proto_msgTypes[29]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StreamEventsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StreamEventsRequest) ProtoMessage() {}
+
+func (x *StreamEventsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_service_services_proto_msgTypes[29]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *StreamEventsRequest) GetAfterSequence() int64 {
+	if x != nil {
+		return x.xxx_hidden_AfterSequence
+	}
+	return 0
+}
+
+func (x *StreamEventsRequest) SetAfterSequence(v int64) {
+	x.xxx_hidden_AfterSequence = v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 1)
+}
+
+func (x *StreamEventsRequest) HasAfterSequence() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
+}
+
+func (x *StreamEventsRequest) ClearAfterSequence() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
+	x.xxx_hidden_AfterSequence = 0
+}
+
+type StreamEventsRequest_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	AfterSequence *int64
+}
+
+func (b0 StreamEventsRequest_builder) Build() *StreamEventsRequest {
+	m0 := &StreamEventsRequest{}
+	b, x := &b0, m0
+	_, _ = b, x
+	if b.AfterSequence != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 1)
+		x.xxx_hidden_AfterSequence = *b.AfterSequence
+	}
+	return m0
+}
+
+type StreamEventsResponse struct {
+	state            protoimpl.MessageState       `protogen:"opaque.v1"`
+	xxx_hidden_Event isStreamEventsResponse_Event `protobuf_oneof:"event"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *StreamEventsResponse) Reset() {
+	*x = StreamEventsResponse{}
+	mi := &file_cineko_service_services_proto_msgTypes[30]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StreamEventsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StreamEventsResponse) ProtoMessage() {}
+
+func (x *StreamEventsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_service_services_proto_msgTypes[30]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *StreamEventsResponse) GetData() *client.ClientEvent {
+	if x != nil {
+		if x, ok := x.xxx_hidden_Event.(*streamEventsResponse_Data); ok {
+			return x.Data
+		}
+	}
+	return nil
+}
+
+func (x *StreamEventsResponse) GetControl() *client.StreamControl {
+	if x != nil {
+		if x, ok := x.xxx_hidden_Event.(*streamEventsResponse_Control); ok {
+			return x.Control
+		}
+	}
+	return nil
+}
+
+func (x *StreamEventsResponse) SetData(v *client.ClientEvent) {
+	if v == nil {
+		x.xxx_hidden_Event = nil
+		return
+	}
+	x.xxx_hidden_Event = &streamEventsResponse_Data{v}
+}
+
+func (x *StreamEventsResponse) SetControl(v *client.StreamControl) {
+	if v == nil {
+		x.xxx_hidden_Event = nil
+		return
+	}
+	x.xxx_hidden_Event = &streamEventsResponse_Control{v}
+}
+
+func (x *StreamEventsResponse) HasEvent() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_Event != nil
+}
+
+func (x *StreamEventsResponse) HasData() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_Event.(*streamEventsResponse_Data)
+	return ok
+}
+
+func (x *StreamEventsResponse) HasControl() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_Event.(*streamEventsResponse_Control)
+	return ok
+}
+
+func (x *StreamEventsResponse) ClearEvent() {
+	x.xxx_hidden_Event = nil
+}
+
+func (x *StreamEventsResponse) ClearData() {
+	if _, ok := x.xxx_hidden_Event.(*streamEventsResponse_Data); ok {
+		x.xxx_hidden_Event = nil
+	}
+}
+
+func (x *StreamEventsResponse) ClearControl() {
+	if _, ok := x.xxx_hidden_Event.(*streamEventsResponse_Control); ok {
+		x.xxx_hidden_Event = nil
+	}
+}
+
+const StreamEventsResponse_Event_not_set_case case_StreamEventsResponse_Event = 0
+const StreamEventsResponse_Data_case case_StreamEventsResponse_Event = 1
+const StreamEventsResponse_Control_case case_StreamEventsResponse_Event = 2
+
+func (x *StreamEventsResponse) WhichEvent() case_StreamEventsResponse_Event {
+	if x == nil {
+		return StreamEventsResponse_Event_not_set_case
+	}
+	switch x.xxx_hidden_Event.(type) {
+	case *streamEventsResponse_Data:
+		return StreamEventsResponse_Data_case
+	case *streamEventsResponse_Control:
+		return StreamEventsResponse_Control_case
+	default:
+		return StreamEventsResponse_Event_not_set_case
+	}
+}
+
+type StreamEventsResponse_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	// Fields of oneof xxx_hidden_Event:
+	Data    *client.ClientEvent
+	Control *client.StreamControl
+	// -- end of xxx_hidden_Event
+}
+
+func (b0 StreamEventsResponse_builder) Build() *StreamEventsResponse {
+	m0 := &StreamEventsResponse{}
+	b, x := &b0, m0
+	_, _ = b, x
+	if b.Data != nil {
+		x.xxx_hidden_Event = &streamEventsResponse_Data{b.Data}
+	}
+	if b.Control != nil {
+		x.xxx_hidden_Event = &streamEventsResponse_Control{b.Control}
+	}
+	return m0
+}
+
+type case_StreamEventsResponse_Event protoreflect.FieldNumber
+
+func (x case_StreamEventsResponse_Event) String() string {
+	md := file_cineko_service_services_proto_msgTypes[30].Descriptor()
+	if x == 0 {
+		return "not set"
+	}
+	return protoimpl.X.MessageFieldStringOf(md, protoreflect.FieldNumber(x))
+}
+
+type isStreamEventsResponse_Event interface {
+	isStreamEventsResponse_Event()
+}
+
+type streamEventsResponse_Data struct {
+	Data *client.ClientEvent `protobuf:"bytes,1,opt,name=data,oneof"`
+}
+
+type streamEventsResponse_Control struct {
+	Control *client.StreamControl `protobuf:"bytes,2,opt,name=control,oneof"`
+}
+
+func (*streamEventsResponse_Data) isStreamEventsResponse_Event() {}
+
+func (*streamEventsResponse_Control) isStreamEventsResponse_Event() {}
+
 type GetCatalogRequest struct {
 	state         protoimpl.MessageState `protogen:"opaque.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -1500,7 +2301,7 @@ type GetCatalogRequest struct {
 
 func (x *GetCatalogRequest) Reset() {
 	*x = GetCatalogRequest{}
-	mi := &file_cineko_service_services_proto_msgTypes[21]
+	mi := &file_cineko_service_services_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1512,7 +2313,7 @@ func (x *GetCatalogRequest) String() string {
 func (*GetCatalogRequest) ProtoMessage() {}
 
 func (x *GetCatalogRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[21]
+	mi := &file_cineko_service_services_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1544,7 +2345,7 @@ type GetCatalogResponse struct {
 
 func (x *GetCatalogResponse) Reset() {
 	*x = GetCatalogResponse{}
-	mi := &file_cineko_service_services_proto_msgTypes[22]
+	mi := &file_cineko_service_services_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1556,7 +2357,7 @@ func (x *GetCatalogResponse) String() string {
 func (*GetCatalogResponse) ProtoMessage() {}
 
 func (x *GetCatalogResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[22]
+	mi := &file_cineko_service_services_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1614,7 +2415,7 @@ type GetAuditoriumsRequest struct {
 
 func (x *GetAuditoriumsRequest) Reset() {
 	*x = GetAuditoriumsRequest{}
-	mi := &file_cineko_service_services_proto_msgTypes[23]
+	mi := &file_cineko_service_services_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1626,7 +2427,7 @@ func (x *GetAuditoriumsRequest) String() string {
 func (*GetAuditoriumsRequest) ProtoMessage() {}
 
 func (x *GetAuditoriumsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[23]
+	mi := &file_cineko_service_services_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1690,7 +2491,7 @@ type GetAuditoriumsResponse struct {
 
 func (x *GetAuditoriumsResponse) Reset() {
 	*x = GetAuditoriumsResponse{}
-	mi := &file_cineko_service_services_proto_msgTypes[24]
+	mi := &file_cineko_service_services_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1702,7 +2503,7 @@ func (x *GetAuditoriumsResponse) String() string {
 func (*GetAuditoriumsResponse) ProtoMessage() {}
 
 func (x *GetAuditoriumsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[24]
+	mi := &file_cineko_service_services_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1751,7 +2552,7 @@ type ResolveSeatMapRequest struct {
 
 func (x *ResolveSeatMapRequest) Reset() {
 	*x = ResolveSeatMapRequest{}
-	mi := &file_cineko_service_services_proto_msgTypes[25]
+	mi := &file_cineko_service_services_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1763,7 +2564,7 @@ func (x *ResolveSeatMapRequest) String() string {
 func (*ResolveSeatMapRequest) ProtoMessage() {}
 
 func (x *ResolveSeatMapRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[25]
+	mi := &file_cineko_service_services_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1827,7 +2628,7 @@ type ResolveSeatMapResponse struct {
 
 func (x *ResolveSeatMapResponse) Reset() {
 	*x = ResolveSeatMapResponse{}
-	mi := &file_cineko_service_services_proto_msgTypes[26]
+	mi := &file_cineko_service_services_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1839,7 +2640,7 @@ func (x *ResolveSeatMapResponse) String() string {
 func (*ResolveSeatMapResponse) ProtoMessage() {}
 
 func (x *ResolveSeatMapResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[26]
+	mi := &file_cineko_service_services_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1886,6 +2687,117 @@ func (b0 ResolveSeatMapResponse_builder) Build() *ResolveSeatMapResponse {
 	return m0
 }
 
+type SubmitCatalogSnapshotRequest struct {
+	state               protoimpl.MessageState   `protogen:"opaque.v1"`
+	xxx_hidden_Snapshot *catalog.CatalogSnapshot `protobuf:"bytes,1,opt,name=snapshot"`
+	unknownFields       protoimpl.UnknownFields
+	sizeCache           protoimpl.SizeCache
+}
+
+func (x *SubmitCatalogSnapshotRequest) Reset() {
+	*x = SubmitCatalogSnapshotRequest{}
+	mi := &file_cineko_service_services_proto_msgTypes[37]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SubmitCatalogSnapshotRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SubmitCatalogSnapshotRequest) ProtoMessage() {}
+
+func (x *SubmitCatalogSnapshotRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_service_services_proto_msgTypes[37]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *SubmitCatalogSnapshotRequest) GetSnapshot() *catalog.CatalogSnapshot {
+	if x != nil {
+		return x.xxx_hidden_Snapshot
+	}
+	return nil
+}
+
+func (x *SubmitCatalogSnapshotRequest) SetSnapshot(v *catalog.CatalogSnapshot) {
+	x.xxx_hidden_Snapshot = v
+}
+
+func (x *SubmitCatalogSnapshotRequest) HasSnapshot() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_Snapshot != nil
+}
+
+func (x *SubmitCatalogSnapshotRequest) ClearSnapshot() {
+	x.xxx_hidden_Snapshot = nil
+}
+
+type SubmitCatalogSnapshotRequest_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	Snapshot *catalog.CatalogSnapshot
+}
+
+func (b0 SubmitCatalogSnapshotRequest_builder) Build() *SubmitCatalogSnapshotRequest {
+	m0 := &SubmitCatalogSnapshotRequest{}
+	b, x := &b0, m0
+	_, _ = b, x
+	x.xxx_hidden_Snapshot = b.Snapshot
+	return m0
+}
+
+type SubmitCatalogSnapshotResponse struct {
+	state         protoimpl.MessageState `protogen:"opaque.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SubmitCatalogSnapshotResponse) Reset() {
+	*x = SubmitCatalogSnapshotResponse{}
+	mi := &file_cineko_service_services_proto_msgTypes[38]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SubmitCatalogSnapshotResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SubmitCatalogSnapshotResponse) ProtoMessage() {}
+
+func (x *SubmitCatalogSnapshotResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_service_services_proto_msgTypes[38]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+type SubmitCatalogSnapshotResponse_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+}
+
+func (b0 SubmitCatalogSnapshotResponse_builder) Build() *SubmitCatalogSnapshotResponse {
+	m0 := &SubmitCatalogSnapshotResponse{}
+	b, x := &b0, m0
+	_, _ = b, x
+	return m0
+}
+
 type CompleteRequest struct {
 	state             protoimpl.MessageState   `protogen:"opaque.v1"`
 	xxx_hidden_Result *execution.ResultRequest `protobuf:"bytes,1,opt,name=result"`
@@ -1895,7 +2807,7 @@ type CompleteRequest struct {
 
 func (x *CompleteRequest) Reset() {
 	*x = CompleteRequest{}
-	mi := &file_cineko_service_services_proto_msgTypes[27]
+	mi := &file_cineko_service_services_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1907,7 +2819,7 @@ func (x *CompleteRequest) String() string {
 func (*CompleteRequest) ProtoMessage() {}
 
 func (x *CompleteRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[27]
+	mi := &file_cineko_service_services_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1962,7 +2874,7 @@ type CompleteResponse struct {
 
 func (x *CompleteResponse) Reset() {
 	*x = CompleteResponse{}
-	mi := &file_cineko_service_services_proto_msgTypes[28]
+	mi := &file_cineko_service_services_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1974,7 +2886,7 @@ func (x *CompleteResponse) String() string {
 func (*CompleteResponse) ProtoMessage() {}
 
 func (x *CompleteResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[28]
+	mi := &file_cineko_service_services_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1997,6 +2909,49 @@ func (b0 CompleteResponse_builder) Build() *CompleteResponse {
 	return m0
 }
 
+type RetryResponse struct {
+	state         protoimpl.MessageState `protogen:"opaque.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RetryResponse) Reset() {
+	*x = RetryResponse{}
+	mi := &file_cineko_service_services_proto_msgTypes[41]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RetryResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RetryResponse) ProtoMessage() {}
+
+func (x *RetryResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_service_services_proto_msgTypes[41]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+type RetryResponse_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+}
+
+func (b0 RetryResponse_builder) Build() *RetryResponse {
+	m0 := &RetryResponse{}
+	b, x := &b0, m0
+	_, _ = b, x
+	return m0
+}
+
 type GetRuntimeReleaseRequest struct {
 	state                   protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Channel      *string                `protobuf:"bytes,1,opt,name=channel"`
@@ -2010,7 +2965,7 @@ type GetRuntimeReleaseRequest struct {
 
 func (x *GetRuntimeReleaseRequest) Reset() {
 	*x = GetRuntimeReleaseRequest{}
-	mi := &file_cineko_service_services_proto_msgTypes[29]
+	mi := &file_cineko_service_services_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2022,7 +2977,7 @@ func (x *GetRuntimeReleaseRequest) String() string {
 func (*GetRuntimeReleaseRequest) ProtoMessage() {}
 
 func (x *GetRuntimeReleaseRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[29]
+	mi := &file_cineko_service_services_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2150,7 +3105,7 @@ type GetRuntimeReleaseResponse struct {
 
 func (x *GetRuntimeReleaseResponse) Reset() {
 	*x = GetRuntimeReleaseResponse{}
-	mi := &file_cineko_service_services_proto_msgTypes[30]
+	mi := &file_cineko_service_services_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2162,7 +3117,7 @@ func (x *GetRuntimeReleaseResponse) String() string {
 func (*GetRuntimeReleaseResponse) ProtoMessage() {}
 
 func (x *GetRuntimeReleaseResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[30]
+	mi := &file_cineko_service_services_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2209,6 +3164,218 @@ func (b0 GetRuntimeReleaseResponse_builder) Build() *GetRuntimeReleaseResponse {
 	return m0
 }
 
+type GetLauncherReleaseRequest struct {
+	state                   protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_Channel      *string                `protobuf:"bytes,1,opt,name=channel"`
+	xxx_hidden_Platform     *string                `protobuf:"bytes,2,opt,name=platform"`
+	xxx_hidden_Architecture *string                `protobuf:"bytes,3,opt,name=architecture"`
+	XXX_raceDetectHookData  protoimpl.RaceDetectHookData
+	XXX_presence            [1]uint32
+	unknownFields           protoimpl.UnknownFields
+	sizeCache               protoimpl.SizeCache
+}
+
+func (x *GetLauncherReleaseRequest) Reset() {
+	*x = GetLauncherReleaseRequest{}
+	mi := &file_cineko_service_services_proto_msgTypes[44]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetLauncherReleaseRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetLauncherReleaseRequest) ProtoMessage() {}
+
+func (x *GetLauncherReleaseRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_service_services_proto_msgTypes[44]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *GetLauncherReleaseRequest) GetChannel() string {
+	if x != nil {
+		if x.xxx_hidden_Channel != nil {
+			return *x.xxx_hidden_Channel
+		}
+		return ""
+	}
+	return ""
+}
+
+func (x *GetLauncherReleaseRequest) GetPlatform() string {
+	if x != nil {
+		if x.xxx_hidden_Platform != nil {
+			return *x.xxx_hidden_Platform
+		}
+		return ""
+	}
+	return ""
+}
+
+func (x *GetLauncherReleaseRequest) GetArchitecture() string {
+	if x != nil {
+		if x.xxx_hidden_Architecture != nil {
+			return *x.xxx_hidden_Architecture
+		}
+		return ""
+	}
+	return ""
+}
+
+func (x *GetLauncherReleaseRequest) SetChannel(v string) {
+	x.xxx_hidden_Channel = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 3)
+}
+
+func (x *GetLauncherReleaseRequest) SetPlatform(v string) {
+	x.xxx_hidden_Platform = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 3)
+}
+
+func (x *GetLauncherReleaseRequest) SetArchitecture(v string) {
+	x.xxx_hidden_Architecture = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 3)
+}
+
+func (x *GetLauncherReleaseRequest) HasChannel() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
+}
+
+func (x *GetLauncherReleaseRequest) HasPlatform() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 1)
+}
+
+func (x *GetLauncherReleaseRequest) HasArchitecture() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 2)
+}
+
+func (x *GetLauncherReleaseRequest) ClearChannel() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
+	x.xxx_hidden_Channel = nil
+}
+
+func (x *GetLauncherReleaseRequest) ClearPlatform() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 1)
+	x.xxx_hidden_Platform = nil
+}
+
+func (x *GetLauncherReleaseRequest) ClearArchitecture() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 2)
+	x.xxx_hidden_Architecture = nil
+}
+
+type GetLauncherReleaseRequest_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	Channel      *string
+	Platform     *string
+	Architecture *string
+}
+
+func (b0 GetLauncherReleaseRequest_builder) Build() *GetLauncherReleaseRequest {
+	m0 := &GetLauncherReleaseRequest{}
+	b, x := &b0, m0
+	_, _ = b, x
+	if b.Channel != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 3)
+		x.xxx_hidden_Channel = b.Channel
+	}
+	if b.Platform != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 3)
+		x.xxx_hidden_Platform = b.Platform
+	}
+	if b.Architecture != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 3)
+		x.xxx_hidden_Architecture = b.Architecture
+	}
+	return m0
+}
+
+type GetLauncherReleaseResponse struct {
+	state              protoimpl.MessageState   `protogen:"opaque.v1"`
+	xxx_hidden_Release *release.LauncherRelease `protobuf:"bytes,1,opt,name=release"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
+}
+
+func (x *GetLauncherReleaseResponse) Reset() {
+	*x = GetLauncherReleaseResponse{}
+	mi := &file_cineko_service_services_proto_msgTypes[45]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetLauncherReleaseResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetLauncherReleaseResponse) ProtoMessage() {}
+
+func (x *GetLauncherReleaseResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_service_services_proto_msgTypes[45]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *GetLauncherReleaseResponse) GetRelease() *release.LauncherRelease {
+	if x != nil {
+		return x.xxx_hidden_Release
+	}
+	return nil
+}
+
+func (x *GetLauncherReleaseResponse) SetRelease(v *release.LauncherRelease) {
+	x.xxx_hidden_Release = v
+}
+
+func (x *GetLauncherReleaseResponse) HasRelease() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_Release != nil
+}
+
+func (x *GetLauncherReleaseResponse) ClearRelease() {
+	x.xxx_hidden_Release = nil
+}
+
+type GetLauncherReleaseResponse_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	Release *release.LauncherRelease
+}
+
+func (b0 GetLauncherReleaseResponse_builder) Build() *GetLauncherReleaseResponse {
+	m0 := &GetLauncherReleaseResponse{}
+	b, x := &b0, m0
+	_, _ = b, x
+	x.xxx_hidden_Release = b.Release
+	return m0
+}
+
 type PublishClientRequest struct {
 	state                 protoimpl.MessageState    `protogen:"opaque.v1"`
 	xxx_hidden_ReleaseSet *release.ClientReleaseSet `protobuf:"bytes,1,opt,name=release_set,json=releaseSet"`
@@ -2218,7 +3385,7 @@ type PublishClientRequest struct {
 
 func (x *PublishClientRequest) Reset() {
 	*x = PublishClientRequest{}
-	mi := &file_cineko_service_services_proto_msgTypes[31]
+	mi := &file_cineko_service_services_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2230,7 +3397,7 @@ func (x *PublishClientRequest) String() string {
 func (*PublishClientRequest) ProtoMessage() {}
 
 func (x *PublishClientRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[31]
+	mi := &file_cineko_service_services_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2285,7 +3452,7 @@ type PublishClientResponse struct {
 
 func (x *PublishClientResponse) Reset() {
 	*x = PublishClientResponse{}
-	mi := &file_cineko_service_services_proto_msgTypes[32]
+	mi := &file_cineko_service_services_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2297,7 +3464,7 @@ func (x *PublishClientResponse) String() string {
 func (*PublishClientResponse) ProtoMessage() {}
 
 func (x *PublishClientResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[32]
+	mi := &file_cineko_service_services_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2329,7 +3496,7 @@ type PublishBrowserRequest struct {
 
 func (x *PublishBrowserRequest) Reset() {
 	*x = PublishBrowserRequest{}
-	mi := &file_cineko_service_services_proto_msgTypes[33]
+	mi := &file_cineko_service_services_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2341,7 +3508,7 @@ func (x *PublishBrowserRequest) String() string {
 func (*PublishBrowserRequest) ProtoMessage() {}
 
 func (x *PublishBrowserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[33]
+	mi := &file_cineko_service_services_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2396,7 +3563,7 @@ type PublishBrowserResponse struct {
 
 func (x *PublishBrowserResponse) Reset() {
 	*x = PublishBrowserResponse{}
-	mi := &file_cineko_service_services_proto_msgTypes[34]
+	mi := &file_cineko_service_services_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2408,7 +3575,7 @@ func (x *PublishBrowserResponse) String() string {
 func (*PublishBrowserResponse) ProtoMessage() {}
 
 func (x *PublishBrowserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[34]
+	mi := &file_cineko_service_services_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2440,7 +3607,7 @@ type PublishPlaywrightRequest struct {
 
 func (x *PublishPlaywrightRequest) Reset() {
 	*x = PublishPlaywrightRequest{}
-	mi := &file_cineko_service_services_proto_msgTypes[35]
+	mi := &file_cineko_service_services_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2452,7 +3619,7 @@ func (x *PublishPlaywrightRequest) String() string {
 func (*PublishPlaywrightRequest) ProtoMessage() {}
 
 func (x *PublishPlaywrightRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[35]
+	mi := &file_cineko_service_services_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2507,7 +3674,7 @@ type PublishPlaywrightResponse struct {
 
 func (x *PublishPlaywrightResponse) Reset() {
 	*x = PublishPlaywrightResponse{}
-	mi := &file_cineko_service_services_proto_msgTypes[36]
+	mi := &file_cineko_service_services_proto_msgTypes[51]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2519,7 +3686,7 @@ func (x *PublishPlaywrightResponse) String() string {
 func (*PublishPlaywrightResponse) ProtoMessage() {}
 
 func (x *PublishPlaywrightResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[36]
+	mi := &file_cineko_service_services_proto_msgTypes[51]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2551,7 +3718,7 @@ type PublishLauncherRequest struct {
 
 func (x *PublishLauncherRequest) Reset() {
 	*x = PublishLauncherRequest{}
-	mi := &file_cineko_service_services_proto_msgTypes[37]
+	mi := &file_cineko_service_services_proto_msgTypes[52]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2563,7 +3730,7 @@ func (x *PublishLauncherRequest) String() string {
 func (*PublishLauncherRequest) ProtoMessage() {}
 
 func (x *PublishLauncherRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[37]
+	mi := &file_cineko_service_services_proto_msgTypes[52]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2618,7 +3785,7 @@ type PublishLauncherResponse struct {
 
 func (x *PublishLauncherResponse) Reset() {
 	*x = PublishLauncherResponse{}
-	mi := &file_cineko_service_services_proto_msgTypes[38]
+	mi := &file_cineko_service_services_proto_msgTypes[53]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2630,7 +3797,7 @@ func (x *PublishLauncherResponse) String() string {
 func (*PublishLauncherResponse) ProtoMessage() {}
 
 func (x *PublishLauncherResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[38]
+	mi := &file_cineko_service_services_proto_msgTypes[53]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2662,7 +3829,7 @@ type PublishProbeRequest struct {
 
 func (x *PublishProbeRequest) Reset() {
 	*x = PublishProbeRequest{}
-	mi := &file_cineko_service_services_proto_msgTypes[39]
+	mi := &file_cineko_service_services_proto_msgTypes[54]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2674,7 +3841,7 @@ func (x *PublishProbeRequest) String() string {
 func (*PublishProbeRequest) ProtoMessage() {}
 
 func (x *PublishProbeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[39]
+	mi := &file_cineko_service_services_proto_msgTypes[54]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2729,7 +3896,7 @@ type PublishProbeResponse struct {
 
 func (x *PublishProbeResponse) Reset() {
 	*x = PublishProbeResponse{}
-	mi := &file_cineko_service_services_proto_msgTypes[40]
+	mi := &file_cineko_service_services_proto_msgTypes[55]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2741,7 +3908,7 @@ func (x *PublishProbeResponse) String() string {
 func (*PublishProbeResponse) ProtoMessage() {}
 
 func (x *PublishProbeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_service_services_proto_msgTypes[40]
+	mi := &file_cineko_service_services_proto_msgTypes[55]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2768,73 +3935,111 @@ var File_cineko_service_services_proto protoreflect.FileDescriptor
 
 const file_cineko_service_services_proto_rawDesc = "" +
 	"\n" +
-	"\x1dcineko/service/services.proto\x12\x0ecineko.service\x1a\x1ccineko/catalog/catalog.proto\x1a\x1acineko/client/client.proto\x1a\x1acineko/common/common.proto\x1a cineko/execution/execution.proto\x1a$cineko/observation/observation.proto\x1a\x18cineko/probe/probe.proto\x1a\x1ccineko/release/release.proto\x1a\x1ccineko/seatmap/seatmap.proto\"]\n" +
+	"\x1dcineko/service/services.proto\x12\x0ecineko.service\x1a\x1bbuf/validate/validate.proto\x1a\x1ccineko/catalog/catalog.proto\x1a\x1acineko/client/client.proto\x1a\x1acineko/common/common.proto\x1a cineko/execution/execution.proto\x1a$cineko/observation/observation.proto\x1a\x18cineko/probe/probe.proto\x1a\x1ccineko/release/release.proto\x1a\x1ccineko/seatmap/seatmap.proto\"]\n" +
 	"\x1eSubmitAssignmentResultResponse\x12;\n" +
-	"\areceipt\x18\x01 \x01(\v2!.cineko.observation.ResultReceiptR\areceipt\"Q\n" +
-	"\x12ExchangePinRequest\x12;\n" +
-	"\arequest\x18\x01 \x01(\v2!.cineko.client.PinExchangeRequestR\arequest\"d\n" +
+	"\areceipt\x18\x01 \x01(\v2!.cineko.observation.ResultReceiptR\areceipt\"\x13\n" +
+	"\x11DisconnectRequest\"\x14\n" +
+	"\x12DisconnectResponse\"Y\n" +
+	"\x12ExchangePinRequest\x12C\n" +
+	"\arequest\x18\x01 \x01(\v2!.cineko.client.PinExchangeRequestB\x06\xbaH\x03\xc8\x01\x01R\arequest\"d\n" +
 	"\x13ExchangePinResponse\x12M\n" +
-	"\x0eauthentication\x18\x01 \x01(\v2%.cineko.client.AuthenticationResponseR\x0eauthentication\"U\n" +
-	"\x14ExchangeTokenRequest\x12=\n" +
-	"\arequest\x18\x01 \x01(\v2#.cineko.client.TokenExchangeRequestR\arequest\"f\n" +
+	"\x0eauthentication\x18\x01 \x01(\v2%.cineko.client.AuthenticationResponseR\x0eauthentication\"]\n" +
+	"\x14ExchangeTokenRequest\x12E\n" +
+	"\arequest\x18\x01 \x01(\v2#.cineko.client.TokenExchangeRequestB\x06\xbaH\x03\xc8\x01\x01R\arequest\"f\n" +
 	"\x15ExchangeTokenResponse\x12M\n" +
-	"\x0eauthentication\x18\x01 \x01(\v2%.cineko.client.AuthenticationResponseR\x0eauthentication\"S\n" +
-	"\x13RefreshTokenRequest\x12<\n" +
-	"\arequest\x18\x01 \x01(\v2\".cineko.client.TokenRefreshRequestR\arequest\"e\n" +
+	"\x0eauthentication\x18\x01 \x01(\v2%.cineko.client.AuthenticationResponseR\x0eauthentication\"[\n" +
+	"\x13RefreshTokenRequest\x12D\n" +
+	"\arequest\x18\x01 \x01(\v2\".cineko.client.TokenRefreshRequestB\x06\xbaH\x03\xc8\x01\x01R\arequest\"e\n" +
 	"\x14RefreshTokenResponse\x12M\n" +
-	"\x0eauthentication\x18\x01 \x01(\v2%.cineko.client.AuthenticationResponseR\x0eauthentication\"Y\n" +
-	"\x19CreateLaunchTicketRequest\x12<\n" +
-	"\arequest\x18\x01 \x01(\v2\".cineko.client.LaunchTicketRequestR\arequest\"]\n" +
+	"\x0eauthentication\x18\x01 \x01(\v2%.cineko.client.AuthenticationResponseR\x0eauthentication\"a\n" +
+	"\x19CreateLaunchTicketRequest\x12D\n" +
+	"\arequest\x18\x01 \x01(\v2\".cineko.client.LaunchTicketRequestB\x06\xbaH\x03\xc8\x01\x01R\arequest\"]\n" +
 	"\x1aCreateLaunchTicketResponse\x12?\n" +
-	"\bresponse\x18\x01 \x01(\v2#.cineko.client.LaunchTicketResponseR\bresponse\"Y\n" +
-	"\x16ExchangeSessionRequest\x12?\n" +
-	"\arequest\x18\x01 \x01(\v2%.cineko.client.SessionExchangeRequestR\arequest\"h\n" +
+	"\bresponse\x18\x01 \x01(\v2#.cineko.client.LaunchTicketResponseR\bresponse\"a\n" +
+	"\x16ExchangeSessionRequest\x12G\n" +
+	"\arequest\x18\x01 \x01(\v2%.cineko.client.SessionExchangeRequestB\x06\xbaH\x03\xc8\x01\x01R\arequest\"h\n" +
 	"\x17ExchangeSessionResponse\x12M\n" +
-	"\x0eauthentication\x18\x01 \x01(\v2%.cineko.client.AuthenticationResponseR\x0eauthentication\"\x12\n" +
-	"\x10BootstrapRequest\"K\n" +
+	"\x0eauthentication\x18\x01 \x01(\v2%.cineko.client.AuthenticationResponseR\x0eauthentication\"\x0f\n" +
+	"\rLogoutRequest\"\x10\n" +
+	"\x0eLogoutResponse\"q\n" +
+	"!CreateProbeBootstrapTicketRequest\x12L\n" +
+	"\arequest\x18\x01 \x01(\v2*.cineko.client.ProbeBootstrapTicketRequestB\x06\xbaH\x03\xc8\x01\x01R\arequest\"m\n" +
+	"\"CreateProbeBootstrapTicketResponse\x12G\n" +
+	"\bresponse\x18\x01 \x01(\v2+.cineko.client.ProbeBootstrapTicketResponseR\bresponse\"G\n" +
+	"\x10BootstrapRequest\x123\n" +
+	"\x0finstallation_id\x18\x01 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\x0einstallationId\"K\n" +
 	"\x11BootstrapResponse\x126\n" +
-	"\tbootstrap\x18\x01 \x01(\v2\x18.cineko.client.BootstrapR\tbootstrap\"$\n" +
-	"\x12GetResourceRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\"J\n" +
+	"\tbootstrap\x18\x01 \x01(\v2\x18.cineko.client.BootstrapR\tbootstrap\"i\n" +
+	"\x12GetResourceRequest\x127\n" +
+	"\x04kind\x18\x01 \x01(\v2\x1b.cineko.client.ResourceKindB\x06\xbaH\x03\xc8\x01\x01R\x04kind\x12\x1a\n" +
+	"\x02id\x18\x02 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\x02id\"J\n" +
 	"\x13GetResourceResponse\x123\n" +
-	"\bresource\x18\x01 \x01(\v2\x17.cineko.client.ResourceR\bresource\"F\n" +
-	"\x14ListResourcesRequest\x12.\n" +
-	"\x04page\x18\x01 \x01(\v2\x1a.cineko.common.PageRequestR\x04page\"\x7f\n" +
+	"\bresource\x18\x01 \x01(\v2\x17.cineko.client.ResourceR\bresource\"\x7f\n" +
+	"\x14ListResourcesRequest\x127\n" +
+	"\x04kind\x18\x01 \x01(\v2\x1b.cineko.client.ResourceKindB\x06\xbaH\x03\xc8\x01\x01R\x04kind\x12.\n" +
+	"\x04page\x18\x02 \x01(\v2\x1a.cineko.common.PageRequestR\x04page\"\x7f\n" +
 	"\x15ListResourcesResponse\x125\n" +
 	"\tresources\x18\x01 \x03(\v2\x17.cineko.client.ResourceR\tresources\x12/\n" +
-	"\x04page\x18\x02 \x01(\v2\x1b.cineko.common.PageResponseR\x04page\"\x86\x01\n" +
-	"\x12PutResourceRequest\x12;\n" +
-	"\bmutation\x18\x01 \x01(\v2\x1f.cineko.common.MutationIdentityR\bmutation\x123\n" +
-	"\bresource\x18\x02 \x01(\v2\x17.cineko.client.ResourceR\bresource\"J\n" +
+	"\x04page\x18\x02 \x01(\v2\x1b.cineko.common.PageResponseR\x04page\"\x96\x01\n" +
+	"\x12PutResourceRequest\x12C\n" +
+	"\bmutation\x18\x01 \x01(\v2\x1f.cineko.common.MutationIdentityB\x06\xbaH\x03\xc8\x01\x01R\bmutation\x12;\n" +
+	"\bresource\x18\x02 \x01(\v2\x17.cineko.client.ResourceB\x06\xbaH\x03\xc8\x01\x01R\bresource\"J\n" +
 	"\x13PutResourceResponse\x123\n" +
-	"\bresource\x18\x01 \x01(\v2\x17.cineko.client.ResourceR\bresource\"d\n" +
-	"\x15DeleteResourceRequest\x12;\n" +
-	"\bmutation\x18\x01 \x01(\v2\x1f.cineko.common.MutationIdentityR\bmutation\x12\x0e\n" +
-	"\x02id\x18\x02 \x01(\tR\x02id\"\x18\n" +
-	"\x16DeleteResourceResponse\"\x13\n" +
+	"\bresource\x18\x01 \x01(\v2\x17.cineko.client.ResourceR\bresource\"\xb1\x01\n" +
+	"\x15DeleteResourceRequest\x12C\n" +
+	"\bmutation\x18\x01 \x01(\v2\x1f.cineko.common.MutationIdentityB\x06\xbaH\x03\xc8\x01\x01R\bmutation\x127\n" +
+	"\x04kind\x18\x02 \x01(\v2\x1b.cineko.client.ResourceKindB\x06\xbaH\x03\xc8\x01\x01R\x04kind\x12\x1a\n" +
+	"\x02id\x18\x03 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\x02id\"\x18\n" +
+	"\x16DeleteResourceResponse\"L\n" +
+	"\x13UpsertDeviceRequest\x125\n" +
+	"\x06device\x18\x01 \x01(\v2\x15.cineko.client.DeviceB\x06\xbaH\x03\xc8\x01\x01R\x06device\"E\n" +
+	"\x14UpsertDeviceResponse\x12-\n" +
+	"\x06device\x18\x01 \x01(\v2\x15.cineko.client.DeviceR\x06device\"H\n" +
+	"\x13StreamEventsRequest\x121\n" +
+	"\x0eafter_sequence\x18\x01 \x01(\x03B\n" +
+	"\xbaH\a\xc8\x01\x01\"\x02(\x00R\rafterSequence\"\x92\x01\n" +
+	"\x14StreamEventsResponse\x120\n" +
+	"\x04data\x18\x01 \x01(\v2\x1a.cineko.client.ClientEventH\x00R\x04data\x128\n" +
+	"\acontrol\x18\x02 \x01(\v2\x1c.cineko.client.StreamControlH\x00R\acontrolB\x0e\n" +
+	"\x05event\x12\x05\xbaH\x02\b\x01\"\x13\n" +
 	"\x11GetCatalogRequest\"L\n" +
 	"\x12GetCatalogResponse\x126\n" +
-	"\acatalog\x18\x01 \x01(\v2\x1c.cineko.catalog.CatalogIndexR\acatalog\"6\n" +
-	"\x15GetAuditoriumsRequest\x12\x1d\n" +
+	"\acatalog\x18\x01 \x01(\v2\x1c.cineko.catalog.CatalogIndexR\acatalog\"B\n" +
+	"\x15GetAuditoriumsRequest\x12)\n" +
 	"\n" +
-	"theater_id\x18\x01 \x01(\tR\ttheaterId\"V\n" +
+	"theater_id\x18\x01 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\ttheaterId\"V\n" +
 	"\x16GetAuditoriumsResponse\x12<\n" +
-	"\vauditoriums\x18\x01 \x03(\v2\x1a.cineko.catalog.AuditoriumR\vauditoriums\"<\n" +
-	"\x15ResolveSeatMapRequest\x12#\n" +
-	"\rauditorium_id\x18\x01 \x01(\tR\fauditoriumId\"T\n" +
+	"\vauditoriums\x18\x01 \x03(\v2\x1a.cineko.catalog.AuditoriumR\vauditoriums\"H\n" +
+	"\x15ResolveSeatMapRequest\x12/\n" +
+	"\rauditorium_id\x18\x01 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\fauditoriumId\"T\n" +
 	"\x16ResolveSeatMapResponse\x12:\n" +
 	"\n" +
 	"resolution\x18\x01 \x01(\v2\x1a.cineko.seatmap.ResolutionR\n" +
-	"resolution\"J\n" +
-	"\x0fCompleteRequest\x127\n" +
-	"\x06result\x18\x01 \x01(\v2\x1f.cineko.execution.ResultRequestR\x06result\"\x12\n" +
-	"\x10CompleteResponse\"t\n" +
+	"resolution\"c\n" +
+	"\x1cSubmitCatalogSnapshotRequest\x12C\n" +
+	"\bsnapshot\x18\x01 \x01(\v2\x1f.cineko.catalog.CatalogSnapshotB\x06\xbaH\x03\xc8\x01\x01R\bsnapshot\"\x1f\n" +
+	"\x1dSubmitCatalogSnapshotResponse\"R\n" +
+	"\x0fCompleteRequest\x12?\n" +
+	"\x06result\x18\x01 \x01(\v2\x1f.cineko.execution.ResultRequestB\x06\xbaH\x03\xc8\x01\x01R\x06result\"\x12\n" +
+	"\x10CompleteResponse\"\x0f\n" +
+	"\rRetryResponse\"t\n" +
 	"\x18GetRuntimeReleaseRequest\x12\x18\n" +
 	"\achannel\x18\x01 \x01(\tR\achannel\x12\x1a\n" +
 	"\bplatform\x18\x02 \x01(\tR\bplatform\x12\"\n" +
 	"\farchitecture\x18\x03 \x01(\tR\farchitecture\"U\n" +
 	"\x19GetRuntimeReleaseResponse\x128\n" +
-	"\arelease\x18\x01 \x01(\v2\x1e.cineko.release.RuntimeReleaseR\arelease\"Y\n" +
+	"\arelease\x18\x01 \x01(\v2\x1e.cineko.release.RuntimeReleaseR\arelease\"u\n" +
+	"\x19GetLauncherReleaseRequest\x12\x18\n" +
+	"\achannel\x18\x01 \x01(\tR\achannel\x12\x1a\n" +
+	"\bplatform\x18\x02 \x01(\tR\bplatform\x12\"\n" +
+	"\farchitecture\x18\x03 \x01(\tR\farchitecture\"W\n" +
+	"\x1aGetLauncherReleaseResponse\x129\n" +
+	"\arelease\x18\x01 \x01(\v2\x1f.cineko.release.LauncherReleaseR\arelease\"Y\n" +
 	"\x14PublishClientRequest\x12A\n" +
 	"\vrelease_set\x18\x01 \x01(\v2 .cineko.release.ClientReleaseSetR\n" +
 	"releaseSet\"\x17\n" +
@@ -2854,212 +4059,272 @@ const file_cineko_service_services_proto_rawDesc = "" +
 	"\x13PublishProbeRequest\x12@\n" +
 	"\vrelease_set\x18\x01 \x01(\v2\x1f.cineko.release.ProbeReleaseSetR\n" +
 	"releaseSet\"\x16\n" +
-	"\x14PublishProbeResponse2\xea\x03\n" +
+	"\x14PublishProbeResponse2\xbf\x04\n" +
 	"\fProbeService\x12I\n" +
 	"\bRegister\x12\x1d.cineko.probe.RegisterRequest\x1a\x1e.cineko.probe.RegisterResponse\x12L\n" +
 	"\tHeartbeat\x12\x1e.cineko.probe.HeartbeatRequest\x1a\x1f.cineko.probe.HeartbeatResponse\x12^\n" +
 	"\x0fClaimAssignment\x12$.cineko.probe.ClaimAssignmentRequest\x1a%.cineko.probe.ClaimAssignmentResponse\x12j\n" +
 	"\x13HeartbeatAssignment\x12(.cineko.probe.HeartbeatAssignmentRequest\x1a).cineko.probe.HeartbeatAssignmentResponse\x12u\n" +
-	"\x16SubmitAssignmentResult\x12+.cineko.probe.SubmitAssignmentResultRequest\x1a..cineko.service.SubmitAssignmentResultResponse2\xff\x03\n" +
+	"\x16SubmitAssignmentResult\x12+.cineko.probe.SubmitAssignmentResultRequest\x1a..cineko.service.SubmitAssignmentResultResponse\x12S\n" +
+	"\n" +
+	"Disconnect\x12!.cineko.service.DisconnectRequest\x1a\".cineko.service.DisconnectResponse2\xce\x05\n" +
 	"\x1bClientAuthenticationService\x12V\n" +
 	"\vExchangePin\x12\".cineko.service.ExchangePinRequest\x1a#.cineko.service.ExchangePinResponse\x12\\\n" +
 	"\rExchangeToken\x12$.cineko.service.ExchangeTokenRequest\x1a%.cineko.service.ExchangeTokenResponse\x12Y\n" +
 	"\fRefreshToken\x12#.cineko.service.RefreshTokenRequest\x1a$.cineko.service.RefreshTokenResponse\x12k\n" +
 	"\x12CreateLaunchTicket\x12).cineko.service.CreateLaunchTicketRequest\x1a*.cineko.service.CreateLaunchTicketResponse\x12b\n" +
-	"\x0fExchangeSession\x12&.cineko.service.ExchangeSessionRequest\x1a'.cineko.service.ExchangeSessionResponse2\xd8\x03\n" +
+	"\x0fExchangeSession\x12&.cineko.service.ExchangeSessionRequest\x1a'.cineko.service.ExchangeSessionResponse\x12G\n" +
+	"\x06Logout\x12\x1d.cineko.service.LogoutRequest\x1a\x1e.cineko.service.LogoutResponse\x12\x83\x01\n" +
+	"\x1aCreateProbeBootstrapTicket\x121.cineko.service.CreateProbeBootstrapTicketRequest\x1a2.cineko.service.CreateProbeBootstrapTicketResponse2\x90\x05\n" +
 	"\x15ClientResourceService\x12P\n" +
 	"\tBootstrap\x12 .cineko.service.BootstrapRequest\x1a!.cineko.service.BootstrapResponse\x12V\n" +
 	"\vGetResource\x12\".cineko.service.GetResourceRequest\x1a#.cineko.service.GetResourceResponse\x12\\\n" +
 	"\rListResources\x12$.cineko.service.ListResourcesRequest\x1a%.cineko.service.ListResourcesResponse\x12V\n" +
 	"\vPutResource\x12\".cineko.service.PutResourceRequest\x1a#.cineko.service.PutResourceResponse\x12_\n" +
-	"\x0eDeleteResource\x12%.cineko.service.DeleteResourceRequest\x1a&.cineko.service.DeleteResourceResponse2\xa7\x02\n" +
+	"\x0eDeleteResource\x12%.cineko.service.DeleteResourceRequest\x1a&.cineko.service.DeleteResourceResponse\x12Y\n" +
+	"\fUpsertDevice\x12#.cineko.service.UpsertDeviceRequest\x1a$.cineko.service.UpsertDeviceResponse\x12[\n" +
+	"\fStreamEvents\x12#.cineko.service.StreamEventsRequest\x1a$.cineko.service.StreamEventsResponse0\x012\x9d\x03\n" +
 	"\x0eCatalogService\x12S\n" +
 	"\n" +
 	"GetCatalog\x12!.cineko.service.GetCatalogRequest\x1a\".cineko.service.GetCatalogResponse\x12_\n" +
 	"\x0eGetAuditoriums\x12%.cineko.service.GetAuditoriumsRequest\x1a&.cineko.service.GetAuditoriumsResponse\x12_\n" +
-	"\x0eResolveSeatMap\x12%.cineko.service.ResolveSeatMapRequest\x1a&.cineko.service.ResolveSeatMapResponse2\x81\x02\n" +
+	"\x0eResolveSeatMap\x12%.cineko.service.ResolveSeatMapRequest\x1a&.cineko.service.ResolveSeatMapResponse\x12t\n" +
+	"\x15SubmitCatalogSnapshot\x12,.cineko.service.SubmitCatalogSnapshotRequest\x1a-.cineko.service.SubmitCatalogSnapshotResponse2\xc9\x02\n" +
 	"\x10ExecutionService\x12H\n" +
 	"\x05Claim\x12\x1e.cineko.execution.ClaimRequest\x1a\x1f.cineko.execution.ClaimResponse\x12T\n" +
 	"\tHeartbeat\x12\".cineko.execution.HeartbeatRequest\x1a#.cineko.execution.HeartbeatResponse\x12M\n" +
-	"\bComplete\x12\x1f.cineko.service.CompleteRequest\x1a .cineko.service.CompleteResponse2\xe2\x04\n" +
+	"\bComplete\x12\x1f.cineko.service.CompleteRequest\x1a .cineko.service.CompleteResponse\x12F\n" +
+	"\x05Retry\x12\x1e.cineko.execution.RetryRequest\x1a\x1d.cineko.service.RetryResponse2\xcf\x05\n" +
 	"\x0eReleaseService\x12h\n" +
-	"\x11GetRuntimeRelease\x12(.cineko.service.GetRuntimeReleaseRequest\x1a).cineko.service.GetRuntimeReleaseResponse\x12\\\n" +
+	"\x11GetRuntimeRelease\x12(.cineko.service.GetRuntimeReleaseRequest\x1a).cineko.service.GetRuntimeReleaseResponse\x12k\n" +
+	"\x12GetLauncherRelease\x12).cineko.service.GetLauncherReleaseRequest\x1a*.cineko.service.GetLauncherReleaseResponse\x12\\\n" +
 	"\rPublishClient\x12$.cineko.service.PublishClientRequest\x1a%.cineko.service.PublishClientResponse\x12_\n" +
 	"\x0ePublishBrowser\x12%.cineko.service.PublishBrowserRequest\x1a&.cineko.service.PublishBrowserResponse\x12h\n" +
 	"\x11PublishPlaywright\x12(.cineko.service.PublishPlaywrightRequest\x1a).cineko.service.PublishPlaywrightResponse\x12b\n" +
 	"\x0fPublishLauncher\x12&.cineko.service.PublishLauncherRequest\x1a'.cineko.service.PublishLauncherResponse\x12Y\n" +
 	"\fPublishProbe\x12#.cineko.service.PublishProbeRequest\x1a$.cineko.service.PublishProbeResponseB?Z=github.com/cineko-org/contracts/gen/go/cineko/service;serviceb\beditionsp\xe9\a"
 
-var file_cineko_service_services_proto_msgTypes = make([]protoimpl.MessageInfo, 41)
+var file_cineko_service_services_proto_msgTypes = make([]protoimpl.MessageInfo, 56)
 var file_cineko_service_services_proto_goTypes = []any{
 	(*SubmitAssignmentResultResponse)(nil),      // 0: cineko.service.SubmitAssignmentResultResponse
-	(*ExchangePinRequest)(nil),                  // 1: cineko.service.ExchangePinRequest
-	(*ExchangePinResponse)(nil),                 // 2: cineko.service.ExchangePinResponse
-	(*ExchangeTokenRequest)(nil),                // 3: cineko.service.ExchangeTokenRequest
-	(*ExchangeTokenResponse)(nil),               // 4: cineko.service.ExchangeTokenResponse
-	(*RefreshTokenRequest)(nil),                 // 5: cineko.service.RefreshTokenRequest
-	(*RefreshTokenResponse)(nil),                // 6: cineko.service.RefreshTokenResponse
-	(*CreateLaunchTicketRequest)(nil),           // 7: cineko.service.CreateLaunchTicketRequest
-	(*CreateLaunchTicketResponse)(nil),          // 8: cineko.service.CreateLaunchTicketResponse
-	(*ExchangeSessionRequest)(nil),              // 9: cineko.service.ExchangeSessionRequest
-	(*ExchangeSessionResponse)(nil),             // 10: cineko.service.ExchangeSessionResponse
-	(*BootstrapRequest)(nil),                    // 11: cineko.service.BootstrapRequest
-	(*BootstrapResponse)(nil),                   // 12: cineko.service.BootstrapResponse
-	(*GetResourceRequest)(nil),                  // 13: cineko.service.GetResourceRequest
-	(*GetResourceResponse)(nil),                 // 14: cineko.service.GetResourceResponse
-	(*ListResourcesRequest)(nil),                // 15: cineko.service.ListResourcesRequest
-	(*ListResourcesResponse)(nil),               // 16: cineko.service.ListResourcesResponse
-	(*PutResourceRequest)(nil),                  // 17: cineko.service.PutResourceRequest
-	(*PutResourceResponse)(nil),                 // 18: cineko.service.PutResourceResponse
-	(*DeleteResourceRequest)(nil),               // 19: cineko.service.DeleteResourceRequest
-	(*DeleteResourceResponse)(nil),              // 20: cineko.service.DeleteResourceResponse
-	(*GetCatalogRequest)(nil),                   // 21: cineko.service.GetCatalogRequest
-	(*GetCatalogResponse)(nil),                  // 22: cineko.service.GetCatalogResponse
-	(*GetAuditoriumsRequest)(nil),               // 23: cineko.service.GetAuditoriumsRequest
-	(*GetAuditoriumsResponse)(nil),              // 24: cineko.service.GetAuditoriumsResponse
-	(*ResolveSeatMapRequest)(nil),               // 25: cineko.service.ResolveSeatMapRequest
-	(*ResolveSeatMapResponse)(nil),              // 26: cineko.service.ResolveSeatMapResponse
-	(*CompleteRequest)(nil),                     // 27: cineko.service.CompleteRequest
-	(*CompleteResponse)(nil),                    // 28: cineko.service.CompleteResponse
-	(*GetRuntimeReleaseRequest)(nil),            // 29: cineko.service.GetRuntimeReleaseRequest
-	(*GetRuntimeReleaseResponse)(nil),           // 30: cineko.service.GetRuntimeReleaseResponse
-	(*PublishClientRequest)(nil),                // 31: cineko.service.PublishClientRequest
-	(*PublishClientResponse)(nil),               // 32: cineko.service.PublishClientResponse
-	(*PublishBrowserRequest)(nil),               // 33: cineko.service.PublishBrowserRequest
-	(*PublishBrowserResponse)(nil),              // 34: cineko.service.PublishBrowserResponse
-	(*PublishPlaywrightRequest)(nil),            // 35: cineko.service.PublishPlaywrightRequest
-	(*PublishPlaywrightResponse)(nil),           // 36: cineko.service.PublishPlaywrightResponse
-	(*PublishLauncherRequest)(nil),              // 37: cineko.service.PublishLauncherRequest
-	(*PublishLauncherResponse)(nil),             // 38: cineko.service.PublishLauncherResponse
-	(*PublishProbeRequest)(nil),                 // 39: cineko.service.PublishProbeRequest
-	(*PublishProbeResponse)(nil),                // 40: cineko.service.PublishProbeResponse
-	(*observation.ResultReceipt)(nil),           // 41: cineko.observation.ResultReceipt
-	(*client.PinExchangeRequest)(nil),           // 42: cineko.client.PinExchangeRequest
-	(*client.AuthenticationResponse)(nil),       // 43: cineko.client.AuthenticationResponse
-	(*client.TokenExchangeRequest)(nil),         // 44: cineko.client.TokenExchangeRequest
-	(*client.TokenRefreshRequest)(nil),          // 45: cineko.client.TokenRefreshRequest
-	(*client.LaunchTicketRequest)(nil),          // 46: cineko.client.LaunchTicketRequest
-	(*client.LaunchTicketResponse)(nil),         // 47: cineko.client.LaunchTicketResponse
-	(*client.SessionExchangeRequest)(nil),       // 48: cineko.client.SessionExchangeRequest
-	(*client.Bootstrap)(nil),                    // 49: cineko.client.Bootstrap
-	(*client.Resource)(nil),                     // 50: cineko.client.Resource
-	(*common.PageRequest)(nil),                  // 51: cineko.common.PageRequest
-	(*common.PageResponse)(nil),                 // 52: cineko.common.PageResponse
-	(*common.MutationIdentity)(nil),             // 53: cineko.common.MutationIdentity
-	(*catalog.CatalogIndex)(nil),                // 54: cineko.catalog.CatalogIndex
-	(*catalog.Auditorium)(nil),                  // 55: cineko.catalog.Auditorium
-	(*seatmap.Resolution)(nil),                  // 56: cineko.seatmap.Resolution
-	(*execution.ResultRequest)(nil),             // 57: cineko.execution.ResultRequest
-	(*release.RuntimeRelease)(nil),              // 58: cineko.release.RuntimeRelease
-	(*release.ClientReleaseSet)(nil),            // 59: cineko.release.ClientReleaseSet
-	(*release.BrowserReleaseSet)(nil),           // 60: cineko.release.BrowserReleaseSet
-	(*release.PlaywrightReleaseSet)(nil),        // 61: cineko.release.PlaywrightReleaseSet
-	(*release.LauncherReleaseSet)(nil),          // 62: cineko.release.LauncherReleaseSet
-	(*release.ProbeReleaseSet)(nil),             // 63: cineko.release.ProbeReleaseSet
-	(*probe.RegisterRequest)(nil),               // 64: cineko.probe.RegisterRequest
-	(*probe.HeartbeatRequest)(nil),              // 65: cineko.probe.HeartbeatRequest
-	(*probe.ClaimAssignmentRequest)(nil),        // 66: cineko.probe.ClaimAssignmentRequest
-	(*probe.HeartbeatAssignmentRequest)(nil),    // 67: cineko.probe.HeartbeatAssignmentRequest
-	(*probe.SubmitAssignmentResultRequest)(nil), // 68: cineko.probe.SubmitAssignmentResultRequest
-	(*execution.ClaimRequest)(nil),              // 69: cineko.execution.ClaimRequest
-	(*execution.HeartbeatRequest)(nil),          // 70: cineko.execution.HeartbeatRequest
-	(*probe.RegisterResponse)(nil),              // 71: cineko.probe.RegisterResponse
-	(*probe.HeartbeatResponse)(nil),             // 72: cineko.probe.HeartbeatResponse
-	(*probe.ClaimAssignmentResponse)(nil),       // 73: cineko.probe.ClaimAssignmentResponse
-	(*probe.HeartbeatAssignmentResponse)(nil),   // 74: cineko.probe.HeartbeatAssignmentResponse
-	(*execution.ClaimResponse)(nil),             // 75: cineko.execution.ClaimResponse
-	(*execution.HeartbeatResponse)(nil),         // 76: cineko.execution.HeartbeatResponse
+	(*DisconnectRequest)(nil),                   // 1: cineko.service.DisconnectRequest
+	(*DisconnectResponse)(nil),                  // 2: cineko.service.DisconnectResponse
+	(*ExchangePinRequest)(nil),                  // 3: cineko.service.ExchangePinRequest
+	(*ExchangePinResponse)(nil),                 // 4: cineko.service.ExchangePinResponse
+	(*ExchangeTokenRequest)(nil),                // 5: cineko.service.ExchangeTokenRequest
+	(*ExchangeTokenResponse)(nil),               // 6: cineko.service.ExchangeTokenResponse
+	(*RefreshTokenRequest)(nil),                 // 7: cineko.service.RefreshTokenRequest
+	(*RefreshTokenResponse)(nil),                // 8: cineko.service.RefreshTokenResponse
+	(*CreateLaunchTicketRequest)(nil),           // 9: cineko.service.CreateLaunchTicketRequest
+	(*CreateLaunchTicketResponse)(nil),          // 10: cineko.service.CreateLaunchTicketResponse
+	(*ExchangeSessionRequest)(nil),              // 11: cineko.service.ExchangeSessionRequest
+	(*ExchangeSessionResponse)(nil),             // 12: cineko.service.ExchangeSessionResponse
+	(*LogoutRequest)(nil),                       // 13: cineko.service.LogoutRequest
+	(*LogoutResponse)(nil),                      // 14: cineko.service.LogoutResponse
+	(*CreateProbeBootstrapTicketRequest)(nil),   // 15: cineko.service.CreateProbeBootstrapTicketRequest
+	(*CreateProbeBootstrapTicketResponse)(nil),  // 16: cineko.service.CreateProbeBootstrapTicketResponse
+	(*BootstrapRequest)(nil),                    // 17: cineko.service.BootstrapRequest
+	(*BootstrapResponse)(nil),                   // 18: cineko.service.BootstrapResponse
+	(*GetResourceRequest)(nil),                  // 19: cineko.service.GetResourceRequest
+	(*GetResourceResponse)(nil),                 // 20: cineko.service.GetResourceResponse
+	(*ListResourcesRequest)(nil),                // 21: cineko.service.ListResourcesRequest
+	(*ListResourcesResponse)(nil),               // 22: cineko.service.ListResourcesResponse
+	(*PutResourceRequest)(nil),                  // 23: cineko.service.PutResourceRequest
+	(*PutResourceResponse)(nil),                 // 24: cineko.service.PutResourceResponse
+	(*DeleteResourceRequest)(nil),               // 25: cineko.service.DeleteResourceRequest
+	(*DeleteResourceResponse)(nil),              // 26: cineko.service.DeleteResourceResponse
+	(*UpsertDeviceRequest)(nil),                 // 27: cineko.service.UpsertDeviceRequest
+	(*UpsertDeviceResponse)(nil),                // 28: cineko.service.UpsertDeviceResponse
+	(*StreamEventsRequest)(nil),                 // 29: cineko.service.StreamEventsRequest
+	(*StreamEventsResponse)(nil),                // 30: cineko.service.StreamEventsResponse
+	(*GetCatalogRequest)(nil),                   // 31: cineko.service.GetCatalogRequest
+	(*GetCatalogResponse)(nil),                  // 32: cineko.service.GetCatalogResponse
+	(*GetAuditoriumsRequest)(nil),               // 33: cineko.service.GetAuditoriumsRequest
+	(*GetAuditoriumsResponse)(nil),              // 34: cineko.service.GetAuditoriumsResponse
+	(*ResolveSeatMapRequest)(nil),               // 35: cineko.service.ResolveSeatMapRequest
+	(*ResolveSeatMapResponse)(nil),              // 36: cineko.service.ResolveSeatMapResponse
+	(*SubmitCatalogSnapshotRequest)(nil),        // 37: cineko.service.SubmitCatalogSnapshotRequest
+	(*SubmitCatalogSnapshotResponse)(nil),       // 38: cineko.service.SubmitCatalogSnapshotResponse
+	(*CompleteRequest)(nil),                     // 39: cineko.service.CompleteRequest
+	(*CompleteResponse)(nil),                    // 40: cineko.service.CompleteResponse
+	(*RetryResponse)(nil),                       // 41: cineko.service.RetryResponse
+	(*GetRuntimeReleaseRequest)(nil),            // 42: cineko.service.GetRuntimeReleaseRequest
+	(*GetRuntimeReleaseResponse)(nil),           // 43: cineko.service.GetRuntimeReleaseResponse
+	(*GetLauncherReleaseRequest)(nil),           // 44: cineko.service.GetLauncherReleaseRequest
+	(*GetLauncherReleaseResponse)(nil),          // 45: cineko.service.GetLauncherReleaseResponse
+	(*PublishClientRequest)(nil),                // 46: cineko.service.PublishClientRequest
+	(*PublishClientResponse)(nil),               // 47: cineko.service.PublishClientResponse
+	(*PublishBrowserRequest)(nil),               // 48: cineko.service.PublishBrowserRequest
+	(*PublishBrowserResponse)(nil),              // 49: cineko.service.PublishBrowserResponse
+	(*PublishPlaywrightRequest)(nil),            // 50: cineko.service.PublishPlaywrightRequest
+	(*PublishPlaywrightResponse)(nil),           // 51: cineko.service.PublishPlaywrightResponse
+	(*PublishLauncherRequest)(nil),              // 52: cineko.service.PublishLauncherRequest
+	(*PublishLauncherResponse)(nil),             // 53: cineko.service.PublishLauncherResponse
+	(*PublishProbeRequest)(nil),                 // 54: cineko.service.PublishProbeRequest
+	(*PublishProbeResponse)(nil),                // 55: cineko.service.PublishProbeResponse
+	(*observation.ResultReceipt)(nil),           // 56: cineko.observation.ResultReceipt
+	(*client.PinExchangeRequest)(nil),           // 57: cineko.client.PinExchangeRequest
+	(*client.AuthenticationResponse)(nil),       // 58: cineko.client.AuthenticationResponse
+	(*client.TokenExchangeRequest)(nil),         // 59: cineko.client.TokenExchangeRequest
+	(*client.TokenRefreshRequest)(nil),          // 60: cineko.client.TokenRefreshRequest
+	(*client.LaunchTicketRequest)(nil),          // 61: cineko.client.LaunchTicketRequest
+	(*client.LaunchTicketResponse)(nil),         // 62: cineko.client.LaunchTicketResponse
+	(*client.SessionExchangeRequest)(nil),       // 63: cineko.client.SessionExchangeRequest
+	(*client.ProbeBootstrapTicketRequest)(nil),  // 64: cineko.client.ProbeBootstrapTicketRequest
+	(*client.ProbeBootstrapTicketResponse)(nil), // 65: cineko.client.ProbeBootstrapTicketResponse
+	(*client.Bootstrap)(nil),                    // 66: cineko.client.Bootstrap
+	(*client.ResourceKind)(nil),                 // 67: cineko.client.ResourceKind
+	(*client.Resource)(nil),                     // 68: cineko.client.Resource
+	(*common.PageRequest)(nil),                  // 69: cineko.common.PageRequest
+	(*common.PageResponse)(nil),                 // 70: cineko.common.PageResponse
+	(*common.MutationIdentity)(nil),             // 71: cineko.common.MutationIdentity
+	(*client.Device)(nil),                       // 72: cineko.client.Device
+	(*client.ClientEvent)(nil),                  // 73: cineko.client.ClientEvent
+	(*client.StreamControl)(nil),                // 74: cineko.client.StreamControl
+	(*catalog.CatalogIndex)(nil),                // 75: cineko.catalog.CatalogIndex
+	(*catalog.Auditorium)(nil),                  // 76: cineko.catalog.Auditorium
+	(*seatmap.Resolution)(nil),                  // 77: cineko.seatmap.Resolution
+	(*catalog.CatalogSnapshot)(nil),             // 78: cineko.catalog.CatalogSnapshot
+	(*execution.ResultRequest)(nil),             // 79: cineko.execution.ResultRequest
+	(*release.RuntimeRelease)(nil),              // 80: cineko.release.RuntimeRelease
+	(*release.LauncherRelease)(nil),             // 81: cineko.release.LauncherRelease
+	(*release.ClientReleaseSet)(nil),            // 82: cineko.release.ClientReleaseSet
+	(*release.BrowserReleaseSet)(nil),           // 83: cineko.release.BrowserReleaseSet
+	(*release.PlaywrightReleaseSet)(nil),        // 84: cineko.release.PlaywrightReleaseSet
+	(*release.LauncherReleaseSet)(nil),          // 85: cineko.release.LauncherReleaseSet
+	(*release.ProbeReleaseSet)(nil),             // 86: cineko.release.ProbeReleaseSet
+	(*probe.RegisterRequest)(nil),               // 87: cineko.probe.RegisterRequest
+	(*probe.HeartbeatRequest)(nil),              // 88: cineko.probe.HeartbeatRequest
+	(*probe.ClaimAssignmentRequest)(nil),        // 89: cineko.probe.ClaimAssignmentRequest
+	(*probe.HeartbeatAssignmentRequest)(nil),    // 90: cineko.probe.HeartbeatAssignmentRequest
+	(*probe.SubmitAssignmentResultRequest)(nil), // 91: cineko.probe.SubmitAssignmentResultRequest
+	(*execution.ClaimRequest)(nil),              // 92: cineko.execution.ClaimRequest
+	(*execution.HeartbeatRequest)(nil),          // 93: cineko.execution.HeartbeatRequest
+	(*execution.RetryRequest)(nil),              // 94: cineko.execution.RetryRequest
+	(*probe.RegisterResponse)(nil),              // 95: cineko.probe.RegisterResponse
+	(*probe.HeartbeatResponse)(nil),             // 96: cineko.probe.HeartbeatResponse
+	(*probe.ClaimAssignmentResponse)(nil),       // 97: cineko.probe.ClaimAssignmentResponse
+	(*probe.HeartbeatAssignmentResponse)(nil),   // 98: cineko.probe.HeartbeatAssignmentResponse
+	(*execution.ClaimResponse)(nil),             // 99: cineko.execution.ClaimResponse
+	(*execution.HeartbeatResponse)(nil),         // 100: cineko.execution.HeartbeatResponse
 }
 var file_cineko_service_services_proto_depIdxs = []int32{
-	41, // 0: cineko.service.SubmitAssignmentResultResponse.receipt:type_name -> cineko.observation.ResultReceipt
-	42, // 1: cineko.service.ExchangePinRequest.request:type_name -> cineko.client.PinExchangeRequest
-	43, // 2: cineko.service.ExchangePinResponse.authentication:type_name -> cineko.client.AuthenticationResponse
-	44, // 3: cineko.service.ExchangeTokenRequest.request:type_name -> cineko.client.TokenExchangeRequest
-	43, // 4: cineko.service.ExchangeTokenResponse.authentication:type_name -> cineko.client.AuthenticationResponse
-	45, // 5: cineko.service.RefreshTokenRequest.request:type_name -> cineko.client.TokenRefreshRequest
-	43, // 6: cineko.service.RefreshTokenResponse.authentication:type_name -> cineko.client.AuthenticationResponse
-	46, // 7: cineko.service.CreateLaunchTicketRequest.request:type_name -> cineko.client.LaunchTicketRequest
-	47, // 8: cineko.service.CreateLaunchTicketResponse.response:type_name -> cineko.client.LaunchTicketResponse
-	48, // 9: cineko.service.ExchangeSessionRequest.request:type_name -> cineko.client.SessionExchangeRequest
-	43, // 10: cineko.service.ExchangeSessionResponse.authentication:type_name -> cineko.client.AuthenticationResponse
-	49, // 11: cineko.service.BootstrapResponse.bootstrap:type_name -> cineko.client.Bootstrap
-	50, // 12: cineko.service.GetResourceResponse.resource:type_name -> cineko.client.Resource
-	51, // 13: cineko.service.ListResourcesRequest.page:type_name -> cineko.common.PageRequest
-	50, // 14: cineko.service.ListResourcesResponse.resources:type_name -> cineko.client.Resource
-	52, // 15: cineko.service.ListResourcesResponse.page:type_name -> cineko.common.PageResponse
-	53, // 16: cineko.service.PutResourceRequest.mutation:type_name -> cineko.common.MutationIdentity
-	50, // 17: cineko.service.PutResourceRequest.resource:type_name -> cineko.client.Resource
-	50, // 18: cineko.service.PutResourceResponse.resource:type_name -> cineko.client.Resource
-	53, // 19: cineko.service.DeleteResourceRequest.mutation:type_name -> cineko.common.MutationIdentity
-	54, // 20: cineko.service.GetCatalogResponse.catalog:type_name -> cineko.catalog.CatalogIndex
-	55, // 21: cineko.service.GetAuditoriumsResponse.auditoriums:type_name -> cineko.catalog.Auditorium
-	56, // 22: cineko.service.ResolveSeatMapResponse.resolution:type_name -> cineko.seatmap.Resolution
-	57, // 23: cineko.service.CompleteRequest.result:type_name -> cineko.execution.ResultRequest
-	58, // 24: cineko.service.GetRuntimeReleaseResponse.release:type_name -> cineko.release.RuntimeRelease
-	59, // 25: cineko.service.PublishClientRequest.release_set:type_name -> cineko.release.ClientReleaseSet
-	60, // 26: cineko.service.PublishBrowserRequest.release_set:type_name -> cineko.release.BrowserReleaseSet
-	61, // 27: cineko.service.PublishPlaywrightRequest.release_set:type_name -> cineko.release.PlaywrightReleaseSet
-	62, // 28: cineko.service.PublishLauncherRequest.release_set:type_name -> cineko.release.LauncherReleaseSet
-	63, // 29: cineko.service.PublishProbeRequest.release_set:type_name -> cineko.release.ProbeReleaseSet
-	64, // 30: cineko.service.ProbeService.Register:input_type -> cineko.probe.RegisterRequest
-	65, // 31: cineko.service.ProbeService.Heartbeat:input_type -> cineko.probe.HeartbeatRequest
-	66, // 32: cineko.service.ProbeService.ClaimAssignment:input_type -> cineko.probe.ClaimAssignmentRequest
-	67, // 33: cineko.service.ProbeService.HeartbeatAssignment:input_type -> cineko.probe.HeartbeatAssignmentRequest
-	68, // 34: cineko.service.ProbeService.SubmitAssignmentResult:input_type -> cineko.probe.SubmitAssignmentResultRequest
-	1,  // 35: cineko.service.ClientAuthenticationService.ExchangePin:input_type -> cineko.service.ExchangePinRequest
-	3,  // 36: cineko.service.ClientAuthenticationService.ExchangeToken:input_type -> cineko.service.ExchangeTokenRequest
-	5,  // 37: cineko.service.ClientAuthenticationService.RefreshToken:input_type -> cineko.service.RefreshTokenRequest
-	7,  // 38: cineko.service.ClientAuthenticationService.CreateLaunchTicket:input_type -> cineko.service.CreateLaunchTicketRequest
-	9,  // 39: cineko.service.ClientAuthenticationService.ExchangeSession:input_type -> cineko.service.ExchangeSessionRequest
-	11, // 40: cineko.service.ClientResourceService.Bootstrap:input_type -> cineko.service.BootstrapRequest
-	13, // 41: cineko.service.ClientResourceService.GetResource:input_type -> cineko.service.GetResourceRequest
-	15, // 42: cineko.service.ClientResourceService.ListResources:input_type -> cineko.service.ListResourcesRequest
-	17, // 43: cineko.service.ClientResourceService.PutResource:input_type -> cineko.service.PutResourceRequest
-	19, // 44: cineko.service.ClientResourceService.DeleteResource:input_type -> cineko.service.DeleteResourceRequest
-	21, // 45: cineko.service.CatalogService.GetCatalog:input_type -> cineko.service.GetCatalogRequest
-	23, // 46: cineko.service.CatalogService.GetAuditoriums:input_type -> cineko.service.GetAuditoriumsRequest
-	25, // 47: cineko.service.CatalogService.ResolveSeatMap:input_type -> cineko.service.ResolveSeatMapRequest
-	69, // 48: cineko.service.ExecutionService.Claim:input_type -> cineko.execution.ClaimRequest
-	70, // 49: cineko.service.ExecutionService.Heartbeat:input_type -> cineko.execution.HeartbeatRequest
-	27, // 50: cineko.service.ExecutionService.Complete:input_type -> cineko.service.CompleteRequest
-	29, // 51: cineko.service.ReleaseService.GetRuntimeRelease:input_type -> cineko.service.GetRuntimeReleaseRequest
-	31, // 52: cineko.service.ReleaseService.PublishClient:input_type -> cineko.service.PublishClientRequest
-	33, // 53: cineko.service.ReleaseService.PublishBrowser:input_type -> cineko.service.PublishBrowserRequest
-	35, // 54: cineko.service.ReleaseService.PublishPlaywright:input_type -> cineko.service.PublishPlaywrightRequest
-	37, // 55: cineko.service.ReleaseService.PublishLauncher:input_type -> cineko.service.PublishLauncherRequest
-	39, // 56: cineko.service.ReleaseService.PublishProbe:input_type -> cineko.service.PublishProbeRequest
-	71, // 57: cineko.service.ProbeService.Register:output_type -> cineko.probe.RegisterResponse
-	72, // 58: cineko.service.ProbeService.Heartbeat:output_type -> cineko.probe.HeartbeatResponse
-	73, // 59: cineko.service.ProbeService.ClaimAssignment:output_type -> cineko.probe.ClaimAssignmentResponse
-	74, // 60: cineko.service.ProbeService.HeartbeatAssignment:output_type -> cineko.probe.HeartbeatAssignmentResponse
-	0,  // 61: cineko.service.ProbeService.SubmitAssignmentResult:output_type -> cineko.service.SubmitAssignmentResultResponse
-	2,  // 62: cineko.service.ClientAuthenticationService.ExchangePin:output_type -> cineko.service.ExchangePinResponse
-	4,  // 63: cineko.service.ClientAuthenticationService.ExchangeToken:output_type -> cineko.service.ExchangeTokenResponse
-	6,  // 64: cineko.service.ClientAuthenticationService.RefreshToken:output_type -> cineko.service.RefreshTokenResponse
-	8,  // 65: cineko.service.ClientAuthenticationService.CreateLaunchTicket:output_type -> cineko.service.CreateLaunchTicketResponse
-	10, // 66: cineko.service.ClientAuthenticationService.ExchangeSession:output_type -> cineko.service.ExchangeSessionResponse
-	12, // 67: cineko.service.ClientResourceService.Bootstrap:output_type -> cineko.service.BootstrapResponse
-	14, // 68: cineko.service.ClientResourceService.GetResource:output_type -> cineko.service.GetResourceResponse
-	16, // 69: cineko.service.ClientResourceService.ListResources:output_type -> cineko.service.ListResourcesResponse
-	18, // 70: cineko.service.ClientResourceService.PutResource:output_type -> cineko.service.PutResourceResponse
-	20, // 71: cineko.service.ClientResourceService.DeleteResource:output_type -> cineko.service.DeleteResourceResponse
-	22, // 72: cineko.service.CatalogService.GetCatalog:output_type -> cineko.service.GetCatalogResponse
-	24, // 73: cineko.service.CatalogService.GetAuditoriums:output_type -> cineko.service.GetAuditoriumsResponse
-	26, // 74: cineko.service.CatalogService.ResolveSeatMap:output_type -> cineko.service.ResolveSeatMapResponse
-	75, // 75: cineko.service.ExecutionService.Claim:output_type -> cineko.execution.ClaimResponse
-	76, // 76: cineko.service.ExecutionService.Heartbeat:output_type -> cineko.execution.HeartbeatResponse
-	28, // 77: cineko.service.ExecutionService.Complete:output_type -> cineko.service.CompleteResponse
-	30, // 78: cineko.service.ReleaseService.GetRuntimeRelease:output_type -> cineko.service.GetRuntimeReleaseResponse
-	32, // 79: cineko.service.ReleaseService.PublishClient:output_type -> cineko.service.PublishClientResponse
-	34, // 80: cineko.service.ReleaseService.PublishBrowser:output_type -> cineko.service.PublishBrowserResponse
-	36, // 81: cineko.service.ReleaseService.PublishPlaywright:output_type -> cineko.service.PublishPlaywrightResponse
-	38, // 82: cineko.service.ReleaseService.PublishLauncher:output_type -> cineko.service.PublishLauncherResponse
-	40, // 83: cineko.service.ReleaseService.PublishProbe:output_type -> cineko.service.PublishProbeResponse
-	57, // [57:84] is the sub-list for method output_type
-	30, // [30:57] is the sub-list for method input_type
-	30, // [30:30] is the sub-list for extension type_name
-	30, // [30:30] is the sub-list for extension extendee
-	0,  // [0:30] is the sub-list for field type_name
+	56,  // 0: cineko.service.SubmitAssignmentResultResponse.receipt:type_name -> cineko.observation.ResultReceipt
+	57,  // 1: cineko.service.ExchangePinRequest.request:type_name -> cineko.client.PinExchangeRequest
+	58,  // 2: cineko.service.ExchangePinResponse.authentication:type_name -> cineko.client.AuthenticationResponse
+	59,  // 3: cineko.service.ExchangeTokenRequest.request:type_name -> cineko.client.TokenExchangeRequest
+	58,  // 4: cineko.service.ExchangeTokenResponse.authentication:type_name -> cineko.client.AuthenticationResponse
+	60,  // 5: cineko.service.RefreshTokenRequest.request:type_name -> cineko.client.TokenRefreshRequest
+	58,  // 6: cineko.service.RefreshTokenResponse.authentication:type_name -> cineko.client.AuthenticationResponse
+	61,  // 7: cineko.service.CreateLaunchTicketRequest.request:type_name -> cineko.client.LaunchTicketRequest
+	62,  // 8: cineko.service.CreateLaunchTicketResponse.response:type_name -> cineko.client.LaunchTicketResponse
+	63,  // 9: cineko.service.ExchangeSessionRequest.request:type_name -> cineko.client.SessionExchangeRequest
+	58,  // 10: cineko.service.ExchangeSessionResponse.authentication:type_name -> cineko.client.AuthenticationResponse
+	64,  // 11: cineko.service.CreateProbeBootstrapTicketRequest.request:type_name -> cineko.client.ProbeBootstrapTicketRequest
+	65,  // 12: cineko.service.CreateProbeBootstrapTicketResponse.response:type_name -> cineko.client.ProbeBootstrapTicketResponse
+	66,  // 13: cineko.service.BootstrapResponse.bootstrap:type_name -> cineko.client.Bootstrap
+	67,  // 14: cineko.service.GetResourceRequest.kind:type_name -> cineko.client.ResourceKind
+	68,  // 15: cineko.service.GetResourceResponse.resource:type_name -> cineko.client.Resource
+	67,  // 16: cineko.service.ListResourcesRequest.kind:type_name -> cineko.client.ResourceKind
+	69,  // 17: cineko.service.ListResourcesRequest.page:type_name -> cineko.common.PageRequest
+	68,  // 18: cineko.service.ListResourcesResponse.resources:type_name -> cineko.client.Resource
+	70,  // 19: cineko.service.ListResourcesResponse.page:type_name -> cineko.common.PageResponse
+	71,  // 20: cineko.service.PutResourceRequest.mutation:type_name -> cineko.common.MutationIdentity
+	68,  // 21: cineko.service.PutResourceRequest.resource:type_name -> cineko.client.Resource
+	68,  // 22: cineko.service.PutResourceResponse.resource:type_name -> cineko.client.Resource
+	71,  // 23: cineko.service.DeleteResourceRequest.mutation:type_name -> cineko.common.MutationIdentity
+	67,  // 24: cineko.service.DeleteResourceRequest.kind:type_name -> cineko.client.ResourceKind
+	72,  // 25: cineko.service.UpsertDeviceRequest.device:type_name -> cineko.client.Device
+	72,  // 26: cineko.service.UpsertDeviceResponse.device:type_name -> cineko.client.Device
+	73,  // 27: cineko.service.StreamEventsResponse.data:type_name -> cineko.client.ClientEvent
+	74,  // 28: cineko.service.StreamEventsResponse.control:type_name -> cineko.client.StreamControl
+	75,  // 29: cineko.service.GetCatalogResponse.catalog:type_name -> cineko.catalog.CatalogIndex
+	76,  // 30: cineko.service.GetAuditoriumsResponse.auditoriums:type_name -> cineko.catalog.Auditorium
+	77,  // 31: cineko.service.ResolveSeatMapResponse.resolution:type_name -> cineko.seatmap.Resolution
+	78,  // 32: cineko.service.SubmitCatalogSnapshotRequest.snapshot:type_name -> cineko.catalog.CatalogSnapshot
+	79,  // 33: cineko.service.CompleteRequest.result:type_name -> cineko.execution.ResultRequest
+	80,  // 34: cineko.service.GetRuntimeReleaseResponse.release:type_name -> cineko.release.RuntimeRelease
+	81,  // 35: cineko.service.GetLauncherReleaseResponse.release:type_name -> cineko.release.LauncherRelease
+	82,  // 36: cineko.service.PublishClientRequest.release_set:type_name -> cineko.release.ClientReleaseSet
+	83,  // 37: cineko.service.PublishBrowserRequest.release_set:type_name -> cineko.release.BrowserReleaseSet
+	84,  // 38: cineko.service.PublishPlaywrightRequest.release_set:type_name -> cineko.release.PlaywrightReleaseSet
+	85,  // 39: cineko.service.PublishLauncherRequest.release_set:type_name -> cineko.release.LauncherReleaseSet
+	86,  // 40: cineko.service.PublishProbeRequest.release_set:type_name -> cineko.release.ProbeReleaseSet
+	87,  // 41: cineko.service.ProbeService.Register:input_type -> cineko.probe.RegisterRequest
+	88,  // 42: cineko.service.ProbeService.Heartbeat:input_type -> cineko.probe.HeartbeatRequest
+	89,  // 43: cineko.service.ProbeService.ClaimAssignment:input_type -> cineko.probe.ClaimAssignmentRequest
+	90,  // 44: cineko.service.ProbeService.HeartbeatAssignment:input_type -> cineko.probe.HeartbeatAssignmentRequest
+	91,  // 45: cineko.service.ProbeService.SubmitAssignmentResult:input_type -> cineko.probe.SubmitAssignmentResultRequest
+	1,   // 46: cineko.service.ProbeService.Disconnect:input_type -> cineko.service.DisconnectRequest
+	3,   // 47: cineko.service.ClientAuthenticationService.ExchangePin:input_type -> cineko.service.ExchangePinRequest
+	5,   // 48: cineko.service.ClientAuthenticationService.ExchangeToken:input_type -> cineko.service.ExchangeTokenRequest
+	7,   // 49: cineko.service.ClientAuthenticationService.RefreshToken:input_type -> cineko.service.RefreshTokenRequest
+	9,   // 50: cineko.service.ClientAuthenticationService.CreateLaunchTicket:input_type -> cineko.service.CreateLaunchTicketRequest
+	11,  // 51: cineko.service.ClientAuthenticationService.ExchangeSession:input_type -> cineko.service.ExchangeSessionRequest
+	13,  // 52: cineko.service.ClientAuthenticationService.Logout:input_type -> cineko.service.LogoutRequest
+	15,  // 53: cineko.service.ClientAuthenticationService.CreateProbeBootstrapTicket:input_type -> cineko.service.CreateProbeBootstrapTicketRequest
+	17,  // 54: cineko.service.ClientResourceService.Bootstrap:input_type -> cineko.service.BootstrapRequest
+	19,  // 55: cineko.service.ClientResourceService.GetResource:input_type -> cineko.service.GetResourceRequest
+	21,  // 56: cineko.service.ClientResourceService.ListResources:input_type -> cineko.service.ListResourcesRequest
+	23,  // 57: cineko.service.ClientResourceService.PutResource:input_type -> cineko.service.PutResourceRequest
+	25,  // 58: cineko.service.ClientResourceService.DeleteResource:input_type -> cineko.service.DeleteResourceRequest
+	27,  // 59: cineko.service.ClientResourceService.UpsertDevice:input_type -> cineko.service.UpsertDeviceRequest
+	29,  // 60: cineko.service.ClientResourceService.StreamEvents:input_type -> cineko.service.StreamEventsRequest
+	31,  // 61: cineko.service.CatalogService.GetCatalog:input_type -> cineko.service.GetCatalogRequest
+	33,  // 62: cineko.service.CatalogService.GetAuditoriums:input_type -> cineko.service.GetAuditoriumsRequest
+	35,  // 63: cineko.service.CatalogService.ResolveSeatMap:input_type -> cineko.service.ResolveSeatMapRequest
+	37,  // 64: cineko.service.CatalogService.SubmitCatalogSnapshot:input_type -> cineko.service.SubmitCatalogSnapshotRequest
+	92,  // 65: cineko.service.ExecutionService.Claim:input_type -> cineko.execution.ClaimRequest
+	93,  // 66: cineko.service.ExecutionService.Heartbeat:input_type -> cineko.execution.HeartbeatRequest
+	39,  // 67: cineko.service.ExecutionService.Complete:input_type -> cineko.service.CompleteRequest
+	94,  // 68: cineko.service.ExecutionService.Retry:input_type -> cineko.execution.RetryRequest
+	42,  // 69: cineko.service.ReleaseService.GetRuntimeRelease:input_type -> cineko.service.GetRuntimeReleaseRequest
+	44,  // 70: cineko.service.ReleaseService.GetLauncherRelease:input_type -> cineko.service.GetLauncherReleaseRequest
+	46,  // 71: cineko.service.ReleaseService.PublishClient:input_type -> cineko.service.PublishClientRequest
+	48,  // 72: cineko.service.ReleaseService.PublishBrowser:input_type -> cineko.service.PublishBrowserRequest
+	50,  // 73: cineko.service.ReleaseService.PublishPlaywright:input_type -> cineko.service.PublishPlaywrightRequest
+	52,  // 74: cineko.service.ReleaseService.PublishLauncher:input_type -> cineko.service.PublishLauncherRequest
+	54,  // 75: cineko.service.ReleaseService.PublishProbe:input_type -> cineko.service.PublishProbeRequest
+	95,  // 76: cineko.service.ProbeService.Register:output_type -> cineko.probe.RegisterResponse
+	96,  // 77: cineko.service.ProbeService.Heartbeat:output_type -> cineko.probe.HeartbeatResponse
+	97,  // 78: cineko.service.ProbeService.ClaimAssignment:output_type -> cineko.probe.ClaimAssignmentResponse
+	98,  // 79: cineko.service.ProbeService.HeartbeatAssignment:output_type -> cineko.probe.HeartbeatAssignmentResponse
+	0,   // 80: cineko.service.ProbeService.SubmitAssignmentResult:output_type -> cineko.service.SubmitAssignmentResultResponse
+	2,   // 81: cineko.service.ProbeService.Disconnect:output_type -> cineko.service.DisconnectResponse
+	4,   // 82: cineko.service.ClientAuthenticationService.ExchangePin:output_type -> cineko.service.ExchangePinResponse
+	6,   // 83: cineko.service.ClientAuthenticationService.ExchangeToken:output_type -> cineko.service.ExchangeTokenResponse
+	8,   // 84: cineko.service.ClientAuthenticationService.RefreshToken:output_type -> cineko.service.RefreshTokenResponse
+	10,  // 85: cineko.service.ClientAuthenticationService.CreateLaunchTicket:output_type -> cineko.service.CreateLaunchTicketResponse
+	12,  // 86: cineko.service.ClientAuthenticationService.ExchangeSession:output_type -> cineko.service.ExchangeSessionResponse
+	14,  // 87: cineko.service.ClientAuthenticationService.Logout:output_type -> cineko.service.LogoutResponse
+	16,  // 88: cineko.service.ClientAuthenticationService.CreateProbeBootstrapTicket:output_type -> cineko.service.CreateProbeBootstrapTicketResponse
+	18,  // 89: cineko.service.ClientResourceService.Bootstrap:output_type -> cineko.service.BootstrapResponse
+	20,  // 90: cineko.service.ClientResourceService.GetResource:output_type -> cineko.service.GetResourceResponse
+	22,  // 91: cineko.service.ClientResourceService.ListResources:output_type -> cineko.service.ListResourcesResponse
+	24,  // 92: cineko.service.ClientResourceService.PutResource:output_type -> cineko.service.PutResourceResponse
+	26,  // 93: cineko.service.ClientResourceService.DeleteResource:output_type -> cineko.service.DeleteResourceResponse
+	28,  // 94: cineko.service.ClientResourceService.UpsertDevice:output_type -> cineko.service.UpsertDeviceResponse
+	30,  // 95: cineko.service.ClientResourceService.StreamEvents:output_type -> cineko.service.StreamEventsResponse
+	32,  // 96: cineko.service.CatalogService.GetCatalog:output_type -> cineko.service.GetCatalogResponse
+	34,  // 97: cineko.service.CatalogService.GetAuditoriums:output_type -> cineko.service.GetAuditoriumsResponse
+	36,  // 98: cineko.service.CatalogService.ResolveSeatMap:output_type -> cineko.service.ResolveSeatMapResponse
+	38,  // 99: cineko.service.CatalogService.SubmitCatalogSnapshot:output_type -> cineko.service.SubmitCatalogSnapshotResponse
+	99,  // 100: cineko.service.ExecutionService.Claim:output_type -> cineko.execution.ClaimResponse
+	100, // 101: cineko.service.ExecutionService.Heartbeat:output_type -> cineko.execution.HeartbeatResponse
+	40,  // 102: cineko.service.ExecutionService.Complete:output_type -> cineko.service.CompleteResponse
+	41,  // 103: cineko.service.ExecutionService.Retry:output_type -> cineko.service.RetryResponse
+	43,  // 104: cineko.service.ReleaseService.GetRuntimeRelease:output_type -> cineko.service.GetRuntimeReleaseResponse
+	45,  // 105: cineko.service.ReleaseService.GetLauncherRelease:output_type -> cineko.service.GetLauncherReleaseResponse
+	47,  // 106: cineko.service.ReleaseService.PublishClient:output_type -> cineko.service.PublishClientResponse
+	49,  // 107: cineko.service.ReleaseService.PublishBrowser:output_type -> cineko.service.PublishBrowserResponse
+	51,  // 108: cineko.service.ReleaseService.PublishPlaywright:output_type -> cineko.service.PublishPlaywrightResponse
+	53,  // 109: cineko.service.ReleaseService.PublishLauncher:output_type -> cineko.service.PublishLauncherResponse
+	55,  // 110: cineko.service.ReleaseService.PublishProbe:output_type -> cineko.service.PublishProbeResponse
+	76,  // [76:111] is the sub-list for method output_type
+	41,  // [41:76] is the sub-list for method input_type
+	41,  // [41:41] is the sub-list for extension type_name
+	41,  // [41:41] is the sub-list for extension extendee
+	0,   // [0:41] is the sub-list for field type_name
 }
 
 func init() { file_cineko_service_services_proto_init() }
@@ -3067,13 +4332,17 @@ func file_cineko_service_services_proto_init() {
 	if File_cineko_service_services_proto != nil {
 		return
 	}
+	file_cineko_service_services_proto_msgTypes[30].OneofWrappers = []any{
+		(*streamEventsResponse_Data)(nil),
+		(*streamEventsResponse_Control)(nil),
+	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cineko_service_services_proto_rawDesc), len(file_cineko_service_services_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   41,
+			NumMessages:   56,
 			NumExtensions: 0,
 			NumServices:   6,
 		},
