@@ -16,6 +16,11 @@ schema or does not ship.
 - Queryable domain facts are persisted in normalized columns. When an aggregate service payload must be retained,
   its only allowed representation is ProtoJSON of the current generated message; handwritten persistence DTOs,
   envelopes, and compatibility shapes are forbidden.
+- Generated messages returned to an untrusted renderer redact secret values. The same message carries only an
+  explicit presence flag such as `has_password` or `has_secret`; mutation inputs may carry a replacement secret,
+  but read responses never do.
+- Every durable state and optimistic-concurrency revision needed to resume a mutation after reload survives a Proto
+  round trip. Collapsing distinct domain states or silently writing revision zero is forbidden.
 - Launcher, Client, Central, and Probe retain independent application SemVer. Those release versions do not identify
   a contract schema.
 
