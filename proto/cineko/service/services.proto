@@ -216,6 +216,10 @@ message GetLauncherReleaseRequest {
 message GetLauncherReleaseResponse {
   cineko.release.LauncherRelease release = 1;
 }
+message GetReleaseRegistryRequest {}
+message GetReleaseRegistryResponse {
+  cineko.release.Registry registry = 1;
+}
 message PublishClientRequest {
   cineko.release.ClientReleaseSet release_set = 1;
 }
@@ -240,6 +244,7 @@ message PublishProbeResponse {}
 service ReleaseService {
   rpc GetRuntimeRelease(GetRuntimeReleaseRequest) returns (GetRuntimeReleaseResponse);
   rpc GetLauncherRelease(GetLauncherReleaseRequest) returns (GetLauncherReleaseResponse);
+  rpc GetReleaseRegistry(GetReleaseRegistryRequest) returns (GetReleaseRegistryResponse);
   rpc PublishClient(PublishClientRequest) returns (PublishClientResponse);
   rpc PublishBrowser(PublishBrowserRequest) returns (PublishBrowserResponse);
   rpc PublishPlaywright(PublishPlaywrightRequest) returns (PublishPlaywrightResponse);
