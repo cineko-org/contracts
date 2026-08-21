@@ -13,7 +13,8 @@ option go_package = "github.com/cineko-org/contracts/gen/go/cineko/admin;admin";
 
 message Principal {
   string user_id = 1;
-  google.protobuf.Timestamp expires_at = 2;
+  string display_name = 2;
+  google.protobuf.Timestamp expires_at = 3;
 }
 
 message LoginRequest {

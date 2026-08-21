@@ -29,7 +29,8 @@ const (
 type Principal struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_UserId      *string                `protobuf:"bytes,1,opt,name=user_id,json=userId"`
-	xxx_hidden_ExpiresAt   *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=expires_at,json=expiresAt"`
+	xxx_hidden_DisplayName *string                `protobuf:"bytes,2,opt,name=display_name,json=displayName"`
+	xxx_hidden_ExpiresAt   *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=expires_at,json=expiresAt"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -71,6 +72,16 @@ func (x *Principal) GetUserId() string {
 	return ""
 }
 
+func (x *Principal) GetDisplayName() string {
+	if x != nil {
+		if x.xxx_hidden_DisplayName != nil {
+			return *x.xxx_hidden_DisplayName
+		}
+		return ""
+	}
+	return ""
+}
+
 func (x *Principal) GetExpiresAt() *timestamppb.Timestamp {
 	if x != nil {
 		return x.xxx_hidden_ExpiresAt
@@ -80,7 +91,12 @@ func (x *Principal) GetExpiresAt() *timestamppb.Timestamp {
 
 func (x *Principal) SetUserId(v string) {
 	x.xxx_hidden_UserId = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 2)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 3)
+}
+
+func (x *Principal) SetDisplayName(v string) {
+	x.xxx_hidden_DisplayName = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 3)
 }
 
 func (x *Principal) SetExpiresAt(v *timestamppb.Timestamp) {
@@ -92,6 +108,13 @@ func (x *Principal) HasUserId() bool {
 		return false
 	}
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
+}
+
+func (x *Principal) HasDisplayName() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 1)
 }
 
 func (x *Principal) HasExpiresAt() bool {
@@ -106,6 +129,11 @@ func (x *Principal) ClearUserId() {
 	x.xxx_hidden_UserId = nil
 }
 
+func (x *Principal) ClearDisplayName() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 1)
+	x.xxx_hidden_DisplayName = nil
+}
+
 func (x *Principal) ClearExpiresAt() {
 	x.xxx_hidden_ExpiresAt = nil
 }
@@ -113,8 +141,9 @@ func (x *Principal) ClearExpiresAt() {
 type Principal_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
-	UserId    *string
-	ExpiresAt *timestamppb.Timestamp
+	UserId      *string
+	DisplayName *string
+	ExpiresAt   *timestamppb.Timestamp
 }
 
 func (b0 Principal_builder) Build() *Principal {
@@ -122,8 +151,12 @@ func (b0 Principal_builder) Build() *Principal {
 	b, x := &b0, m0
 	_, _ = b, x
 	if b.UserId != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 2)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 3)
 		x.xxx_hidden_UserId = b.UserId
+	}
+	if b.DisplayName != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 3)
+		x.xxx_hidden_DisplayName = b.DisplayName
 	}
 	x.xxx_hidden_ExpiresAt = b.ExpiresAt
 	return m0
@@ -7836,11 +7869,12 @@ var File_cineko_admin_admin_proto protoreflect.FileDescriptor
 
 const file_cineko_admin_admin_proto_rawDesc = "" +
 	"\n" +
-	"\x18cineko/admin/admin.proto\x12\fcineko.admin\x1a\x1bbuf/validate/validate.proto\x1a\x1ccineko/catalog/catalog.proto\x1a\x1acineko/client/client.proto\x1a\x1acineko/common/common.proto\x1a\x18cineko/probe/probe.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"_\n" +
+	"\x18cineko/admin/admin.proto\x12\fcineko.admin\x1a\x1bbuf/validate/validate.proto\x1a\x1ccineko/catalog/catalog.proto\x1a\x1acineko/client/client.proto\x1a\x1acineko/common/common.proto\x1a\x18cineko/probe/probe.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x82\x01\n" +
 	"\tPrincipal\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\tR\x06userId\x129\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\x12!\n" +
+	"\fdisplay_name\x18\x02 \x01(\tR\vdisplayName\x129\n" +
 	"\n" +
-	"expires_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\"[\n" +
+	"expires_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\"[\n" +
 	"\fLoginRequest\x12#\n" +
 	"\auser_id\x18\x01 \x01(\tB\n" +
 	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\x06userId\x12&\n" +
