@@ -1,0 +1,303 @@
+edition = "2024";
+
+package cineko.client;
+
+import "buf/validate/validate.proto";
+import "cineko/catalog/catalog.proto";
+import "cineko/common/common.proto";
+import "cineko/observation/observation.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/cineko-org/contracts/gen/go/cineko/client;client";
+
+message User {
+  string id = 1;
+  string display_name = 2;
+  google.protobuf.Timestamp created_at = 3;
+  google.protobuf.Timestamp updated_at = 4;
+}
+
+message Device {
+  string installation_id = 1;
+  string user_id = 2;
+  string device_id = 3;
+  string platform = 4;
+  string architecture = 5;
+  string app_version = 6;
+  google.protobuf.Timestamp last_seen_at = 7;
+  google.protobuf.Timestamp created_at = 8;
+  google.protobuf.Timestamp updated_at = 9;
+}
+
+message DirectNetwork {}
+message ProxyNetwork {
+  repeated string urls = 1;
+  string username = 2;
+  string password = 3;
+}
+
+message NetworkSettings {
+  oneof mode {
+    option (buf.validate.oneof).required = true;
+
+    DirectNetwork direct = 1;
+    ProxyNetwork proxy = 2;
+  }
+}
+
+message WebhookTarget {
+  string id = 1;
+  string name = 2;
+  string url = 3;
+  string secret = 4;
+  repeated string event_kinds = 5;
+  bool enabled = 6;
+}
+
+message Settings {
+  NetworkSettings network = 1;
+  repeated WebhookTarget webhooks = 2;
+}
+
+message SeatZone {
+  string name = 1;
+  double min_x = 2;
+  double max_x = 3;
+  double min_y = 4;
+  double max_y = 5;
+  int32 weight = 6;
+}
+
+message SeatPreference {
+  repeated string explicit_seats = 1;
+  repeated string preferred_rows = 2;
+  repeated SeatZone preferred_zones = 3;
+  repeated string preferred_types = 4;
+  bool together = 5;
+  bool avoid_edges = 6;
+}
+
+message Preset {
+  string id = 1;
+  string user_id = 2;
+  string name = 3;
+  string theater_id = 4;
+  string auditorium_id = 5;
+  int32 seat_count = 6;
+  SeatPreference seat_preference = 7;
+  google.protobuf.Timestamp created_at = 8;
+  google.protobuf.Timestamp updated_at = 9;
+}
+
+message OpeningMonitor {}
+message CancellationMonitor {}
+
+message MonitorMode {
+  oneof mode {
+    option (buf.validate.oneof).required = true;
+
+    OpeningMonitor opening = 1;
+    CancellationMonitor cancellation = 2;
+  }
+}
+
+message MonitorPending {}
+message MonitorRunning {}
+message MonitorTriggered {}
+message MonitorBooked {}
+message MonitorFailed {
+  string reason = 1;
+}
+message MonitorStopped {}
+
+message MonitorState {
+  oneof state {
+    option (buf.validate.oneof).required = true;
+
+    MonitorPending pending = 1;
+    MonitorRunning running = 2;
+    MonitorTriggered triggered = 3;
+    MonitorBooked booked = 4;
+    MonitorFailed failed = 5;
+    MonitorStopped stopped = 6;
+  }
+}
+
+message Monitor {
+  string id = 1;
+  string user_id = 2;
+  string preset_id = 3;
+  MonitorMode mode = 4;
+  string movie_id = 5;
+  string movie_title = 6;
+  repeated cineko.common.LocalDate target_dates = 7;
+  repeated int32 target_weekdays = 8;
+  int32 search_horizon_days = 9;
+  cineko.common.LocalTime earliest_time = 10;
+  cineko.common.LocalTime latest_time = 11;
+  google.protobuf.Duration poll_interval = 12;
+  google.protobuf.Duration maximum_poll_interval = 13;
+  MonitorState state = 14;
+  google.protobuf.Timestamp last_checked_at = 15;
+  string reservation_id = 16;
+  google.protobuf.Timestamp created_at = 17;
+  google.protobuf.Timestamp updated_at = 18;
+}
+
+message Reservation {
+  string id = 1;
+  string user_id = 2;
+  string monitor_id = 3;
+  string booking_number = 4;
+  repeated string seat_labels = 5;
+  string total_price = 6;
+  google.protobuf.Timestamp booked_at = 7;
+  google.protobuf.Timestamp cancelled_at = 8;
+  string refund_amount = 9;
+}
+
+message Resource {
+  cineko.common.ResourceIdentity identity = 1;
+  oneof resource {
+    option (buf.validate.oneof).required = true;
+
+    Settings settings = 2;
+    Preset preset = 3;
+    Monitor monitor = 4;
+    Reservation reservation = 5;
+  }
+}
+
+message Bootstrap {
+  User user = 1;
+  int64 event_cursor = 2;
+  map<string, int64> revisions = 3;
+  map<string, bool> features = 4;
+  Device device = 5;
+}
+
+message EventResource {
+  string id = 1;
+  int64 revision = 2;
+  oneof kind {
+    option (buf.validate.oneof).required = true;
+
+    Settings settings = 3;
+    Preset preset = 4;
+    Monitor monitor = 5;
+    Reservation reservation = 6;
+  }
+}
+
+message ClientEvent {
+  int64 sequence = 1;
+  string id = 2;
+  google.protobuf.Timestamp occurred_at = 3;
+  EventResource resource = 4;
+}
+
+message StreamReady {
+  int64 cursor = 1;
+}
+message StreamHeartbeat {
+  int64 cursor = 1;
+}
+message RetentionGap {
+  int64 cursor = 1;
+}
+message InvalidCursor {
+  int64 cursor = 1;
+}
+
+message StreamControl {
+  int64 release_generation = 1;
+  oneof control {
+    option (buf.validate.oneof).required = true;
+
+    StreamReady ready = 2;
+    StreamHeartbeat heartbeat = 3;
+    RetentionGap retention_gap = 4;
+    InvalidCursor invalid_cursor = 5;
+  }
+}
+
+message LaunchContext {
+  string installation_id = 1;
+  string device_id = 2;
+  int64 release_generation = 3;
+  string client_version = 4;
+  string artifact_sha256 = 5;
+  string browser_revision = 6;
+  string browser_artifact_sha256 = 7;
+  string playwright_version = 8;
+  string playwright_artifact_sha256 = 9;
+}
+
+message LaunchEnvelope {
+  string launch_ticket = 1;
+  LaunchContext context = 2;
+}
+
+message PinExchangeRequest {
+  string pin = 1;
+  string installation_id = 2;
+  string device_id = 3;
+}
+
+message TokenExchangeRequest {
+  string user_id = 1;
+  string access_token = 2;
+}
+
+message TokenRefreshRequest {
+  string refresh_token = 1;
+}
+
+message AuthenticationResponse {
+  string access_token = 1;
+  google.protobuf.Timestamp expires_at = 2;
+  string refresh_token = 3;
+  google.protobuf.Timestamp refresh_expires_at = 4;
+  User user = 5;
+  LaunchContext launch = 6;
+}
+
+message LaunchTicketRequest {
+  LaunchContext context = 1;
+  string nonce = 2;
+}
+
+message LaunchTicketResponse {
+  string launch_ticket = 1;
+  google.protobuf.Timestamp expires_at = 2;
+}
+
+message ProbeBootstrapTicketRequest {
+  string installation_id = 1;
+  string device_id = 2;
+  repeated cineko.observation.Capability capabilities = 3;
+  int32 max_concurrency = 4;
+  cineko.common.Runtime runtime = 5;
+}
+
+message ProbeBootstrapTicketResponse {
+  string ticket = 1;
+  google.protobuf.Timestamp expires_at = 2;
+}
+
+message SessionExchangeRequest {
+  string launch_ticket = 1;
+  string client_nonce = 2;
+}
+
+message CatalogRequest {}
+message SeatMapRequest {
+  string auditorium_id = 1;
+}
+message AuditoriumRequest {
+  string theater_id = 1;
+}
+message AuditoriumResponse {
+  repeated cineko.catalog.Auditorium auditoriums = 1;
+}

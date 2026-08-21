@@ -24,7 +24,7 @@ with a current bookable showtime; historical movies remain available to Central 
 cluttering the booking UI. The `movies` array preserves the provider's first-appearance order as a current
 presentation hint. That order never participates in identity or rewrites historical observations.
 
-Protocol v3 does not carry an authoritative scope marker, expected entity count, or tombstone set for catalog capture.
+Catalog capture does not carry an authoritative scope marker, expected entity count, or tombstone set.
 Therefore, absence from a catalog payload cannot deactivate or delete an existing entity. Authoritative replacement
 requires a future wire revision that makes scope and completeness explicit.
 

@@ -1,0 +1,86 @@
+edition = "2024";
+
+package cineko.release;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/cineko-org/contracts/gen/go/cineko/release;release";
+
+message Artifact {
+  string url = 1;
+  int64 size = 2;
+  string sha256 = 3;
+  string executable = 4;
+}
+
+message ClientRelease {
+  string channel = 1;
+  string platform = 2;
+  string architecture = 3;
+  string version = 4;
+  string minimum_launcher_version = 5;
+  string minimum_browser_revision = 6;
+  string playwright_version = 7;
+  Artifact artifact = 8;
+  map<string, string> probe_bootstrap_public_keys = 9;
+  google.protobuf.Timestamp published_at = 10;
+}
+
+message BrowserRelease {
+  string channel = 1;
+  string platform = 2;
+  string architecture = 3;
+  string revision = 4;
+  repeated string compatible_playwright_versions = 5;
+  Artifact artifact = 6;
+  google.protobuf.Timestamp published_at = 7;
+}
+
+message PlaywrightRelease {
+  string channel = 1;
+  string platform = 2;
+  string architecture = 3;
+  string version = 4;
+  Artifact artifact = 5;
+  google.protobuf.Timestamp published_at = 6;
+}
+
+message LauncherRelease {
+  string channel = 1;
+  string platform = 2;
+  string architecture = 3;
+  string version = 4;
+  Artifact launcher = 5;
+  google.protobuf.Timestamp published_at = 6;
+}
+
+message ProbeRelease {
+  string channel = 1;
+  string version = 2;
+  string browser_revision = 3;
+  string image = 4;
+  string image_digest = 5;
+  google.protobuf.Timestamp published_at = 6;
+}
+
+message RuntimeRelease {
+  ClientRelease client = 1;
+  BrowserRelease browser = 2;
+  PlaywrightRelease playwright = 3;
+}
+
+message ClientReleaseSet {
+  repeated ClientRelease releases = 1;
+}
+message BrowserReleaseSet {
+  repeated BrowserRelease releases = 1;
+}
+message PlaywrightReleaseSet {
+  repeated PlaywrightRelease releases = 1;
+}
+message LauncherReleaseSet {
+  repeated LauncherRelease releases = 1;
+}
+message ProbeReleaseSet {
+  repeated ProbeRelease releases = 1;
+}

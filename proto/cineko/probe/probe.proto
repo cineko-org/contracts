@@ -1,0 +1,111 @@
+edition = "2024";
+
+package cineko.probe;
+
+import "buf/validate/validate.proto";
+import "cineko/common/common.proto";
+import "cineko/observation/observation.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/cineko-org/contracts/gen/go/cineko/probe;probe";
+
+message ContainerProbe {}
+message ClientProbe {}
+
+message ProbeKind {
+  oneof kind {
+    option (buf.validate.oneof).required = true;
+
+    ContainerProbe container = 1;
+    ClientProbe client = 2;
+  }
+}
+
+message Healthy {}
+message Degraded {
+  string reason_code = 1;
+}
+message Unhealthy {
+  string reason_code = 1;
+}
+
+message ProbeHealth {
+  oneof health {
+    option (buf.validate.oneof).required = true;
+
+    Healthy healthy = 1;
+    Degraded degraded = 2;
+    Unhealthy unhealthy = 3;
+  }
+}
+
+message RegisterRequest {
+  string installation_id = 1;
+  ProbeKind kind = 2;
+  string network_hint = 3;
+  repeated cineko.observation.Capability capabilities = 4;
+  int32 max_concurrency = 5;
+  cineko.common.Runtime runtime = 6;
+}
+
+message RegisterResponse {
+  string probe_id = 1;
+  string network_id = 2;
+  string access_token = 3;
+  google.protobuf.Timestamp token_expires_at = 4;
+  int32 heartbeat_interval_seconds = 5;
+}
+
+message HeartbeatRequest {
+  bool draining = 1;
+  repeated string active_assignment_ids = 2;
+  repeated cineko.observation.Capability available_capabilities = 3;
+  int32 available_slots = 4;
+  ProbeHealth health = 5;
+}
+
+message HeartbeatResponse {
+  google.protobuf.Timestamp server_time = 1;
+  bool drain = 2;
+  string minimum_runtime_version = 3;
+  string minimum_browser_revision = 4;
+}
+
+message ClaimAssignmentRequest {}
+
+message AssignmentLease {
+  string assignment_id = 1;
+  string lease_token = 2;
+  google.protobuf.Timestamp lease_expires_at = 3;
+  google.protobuf.Timestamp not_before = 4;
+  google.protobuf.Timestamp deadline = 5;
+  cineko.observation.AssignmentTask task = 6;
+}
+
+message NoAssignment {
+  google.protobuf.Timestamp retry_at = 1;
+}
+
+message ClaimAssignmentResponse {
+  oneof result {
+    option (buf.validate.oneof).required = true;
+
+    AssignmentLease assignment = 1;
+    NoAssignment no_assignment = 2;
+  }
+}
+
+message HeartbeatAssignmentRequest {
+  string assignment_id = 1;
+  string lease_token = 2;
+}
+
+message HeartbeatAssignmentResponse {
+  google.protobuf.Timestamp lease_expires_at = 1;
+}
+
+message SubmitAssignmentResultRequest {
+  string assignment_id = 1;
+  string lease_token = 2;
+  cineko.observation.AssignmentResult result = 3;
+}

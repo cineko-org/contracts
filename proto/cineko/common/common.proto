@@ -1,0 +1,59 @@
+edition = "2024";
+
+package cineko.common;
+
+import "buf/validate/validate.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/cineko-org/contracts/gen/go/cineko/common;common";
+
+message LocalDate {
+  int32 year = 1;
+  int32 month = 2;
+  int32 day = 3;
+}
+
+message LocalTime {
+  int32 hour = 1;
+  int32 minute = 2;
+}
+
+message Runtime {
+  string component_version = 1;
+  string browser_revision = 2;
+  string platform = 3;
+  string architecture = 4;
+}
+
+message PageRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message PageResponse {
+  string next_page_token = 1;
+}
+
+message MutationIdentity {
+  string command_id = 1;
+  int64 expected_revision = 2;
+}
+
+message ResourceIdentity {
+  string id = 1;
+  int64 revision = 2;
+  google.protobuf.Timestamp created_at = 3;
+  google.protobuf.Timestamp updated_at = 4;
+}
+
+message DirectEgress {}
+message ManagedScanEgress {}
+
+message EgressPolicy {
+  oneof policy {
+    option (buf.validate.oneof).required = true;
+
+    DirectEgress direct = 1;
+    ManagedScanEgress managed_scan = 2;
+  }
+}

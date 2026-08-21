@@ -1,0 +1,67 @@
+edition = "2024";
+
+package cineko.execution;
+
+import "buf/validate/validate.proto";
+import "cineko/catalog/catalog.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/cineko-org/contracts/gen/go/cineko/execution;execution";
+
+message Payload {
+  cineko.catalog.Showtime showtime = 1;
+  google.protobuf.Timestamp observed_at = 2;
+}
+
+message Command {
+  string id = 1;
+  string monitor_id = 2;
+  string installation_id = 3;
+  int32 attempt = 4;
+  Payload payload = 5;
+  string lease_token = 6;
+  google.protobuf.Timestamp lease_expires_at = 7;
+  google.protobuf.Timestamp created_at = 8;
+}
+
+message ClaimRequest {
+  string installation_id = 1;
+}
+message NoCommand {
+  google.protobuf.Timestamp retry_at = 1;
+}
+
+message ClaimResponse {
+  oneof result {
+    option (buf.validate.oneof).required = true;
+
+    Command command = 1;
+    NoCommand no_command = 2;
+  }
+}
+
+message HeartbeatRequest {
+  string lease_token = 1;
+}
+message HeartbeatResponse {
+  google.protobuf.Timestamp lease_expires_at = 1;
+}
+
+message Completed {}
+message Failed {
+  string reason_code = 1;
+}
+message RetryRequested {
+  string reason_code = 1;
+}
+
+message ResultRequest {
+  string lease_token = 1;
+  oneof outcome {
+    option (buf.validate.oneof).required = true;
+
+    Completed completed = 2;
+    Failed failed = 3;
+    RetryRequested retry_requested = 4;
+  }
+}
