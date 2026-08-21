@@ -272,7 +272,18 @@ message ClientEvent {
   int64 sequence = 1;
   string id = 2;
   google.protobuf.Timestamp occurred_at = 3;
-  EventResource resource = 4;
+  oneof change {
+    option (buf.validate.oneof).required = true;
+
+    EventResource upserted = 4;
+    DeletedResource deleted = 5;
+  }
+}
+
+message DeletedResource {
+  string id = 1;
+  int64 revision = 2;
+  ResourceKind kind = 3 [(buf.validate.field).required = true];
 }
 
 message StreamReady {

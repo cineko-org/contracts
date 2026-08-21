@@ -1,0 +1,355 @@
+edition = "2024";
+
+package cineko.admin;
+
+import "buf/validate/validate.proto";
+import "cineko/catalog/catalog.proto";
+import "cineko/client/client.proto";
+import "cineko/common/common.proto";
+import "cineko/probe/probe.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/cineko-org/contracts/gen/go/cineko/admin;admin";
+
+message Principal {
+  string user_id = 1;
+  google.protobuf.Timestamp expires_at = 2;
+}
+
+message LoginRequest {
+  string user_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string password = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+}
+message LoginResponse {
+  Principal principal = 1;
+}
+message LogoutRequest {}
+message LogoutResponse {}
+message GetSessionRequest {}
+message GetSessionResponse {
+  Principal principal = 1;
+}
+
+message Configuration {
+  string listen_address = 1;
+  string minimum_runtime_version = 2;
+  string minimum_browser_revision = 3;
+  int64 client_session_seconds = 4;
+  int64 client_refresh_seconds = 5;
+  int64 admin_session_seconds = 6;
+  int64 reconcile_interval_seconds = 7;
+  int64 probe_heartbeat_ttl_seconds = 8;
+  int64 probe_offline_retention_days = 9;
+  int64 assignment_retry_min_seconds = 10;
+  int64 assignment_retry_max_seconds = 11;
+  int32 reconcile_batch_size = 12;
+}
+message GetConfigurationRequest {}
+message GetConfigurationResponse {
+  Configuration configuration = 1;
+}
+
+message OnlineProbe {}
+message OfflineProbe {}
+message ProbeState {
+  oneof state {
+    option (buf.validate.oneof).required = true;
+    OnlineProbe online = 1;
+    OfflineProbe offline = 2;
+  }
+}
+
+message Probe {
+  string id = 1;
+  cineko.probe.ProbeKind kind = 2;
+  string owner_user_id = 3;
+  string network_id = 4;
+  cineko.common.Runtime runtime = 5;
+  ProbeState state = 6;
+  bool draining = 7;
+  int32 available_slots = 8;
+  int32 max_concurrency = 9;
+  cineko.probe.ProbeHealth health = 10;
+  google.protobuf.Timestamp last_heartbeat_at = 11;
+  google.protobuf.Timestamp updated_at = 12;
+}
+message ListProbesRequest {}
+message ListProbesResponse {
+  repeated Probe probes = 1;
+}
+message DeleteProbeRequest {
+  string probe_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+}
+message DeleteProbeResponse {}
+
+message DataSummary {
+  int64 providers = 1;
+  int64 theaters = 2;
+  int64 auditoriums = 3;
+  int64 movies = 4;
+  int64 showtimes = 5;
+  int64 seat_map_versions = 6;
+  int64 schedule_captures = 7;
+  int64 showtime_observations = 8;
+  int64 observation_policies = 9;
+  int64 active_observation_policies = 10;
+  int64 queued_assignments = 11;
+  int64 leased_assignments = 12;
+  int64 completed_assignments = 13;
+  int64 failed_assignments = 14;
+  google.protobuf.Timestamp latest_schedule_observed_at = 15;
+}
+message GetDataSummaryRequest {}
+message GetDataSummaryResponse {
+  DataSummary summary = 1;
+}
+
+message ObservationPolicyInput {
+  string theater_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  bool enabled = 2;
+  int32 horizon_days = 3 [(buf.validate.field).int32 = {
+    gte: 1
+    lte: 14
+  }];
+  int32 priority = 4;
+  int32 baseline_min_seconds = 5;
+  int32 baseline_max_seconds = 6;
+  int32 demand_min_seconds = 7;
+  int32 demand_max_seconds = 8;
+  int32 burst_min_seconds = 9;
+  int32 burst_max_seconds = 10;
+  int32 burst_duration_seconds = 11;
+  string locale = 12;
+  string time_zone = 13;
+  string egress_policy_id = 14;
+}
+
+message BaselineMode {}
+message DemandMode {}
+message BurstMode {}
+message CancellationMode {}
+message ObservationMode {
+  oneof mode {
+    option (buf.validate.oneof).required = true;
+    BaselineMode baseline = 1;
+    DemandMode demand = 2;
+    BurstMode burst = 3;
+    CancellationMode cancellation = 4;
+  }
+}
+
+message CompletedOutcome {}
+message PartialOutcome {}
+message FailedOutcome {}
+message MissedOutcome {}
+message ObservationOutcome {
+  oneof outcome {
+    option (buf.validate.oneof).required = true;
+    CompletedOutcome completed = 1;
+    PartialOutcome partial = 2;
+    FailedOutcome failed = 3;
+    MissedOutcome missed = 4;
+  }
+}
+
+message ObservationPolicy {
+  string id = 1;
+  int64 revision = 2;
+  cineko.catalog.Theater theater = 3;
+  ObservationPolicyInput input = 4;
+  ObservationMode effective_mode = 5;
+  int32 effective_priority = 6;
+  int32 effective_min_seconds = 7;
+  int32 effective_max_seconds = 8;
+  bool demand_active = 9;
+  google.protobuf.Timestamp burst_until = 10;
+  google.protobuf.Timestamp next_run_at = 11;
+  google.protobuf.Timestamp last_finished_at = 12;
+  ObservationOutcome last_outcome = 13;
+  string last_error_code = 14;
+  google.protobuf.Timestamp created_at = 15;
+  google.protobuf.Timestamp updated_at = 16;
+}
+message ListObservationPoliciesRequest {}
+message ListObservationPoliciesResponse {
+  repeated ObservationPolicy policies = 1;
+}
+message CreateObservationPolicyRequest {
+  ObservationPolicyInput policy = 1 [(buf.validate.field).required = true];
+}
+message CreateObservationPolicyResponse {
+  ObservationPolicy policy = 1;
+}
+message UpdateObservationPolicyRequest {
+  string policy_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  int64 expected_revision = 2 [(buf.validate.field).int64.gt = 0];
+  ObservationPolicyInput policy = 3 [(buf.validate.field).required = true];
+}
+message UpdateObservationPolicyResponse {
+  ObservationPolicy policy = 1;
+}
+message DeleteObservationPolicyRequest {
+  string policy_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  int64 expected_revision = 2 [(buf.validate.field).int64.gt = 0];
+}
+message DeleteObservationPolicyResponse {}
+
+message ClientPinUser {
+  cineko.client.User user = 1;
+  bool pin_active = 2;
+  int32 device_count = 3;
+}
+message ClientPinIssue {
+  cineko.client.User user = 1;
+  string pin = 2;
+}
+message ListClientUsersRequest {}
+message ListClientUsersResponse {
+  repeated ClientPinUser users = 1;
+}
+message CreateClientUserRequest {
+  string display_name = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string = {
+      min_len: 1
+      max_len: 100
+    }
+  ];
+}
+message CreateClientUserResponse {
+  ClientPinIssue issue = 1;
+}
+message RotateClientPinRequest {
+  string user_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+}
+message RotateClientPinResponse {
+  ClientPinIssue issue = 1;
+}
+message DeleteClientUserRequest {
+  string user_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+}
+message DeleteClientUserResponse {}
+
+message ReconcileReport {
+  bool leader = 1;
+  google.protobuf.Timestamp started_at = 2;
+  google.protobuf.Timestamp finished_at = 3;
+  int32 stale_probes = 4;
+  int32 deleted_probes = 5;
+  int64 deleted_client_events = 6;
+  int32 expired_leases = 7;
+  int32 requeued_assignments = 8;
+  int32 failed_assignments = 9;
+  int32 missed_assignments = 10;
+  int32 advanced_policies = 11;
+  int32 created_assignments = 12;
+  int32 deferred_policies = 13;
+  int32 suspended_policies = 14;
+  bool catalog_refresh_created = 15;
+  bool catalog_refresh_waiting = 16;
+  bool seat_map_backfill_created = 17;
+  bool seat_map_backfill_waiting = 18;
+  int64 oldest_due_age_seconds = 19;
+}
+message ReconcileStatus {
+  bool running = 1;
+  bool healthy = 2;
+  bool leader = 3;
+  google.protobuf.Timestamp last_attempt_at = 4;
+  google.protobuf.Timestamp last_success_at = 5;
+  google.protobuf.Timestamp last_error_at = 6;
+  string last_error_code = 7;
+  ReconcileReport last_report = 8;
+}
+message Status {
+  bool ready = 1;
+  ReconcileStatus reconciler = 2;
+}
+message GetStatusRequest {}
+message GetStatusResponse {
+  Status status = 1;
+}
+
+message OpeningPattern {
+  string theater_id = 1;
+  string theater_name = 2;
+  string auditorium_id = 3;
+  string auditorium_name = 4;
+  string movie = 5;
+  repeated string screen_types = 6;
+  int32 sample_size = 7;
+  string typical_open_time = 8;
+  int32 typical_lead_hours = 9;
+  int32 typical_precision_minutes = 10;
+  google.protobuf.Timestamp last_observed_at = 11;
+}
+message DemandPattern {
+  string theater_id = 1;
+  string theater_name = 2;
+  string auditorium_id = 3;
+  string auditorium_name = 4;
+  string movie = 5;
+  int32 occurrence_count = 6;
+  int32 first_hour_sample_size = 7;
+  int32 typical_first_hour_sell_through = 8;
+  int32 half_sold_sample_size = 9;
+  int32 typical_half_sold_minutes = 10;
+  int32 sold_out_sample_size = 11;
+  int32 typical_sold_out_minutes = 12;
+  google.protobuf.Timestamp last_observed_at = 13;
+}
+message ObservationIntelligence {
+  int32 snapshot_count = 1;
+  int32 showtime_observations = 2;
+  google.protobuf.Timestamp last_observed_at = 3;
+  repeated OpeningPattern opening_patterns = 4;
+  repeated DemandPattern demand_patterns = 5;
+}
+message GetObservationIntelligenceRequest {}
+message GetObservationIntelligenceResponse {
+  ObservationIntelligence intelligence = 1;
+}
+
+service AdminService {
+  rpc Login(LoginRequest) returns (LoginResponse);
+  rpc Logout(LogoutRequest) returns (LogoutResponse);
+  rpc GetSession(GetSessionRequest) returns (GetSessionResponse);
+  rpc GetStatus(GetStatusRequest) returns (GetStatusResponse);
+  rpc GetConfiguration(GetConfigurationRequest) returns (GetConfigurationResponse);
+  rpc ListProbes(ListProbesRequest) returns (ListProbesResponse);
+  rpc DeleteProbe(DeleteProbeRequest) returns (DeleteProbeResponse);
+  rpc GetDataSummary(GetDataSummaryRequest) returns (GetDataSummaryResponse);
+  rpc ListObservationPolicies(ListObservationPoliciesRequest) returns (ListObservationPoliciesResponse);
+  rpc CreateObservationPolicy(CreateObservationPolicyRequest) returns (CreateObservationPolicyResponse);
+  rpc UpdateObservationPolicy(UpdateObservationPolicyRequest) returns (UpdateObservationPolicyResponse);
+  rpc DeleteObservationPolicy(DeleteObservationPolicyRequest) returns (DeleteObservationPolicyResponse);
+  rpc GetObservationIntelligence(GetObservationIntelligenceRequest) returns (GetObservationIntelligenceResponse);
+  rpc ListClientUsers(ListClientUsersRequest) returns (ListClientUsersResponse);
+  rpc CreateClientUser(CreateClientUserRequest) returns (CreateClientUserResponse);
+  rpc RotateClientPin(RotateClientPinRequest) returns (RotateClientPinResponse);
+  rpc DeleteClientUser(DeleteClientUserRequest) returns (DeleteClientUserResponse);
+}
