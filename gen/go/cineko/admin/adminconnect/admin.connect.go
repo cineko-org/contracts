@@ -44,6 +44,12 @@ const (
 	// AdminServiceGetConfigurationProcedure is the fully-qualified name of the AdminService's
 	// GetConfiguration RPC.
 	AdminServiceGetConfigurationProcedure = "/cineko.admin.AdminService/GetConfiguration"
+	// AdminServiceGetCatalogRefreshStatusProcedure is the fully-qualified name of the AdminService's
+	// GetCatalogRefreshStatus RPC.
+	AdminServiceGetCatalogRefreshStatusProcedure = "/cineko.admin.AdminService/GetCatalogRefreshStatus"
+	// AdminServiceRequestCatalogRefreshProcedure is the fully-qualified name of the AdminService's
+	// RequestCatalogRefresh RPC.
+	AdminServiceRequestCatalogRefreshProcedure = "/cineko.admin.AdminService/RequestCatalogRefresh"
 	// AdminServiceListProbesProcedure is the fully-qualified name of the AdminService's ListProbes RPC.
 	AdminServiceListProbesProcedure = "/cineko.admin.AdminService/ListProbes"
 	// AdminServiceDeleteProbeProcedure is the fully-qualified name of the AdminService's DeleteProbe
@@ -88,6 +94,8 @@ type AdminServiceClient interface {
 	GetSession(context.Context, *connect.Request[admin.GetSessionRequest]) (*connect.Response[admin.GetSessionResponse], error)
 	GetStatus(context.Context, *connect.Request[admin.GetStatusRequest]) (*connect.Response[admin.GetStatusResponse], error)
 	GetConfiguration(context.Context, *connect.Request[admin.GetConfigurationRequest]) (*connect.Response[admin.GetConfigurationResponse], error)
+	GetCatalogRefreshStatus(context.Context, *connect.Request[admin.GetCatalogRefreshStatusRequest]) (*connect.Response[admin.GetCatalogRefreshStatusResponse], error)
+	RequestCatalogRefresh(context.Context, *connect.Request[admin.RequestCatalogRefreshRequest]) (*connect.Response[admin.RequestCatalogRefreshResponse], error)
 	ListProbes(context.Context, *connect.Request[admin.ListProbesRequest]) (*connect.Response[admin.ListProbesResponse], error)
 	DeleteProbe(context.Context, *connect.Request[admin.DeleteProbeRequest]) (*connect.Response[admin.DeleteProbeResponse], error)
 	GetDataSummary(context.Context, *connect.Request[admin.GetDataSummaryRequest]) (*connect.Response[admin.GetDataSummaryResponse], error)
@@ -141,6 +149,18 @@ func NewAdminServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 			httpClient,
 			baseURL+AdminServiceGetConfigurationProcedure,
 			connect.WithSchema(adminServiceMethods.ByName("GetConfiguration")),
+			connect.WithClientOptions(opts...),
+		),
+		getCatalogRefreshStatus: connect.NewClient[admin.GetCatalogRefreshStatusRequest, admin.GetCatalogRefreshStatusResponse](
+			httpClient,
+			baseURL+AdminServiceGetCatalogRefreshStatusProcedure,
+			connect.WithSchema(adminServiceMethods.ByName("GetCatalogRefreshStatus")),
+			connect.WithClientOptions(opts...),
+		),
+		requestCatalogRefresh: connect.NewClient[admin.RequestCatalogRefreshRequest, admin.RequestCatalogRefreshResponse](
+			httpClient,
+			baseURL+AdminServiceRequestCatalogRefreshProcedure,
+			connect.WithSchema(adminServiceMethods.ByName("RequestCatalogRefresh")),
 			connect.WithClientOptions(opts...),
 		),
 		listProbes: connect.NewClient[admin.ListProbesRequest, admin.ListProbesResponse](
@@ -225,6 +245,8 @@ type adminServiceClient struct {
 	getSession                 *connect.Client[admin.GetSessionRequest, admin.GetSessionResponse]
 	getStatus                  *connect.Client[admin.GetStatusRequest, admin.GetStatusResponse]
 	getConfiguration           *connect.Client[admin.GetConfigurationRequest, admin.GetConfigurationResponse]
+	getCatalogRefreshStatus    *connect.Client[admin.GetCatalogRefreshStatusRequest, admin.GetCatalogRefreshStatusResponse]
+	requestCatalogRefresh      *connect.Client[admin.RequestCatalogRefreshRequest, admin.RequestCatalogRefreshResponse]
 	listProbes                 *connect.Client[admin.ListProbesRequest, admin.ListProbesResponse]
 	deleteProbe                *connect.Client[admin.DeleteProbeRequest, admin.DeleteProbeResponse]
 	getDataSummary             *connect.Client[admin.GetDataSummaryRequest, admin.GetDataSummaryResponse]
@@ -262,6 +284,16 @@ func (c *adminServiceClient) GetStatus(ctx context.Context, req *connect.Request
 // GetConfiguration calls cineko.admin.AdminService.GetConfiguration.
 func (c *adminServiceClient) GetConfiguration(ctx context.Context, req *connect.Request[admin.GetConfigurationRequest]) (*connect.Response[admin.GetConfigurationResponse], error) {
 	return c.getConfiguration.CallUnary(ctx, req)
+}
+
+// GetCatalogRefreshStatus calls cineko.admin.AdminService.GetCatalogRefreshStatus.
+func (c *adminServiceClient) GetCatalogRefreshStatus(ctx context.Context, req *connect.Request[admin.GetCatalogRefreshStatusRequest]) (*connect.Response[admin.GetCatalogRefreshStatusResponse], error) {
+	return c.getCatalogRefreshStatus.CallUnary(ctx, req)
+}
+
+// RequestCatalogRefresh calls cineko.admin.AdminService.RequestCatalogRefresh.
+func (c *adminServiceClient) RequestCatalogRefresh(ctx context.Context, req *connect.Request[admin.RequestCatalogRefreshRequest]) (*connect.Response[admin.RequestCatalogRefreshResponse], error) {
+	return c.requestCatalogRefresh.CallUnary(ctx, req)
 }
 
 // ListProbes calls cineko.admin.AdminService.ListProbes.
@@ -331,6 +363,8 @@ type AdminServiceHandler interface {
 	GetSession(context.Context, *connect.Request[admin.GetSessionRequest]) (*connect.Response[admin.GetSessionResponse], error)
 	GetStatus(context.Context, *connect.Request[admin.GetStatusRequest]) (*connect.Response[admin.GetStatusResponse], error)
 	GetConfiguration(context.Context, *connect.Request[admin.GetConfigurationRequest]) (*connect.Response[admin.GetConfigurationResponse], error)
+	GetCatalogRefreshStatus(context.Context, *connect.Request[admin.GetCatalogRefreshStatusRequest]) (*connect.Response[admin.GetCatalogRefreshStatusResponse], error)
+	RequestCatalogRefresh(context.Context, *connect.Request[admin.RequestCatalogRefreshRequest]) (*connect.Response[admin.RequestCatalogRefreshResponse], error)
 	ListProbes(context.Context, *connect.Request[admin.ListProbesRequest]) (*connect.Response[admin.ListProbesResponse], error)
 	DeleteProbe(context.Context, *connect.Request[admin.DeleteProbeRequest]) (*connect.Response[admin.DeleteProbeResponse], error)
 	GetDataSummary(context.Context, *connect.Request[admin.GetDataSummaryRequest]) (*connect.Response[admin.GetDataSummaryResponse], error)
@@ -380,6 +414,18 @@ func NewAdminServiceHandler(svc AdminServiceHandler, opts ...connect.HandlerOpti
 		AdminServiceGetConfigurationProcedure,
 		svc.GetConfiguration,
 		connect.WithSchema(adminServiceMethods.ByName("GetConfiguration")),
+		connect.WithHandlerOptions(opts...),
+	)
+	adminServiceGetCatalogRefreshStatusHandler := connect.NewUnaryHandler(
+		AdminServiceGetCatalogRefreshStatusProcedure,
+		svc.GetCatalogRefreshStatus,
+		connect.WithSchema(adminServiceMethods.ByName("GetCatalogRefreshStatus")),
+		connect.WithHandlerOptions(opts...),
+	)
+	adminServiceRequestCatalogRefreshHandler := connect.NewUnaryHandler(
+		AdminServiceRequestCatalogRefreshProcedure,
+		svc.RequestCatalogRefresh,
+		connect.WithSchema(adminServiceMethods.ByName("RequestCatalogRefresh")),
 		connect.WithHandlerOptions(opts...),
 	)
 	adminServiceListProbesHandler := connect.NewUnaryHandler(
@@ -466,6 +512,10 @@ func NewAdminServiceHandler(svc AdminServiceHandler, opts ...connect.HandlerOpti
 			adminServiceGetStatusHandler.ServeHTTP(w, r)
 		case AdminServiceGetConfigurationProcedure:
 			adminServiceGetConfigurationHandler.ServeHTTP(w, r)
+		case AdminServiceGetCatalogRefreshStatusProcedure:
+			adminServiceGetCatalogRefreshStatusHandler.ServeHTTP(w, r)
+		case AdminServiceRequestCatalogRefreshProcedure:
+			adminServiceRequestCatalogRefreshHandler.ServeHTTP(w, r)
 		case AdminServiceListProbesProcedure:
 			adminServiceListProbesHandler.ServeHTTP(w, r)
 		case AdminServiceDeleteProbeProcedure:
@@ -517,6 +567,14 @@ func (UnimplementedAdminServiceHandler) GetStatus(context.Context, *connect.Requ
 
 func (UnimplementedAdminServiceHandler) GetConfiguration(context.Context, *connect.Request[admin.GetConfigurationRequest]) (*connect.Response[admin.GetConfigurationResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cineko.admin.AdminService.GetConfiguration is not implemented"))
+}
+
+func (UnimplementedAdminServiceHandler) GetCatalogRefreshStatus(context.Context, *connect.Request[admin.GetCatalogRefreshStatusRequest]) (*connect.Response[admin.GetCatalogRefreshStatusResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cineko.admin.AdminService.GetCatalogRefreshStatus is not implemented"))
+}
+
+func (UnimplementedAdminServiceHandler) RequestCatalogRefresh(context.Context, *connect.Request[admin.RequestCatalogRefreshRequest]) (*connect.Response[admin.RequestCatalogRefreshResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cineko.admin.AdminService.RequestCatalogRefresh is not implemented"))
 }
 
 func (UnimplementedAdminServiceHandler) ListProbes(context.Context, *connect.Request[admin.ListProbesRequest]) (*connect.Response[admin.ListProbesResponse], error) {

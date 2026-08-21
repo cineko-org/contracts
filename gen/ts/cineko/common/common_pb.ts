@@ -13,7 +13,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file cineko/common/common.proto.
  */
 export const file_cineko_common_common: GenFile = /*@__PURE__*/
-  fileDesc("ChpjaW5la28vY29tbW9uL2NvbW1vbi5wcm90bxINY2luZWtvLmNvbW1vbiI1CglMb2NhbERhdGUSDAoEeWVhchgBIAEoBRINCgVtb250aBgCIAEoBRILCgNkYXkYAyABKAUiKQoJTG9jYWxUaW1lEgwKBGhvdXIYASABKAUSDgoGbWludXRlGAIgASgFIpYBCgdSdW50aW1lEiUKEWNvbXBvbmVudF92ZXJzaW9uGAEgASgJQgq6SAfIAQFyAhABEiQKEGJyb3dzZXJfcmV2aXNpb24YAiABKAlCCrpIB8gBAXICEAESHAoIcGxhdGZvcm0YAyABKAlCCrpIB8gBAXICEAESIAoMYXJjaGl0ZWN0dXJlGAQgASgJQgq6SAfIAQFyAhABIjQKC1BhZ2VSZXF1ZXN0EhEKCXBhZ2Vfc2l6ZRgBIAEoBRISCgpwYWdlX3Rva2VuGAIgASgJIicKDFBhZ2VSZXNwb25zZRIXCg9uZXh0X3BhZ2VfdG9rZW4YASABKAkiWQoQTXV0YXRpb25JZGVudGl0eRIeCgpjb21tYW5kX2lkGAEgASgJQgq6SAfIAQFyAhABEiUKEWV4cGVjdGVkX3JldmlzaW9uGAIgASgDQgq6SAfIAQEiAigAIpABChBSZXNvdXJjZUlkZW50aXR5EgoKAmlkGAEgASgJEhAKCHJldmlzaW9uGAIgASgDEi4KCmNyZWF0ZWRfYXQYAyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi4KCnVwZGF0ZWRfYXQYBCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIg4KDERpcmVjdEVncmVzcyITChFNYW5hZ2VkU2NhbkVncmVzcyKIAQoMRWdyZXNzUG9saWN5Ei0KBmRpcmVjdBgBIAEoCzIbLmNpbmVrby5jb21tb24uRGlyZWN0RWdyZXNzSAASOAoMbWFuYWdlZF9zY2FuGAIgASgLMiAuY2luZWtvLmNvbW1vbi5NYW5hZ2VkU2NhbkVncmVzc0gAQg8KBnBvbGljeRIFukgCCAFCPVo7Z2l0aHViLmNvbS9jaW5la28tb3JnL2NvbnRyYWN0cy9nZW4vZ28vY2luZWtvL2NvbW1vbjtjb21tb25iCGVkaXRpb25zcOkH", [file_buf_validate_validate, file_google_protobuf_timestamp]);
+  fileDesc("ChpjaW5la28vY29tbW9uL2NvbW1vbi5wcm90bxINY2luZWtvLmNvbW1vbiI1CglMb2NhbERhdGUSDAoEeWVhchgBIAEoBRINCgVtb250aBgCIAEoBRILCgNkYXkYAyABKAUiKQoJTG9jYWxUaW1lEgwKBGhvdXIYASABKAUSDgoGbWludXRlGAIgASgFIpYBCgdSdW50aW1lEiUKEWNvbXBvbmVudF92ZXJzaW9uGAEgASgJQgq6SAfIAQFyAhABEiQKEGJyb3dzZXJfcmV2aXNpb24YAiABKAlCCrpIB8gBAXICEAESHAoIcGxhdGZvcm0YAyABKAlCCrpIB8gBAXICEAESIAoMYXJjaGl0ZWN0dXJlGAQgASgJQgq6SAfIAQFyAhABIjQKC1BhZ2VSZXF1ZXN0EhEKCXBhZ2Vfc2l6ZRgBIAEoBRISCgpwYWdlX3Rva2VuGAIgASgJIicKDFBhZ2VSZXNwb25zZRIXCg9uZXh0X3BhZ2VfdG9rZW4YASABKAkiWQoQTXV0YXRpb25JZGVudGl0eRIeCgpjb21tYW5kX2lkGAEgASgJQgq6SAfIAQFyAhABEiUKEWV4cGVjdGVkX3JldmlzaW9uGAIgASgDQgq6SAfIAQEiAigAIpABChBSZXNvdXJjZUlkZW50aXR5EgoKAmlkGAEgASgJEhAKCHJldmlzaW9uGAIgASgDEi4KCmNyZWF0ZWRfYXQYAyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi4KCnVwZGF0ZWRfYXQYBCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIg4KDERpcmVjdEVncmVzcyITChFNYW5hZ2VkU2NhbkVncmVzcyKIAQoMRWdyZXNzUG9saWN5Ei0KBmRpcmVjdBgBIAEoCzIbLmNpbmVrby5jb21tb24uRGlyZWN0RWdyZXNzSAASOAoMbWFuYWdlZF9zY2FuGAIgASgLMiAuY2luZWtvLmNvbW1vbi5NYW5hZ2VkU2NhbkVncmVzc0gAQg8KBnBvbGljeRIFukgCCAEiBgoETGl2ZSIHCgVSZWFkeSJrCg1TZXJ2aWNlSGVhbHRoEiMKBGxpdmUYASABKAsyEy5jaW5la28uY29tbW9uLkxpdmVIABIlCgVyZWFkeRgCIAEoCzIULmNpbmVrby5jb21tb24uUmVhZHlIAEIOCgVzdGF0ZRIFukgCCAEidAoIQVBJRXJyb3ISGAoEY29kZRgBIAEoCUIKukgHyAEBcgIQARIbCgdtZXNzYWdlGAIgASgJQgq6SAfIAQFyAhABEhEKCXJldHJ5YWJsZRgDIAEoCBIeCgpyZXF1ZXN0X2lkGAQgASgJQgq6SAfIAQFyAhABIkIKEEFQSUVycm9yUmVzcG9uc2USLgoFZXJyb3IYASABKAsyFy5jaW5la28uY29tbW9uLkFQSUVycm9yQga6SAPIAQFCPVo7Z2l0aHViLmNvbS9jaW5la28tb3JnL2NvbnRyYWN0cy9nZW4vZ28vY2luZWtvL2NvbW1vbjtjb21tb25iCGVkaXRpb25zcOkH", [file_buf_validate_validate, file_google_protobuf_timestamp]);
 
 /**
  * @generated from message cineko.common.LocalDate
@@ -243,3 +243,107 @@ export type EgressPolicy = Message<"cineko.common.EgressPolicy"> & {
  */
 export const EgressPolicySchema: GenMessage<EgressPolicy> = /*@__PURE__*/
   messageDesc(file_cineko_common_common, 9);
+
+/**
+ * @generated from message cineko.common.Live
+ */
+export type Live = Message<"cineko.common.Live"> & {
+};
+
+/**
+ * Describes the message cineko.common.Live.
+ * Use `create(LiveSchema)` to create a new message.
+ */
+export const LiveSchema: GenMessage<Live> = /*@__PURE__*/
+  messageDesc(file_cineko_common_common, 10);
+
+/**
+ * @generated from message cineko.common.Ready
+ */
+export type Ready = Message<"cineko.common.Ready"> & {
+};
+
+/**
+ * Describes the message cineko.common.Ready.
+ * Use `create(ReadySchema)` to create a new message.
+ */
+export const ReadySchema: GenMessage<Ready> = /*@__PURE__*/
+  messageDesc(file_cineko_common_common, 11);
+
+/**
+ * @generated from message cineko.common.ServiceHealth
+ */
+export type ServiceHealth = Message<"cineko.common.ServiceHealth"> & {
+  /**
+   * @generated from oneof cineko.common.ServiceHealth.state
+   */
+  state: {
+    /**
+     * @generated from field: cineko.common.Live live = 1;
+     */
+    value: Live;
+    case: "live";
+  } | {
+    /**
+     * @generated from field: cineko.common.Ready ready = 2;
+     */
+    value: Ready;
+    case: "ready";
+  } | { case: undefined; value?: undefined };
+};
+
+/**
+ * Describes the message cineko.common.ServiceHealth.
+ * Use `create(ServiceHealthSchema)` to create a new message.
+ */
+export const ServiceHealthSchema: GenMessage<ServiceHealth> = /*@__PURE__*/
+  messageDesc(file_cineko_common_common, 12);
+
+/**
+ * @generated from message cineko.common.APIError
+ */
+export type APIError = Message<"cineko.common.APIError"> & {
+  /**
+   * @generated from field: string code = 1;
+   */
+  code: string;
+
+  /**
+   * @generated from field: string message = 2;
+   */
+  message: string;
+
+  /**
+   * @generated from field: bool retryable = 3;
+   */
+  retryable: boolean;
+
+  /**
+   * @generated from field: string request_id = 4;
+   */
+  requestId: string;
+};
+
+/**
+ * Describes the message cineko.common.APIError.
+ * Use `create(APIErrorSchema)` to create a new message.
+ */
+export const APIErrorSchema: GenMessage<APIError> = /*@__PURE__*/
+  messageDesc(file_cineko_common_common, 13);
+
+/**
+ * @generated from message cineko.common.APIErrorResponse
+ */
+export type APIErrorResponse = Message<"cineko.common.APIErrorResponse"> & {
+  /**
+   * @generated from field: cineko.common.APIError error = 1;
+   */
+  error?: APIError | undefined;
+};
+
+/**
+ * Describes the message cineko.common.APIErrorResponse.
+ * Use `create(APIErrorResponseSchema)` to create a new message.
+ */
+export const APIErrorResponseSchema: GenMessage<APIErrorResponse> = /*@__PURE__*/
+  messageDesc(file_cineko_common_common, 14);

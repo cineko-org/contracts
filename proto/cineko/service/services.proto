@@ -178,7 +178,9 @@ message ResolveSeatMapResponse {
 message SubmitCatalogSnapshotRequest {
   cineko.catalog.CatalogSnapshot snapshot = 1 [(buf.validate.field).required = true];
 }
-message SubmitCatalogSnapshotResponse {}
+message SubmitCatalogSnapshotResponse {
+  int64 generation = 1 [(buf.validate.field).int64.gte = 0];
+}
 
 service CatalogService {
   rpc GetCatalog(GetCatalogRequest) returns (GetCatalogResponse);

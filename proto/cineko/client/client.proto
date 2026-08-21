@@ -272,12 +272,28 @@ message ClientEvent {
   int64 sequence = 1;
   string id = 2;
   google.protobuf.Timestamp occurred_at = 3;
-  oneof change {
+  oneof event {
     option (buf.validate.oneof).required = true;
 
     EventResource upserted = 4;
     DeletedResource deleted = 5;
+    ExecutionReady execution_ready = 6;
   }
+}
+
+message ExecutionReady {
+  string command_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string monitor_id = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string reason = 3 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
 }
 
 message DeletedResource {

@@ -295,6 +295,36 @@ message GetStatusResponse {
   Status status = 1;
 }
 
+message CatalogRefreshRunning {}
+message CatalogRefreshReady {}
+message CatalogRefreshWaitingForProbe {}
+message CatalogRefreshQueued {}
+
+message CatalogRefreshStatus {
+  oneof state {
+    option (buf.validate.oneof).required = true;
+
+    CatalogRefreshRunning running = 1;
+    CatalogRefreshReady ready = 2;
+    CatalogRefreshWaitingForProbe waiting_for_probe = 3;
+    CatalogRefreshQueued queued = 4;
+  }
+  bool catalog_empty = 5;
+  google.protobuf.Timestamp requested_at = 6;
+  bool active = 7;
+  int32 eligible_probes = 8 [(buf.validate.field).int32.gte = 0];
+  string last_status = 9;
+  google.protobuf.Timestamp last_attempted_at = 10;
+}
+message GetCatalogRefreshStatusRequest {}
+message GetCatalogRefreshStatusResponse {
+  CatalogRefreshStatus status = 1 [(buf.validate.field).required = true];
+}
+message RequestCatalogRefreshRequest {}
+message RequestCatalogRefreshResponse {
+  CatalogRefreshStatus status = 1 [(buf.validate.field).required = true];
+}
+
 message OpeningPattern {
   string theater_id = 1;
   string theater_name = 2;
@@ -341,6 +371,8 @@ service AdminService {
   rpc GetSession(GetSessionRequest) returns (GetSessionResponse);
   rpc GetStatus(GetStatusRequest) returns (GetStatusResponse);
   rpc GetConfiguration(GetConfigurationRequest) returns (GetConfigurationResponse);
+  rpc GetCatalogRefreshStatus(GetCatalogRefreshStatusRequest) returns (GetCatalogRefreshStatusResponse);
+  rpc RequestCatalogRefresh(RequestCatalogRefreshRequest) returns (RequestCatalogRefreshResponse);
   rpc ListProbes(ListProbesRequest) returns (ListProbesResponse);
   rpc DeleteProbe(DeleteProbeRequest) returns (DeleteProbeResponse);
   rpc GetDataSummary(GetDataSummaryRequest) returns (GetDataSummaryResponse);

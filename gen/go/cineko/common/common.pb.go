@@ -1148,6 +1148,505 @@ func (*egressPolicy_Direct) isEgressPolicy_Policy() {}
 
 func (*egressPolicy_ManagedScan) isEgressPolicy_Policy() {}
 
+type Live struct {
+	state         protoimpl.MessageState `protogen:"opaque.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Live) Reset() {
+	*x = Live{}
+	mi := &file_cineko_common_common_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Live) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Live) ProtoMessage() {}
+
+func (x *Live) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_common_common_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+type Live_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+}
+
+func (b0 Live_builder) Build() *Live {
+	m0 := &Live{}
+	b, x := &b0, m0
+	_, _ = b, x
+	return m0
+}
+
+type Ready struct {
+	state         protoimpl.MessageState `protogen:"opaque.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Ready) Reset() {
+	*x = Ready{}
+	mi := &file_cineko_common_common_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Ready) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Ready) ProtoMessage() {}
+
+func (x *Ready) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_common_common_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+type Ready_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+}
+
+func (b0 Ready_builder) Build() *Ready {
+	m0 := &Ready{}
+	b, x := &b0, m0
+	_, _ = b, x
+	return m0
+}
+
+type ServiceHealth struct {
+	state            protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_State isServiceHealth_State  `protobuf_oneof:"state"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *ServiceHealth) Reset() {
+	*x = ServiceHealth{}
+	mi := &file_cineko_common_common_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ServiceHealth) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ServiceHealth) ProtoMessage() {}
+
+func (x *ServiceHealth) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_common_common_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *ServiceHealth) GetLive() *Live {
+	if x != nil {
+		if x, ok := x.xxx_hidden_State.(*serviceHealth_Live); ok {
+			return x.Live
+		}
+	}
+	return nil
+}
+
+func (x *ServiceHealth) GetReady() *Ready {
+	if x != nil {
+		if x, ok := x.xxx_hidden_State.(*serviceHealth_Ready); ok {
+			return x.Ready
+		}
+	}
+	return nil
+}
+
+func (x *ServiceHealth) SetLive(v *Live) {
+	if v == nil {
+		x.xxx_hidden_State = nil
+		return
+	}
+	x.xxx_hidden_State = &serviceHealth_Live{v}
+}
+
+func (x *ServiceHealth) SetReady(v *Ready) {
+	if v == nil {
+		x.xxx_hidden_State = nil
+		return
+	}
+	x.xxx_hidden_State = &serviceHealth_Ready{v}
+}
+
+func (x *ServiceHealth) HasState() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_State != nil
+}
+
+func (x *ServiceHealth) HasLive() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_State.(*serviceHealth_Live)
+	return ok
+}
+
+func (x *ServiceHealth) HasReady() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_State.(*serviceHealth_Ready)
+	return ok
+}
+
+func (x *ServiceHealth) ClearState() {
+	x.xxx_hidden_State = nil
+}
+
+func (x *ServiceHealth) ClearLive() {
+	if _, ok := x.xxx_hidden_State.(*serviceHealth_Live); ok {
+		x.xxx_hidden_State = nil
+	}
+}
+
+func (x *ServiceHealth) ClearReady() {
+	if _, ok := x.xxx_hidden_State.(*serviceHealth_Ready); ok {
+		x.xxx_hidden_State = nil
+	}
+}
+
+const ServiceHealth_State_not_set_case case_ServiceHealth_State = 0
+const ServiceHealth_Live_case case_ServiceHealth_State = 1
+const ServiceHealth_Ready_case case_ServiceHealth_State = 2
+
+func (x *ServiceHealth) WhichState() case_ServiceHealth_State {
+	if x == nil {
+		return ServiceHealth_State_not_set_case
+	}
+	switch x.xxx_hidden_State.(type) {
+	case *serviceHealth_Live:
+		return ServiceHealth_Live_case
+	case *serviceHealth_Ready:
+		return ServiceHealth_Ready_case
+	default:
+		return ServiceHealth_State_not_set_case
+	}
+}
+
+type ServiceHealth_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	// Fields of oneof xxx_hidden_State:
+	Live  *Live
+	Ready *Ready
+	// -- end of xxx_hidden_State
+}
+
+func (b0 ServiceHealth_builder) Build() *ServiceHealth {
+	m0 := &ServiceHealth{}
+	b, x := &b0, m0
+	_, _ = b, x
+	if b.Live != nil {
+		x.xxx_hidden_State = &serviceHealth_Live{b.Live}
+	}
+	if b.Ready != nil {
+		x.xxx_hidden_State = &serviceHealth_Ready{b.Ready}
+	}
+	return m0
+}
+
+type case_ServiceHealth_State protoreflect.FieldNumber
+
+func (x case_ServiceHealth_State) String() string {
+	md := file_cineko_common_common_proto_msgTypes[12].Descriptor()
+	if x == 0 {
+		return "not set"
+	}
+	return protoimpl.X.MessageFieldStringOf(md, protoreflect.FieldNumber(x))
+}
+
+type isServiceHealth_State interface {
+	isServiceHealth_State()
+}
+
+type serviceHealth_Live struct {
+	Live *Live `protobuf:"bytes,1,opt,name=live,oneof"`
+}
+
+type serviceHealth_Ready struct {
+	Ready *Ready `protobuf:"bytes,2,opt,name=ready,oneof"`
+}
+
+func (*serviceHealth_Live) isServiceHealth_State() {}
+
+func (*serviceHealth_Ready) isServiceHealth_State() {}
+
+type APIError struct {
+	state                  protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_Code        *string                `protobuf:"bytes,1,opt,name=code"`
+	xxx_hidden_Message     *string                `protobuf:"bytes,2,opt,name=message"`
+	xxx_hidden_Retryable   bool                   `protobuf:"varint,3,opt,name=retryable"`
+	xxx_hidden_RequestId   *string                `protobuf:"bytes,4,opt,name=request_id,json=requestId"`
+	XXX_raceDetectHookData protoimpl.RaceDetectHookData
+	XXX_presence           [1]uint32
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
+}
+
+func (x *APIError) Reset() {
+	*x = APIError{}
+	mi := &file_cineko_common_common_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *APIError) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*APIError) ProtoMessage() {}
+
+func (x *APIError) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_common_common_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *APIError) GetCode() string {
+	if x != nil {
+		if x.xxx_hidden_Code != nil {
+			return *x.xxx_hidden_Code
+		}
+		return ""
+	}
+	return ""
+}
+
+func (x *APIError) GetMessage() string {
+	if x != nil {
+		if x.xxx_hidden_Message != nil {
+			return *x.xxx_hidden_Message
+		}
+		return ""
+	}
+	return ""
+}
+
+func (x *APIError) GetRetryable() bool {
+	if x != nil {
+		return x.xxx_hidden_Retryable
+	}
+	return false
+}
+
+func (x *APIError) GetRequestId() string {
+	if x != nil {
+		if x.xxx_hidden_RequestId != nil {
+			return *x.xxx_hidden_RequestId
+		}
+		return ""
+	}
+	return ""
+}
+
+func (x *APIError) SetCode(v string) {
+	x.xxx_hidden_Code = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 4)
+}
+
+func (x *APIError) SetMessage(v string) {
+	x.xxx_hidden_Message = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 4)
+}
+
+func (x *APIError) SetRetryable(v bool) {
+	x.xxx_hidden_Retryable = v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 4)
+}
+
+func (x *APIError) SetRequestId(v string) {
+	x.xxx_hidden_RequestId = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 4)
+}
+
+func (x *APIError) HasCode() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
+}
+
+func (x *APIError) HasMessage() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 1)
+}
+
+func (x *APIError) HasRetryable() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 2)
+}
+
+func (x *APIError) HasRequestId() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 3)
+}
+
+func (x *APIError) ClearCode() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
+	x.xxx_hidden_Code = nil
+}
+
+func (x *APIError) ClearMessage() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 1)
+	x.xxx_hidden_Message = nil
+}
+
+func (x *APIError) ClearRetryable() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 2)
+	x.xxx_hidden_Retryable = false
+}
+
+func (x *APIError) ClearRequestId() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 3)
+	x.xxx_hidden_RequestId = nil
+}
+
+type APIError_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	Code      *string
+	Message   *string
+	Retryable *bool
+	RequestId *string
+}
+
+func (b0 APIError_builder) Build() *APIError {
+	m0 := &APIError{}
+	b, x := &b0, m0
+	_, _ = b, x
+	if b.Code != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 4)
+		x.xxx_hidden_Code = b.Code
+	}
+	if b.Message != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 4)
+		x.xxx_hidden_Message = b.Message
+	}
+	if b.Retryable != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 4)
+		x.xxx_hidden_Retryable = *b.Retryable
+	}
+	if b.RequestId != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 4)
+		x.xxx_hidden_RequestId = b.RequestId
+	}
+	return m0
+}
+
+type APIErrorResponse struct {
+	state            protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_Error *APIError              `protobuf:"bytes,1,opt,name=error"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *APIErrorResponse) Reset() {
+	*x = APIErrorResponse{}
+	mi := &file_cineko_common_common_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *APIErrorResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*APIErrorResponse) ProtoMessage() {}
+
+func (x *APIErrorResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_common_common_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *APIErrorResponse) GetError() *APIError {
+	if x != nil {
+		return x.xxx_hidden_Error
+	}
+	return nil
+}
+
+func (x *APIErrorResponse) SetError(v *APIError) {
+	x.xxx_hidden_Error = v
+}
+
+func (x *APIErrorResponse) HasError() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_Error != nil
+}
+
+func (x *APIErrorResponse) ClearError() {
+	x.xxx_hidden_Error = nil
+}
+
+type APIErrorResponse_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	Error *APIError
+}
+
+func (b0 APIErrorResponse_builder) Build() *APIErrorResponse {
+	m0 := &APIErrorResponse{}
+	b, x := &b0, m0
+	_, _ = b, x
+	x.xxx_hidden_Error = b.Error
+	return m0
+}
+
 var File_cineko_common_common_proto protoreflect.FileDescriptor
 
 const file_cineko_common_common_proto_rawDesc = "" +
@@ -1193,9 +1692,26 @@ const file_cineko_common_common_proto_rawDesc = "" +
 	"\fEgressPolicy\x125\n" +
 	"\x06direct\x18\x01 \x01(\v2\x1b.cineko.common.DirectEgressH\x00R\x06direct\x12E\n" +
 	"\fmanaged_scan\x18\x02 \x01(\v2 .cineko.common.ManagedScanEgressH\x00R\vmanagedScanB\x0f\n" +
-	"\x06policy\x12\x05\xbaH\x02\b\x01B=Z;github.com/cineko-org/contracts/gen/go/cineko/common;commonb\beditionsp\xe9\a"
+	"\x06policy\x12\x05\xbaH\x02\b\x01\"\x06\n" +
+	"\x04Live\"\a\n" +
+	"\x05Ready\"x\n" +
+	"\rServiceHealth\x12)\n" +
+	"\x04live\x18\x01 \x01(\v2\x13.cineko.common.LiveH\x00R\x04live\x12,\n" +
+	"\x05ready\x18\x02 \x01(\v2\x14.cineko.common.ReadyH\x00R\x05readyB\x0e\n" +
+	"\x05state\x12\x05\xbaH\x02\b\x01\"\x99\x01\n" +
+	"\bAPIError\x12\x1e\n" +
+	"\x04code\x18\x01 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\x04code\x12$\n" +
+	"\amessage\x18\x02 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\amessage\x12\x1c\n" +
+	"\tretryable\x18\x03 \x01(\bR\tretryable\x12)\n" +
+	"\n" +
+	"request_id\x18\x04 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\trequestId\"I\n" +
+	"\x10APIErrorResponse\x125\n" +
+	"\x05error\x18\x01 \x01(\v2\x17.cineko.common.APIErrorB\x06\xbaH\x03\xc8\x01\x01R\x05errorB=Z;github.com/cineko-org/contracts/gen/go/cineko/common;commonb\beditionsp\xe9\a"
 
-var file_cineko_common_common_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_cineko_common_common_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
 var file_cineko_common_common_proto_goTypes = []any{
 	(*LocalDate)(nil),             // 0: cineko.common.LocalDate
 	(*LocalTime)(nil),             // 1: cineko.common.LocalTime
@@ -1207,18 +1723,26 @@ var file_cineko_common_common_proto_goTypes = []any{
 	(*DirectEgress)(nil),          // 7: cineko.common.DirectEgress
 	(*ManagedScanEgress)(nil),     // 8: cineko.common.ManagedScanEgress
 	(*EgressPolicy)(nil),          // 9: cineko.common.EgressPolicy
-	(*timestamppb.Timestamp)(nil), // 10: google.protobuf.Timestamp
+	(*Live)(nil),                  // 10: cineko.common.Live
+	(*Ready)(nil),                 // 11: cineko.common.Ready
+	(*ServiceHealth)(nil),         // 12: cineko.common.ServiceHealth
+	(*APIError)(nil),              // 13: cineko.common.APIError
+	(*APIErrorResponse)(nil),      // 14: cineko.common.APIErrorResponse
+	(*timestamppb.Timestamp)(nil), // 15: google.protobuf.Timestamp
 }
 var file_cineko_common_common_proto_depIdxs = []int32{
-	10, // 0: cineko.common.ResourceIdentity.created_at:type_name -> google.protobuf.Timestamp
-	10, // 1: cineko.common.ResourceIdentity.updated_at:type_name -> google.protobuf.Timestamp
+	15, // 0: cineko.common.ResourceIdentity.created_at:type_name -> google.protobuf.Timestamp
+	15, // 1: cineko.common.ResourceIdentity.updated_at:type_name -> google.protobuf.Timestamp
 	7,  // 2: cineko.common.EgressPolicy.direct:type_name -> cineko.common.DirectEgress
 	8,  // 3: cineko.common.EgressPolicy.managed_scan:type_name -> cineko.common.ManagedScanEgress
-	4,  // [4:4] is the sub-list for method output_type
-	4,  // [4:4] is the sub-list for method input_type
-	4,  // [4:4] is the sub-list for extension type_name
-	4,  // [4:4] is the sub-list for extension extendee
-	0,  // [0:4] is the sub-list for field type_name
+	10, // 4: cineko.common.ServiceHealth.live:type_name -> cineko.common.Live
+	11, // 5: cineko.common.ServiceHealth.ready:type_name -> cineko.common.Ready
+	13, // 6: cineko.common.APIErrorResponse.error:type_name -> cineko.common.APIError
+	7,  // [7:7] is the sub-list for method output_type
+	7,  // [7:7] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_cineko_common_common_proto_init() }
@@ -1230,13 +1754,17 @@ func file_cineko_common_common_proto_init() {
 		(*egressPolicy_Direct)(nil),
 		(*egressPolicy_ManagedScan)(nil),
 	}
+	file_cineko_common_common_proto_msgTypes[12].OneofWrappers = []any{
+		(*serviceHealth_Live)(nil),
+		(*serviceHealth_Ready)(nil),
+	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cineko_common_common_proto_rawDesc), len(file_cineko_common_common_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   10,
+			NumMessages:   15,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
