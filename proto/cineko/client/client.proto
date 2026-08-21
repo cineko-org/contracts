@@ -35,6 +35,7 @@ message ProxyNetwork {
   repeated string urls = 1;
   string username = 2;
   string password = 3;
+  bool has_password = 4;
 }
 
 message NetworkSettings {
@@ -53,6 +54,7 @@ message WebhookTarget {
   string secret = 4;
   repeated string event_kinds = 5;
   bool enabled = 6;
+  bool has_secret = 7;
 }
 
 message Settings {
@@ -105,6 +107,7 @@ message MonitorMode {
 message MonitorPending {}
 message MonitorRunning {}
 message MonitorTriggered {}
+message MonitorPaymentUnknown {}
 message MonitorBooked {}
 message MonitorFailed {
   string reason = 1;
@@ -121,6 +124,7 @@ message MonitorState {
     MonitorBooked booked = 4;
     MonitorFailed failed = 5;
     MonitorStopped stopped = 6;
+    MonitorPaymentUnknown payment_unknown = 7;
   }
 }
 
@@ -155,7 +159,22 @@ message Reservation {
   google.protobuf.Timestamp booked_at = 7;
   google.protobuf.Timestamp cancelled_at = 8;
   string refund_amount = 9;
+  oneof state {
+    option (buf.validate.oneof).required = true;
+
+    ReservationPrepared prepared = 10;
+    ReservationBooked booked = 11;
+    ReservationCancellationCommitting cancellation_committing = 12;
+    ReservationCancellationUnknown cancellation_unknown = 13;
+    ReservationCancelled cancelled = 14;
+  }
 }
+
+message ReservationPrepared {}
+message ReservationBooked {}
+message ReservationCancellationCommitting {}
+message ReservationCancellationUnknown {}
+message ReservationCancelled {}
 
 message ExternalOperation {
   string id = 1;
