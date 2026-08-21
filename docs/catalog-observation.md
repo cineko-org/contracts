@@ -73,3 +73,10 @@ or run the collection mechanism. A matching Probe observation only advances
 `lastSeenAt`; a different hash creates and activates a new immutable version.
 When no future bookable showtime exists, the state is `unverifiable`, not
 `fresh`, and Central waits without retrying an impossible browser task.
+
+The Client-facing resolution state is the typed `SeatMapResolutionStatus`
+contract: `waiting` while Central is discovering a usable showtime or capturing
+the layout, `ready` with exactly one stored layout, and `unverifiable` after a
+complete horizon scan proves that no future bookable showtime can open the seat
+page. Unknown states and invalid state/payload combinations are rejected at the
+service boundary.
