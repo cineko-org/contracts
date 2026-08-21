@@ -2756,9 +2756,12 @@ func (b0 SubmitCatalogSnapshotRequest_builder) Build() *SubmitCatalogSnapshotReq
 }
 
 type SubmitCatalogSnapshotResponse struct {
-	state         protoimpl.MessageState `protogen:"opaque.v1"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state                  protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_Generation  int64                  `protobuf:"varint,1,opt,name=generation"`
+	XXX_raceDetectHookData protoimpl.RaceDetectHookData
+	XXX_presence           [1]uint32
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
 }
 
 func (x *SubmitCatalogSnapshotResponse) Reset() {
@@ -2786,15 +2789,44 @@ func (x *SubmitCatalogSnapshotResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
+func (x *SubmitCatalogSnapshotResponse) GetGeneration() int64 {
+	if x != nil {
+		return x.xxx_hidden_Generation
+	}
+	return 0
+}
+
+func (x *SubmitCatalogSnapshotResponse) SetGeneration(v int64) {
+	x.xxx_hidden_Generation = v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 1)
+}
+
+func (x *SubmitCatalogSnapshotResponse) HasGeneration() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
+}
+
+func (x *SubmitCatalogSnapshotResponse) ClearGeneration() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
+	x.xxx_hidden_Generation = 0
+}
+
 type SubmitCatalogSnapshotResponse_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
+	Generation *int64
 }
 
 func (b0 SubmitCatalogSnapshotResponse_builder) Build() *SubmitCatalogSnapshotResponse {
 	m0 := &SubmitCatalogSnapshotResponse{}
 	b, x := &b0, m0
 	_, _ = b, x
+	if b.Generation != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 1)
+		x.xxx_hidden_Generation = *b.Generation
+	}
 	return m0
 }
 
@@ -4133,8 +4165,11 @@ const file_cineko_service_services_proto_rawDesc = "" +
 	"resolution\x18\x01 \x01(\v2\x1a.cineko.seatmap.ResolutionR\n" +
 	"resolution\"c\n" +
 	"\x1cSubmitCatalogSnapshotRequest\x12C\n" +
-	"\bsnapshot\x18\x01 \x01(\v2\x1f.cineko.catalog.CatalogSnapshotB\x06\xbaH\x03\xc8\x01\x01R\bsnapshot\"\x1f\n" +
-	"\x1dSubmitCatalogSnapshotResponse\"R\n" +
+	"\bsnapshot\x18\x01 \x01(\v2\x1f.cineko.catalog.CatalogSnapshotB\x06\xbaH\x03\xc8\x01\x01R\bsnapshot\"H\n" +
+	"\x1dSubmitCatalogSnapshotResponse\x12'\n" +
+	"\n" +
+	"generation\x18\x01 \x01(\x03B\a\xbaH\x04\"\x02(\x00R\n" +
+	"generation\"R\n" +
 	"\x0fCompleteRequest\x12?\n" +
 	"\x06result\x18\x01 \x01(\v2\x1f.cineko.execution.ResultRequestB\x06\xbaH\x03\xc8\x01\x01R\x06result\"\x12\n" +
 	"\x10CompleteResponse\"\x0f\n" +

@@ -6775,6 +6775,834 @@ func (b0 GetStatusResponse_builder) Build() *GetStatusResponse {
 	return m0
 }
 
+type CatalogRefreshRunning struct {
+	state         protoimpl.MessageState `protogen:"opaque.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CatalogRefreshRunning) Reset() {
+	*x = CatalogRefreshRunning{}
+	mi := &file_cineko_admin_admin_proto_msgTypes[56]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CatalogRefreshRunning) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CatalogRefreshRunning) ProtoMessage() {}
+
+func (x *CatalogRefreshRunning) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_admin_admin_proto_msgTypes[56]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+type CatalogRefreshRunning_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+}
+
+func (b0 CatalogRefreshRunning_builder) Build() *CatalogRefreshRunning {
+	m0 := &CatalogRefreshRunning{}
+	b, x := &b0, m0
+	_, _ = b, x
+	return m0
+}
+
+type CatalogRefreshReady struct {
+	state         protoimpl.MessageState `protogen:"opaque.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CatalogRefreshReady) Reset() {
+	*x = CatalogRefreshReady{}
+	mi := &file_cineko_admin_admin_proto_msgTypes[57]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CatalogRefreshReady) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CatalogRefreshReady) ProtoMessage() {}
+
+func (x *CatalogRefreshReady) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_admin_admin_proto_msgTypes[57]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+type CatalogRefreshReady_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+}
+
+func (b0 CatalogRefreshReady_builder) Build() *CatalogRefreshReady {
+	m0 := &CatalogRefreshReady{}
+	b, x := &b0, m0
+	_, _ = b, x
+	return m0
+}
+
+type CatalogRefreshWaitingForProbe struct {
+	state         protoimpl.MessageState `protogen:"opaque.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CatalogRefreshWaitingForProbe) Reset() {
+	*x = CatalogRefreshWaitingForProbe{}
+	mi := &file_cineko_admin_admin_proto_msgTypes[58]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CatalogRefreshWaitingForProbe) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CatalogRefreshWaitingForProbe) ProtoMessage() {}
+
+func (x *CatalogRefreshWaitingForProbe) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_admin_admin_proto_msgTypes[58]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+type CatalogRefreshWaitingForProbe_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+}
+
+func (b0 CatalogRefreshWaitingForProbe_builder) Build() *CatalogRefreshWaitingForProbe {
+	m0 := &CatalogRefreshWaitingForProbe{}
+	b, x := &b0, m0
+	_, _ = b, x
+	return m0
+}
+
+type CatalogRefreshQueued struct {
+	state         protoimpl.MessageState `protogen:"opaque.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CatalogRefreshQueued) Reset() {
+	*x = CatalogRefreshQueued{}
+	mi := &file_cineko_admin_admin_proto_msgTypes[59]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CatalogRefreshQueued) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CatalogRefreshQueued) ProtoMessage() {}
+
+func (x *CatalogRefreshQueued) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_admin_admin_proto_msgTypes[59]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+type CatalogRefreshQueued_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+}
+
+func (b0 CatalogRefreshQueued_builder) Build() *CatalogRefreshQueued {
+	m0 := &CatalogRefreshQueued{}
+	b, x := &b0, m0
+	_, _ = b, x
+	return m0
+}
+
+type CatalogRefreshStatus struct {
+	state                      protoimpl.MessageState       `protogen:"opaque.v1"`
+	xxx_hidden_State           isCatalogRefreshStatus_State `protobuf_oneof:"state"`
+	xxx_hidden_CatalogEmpty    bool                         `protobuf:"varint,5,opt,name=catalog_empty,json=catalogEmpty"`
+	xxx_hidden_RequestedAt     *timestamppb.Timestamp       `protobuf:"bytes,6,opt,name=requested_at,json=requestedAt"`
+	xxx_hidden_Active          bool                         `protobuf:"varint,7,opt,name=active"`
+	xxx_hidden_EligibleProbes  int32                        `protobuf:"varint,8,opt,name=eligible_probes,json=eligibleProbes"`
+	xxx_hidden_LastStatus      *string                      `protobuf:"bytes,9,opt,name=last_status,json=lastStatus"`
+	xxx_hidden_LastAttemptedAt *timestamppb.Timestamp       `protobuf:"bytes,10,opt,name=last_attempted_at,json=lastAttemptedAt"`
+	XXX_raceDetectHookData     protoimpl.RaceDetectHookData
+	XXX_presence               [1]uint32
+	unknownFields              protoimpl.UnknownFields
+	sizeCache                  protoimpl.SizeCache
+}
+
+func (x *CatalogRefreshStatus) Reset() {
+	*x = CatalogRefreshStatus{}
+	mi := &file_cineko_admin_admin_proto_msgTypes[60]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CatalogRefreshStatus) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CatalogRefreshStatus) ProtoMessage() {}
+
+func (x *CatalogRefreshStatus) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_admin_admin_proto_msgTypes[60]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *CatalogRefreshStatus) GetRunning() *CatalogRefreshRunning {
+	if x != nil {
+		if x, ok := x.xxx_hidden_State.(*catalogRefreshStatus_Running); ok {
+			return x.Running
+		}
+	}
+	return nil
+}
+
+func (x *CatalogRefreshStatus) GetReady() *CatalogRefreshReady {
+	if x != nil {
+		if x, ok := x.xxx_hidden_State.(*catalogRefreshStatus_Ready); ok {
+			return x.Ready
+		}
+	}
+	return nil
+}
+
+func (x *CatalogRefreshStatus) GetWaitingForProbe() *CatalogRefreshWaitingForProbe {
+	if x != nil {
+		if x, ok := x.xxx_hidden_State.(*catalogRefreshStatus_WaitingForProbe); ok {
+			return x.WaitingForProbe
+		}
+	}
+	return nil
+}
+
+func (x *CatalogRefreshStatus) GetQueued() *CatalogRefreshQueued {
+	if x != nil {
+		if x, ok := x.xxx_hidden_State.(*catalogRefreshStatus_Queued); ok {
+			return x.Queued
+		}
+	}
+	return nil
+}
+
+func (x *CatalogRefreshStatus) GetCatalogEmpty() bool {
+	if x != nil {
+		return x.xxx_hidden_CatalogEmpty
+	}
+	return false
+}
+
+func (x *CatalogRefreshStatus) GetRequestedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.xxx_hidden_RequestedAt
+	}
+	return nil
+}
+
+func (x *CatalogRefreshStatus) GetActive() bool {
+	if x != nil {
+		return x.xxx_hidden_Active
+	}
+	return false
+}
+
+func (x *CatalogRefreshStatus) GetEligibleProbes() int32 {
+	if x != nil {
+		return x.xxx_hidden_EligibleProbes
+	}
+	return 0
+}
+
+func (x *CatalogRefreshStatus) GetLastStatus() string {
+	if x != nil {
+		if x.xxx_hidden_LastStatus != nil {
+			return *x.xxx_hidden_LastStatus
+		}
+		return ""
+	}
+	return ""
+}
+
+func (x *CatalogRefreshStatus) GetLastAttemptedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.xxx_hidden_LastAttemptedAt
+	}
+	return nil
+}
+
+func (x *CatalogRefreshStatus) SetRunning(v *CatalogRefreshRunning) {
+	if v == nil {
+		x.xxx_hidden_State = nil
+		return
+	}
+	x.xxx_hidden_State = &catalogRefreshStatus_Running{v}
+}
+
+func (x *CatalogRefreshStatus) SetReady(v *CatalogRefreshReady) {
+	if v == nil {
+		x.xxx_hidden_State = nil
+		return
+	}
+	x.xxx_hidden_State = &catalogRefreshStatus_Ready{v}
+}
+
+func (x *CatalogRefreshStatus) SetWaitingForProbe(v *CatalogRefreshWaitingForProbe) {
+	if v == nil {
+		x.xxx_hidden_State = nil
+		return
+	}
+	x.xxx_hidden_State = &catalogRefreshStatus_WaitingForProbe{v}
+}
+
+func (x *CatalogRefreshStatus) SetQueued(v *CatalogRefreshQueued) {
+	if v == nil {
+		x.xxx_hidden_State = nil
+		return
+	}
+	x.xxx_hidden_State = &catalogRefreshStatus_Queued{v}
+}
+
+func (x *CatalogRefreshStatus) SetCatalogEmpty(v bool) {
+	x.xxx_hidden_CatalogEmpty = v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 7)
+}
+
+func (x *CatalogRefreshStatus) SetRequestedAt(v *timestamppb.Timestamp) {
+	x.xxx_hidden_RequestedAt = v
+}
+
+func (x *CatalogRefreshStatus) SetActive(v bool) {
+	x.xxx_hidden_Active = v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 7)
+}
+
+func (x *CatalogRefreshStatus) SetEligibleProbes(v int32) {
+	x.xxx_hidden_EligibleProbes = v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 4, 7)
+}
+
+func (x *CatalogRefreshStatus) SetLastStatus(v string) {
+	x.xxx_hidden_LastStatus = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 5, 7)
+}
+
+func (x *CatalogRefreshStatus) SetLastAttemptedAt(v *timestamppb.Timestamp) {
+	x.xxx_hidden_LastAttemptedAt = v
+}
+
+func (x *CatalogRefreshStatus) HasState() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_State != nil
+}
+
+func (x *CatalogRefreshStatus) HasRunning() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_State.(*catalogRefreshStatus_Running)
+	return ok
+}
+
+func (x *CatalogRefreshStatus) HasReady() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_State.(*catalogRefreshStatus_Ready)
+	return ok
+}
+
+func (x *CatalogRefreshStatus) HasWaitingForProbe() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_State.(*catalogRefreshStatus_WaitingForProbe)
+	return ok
+}
+
+func (x *CatalogRefreshStatus) HasQueued() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_State.(*catalogRefreshStatus_Queued)
+	return ok
+}
+
+func (x *CatalogRefreshStatus) HasCatalogEmpty() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 1)
+}
+
+func (x *CatalogRefreshStatus) HasRequestedAt() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_RequestedAt != nil
+}
+
+func (x *CatalogRefreshStatus) HasActive() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 3)
+}
+
+func (x *CatalogRefreshStatus) HasEligibleProbes() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 4)
+}
+
+func (x *CatalogRefreshStatus) HasLastStatus() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 5)
+}
+
+func (x *CatalogRefreshStatus) HasLastAttemptedAt() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_LastAttemptedAt != nil
+}
+
+func (x *CatalogRefreshStatus) ClearState() {
+	x.xxx_hidden_State = nil
+}
+
+func (x *CatalogRefreshStatus) ClearRunning() {
+	if _, ok := x.xxx_hidden_State.(*catalogRefreshStatus_Running); ok {
+		x.xxx_hidden_State = nil
+	}
+}
+
+func (x *CatalogRefreshStatus) ClearReady() {
+	if _, ok := x.xxx_hidden_State.(*catalogRefreshStatus_Ready); ok {
+		x.xxx_hidden_State = nil
+	}
+}
+
+func (x *CatalogRefreshStatus) ClearWaitingForProbe() {
+	if _, ok := x.xxx_hidden_State.(*catalogRefreshStatus_WaitingForProbe); ok {
+		x.xxx_hidden_State = nil
+	}
+}
+
+func (x *CatalogRefreshStatus) ClearQueued() {
+	if _, ok := x.xxx_hidden_State.(*catalogRefreshStatus_Queued); ok {
+		x.xxx_hidden_State = nil
+	}
+}
+
+func (x *CatalogRefreshStatus) ClearCatalogEmpty() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 1)
+	x.xxx_hidden_CatalogEmpty = false
+}
+
+func (x *CatalogRefreshStatus) ClearRequestedAt() {
+	x.xxx_hidden_RequestedAt = nil
+}
+
+func (x *CatalogRefreshStatus) ClearActive() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 3)
+	x.xxx_hidden_Active = false
+}
+
+func (x *CatalogRefreshStatus) ClearEligibleProbes() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 4)
+	x.xxx_hidden_EligibleProbes = 0
+}
+
+func (x *CatalogRefreshStatus) ClearLastStatus() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 5)
+	x.xxx_hidden_LastStatus = nil
+}
+
+func (x *CatalogRefreshStatus) ClearLastAttemptedAt() {
+	x.xxx_hidden_LastAttemptedAt = nil
+}
+
+const CatalogRefreshStatus_State_not_set_case case_CatalogRefreshStatus_State = 0
+const CatalogRefreshStatus_Running_case case_CatalogRefreshStatus_State = 1
+const CatalogRefreshStatus_Ready_case case_CatalogRefreshStatus_State = 2
+const CatalogRefreshStatus_WaitingForProbe_case case_CatalogRefreshStatus_State = 3
+const CatalogRefreshStatus_Queued_case case_CatalogRefreshStatus_State = 4
+
+func (x *CatalogRefreshStatus) WhichState() case_CatalogRefreshStatus_State {
+	if x == nil {
+		return CatalogRefreshStatus_State_not_set_case
+	}
+	switch x.xxx_hidden_State.(type) {
+	case *catalogRefreshStatus_Running:
+		return CatalogRefreshStatus_Running_case
+	case *catalogRefreshStatus_Ready:
+		return CatalogRefreshStatus_Ready_case
+	case *catalogRefreshStatus_WaitingForProbe:
+		return CatalogRefreshStatus_WaitingForProbe_case
+	case *catalogRefreshStatus_Queued:
+		return CatalogRefreshStatus_Queued_case
+	default:
+		return CatalogRefreshStatus_State_not_set_case
+	}
+}
+
+type CatalogRefreshStatus_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	// Fields of oneof xxx_hidden_State:
+	Running         *CatalogRefreshRunning
+	Ready           *CatalogRefreshReady
+	WaitingForProbe *CatalogRefreshWaitingForProbe
+	Queued          *CatalogRefreshQueued
+	// -- end of xxx_hidden_State
+	CatalogEmpty    *bool
+	RequestedAt     *timestamppb.Timestamp
+	Active          *bool
+	EligibleProbes  *int32
+	LastStatus      *string
+	LastAttemptedAt *timestamppb.Timestamp
+}
+
+func (b0 CatalogRefreshStatus_builder) Build() *CatalogRefreshStatus {
+	m0 := &CatalogRefreshStatus{}
+	b, x := &b0, m0
+	_, _ = b, x
+	if b.Running != nil {
+		x.xxx_hidden_State = &catalogRefreshStatus_Running{b.Running}
+	}
+	if b.Ready != nil {
+		x.xxx_hidden_State = &catalogRefreshStatus_Ready{b.Ready}
+	}
+	if b.WaitingForProbe != nil {
+		x.xxx_hidden_State = &catalogRefreshStatus_WaitingForProbe{b.WaitingForProbe}
+	}
+	if b.Queued != nil {
+		x.xxx_hidden_State = &catalogRefreshStatus_Queued{b.Queued}
+	}
+	if b.CatalogEmpty != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 7)
+		x.xxx_hidden_CatalogEmpty = *b.CatalogEmpty
+	}
+	x.xxx_hidden_RequestedAt = b.RequestedAt
+	if b.Active != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 7)
+		x.xxx_hidden_Active = *b.Active
+	}
+	if b.EligibleProbes != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 4, 7)
+		x.xxx_hidden_EligibleProbes = *b.EligibleProbes
+	}
+	if b.LastStatus != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 5, 7)
+		x.xxx_hidden_LastStatus = b.LastStatus
+	}
+	x.xxx_hidden_LastAttemptedAt = b.LastAttemptedAt
+	return m0
+}
+
+type case_CatalogRefreshStatus_State protoreflect.FieldNumber
+
+func (x case_CatalogRefreshStatus_State) String() string {
+	md := file_cineko_admin_admin_proto_msgTypes[60].Descriptor()
+	if x == 0 {
+		return "not set"
+	}
+	return protoimpl.X.MessageFieldStringOf(md, protoreflect.FieldNumber(x))
+}
+
+type isCatalogRefreshStatus_State interface {
+	isCatalogRefreshStatus_State()
+}
+
+type catalogRefreshStatus_Running struct {
+	Running *CatalogRefreshRunning `protobuf:"bytes,1,opt,name=running,oneof"`
+}
+
+type catalogRefreshStatus_Ready struct {
+	Ready *CatalogRefreshReady `protobuf:"bytes,2,opt,name=ready,oneof"`
+}
+
+type catalogRefreshStatus_WaitingForProbe struct {
+	WaitingForProbe *CatalogRefreshWaitingForProbe `protobuf:"bytes,3,opt,name=waiting_for_probe,json=waitingForProbe,oneof"`
+}
+
+type catalogRefreshStatus_Queued struct {
+	Queued *CatalogRefreshQueued `protobuf:"bytes,4,opt,name=queued,oneof"`
+}
+
+func (*catalogRefreshStatus_Running) isCatalogRefreshStatus_State() {}
+
+func (*catalogRefreshStatus_Ready) isCatalogRefreshStatus_State() {}
+
+func (*catalogRefreshStatus_WaitingForProbe) isCatalogRefreshStatus_State() {}
+
+func (*catalogRefreshStatus_Queued) isCatalogRefreshStatus_State() {}
+
+type GetCatalogRefreshStatusRequest struct {
+	state         protoimpl.MessageState `protogen:"opaque.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetCatalogRefreshStatusRequest) Reset() {
+	*x = GetCatalogRefreshStatusRequest{}
+	mi := &file_cineko_admin_admin_proto_msgTypes[61]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCatalogRefreshStatusRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCatalogRefreshStatusRequest) ProtoMessage() {}
+
+func (x *GetCatalogRefreshStatusRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_admin_admin_proto_msgTypes[61]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+type GetCatalogRefreshStatusRequest_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+}
+
+func (b0 GetCatalogRefreshStatusRequest_builder) Build() *GetCatalogRefreshStatusRequest {
+	m0 := &GetCatalogRefreshStatusRequest{}
+	b, x := &b0, m0
+	_, _ = b, x
+	return m0
+}
+
+type GetCatalogRefreshStatusResponse struct {
+	state             protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_Status *CatalogRefreshStatus  `protobuf:"bytes,1,opt,name=status"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
+}
+
+func (x *GetCatalogRefreshStatusResponse) Reset() {
+	*x = GetCatalogRefreshStatusResponse{}
+	mi := &file_cineko_admin_admin_proto_msgTypes[62]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCatalogRefreshStatusResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCatalogRefreshStatusResponse) ProtoMessage() {}
+
+func (x *GetCatalogRefreshStatusResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_admin_admin_proto_msgTypes[62]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *GetCatalogRefreshStatusResponse) GetStatus() *CatalogRefreshStatus {
+	if x != nil {
+		return x.xxx_hidden_Status
+	}
+	return nil
+}
+
+func (x *GetCatalogRefreshStatusResponse) SetStatus(v *CatalogRefreshStatus) {
+	x.xxx_hidden_Status = v
+}
+
+func (x *GetCatalogRefreshStatusResponse) HasStatus() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_Status != nil
+}
+
+func (x *GetCatalogRefreshStatusResponse) ClearStatus() {
+	x.xxx_hidden_Status = nil
+}
+
+type GetCatalogRefreshStatusResponse_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	Status *CatalogRefreshStatus
+}
+
+func (b0 GetCatalogRefreshStatusResponse_builder) Build() *GetCatalogRefreshStatusResponse {
+	m0 := &GetCatalogRefreshStatusResponse{}
+	b, x := &b0, m0
+	_, _ = b, x
+	x.xxx_hidden_Status = b.Status
+	return m0
+}
+
+type RequestCatalogRefreshRequest struct {
+	state         protoimpl.MessageState `protogen:"opaque.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RequestCatalogRefreshRequest) Reset() {
+	*x = RequestCatalogRefreshRequest{}
+	mi := &file_cineko_admin_admin_proto_msgTypes[63]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RequestCatalogRefreshRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RequestCatalogRefreshRequest) ProtoMessage() {}
+
+func (x *RequestCatalogRefreshRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_admin_admin_proto_msgTypes[63]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+type RequestCatalogRefreshRequest_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+}
+
+func (b0 RequestCatalogRefreshRequest_builder) Build() *RequestCatalogRefreshRequest {
+	m0 := &RequestCatalogRefreshRequest{}
+	b, x := &b0, m0
+	_, _ = b, x
+	return m0
+}
+
+type RequestCatalogRefreshResponse struct {
+	state             protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_Status *CatalogRefreshStatus  `protobuf:"bytes,1,opt,name=status"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
+}
+
+func (x *RequestCatalogRefreshResponse) Reset() {
+	*x = RequestCatalogRefreshResponse{}
+	mi := &file_cineko_admin_admin_proto_msgTypes[64]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RequestCatalogRefreshResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RequestCatalogRefreshResponse) ProtoMessage() {}
+
+func (x *RequestCatalogRefreshResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_admin_admin_proto_msgTypes[64]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *RequestCatalogRefreshResponse) GetStatus() *CatalogRefreshStatus {
+	if x != nil {
+		return x.xxx_hidden_Status
+	}
+	return nil
+}
+
+func (x *RequestCatalogRefreshResponse) SetStatus(v *CatalogRefreshStatus) {
+	x.xxx_hidden_Status = v
+}
+
+func (x *RequestCatalogRefreshResponse) HasStatus() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_Status != nil
+}
+
+func (x *RequestCatalogRefreshResponse) ClearStatus() {
+	x.xxx_hidden_Status = nil
+}
+
+type RequestCatalogRefreshResponse_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	Status *CatalogRefreshStatus
+}
+
+func (b0 RequestCatalogRefreshResponse_builder) Build() *RequestCatalogRefreshResponse {
+	m0 := &RequestCatalogRefreshResponse{}
+	b, x := &b0, m0
+	_, _ = b, x
+	x.xxx_hidden_Status = b.Status
+	return m0
+}
+
 type OpeningPattern struct {
 	state                              protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_TheaterId               *string                `protobuf:"bytes,1,opt,name=theater_id,json=theaterId"`
@@ -6796,7 +7624,7 @@ type OpeningPattern struct {
 
 func (x *OpeningPattern) Reset() {
 	*x = OpeningPattern{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[56]
+	mi := &file_cineko_admin_admin_proto_msgTypes[65]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6808,7 +7636,7 @@ func (x *OpeningPattern) String() string {
 func (*OpeningPattern) ProtoMessage() {}
 
 func (x *OpeningPattern) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[56]
+	mi := &file_cineko_admin_admin_proto_msgTypes[65]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7170,7 +7998,7 @@ type DemandPattern struct {
 
 func (x *DemandPattern) Reset() {
 	*x = DemandPattern{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[57]
+	mi := &file_cineko_admin_admin_proto_msgTypes[66]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7182,7 +8010,7 @@ func (x *DemandPattern) String() string {
 func (*DemandPattern) ProtoMessage() {}
 
 func (x *DemandPattern) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[57]
+	mi := &file_cineko_admin_admin_proto_msgTypes[66]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7607,7 +8435,7 @@ type ObservationIntelligence struct {
 
 func (x *ObservationIntelligence) Reset() {
 	*x = ObservationIntelligence{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[58]
+	mi := &file_cineko_admin_admin_proto_msgTypes[67]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7619,7 +8447,7 @@ func (x *ObservationIntelligence) String() string {
 func (*ObservationIntelligence) ProtoMessage() {}
 
 func (x *ObservationIntelligence) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[58]
+	mi := &file_cineko_admin_admin_proto_msgTypes[67]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7762,7 +8590,7 @@ type GetObservationIntelligenceRequest struct {
 
 func (x *GetObservationIntelligenceRequest) Reset() {
 	*x = GetObservationIntelligenceRequest{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[59]
+	mi := &file_cineko_admin_admin_proto_msgTypes[68]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7774,7 +8602,7 @@ func (x *GetObservationIntelligenceRequest) String() string {
 func (*GetObservationIntelligenceRequest) ProtoMessage() {}
 
 func (x *GetObservationIntelligenceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[59]
+	mi := &file_cineko_admin_admin_proto_msgTypes[68]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7806,7 +8634,7 @@ type GetObservationIntelligenceResponse struct {
 
 func (x *GetObservationIntelligenceResponse) Reset() {
 	*x = GetObservationIntelligenceResponse{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[60]
+	mi := &file_cineko_admin_admin_proto_msgTypes[69]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7818,7 +8646,7 @@ func (x *GetObservationIntelligenceResponse) String() string {
 func (*GetObservationIntelligenceResponse) ProtoMessage() {}
 
 func (x *GetObservationIntelligenceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[60]
+	mi := &file_cineko_admin_admin_proto_msgTypes[69]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8097,7 +8925,31 @@ const file_cineko_admin_admin_proto_rawDesc = "" +
 	"reconciler\"\x12\n" +
 	"\x10GetStatusRequest\"A\n" +
 	"\x11GetStatusResponse\x12,\n" +
-	"\x06status\x18\x01 \x01(\v2\x14.cineko.admin.StatusR\x06status\"\xd6\x03\n" +
+	"\x06status\x18\x01 \x01(\v2\x14.cineko.admin.StatusR\x06status\"\x17\n" +
+	"\x15CatalogRefreshRunning\"\x15\n" +
+	"\x13CatalogRefreshReady\"\x1f\n" +
+	"\x1dCatalogRefreshWaitingForProbe\"\x16\n" +
+	"\x14CatalogRefreshQueued\"\xd2\x04\n" +
+	"\x14CatalogRefreshStatus\x12?\n" +
+	"\arunning\x18\x01 \x01(\v2#.cineko.admin.CatalogRefreshRunningH\x00R\arunning\x129\n" +
+	"\x05ready\x18\x02 \x01(\v2!.cineko.admin.CatalogRefreshReadyH\x00R\x05ready\x12Y\n" +
+	"\x11waiting_for_probe\x18\x03 \x01(\v2+.cineko.admin.CatalogRefreshWaitingForProbeH\x00R\x0fwaitingForProbe\x12<\n" +
+	"\x06queued\x18\x04 \x01(\v2\".cineko.admin.CatalogRefreshQueuedH\x00R\x06queued\x12#\n" +
+	"\rcatalog_empty\x18\x05 \x01(\bR\fcatalogEmpty\x12=\n" +
+	"\frequested_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\vrequestedAt\x12\x16\n" +
+	"\x06active\x18\a \x01(\bR\x06active\x120\n" +
+	"\x0feligible_probes\x18\b \x01(\x05B\a\xbaH\x04\x1a\x02(\x00R\x0eeligibleProbes\x12\x1f\n" +
+	"\vlast_status\x18\t \x01(\tR\n" +
+	"lastStatus\x12F\n" +
+	"\x11last_attempted_at\x18\n" +
+	" \x01(\v2\x1a.google.protobuf.TimestampR\x0flastAttemptedAtB\x0e\n" +
+	"\x05state\x12\x05\xbaH\x02\b\x01\" \n" +
+	"\x1eGetCatalogRefreshStatusRequest\"e\n" +
+	"\x1fGetCatalogRefreshStatusResponse\x12B\n" +
+	"\x06status\x18\x01 \x01(\v2\".cineko.admin.CatalogRefreshStatusB\x06\xbaH\x03\xc8\x01\x01R\x06status\"\x1e\n" +
+	"\x1cRequestCatalogRefreshRequest\"c\n" +
+	"\x1dRequestCatalogRefreshResponse\x12B\n" +
+	"\x06status\x18\x01 \x01(\v2\".cineko.admin.CatalogRefreshStatusB\x06\xbaH\x03\xc8\x01\x01R\x06status\"\xd6\x03\n" +
 	"\x0eOpeningPattern\x12\x1d\n" +
 	"\n" +
 	"theater_id\x18\x01 \x01(\tR\ttheaterId\x12!\n" +
@@ -8137,14 +8989,16 @@ const file_cineko_admin_admin_proto_rawDesc = "" +
 	"\x0fdemand_patterns\x18\x05 \x03(\v2\x1b.cineko.admin.DemandPatternR\x0edemandPatterns\"#\n" +
 	"!GetObservationIntelligenceRequest\"o\n" +
 	"\"GetObservationIntelligenceResponse\x12I\n" +
-	"\fintelligence\x18\x01 \x01(\v2%.cineko.admin.ObservationIntelligenceR\fintelligence2\x80\r\n" +
+	"\fintelligence\x18\x01 \x01(\v2%.cineko.admin.ObservationIntelligenceR\fintelligence2\xea\x0e\n" +
 	"\fAdminService\x12@\n" +
 	"\x05Login\x12\x1a.cineko.admin.LoginRequest\x1a\x1b.cineko.admin.LoginResponse\x12C\n" +
 	"\x06Logout\x12\x1b.cineko.admin.LogoutRequest\x1a\x1c.cineko.admin.LogoutResponse\x12O\n" +
 	"\n" +
 	"GetSession\x12\x1f.cineko.admin.GetSessionRequest\x1a .cineko.admin.GetSessionResponse\x12L\n" +
 	"\tGetStatus\x12\x1e.cineko.admin.GetStatusRequest\x1a\x1f.cineko.admin.GetStatusResponse\x12a\n" +
-	"\x10GetConfiguration\x12%.cineko.admin.GetConfigurationRequest\x1a&.cineko.admin.GetConfigurationResponse\x12O\n" +
+	"\x10GetConfiguration\x12%.cineko.admin.GetConfigurationRequest\x1a&.cineko.admin.GetConfigurationResponse\x12v\n" +
+	"\x17GetCatalogRefreshStatus\x12,.cineko.admin.GetCatalogRefreshStatusRequest\x1a-.cineko.admin.GetCatalogRefreshStatusResponse\x12p\n" +
+	"\x15RequestCatalogRefresh\x12*.cineko.admin.RequestCatalogRefreshRequest\x1a+.cineko.admin.RequestCatalogRefreshResponse\x12O\n" +
 	"\n" +
 	"ListProbes\x12\x1f.cineko.admin.ListProbesRequest\x1a .cineko.admin.ListProbesResponse\x12R\n" +
 	"\vDeleteProbe\x12 .cineko.admin.DeleteProbeRequest\x1a!.cineko.admin.DeleteProbeResponse\x12[\n" +
@@ -8159,7 +9013,7 @@ const file_cineko_admin_admin_proto_rawDesc = "" +
 	"\x0fRotateClientPin\x12$.cineko.admin.RotateClientPinRequest\x1a%.cineko.admin.RotateClientPinResponse\x12a\n" +
 	"\x10DeleteClientUser\x12%.cineko.admin.DeleteClientUserRequest\x1a&.cineko.admin.DeleteClientUserResponseB;Z9github.com/cineko-org/contracts/gen/go/cineko/admin;adminb\beditionsp\xe9\a"
 
-var file_cineko_admin_admin_proto_msgTypes = make([]protoimpl.MessageInfo, 61)
+var file_cineko_admin_admin_proto_msgTypes = make([]protoimpl.MessageInfo, 70)
 var file_cineko_admin_admin_proto_goTypes = []any{
 	(*Principal)(nil),                          // 0: cineko.admin.Principal
 	(*LoginRequest)(nil),                       // 1: cineko.admin.LoginRequest
@@ -8217,33 +9071,42 @@ var file_cineko_admin_admin_proto_goTypes = []any{
 	(*Status)(nil),                             // 53: cineko.admin.Status
 	(*GetStatusRequest)(nil),                   // 54: cineko.admin.GetStatusRequest
 	(*GetStatusResponse)(nil),                  // 55: cineko.admin.GetStatusResponse
-	(*OpeningPattern)(nil),                     // 56: cineko.admin.OpeningPattern
-	(*DemandPattern)(nil),                      // 57: cineko.admin.DemandPattern
-	(*ObservationIntelligence)(nil),            // 58: cineko.admin.ObservationIntelligence
-	(*GetObservationIntelligenceRequest)(nil),  // 59: cineko.admin.GetObservationIntelligenceRequest
-	(*GetObservationIntelligenceResponse)(nil), // 60: cineko.admin.GetObservationIntelligenceResponse
-	(*timestamppb.Timestamp)(nil),              // 61: google.protobuf.Timestamp
-	(*probe.ProbeKind)(nil),                    // 62: cineko.probe.ProbeKind
-	(*common.Runtime)(nil),                     // 63: cineko.common.Runtime
-	(*probe.ProbeHealth)(nil),                  // 64: cineko.probe.ProbeHealth
-	(*catalog.Theater)(nil),                    // 65: cineko.catalog.Theater
-	(*client.User)(nil),                        // 66: cineko.client.User
+	(*CatalogRefreshRunning)(nil),              // 56: cineko.admin.CatalogRefreshRunning
+	(*CatalogRefreshReady)(nil),                // 57: cineko.admin.CatalogRefreshReady
+	(*CatalogRefreshWaitingForProbe)(nil),      // 58: cineko.admin.CatalogRefreshWaitingForProbe
+	(*CatalogRefreshQueued)(nil),               // 59: cineko.admin.CatalogRefreshQueued
+	(*CatalogRefreshStatus)(nil),               // 60: cineko.admin.CatalogRefreshStatus
+	(*GetCatalogRefreshStatusRequest)(nil),     // 61: cineko.admin.GetCatalogRefreshStatusRequest
+	(*GetCatalogRefreshStatusResponse)(nil),    // 62: cineko.admin.GetCatalogRefreshStatusResponse
+	(*RequestCatalogRefreshRequest)(nil),       // 63: cineko.admin.RequestCatalogRefreshRequest
+	(*RequestCatalogRefreshResponse)(nil),      // 64: cineko.admin.RequestCatalogRefreshResponse
+	(*OpeningPattern)(nil),                     // 65: cineko.admin.OpeningPattern
+	(*DemandPattern)(nil),                      // 66: cineko.admin.DemandPattern
+	(*ObservationIntelligence)(nil),            // 67: cineko.admin.ObservationIntelligence
+	(*GetObservationIntelligenceRequest)(nil),  // 68: cineko.admin.GetObservationIntelligenceRequest
+	(*GetObservationIntelligenceResponse)(nil), // 69: cineko.admin.GetObservationIntelligenceResponse
+	(*timestamppb.Timestamp)(nil),              // 70: google.protobuf.Timestamp
+	(*probe.ProbeKind)(nil),                    // 71: cineko.probe.ProbeKind
+	(*common.Runtime)(nil),                     // 72: cineko.common.Runtime
+	(*probe.ProbeHealth)(nil),                  // 73: cineko.probe.ProbeHealth
+	(*catalog.Theater)(nil),                    // 74: cineko.catalog.Theater
+	(*client.User)(nil),                        // 75: cineko.client.User
 }
 var file_cineko_admin_admin_proto_depIdxs = []int32{
-	61, // 0: cineko.admin.Principal.expires_at:type_name -> google.protobuf.Timestamp
+	70, // 0: cineko.admin.Principal.expires_at:type_name -> google.protobuf.Timestamp
 	0,  // 1: cineko.admin.LoginResponse.principal:type_name -> cineko.admin.Principal
 	0,  // 2: cineko.admin.GetSessionResponse.principal:type_name -> cineko.admin.Principal
 	7,  // 3: cineko.admin.GetConfigurationResponse.configuration:type_name -> cineko.admin.Configuration
 	10, // 4: cineko.admin.ProbeState.online:type_name -> cineko.admin.OnlineProbe
 	11, // 5: cineko.admin.ProbeState.offline:type_name -> cineko.admin.OfflineProbe
-	62, // 6: cineko.admin.Probe.kind:type_name -> cineko.probe.ProbeKind
-	63, // 7: cineko.admin.Probe.runtime:type_name -> cineko.common.Runtime
+	71, // 6: cineko.admin.Probe.kind:type_name -> cineko.probe.ProbeKind
+	72, // 7: cineko.admin.Probe.runtime:type_name -> cineko.common.Runtime
 	12, // 8: cineko.admin.Probe.state:type_name -> cineko.admin.ProbeState
-	64, // 9: cineko.admin.Probe.health:type_name -> cineko.probe.ProbeHealth
-	61, // 10: cineko.admin.Probe.last_heartbeat_at:type_name -> google.protobuf.Timestamp
-	61, // 11: cineko.admin.Probe.updated_at:type_name -> google.protobuf.Timestamp
+	73, // 9: cineko.admin.Probe.health:type_name -> cineko.probe.ProbeHealth
+	70, // 10: cineko.admin.Probe.last_heartbeat_at:type_name -> google.protobuf.Timestamp
+	70, // 11: cineko.admin.Probe.updated_at:type_name -> google.protobuf.Timestamp
 	13, // 12: cineko.admin.ListProbesResponse.probes:type_name -> cineko.admin.Probe
-	61, // 13: cineko.admin.DataSummary.latest_schedule_observed_at:type_name -> google.protobuf.Timestamp
+	70, // 13: cineko.admin.DataSummary.latest_schedule_observed_at:type_name -> google.protobuf.Timestamp
 	18, // 14: cineko.admin.GetDataSummaryResponse.summary:type_name -> cineko.admin.DataSummary
 	22, // 15: cineko.admin.ObservationMode.baseline:type_name -> cineko.admin.BaselineMode
 	23, // 16: cineko.admin.ObservationMode.demand:type_name -> cineko.admin.DemandMode
@@ -8253,78 +9116,90 @@ var file_cineko_admin_admin_proto_depIdxs = []int32{
 	28, // 20: cineko.admin.ObservationOutcome.partial:type_name -> cineko.admin.PartialOutcome
 	29, // 21: cineko.admin.ObservationOutcome.failed:type_name -> cineko.admin.FailedOutcome
 	30, // 22: cineko.admin.ObservationOutcome.missed:type_name -> cineko.admin.MissedOutcome
-	65, // 23: cineko.admin.ObservationPolicy.theater:type_name -> cineko.catalog.Theater
+	74, // 23: cineko.admin.ObservationPolicy.theater:type_name -> cineko.catalog.Theater
 	21, // 24: cineko.admin.ObservationPolicy.input:type_name -> cineko.admin.ObservationPolicyInput
 	26, // 25: cineko.admin.ObservationPolicy.effective_mode:type_name -> cineko.admin.ObservationMode
-	61, // 26: cineko.admin.ObservationPolicy.burst_until:type_name -> google.protobuf.Timestamp
-	61, // 27: cineko.admin.ObservationPolicy.next_run_at:type_name -> google.protobuf.Timestamp
-	61, // 28: cineko.admin.ObservationPolicy.last_finished_at:type_name -> google.protobuf.Timestamp
+	70, // 26: cineko.admin.ObservationPolicy.burst_until:type_name -> google.protobuf.Timestamp
+	70, // 27: cineko.admin.ObservationPolicy.next_run_at:type_name -> google.protobuf.Timestamp
+	70, // 28: cineko.admin.ObservationPolicy.last_finished_at:type_name -> google.protobuf.Timestamp
 	31, // 29: cineko.admin.ObservationPolicy.last_outcome:type_name -> cineko.admin.ObservationOutcome
-	61, // 30: cineko.admin.ObservationPolicy.created_at:type_name -> google.protobuf.Timestamp
-	61, // 31: cineko.admin.ObservationPolicy.updated_at:type_name -> google.protobuf.Timestamp
+	70, // 30: cineko.admin.ObservationPolicy.created_at:type_name -> google.protobuf.Timestamp
+	70, // 31: cineko.admin.ObservationPolicy.updated_at:type_name -> google.protobuf.Timestamp
 	32, // 32: cineko.admin.ListObservationPoliciesResponse.policies:type_name -> cineko.admin.ObservationPolicy
 	21, // 33: cineko.admin.CreateObservationPolicyRequest.policy:type_name -> cineko.admin.ObservationPolicyInput
 	32, // 34: cineko.admin.CreateObservationPolicyResponse.policy:type_name -> cineko.admin.ObservationPolicy
 	21, // 35: cineko.admin.UpdateObservationPolicyRequest.policy:type_name -> cineko.admin.ObservationPolicyInput
 	32, // 36: cineko.admin.UpdateObservationPolicyResponse.policy:type_name -> cineko.admin.ObservationPolicy
-	66, // 37: cineko.admin.ClientPinUser.user:type_name -> cineko.client.User
-	66, // 38: cineko.admin.ClientPinIssue.user:type_name -> cineko.client.User
+	75, // 37: cineko.admin.ClientPinUser.user:type_name -> cineko.client.User
+	75, // 38: cineko.admin.ClientPinIssue.user:type_name -> cineko.client.User
 	41, // 39: cineko.admin.ListClientUsersResponse.users:type_name -> cineko.admin.ClientPinUser
 	42, // 40: cineko.admin.CreateClientUserResponse.issue:type_name -> cineko.admin.ClientPinIssue
 	42, // 41: cineko.admin.RotateClientPinResponse.issue:type_name -> cineko.admin.ClientPinIssue
-	61, // 42: cineko.admin.ReconcileReport.started_at:type_name -> google.protobuf.Timestamp
-	61, // 43: cineko.admin.ReconcileReport.finished_at:type_name -> google.protobuf.Timestamp
-	61, // 44: cineko.admin.ReconcileStatus.last_attempt_at:type_name -> google.protobuf.Timestamp
-	61, // 45: cineko.admin.ReconcileStatus.last_success_at:type_name -> google.protobuf.Timestamp
-	61, // 46: cineko.admin.ReconcileStatus.last_error_at:type_name -> google.protobuf.Timestamp
+	70, // 42: cineko.admin.ReconcileReport.started_at:type_name -> google.protobuf.Timestamp
+	70, // 43: cineko.admin.ReconcileReport.finished_at:type_name -> google.protobuf.Timestamp
+	70, // 44: cineko.admin.ReconcileStatus.last_attempt_at:type_name -> google.protobuf.Timestamp
+	70, // 45: cineko.admin.ReconcileStatus.last_success_at:type_name -> google.protobuf.Timestamp
+	70, // 46: cineko.admin.ReconcileStatus.last_error_at:type_name -> google.protobuf.Timestamp
 	51, // 47: cineko.admin.ReconcileStatus.last_report:type_name -> cineko.admin.ReconcileReport
 	52, // 48: cineko.admin.Status.reconciler:type_name -> cineko.admin.ReconcileStatus
 	53, // 49: cineko.admin.GetStatusResponse.status:type_name -> cineko.admin.Status
-	61, // 50: cineko.admin.OpeningPattern.last_observed_at:type_name -> google.protobuf.Timestamp
-	61, // 51: cineko.admin.DemandPattern.last_observed_at:type_name -> google.protobuf.Timestamp
-	61, // 52: cineko.admin.ObservationIntelligence.last_observed_at:type_name -> google.protobuf.Timestamp
-	56, // 53: cineko.admin.ObservationIntelligence.opening_patterns:type_name -> cineko.admin.OpeningPattern
-	57, // 54: cineko.admin.ObservationIntelligence.demand_patterns:type_name -> cineko.admin.DemandPattern
-	58, // 55: cineko.admin.GetObservationIntelligenceResponse.intelligence:type_name -> cineko.admin.ObservationIntelligence
-	1,  // 56: cineko.admin.AdminService.Login:input_type -> cineko.admin.LoginRequest
-	3,  // 57: cineko.admin.AdminService.Logout:input_type -> cineko.admin.LogoutRequest
-	5,  // 58: cineko.admin.AdminService.GetSession:input_type -> cineko.admin.GetSessionRequest
-	54, // 59: cineko.admin.AdminService.GetStatus:input_type -> cineko.admin.GetStatusRequest
-	8,  // 60: cineko.admin.AdminService.GetConfiguration:input_type -> cineko.admin.GetConfigurationRequest
-	14, // 61: cineko.admin.AdminService.ListProbes:input_type -> cineko.admin.ListProbesRequest
-	16, // 62: cineko.admin.AdminService.DeleteProbe:input_type -> cineko.admin.DeleteProbeRequest
-	19, // 63: cineko.admin.AdminService.GetDataSummary:input_type -> cineko.admin.GetDataSummaryRequest
-	33, // 64: cineko.admin.AdminService.ListObservationPolicies:input_type -> cineko.admin.ListObservationPoliciesRequest
-	35, // 65: cineko.admin.AdminService.CreateObservationPolicy:input_type -> cineko.admin.CreateObservationPolicyRequest
-	37, // 66: cineko.admin.AdminService.UpdateObservationPolicy:input_type -> cineko.admin.UpdateObservationPolicyRequest
-	39, // 67: cineko.admin.AdminService.DeleteObservationPolicy:input_type -> cineko.admin.DeleteObservationPolicyRequest
-	59, // 68: cineko.admin.AdminService.GetObservationIntelligence:input_type -> cineko.admin.GetObservationIntelligenceRequest
-	43, // 69: cineko.admin.AdminService.ListClientUsers:input_type -> cineko.admin.ListClientUsersRequest
-	45, // 70: cineko.admin.AdminService.CreateClientUser:input_type -> cineko.admin.CreateClientUserRequest
-	47, // 71: cineko.admin.AdminService.RotateClientPin:input_type -> cineko.admin.RotateClientPinRequest
-	49, // 72: cineko.admin.AdminService.DeleteClientUser:input_type -> cineko.admin.DeleteClientUserRequest
-	2,  // 73: cineko.admin.AdminService.Login:output_type -> cineko.admin.LoginResponse
-	4,  // 74: cineko.admin.AdminService.Logout:output_type -> cineko.admin.LogoutResponse
-	6,  // 75: cineko.admin.AdminService.GetSession:output_type -> cineko.admin.GetSessionResponse
-	55, // 76: cineko.admin.AdminService.GetStatus:output_type -> cineko.admin.GetStatusResponse
-	9,  // 77: cineko.admin.AdminService.GetConfiguration:output_type -> cineko.admin.GetConfigurationResponse
-	15, // 78: cineko.admin.AdminService.ListProbes:output_type -> cineko.admin.ListProbesResponse
-	17, // 79: cineko.admin.AdminService.DeleteProbe:output_type -> cineko.admin.DeleteProbeResponse
-	20, // 80: cineko.admin.AdminService.GetDataSummary:output_type -> cineko.admin.GetDataSummaryResponse
-	34, // 81: cineko.admin.AdminService.ListObservationPolicies:output_type -> cineko.admin.ListObservationPoliciesResponse
-	36, // 82: cineko.admin.AdminService.CreateObservationPolicy:output_type -> cineko.admin.CreateObservationPolicyResponse
-	38, // 83: cineko.admin.AdminService.UpdateObservationPolicy:output_type -> cineko.admin.UpdateObservationPolicyResponse
-	40, // 84: cineko.admin.AdminService.DeleteObservationPolicy:output_type -> cineko.admin.DeleteObservationPolicyResponse
-	60, // 85: cineko.admin.AdminService.GetObservationIntelligence:output_type -> cineko.admin.GetObservationIntelligenceResponse
-	44, // 86: cineko.admin.AdminService.ListClientUsers:output_type -> cineko.admin.ListClientUsersResponse
-	46, // 87: cineko.admin.AdminService.CreateClientUser:output_type -> cineko.admin.CreateClientUserResponse
-	48, // 88: cineko.admin.AdminService.RotateClientPin:output_type -> cineko.admin.RotateClientPinResponse
-	50, // 89: cineko.admin.AdminService.DeleteClientUser:output_type -> cineko.admin.DeleteClientUserResponse
-	73, // [73:90] is the sub-list for method output_type
-	56, // [56:73] is the sub-list for method input_type
-	56, // [56:56] is the sub-list for extension type_name
-	56, // [56:56] is the sub-list for extension extendee
-	0,  // [0:56] is the sub-list for field type_name
+	56, // 50: cineko.admin.CatalogRefreshStatus.running:type_name -> cineko.admin.CatalogRefreshRunning
+	57, // 51: cineko.admin.CatalogRefreshStatus.ready:type_name -> cineko.admin.CatalogRefreshReady
+	58, // 52: cineko.admin.CatalogRefreshStatus.waiting_for_probe:type_name -> cineko.admin.CatalogRefreshWaitingForProbe
+	59, // 53: cineko.admin.CatalogRefreshStatus.queued:type_name -> cineko.admin.CatalogRefreshQueued
+	70, // 54: cineko.admin.CatalogRefreshStatus.requested_at:type_name -> google.protobuf.Timestamp
+	70, // 55: cineko.admin.CatalogRefreshStatus.last_attempted_at:type_name -> google.protobuf.Timestamp
+	60, // 56: cineko.admin.GetCatalogRefreshStatusResponse.status:type_name -> cineko.admin.CatalogRefreshStatus
+	60, // 57: cineko.admin.RequestCatalogRefreshResponse.status:type_name -> cineko.admin.CatalogRefreshStatus
+	70, // 58: cineko.admin.OpeningPattern.last_observed_at:type_name -> google.protobuf.Timestamp
+	70, // 59: cineko.admin.DemandPattern.last_observed_at:type_name -> google.protobuf.Timestamp
+	70, // 60: cineko.admin.ObservationIntelligence.last_observed_at:type_name -> google.protobuf.Timestamp
+	65, // 61: cineko.admin.ObservationIntelligence.opening_patterns:type_name -> cineko.admin.OpeningPattern
+	66, // 62: cineko.admin.ObservationIntelligence.demand_patterns:type_name -> cineko.admin.DemandPattern
+	67, // 63: cineko.admin.GetObservationIntelligenceResponse.intelligence:type_name -> cineko.admin.ObservationIntelligence
+	1,  // 64: cineko.admin.AdminService.Login:input_type -> cineko.admin.LoginRequest
+	3,  // 65: cineko.admin.AdminService.Logout:input_type -> cineko.admin.LogoutRequest
+	5,  // 66: cineko.admin.AdminService.GetSession:input_type -> cineko.admin.GetSessionRequest
+	54, // 67: cineko.admin.AdminService.GetStatus:input_type -> cineko.admin.GetStatusRequest
+	8,  // 68: cineko.admin.AdminService.GetConfiguration:input_type -> cineko.admin.GetConfigurationRequest
+	61, // 69: cineko.admin.AdminService.GetCatalogRefreshStatus:input_type -> cineko.admin.GetCatalogRefreshStatusRequest
+	63, // 70: cineko.admin.AdminService.RequestCatalogRefresh:input_type -> cineko.admin.RequestCatalogRefreshRequest
+	14, // 71: cineko.admin.AdminService.ListProbes:input_type -> cineko.admin.ListProbesRequest
+	16, // 72: cineko.admin.AdminService.DeleteProbe:input_type -> cineko.admin.DeleteProbeRequest
+	19, // 73: cineko.admin.AdminService.GetDataSummary:input_type -> cineko.admin.GetDataSummaryRequest
+	33, // 74: cineko.admin.AdminService.ListObservationPolicies:input_type -> cineko.admin.ListObservationPoliciesRequest
+	35, // 75: cineko.admin.AdminService.CreateObservationPolicy:input_type -> cineko.admin.CreateObservationPolicyRequest
+	37, // 76: cineko.admin.AdminService.UpdateObservationPolicy:input_type -> cineko.admin.UpdateObservationPolicyRequest
+	39, // 77: cineko.admin.AdminService.DeleteObservationPolicy:input_type -> cineko.admin.DeleteObservationPolicyRequest
+	68, // 78: cineko.admin.AdminService.GetObservationIntelligence:input_type -> cineko.admin.GetObservationIntelligenceRequest
+	43, // 79: cineko.admin.AdminService.ListClientUsers:input_type -> cineko.admin.ListClientUsersRequest
+	45, // 80: cineko.admin.AdminService.CreateClientUser:input_type -> cineko.admin.CreateClientUserRequest
+	47, // 81: cineko.admin.AdminService.RotateClientPin:input_type -> cineko.admin.RotateClientPinRequest
+	49, // 82: cineko.admin.AdminService.DeleteClientUser:input_type -> cineko.admin.DeleteClientUserRequest
+	2,  // 83: cineko.admin.AdminService.Login:output_type -> cineko.admin.LoginResponse
+	4,  // 84: cineko.admin.AdminService.Logout:output_type -> cineko.admin.LogoutResponse
+	6,  // 85: cineko.admin.AdminService.GetSession:output_type -> cineko.admin.GetSessionResponse
+	55, // 86: cineko.admin.AdminService.GetStatus:output_type -> cineko.admin.GetStatusResponse
+	9,  // 87: cineko.admin.AdminService.GetConfiguration:output_type -> cineko.admin.GetConfigurationResponse
+	62, // 88: cineko.admin.AdminService.GetCatalogRefreshStatus:output_type -> cineko.admin.GetCatalogRefreshStatusResponse
+	64, // 89: cineko.admin.AdminService.RequestCatalogRefresh:output_type -> cineko.admin.RequestCatalogRefreshResponse
+	15, // 90: cineko.admin.AdminService.ListProbes:output_type -> cineko.admin.ListProbesResponse
+	17, // 91: cineko.admin.AdminService.DeleteProbe:output_type -> cineko.admin.DeleteProbeResponse
+	20, // 92: cineko.admin.AdminService.GetDataSummary:output_type -> cineko.admin.GetDataSummaryResponse
+	34, // 93: cineko.admin.AdminService.ListObservationPolicies:output_type -> cineko.admin.ListObservationPoliciesResponse
+	36, // 94: cineko.admin.AdminService.CreateObservationPolicy:output_type -> cineko.admin.CreateObservationPolicyResponse
+	38, // 95: cineko.admin.AdminService.UpdateObservationPolicy:output_type -> cineko.admin.UpdateObservationPolicyResponse
+	40, // 96: cineko.admin.AdminService.DeleteObservationPolicy:output_type -> cineko.admin.DeleteObservationPolicyResponse
+	69, // 97: cineko.admin.AdminService.GetObservationIntelligence:output_type -> cineko.admin.GetObservationIntelligenceResponse
+	44, // 98: cineko.admin.AdminService.ListClientUsers:output_type -> cineko.admin.ListClientUsersResponse
+	46, // 99: cineko.admin.AdminService.CreateClientUser:output_type -> cineko.admin.CreateClientUserResponse
+	48, // 100: cineko.admin.AdminService.RotateClientPin:output_type -> cineko.admin.RotateClientPinResponse
+	50, // 101: cineko.admin.AdminService.DeleteClientUser:output_type -> cineko.admin.DeleteClientUserResponse
+	83, // [83:102] is the sub-list for method output_type
+	64, // [64:83] is the sub-list for method input_type
+	64, // [64:64] is the sub-list for extension type_name
+	64, // [64:64] is the sub-list for extension extendee
+	0,  // [0:64] is the sub-list for field type_name
 }
 
 func init() { file_cineko_admin_admin_proto_init() }
@@ -8348,13 +9223,19 @@ func file_cineko_admin_admin_proto_init() {
 		(*observationOutcome_Failed)(nil),
 		(*observationOutcome_Missed)(nil),
 	}
+	file_cineko_admin_admin_proto_msgTypes[60].OneofWrappers = []any{
+		(*catalogRefreshStatus_Running)(nil),
+		(*catalogRefreshStatus_Ready)(nil),
+		(*catalogRefreshStatus_WaitingForProbe)(nil),
+		(*catalogRefreshStatus_Queued)(nil),
+	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cineko_admin_admin_proto_rawDesc), len(file_cineko_admin_admin_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   61,
+			NumMessages:   70,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

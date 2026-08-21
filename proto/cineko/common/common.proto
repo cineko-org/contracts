@@ -75,3 +75,35 @@ message EgressPolicy {
     ManagedScanEgress managed_scan = 2;
   }
 }
+
+message Live {}
+message Ready {}
+
+message ServiceHealth {
+  oneof state {
+    option (buf.validate.oneof).required = true;
+
+    Live live = 1;
+    Ready ready = 2;
+  }
+}
+
+message APIError {
+  string code = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string message = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  bool retryable = 3;
+  string request_id = 4 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+}
+
+message APIErrorResponse {
+  APIError error = 1 [(buf.validate.field).required = true];
+}
