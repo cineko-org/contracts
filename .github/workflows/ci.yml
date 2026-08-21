@@ -11,8 +11,18 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Validate Release Please metadata
+        if: startsWith(github.head_ref, 'release-please--')
+        run: >-
+          bash scripts/verify-release-please-pr.sh
+          '${{ github.event.pull_request.base.sha }}'
+          '${{ github.event.pull_request.head.sha }}'
       - uses: actions/setup-go@v7
+        if: ${{ !startsWith(github.head_ref, 'release-please--') }}
         with:
           go-version-file: go.mod
           cache: true
-      - run: make check
+      - if: ${{ !startsWith(github.head_ref, 'release-please--') }}
+        run: make check
