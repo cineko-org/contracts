@@ -434,10 +434,16 @@ message SessionExchangeRequest {
 
 message CatalogRequest {}
 message SeatMapRequest {
-  string auditorium_id = 1;
+  string auditorium_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
 }
 message AuditoriumRequest {
-  string theater_id = 1;
+  string theater_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
 }
 message AuditoriumResponse {
   repeated cineko.catalog.Auditorium auditoriums = 1;
