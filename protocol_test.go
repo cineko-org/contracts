@@ -1,6 +1,9 @@
 package contracts
 
-import "testing"
+import (
+	"errors"
+	"testing"
+)
 
 func TestProtocol(t *testing.T) {
 	if ProtocolHeaderValue() != "3" {
@@ -35,6 +38,18 @@ func TestSupportedCapabilities(t *testing.T) {
 	for _, value := range []string{"", " cgv.schedule.capture.v2 ", "cgv.schedule.capture.v1", "arbitrary.v1"} {
 		if IsSupportedCapability(value) {
 			t.Fatalf("unsupported capability %q accepted", value)
+		}
+	}
+}
+
+func TestRequireEgressPolicy(t *testing.T) {
+	t.Parallel()
+	if err := RequireEgressPolicy(EgressPolicyScanDefault); err != nil {
+		t.Fatalf("RequireEgressPolicy(scan_default) error = %v", err)
+	}
+	for _, policy := range []EgressPolicyID{"", "unknown"} {
+		if err := RequireEgressPolicy(policy); !errors.Is(err, ErrUnsupportedEgressPolicy) {
+			t.Fatalf("RequireEgressPolicy(%q) error = %v", policy, err)
 		}
 	}
 }
