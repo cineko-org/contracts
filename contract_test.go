@@ -14,6 +14,7 @@ import (
 	observationpb "github.com/cineko-org/contracts/v3/gen/go/cineko/observation"
 	probepb "github.com/cineko-org/contracts/v3/gen/go/cineko/probe"
 	"github.com/cineko-org/contracts/v3/gen/go/cineko/seatmap"
+	servicepb "github.com/cineko-org/contracts/v3/gen/go/cineko/service"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/types/known/timestamppb"
@@ -355,6 +356,108 @@ func TestInboundRequestValidationRejectsMissingIdentity(t *testing.T) {
 	}.Build()
 	if err := validator.Validate(heartbeat); err == nil {
 		t.Fatal("execution heartbeat without command identity passed contract validation")
+	}
+}
+
+func TestServiceRequiredEnvelopesRejectEmptyMessages(t *testing.T) {
+	t.Parallel()
+
+	validator, err := protovalidate.New()
+	if err != nil {
+		t.Fatalf("create validator: %v", err)
+	}
+
+	tests := []struct {
+		name    string
+		message proto.Message
+	}{
+		{name: "assignment result receipt", message: &servicepb.SubmitAssignmentResultResponse{}},
+		{name: "PIN exchange request", message: &servicepb.ExchangePinRequest{}},
+		{name: "PIN exchange response", message: &servicepb.ExchangePinResponse{}},
+		{name: "token exchange request", message: &servicepb.ExchangeTokenRequest{}},
+		{name: "token exchange response", message: &servicepb.ExchangeTokenResponse{}},
+		{name: "token refresh request", message: &servicepb.RefreshTokenRequest{}},
+		{name: "token refresh response", message: &servicepb.RefreshTokenResponse{}},
+		{name: "launch ticket request", message: &servicepb.CreateLaunchTicketRequest{}},
+		{name: "launch ticket response", message: &servicepb.CreateLaunchTicketResponse{}},
+		{name: "session exchange request", message: &servicepb.ExchangeSessionRequest{}},
+		{name: "session exchange response", message: &servicepb.ExchangeSessionResponse{}},
+		{name: "probe bootstrap ticket request", message: &servicepb.CreateProbeBootstrapTicketRequest{}},
+		{name: "probe bootstrap ticket response", message: &servicepb.CreateProbeBootstrapTicketResponse{}},
+		{name: "client bootstrap response", message: &servicepb.BootstrapResponse{}},
+		{name: "resource response", message: &servicepb.GetResourceResponse{}},
+		{name: "resource mutation request", message: &servicepb.PutResourceRequest{}},
+		{name: "resource mutation response", message: &servicepb.PutResourceResponse{}},
+		{name: "device mutation request", message: &servicepb.UpsertDeviceRequest{}},
+		{name: "device mutation response", message: &servicepb.UpsertDeviceResponse{}},
+		{name: "catalog response", message: &servicepb.GetCatalogResponse{}},
+		{name: "seat-map response", message: &servicepb.ResolveSeatMapResponse{}},
+		{name: "seat-map stream response", message: &servicepb.WatchSeatMapResponse{}},
+		{name: "catalog snapshot request", message: &servicepb.SubmitCatalogSnapshotRequest{}},
+		{name: "live-seat observation request", message: &servicepb.SubmitLiveSeatObservationRequest{}},
+		{name: "live-seat observation response", message: &servicepb.SubmitLiveSeatObservationResponse{}},
+		{name: "execution completion request", message: &servicepb.CompleteRequest{}},
+		{name: "runtime release request", message: &servicepb.GetRuntimeReleaseRequest{}},
+		{name: "runtime release response", message: &servicepb.GetRuntimeReleaseResponse{}},
+		{name: "launcher release request", message: &servicepb.GetLauncherReleaseRequest{}},
+		{name: "launcher release response", message: &servicepb.GetLauncherReleaseResponse{}},
+		{name: "release registry response", message: &servicepb.GetReleaseRegistryResponse{}},
+		{name: "client release publication", message: &servicepb.PublishClientRequest{}},
+		{name: "browser release publication", message: &servicepb.PublishBrowserRequest{}},
+		{name: "Playwright release publication", message: &servicepb.PublishPlaywrightRequest{}},
+		{name: "launcher release publication", message: &servicepb.PublishLauncherRequest{}},
+		{name: "probe release publication", message: &servicepb.PublishProbeRequest{}},
+	}
+
+	for _, test := range tests {
+		test := test
+		t.Run(test.name, func(t *testing.T) {
+			t.Parallel()
+			if err := validator.Validate(test.message); err == nil {
+				t.Fatal("empty service envelope passed contract validation")
+			}
+		})
+	}
+}
+
+func TestServiceOptionalPaginationAndCollectionsAllowOmission(t *testing.T) {
+	t.Parallel()
+
+	validator, err := protovalidate.New()
+	if err != nil {
+		t.Fatalf("create validator: %v", err)
+	}
+
+	messages := []proto.Message{
+		servicepb.ListResourcesRequest_builder{
+			Kind: clientpb.ResourceKind_builder{
+				Settings: clientpb.SettingsResource_builder{}.Build(),
+			}.Build(),
+		}.Build(),
+		&servicepb.ListResourcesResponse{},
+		&servicepb.GetAuditoriumsResponse{},
+	}
+	for _, message := range messages {
+		if err := validator.Validate(message); err != nil {
+			t.Fatalf("service message with omitted pagination or collection failed validation: %v", err)
+		}
+	}
+}
+
+func TestSubmitCatalogSnapshotResponseRequiresPositiveGeneration(t *testing.T) {
+	t.Parallel()
+
+	validator, err := protovalidate.New()
+	if err != nil {
+		t.Fatalf("create validator: %v", err)
+	}
+	if err := validator.Validate(&servicepb.SubmitCatalogSnapshotResponse{}); err == nil {
+		t.Fatal("zero catalog generation passed contract validation")
+	}
+	response := &servicepb.SubmitCatalogSnapshotResponse{}
+	response.SetGeneration(1)
+	if err := validator.Validate(response); err != nil {
+		t.Fatalf("positive catalog generation failed contract validation: %v", err)
 	}
 }
 

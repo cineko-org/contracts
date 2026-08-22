@@ -15,7 +15,7 @@ import "cineko/seatmap/seatmap.proto";
 option go_package = "github.com/cineko-org/contracts/v3/gen/go/cineko/service;service";
 
 message SubmitAssignmentResultResponse {
-  cineko.observation.ResultReceipt receipt = 1;
+  cineko.observation.ResultReceipt receipt = 1 [(buf.validate.field).required = true];
 }
 
 message DisconnectRequest {}
@@ -34,31 +34,31 @@ message ExchangePinRequest {
   cineko.client.PinExchangeRequest request = 1 [(buf.validate.field).required = true];
 }
 message ExchangePinResponse {
-  cineko.client.AuthenticationResponse authentication = 1;
+  cineko.client.AuthenticationResponse authentication = 1 [(buf.validate.field).required = true];
 }
 message ExchangeTokenRequest {
   cineko.client.TokenExchangeRequest request = 1 [(buf.validate.field).required = true];
 }
 message ExchangeTokenResponse {
-  cineko.client.AuthenticationResponse authentication = 1;
+  cineko.client.AuthenticationResponse authentication = 1 [(buf.validate.field).required = true];
 }
 message RefreshTokenRequest {
   cineko.client.TokenRefreshRequest request = 1 [(buf.validate.field).required = true];
 }
 message RefreshTokenResponse {
-  cineko.client.AuthenticationResponse authentication = 1;
+  cineko.client.AuthenticationResponse authentication = 1 [(buf.validate.field).required = true];
 }
 message CreateLaunchTicketRequest {
   cineko.client.LaunchTicketRequest request = 1 [(buf.validate.field).required = true];
 }
 message CreateLaunchTicketResponse {
-  cineko.client.LaunchTicketResponse response = 1;
+  cineko.client.LaunchTicketResponse response = 1 [(buf.validate.field).required = true];
 }
 message ExchangeSessionRequest {
   cineko.client.SessionExchangeRequest request = 1 [(buf.validate.field).required = true];
 }
 message ExchangeSessionResponse {
-  cineko.client.AuthenticationResponse authentication = 1;
+  cineko.client.AuthenticationResponse authentication = 1 [(buf.validate.field).required = true];
 }
 message LogoutRequest {}
 message LogoutResponse {}
@@ -66,7 +66,7 @@ message CreateProbeBootstrapTicketRequest {
   cineko.client.ProbeBootstrapTicketRequest request = 1 [(buf.validate.field).required = true];
 }
 message CreateProbeBootstrapTicketResponse {
-  cineko.client.ProbeBootstrapTicketResponse response = 1;
+  cineko.client.ProbeBootstrapTicketResponse response = 1 [(buf.validate.field).required = true];
 }
 
 service ClientAuthenticationService {
@@ -86,7 +86,7 @@ message BootstrapRequest {
   ];
 }
 message BootstrapResponse {
-  cineko.client.Bootstrap bootstrap = 1;
+  cineko.client.Bootstrap bootstrap = 1 [(buf.validate.field).required = true];
 }
 message GetResourceRequest {
   cineko.client.ResourceKind kind = 1 [(buf.validate.field).required = true];
@@ -96,7 +96,7 @@ message GetResourceRequest {
   ];
 }
 message GetResourceResponse {
-  cineko.client.Resource resource = 1;
+  cineko.client.Resource resource = 1 [(buf.validate.field).required = true];
 }
 message ListResourcesRequest {
   cineko.client.ResourceKind kind = 1 [(buf.validate.field).required = true];
@@ -111,7 +111,7 @@ message PutResourceRequest {
   cineko.client.Resource resource = 2 [(buf.validate.field).required = true];
 }
 message PutResourceResponse {
-  cineko.client.Resource resource = 1;
+  cineko.client.Resource resource = 1 [(buf.validate.field).required = true];
 }
 message DeleteResourceRequest {
   cineko.common.MutationIdentity mutation = 1 [(buf.validate.field).required = true];
@@ -126,7 +126,7 @@ message UpsertDeviceRequest {
   cineko.client.Device device = 1 [(buf.validate.field).required = true];
 }
 message UpsertDeviceResponse {
-  cineko.client.Device device = 1;
+  cineko.client.Device device = 1 [(buf.validate.field).required = true];
 }
 message StreamEventsRequest {
   int64 after_sequence = 1 [
@@ -155,7 +155,7 @@ service ClientResourceService {
 
 message GetCatalogRequest {}
 message GetCatalogResponse {
-  cineko.catalog.CatalogIndex catalog = 1;
+  cineko.catalog.CatalogIndex catalog = 1 [(buf.validate.field).required = true];
 }
 message GetAuditoriumsRequest {
   string theater_id = 1 [
@@ -188,7 +188,10 @@ message SubmitCatalogSnapshotRequest {
   cineko.catalog.CatalogSnapshot snapshot = 1 [(buf.validate.field).required = true];
 }
 message SubmitCatalogSnapshotResponse {
-  int64 generation = 1 [(buf.validate.field).int64.gte = 0];
+  int64 generation = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).int64.gt = 0
+  ];
 }
 message SubmitLiveSeatObservationRequest {
   cineko.common.MutationIdentity mutation = 1 [(buf.validate.field).required = true];
@@ -219,43 +222,61 @@ service ExecutionService {
 }
 
 message GetRuntimeReleaseRequest {
-  string channel = 1;
-  string platform = 2;
-  string architecture = 3;
+  string channel = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string platform = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string architecture = 3 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
 }
 message GetRuntimeReleaseResponse {
-  cineko.release.RuntimeRelease release = 1;
+  cineko.release.RuntimeRelease release = 1 [(buf.validate.field).required = true];
 }
 message GetLauncherReleaseRequest {
-  string channel = 1;
-  string platform = 2;
-  string architecture = 3;
+  string channel = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string platform = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string architecture = 3 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
 }
 message GetLauncherReleaseResponse {
-  cineko.release.LauncherRelease release = 1;
+  cineko.release.LauncherRelease release = 1 [(buf.validate.field).required = true];
 }
 message GetReleaseRegistryRequest {}
 message GetReleaseRegistryResponse {
-  cineko.release.Registry registry = 1;
+  cineko.release.Registry registry = 1 [(buf.validate.field).required = true];
 }
 message PublishClientRequest {
-  cineko.release.ClientReleaseSet release_set = 1;
+  cineko.release.ClientReleaseSet release_set = 1 [(buf.validate.field).required = true];
 }
 message PublishClientResponse {}
 message PublishBrowserRequest {
-  cineko.release.BrowserReleaseSet release_set = 1;
+  cineko.release.BrowserReleaseSet release_set = 1 [(buf.validate.field).required = true];
 }
 message PublishBrowserResponse {}
 message PublishPlaywrightRequest {
-  cineko.release.PlaywrightReleaseSet release_set = 1;
+  cineko.release.PlaywrightReleaseSet release_set = 1 [(buf.validate.field).required = true];
 }
 message PublishPlaywrightResponse {}
 message PublishLauncherRequest {
-  cineko.release.LauncherReleaseSet release_set = 1;
+  cineko.release.LauncherReleaseSet release_set = 1 [(buf.validate.field).required = true];
 }
 message PublishLauncherResponse {}
 message PublishProbeRequest {
-  cineko.release.ProbeReleaseSet release_set = 1;
+  cineko.release.ProbeReleaseSet release_set = 1 [(buf.validate.field).required = true];
 }
 message PublishProbeResponse {}
 
