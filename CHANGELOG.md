@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.5.3](https://github.com/cineko-org/contracts/compare/v3.5.2...v3.5.3) (2026-08-22)
+
+
+### Bug Fixes
+
+* scope catalog assignments by provider ([#29](https://github.com/cineko-org/contracts/issues/29)) ([f3fc1d8](https://github.com/cineko-org/contracts/commit/f3fc1d80ac102442c6c94aff843092f55b4fd52b))
+
 ## [3.5.2](https://github.com/cineko-org/contracts/compare/v3.5.1...v3.5.2) (2026-08-22)
 
 
