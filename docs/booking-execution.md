@@ -69,9 +69,14 @@ lane. The scheduler must reserve capacity for ordinary observation so sustained 
 
 ## Seat presets
 
-A stored seat layout is never required to create a preset or start an execution. Presets are rules applied to the
-live seat response: party size, adjacent-seat requirement, preferred rows and types, edge avoidance, and optional
-explicit candidate labels. When explicit labels are absent, every currently available seat is a candidate.
+Central's cached seat layout is required to render and save an auditorium seat
+preset. Presets are rules applied to the live seat response: party size,
+adjacent-seat requirement, preferred rows and types, edge avoidance, and
+optional explicit candidate labels. When explicit labels are absent, every
+currently available seat is a candidate.
 
-Static seat layouts may be retained for analysis or preview, but they are disposable hints. They cannot gate a
-monitor, an execution command, or seat selection, and they are never authoritative over the live CGV response.
+The cached layout is not the live availability authority. Central must have an
+exact layout-aware live observation before emitting an execution command for a
+seat-constrained monitor. Client still reads the provider's live seats
+immediately before selection and stops if the current response no longer proves
+the command.

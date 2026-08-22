@@ -8,8 +8,8 @@ Catalog identity and timestamped observations are separate data.
 | --- | --- | --- | --- |
 | `cgv.catalog.capture` | Provider, locale, time zone, egress policy | One validated catalog payload for the reported scope | Empty or partially parsed provider data fails the task |
 | `cgv.schedule.capture` | One theater and an explicit date set | One `Capture` for every requested date | Every candidate showtime must parse; a failed date is `complete=false` and cannot prove absence |
-| `cgv.seat-map.capture` | Exact theater and auditorium, a bounded date set, and an optional exact-showtime hint | One immutable static layout snapshot | The Probe must visit a currently bookable showtime for that auditorium; stored metadata alone never proves the layout |
-| `cgv.seat-availability.capture` | One exact showtime with its theater and auditorium | One timestamped layout hash and complete set of available seat IDs | Missing, partial, challenged, or identity-mismatched seat data fails the task; it never proves no seats are available |
+| `cgv.seat-map.capture` | Exact theater and auditorium, a bounded date set, and an optional exact-showtime hint | One atomic `Completed.live_seat` observation; Central persists its layout component as the immutable auditorium snapshot | The Probe must visit a currently bookable showtime for that auditorium; stored metadata alone never proves the layout |
+| `cgv.seat-availability.capture` | One exact showtime with its theater and auditorium | One atomic `Completed.live_seat` observation containing the current layout and complete available-seat set | Missing, partial, challenged, or identity-mismatched seat data fails the task; it never proves no seats are available |
 
 The verified full-catalog source currently enumerates theaters only. Movies, auditoriums, and showtimes are added
 from structured schedule responses, where their provider identifiers are present. Reporters must not guess a movie
@@ -46,14 +46,30 @@ requires a future wire revision that makes scope and completeness explicit.
 - `CatalogID(provider, kind, sourceKey)` is the only canonical ID derivation. Reporters do not invent opaque IDs.
 - `ObservedAt` records when the reporter saw the value. Central receipt time never replaces it.
 
-## Result states
+## Assignment result states
 
-- `completed`: every requested date is complete, or the single catalog/seat-map payload is valid.
-- `partial`: at least one requested date is complete and at least one is explicitly incomplete.
-- `failed`: no requested date is complete, parsing is ambiguous, or task execution failed.
+An assignment result is exactly one of these typed outcomes:
 
-An incomplete capture may carry diagnostic `errorCode`, but it must not remove showtimes or assert that none exist.
-Central deduplicates exact result replays and retains observations independently from catalog revisions.
+| Outcome | Meaning | Central action |
+| --- | --- | --- |
+| `completed` | The requested capture is valid. A live-seat capture includes layout and availability from the same provider response. | Commit the observation and advance the relevant coverage cursor. |
+| `deferred` | The Probe reached a valid stopping point but cannot observe the requested fact yet. `showtime_not_discovered` means the catalog has no matching future showtime yet; `no_bookable_showtime` means the catalog had candidates but none was currently bookable. | Preserve the typed reason and let Central choose the next attempt. |
+| `failed` | The provider or execution boundary could not produce a trustworthy result. | Apply Central's reason-specific retry or blocked policy. |
+
+Both seat-page objectives remain distinct because one discovers a static layout
+and the other refreshes an exact show's availability. They share the same
+atomic wire result: a successful seat-page response always carries
+`Completed.live_seat`, with layout and availability tied to one auditorium and
+layout hash. There is no standalone `Completed.seat_map` payload.
+
+Probe reports facts through the `DeferredReason` oneof. Central derives the
+durable `WaitingReason` for a resolution: `showtime_not_discovered` means the
+catalog has not exposed a matching future showtime yet, while
+`no_bookable_showtime` and `target_date_unavailable` may be reported by a Probe
+when it has inspected the requested scope. A Probe does not set a `retryable`
+boolean or choose a backoff.
+An incomplete capture may not remove showtimes or assert that none exist. Central deduplicates exact result replays and
+retains observations independently from catalog revisions.
 
 ## Seat-map validation
 
@@ -62,6 +78,33 @@ layout. Central returns its stored current layout immediately to Clients and
 never blocks that read on provider access. Freshness and change detection are a
 separate background concern and require revisiting a provider seat page; Central
 must not invent a time-to-live.
+
+The response contains an optional cached `Snapshot` and one required
+`cineko.collection.State`. `idle` is valid only when the snapshot is present; an empty auditorium
+must be represented as `queued`, never as an empty idle response. A cached
+snapshot therefore remains usable while validation is queued,
+running, waiting for a showtime, scheduled for retry, or blocked. Client does
+not receive an assignment ID and does not poll at a fixed cadence. It calls
+`ResolveSeatMap` for the current state and subscribes to `WatchSeatMap` for
+durable changes; reconnecting always starts with the current Central state.
+
+The state machine is:
+
+```text
+idle -> queued -> collecting -> idle(snapshot)
+                         \-> waiting_for_showtime
+                         \-> retry_scheduled -> queued
+                         \-> blocked
+```
+
+`idle` without a snapshot is an invalid Central domain state. The queued state
+records a typed trigger (`client_request`, `active_monitor`, `layout_missing`,
+`layout_changed`, `catalog_refresh`, or `operator_request`) so Central does not
+persist free-form trigger strings. A
+`waiting_for_showtime` state is not an error and is woken by a catalog/showtime
+change. A `retry_scheduled` state is woken by its durable `next_attempt_at`. A
+`blocked` state requires a new objective trigger or operator action; the
+reconciler must not recreate it every maintenance tick.
 
 Central requests one validation when any of these objective events occurs:
 
@@ -78,4 +121,14 @@ or run the collection mechanism. A matching Probe observation only advances
 For a missing layout, Central provides a bounded date set and the Probe chooses
 the earliest currently bookable showtime in the requested auditorium. An exact
 showtime is only a hint and must not be required for first collection. When no
-future bookable showtime exists, the state is `unverifiable`, not `fresh`.
+future matching showtime is known, the resolution is `waiting_for_showtime`
+with Central's typed `showtime_not_discovered` reason. When matching candidates
+exist but none is currently bookable, the Probe assignment is `deferred` with
+`no_bookable_showtime`, and Central maps that fact to the same waiting state. In both cases the resolution is not
+`fresh` or a generic failure.
+
+When a live-seat response contains a different layout hash, Central stores the
+new immutable layout version, stores the availability observation, evaluates
+seat presets against that exact layout, and emits any execution signal in one
+transaction. A separate follow-up layout request is forbidden for the same
+provider response.

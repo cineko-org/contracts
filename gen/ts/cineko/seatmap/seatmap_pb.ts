@@ -5,6 +5,8 @@
 import type { GenFile, GenMessage } from "@bufbuild/protobuf/codegenv2";
 import { fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv2";
 import { file_buf_validate_validate } from "../../buf/validate/validate_pb";
+import type { State } from "../collection/collection_pb";
+import { file_cineko_collection_collection } from "../collection/collection_pb";
 import type { Timestamp } from "@bufbuild/protobuf/wkt";
 import { file_google_protobuf_timestamp } from "@bufbuild/protobuf/wkt";
 import type { Message } from "@bufbuild/protobuf";
@@ -13,7 +15,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file cineko/seatmap/seatmap.proto.
  */
 export const file_cineko_seatmap_seatmap: GenFile = /*@__PURE__*/
-  fileDesc("ChxjaW5la28vc2VhdG1hcC9zZWF0bWFwLnByb3RvEg5jaW5la28uc2VhdG1hcCL2AgoEU2VhdBIKCgJpZBgBIAEoCRIVCg1hdWRpdG9yaXVtX2lkGAIgASgJEg0KBWxhYmVsGAMgASgJEgsKA3JvdxgEIAEoCRIOCgZudW1iZXIYBSABKAUSCQoBeBgGIAEoARIJCgF5GAcgASgBEgwKBHR5cGUYCCABKAkSEQoJem9uZV9uYW1lGAkgASgJEhEKCXpvbmVfa2luZBgKIAEoCRIWCg5zYWxlX2Zvcm1fY29kZRgLIAEoCRIWCg5zYWxlX2Zvcm1fbmFtZRgMIAEoCRISCgpsZWZ0X2Fpc2xlGA0gASgIEhMKC3JpZ2h0X2Fpc2xlGA4gASgIEhAKCGZlYXR1cmVzGA8gAygJEhQKDHNvdXJjZV9sYWJlbBgQIAEoCRIdChVzb3VyY2Vfc2VhdF9raW5kX2NvZGUYESABKAkSHQoVc291cmNlX3NlYXRfa2luZF9uYW1lGBIgASgJEhYKDnNvdXJjZV9jbGFzc2VzGBMgAygJIpwBCgpMYXlvdXRab25lEgwKBGNvZGUYASABKAkSDAoEbmFtZRgCIAEoCRIRCglraW5kX2NvZGUYAyABKAkSEQoJa2luZF9uYW1lGAQgASgJEg0KBW1pbl94GAUgASgBEg0KBW1heF94GAYgASgBEg0KBW1pbl95GAcgASgBEg0KBW1heF95GAggASgBEhAKCGNhcGFjaXR5GAkgASgFIosBCgtMYXlvdXRCbG9jaxIMCgRjb2RlGAEgASgJEgwKBG5hbWUYAiABKAkSEQoJa2luZF9jb2RlGAMgASgJEhEKCWtpbmRfbmFtZRgEIAEoCRINCgVtaW5feBgFIAEoARINCgVtYXhfeBgGIAEoARINCgVtaW5feRgHIAEoARINCgVtYXhfeRgIIAEoASKFAQoGTGF5b3V0EiMKBXNlYXRzGAEgAygLMhQuY2luZWtvLnNlYXRtYXAuU2VhdBIpCgV6b25lcxgCIAMoCzIaLmNpbmVrby5zZWF0bWFwLkxheW91dFpvbmUSKwoGYmxvY2tzGAMgAygLMhsuY2luZWtvLnNlYXRtYXAuTGF5b3V0QmxvY2sirQEKCFNuYXBzaG90EgoKAmlkGAEgASgJEhUKDWF1ZGl0b3JpdW1faWQYAiABKAkSEwoLbGF5b3V0X2hhc2gYAyABKAkSEAoIY2FwYWNpdHkYBCABKAUSJgoGbGF5b3V0GAUgASgLMhYuY2luZWtvLnNlYXRtYXAuTGF5b3V0Ei8KC29ic2VydmVkX2F0GAYgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCIsCg1BdmFpbGFibGVTZWF0EhsKB3NlYXRfaWQYASABKAlCCrpIB8gBAXICEAEi+gEKFEF2YWlsYWJpbGl0eVNuYXBzaG90Eh8KC3Nob3d0aW1lX2lkGAEgASgJQgq6SAfIAQFyAhABEiEKDWF1ZGl0b3JpdW1faWQYAiABKAlCCrpIB8gBAXICEAESLQoLbGF5b3V0X2hhc2gYAyABKAlCGLpIFcgBAXIQMg5eWzAtOWEtZl17NjR9JBI2Cg9hdmFpbGFibGVfc2VhdHMYBCADKAsyHS5jaW5la28uc2VhdG1hcC5BdmFpbGFibGVTZWF0EjcKC29ic2VydmVkX2F0GAUgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEIGukgDyAEBIjMKBVJlYWR5EioKCHNuYXBzaG90GAEgASgLMhguY2luZWtvLnNlYXRtYXAuU25hcHNob3QiUwoNQ2FwdHVyZVF1ZXVlZBIPCgd0YXNrX2lkGAEgASgJEjEKDW5leHRfY2hlY2tfYXQYAiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIiMKDFVudmVyaWZpYWJsZRITCgtyZWFzb25fY29kZRgBIAEoCSK0AQoKUmVzb2x1dGlvbhImCgVyZWFkeRgBIAEoCzIVLmNpbmVrby5zZWF0bWFwLlJlYWR5SAASNwoOY2FwdHVyZV9xdWV1ZWQYAiABKAsyHS5jaW5la28uc2VhdG1hcC5DYXB0dXJlUXVldWVkSAASNAoMdW52ZXJpZmlhYmxlGAMgASgLMhwuY2luZWtvLnNlYXRtYXAuVW52ZXJpZmlhYmxlSABCDwoGcmVzdWx0EgW6SAIIAUI/Wj1naXRodWIuY29tL2NpbmVrby1vcmcvY29udHJhY3RzL2dlbi9nby9jaW5la28vc2VhdG1hcDtzZWF0bWFwYghlZGl0aW9uc3DpBw", [file_buf_validate_validate, file_google_protobuf_timestamp]);
+  fileDesc("ChxjaW5la28vc2VhdG1hcC9zZWF0bWFwLnByb3RvEg5jaW5la28uc2VhdG1hcCKOAwoEU2VhdBIWCgJpZBgBIAEoCUIKukgHyAEBcgIQARIhCg1hdWRpdG9yaXVtX2lkGAIgASgJQgq6SAfIAQFyAhABEg0KBWxhYmVsGAMgASgJEgsKA3JvdxgEIAEoCRIOCgZudW1iZXIYBSABKAUSCQoBeBgGIAEoARIJCgF5GAcgASgBEgwKBHR5cGUYCCABKAkSEQoJem9uZV9uYW1lGAkgASgJEhEKCXpvbmVfa2luZBgKIAEoCRIWCg5zYWxlX2Zvcm1fY29kZRgLIAEoCRIWCg5zYWxlX2Zvcm1fbmFtZRgMIAEoCRISCgpsZWZ0X2Fpc2xlGA0gASgIEhMKC3JpZ2h0X2Fpc2xlGA4gASgIEhAKCGZlYXR1cmVzGA8gAygJEhQKDHNvdXJjZV9sYWJlbBgQIAEoCRIdChVzb3VyY2Vfc2VhdF9raW5kX2NvZGUYESABKAkSHQoVc291cmNlX3NlYXRfa2luZF9uYW1lGBIgASgJEhYKDnNvdXJjZV9jbGFzc2VzGBMgAygJIpwBCgpMYXlvdXRab25lEgwKBGNvZGUYASABKAkSDAoEbmFtZRgCIAEoCRIRCglraW5kX2NvZGUYAyABKAkSEQoJa2luZF9uYW1lGAQgASgJEg0KBW1pbl94GAUgASgBEg0KBW1heF94GAYgASgBEg0KBW1pbl95GAcgASgBEg0KBW1heF95GAggASgBEhAKCGNhcGFjaXR5GAkgASgFIosBCgtMYXlvdXRCbG9jaxIMCgRjb2RlGAEgASgJEgwKBG5hbWUYAiABKAkSEQoJa2luZF9jb2RlGAMgASgJEhEKCWtpbmRfbmFtZRgEIAEoCRINCgVtaW5feBgFIAEoARINCgVtYXhfeBgGIAEoARINCgVtaW5feRgHIAEoARINCgVtYXhfeRgIIAEoASKYAgoGTGF5b3V0EiMKBXNlYXRzGAEgAygLMhQuY2luZWtvLnNlYXRtYXAuU2VhdBIpCgV6b25lcxgCIAMoCzIaLmNpbmVrby5zZWF0bWFwLkxheW91dFpvbmUSKwoGYmxvY2tzGAMgAygLMhsuY2luZWtvLnNlYXRtYXAuTGF5b3V0QmxvY2s6kAG6SIwBGokBChZ1bmlxdWVfbGF5b3V0X3NlYXRfaWRzEh5sYXlvdXQgc2VhdCBJRHMgbXVzdCBiZSB1bmlxdWUaT3RoaXMuc2VhdHMuYWxsKHNlYXQsIHRoaXMuc2VhdHMuZmlsdGVyKG90aGVyLCBvdGhlci5pZCA9PSBzZWF0LmlkKS5zaXplKCkgPT0gMSki9wMKCFNuYXBzaG90EhYKAmlkGAEgASgJQgq6SAfIAQFyAhABEiEKDWF1ZGl0b3JpdW1faWQYAiABKAlCCrpIB8gBAXICEAESLQoLbGF5b3V0X2hhc2gYAyABKAlCGLpIFcgBAXIQMg5eWzAtOWEtZl17NjR9JBIZCghjYXBhY2l0eRgEIAEoBUIHukgEGgIgABIuCgZsYXlvdXQYBSABKAsyFi5jaW5la28uc2VhdG1hcC5MYXlvdXRCBrpIA8gBARI3CgtvYnNlcnZlZF9hdBgGIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBCBrpIA8gBATr8AbpI+AEa9QEKIHNuYXBzaG90X2NhcGFjaXR5X21hdGNoZXNfbGF5b3V0EjxzbmFwc2hvdCBjYXBhY2l0eSBhbmQgc2VhdCBhdWRpdG9yaXVtcyBtdXN0IG1hdGNoIHRoZSBsYXlvdXQakgF0aGlzLmxheW91dC5zZWF0cy5zaXplKCkgPiAwICYmIHRoaXMuY2FwYWNpdHkgPT0gdGhpcy5sYXlvdXQuc2VhdHMuc2l6ZSgpICYmIHRoaXMubGF5b3V0LnNlYXRzLmFsbChzZWF0LCBzZWF0LmF1ZGl0b3JpdW1faWQgPT0gdGhpcy5hdWRpdG9yaXVtX2lkKSIsCg1BdmFpbGFibGVTZWF0EhsKB3NlYXRfaWQYASABKAlCCrpIB8gBAXICEAEisQMKFEF2YWlsYWJpbGl0eVNuYXBzaG90Eh8KC3Nob3d0aW1lX2lkGAEgASgJQgq6SAfIAQFyAhABEiEKDWF1ZGl0b3JpdW1faWQYAiABKAlCCrpIB8gBAXICEAESLQoLbGF5b3V0X2hhc2gYAyABKAlCGLpIFcgBAXIQMg5eWzAtOWEtZl17NjR9JBI2Cg9hdmFpbGFibGVfc2VhdHMYBCADKAsyHS5jaW5la28uc2VhdG1hcC5BdmFpbGFibGVTZWF0EjcKC29ic2VydmVkX2F0GAUgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEIGukgDyAEBOrQBukiwARqtAQoZdW5pcXVlX2F2YWlsYWJsZV9zZWF0X2lkcxIhYXZhaWxhYmxlIHNlYXQgSURzIG11c3QgYmUgdW5pcXVlGm10aGlzLmF2YWlsYWJsZV9zZWF0cy5hbGwoc2VhdCwgdGhpcy5hdmFpbGFibGVfc2VhdHMuZmlsdGVyKG90aGVyLCBvdGhlci5zZWF0X2lkID09IHNlYXQuc2VhdF9pZCkuc2l6ZSgpID09IDEpIvgDChNMaXZlU2VhdE9ic2VydmF0aW9uEjAKBmxheW91dBgBIAEoCzIYLmNpbmVrby5zZWF0bWFwLlNuYXBzaG90Qga6SAPIAQESQgoMYXZhaWxhYmlsaXR5GAIgASgLMiQuY2luZWtvLnNlYXRtYXAuQXZhaWxhYmlsaXR5U25hcHNob3RCBrpIA8gBATrqArpI5gIa4wIKIm1hdGNoaW5nX2xpdmVfb2JzZXJ2YXRpb25faWRlbnRpdHkSSWxheW91dCBhbmQgYXZhaWxhYmlsaXR5IG11c3QgZGVzY3JpYmUgdGhlIHNhbWUgYXVkaXRvcml1bSBhbmQgbGF5b3V0IGhhc2ga8QF0aGlzLmxheW91dC5hdWRpdG9yaXVtX2lkID09IHRoaXMuYXZhaWxhYmlsaXR5LmF1ZGl0b3JpdW1faWQgJiYgdGhpcy5sYXlvdXQubGF5b3V0X2hhc2ggPT0gdGhpcy5hdmFpbGFiaWxpdHkubGF5b3V0X2hhc2ggJiYgdGhpcy5hdmFpbGFiaWxpdHkuYXZhaWxhYmxlX3NlYXRzLmFsbChhdmFpbGFibGUsIHRoaXMubGF5b3V0LmxheW91dC5zZWF0cy5leGlzdHMoc2VhdCwgc2VhdC5pZCA9PSBhdmFpbGFibGUuc2VhdF9pZCkpIuoBCgpSZXNvbHV0aW9uEioKCHNuYXBzaG90GAEgASgLMhguY2luZWtvLnNlYXRtYXAuU25hcHNob3QSLwoFc3RhdGUYAiABKAsyGC5jaW5la28uY29sbGVjdGlvbi5TdGF0ZUIGukgDyAEBOn+6SHwaegoWaWRsZV9yZXF1aXJlc19zbmFwc2hvdBIzaWRsZSBzZWF0LW1hcCByZXNvbHV0aW9uIHJlcXVpcmVzIGEgY2FjaGVkIHNuYXBzaG90GishaGFzKHRoaXMuc3RhdGUuaWRsZSkgfHwgaGFzKHRoaXMuc25hcHNob3QpQj9aPWdpdGh1Yi5jb20vY2luZWtvLW9yZy9jb250cmFjdHMvZ2VuL2dvL2NpbmVrby9zZWF0bWFwO3NlYXRtYXBiCGVkaXRpb25zcOkH", [file_buf_validate_validate, file_cineko_collection_collection, file_google_protobuf_timestamp]);
 
 /**
  * @generated from message cineko.seatmap.Seat
@@ -318,8 +320,7 @@ export const AvailableSeatSchema: GenMessage<AvailableSeat> = /*@__PURE__*/
   messageDesc(file_cineko_seatmap_seatmap, 5);
 
 /**
- * AvailabilitySnapshot is one complete live view for an exact showtime. The
- * static layout remains a separately versioned auditorium resource.
+ * AvailabilitySnapshot is one complete live view for an exact showtime.
  *
  * @generated from message cineko.seatmap.AvailabilitySnapshot
  */
@@ -358,87 +359,47 @@ export const AvailabilitySnapshotSchema: GenMessage<AvailabilitySnapshot> = /*@_
   messageDesc(file_cineko_seatmap_seatmap, 6);
 
 /**
- * @generated from message cineko.seatmap.Ready
+ * LiveSeatObservation is the atomic Probe result for an exact showtime. The
+ * provider response supplies both the current layout and current availability.
+ *
+ * @generated from message cineko.seatmap.LiveSeatObservation
  */
-export type Ready = Message<"cineko.seatmap.Ready"> & {
+export type LiveSeatObservation = Message<"cineko.seatmap.LiveSeatObservation"> & {
   /**
-   * @generated from field: cineko.seatmap.Snapshot snapshot = 1;
+   * @generated from field: cineko.seatmap.Snapshot layout = 1;
    */
-  snapshot?: Snapshot | undefined;
+  layout?: Snapshot | undefined;
+
+  /**
+   * @generated from field: cineko.seatmap.AvailabilitySnapshot availability = 2;
+   */
+  availability?: AvailabilitySnapshot | undefined;
 };
 
 /**
- * Describes the message cineko.seatmap.Ready.
- * Use `create(ReadySchema)` to create a new message.
+ * Describes the message cineko.seatmap.LiveSeatObservation.
+ * Use `create(LiveSeatObservationSchema)` to create a new message.
  */
-export const ReadySchema: GenMessage<Ready> = /*@__PURE__*/
+export const LiveSeatObservationSchema: GenMessage<LiveSeatObservation> = /*@__PURE__*/
   messageDesc(file_cineko_seatmap_seatmap, 7);
-
-/**
- * @generated from message cineko.seatmap.CaptureQueued
- */
-export type CaptureQueued = Message<"cineko.seatmap.CaptureQueued"> & {
-  /**
-   * @generated from field: string task_id = 1;
-   */
-  taskId: string;
-
-  /**
-   * @generated from field: google.protobuf.Timestamp next_check_at = 2;
-   */
-  nextCheckAt?: Timestamp | undefined;
-};
-
-/**
- * Describes the message cineko.seatmap.CaptureQueued.
- * Use `create(CaptureQueuedSchema)` to create a new message.
- */
-export const CaptureQueuedSchema: GenMessage<CaptureQueued> = /*@__PURE__*/
-  messageDesc(file_cineko_seatmap_seatmap, 8);
-
-/**
- * @generated from message cineko.seatmap.Unverifiable
- */
-export type Unverifiable = Message<"cineko.seatmap.Unverifiable"> & {
-  /**
-   * @generated from field: string reason_code = 1;
-   */
-  reasonCode: string;
-};
-
-/**
- * Describes the message cineko.seatmap.Unverifiable.
- * Use `create(UnverifiableSchema)` to create a new message.
- */
-export const UnverifiableSchema: GenMessage<Unverifiable> = /*@__PURE__*/
-  messageDesc(file_cineko_seatmap_seatmap, 9);
 
 /**
  * @generated from message cineko.seatmap.Resolution
  */
 export type Resolution = Message<"cineko.seatmap.Resolution"> & {
   /**
-   * @generated from oneof cineko.seatmap.Resolution.result
+   * A cached layout may coexist with any collection state. The absence of a
+   * snapshot is valid only while collection is in progress; Central must never
+   * expose idle without a current snapshot.
+   *
+   * @generated from field: cineko.seatmap.Snapshot snapshot = 1;
    */
-  result: {
-    /**
-     * @generated from field: cineko.seatmap.Ready ready = 1;
-     */
-    value: Ready;
-    case: "ready";
-  } | {
-    /**
-     * @generated from field: cineko.seatmap.CaptureQueued capture_queued = 2;
-     */
-    value: CaptureQueued;
-    case: "captureQueued";
-  } | {
-    /**
-     * @generated from field: cineko.seatmap.Unverifiable unverifiable = 3;
-     */
-    value: Unverifiable;
-    case: "unverifiable";
-  } | { case: undefined; value?: undefined };
+  snapshot?: Snapshot | undefined;
+
+  /**
+   * @generated from field: cineko.collection.State state = 2;
+   */
+  state?: State | undefined;
 };
 
 /**
@@ -446,4 +407,4 @@ export type Resolution = Message<"cineko.seatmap.Resolution"> & {
  * Use `create(ResolutionSchema)` to create a new message.
  */
 export const ResolutionSchema: GenMessage<Resolution> = /*@__PURE__*/
-  messageDesc(file_cineko_seatmap_seatmap, 10);
+  messageDesc(file_cineko_seatmap_seatmap, 8);

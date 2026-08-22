@@ -8,7 +8,9 @@ permissions:
 
 jobs:
   quality:
+    if: ${{ !startsWith(github.head_ref, 'release-please--') }}
     runs-on: ubuntu-24.04
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v7
         with:
@@ -17,7 +19,7 @@ jobs:
         with:
           go-version-file: go.mod
           cache: true
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           node-version-file: .node-version
           cache: npm
@@ -27,3 +29,13 @@ jobs:
           github_token: ${{ github.token }}
       - run: npm ci
       - run: make check
+
+  release-metadata:
+    if: ${{ startsWith(github.head_ref, 'release-please--') }}
+    name: quality
+    runs-on: ubuntu-24.04
+    timeout-minutes: 2
+    steps:
+      - uses: actions/checkout@v7
+      - name: Validate generated release metadata
+        run: bash scripts/verify-release-metadata.sh

@@ -36,8 +36,11 @@ behaviour below.
 1. Central bootstraps the theater catalog when a capable Probe exists. With no
    Probe or no catalog, the system reports a durable waiting reason; Client does
    not fall back to a private full-catalog scan.
-2. The user creates a seat preset. A missing static layout may reduce the preview,
-   but it never blocks saving the rule or starting a monitor.
+2. The user creates a seat preset. Central must resolve and return its cached
+   auditorium layout for preview before the preset is saved. If the layout is
+   not cached, the user sees the Central collection state and the preset remains
+   unsaved until a layout can be displayed. This does not make the cached layout
+   authoritative for final seat selection.
 3. The user chooses a movie, preset, explicit dates and/or weekdays, a rolling
    horizon, and an optional civil showtime window. Central derives every provider
    date that must be scanned.
@@ -79,11 +82,12 @@ idle when no deadline exists.
   and the normalized set of currently available seat IDs.
 - Central hashes the complete availability set. An unchanged hash is acknowledged
   but does not create another durable snapshot or execution command.
-- Central joins the availability set with the active static layout and evaluates
-  every matching preset. It wakes only monitors for which at least one valid seat
-  group exists. If the layout is missing or changed, Central also schedules layout
-  validation; it may issue a coarse positive wake because Client remains the live
-  authority.
+- Central joins the availability set with the layout returned in the same live
+  observation and evaluates every matching preset. It wakes only monitors for
+  which at least one valid seat group exists. If the layout hash changed, Central
+  atomically stores the new immutable layout and availability observation before
+  emitting the signal. A coarse positive wake without exact layout proof is
+  forbidden.
 - A failed command with `preferred_seats_unavailable` or
   `showtime_unavailable` is rearmed only by a later, distinct positive signal.
   Time alone and a positive aggregate seat count are insufficient.

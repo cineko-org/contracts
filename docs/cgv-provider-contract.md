@@ -78,20 +78,22 @@ integration boundary. `data-seatlocno` is a seat selector only.
 Provider keys are normalized by trimming surrounding whitespace and by
 normalizing `scnYmd` to `YYYY-MM-DD`. Missing components are invalid.
 
-| Entity | Canonical provider source key | Display-only fields |
+| Entity | Canonical provider identity | Display-only fields |
 | --- | --- | --- |
-| Theater | `siteNo` | `siteNm`, region name |
-| Movie | `movNo` | `movNm`, poster, rating |
-| Auditorium | `siteNo/scnsNo` | `scnsNm`, format labels |
-| Showtime | `siteNo/YYYY-MM-DD/scnsNo/scnSseq` | title, auditorium name, start/end time |
+| Theater | typed `CgvTheaterIdentity.siteNo` | `siteNm`, region name |
+| Movie | typed `CgvMovieIdentity.movieNo` (`movNo`) | `movNm`, poster, rating |
+| Auditorium | typed `CgvAuditoriumIdentity.siteNo` + `screenNo` (`scnsNo`) | `scnsNm`, format labels |
+| Showtime | typed `CgvShowtimeIdentity.siteNo` + `scheduleDate` + `screenNo` + `sequence` | title, auditorium name, start/end time |
 
-The Cineko catalog ID is `CatalogID("cgv", kind, sourceKey)`. A display-name
-change must not change the ID. Two rows with different `scnSseq` are different
-showtimes even when their displayed movie, auditorium, and time are equal.
+The Cineko catalog ID is derived by Central from the typed identity oneof and
+the provider kind. A display-name change must not change the ID. Two rows with
+different `scnSseq` are different showtimes even when their displayed movie,
+auditorium, and time are equal.
 
-There is no approved title-derived movie fallback, name-derived theater or
-auditorium fallback, or time-derived showtime fallback. A guessed provider key
-would split history and can direct a booking to the wrong showtime.
+The wire contract has no generic `sourceKey` field. There is no approved
+title-derived movie fallback, name-derived theater or auditorium fallback, or
+time-derived showtime fallback. A guessed provider key would split history and
+can direct a booking to the wrong showtime.
 
 ## Provider time semantics
 
