@@ -69,7 +69,9 @@ one active availability assignment exists per exact showtime. Capacity is reserv
 for `P3`, so continuous demand cannot starve catalog coverage. These values are
 safe initial product defaults and may be tuned from production telemetry in one
 Central configuration change; they are not stored in Client resources or copied
-into every observation policy.
+into every observation policy. A general maintenance tick must not add another
+fixed interval to `P0` or `P1`; Central wakes for their next due deadline and stays
+idle when no deadline exists.
 
 ## Live-seat signal
 
@@ -129,7 +131,8 @@ into every observation policy.
 - `payment_unknown` is terminal until explicit user retry.
 - `failed` is an unrecoverable application failure; `stopped` is cancellation or
   expiry. Retry from a terminal state abandons any retained payment browser and
-  returns the same monitor to `pending`.
+  returns the same monitor to `pending`. That Monitor transition is the only
+  user retry boundary; Clients never retry an opaque execution command directly.
 - The current manual payment handoff normally stops at `triggered`; `booked` is
   used only when an authoritative receipt is available.
 
@@ -141,6 +144,19 @@ Lease token and expiry fence every heartbeat and result. Losing the lease cancel
 browser work. Invalid payload is terminal. A transient infrastructure failure uses
 the bounded command retry budget; a seat-unavailable result waits for a distinct
 Central availability signal.
+
+The result `oneof`, rather than a reason-string allowlist, decides retry ownership:
+
+| Client result | Examples | Command effect | Monitor effect |
+| --- | --- | --- | --- |
+| `completed` | payment handoff prepared | complete | Client has already moved it to `triggered` |
+| `retry_requested` | transient booking preparation failure | queue while the three-attempt budget remains | stay `running`; fail when the budget is exhausted |
+| `failed` with unavailable reason | showtime or preferred seats unavailable | fail until a distinct false-to-true live-seat edge | stay `running` |
+| `failed` with user-action reason | login, CAPTCHA, provider block, or contract change | terminal | `failed` with the same stable reason |
+| `failed` with ambiguous reason | lease lost or Client interrupted | terminal | `payment_unknown` until the user verifies CGV history |
+
+Deleting a monitor invalidates every queued or leased execution for that monitor.
+A deleted monitor can never be claimed, rearmed, or recreated by a late observation.
 
 ### Observation
 
@@ -170,7 +186,12 @@ Every change to this specification must update the owning Proto and prove:
 - extended-clock showtimes match the correct civil weekday and time window;
 - unchanged live-seat snapshots create no duplicate command;
 - a false-to-true preferred-seat transition creates exactly one fenced command;
+- an explicit retry request consumes the bounded budget while a terminal failure
+  never retries by inference;
 - loss of lease cancels Client browser work;
+- deletion prevents all later claims and rearms for that monitor;
+- a two-second fast deadline is not delayed by the general maintenance interval,
+  and an idle scheduler does not busy-loop;
 - missing Probe, catalog, layout, session, and healthy egress each expose a distinct
   waiting or terminal reason;
 - provider protection signals stop or quarantine work instead of being parsed as

@@ -9,7 +9,7 @@ it does not duplicate field definitions.
 | ClientAuthenticationService | PIN exchange, token exchange and refresh, logout, launch-ticket issue and exchange, Probe bootstrap-ticket issue | authentication result | Central identity |
 | ClientResourceService | put and delete a typed resource, upsert device | bootstrap, get, list, event stream | Central user state |
 | CatalogService | submit a catalog snapshot | catalog, auditoriums, seat-map resolution | Central catalog |
-| ExecutionService | heartbeat, complete, and retry execution | claim execution | Central booking coordinator |
+| ExecutionService | heartbeat and complete execution | claim execution | Central booking coordinator |
 | ReleaseService | publish component release sets | resolve runtime or Launcher release | Central release registry |
 
 ## State inventory

@@ -193,13 +193,11 @@ message CompleteRequest {
   cineko.execution.ResultRequest result = 1 [(buf.validate.field).required = true];
 }
 message CompleteResponse {}
-message RetryResponse {}
 
 service ExecutionService {
   rpc Claim(cineko.execution.ClaimRequest) returns (cineko.execution.ClaimResponse);
   rpc Heartbeat(cineko.execution.HeartbeatRequest) returns (cineko.execution.HeartbeatResponse);
   rpc Complete(CompleteRequest) returns (CompleteResponse);
-  rpc Retry(cineko.execution.RetryRequest) returns (RetryResponse);
 }
 
 message GetRuntimeReleaseRequest {

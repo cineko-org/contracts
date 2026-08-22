@@ -16,7 +16,9 @@ flowchart LR
 
 ## Discovery
 
-- A scan covers one theater and every date from today through the policy horizon.
+- A policy covers one theater and a rolling horizon. Each assignment scans only
+  the bounded provider-date subset selected by Central for that cycle; ordinary
+  baseline work eventually covers the complete horizon.
 - Results are shared across auditoriums, movies, and users. Matching monitors never create duplicate theater fetches.
 - One booking monitor covers both stages: it raises discovery cadence before a showtime is found, then keeps watching
   the same target for newly available preferred seats until booking succeeds or the monitor expires.
@@ -25,8 +27,8 @@ flowchart LR
 Discovery work is ordered by lane before its due time:
 
 1. `P0` — an active booking target whose matching showtime has not been found;
-2. `P1` — a theater/date range with a recently changed schedule;
-3. `P2` — a cancellation-seat target after its showtime is already known;
+2. `P1` — an exact-showtime live-seat watch after the showtime is known;
+3. `P2` — a theater/date range with a recently changed schedule;
 4. `P3` — ordinary catalog and schedule observation.
 
 A lower lane can never outrank a due higher lane by accumulating a numeric score. Within a lane, the oldest due work
@@ -41,11 +43,17 @@ lane. The scheduler must reserve capacity for ordinary observation so sustained 
   the device.
 - The Client opens the live seat-selection flow immediately, reads the current layout and availability, applies the
   preset, selects seats, and stops at payment.
-- Losing the execution lease cancels browser work. Another Client may claim a later retry.
+- Losing the execution lease cancels browser work and leaves the outcome ambiguous.
+  Central marks the same monitor `payment_unknown`; no Client may claim another
+  execution until the user verifies CGV history and explicitly rearms it.
 - A missing preferred seat or a showtime that is not yet selectable does not trigger immediate browser retries.
   Central waits for a distinct later live-seat snapshot that changes the matching result from false to true, then
   rearms that exact command once. A positive aggregate seat count or elapsed cooldown alone is not a signal.
-  Other transient preparation failures retain the bounded execution retry budget.
+  Other transient preparation failures use the explicit `retry_requested` result and retain the bounded execution
+  retry budget. A `failed` result is never inferred to be retryable from an arbitrary reason string.
+- Authentication, CAPTCHA, provider protection, and provider-contract failures stop automatically and require
+  visible user action. Lease loss or Client interruption is ambiguous and moves the monitor to `payment_unknown`
+  rather than risking a duplicate attempt.
 
 ## Session readiness
 

@@ -82,10 +82,3 @@ message ResultRequest {
     RetryRequested retry_requested = 5;
   }
 }
-
-message RetryRequest {
-  string command_id = 1 [
-    (buf.validate.field).required = true,
-    (buf.validate.field).string.min_len = 1
-  ];
-}
