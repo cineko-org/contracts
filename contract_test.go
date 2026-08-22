@@ -102,45 +102,33 @@ func TestRequiredOneofRejectsUnsetState(t *testing.T) {
 	}
 }
 
-func TestProviderIdentityRejectsDisplayText(t *testing.T) {
+func TestProviderIdentityValidatesOpaqueTheaterSiteNumber(t *testing.T) {
 	t.Parallel()
 
 	validator, err := protovalidate.New()
 	if err != nil {
 		t.Fatalf("create validator: %v", err)
 	}
-	tests := []struct {
-		name     string
-		identity proto.Message
-	}{
-		{
-			name: "theater display text",
-			identity: catalogpb.TheaterIdentity_builder{
-				Cgv: catalogpb.CgvTheaterIdentity_builder{SiteNo: protoString("서울/용산아이파크몰")}.Build(),
-			}.Build(),
-		},
-		{
-			name: "auditorium display text",
-			identity: catalogpb.AuditoriumIdentity_builder{
-				Cgv: catalogpb.CgvAuditoriumIdentity_builder{
-					SiteNo:   protoString("0056"),
-					ScreenNo: protoString("IMAX관"),
-				}.Build(),
-			}.Build(),
-		},
+	for _, siteNo := range []string{"0056", "P001", "P004", "P013"} {
+		identity := catalogpb.TheaterIdentity_builder{
+			Cgv: catalogpb.CgvTheaterIdentity_builder{SiteNo: protoString(siteNo)}.Build(),
+		}.Build()
+		if err := validator.Validate(identity); err != nil {
+			t.Fatalf("opaque theater site number %q failed validation: %v", siteNo, err)
+		}
 	}
-	for _, test := range tests {
-		test := test
-		t.Run(test.name, func(t *testing.T) {
-			if err := validator.Validate(test.identity); err == nil {
-				t.Fatal("display text passed provider identity validation")
-			}
-		})
+	for _, siteNo := range []string{"", strings.Repeat("x", 65)} {
+		identity := catalogpb.TheaterIdentity_builder{
+			Cgv: catalogpb.CgvTheaterIdentity_builder{SiteNo: protoString(siteNo)}.Build(),
+		}.Build()
+		if err := validator.Validate(identity); err == nil {
+			t.Fatalf("invalid theater site number of length %d passed validation", len(siteNo))
+		}
 	}
 
 	valid := catalogpb.ShowtimeIdentity_builder{
 		Cgv: catalogpb.CgvShowtimeIdentity_builder{
-			SiteNo:       protoString("0056"),
+			SiteNo:       protoString("P001"),
 			ScheduleDate: commonpb.LocalDate_builder{Year: protoInt32(2026), Month: protoInt32(8), Day: protoInt32(22)}.Build(),
 			ScreenNo:     protoString("0007"),
 			Sequence:     protoString("0003"),
@@ -148,6 +136,16 @@ func TestProviderIdentityRejectsDisplayText(t *testing.T) {
 	}.Build()
 	if err := validator.Validate(valid); err != nil {
 		t.Fatalf("valid typed showtime identity failed validation: %v", err)
+	}
+
+	invalidScreen := catalogpb.AuditoriumIdentity_builder{
+		Cgv: catalogpb.CgvAuditoriumIdentity_builder{
+			SiteNo:   protoString("P004"),
+			ScreenNo: protoString("IMAX관"),
+		}.Build(),
+	}.Build()
+	if err := validator.Validate(invalidScreen); err == nil {
+		t.Fatal("display text passed provider screen identity validation")
 	}
 }
 

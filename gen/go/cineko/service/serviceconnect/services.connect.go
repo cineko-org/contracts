@@ -118,6 +118,9 @@ const (
 	// CatalogServiceSubmitCatalogSnapshotProcedure is the fully-qualified name of the CatalogService's
 	// SubmitCatalogSnapshot RPC.
 	CatalogServiceSubmitCatalogSnapshotProcedure = "/cineko.service.CatalogService/SubmitCatalogSnapshot"
+	// CatalogServiceSubmitLiveSeatObservationProcedure is the fully-qualified name of the
+	// CatalogService's SubmitLiveSeatObservation RPC.
+	CatalogServiceSubmitLiveSeatObservationProcedure = "/cineko.service.CatalogService/SubmitLiveSeatObservation"
 	// ExecutionServiceClaimProcedure is the fully-qualified name of the ExecutionService's Claim RPC.
 	ExecutionServiceClaimProcedure = "/cineko.service.ExecutionService/Claim"
 	// ExecutionServiceHeartbeatProcedure is the fully-qualified name of the ExecutionService's
@@ -815,6 +818,7 @@ type CatalogServiceClient interface {
 	ResolveSeatMap(context.Context, *connect.Request[service.ResolveSeatMapRequest]) (*connect.Response[service.ResolveSeatMapResponse], error)
 	WatchSeatMap(context.Context, *connect.Request[service.WatchSeatMapRequest]) (*connect.ServerStreamForClient[service.WatchSeatMapResponse], error)
 	SubmitCatalogSnapshot(context.Context, *connect.Request[service.SubmitCatalogSnapshotRequest]) (*connect.Response[service.SubmitCatalogSnapshotResponse], error)
+	SubmitLiveSeatObservation(context.Context, *connect.Request[service.SubmitLiveSeatObservationRequest]) (*connect.Response[service.SubmitLiveSeatObservationResponse], error)
 }
 
 // NewCatalogServiceClient constructs a client for the cineko.service.CatalogService service. By
@@ -858,16 +862,23 @@ func NewCatalogServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(catalogServiceMethods.ByName("SubmitCatalogSnapshot")),
 			connect.WithClientOptions(opts...),
 		),
+		submitLiveSeatObservation: connect.NewClient[service.SubmitLiveSeatObservationRequest, service.SubmitLiveSeatObservationResponse](
+			httpClient,
+			baseURL+CatalogServiceSubmitLiveSeatObservationProcedure,
+			connect.WithSchema(catalogServiceMethods.ByName("SubmitLiveSeatObservation")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // catalogServiceClient implements CatalogServiceClient.
 type catalogServiceClient struct {
-	getCatalog            *connect.Client[service.GetCatalogRequest, service.GetCatalogResponse]
-	getAuditoriums        *connect.Client[service.GetAuditoriumsRequest, service.GetAuditoriumsResponse]
-	resolveSeatMap        *connect.Client[service.ResolveSeatMapRequest, service.ResolveSeatMapResponse]
-	watchSeatMap          *connect.Client[service.WatchSeatMapRequest, service.WatchSeatMapResponse]
-	submitCatalogSnapshot *connect.Client[service.SubmitCatalogSnapshotRequest, service.SubmitCatalogSnapshotResponse]
+	getCatalog                *connect.Client[service.GetCatalogRequest, service.GetCatalogResponse]
+	getAuditoriums            *connect.Client[service.GetAuditoriumsRequest, service.GetAuditoriumsResponse]
+	resolveSeatMap            *connect.Client[service.ResolveSeatMapRequest, service.ResolveSeatMapResponse]
+	watchSeatMap              *connect.Client[service.WatchSeatMapRequest, service.WatchSeatMapResponse]
+	submitCatalogSnapshot     *connect.Client[service.SubmitCatalogSnapshotRequest, service.SubmitCatalogSnapshotResponse]
+	submitLiveSeatObservation *connect.Client[service.SubmitLiveSeatObservationRequest, service.SubmitLiveSeatObservationResponse]
 }
 
 // GetCatalog calls cineko.service.CatalogService.GetCatalog.
@@ -895,6 +906,11 @@ func (c *catalogServiceClient) SubmitCatalogSnapshot(ctx context.Context, req *c
 	return c.submitCatalogSnapshot.CallUnary(ctx, req)
 }
 
+// SubmitLiveSeatObservation calls cineko.service.CatalogService.SubmitLiveSeatObservation.
+func (c *catalogServiceClient) SubmitLiveSeatObservation(ctx context.Context, req *connect.Request[service.SubmitLiveSeatObservationRequest]) (*connect.Response[service.SubmitLiveSeatObservationResponse], error) {
+	return c.submitLiveSeatObservation.CallUnary(ctx, req)
+}
+
 // CatalogServiceHandler is an implementation of the cineko.service.CatalogService service.
 type CatalogServiceHandler interface {
 	GetCatalog(context.Context, *connect.Request[service.GetCatalogRequest]) (*connect.Response[service.GetCatalogResponse], error)
@@ -902,6 +918,7 @@ type CatalogServiceHandler interface {
 	ResolveSeatMap(context.Context, *connect.Request[service.ResolveSeatMapRequest]) (*connect.Response[service.ResolveSeatMapResponse], error)
 	WatchSeatMap(context.Context, *connect.Request[service.WatchSeatMapRequest], *connect.ServerStream[service.WatchSeatMapResponse]) error
 	SubmitCatalogSnapshot(context.Context, *connect.Request[service.SubmitCatalogSnapshotRequest]) (*connect.Response[service.SubmitCatalogSnapshotResponse], error)
+	SubmitLiveSeatObservation(context.Context, *connect.Request[service.SubmitLiveSeatObservationRequest]) (*connect.Response[service.SubmitLiveSeatObservationResponse], error)
 }
 
 // NewCatalogServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -941,6 +958,12 @@ func NewCatalogServiceHandler(svc CatalogServiceHandler, opts ...connect.Handler
 		connect.WithSchema(catalogServiceMethods.ByName("SubmitCatalogSnapshot")),
 		connect.WithHandlerOptions(opts...),
 	)
+	catalogServiceSubmitLiveSeatObservationHandler := connect.NewUnaryHandler(
+		CatalogServiceSubmitLiveSeatObservationProcedure,
+		svc.SubmitLiveSeatObservation,
+		connect.WithSchema(catalogServiceMethods.ByName("SubmitLiveSeatObservation")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/cineko.service.CatalogService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case CatalogServiceGetCatalogProcedure:
@@ -953,6 +976,8 @@ func NewCatalogServiceHandler(svc CatalogServiceHandler, opts ...connect.Handler
 			catalogServiceWatchSeatMapHandler.ServeHTTP(w, r)
 		case CatalogServiceSubmitCatalogSnapshotProcedure:
 			catalogServiceSubmitCatalogSnapshotHandler.ServeHTTP(w, r)
+		case CatalogServiceSubmitLiveSeatObservationProcedure:
+			catalogServiceSubmitLiveSeatObservationHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -980,6 +1005,10 @@ func (UnimplementedCatalogServiceHandler) WatchSeatMap(context.Context, *connect
 
 func (UnimplementedCatalogServiceHandler) SubmitCatalogSnapshot(context.Context, *connect.Request[service.SubmitCatalogSnapshotRequest]) (*connect.Response[service.SubmitCatalogSnapshotResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cineko.service.CatalogService.SubmitCatalogSnapshot is not implemented"))
+}
+
+func (UnimplementedCatalogServiceHandler) SubmitLiveSeatObservation(context.Context, *connect.Request[service.SubmitLiveSeatObservationRequest]) (*connect.Response[service.SubmitLiveSeatObservationResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cineko.service.CatalogService.SubmitLiveSeatObservation is not implemented"))
 }
 
 // ExecutionServiceClient is a client for the cineko.service.ExecutionService service.

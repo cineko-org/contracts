@@ -20,7 +20,7 @@ Proto-to-proto references and service declarations were then checked separately.
 
 ## Definition inventory
 
-The latest source contains 351 messages, 0 enums, 7 services, and 55 RPCs
+The latest source contains 353 messages, 0 enums, 7 services, and 56 RPCs
 across 12 proto files. Every definition is accounted for by one of the
 following boundary packages; no definition is retained solely because its
 generated file refers to itself:
@@ -38,7 +38,7 @@ generated file refers to itself:
 | `proto/cineko/probe/probe.proto` | 18 | 1 / probe surface | Keep: Probe registration and lease boundary |
 | `proto/cineko/release/release.proto` | 13 | 0 | Keep: release resolution and artifact boundary |
 | `proto/cineko/seatmap/seatmap.proto` | 9 | 0 | Keep: cached/live seat data and resolution wrapper |
-| `proto/cineko/service/services.proto` | 59 | 6 / 36 | Keep: Central service request/response and stream boundary |
+| `proto/cineko/service/services.proto` | 61 | 6 / 37 | Keep: Central service request/response and stream boundary |
 
 The counts above are produced from the latest source definitions, not from
 generated code. All message and RPC definitions in the table are therefore
@@ -60,7 +60,7 @@ below.
 | `cineko.observation` | Central and Probe use assignment/task/result payloads; typed completion/deferred/failed payloads are the latest cutover. | Assignment messages are Probe service payloads. | Keep |
 | `cineko.probe` | Probe runtime uses registration, health, lease, heartbeat, and result payloads. | Lease messages are `ProbeService` request/response payloads. | Keep |
 | `cineko.release` | Launcher/Client release resolution and publish serialization use release sets and artifacts. | Release messages are `ReleaseService` payloads. | Keep |
-| `cineko.seatmap` | Client resolves cached layouts; Central/Probe persist and validate snapshots and availability. `Resolution` embeds `cineko.collection.State`. | Resolution and stream messages are `CatalogService` payloads. | Keep |
+| `cineko.seatmap` | Client resolves cached layouts and submits the atomic observation from an authenticated pre-booking recheck; Central/Probe persist and validate snapshots and availability. `Resolution` embeds `cineko.collection.State`. | Resolution, submission, and stream messages are `CatalogService` payloads. | Keep |
 | `cineko.service` | Client Central HTTP adapters and Central handlers use resource/catalog/execution/release wrappers. | Every declared RPC owns its request/response type; `WatchSeatMap` is the new stream boundary. | Keep |
 
 `AuditoriumResponse` was not removed with `AuditoriumRequest`: the Client local
