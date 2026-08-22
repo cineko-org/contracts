@@ -13,10 +13,90 @@ message Provider {
   string name = 2;
 }
 
+message CgvTheaterIdentity {
+  string site_no = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.pattern = "^[0-9]+$"
+  ];
+}
+
+message CgvMovieIdentity {
+  string movie_no = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.pattern = "^[0-9]+$"
+  ];
+}
+
+message CgvAuditoriumIdentity {
+  string site_no = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.pattern = "^[0-9]+$"
+  ];
+  string screen_no = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.pattern = "^[0-9]+$"
+  ];
+}
+
+message CgvShowtimeIdentity {
+  string site_no = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.pattern = "^[0-9]+$"
+  ];
+  cineko.common.LocalDate schedule_date = 2 [(buf.validate.field).required = true];
+  string screen_no = 3 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.pattern = "^[0-9]+$"
+  ];
+  string sequence = 4 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1,
+    (buf.validate.field).string.pattern = "^[0-9]+$"
+  ];
+}
+
+message TheaterIdentity {
+  oneof provider {
+    option (buf.validate.oneof).required = true;
+
+    CgvTheaterIdentity cgv = 1;
+  }
+}
+
+message MovieIdentity {
+  oneof provider {
+    option (buf.validate.oneof).required = true;
+
+    CgvMovieIdentity cgv = 1;
+  }
+}
+
+message AuditoriumIdentity {
+  oneof provider {
+    option (buf.validate.oneof).required = true;
+
+    CgvAuditoriumIdentity cgv = 1;
+  }
+}
+
+message ShowtimeIdentity {
+  oneof provider {
+    option (buf.validate.oneof).required = true;
+
+    CgvShowtimeIdentity cgv = 1;
+  }
+}
+
 message Theater {
   string id = 1;
   string provider_id = 2;
-  string source_key = 3;
+  TheaterIdentity identity = 3 [(buf.validate.field).required = true];
   string region = 4;
   string name = 5;
 }
@@ -24,7 +104,7 @@ message Theater {
 message Movie {
   string id = 1;
   string provider_id = 2;
-  string source_key = 3;
+  MovieIdentity identity = 3 [(buf.validate.field).required = true];
   string title = 4;
   string poster_url = 5;
 }
@@ -32,7 +112,7 @@ message Movie {
 message Auditorium {
   string id = 1;
   string theater_id = 2;
-  string source_key = 3;
+  AuditoriumIdentity identity = 3 [(buf.validate.field).required = true];
   string name = 4;
   repeated string screen_types = 5;
   int32 capacity = 6;
@@ -42,16 +122,15 @@ message Auditorium {
 message Showtime {
   string id = 1;
   string provider_id = 2;
-  string source_key = 3;
+  ShowtimeIdentity identity = 3 [(buf.validate.field).required = true];
   string theater_id = 4;
   Movie movie = 5;
   Auditorium auditorium = 6;
-  cineko.common.LocalDate schedule_date = 7 [(buf.validate.field).required = true];
-  google.protobuf.Timestamp starts_at = 8 [(buf.validate.field).required = true];
-  google.protobuf.Timestamp ends_at = 9 [(buf.validate.field).required = true];
-  int32 available_seats = 10;
-  int32 capacity = 11;
-  bool sold_out = 12;
+  google.protobuf.Timestamp starts_at = 7 [(buf.validate.field).required = true];
+  google.protobuf.Timestamp ends_at = 8 [(buf.validate.field).required = true];
+  int32 available_seats = 9;
+  int32 capacity = 10;
+  bool sold_out = 11;
 }
 
 message CatalogSnapshot {

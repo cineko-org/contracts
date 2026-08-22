@@ -3,13 +3,20 @@ edition = "2024";
 package cineko.seatmap;
 
 import "buf/validate/validate.proto";
+import "cineko/collection/collection.proto";
 import "google/protobuf/timestamp.proto";
 
 option go_package = "github.com/cineko-org/contracts/gen/go/cineko/seatmap;seatmap";
 
 message Seat {
-  string id = 1;
-  string auditorium_id = 2;
+  string id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string auditorium_id = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
   string label = 3;
   string row = 4;
   int32 number = 5;
@@ -53,18 +60,39 @@ message LayoutBlock {
 }
 
 message Layout {
+  option (buf.validate.message).cel = {
+    id: "unique_layout_seat_ids"
+    message: "layout seat IDs must be unique"
+    expression: "this.seats.all(seat, this.seats.filter(other, other.id == seat.id).size() == 1)"
+  };
+
   repeated Seat seats = 1;
   repeated LayoutZone zones = 2;
   repeated LayoutBlock blocks = 3;
 }
 
 message Snapshot {
-  string id = 1;
-  string auditorium_id = 2;
-  string layout_hash = 3;
-  int32 capacity = 4;
-  Layout layout = 5;
-  google.protobuf.Timestamp observed_at = 6;
+  string id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string auditorium_id = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string layout_hash = 3 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.pattern = "^[0-9a-f]{64}$"
+  ];
+  int32 capacity = 4 [(buf.validate.field).int32.gt = 0];
+  Layout layout = 5 [(buf.validate.field).required = true];
+  google.protobuf.Timestamp observed_at = 6 [(buf.validate.field).required = true];
+
+  option (buf.validate.message).cel = {
+    id: "snapshot_capacity_matches_layout"
+    message: "snapshot capacity and seat auditoriums must match the layout"
+    expression: "this.layout.seats.size() > 0 && this.capacity == this.layout.seats.size() && this.layout.seats.all(seat, seat.auditorium_id == this.auditorium_id)"
+  };
 }
 
 message AvailableSeat {
@@ -74,9 +102,14 @@ message AvailableSeat {
   ];
 }
 
-// AvailabilitySnapshot is one complete live view for an exact showtime. The
-// static layout remains a separately versioned auditorium resource.
+// AvailabilitySnapshot is one complete live view for an exact showtime.
 message AvailabilitySnapshot {
+  option (buf.validate.message).cel = {
+    id: "unique_available_seat_ids"
+    message: "available seat IDs must be unique"
+    expression: "this.available_seats.all(seat, this.available_seats.filter(other, other.seat_id == seat.seat_id).size() == 1)"
+  };
+
   string showtime_id = 1 [
     (buf.validate.field).required = true,
     (buf.validate.field).string.min_len = 1
@@ -93,25 +126,32 @@ message AvailabilitySnapshot {
   google.protobuf.Timestamp observed_at = 5 [(buf.validate.field).required = true];
 }
 
-message Ready {
-  Snapshot snapshot = 1;
-}
+// LiveSeatObservation is the atomic Probe result for an exact showtime. The
+// provider response supplies both the current layout and current availability.
+message LiveSeatObservation {
+  option (buf.validate.message).cel = {
+    id: "matching_live_observation_identity"
+    message: "layout and availability must describe the same auditorium and layout hash"
+    expression:
+      "this.layout.auditorium_id == this.availability.auditorium_id && "
+      "this.layout.layout_hash == this.availability.layout_hash && "
+      "this.availability.available_seats.all(available, this.layout.layout.seats.exists(seat, seat.id == available.seat_id))"
+  };
 
-message CaptureQueued {
-  string task_id = 1;
-  google.protobuf.Timestamp next_check_at = 2;
-}
-
-message Unverifiable {
-  string reason_code = 1;
+  Snapshot layout = 1 [(buf.validate.field).required = true];
+  AvailabilitySnapshot availability = 2 [(buf.validate.field).required = true];
 }
 
 message Resolution {
-  oneof result {
-    option (buf.validate.oneof).required = true;
+  option (buf.validate.message).cel = {
+    id: "idle_requires_snapshot"
+    message: "idle seat-map resolution requires a cached snapshot"
+    expression: "!has(this.state.idle) || has(this.snapshot)"
+  };
 
-    Ready ready = 1;
-    CaptureQueued capture_queued = 2;
-    Unverifiable unverifiable = 3;
-  }
+  // A cached layout may coexist with any collection state. The absence of a
+  // snapshot is valid only while collection is in progress; Central must never
+  // expose idle without a current snapshot.
+  Snapshot snapshot = 1;
+  cineko.collection.State state = 2 [(buf.validate.field).required = true];
 }

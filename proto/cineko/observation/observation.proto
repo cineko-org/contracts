@@ -4,6 +4,7 @@ package cineko.observation;
 
 import "buf/validate/validate.proto";
 import "cineko/catalog/catalog.proto";
+import "cineko/collection/collection.proto";
 import "cineko/common/common.proto";
 import "cineko/seatmap/seatmap.proto";
 import "google/protobuf/timestamp.proto";
@@ -27,38 +28,71 @@ message Capability {
 }
 
 message ScheduleTask {
-  cineko.catalog.Theater theater = 1;
-  repeated cineko.common.LocalDate target_dates = 2;
-  string locale = 3;
-  string time_zone = 4;
+  cineko.catalog.Theater theater = 1 [(buf.validate.field).required = true];
+  repeated cineko.common.LocalDate target_dates = 2 [
+    (buf.validate.field).repeated.min_items = 1,
+    (buf.validate.field).repeated.max_items = 14
+  ];
+  string locale = 3 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string time_zone = 4 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
 }
 
 message CatalogTask {
-  cineko.catalog.Theater theater = 1;
-  repeated cineko.common.LocalDate target_dates = 2;
-  string locale = 3;
-  string time_zone = 4;
+  cineko.catalog.Theater theater = 1 [(buf.validate.field).required = true];
+  repeated cineko.common.LocalDate target_dates = 2 [
+    (buf.validate.field).repeated.min_items = 1,
+    (buf.validate.field).repeated.max_items = 14
+  ];
+  string locale = 3 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string time_zone = 4 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
 }
 
 message SeatMapTask {
-  cineko.catalog.Theater theater = 1;
-  cineko.catalog.Auditorium auditorium = 2;
+  cineko.catalog.Theater theater = 1 [(buf.validate.field).required = true];
+  cineko.catalog.Auditorium auditorium = 2 [(buf.validate.field).required = true];
   cineko.catalog.Showtime showtime = 3;
-  string locale = 4;
-  string time_zone = 5;
-  repeated cineko.common.LocalDate target_dates = 6 [(buf.validate.field).repeated.max_items = 14];
+  string locale = 4 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string time_zone = 5 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  repeated cineko.common.LocalDate target_dates = 6 [
+    (buf.validate.field).repeated.min_items = 1,
+    (buf.validate.field).repeated.max_items = 14
+  ];
 }
 
 message SeatAvailabilityTask {
   cineko.catalog.Theater theater = 1 [(buf.validate.field).required = true];
   cineko.catalog.Auditorium auditorium = 2 [(buf.validate.field).required = true];
   cineko.catalog.Showtime showtime = 3 [(buf.validate.field).required = true];
-  string locale = 4 [(buf.validate.field).string.min_len = 1];
-  string time_zone = 5 [(buf.validate.field).string.min_len = 1];
+  string locale = 4 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string time_zone = 5 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
 }
 
 message AssignmentTask {
-  cineko.common.EgressPolicy egress = 1;
+  cineko.common.EgressPolicy egress = 1 [(buf.validate.field).required = true];
   oneof task {
     option (buf.validate.oneof).required = true;
 
@@ -77,34 +111,63 @@ message Capture {
   repeated cineko.catalog.Showtime showtimes = 5;
 }
 
+message ScheduleCaptures {
+  repeated Capture captures = 1 [(buf.validate.field).repeated.min_items = 1];
+}
+
 message Completed {
-  repeated Capture captures = 1;
-  cineko.catalog.CatalogSnapshot catalog = 2;
-  cineko.seatmap.Snapshot seat_map = 3;
-  cineko.seatmap.AvailabilitySnapshot seat_availability = 4;
+  oneof payload {
+    option (buf.validate.oneof).required = true;
+
+    ScheduleCaptures schedule = 1;
+    cineko.catalog.CatalogSnapshot catalog = 2;
+    cineko.seatmap.LiveSeatObservation live_seat = 3;
+  }
+}
+
+message Deferred {
+  cineko.collection.DeferredReason reason = 1 [(buf.validate.field).required = true];
 }
 
 message Failed {
-  string reason_code = 1;
-  bool retryable = 2;
+  cineko.collection.FailureReason reason = 1 [(buf.validate.field).required = true];
 }
 
 message AssignmentResult {
-  string run_id = 1;
-  google.protobuf.Timestamp started_at = 2;
-  google.protobuf.Timestamp finished_at = 3;
+  option (buf.validate.message).cel = {
+    id: "assignment_run_interval"
+    message: "finished_at must be greater than or equal to started_at"
+    expression: "this.finished_at >= this.started_at"
+  };
+
+  string run_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  google.protobuf.Timestamp started_at = 2 [(buf.validate.field).required = true];
+  google.protobuf.Timestamp finished_at = 3 [(buf.validate.field).required = true];
   oneof outcome {
     option (buf.validate.oneof).required = true;
 
     Completed completed = 4;
-    Failed failed = 5;
+    Deferred deferred = 5;
+    Failed failed = 6;
   }
 }
 
 message ResultReceipt {
-  string assignment_id = 1;
-  string run_id = 2;
-  string content_hash = 3;
+  string assignment_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string run_id = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string content_hash = 3 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.pattern = "^[0-9a-f]{64}$"
+  ];
   oneof disposition {
     option (buf.validate.oneof).required = true;
 

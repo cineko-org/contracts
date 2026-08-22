@@ -1,0 +1,122 @@
+edition = "2024";
+
+package cineko.collection;
+
+import "buf/validate/validate.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/cineko-org/contracts/gen/go/cineko/collection;collection";
+
+message NoBookableShowtime {}
+message ShowtimeNotDiscovered {}
+message TargetDateUnavailable {}
+
+message IdentityMismatch {}
+message ProviderBlocked {}
+message ProviderThrottled {}
+message CaptchaRequired {}
+message AuthenticationRequired {}
+message UIContractChanged {}
+message BrowserStartFailed {}
+message ProviderTransportFailed {}
+message ProviderServerError {}
+message InvalidResult {}
+message Timeout {}
+
+message DeferredReason {
+  oneof reason {
+    option (buf.validate.oneof).required = true;
+
+    NoBookableShowtime no_bookable_showtime = 1;
+    TargetDateUnavailable target_date_unavailable = 2;
+  }
+}
+
+message WaitingReason {
+  oneof reason {
+    option (buf.validate.oneof).required = true;
+
+    ShowtimeNotDiscovered showtime_not_discovered = 1;
+    NoBookableShowtime no_bookable_showtime = 2;
+    TargetDateUnavailable target_date_unavailable = 3;
+  }
+}
+
+message FailureReason {
+  oneof reason {
+    option (buf.validate.oneof).required = true;
+
+    IdentityMismatch identity_mismatch = 1;
+    ProviderBlocked provider_blocked = 2;
+    ProviderThrottled provider_throttled = 3;
+    CaptchaRequired captcha_required = 4;
+    AuthenticationRequired authentication_required = 5;
+    UIContractChanged ui_contract_changed = 6;
+    BrowserStartFailed browser_start_failed = 7;
+    ProviderTransportFailed provider_transport_failed = 8;
+    ProviderServerError provider_server_error = 9;
+    InvalidResult invalid_result = 10;
+    Timeout timeout = 11;
+  }
+}
+
+message ClientRequest {}
+message ActiveMonitor {}
+message LayoutMissing {}
+message LayoutChanged {}
+message CatalogRefresh {}
+message OperatorRequest {}
+
+message Trigger {
+  oneof trigger {
+    option (buf.validate.oneof).required = true;
+
+    ClientRequest client_request = 1;
+    ActiveMonitor active_monitor = 2;
+    LayoutMissing layout_missing = 3;
+    LayoutChanged layout_changed = 4;
+    CatalogRefresh catalog_refresh = 5;
+    OperatorRequest operator_request = 6;
+  }
+}
+
+message Idle {}
+
+message Queued {
+  google.protobuf.Timestamp queued_at = 1 [(buf.validate.field).required = true];
+  Trigger trigger = 2 [(buf.validate.field).required = true];
+}
+
+message Collecting {
+  string assignment_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  google.protobuf.Timestamp started_at = 2 [(buf.validate.field).required = true];
+}
+
+message WaitingForShowtime {
+  WaitingReason reason = 1 [(buf.validate.field).required = true];
+}
+
+message RetryScheduled {
+  FailureReason reason = 1 [(buf.validate.field).required = true];
+  google.protobuf.Timestamp next_attempt_at = 2 [(buf.validate.field).required = true];
+}
+
+message Blocked {
+  FailureReason reason = 1 [(buf.validate.field).required = true];
+}
+
+message State {
+  oneof state {
+    option (buf.validate.oneof).required = true;
+
+    Idle idle = 1;
+    Queued queued = 2;
+    Collecting collecting = 3;
+    WaitingForShowtime waiting_for_showtime = 4;
+    RetryScheduled retry_scheduled = 5;
+    Blocked blocked = 6;
+  }
+}

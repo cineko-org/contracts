@@ -173,7 +173,16 @@ message ResolveSeatMapRequest {
   ];
 }
 message ResolveSeatMapResponse {
-  cineko.seatmap.Resolution resolution = 1;
+  cineko.seatmap.Resolution resolution = 1 [(buf.validate.field).required = true];
+}
+message WatchSeatMapRequest {
+  string auditorium_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+}
+message WatchSeatMapResponse {
+  cineko.seatmap.Resolution resolution = 1 [(buf.validate.field).required = true];
 }
 message SubmitCatalogSnapshotRequest {
   cineko.catalog.CatalogSnapshot snapshot = 1 [(buf.validate.field).required = true];
@@ -186,6 +195,7 @@ service CatalogService {
   rpc GetCatalog(GetCatalogRequest) returns (GetCatalogResponse);
   rpc GetAuditoriums(GetAuditoriumsRequest) returns (GetAuditoriumsResponse);
   rpc ResolveSeatMap(ResolveSeatMapRequest) returns (ResolveSeatMapResponse);
+  rpc WatchSeatMap(WatchSeatMapRequest) returns (stream WatchSeatMapResponse);
   rpc SubmitCatalogSnapshot(SubmitCatalogSnapshotRequest) returns (SubmitCatalogSnapshotResponse);
 }
 

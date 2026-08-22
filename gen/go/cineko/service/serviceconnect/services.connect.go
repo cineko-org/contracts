@@ -112,6 +112,9 @@ const (
 	// CatalogServiceResolveSeatMapProcedure is the fully-qualified name of the CatalogService's
 	// ResolveSeatMap RPC.
 	CatalogServiceResolveSeatMapProcedure = "/cineko.service.CatalogService/ResolveSeatMap"
+	// CatalogServiceWatchSeatMapProcedure is the fully-qualified name of the CatalogService's
+	// WatchSeatMap RPC.
+	CatalogServiceWatchSeatMapProcedure = "/cineko.service.CatalogService/WatchSeatMap"
 	// CatalogServiceSubmitCatalogSnapshotProcedure is the fully-qualified name of the CatalogService's
 	// SubmitCatalogSnapshot RPC.
 	CatalogServiceSubmitCatalogSnapshotProcedure = "/cineko.service.CatalogService/SubmitCatalogSnapshot"
@@ -810,6 +813,7 @@ type CatalogServiceClient interface {
 	GetCatalog(context.Context, *connect.Request[service.GetCatalogRequest]) (*connect.Response[service.GetCatalogResponse], error)
 	GetAuditoriums(context.Context, *connect.Request[service.GetAuditoriumsRequest]) (*connect.Response[service.GetAuditoriumsResponse], error)
 	ResolveSeatMap(context.Context, *connect.Request[service.ResolveSeatMapRequest]) (*connect.Response[service.ResolveSeatMapResponse], error)
+	WatchSeatMap(context.Context, *connect.Request[service.WatchSeatMapRequest]) (*connect.ServerStreamForClient[service.WatchSeatMapResponse], error)
 	SubmitCatalogSnapshot(context.Context, *connect.Request[service.SubmitCatalogSnapshotRequest]) (*connect.Response[service.SubmitCatalogSnapshotResponse], error)
 }
 
@@ -842,6 +846,12 @@ func NewCatalogServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(catalogServiceMethods.ByName("ResolveSeatMap")),
 			connect.WithClientOptions(opts...),
 		),
+		watchSeatMap: connect.NewClient[service.WatchSeatMapRequest, service.WatchSeatMapResponse](
+			httpClient,
+			baseURL+CatalogServiceWatchSeatMapProcedure,
+			connect.WithSchema(catalogServiceMethods.ByName("WatchSeatMap")),
+			connect.WithClientOptions(opts...),
+		),
 		submitCatalogSnapshot: connect.NewClient[service.SubmitCatalogSnapshotRequest, service.SubmitCatalogSnapshotResponse](
 			httpClient,
 			baseURL+CatalogServiceSubmitCatalogSnapshotProcedure,
@@ -856,6 +866,7 @@ type catalogServiceClient struct {
 	getCatalog            *connect.Client[service.GetCatalogRequest, service.GetCatalogResponse]
 	getAuditoriums        *connect.Client[service.GetAuditoriumsRequest, service.GetAuditoriumsResponse]
 	resolveSeatMap        *connect.Client[service.ResolveSeatMapRequest, service.ResolveSeatMapResponse]
+	watchSeatMap          *connect.Client[service.WatchSeatMapRequest, service.WatchSeatMapResponse]
 	submitCatalogSnapshot *connect.Client[service.SubmitCatalogSnapshotRequest, service.SubmitCatalogSnapshotResponse]
 }
 
@@ -874,6 +885,11 @@ func (c *catalogServiceClient) ResolveSeatMap(ctx context.Context, req *connect.
 	return c.resolveSeatMap.CallUnary(ctx, req)
 }
 
+// WatchSeatMap calls cineko.service.CatalogService.WatchSeatMap.
+func (c *catalogServiceClient) WatchSeatMap(ctx context.Context, req *connect.Request[service.WatchSeatMapRequest]) (*connect.ServerStreamForClient[service.WatchSeatMapResponse], error) {
+	return c.watchSeatMap.CallServerStream(ctx, req)
+}
+
 // SubmitCatalogSnapshot calls cineko.service.CatalogService.SubmitCatalogSnapshot.
 func (c *catalogServiceClient) SubmitCatalogSnapshot(ctx context.Context, req *connect.Request[service.SubmitCatalogSnapshotRequest]) (*connect.Response[service.SubmitCatalogSnapshotResponse], error) {
 	return c.submitCatalogSnapshot.CallUnary(ctx, req)
@@ -884,6 +900,7 @@ type CatalogServiceHandler interface {
 	GetCatalog(context.Context, *connect.Request[service.GetCatalogRequest]) (*connect.Response[service.GetCatalogResponse], error)
 	GetAuditoriums(context.Context, *connect.Request[service.GetAuditoriumsRequest]) (*connect.Response[service.GetAuditoriumsResponse], error)
 	ResolveSeatMap(context.Context, *connect.Request[service.ResolveSeatMapRequest]) (*connect.Response[service.ResolveSeatMapResponse], error)
+	WatchSeatMap(context.Context, *connect.Request[service.WatchSeatMapRequest], *connect.ServerStream[service.WatchSeatMapResponse]) error
 	SubmitCatalogSnapshot(context.Context, *connect.Request[service.SubmitCatalogSnapshotRequest]) (*connect.Response[service.SubmitCatalogSnapshotResponse], error)
 }
 
@@ -912,6 +929,12 @@ func NewCatalogServiceHandler(svc CatalogServiceHandler, opts ...connect.Handler
 		connect.WithSchema(catalogServiceMethods.ByName("ResolveSeatMap")),
 		connect.WithHandlerOptions(opts...),
 	)
+	catalogServiceWatchSeatMapHandler := connect.NewServerStreamHandler(
+		CatalogServiceWatchSeatMapProcedure,
+		svc.WatchSeatMap,
+		connect.WithSchema(catalogServiceMethods.ByName("WatchSeatMap")),
+		connect.WithHandlerOptions(opts...),
+	)
 	catalogServiceSubmitCatalogSnapshotHandler := connect.NewUnaryHandler(
 		CatalogServiceSubmitCatalogSnapshotProcedure,
 		svc.SubmitCatalogSnapshot,
@@ -926,6 +949,8 @@ func NewCatalogServiceHandler(svc CatalogServiceHandler, opts ...connect.Handler
 			catalogServiceGetAuditoriumsHandler.ServeHTTP(w, r)
 		case CatalogServiceResolveSeatMapProcedure:
 			catalogServiceResolveSeatMapHandler.ServeHTTP(w, r)
+		case CatalogServiceWatchSeatMapProcedure:
+			catalogServiceWatchSeatMapHandler.ServeHTTP(w, r)
 		case CatalogServiceSubmitCatalogSnapshotProcedure:
 			catalogServiceSubmitCatalogSnapshotHandler.ServeHTTP(w, r)
 		default:
@@ -947,6 +972,10 @@ func (UnimplementedCatalogServiceHandler) GetAuditoriums(context.Context, *conne
 
 func (UnimplementedCatalogServiceHandler) ResolveSeatMap(context.Context, *connect.Request[service.ResolveSeatMapRequest]) (*connect.Response[service.ResolveSeatMapResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cineko.service.CatalogService.ResolveSeatMap is not implemented"))
+}
+
+func (UnimplementedCatalogServiceHandler) WatchSeatMap(context.Context, *connect.Request[service.WatchSeatMapRequest], *connect.ServerStream[service.WatchSeatMapResponse]) error {
+	return connect.NewError(connect.CodeUnimplemented, errors.New("cineko.service.CatalogService.WatchSeatMap is not implemented"))
 }
 
 func (UnimplementedCatalogServiceHandler) SubmitCatalogSnapshot(context.Context, *connect.Request[service.SubmitCatalogSnapshotRequest]) (*connect.Response[service.SubmitCatalogSnapshotResponse], error) {
