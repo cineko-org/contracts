@@ -2144,7 +2144,7 @@ const file_cineko_observation_observation_proto_rawDesc = "" +
 	"\atheater\x18\x01 \x01(\v2\x17.cineko.catalog.TheaterR\atheater\x12;\n" +
 	"\ftarget_dates\x18\x02 \x03(\v2\x18.cineko.common.LocalDateR\vtargetDates\x12\x16\n" +
 	"\x06locale\x18\x03 \x01(\tR\x06locale\x12\x1b\n" +
-	"\ttime_zone\x18\x04 \x01(\tR\btimeZone\"\xa4\x02\n" +
+	"\ttime_zone\x18\x04 \x01(\tR\btimeZone\"\xae\x02\n" +
 	"\vSeatMapTask\x121\n" +
 	"\atheater\x18\x01 \x01(\v2\x17.cineko.catalog.TheaterR\atheater\x12:\n" +
 	"\n" +
@@ -2152,8 +2152,8 @@ const file_cineko_observation_observation_proto_rawDesc = "" +
 	"auditorium\x124\n" +
 	"\bshowtime\x18\x03 \x01(\v2\x18.cineko.catalog.ShowtimeR\bshowtime\x12\x16\n" +
 	"\x06locale\x18\x04 \x01(\tR\x06locale\x12\x1b\n" +
-	"\ttime_zone\x18\x05 \x01(\tR\btimeZone\x12;\n" +
-	"\ftarget_dates\x18\x06 \x03(\v2\x18.cineko.common.LocalDateR\vtargetDates\"\x8f\x02\n" +
+	"\ttime_zone\x18\x05 \x01(\tR\btimeZone\x12E\n" +
+	"\ftarget_dates\x18\x06 \x03(\v2\x18.cineko.common.LocalDateB\b\xbaH\x05\x92\x01\x02\x10\x0eR\vtargetDates\"\x8f\x02\n" +
 	"\x0eAssignmentTask\x123\n" +
 	"\x06egress\x18\x01 \x01(\v2\x1b.cineko.common.EgressPolicyR\x06egress\x12>\n" +
 	"\bschedule\x18\x02 \x01(\v2 .cineko.observation.ScheduleTaskH\x00R\bschedule\x12;\n" +
