@@ -45,15 +45,11 @@ message ScheduleTask {
 
 message CatalogTask {
   cineko.catalog.Theater theater = 1 [(buf.validate.field).required = true];
-  repeated cineko.common.LocalDate target_dates = 2 [
-    (buf.validate.field).repeated.min_items = 1,
-    (buf.validate.field).repeated.max_items = 14
-  ];
-  string locale = 3 [
+  string locale = 2 [
     (buf.validate.field).required = true,
     (buf.validate.field).string.min_len = 1
   ];
-  string time_zone = 4 [
+  string time_zone = 3 [
     (buf.validate.field).required = true,
     (buf.validate.field).string.min_len = 1
   ];
