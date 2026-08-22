@@ -10067,17 +10067,18 @@ const file_cineko_client_client_proto_rawDesc = "" +
 	"\x06failed\x18\x05 \x01(\v2\x1c.cineko.client.MonitorFailedH\x00R\x06failed\x129\n" +
 	"\astopped\x18\x06 \x01(\v2\x1d.cineko.client.MonitorStoppedH\x00R\astopped\x12O\n" +
 	"\x0fpayment_unknown\x18\a \x01(\v2$.cineko.client.MonitorPaymentUnknownH\x00R\x0epaymentUnknownB\x0e\n" +
-	"\x05state\x12\x05\xbaH\x02\b\x01\"\xaf\x05\n" +
+	"\x05state\x12\x05\xbaH\x02\b\x01\"\xd0\x05\n" +
 	"\aMonitor\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\tR\x06userId\x12\x1b\n" +
 	"\tpreset_id\x18\x03 \x01(\tR\bpresetId\x12\x19\n" +
 	"\bmovie_id\x18\x04 \x01(\tR\amovieId\x12\x1f\n" +
 	"\vmovie_title\x18\x05 \x01(\tR\n" +
-	"movieTitle\x12;\n" +
-	"\ftarget_dates\x18\x06 \x03(\v2\x18.cineko.common.LocalDateR\vtargetDates\x12'\n" +
-	"\x0ftarget_weekdays\x18\a \x03(\x05R\x0etargetWeekdays\x12.\n" +
-	"\x13search_horizon_days\x18\b \x01(\x05R\x11searchHorizonDays\x12=\n" +
+	"movieTitle\x12E\n" +
+	"\ftarget_dates\x18\x06 \x03(\v2\x18.cineko.common.LocalDateB\b\xbaH\x05\x92\x01\x02\x10\x0eR\vtargetDates\x123\n" +
+	"\x0ftarget_weekdays\x18\a \x03(\x05B\n" +
+	"\xbaH\a\x92\x01\x04\x10\a\x18\x01R\x0etargetWeekdays\x129\n" +
+	"\x13search_horizon_days\x18\b \x01(\x05B\t\xbaH\x06\x1a\x04\x18\x0e(\x01R\x11searchHorizonDays\x12=\n" +
 	"\rearliest_time\x18\t \x01(\v2\x18.cineko.common.LocalTimeR\fearliestTime\x129\n" +
 	"\vlatest_time\x18\n" +
 	" \x01(\v2\x18.cineko.common.LocalTimeR\n" +

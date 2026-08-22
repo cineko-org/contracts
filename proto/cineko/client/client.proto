@@ -122,9 +122,15 @@ message Monitor {
   string preset_id = 3;
   string movie_id = 4;
   string movie_title = 5;
-  repeated cineko.common.LocalDate target_dates = 6;
-  repeated int32 target_weekdays = 7;
-  int32 search_horizon_days = 8;
+  repeated cineko.common.LocalDate target_dates = 6 [(buf.validate.field).repeated.max_items = 14];
+  repeated int32 target_weekdays = 7 [
+    (buf.validate.field).repeated.max_items = 7,
+    (buf.validate.field).repeated.unique = true
+  ];
+  int32 search_horizon_days = 8 [(buf.validate.field).int32 = {
+    gte: 1
+    lte: 14
+  }];
   cineko.common.LocalTime earliest_time = 9;
   cineko.common.LocalTime latest_time = 10;
   MonitorState state = 11;
