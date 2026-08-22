@@ -13,7 +13,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file cineko/seatmap/seatmap.proto.
  */
 export const file_cineko_seatmap_seatmap: GenFile = /*@__PURE__*/
-  fileDesc("ChxjaW5la28vc2VhdG1hcC9zZWF0bWFwLnByb3RvEg5jaW5la28uc2VhdG1hcCL2AgoEU2VhdBIKCgJpZBgBIAEoCRIVCg1hdWRpdG9yaXVtX2lkGAIgASgJEg0KBWxhYmVsGAMgASgJEgsKA3JvdxgEIAEoCRIOCgZudW1iZXIYBSABKAUSCQoBeBgGIAEoARIJCgF5GAcgASgBEgwKBHR5cGUYCCABKAkSEQoJem9uZV9uYW1lGAkgASgJEhEKCXpvbmVfa2luZBgKIAEoCRIWCg5zYWxlX2Zvcm1fY29kZRgLIAEoCRIWCg5zYWxlX2Zvcm1fbmFtZRgMIAEoCRISCgpsZWZ0X2Fpc2xlGA0gASgIEhMKC3JpZ2h0X2Fpc2xlGA4gASgIEhAKCGZlYXR1cmVzGA8gAygJEhQKDHNvdXJjZV9sYWJlbBgQIAEoCRIdChVzb3VyY2Vfc2VhdF9raW5kX2NvZGUYESABKAkSHQoVc291cmNlX3NlYXRfa2luZF9uYW1lGBIgASgJEhYKDnNvdXJjZV9jbGFzc2VzGBMgAygJIpwBCgpMYXlvdXRab25lEgwKBGNvZGUYASABKAkSDAoEbmFtZRgCIAEoCRIRCglraW5kX2NvZGUYAyABKAkSEQoJa2luZF9uYW1lGAQgASgJEg0KBW1pbl94GAUgASgBEg0KBW1heF94GAYgASgBEg0KBW1pbl95GAcgASgBEg0KBW1heF95GAggASgBEhAKCGNhcGFjaXR5GAkgASgFIosBCgtMYXlvdXRCbG9jaxIMCgRjb2RlGAEgASgJEgwKBG5hbWUYAiABKAkSEQoJa2luZF9jb2RlGAMgASgJEhEKCWtpbmRfbmFtZRgEIAEoCRINCgVtaW5feBgFIAEoARINCgVtYXhfeBgGIAEoARINCgVtaW5feRgHIAEoARINCgVtYXhfeRgIIAEoASKFAQoGTGF5b3V0EiMKBXNlYXRzGAEgAygLMhQuY2luZWtvLnNlYXRtYXAuU2VhdBIpCgV6b25lcxgCIAMoCzIaLmNpbmVrby5zZWF0bWFwLkxheW91dFpvbmUSKwoGYmxvY2tzGAMgAygLMhsuY2luZWtvLnNlYXRtYXAuTGF5b3V0QmxvY2sirQEKCFNuYXBzaG90EgoKAmlkGAEgASgJEhUKDWF1ZGl0b3JpdW1faWQYAiABKAkSEwoLbGF5b3V0X2hhc2gYAyABKAkSEAoIY2FwYWNpdHkYBCABKAUSJgoGbGF5b3V0GAUgASgLMhYuY2luZWtvLnNlYXRtYXAuTGF5b3V0Ei8KC29ic2VydmVkX2F0GAYgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCIzCgVSZWFkeRIqCghzbmFwc2hvdBgBIAEoCzIYLmNpbmVrby5zZWF0bWFwLlNuYXBzaG90IlMKDUNhcHR1cmVRdWV1ZWQSDwoHdGFza19pZBgBIAEoCRIxCg1uZXh0X2NoZWNrX2F0GAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCIjCgxVbnZlcmlmaWFibGUSEwoLcmVhc29uX2NvZGUYASABKAkitAEKClJlc29sdXRpb24SJgoFcmVhZHkYASABKAsyFS5jaW5la28uc2VhdG1hcC5SZWFkeUgAEjcKDmNhcHR1cmVfcXVldWVkGAIgASgLMh0uY2luZWtvLnNlYXRtYXAuQ2FwdHVyZVF1ZXVlZEgAEjQKDHVudmVyaWZpYWJsZRgDIAEoCzIcLmNpbmVrby5zZWF0bWFwLlVudmVyaWZpYWJsZUgAQg8KBnJlc3VsdBIFukgCCAFCP1o9Z2l0aHViLmNvbS9jaW5la28tb3JnL2NvbnRyYWN0cy9nZW4vZ28vY2luZWtvL3NlYXRtYXA7c2VhdG1hcGIIZWRpdGlvbnNw6Qc", [file_buf_validate_validate, file_google_protobuf_timestamp]);
+  fileDesc("ChxjaW5la28vc2VhdG1hcC9zZWF0bWFwLnByb3RvEg5jaW5la28uc2VhdG1hcCL2AgoEU2VhdBIKCgJpZBgBIAEoCRIVCg1hdWRpdG9yaXVtX2lkGAIgASgJEg0KBWxhYmVsGAMgASgJEgsKA3JvdxgEIAEoCRIOCgZudW1iZXIYBSABKAUSCQoBeBgGIAEoARIJCgF5GAcgASgBEgwKBHR5cGUYCCABKAkSEQoJem9uZV9uYW1lGAkgASgJEhEKCXpvbmVfa2luZBgKIAEoCRIWCg5zYWxlX2Zvcm1fY29kZRgLIAEoCRIWCg5zYWxlX2Zvcm1fbmFtZRgMIAEoCRISCgpsZWZ0X2Fpc2xlGA0gASgIEhMKC3JpZ2h0X2Fpc2xlGA4gASgIEhAKCGZlYXR1cmVzGA8gAygJEhQKDHNvdXJjZV9sYWJlbBgQIAEoCRIdChVzb3VyY2Vfc2VhdF9raW5kX2NvZGUYESABKAkSHQoVc291cmNlX3NlYXRfa2luZF9uYW1lGBIgASgJEhYKDnNvdXJjZV9jbGFzc2VzGBMgAygJIpwBCgpMYXlvdXRab25lEgwKBGNvZGUYASABKAkSDAoEbmFtZRgCIAEoCRIRCglraW5kX2NvZGUYAyABKAkSEQoJa2luZF9uYW1lGAQgASgJEg0KBW1pbl94GAUgASgBEg0KBW1heF94GAYgASgBEg0KBW1pbl95GAcgASgBEg0KBW1heF95GAggASgBEhAKCGNhcGFjaXR5GAkgASgFIosBCgtMYXlvdXRCbG9jaxIMCgRjb2RlGAEgASgJEgwKBG5hbWUYAiABKAkSEQoJa2luZF9jb2RlGAMgASgJEhEKCWtpbmRfbmFtZRgEIAEoCRINCgVtaW5feBgFIAEoARINCgVtYXhfeBgGIAEoARINCgVtaW5feRgHIAEoARINCgVtYXhfeRgIIAEoASKFAQoGTGF5b3V0EiMKBXNlYXRzGAEgAygLMhQuY2luZWtvLnNlYXRtYXAuU2VhdBIpCgV6b25lcxgCIAMoCzIaLmNpbmVrby5zZWF0bWFwLkxheW91dFpvbmUSKwoGYmxvY2tzGAMgAygLMhsuY2luZWtvLnNlYXRtYXAuTGF5b3V0QmxvY2sirQEKCFNuYXBzaG90EgoKAmlkGAEgASgJEhUKDWF1ZGl0b3JpdW1faWQYAiABKAkSEwoLbGF5b3V0X2hhc2gYAyABKAkSEAoIY2FwYWNpdHkYBCABKAUSJgoGbGF5b3V0GAUgASgLMhYuY2luZWtvLnNlYXRtYXAuTGF5b3V0Ei8KC29ic2VydmVkX2F0GAYgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCIsCg1BdmFpbGFibGVTZWF0EhsKB3NlYXRfaWQYASABKAlCCrpIB8gBAXICEAEi+gEKFEF2YWlsYWJpbGl0eVNuYXBzaG90Eh8KC3Nob3d0aW1lX2lkGAEgASgJQgq6SAfIAQFyAhABEiEKDWF1ZGl0b3JpdW1faWQYAiABKAlCCrpIB8gBAXICEAESLQoLbGF5b3V0X2hhc2gYAyABKAlCGLpIFcgBAXIQMg5eWzAtOWEtZl17NjR9JBI2Cg9hdmFpbGFibGVfc2VhdHMYBCADKAsyHS5jaW5la28uc2VhdG1hcC5BdmFpbGFibGVTZWF0EjcKC29ic2VydmVkX2F0GAUgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEIGukgDyAEBIjMKBVJlYWR5EioKCHNuYXBzaG90GAEgASgLMhguY2luZWtvLnNlYXRtYXAuU25hcHNob3QiUwoNQ2FwdHVyZVF1ZXVlZBIPCgd0YXNrX2lkGAEgASgJEjEKDW5leHRfY2hlY2tfYXQYAiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIiMKDFVudmVyaWZpYWJsZRITCgtyZWFzb25fY29kZRgBIAEoCSK0AQoKUmVzb2x1dGlvbhImCgVyZWFkeRgBIAEoCzIVLmNpbmVrby5zZWF0bWFwLlJlYWR5SAASNwoOY2FwdHVyZV9xdWV1ZWQYAiABKAsyHS5jaW5la28uc2VhdG1hcC5DYXB0dXJlUXVldWVkSAASNAoMdW52ZXJpZmlhYmxlGAMgASgLMhwuY2luZWtvLnNlYXRtYXAuVW52ZXJpZmlhYmxlSABCDwoGcmVzdWx0EgW6SAIIAUI/Wj1naXRodWIuY29tL2NpbmVrby1vcmcvY29udHJhY3RzL2dlbi9nby9jaW5la28vc2VhdG1hcDtzZWF0bWFwYghlZGl0aW9uc3DpBw", [file_buf_validate_validate, file_google_protobuf_timestamp]);
 
 /**
  * @generated from message cineko.seatmap.Seat
@@ -301,6 +301,63 @@ export const SnapshotSchema: GenMessage<Snapshot> = /*@__PURE__*/
   messageDesc(file_cineko_seatmap_seatmap, 4);
 
 /**
+ * @generated from message cineko.seatmap.AvailableSeat
+ */
+export type AvailableSeat = Message<"cineko.seatmap.AvailableSeat"> & {
+  /**
+   * @generated from field: string seat_id = 1;
+   */
+  seatId: string;
+};
+
+/**
+ * Describes the message cineko.seatmap.AvailableSeat.
+ * Use `create(AvailableSeatSchema)` to create a new message.
+ */
+export const AvailableSeatSchema: GenMessage<AvailableSeat> = /*@__PURE__*/
+  messageDesc(file_cineko_seatmap_seatmap, 5);
+
+/**
+ * AvailabilitySnapshot is one complete live view for an exact showtime. The
+ * static layout remains a separately versioned auditorium resource.
+ *
+ * @generated from message cineko.seatmap.AvailabilitySnapshot
+ */
+export type AvailabilitySnapshot = Message<"cineko.seatmap.AvailabilitySnapshot"> & {
+  /**
+   * @generated from field: string showtime_id = 1;
+   */
+  showtimeId: string;
+
+  /**
+   * @generated from field: string auditorium_id = 2;
+   */
+  auditoriumId: string;
+
+  /**
+   * @generated from field: string layout_hash = 3;
+   */
+  layoutHash: string;
+
+  /**
+   * @generated from field: repeated cineko.seatmap.AvailableSeat available_seats = 4;
+   */
+  availableSeats: AvailableSeat[];
+
+  /**
+   * @generated from field: google.protobuf.Timestamp observed_at = 5;
+   */
+  observedAt?: Timestamp | undefined;
+};
+
+/**
+ * Describes the message cineko.seatmap.AvailabilitySnapshot.
+ * Use `create(AvailabilitySnapshotSchema)` to create a new message.
+ */
+export const AvailabilitySnapshotSchema: GenMessage<AvailabilitySnapshot> = /*@__PURE__*/
+  messageDesc(file_cineko_seatmap_seatmap, 6);
+
+/**
  * @generated from message cineko.seatmap.Ready
  */
 export type Ready = Message<"cineko.seatmap.Ready"> & {
@@ -315,7 +372,7 @@ export type Ready = Message<"cineko.seatmap.Ready"> & {
  * Use `create(ReadySchema)` to create a new message.
  */
 export const ReadySchema: GenMessage<Ready> = /*@__PURE__*/
-  messageDesc(file_cineko_seatmap_seatmap, 5);
+  messageDesc(file_cineko_seatmap_seatmap, 7);
 
 /**
  * @generated from message cineko.seatmap.CaptureQueued
@@ -337,7 +394,7 @@ export type CaptureQueued = Message<"cineko.seatmap.CaptureQueued"> & {
  * Use `create(CaptureQueuedSchema)` to create a new message.
  */
 export const CaptureQueuedSchema: GenMessage<CaptureQueued> = /*@__PURE__*/
-  messageDesc(file_cineko_seatmap_seatmap, 6);
+  messageDesc(file_cineko_seatmap_seatmap, 8);
 
 /**
  * @generated from message cineko.seatmap.Unverifiable
@@ -354,7 +411,7 @@ export type Unverifiable = Message<"cineko.seatmap.Unverifiable"> & {
  * Use `create(UnverifiableSchema)` to create a new message.
  */
 export const UnverifiableSchema: GenMessage<Unverifiable> = /*@__PURE__*/
-  messageDesc(file_cineko_seatmap_seatmap, 7);
+  messageDesc(file_cineko_seatmap_seatmap, 9);
 
 /**
  * @generated from message cineko.seatmap.Resolution
@@ -389,4 +446,4 @@ export type Resolution = Message<"cineko.seatmap.Resolution"> & {
  * Use `create(ResolutionSchema)` to create a new message.
  */
 export const ResolutionSchema: GenMessage<Resolution> = /*@__PURE__*/
-  messageDesc(file_cineko_seatmap_seatmap, 8);
+  messageDesc(file_cineko_seatmap_seatmap, 10);

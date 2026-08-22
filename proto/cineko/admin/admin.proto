@@ -124,30 +124,19 @@ message ObservationPolicyInput {
     gte: 1
     lte: 14
   }];
-  int32 priority = 4;
-  int32 baseline_min_seconds = 5;
-  int32 baseline_max_seconds = 6;
-  int32 demand_min_seconds = 7;
-  int32 demand_max_seconds = 8;
-  int32 burst_min_seconds = 9;
-  int32 burst_max_seconds = 10;
-  int32 burst_duration_seconds = 11;
-  string locale = 12;
-  string time_zone = 13;
-  string egress_policy_id = 14;
 }
 
 message BaselineMode {}
 message DemandMode {}
 message BurstMode {}
-message CancellationMode {}
+message SeatAvailabilityMode {}
 message ObservationMode {
   oneof mode {
     option (buf.validate.oneof).required = true;
     BaselineMode baseline = 1;
     DemandMode demand = 2;
     BurstMode burst = 3;
-    CancellationMode cancellation = 4;
+    SeatAvailabilityMode seat_availability = 4;
   }
 }
 

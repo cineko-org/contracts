@@ -67,6 +67,32 @@ message Snapshot {
   google.protobuf.Timestamp observed_at = 6;
 }
 
+message AvailableSeat {
+  string seat_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+}
+
+// AvailabilitySnapshot is one complete live view for an exact showtime. The
+// static layout remains a separately versioned auditorium resource.
+message AvailabilitySnapshot {
+  string showtime_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string auditorium_id = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string layout_hash = 3 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.pattern = "^[0-9a-f]{64}$"
+  ];
+  repeated AvailableSeat available_seats = 4;
+  google.protobuf.Timestamp observed_at = 5 [(buf.validate.field).required = true];
+}
+
 message Ready {
   Snapshot snapshot = 1;
 }

@@ -1,6 +1,7 @@
 package contracts_test
 
 import (
+	"strings"
 	"testing"
 	"time"
 
@@ -128,6 +129,31 @@ func TestWebUIContractValidation(t *testing.T) {
 	}.Build()
 	if err := validator.Validate(validAction); err != nil {
 		t.Fatalf("valid WebUI action failed contract validation: %v", err)
+	}
+}
+
+func TestAvailabilitySnapshotRequiresExactIdentity(t *testing.T) {
+	t.Parallel()
+
+	validator, err := protovalidate.New()
+	if err != nil {
+		t.Fatalf("create validator: %v", err)
+	}
+	if err := validator.Validate(&seatmap.AvailabilitySnapshot{}); err == nil {
+		t.Fatal("empty availability snapshot passed contract validation")
+	}
+
+	valid := seatmap.AvailabilitySnapshot_builder{
+		ShowtimeId:   protoString("showtime-1"),
+		AuditoriumId: protoString("auditorium-1"),
+		LayoutHash:   protoString(strings.Repeat("a", 64)),
+		AvailableSeats: []*seatmap.AvailableSeat{
+			seatmap.AvailableSeat_builder{SeatId: protoString("A-1")}.Build(),
+		},
+		ObservedAt: timestamppb.New(time.Unix(1, 0).UTC()),
+	}.Build()
+	if err := validator.Validate(valid); err != nil {
+		t.Fatalf("valid availability snapshot failed contract validation: %v", err)
 	}
 }
 

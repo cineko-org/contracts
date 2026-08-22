@@ -13,6 +13,7 @@ option go_package = "github.com/cineko-org/contracts/gen/go/cineko/observation;o
 message ScheduleCapture {}
 message CatalogCapture {}
 message SeatMapCapture {}
+message SeatAvailabilityCapture {}
 
 message Capability {
   oneof capability {
@@ -21,6 +22,7 @@ message Capability {
     ScheduleCapture schedule_capture = 1;
     CatalogCapture catalog_capture = 2;
     SeatMapCapture seat_map_capture = 3;
+    SeatAvailabilityCapture seat_availability_capture = 4;
   }
 }
 
@@ -47,6 +49,14 @@ message SeatMapTask {
   repeated cineko.common.LocalDate target_dates = 6 [(buf.validate.field).repeated.max_items = 14];
 }
 
+message SeatAvailabilityTask {
+  cineko.catalog.Theater theater = 1 [(buf.validate.field).required = true];
+  cineko.catalog.Auditorium auditorium = 2 [(buf.validate.field).required = true];
+  cineko.catalog.Showtime showtime = 3 [(buf.validate.field).required = true];
+  string locale = 4 [(buf.validate.field).string.min_len = 1];
+  string time_zone = 5 [(buf.validate.field).string.min_len = 1];
+}
+
 message AssignmentTask {
   cineko.common.EgressPolicy egress = 1;
   oneof task {
@@ -55,6 +65,7 @@ message AssignmentTask {
     ScheduleTask schedule = 2;
     CatalogTask catalog = 3;
     SeatMapTask seat_map = 4;
+    SeatAvailabilityTask seat_availability = 5;
   }
 }
 
@@ -70,6 +81,7 @@ message Completed {
   repeated Capture captures = 1;
   cineko.catalog.CatalogSnapshot catalog = 2;
   cineko.seatmap.Snapshot seat_map = 3;
+  cineko.seatmap.AvailabilitySnapshot seat_availability = 4;
 }
 
 message Failed {

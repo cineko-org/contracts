@@ -1,6 +1,9 @@
 # Booking execution
 
-Booking discovery and booking execution are separate paths.
+Booking discovery and booking execution are separate paths. Product behaviour,
+state ownership, and unresolved-capability boundaries are fixed in
+`docs/product-specification.md`; this document narrows that contract to the
+booking critical path.
 
 ```mermaid
 flowchart LR
@@ -40,17 +43,19 @@ lane. The scheduler must reserve capacity for ordinary observation so sustained 
   preset, selects seats, and stops at payment.
 - Losing the execution lease cancels browser work. Another Client may claim a later retry.
 - A missing preferred seat or a showtime that is not yet selectable does not trigger immediate browser retries.
-  Central waits for a later positive availability observation, then rearms that exact command after a short cooldown.
+  Central waits for a distinct later live-seat snapshot that changes the matching result from false to true, then
+  rearms that exact command once. A positive aggregate seat count or elapsed cooldown alone is not a signal.
   Other transient preparation failures retain the bounded execution retry budget.
 
 ## Session readiness
 
 - Remembering a CGV account is opt-in. The account ID and password are stored only in the operating system's local
   credential vault; they are never sent to Central, exported in a `.cnk` file, logged, or placed in ordinary settings.
-- While the user has an active booking target, the Client checks the persistent browser session before execution work
-  is likely to arrive. If the session expired and saved credentials exist, it restores the session immediately.
-- A CAPTCHA, additional verification, repeated authentication failure, or changed login contract stops automatic
-  login and asks the user to continue in the local browser. Cineko does not bypass that challenge.
+- While the user has an active booking target, the Client prepares isolated browser capacity. It restores and checks
+  a member-session snapshot when one exists and otherwise prepares the supported non-member path.
+- Saved credentials may prefill an explicit visible login flow. A CAPTCHA, additional verification, repeated
+  authentication failure, or changed login contract always asks the user to continue locally; Cineko never submits
+  credentials in a hidden browser or bypasses a challenge.
 - The browser identity and proxy identity bound to the account session remain stable across health checks and
   reauthentication. Discovery Probes continue to use disposable randomized identities.
 

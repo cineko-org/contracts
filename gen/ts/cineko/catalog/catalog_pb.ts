@@ -4,6 +4,9 @@
 
 import type { GenFile, GenMessage } from "@bufbuild/protobuf/codegenv2";
 import { fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv2";
+import { file_buf_validate_validate } from "../../buf/validate/validate_pb";
+import type { LocalDate } from "../common/common_pb";
+import { file_cineko_common_common } from "../common/common_pb";
 import type { Timestamp } from "@bufbuild/protobuf/wkt";
 import { file_google_protobuf_timestamp } from "@bufbuild/protobuf/wkt";
 import type { Message } from "@bufbuild/protobuf";
@@ -12,7 +15,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file cineko/catalog/catalog.proto.
  */
 export const file_cineko_catalog_catalog: GenFile = /*@__PURE__*/
-  fileDesc("ChxjaW5la28vY2F0YWxvZy9jYXRhbG9nLnByb3RvEg5jaW5la28uY2F0YWxvZyIkCghQcm92aWRlchIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJIlwKB1RoZWF0ZXISCgoCaWQYASABKAkSEwoLcHJvdmlkZXJfaWQYAiABKAkSEgoKc291cmNlX2tleRgDIAEoCRIOCgZyZWdpb24YBCABKAkSDAoEbmFtZRgFIAEoCSJfCgVNb3ZpZRIKCgJpZBgBIAEoCRITCgtwcm92aWRlcl9pZBgCIAEoCRISCgpzb3VyY2Vfa2V5GAMgASgJEg0KBXRpdGxlGAQgASgJEhIKCnBvc3Rlcl91cmwYBSABKAkikwEKCkF1ZGl0b3JpdW0SCgoCaWQYASABKAkSEgoKdGhlYXRlcl9pZBgCIAEoCRISCgpzb3VyY2Vfa2V5GAMgASgJEgwKBG5hbWUYBCABKAkSFAoMc2NyZWVuX3R5cGVzGAUgAygJEhAKCGNhcGFjaXR5GAYgASgFEhsKE2N1cnJlbnRfbGF5b3V0X2hhc2gYByABKAkiwgIKCFNob3d0aW1lEgoKAmlkGAEgASgJEhMKC3Byb3ZpZGVyX2lkGAIgASgJEhIKCnNvdXJjZV9rZXkYAyABKAkSEgoKdGhlYXRlcl9pZBgEIAEoCRIkCgVtb3ZpZRgFIAEoCzIVLmNpbmVrby5jYXRhbG9nLk1vdmllEi4KCmF1ZGl0b3JpdW0YBiABKAsyGi5jaW5la28uY2F0YWxvZy5BdWRpdG9yaXVtEi0KCXN0YXJ0c19hdBgHIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASKwoHZW5kc19hdBgIIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASFwoPYXZhaWxhYmxlX3NlYXRzGAkgASgFEhAKCGNhcGFjaXR5GAogASgFEhAKCHNvbGRfb3V0GAsgASgIIp4CCg9DYXRhbG9nU25hcHNob3QSKgoIcHJvdmlkZXIYASABKAsyGC5jaW5la28uY2F0YWxvZy5Qcm92aWRlchIpCgh0aGVhdGVycxgCIAMoCzIXLmNpbmVrby5jYXRhbG9nLlRoZWF0ZXISJQoGbW92aWVzGAMgAygLMhUuY2luZWtvLmNhdGFsb2cuTW92aWUSLwoLYXVkaXRvcml1bXMYBCADKAsyGi5jaW5la28uY2F0YWxvZy5BdWRpdG9yaXVtEisKCXNob3d0aW1lcxgFIAMoCzIYLmNpbmVrby5jYXRhbG9nLlNob3d0aW1lEi8KC29ic2VydmVkX2F0GAYgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCL/AQoMQ2F0YWxvZ0luZGV4EhIKCmdlbmVyYXRpb24YASABKAMSKwoJcHJvdmlkZXJzGAIgAygLMhguY2luZWtvLmNhdGFsb2cuUHJvdmlkZXISKQoIdGhlYXRlcnMYAyADKAsyFy5jaW5la28uY2F0YWxvZy5UaGVhdGVyEiUKBm1vdmllcxgEIAMoCzIVLmNpbmVrby5jYXRhbG9nLk1vdmllEi8KC2F1ZGl0b3JpdW1zGAUgAygLMhouY2luZWtvLmNhdGFsb2cuQXVkaXRvcml1bRIrCglzaG93dGltZXMYBiADKAsyGC5jaW5la28uY2F0YWxvZy5TaG93dGltZUI/Wj1naXRodWIuY29tL2NpbmVrby1vcmcvY29udHJhY3RzL2dlbi9nby9jaW5la28vY2F0YWxvZztjYXRhbG9nYghlZGl0aW9uc3DpBw", [file_google_protobuf_timestamp]);
+  fileDesc("ChxjaW5la28vY2F0YWxvZy9jYXRhbG9nLnByb3RvEg5jaW5la28uY2F0YWxvZyIkCghQcm92aWRlchIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJIlwKB1RoZWF0ZXISCgoCaWQYASABKAkSEwoLcHJvdmlkZXJfaWQYAiABKAkSEgoKc291cmNlX2tleRgDIAEoCRIOCgZyZWdpb24YBCABKAkSDAoEbmFtZRgFIAEoCSJfCgVNb3ZpZRIKCgJpZBgBIAEoCRITCgtwcm92aWRlcl9pZBgCIAEoCRISCgpzb3VyY2Vfa2V5GAMgASgJEg0KBXRpdGxlGAQgASgJEhIKCnBvc3Rlcl91cmwYBSABKAkikwEKCkF1ZGl0b3JpdW0SCgoCaWQYASABKAkSEgoKdGhlYXRlcl9pZBgCIAEoCRISCgpzb3VyY2Vfa2V5GAMgASgJEgwKBG5hbWUYBCABKAkSFAoMc2NyZWVuX3R5cGVzGAUgAygJEhAKCGNhcGFjaXR5GAYgASgFEhsKE2N1cnJlbnRfbGF5b3V0X2hhc2gYByABKAkiiwMKCFNob3d0aW1lEgoKAmlkGAEgASgJEhMKC3Byb3ZpZGVyX2lkGAIgASgJEhIKCnNvdXJjZV9rZXkYAyABKAkSEgoKdGhlYXRlcl9pZBgEIAEoCRIkCgVtb3ZpZRgFIAEoCzIVLmNpbmVrby5jYXRhbG9nLk1vdmllEi4KCmF1ZGl0b3JpdW0YBiABKAsyGi5jaW5la28uY2F0YWxvZy5BdWRpdG9yaXVtEjcKDXNjaGVkdWxlX2RhdGUYByABKAsyGC5jaW5la28uY29tbW9uLkxvY2FsRGF0ZUIGukgDyAEBEjUKCXN0YXJ0c19hdBgIIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBCBrpIA8gBARIzCgdlbmRzX2F0GAkgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEIGukgDyAEBEhcKD2F2YWlsYWJsZV9zZWF0cxgKIAEoBRIQCghjYXBhY2l0eRgLIAEoBRIQCghzb2xkX291dBgMIAEoCCKeAgoPQ2F0YWxvZ1NuYXBzaG90EioKCHByb3ZpZGVyGAEgASgLMhguY2luZWtvLmNhdGFsb2cuUHJvdmlkZXISKQoIdGhlYXRlcnMYAiADKAsyFy5jaW5la28uY2F0YWxvZy5UaGVhdGVyEiUKBm1vdmllcxgDIAMoCzIVLmNpbmVrby5jYXRhbG9nLk1vdmllEi8KC2F1ZGl0b3JpdW1zGAQgAygLMhouY2luZWtvLmNhdGFsb2cuQXVkaXRvcml1bRIrCglzaG93dGltZXMYBSADKAsyGC5jaW5la28uY2F0YWxvZy5TaG93dGltZRIvCgtvYnNlcnZlZF9hdBgGIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAi/wEKDENhdGFsb2dJbmRleBISCgpnZW5lcmF0aW9uGAEgASgDEisKCXByb3ZpZGVycxgCIAMoCzIYLmNpbmVrby5jYXRhbG9nLlByb3ZpZGVyEikKCHRoZWF0ZXJzGAMgAygLMhcuY2luZWtvLmNhdGFsb2cuVGhlYXRlchIlCgZtb3ZpZXMYBCADKAsyFS5jaW5la28uY2F0YWxvZy5Nb3ZpZRIvCgthdWRpdG9yaXVtcxgFIAMoCzIaLmNpbmVrby5jYXRhbG9nLkF1ZGl0b3JpdW0SKwoJc2hvd3RpbWVzGAYgAygLMhguY2luZWtvLmNhdGFsb2cuU2hvd3RpbWVCP1o9Z2l0aHViLmNvbS9jaW5la28tb3JnL2NvbnRyYWN0cy9nZW4vZ28vY2luZWtvL2NhdGFsb2c7Y2F0YWxvZ2IIZWRpdGlvbnNw6Qc", [file_buf_validate_validate, file_cineko_common_common, file_google_protobuf_timestamp]);
 
 /**
  * @generated from message cineko.catalog.Provider
@@ -192,27 +195,32 @@ export type Showtime = Message<"cineko.catalog.Showtime"> & {
   auditorium?: Auditorium | undefined;
 
   /**
-   * @generated from field: google.protobuf.Timestamp starts_at = 7;
+   * @generated from field: cineko.common.LocalDate schedule_date = 7;
+   */
+  scheduleDate?: LocalDate | undefined;
+
+  /**
+   * @generated from field: google.protobuf.Timestamp starts_at = 8;
    */
   startsAt?: Timestamp | undefined;
 
   /**
-   * @generated from field: google.protobuf.Timestamp ends_at = 8;
+   * @generated from field: google.protobuf.Timestamp ends_at = 9;
    */
   endsAt?: Timestamp | undefined;
 
   /**
-   * @generated from field: int32 available_seats = 9;
+   * @generated from field: int32 available_seats = 10;
    */
   availableSeats: number;
 
   /**
-   * @generated from field: int32 capacity = 10;
+   * @generated from field: int32 capacity = 11;
    */
   capacity: number;
 
   /**
-   * @generated from field: bool sold_out = 11;
+   * @generated from field: bool sold_out = 12;
    */
   soldOut: boolean;
 };

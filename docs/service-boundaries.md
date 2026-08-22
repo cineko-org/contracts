@@ -17,11 +17,10 @@ it does not duplicate field definitions.
 - Seat-map resolution: ready, capture queued, or objectively unverifiable.
 - Probe kind: container or Client-owned.
 - Probe health: healthy, degraded, or unhealthy.
-- Observation task: schedule, catalog, or seat-map capture.
+- Observation task: schedule, catalog, static seat-map, or exact-showtime live-seat capture.
 - Observation result: completed or failed.
 - Client resource: settings, preset, monitor, reservation, external operation, or application event.
-- Monitor mode: opening or cancellation.
-- Monitor state: pending, running, triggered, booked, failed, or stopped.
+- Monitor state: pending, running, triggered, payment unknown, booked, failed, or stopped.
 - Event-stream control: ready, heartbeat, retention gap, or invalid cursor.
 - Execution result: completed, failed, or explicit retry requested.
 
