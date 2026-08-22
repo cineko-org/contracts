@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.5.2](https://github.com/cineko-org/contracts/compare/v3.5.1...v3.5.2) (2026-08-22)
+
+
+### Bug Fixes
+
+* make catalog assignments date independent ([#27](https://github.com/cineko-org/contracts/issues/27)) ([e8ce50d](https://github.com/cineko-org/contracts/commit/e8ce50d3d30b4957b288ef289d8348749b10fe69))
+
 ## [3.5.1](https://github.com/cineko-org/contracts/compare/v3.5.0...v3.5.1) (2026-08-22)
 
 
