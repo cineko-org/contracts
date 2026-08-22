@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.6.0](https://github.com/cineko-org/contracts/compare/v3.5.3...v3.6.0) (2026-08-22)
+
+
+### Features
+
+* accept client live seat observations ([#31](https://github.com/cineko-org/contracts/issues/31)) ([70b7447](https://github.com/cineko-org/contracts/commit/70b74473534bf16ab054367b27ed99814f5b073a))
+
 ## [3.5.3](https://github.com/cineko-org/contracts/compare/v3.5.2...v3.5.3) (2026-08-22)
 
 
