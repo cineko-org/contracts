@@ -44,6 +44,7 @@ message SeatMapTask {
   cineko.catalog.Showtime showtime = 3;
   string locale = 4;
   string time_zone = 5;
+  repeated cineko.common.LocalDate target_dates = 6;
 }
 
 message AssignmentTask {
