@@ -8,7 +8,7 @@ package catalog
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	common "github.com/cineko-org/contracts/gen/go/cineko/common"
+	common "github.com/cineko-org/contracts/v3/gen/go/cineko/common"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -2489,7 +2489,7 @@ const file_cineko_catalog_catalog_proto_rawDesc = "" +
 	"\btheaters\x18\x03 \x03(\v2\x17.cineko.catalog.TheaterR\btheaters\x12-\n" +
 	"\x06movies\x18\x04 \x03(\v2\x15.cineko.catalog.MovieR\x06movies\x12<\n" +
 	"\vauditoriums\x18\x05 \x03(\v2\x1a.cineko.catalog.AuditoriumR\vauditoriums\x126\n" +
-	"\tshowtimes\x18\x06 \x03(\v2\x18.cineko.catalog.ShowtimeR\tshowtimesB?Z=github.com/cineko-org/contracts/gen/go/cineko/catalog;catalogb\beditionsp\xe9\a"
+	"\tshowtimes\x18\x06 \x03(\v2\x18.cineko.catalog.ShowtimeR\tshowtimesBBZ@github.com/cineko-org/contracts/v3/gen/go/cineko/catalog;catalogb\beditionsp\xe9\a"
 
 var file_cineko_catalog_catalog_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
 var file_cineko_catalog_catalog_proto_goTypes = []any{

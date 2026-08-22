@@ -9,7 +9,7 @@ import "cineko/common/common.proto";
 import "cineko/seatmap/seatmap.proto";
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/cineko-org/contracts/gen/go/cineko/observation;observation";
+option go_package = "github.com/cineko-org/contracts/v3/gen/go/cineko/observation;observation";
 
 message ScheduleCapture {}
 message CatalogCapture {}

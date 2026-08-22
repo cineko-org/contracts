@@ -4,7 +4,7 @@ package cineko.release;
 
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/cineko-org/contracts/gen/go/cineko/release;release";
+option go_package = "github.com/cineko-org/contracts/v3/gen/go/cineko/release;release";
 
 message Artifact {
   string url = 1;

@@ -8,9 +8,9 @@ import (
 	connect "connectrpc.com/connect"
 	context "context"
 	errors "errors"
-	execution "github.com/cineko-org/contracts/gen/go/cineko/execution"
-	probe "github.com/cineko-org/contracts/gen/go/cineko/probe"
-	service "github.com/cineko-org/contracts/gen/go/cineko/service"
+	execution "github.com/cineko-org/contracts/v3/gen/go/cineko/execution"
+	probe "github.com/cineko-org/contracts/v3/gen/go/cineko/probe"
+	service "github.com/cineko-org/contracts/v3/gen/go/cineko/service"
 	http "net/http"
 	strings "strings"
 )

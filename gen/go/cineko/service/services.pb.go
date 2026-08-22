@@ -8,14 +8,14 @@ package service
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	catalog "github.com/cineko-org/contracts/gen/go/cineko/catalog"
-	client "github.com/cineko-org/contracts/gen/go/cineko/client"
-	common "github.com/cineko-org/contracts/gen/go/cineko/common"
-	execution "github.com/cineko-org/contracts/gen/go/cineko/execution"
-	observation "github.com/cineko-org/contracts/gen/go/cineko/observation"
-	probe "github.com/cineko-org/contracts/gen/go/cineko/probe"
-	release "github.com/cineko-org/contracts/gen/go/cineko/release"
-	seatmap "github.com/cineko-org/contracts/gen/go/cineko/seatmap"
+	catalog "github.com/cineko-org/contracts/v3/gen/go/cineko/catalog"
+	client "github.com/cineko-org/contracts/v3/gen/go/cineko/client"
+	common "github.com/cineko-org/contracts/v3/gen/go/cineko/common"
+	execution "github.com/cineko-org/contracts/v3/gen/go/cineko/execution"
+	observation "github.com/cineko-org/contracts/v3/gen/go/cineko/observation"
+	probe "github.com/cineko-org/contracts/v3/gen/go/cineko/probe"
+	release "github.com/cineko-org/contracts/v3/gen/go/cineko/release"
+	seatmap "github.com/cineko-org/contracts/v3/gen/go/cineko/seatmap"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -4361,7 +4361,7 @@ const file_cineko_service_services_proto_rawDesc = "" +
 	"\x0ePublishBrowser\x12%.cineko.service.PublishBrowserRequest\x1a&.cineko.service.PublishBrowserResponse\x12h\n" +
 	"\x11PublishPlaywright\x12(.cineko.service.PublishPlaywrightRequest\x1a).cineko.service.PublishPlaywrightResponse\x12b\n" +
 	"\x0fPublishLauncher\x12&.cineko.service.PublishLauncherRequest\x1a'.cineko.service.PublishLauncherResponse\x12Y\n" +
-	"\fPublishProbe\x12#.cineko.service.PublishProbeRequest\x1a$.cineko.service.PublishProbeResponseB?Z=github.com/cineko-org/contracts/gen/go/cineko/service;serviceb\beditionsp\xe9\a"
+	"\fPublishProbe\x12#.cineko.service.PublishProbeRequest\x1a$.cineko.service.PublishProbeResponseBBZ@github.com/cineko-org/contracts/v3/gen/go/cineko/service;serviceb\beditionsp\xe9\a"
 
 var file_cineko_service_services_proto_msgTypes = make([]protoimpl.MessageInfo, 59)
 var file_cineko_service_services_proto_goTypes = []any{

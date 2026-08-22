@@ -8,10 +8,10 @@ package observation
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	catalog "github.com/cineko-org/contracts/gen/go/cineko/catalog"
-	collection "github.com/cineko-org/contracts/gen/go/cineko/collection"
-	common "github.com/cineko-org/contracts/gen/go/cineko/common"
-	seatmap "github.com/cineko-org/contracts/gen/go/cineko/seatmap"
+	catalog "github.com/cineko-org/contracts/v3/gen/go/cineko/catalog"
+	collection "github.com/cineko-org/contracts/v3/gen/go/cineko/collection"
+	common "github.com/cineko-org/contracts/v3/gen/go/cineko/common"
+	seatmap "github.com/cineko-org/contracts/v3/gen/go/cineko/seatmap"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -2780,7 +2780,7 @@ const file_cineko_observation_observation_proto_rawDesc = "" +
 	"\vdisposition\x12\x05\xbaH\x02\b\x01\"\n" +
 	"\n" +
 	"\bAccepted\"\v\n" +
-	"\tDuplicateBGZEgithub.com/cineko-org/contracts/gen/go/cineko/observation;observationb\beditionsp\xe9\a"
+	"\tDuplicateBJZHgithub.com/cineko-org/contracts/v3/gen/go/cineko/observation;observationb\beditionsp\xe9\a"
 
 var file_cineko_observation_observation_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
 var file_cineko_observation_observation_proto_goTypes = []any{

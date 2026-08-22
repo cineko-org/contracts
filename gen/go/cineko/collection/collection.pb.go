@@ -3079,7 +3079,7 @@ const file_cineko_collection_collection_proto_rawDesc = "" +
 	"\x14waiting_for_showtime\x18\x04 \x01(\v2%.cineko.collection.WaitingForShowtimeH\x00R\x12waitingForShowtime\x12L\n" +
 	"\x0fretry_scheduled\x18\x05 \x01(\v2!.cineko.collection.RetryScheduledH\x00R\x0eretryScheduled\x126\n" +
 	"\ablocked\x18\x06 \x01(\v2\x1a.cineko.collection.BlockedH\x00R\ablockedB\x0e\n" +
-	"\x05state\x12\x05\xbaH\x02\b\x01BEZCgithub.com/cineko-org/contracts/gen/go/cineko/collection;collectionb\beditionsp\xe9\a"
+	"\x05state\x12\x05\xbaH\x02\b\x01BHZFgithub.com/cineko-org/contracts/v3/gen/go/cineko/collection;collectionb\beditionsp\xe9\a"
 
 var file_cineko_collection_collection_proto_msgTypes = make([]protoimpl.MessageInfo, 31)
 var file_cineko_collection_collection_proto_goTypes = []any{

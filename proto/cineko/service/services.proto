@@ -12,7 +12,7 @@ import "cineko/probe/probe.proto";
 import "cineko/release/release.proto";
 import "cineko/seatmap/seatmap.proto";
 
-option go_package = "github.com/cineko-org/contracts/gen/go/cineko/service;service";
+option go_package = "github.com/cineko-org/contracts/v3/gen/go/cineko/service;service";
 
 message SubmitAssignmentResultResponse {
   cineko.observation.ResultReceipt receipt = 1;

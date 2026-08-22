@@ -8,7 +8,7 @@ package seatmap
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	collection "github.com/cineko-org/contracts/gen/go/cineko/collection"
+	collection "github.com/cineko-org/contracts/v3/gen/go/cineko/collection"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -2126,7 +2126,7 @@ const file_cineko_seatmap_seatmap_proto_rawDesc = "" +
 	"Resolution\x124\n" +
 	"\bsnapshot\x18\x01 \x01(\v2\x18.cineko.seatmap.SnapshotR\bsnapshot\x126\n" +
 	"\x05state\x18\x02 \x01(\v2\x18.cineko.collection.StateB\x06\xbaH\x03\xc8\x01\x01R\x05state:\x7f\xbaH|\x1az\n" +
-	"\x16idle_requires_snapshot\x123idle seat-map resolution requires a cached snapshot\x1a+!has(this.state.idle) || has(this.snapshot)B?Z=github.com/cineko-org/contracts/gen/go/cineko/seatmap;seatmapb\beditionsp\xe9\a"
+	"\x16idle_requires_snapshot\x123idle seat-map resolution requires a cached snapshot\x1a+!has(this.state.idle) || has(this.snapshot)BBZ@github.com/cineko-org/contracts/v3/gen/go/cineko/seatmap;seatmapb\beditionsp\xe9\a"
 
 var file_cineko_seatmap_seatmap_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_cineko_seatmap_seatmap_proto_goTypes = []any{

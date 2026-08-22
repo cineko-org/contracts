@@ -9,7 +9,7 @@ import "cineko/common/common.proto";
 import "cineko/probe/probe.proto";
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/cineko-org/contracts/gen/go/cineko/admin;admin";
+option go_package = "github.com/cineko-org/contracts/v3/gen/go/cineko/admin;admin";
 
 message Principal {
   string user_id = 1;

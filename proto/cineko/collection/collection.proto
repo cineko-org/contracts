@@ -5,7 +5,7 @@ package cineko.collection;
 import "buf/validate/validate.proto";
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/cineko-org/contracts/gen/go/cineko/collection;collection";
+option go_package = "github.com/cineko-org/contracts/v3/gen/go/cineko/collection;collection";
 
 message NoBookableShowtime {}
 message ShowtimeNotDiscovered {}
