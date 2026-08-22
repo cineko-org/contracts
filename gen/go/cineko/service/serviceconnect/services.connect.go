@@ -123,8 +123,6 @@ const (
 	// ExecutionServiceCompleteProcedure is the fully-qualified name of the ExecutionService's Complete
 	// RPC.
 	ExecutionServiceCompleteProcedure = "/cineko.service.ExecutionService/Complete"
-	// ExecutionServiceRetryProcedure is the fully-qualified name of the ExecutionService's Retry RPC.
-	ExecutionServiceRetryProcedure = "/cineko.service.ExecutionService/Retry"
 	// ReleaseServiceGetRuntimeReleaseProcedure is the fully-qualified name of the ReleaseService's
 	// GetRuntimeRelease RPC.
 	ReleaseServiceGetRuntimeReleaseProcedure = "/cineko.service.ReleaseService/GetRuntimeRelease"
@@ -960,7 +958,6 @@ type ExecutionServiceClient interface {
 	Claim(context.Context, *connect.Request[execution.ClaimRequest]) (*connect.Response[execution.ClaimResponse], error)
 	Heartbeat(context.Context, *connect.Request[execution.HeartbeatRequest]) (*connect.Response[execution.HeartbeatResponse], error)
 	Complete(context.Context, *connect.Request[service.CompleteRequest]) (*connect.Response[service.CompleteResponse], error)
-	Retry(context.Context, *connect.Request[execution.RetryRequest]) (*connect.Response[service.RetryResponse], error)
 }
 
 // NewExecutionServiceClient constructs a client for the cineko.service.ExecutionService service. By
@@ -992,12 +989,6 @@ func NewExecutionServiceClient(httpClient connect.HTTPClient, baseURL string, op
 			connect.WithSchema(executionServiceMethods.ByName("Complete")),
 			connect.WithClientOptions(opts...),
 		),
-		retry: connect.NewClient[execution.RetryRequest, service.RetryResponse](
-			httpClient,
-			baseURL+ExecutionServiceRetryProcedure,
-			connect.WithSchema(executionServiceMethods.ByName("Retry")),
-			connect.WithClientOptions(opts...),
-		),
 	}
 }
 
@@ -1006,7 +997,6 @@ type executionServiceClient struct {
 	claim     *connect.Client[execution.ClaimRequest, execution.ClaimResponse]
 	heartbeat *connect.Client[execution.HeartbeatRequest, execution.HeartbeatResponse]
 	complete  *connect.Client[service.CompleteRequest, service.CompleteResponse]
-	retry     *connect.Client[execution.RetryRequest, service.RetryResponse]
 }
 
 // Claim calls cineko.service.ExecutionService.Claim.
@@ -1024,17 +1014,11 @@ func (c *executionServiceClient) Complete(ctx context.Context, req *connect.Requ
 	return c.complete.CallUnary(ctx, req)
 }
 
-// Retry calls cineko.service.ExecutionService.Retry.
-func (c *executionServiceClient) Retry(ctx context.Context, req *connect.Request[execution.RetryRequest]) (*connect.Response[service.RetryResponse], error) {
-	return c.retry.CallUnary(ctx, req)
-}
-
 // ExecutionServiceHandler is an implementation of the cineko.service.ExecutionService service.
 type ExecutionServiceHandler interface {
 	Claim(context.Context, *connect.Request[execution.ClaimRequest]) (*connect.Response[execution.ClaimResponse], error)
 	Heartbeat(context.Context, *connect.Request[execution.HeartbeatRequest]) (*connect.Response[execution.HeartbeatResponse], error)
 	Complete(context.Context, *connect.Request[service.CompleteRequest]) (*connect.Response[service.CompleteResponse], error)
-	Retry(context.Context, *connect.Request[execution.RetryRequest]) (*connect.Response[service.RetryResponse], error)
 }
 
 // NewExecutionServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -1062,12 +1046,6 @@ func NewExecutionServiceHandler(svc ExecutionServiceHandler, opts ...connect.Han
 		connect.WithSchema(executionServiceMethods.ByName("Complete")),
 		connect.WithHandlerOptions(opts...),
 	)
-	executionServiceRetryHandler := connect.NewUnaryHandler(
-		ExecutionServiceRetryProcedure,
-		svc.Retry,
-		connect.WithSchema(executionServiceMethods.ByName("Retry")),
-		connect.WithHandlerOptions(opts...),
-	)
 	return "/cineko.service.ExecutionService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case ExecutionServiceClaimProcedure:
@@ -1076,8 +1054,6 @@ func NewExecutionServiceHandler(svc ExecutionServiceHandler, opts ...connect.Han
 			executionServiceHeartbeatHandler.ServeHTTP(w, r)
 		case ExecutionServiceCompleteProcedure:
 			executionServiceCompleteHandler.ServeHTTP(w, r)
-		case ExecutionServiceRetryProcedure:
-			executionServiceRetryHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -1097,10 +1073,6 @@ func (UnimplementedExecutionServiceHandler) Heartbeat(context.Context, *connect.
 
 func (UnimplementedExecutionServiceHandler) Complete(context.Context, *connect.Request[service.CompleteRequest]) (*connect.Response[service.CompleteResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cineko.service.ExecutionService.Complete is not implemented"))
-}
-
-func (UnimplementedExecutionServiceHandler) Retry(context.Context, *connect.Request[execution.RetryRequest]) (*connect.Response[service.RetryResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("cineko.service.ExecutionService.Retry is not implemented"))
 }
 
 // ReleaseServiceClient is a client for the cineko.service.ReleaseService service.

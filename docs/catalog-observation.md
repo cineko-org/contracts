@@ -9,6 +9,7 @@ Catalog identity and timestamped observations are separate data.
 | `cgv.catalog.capture` | Provider, locale, time zone, egress policy | One validated catalog payload for the reported scope | Empty or partially parsed provider data fails the task |
 | `cgv.schedule.capture` | One theater and an explicit date set | One `Capture` for every requested date | Every candidate showtime must parse; a failed date is `complete=false` and cannot prove absence |
 | `cgv.seat-map.capture` | Exact theater and auditorium, a bounded date set, and an optional exact-showtime hint | One immutable static layout snapshot | The Probe must visit a currently bookable showtime for that auditorium; stored metadata alone never proves the layout |
+| `cgv.seat-availability.capture` | One exact showtime with its theater and auditorium | One timestamped layout hash and complete set of available seat IDs | Missing, partial, challenged, or identity-mismatched seat data fails the task; it never proves no seats are available |
 
 The verified full-catalog source currently enumerates theaters only. Movies, auditoriums, and showtimes are added
 from structured schedule responses, where their provider identifiers are present. Reporters must not guess a movie
@@ -17,6 +18,8 @@ catalog endpoint or fall back to a displayed title merely to make the initial ca
 `CatalogSnapshot` upserts the Provider, Theater, Movie, Auditorium, and Showtime metadata it contains. A schedule
 result upserts that shared catalog and appends availability observations in the same Central transaction.
 Availability, sold-out state, and observed time are observations; they are not authoritative catalog attributes.
+Schedule availability is an aggregate hint. Exact preferred-seat rearming uses the separate live-seat observation and
+never treats a positive aggregate count as proof that a matching seat group exists.
 
 Movie rows are permanent analytical identity. Central never removes a Movie merely because it is no longer offered,
 and timestamped availability observations reference its canonical ID. Client catalog responses contain only movies

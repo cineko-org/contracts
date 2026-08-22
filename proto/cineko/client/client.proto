@@ -92,18 +92,6 @@ message Preset {
   google.protobuf.Timestamp updated_at = 9;
 }
 
-message OpeningMonitor {}
-message CancellationMonitor {}
-
-message MonitorMode {
-  oneof mode {
-    option (buf.validate.oneof).required = true;
-
-    OpeningMonitor opening = 1;
-    CancellationMonitor cancellation = 2;
-  }
-}
-
 message MonitorPending {}
 message MonitorRunning {}
 message MonitorTriggered {}
@@ -132,21 +120,24 @@ message Monitor {
   string id = 1;
   string user_id = 2;
   string preset_id = 3;
-  MonitorMode mode = 4;
-  string movie_id = 5;
-  string movie_title = 6;
-  repeated cineko.common.LocalDate target_dates = 7;
-  repeated int32 target_weekdays = 8;
-  int32 search_horizon_days = 9;
-  cineko.common.LocalTime earliest_time = 10;
-  cineko.common.LocalTime latest_time = 11;
-  google.protobuf.Duration poll_interval = 12;
-  google.protobuf.Duration maximum_poll_interval = 13;
-  MonitorState state = 14;
-  google.protobuf.Timestamp last_checked_at = 15;
-  string reservation_id = 16;
-  google.protobuf.Timestamp created_at = 17;
-  google.protobuf.Timestamp updated_at = 18;
+  string movie_id = 4;
+  string movie_title = 5;
+  repeated cineko.common.LocalDate target_dates = 6 [(buf.validate.field).repeated.max_items = 14];
+  repeated int32 target_weekdays = 7 [
+    (buf.validate.field).repeated.max_items = 7,
+    (buf.validate.field).repeated.unique = true
+  ];
+  int32 search_horizon_days = 8 [(buf.validate.field).int32 = {
+    gte: 1
+    lte: 14
+  }];
+  cineko.common.LocalTime earliest_time = 9;
+  cineko.common.LocalTime latest_time = 10;
+  MonitorState state = 11;
+  google.protobuf.Timestamp last_checked_at = 12;
+  string reservation_id = 13;
+  google.protobuf.Timestamp created_at = 14;
+  google.protobuf.Timestamp updated_at = 15;
 }
 
 message Reservation {
