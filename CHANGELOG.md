@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.6.1](https://github.com/cineko-org/contracts/compare/v3.6.0...v3.6.1) (2026-08-22)
+
+
+### Bug Fixes
+
+* require service contract envelopes ([#33](https://github.com/cineko-org/contracts/issues/33)) ([9cd4b9d](https://github.com/cineko-org/contracts/commit/9cd4b9db4221d5f65550ea4731a67cbd609666d7))
+
 ## [3.6.0](https://github.com/cineko-org/contracts/compare/v3.5.3...v3.6.0) (2026-08-22)
 
 
