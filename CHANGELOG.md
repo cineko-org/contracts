@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.5.1](https://github.com/cineko-org/contracts/compare/v3.5.0...v3.5.1) (2026-08-22)
+
+
+### Bug Fixes
+
+* align Go module path with v3 releases ([#25](https://github.com/cineko-org/contracts/issues/25)) ([f7499da](https://github.com/cineko-org/contracts/commit/f7499dadede3012e56755b7cb598adee87f22dc2))
+
 ## [3.5.0](https://github.com/cineko-org/contracts/compare/v3.4.1...v3.5.0) (2026-08-22)
 
 
