@@ -10,6 +10,7 @@ Catalog identity and timestamped observations are separate data.
 | `cgv.schedule.capture` | One theater and an explicit date set | One `Capture` for every requested date | Every candidate showtime must parse; a failed date is `complete=false` and cannot prove absence |
 | `cgv.seat-map.capture` | Exact theater and auditorium, a bounded date set, and an optional exact-showtime hint | One atomic `Completed.live_seat` observation; Central persists its layout component as the immutable auditorium snapshot | The Probe must visit a currently bookable showtime for that auditorium; stored metadata alone never proves the layout |
 | `cgv.seat-availability.capture` | One exact showtime with its theater and auditorium | One atomic `Completed.live_seat` observation containing the current layout and complete available-seat set | Missing, partial, challenged, or identity-mismatched seat data fails the task; it never proves no seats are available |
+| Client live-seat report | One mutation identity and the atomic live-seat observation captured by the authenticated Client immediately before booking | The active immutable layout snapshot after Central canonicalization | Empty availability means sold out; it does not mean that the required layout is absent |
 
 The verified full-catalog source currently enumerates theaters only. Movies, auditoriums, and showtimes are added
 from structured schedule responses, where their provider identifiers are present. Reporters must not guess a movie
@@ -137,3 +138,10 @@ new immutable layout version, stores the availability observation, evaluates
 seat presets against that exact layout, and emits any execution signal in one
 transaction. A separate follow-up layout request is forbidden for the same
 provider response.
+
+An authenticated Client submits the same `LiveSeatObservation` after its
+pre-booking seat-page recheck. Central owns normalization and revision state:
+the same normalized layout fingerprint refreshes the current revision's
+observation time, while a different fingerprint expires the previous current
+revision and activates one new immutable revision. The Client does not submit a
+revision number, current flag, or storage-shaped DTO.

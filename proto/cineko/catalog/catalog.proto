@@ -17,7 +17,7 @@ message CgvTheaterIdentity {
   string site_no = 1 [
     (buf.validate.field).required = true,
     (buf.validate.field).string.min_len = 1,
-    (buf.validate.field).string.pattern = "^[0-9]+$"
+    (buf.validate.field).string.max_len = 64
   ];
 }
 
@@ -33,7 +33,7 @@ message CgvAuditoriumIdentity {
   string site_no = 1 [
     (buf.validate.field).required = true,
     (buf.validate.field).string.min_len = 1,
-    (buf.validate.field).string.pattern = "^[0-9]+$"
+    (buf.validate.field).string.max_len = 64
   ];
   string screen_no = 2 [
     (buf.validate.field).required = true,
@@ -46,7 +46,7 @@ message CgvShowtimeIdentity {
   string site_no = 1 [
     (buf.validate.field).required = true,
     (buf.validate.field).string.min_len = 1,
-    (buf.validate.field).string.pattern = "^[0-9]+$"
+    (buf.validate.field).string.max_len = 64
   ];
   cineko.common.LocalDate schedule_date = 2 [(buf.validate.field).required = true];
   string screen_no = 3 [

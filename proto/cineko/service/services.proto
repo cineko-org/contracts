@@ -190,6 +190,13 @@ message SubmitCatalogSnapshotRequest {
 message SubmitCatalogSnapshotResponse {
   int64 generation = 1 [(buf.validate.field).int64.gte = 0];
 }
+message SubmitLiveSeatObservationRequest {
+  cineko.common.MutationIdentity mutation = 1 [(buf.validate.field).required = true];
+  cineko.seatmap.LiveSeatObservation observation = 2 [(buf.validate.field).required = true];
+}
+message SubmitLiveSeatObservationResponse {
+  cineko.seatmap.Snapshot snapshot = 1 [(buf.validate.field).required = true];
+}
 
 service CatalogService {
   rpc GetCatalog(GetCatalogRequest) returns (GetCatalogResponse);
@@ -197,6 +204,7 @@ service CatalogService {
   rpc ResolveSeatMap(ResolveSeatMapRequest) returns (ResolveSeatMapResponse);
   rpc WatchSeatMap(WatchSeatMapRequest) returns (stream WatchSeatMapResponse);
   rpc SubmitCatalogSnapshot(SubmitCatalogSnapshotRequest) returns (SubmitCatalogSnapshotResponse);
+  rpc SubmitLiveSeatObservation(SubmitLiveSeatObservationRequest) returns (SubmitLiveSeatObservationResponse);
 }
 
 message CompleteRequest {
