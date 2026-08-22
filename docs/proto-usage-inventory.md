@@ -96,8 +96,8 @@ consumer may introduce a free-form trigger string.
 
 Assignment integrity was checked against the current task creators before
 tightening validation. Central creates schedule tasks with a theater, target
-dates, locale, time zone, and managed egress, while catalog tasks are
-date-independent and carry only the theater, locale, time zone, and egress in
+dates, locale, time zone, and managed egress, while global catalog tasks carry
+only the provider ID, locale, time zone, and egress in
 `/Volumes/dev/cineko-org/central/internal/central/reconcile/engine.go:647-683`;
 the seat-map backfill creator supplies the same fields plus the auditorium and
 bounded target dates in
