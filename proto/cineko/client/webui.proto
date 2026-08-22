@@ -9,7 +9,7 @@ import "cineko/common/common.proto";
 import "cineko/seatmap/seatmap.proto";
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/cineko-org/contracts/gen/go/cineko/client;client";
+option go_package = "github.com/cineko-org/contracts/v3/gen/go/cineko/client;client";
 
 // WebUIState is the complete local application snapshot rendered by the
 // loopback UI. Persistent resources retain their shared Resource envelope so

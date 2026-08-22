@@ -6,7 +6,7 @@ import "buf/validate/validate.proto";
 import "cineko/catalog/catalog.proto";
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/cineko-org/contracts/gen/go/cineko/execution;execution";
+option go_package = "github.com/cineko-org/contracts/v3/gen/go/cineko/execution;execution";
 
 message Payload {
   cineko.catalog.Showtime showtime = 1;

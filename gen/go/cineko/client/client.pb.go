@@ -8,9 +8,9 @@ package client
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	catalog "github.com/cineko-org/contracts/gen/go/cineko/catalog"
-	common "github.com/cineko-org/contracts/gen/go/cineko/common"
-	observation "github.com/cineko-org/contracts/gen/go/cineko/observation"
+	catalog "github.com/cineko-org/contracts/v3/gen/go/cineko/catalog"
+	common "github.com/cineko-org/contracts/v3/gen/go/cineko/common"
+	observation "github.com/cineko-org/contracts/v3/gen/go/cineko/observation"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/known/durationpb"
@@ -10191,7 +10191,7 @@ const file_cineko_client_client_proto_rawDesc = "" +
 	"\rauditorium_id\x18\x01 \x01(\tB\n" +
 	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\fauditoriumId\"R\n" +
 	"\x12AuditoriumResponse\x12<\n" +
-	"\vauditoriums\x18\x01 \x03(\v2\x1a.cineko.catalog.AuditoriumR\vauditoriumsB=Z;github.com/cineko-org/contracts/gen/go/cineko/client;clientb\beditionsp\xe9\a"
+	"\vauditoriums\x18\x01 \x03(\v2\x1a.cineko.catalog.AuditoriumR\vauditoriumsB@Z>github.com/cineko-org/contracts/v3/gen/go/cineko/client;clientb\beditionsp\xe9\a"
 
 var file_cineko_client_client_proto_msgTypes = make([]protoimpl.MessageInfo, 70)
 var file_cineko_client_client_proto_goTypes = []any{

@@ -8,7 +8,7 @@ import (
 	connect "connectrpc.com/connect"
 	context "context"
 	errors "errors"
-	admin "github.com/cineko-org/contracts/gen/go/cineko/admin"
+	admin "github.com/cineko-org/contracts/v3/gen/go/cineko/admin"
 	http "net/http"
 	strings "strings"
 )

@@ -1,4 +1,4 @@
-module github.com/cineko-org/contracts
+module github.com/cineko-org/contracts/v3
 
 go 1.26
 

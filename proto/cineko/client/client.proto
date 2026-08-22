@@ -9,7 +9,7 @@ import "cineko/observation/observation.proto";
 import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/cineko-org/contracts/gen/go/cineko/client;client";
+option go_package = "github.com/cineko-org/contracts/v3/gen/go/cineko/client;client";
 
 message User {
   string id = 1;

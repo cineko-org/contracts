@@ -6,7 +6,7 @@ import "buf/validate/validate.proto";
 import "cineko/common/common.proto";
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/cineko-org/contracts/gen/go/cineko/catalog;catalog";
+option go_package = "github.com/cineko-org/contracts/v3/gen/go/cineko/catalog;catalog";
 
 message Provider {
   string id = 1;

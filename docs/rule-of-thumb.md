@@ -5,8 +5,8 @@ schema or does not ship.
 
 ## Hard rules
 
-- Protocol majors, schema-version fields, versioned package paths, compatibility readers, and legacy decoders are
-  forbidden.
+- Protocol majors, schema-version fields, versioned protobuf package paths, compatibility readers, and legacy
+  decoders are forbidden.
 - `reserved` declarations are forbidden. A breaking field change is a coordinated maintenance cutover, not a
   multi-schema runtime.
 - Semantic state, kind, mode, capability, and outcome values use required `oneof` messages. Semantic enums and magic
@@ -24,6 +24,8 @@ schema or does not ship.
   distinct domain states, dropping identity, or silently writing revision zero is forbidden.
 - Launcher, Client, Central, and Probe retain independent application SemVer. Those release versions do not identify
   a contract schema.
+- The Go module path follows Go semantic import versioning and must match the published major tag. Consumers use a
+  released Contracts tag, never a commit pseudo-version.
 
 ## Change procedure
 
