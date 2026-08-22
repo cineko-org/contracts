@@ -44,7 +44,10 @@ message ScheduleTask {
 }
 
 message CatalogTask {
-  cineko.catalog.Theater theater = 1 [(buf.validate.field).required = true];
+  string provider_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
   string locale = 2 [
     (buf.validate.field).required = true,
     (buf.validate.field).string.min_len = 1

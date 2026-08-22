@@ -19,7 +19,7 @@ import (
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
-func TestCatalogAssignmentIsDateIndependent(t *testing.T) {
+func TestGlobalCatalogAssignmentValidates(t *testing.T) {
 	t.Parallel()
 
 	validator, err := protovalidate.New()
@@ -28,38 +28,47 @@ func TestCatalogAssignmentIsDateIndependent(t *testing.T) {
 	}
 	assignment := observationpb.AssignmentTask_builder{
 		Egress: commonpb.EgressPolicy_builder{
-			Direct: commonpb.DirectEgress_builder{}.Build(),
+			ManagedScan: commonpb.ManagedScanEgress_builder{}.Build(),
 		}.Build(),
 		Catalog: observationpb.CatalogTask_builder{
-			Theater: catalogpb.Theater_builder{
-				Identity: catalogpb.TheaterIdentity_builder{
-					Cgv: catalogpb.CgvTheaterIdentity_builder{SiteNo: protoString("0056")}.Build(),
-				}.Build(),
-			}.Build(),
-			Locale:   protoString("ko-KR"),
-			TimeZone: protoString("Asia/Seoul"),
+			ProviderId: protoString("cgv"),
+			Locale:     protoString("ko-KR"),
+			TimeZone:   protoString("Asia/Seoul"),
 		}.Build(),
 	}.Build()
 	if err := validator.Validate(assignment); err != nil {
-		t.Fatalf("date-independent catalog assignment failed validation: %v", err)
+		t.Fatalf("global catalog assignment failed validation: %v", err)
+	}
+
+	assignment.GetCatalog().ClearProviderId()
+	if err := validator.Validate(assignment); err == nil {
+		t.Fatal("global catalog assignment without provider ID passed validation")
 	}
 }
 
-func TestCatalogTaskRejectsStaleTargetDatesJSON(t *testing.T) {
+func TestCatalogTaskRejectsStaleJSONFields(t *testing.T) {
 	t.Parallel()
 
-	var task observationpb.CatalogTask
-	err := (protojson.UnmarshalOptions{DiscardUnknown: false}).Unmarshal([]byte(`{
-		"theater":{"identity":{"cgv":{"siteNo":"0056"}}},
-		"targetDates":[{"year":2026,"month":8,"day":23}],
-		"locale":"ko-KR",
-		"timeZone":"Asia/Seoul"
-	}`), &task)
-	if err == nil {
-		t.Fatal("stale targetDates JSON passed latest CatalogTask decoding")
-	}
-	if !strings.Contains(err.Error(), "targetDates") {
-		t.Fatalf("stale CatalogTask failed for an unexpected reason: %v", err)
+	for _, field := range []struct {
+		name  string
+		value string
+	}{
+		{name: "theater", value: `{"identity":{"cgv":{"siteNo":"0056"}}}`},
+		{name: "targetDates", value: `[{"year":2026,"month":8,"day":23}]`},
+	} {
+		field := field
+		t.Run(field.name, func(t *testing.T) {
+			var task observationpb.CatalogTask
+			payload := `{"providerId":"cgv","locale":"ko-KR","timeZone":"Asia/Seoul","` +
+				field.name + `":` + field.value + `}`
+			err := (protojson.UnmarshalOptions{DiscardUnknown: false}).Unmarshal([]byte(payload), &task)
+			if err == nil {
+				t.Fatalf("stale %s JSON passed latest CatalogTask decoding", field.name)
+			}
+			if !strings.Contains(err.Error(), field.name) {
+				t.Fatalf("stale CatalogTask failed for an unexpected reason: %v", err)
+			}
+		})
 	}
 }
 
