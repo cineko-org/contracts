@@ -14,9 +14,54 @@ import (
 	observationpb "github.com/cineko-org/contracts/v3/gen/go/cineko/observation"
 	probepb "github.com/cineko-org/contracts/v3/gen/go/cineko/probe"
 	"github.com/cineko-org/contracts/v3/gen/go/cineko/seatmap"
+	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
+
+func TestCatalogAssignmentIsDateIndependent(t *testing.T) {
+	t.Parallel()
+
+	validator, err := protovalidate.New()
+	if err != nil {
+		t.Fatalf("create validator: %v", err)
+	}
+	assignment := observationpb.AssignmentTask_builder{
+		Egress: commonpb.EgressPolicy_builder{
+			Direct: commonpb.DirectEgress_builder{}.Build(),
+		}.Build(),
+		Catalog: observationpb.CatalogTask_builder{
+			Theater: catalogpb.Theater_builder{
+				Identity: catalogpb.TheaterIdentity_builder{
+					Cgv: catalogpb.CgvTheaterIdentity_builder{SiteNo: protoString("0056")}.Build(),
+				}.Build(),
+			}.Build(),
+			Locale:   protoString("ko-KR"),
+			TimeZone: protoString("Asia/Seoul"),
+		}.Build(),
+	}.Build()
+	if err := validator.Validate(assignment); err != nil {
+		t.Fatalf("date-independent catalog assignment failed validation: %v", err)
+	}
+}
+
+func TestCatalogTaskRejectsStaleTargetDatesJSON(t *testing.T) {
+	t.Parallel()
+
+	var task observationpb.CatalogTask
+	err := (protojson.UnmarshalOptions{DiscardUnknown: false}).Unmarshal([]byte(`{
+		"theater":{"identity":{"cgv":{"siteNo":"0056"}}},
+		"targetDates":[{"year":2026,"month":8,"day":23}],
+		"locale":"ko-KR",
+		"timeZone":"Asia/Seoul"
+	}`), &task)
+	if err == nil {
+		t.Fatal("stale targetDates JSON passed latest CatalogTask decoding")
+	}
+	if !strings.Contains(err.Error(), "targetDates") {
+		t.Fatalf("stale CatalogTask failed for an unexpected reason: %v", err)
+	}
+}
 
 func TestRequiredOneofRejectsUnsetState(t *testing.T) {
 	t.Parallel()

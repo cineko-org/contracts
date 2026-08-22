@@ -612,9 +612,8 @@ func (b0 ScheduleTask_builder) Build() *ScheduleTask {
 type CatalogTask struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Theater     *catalog.Theater       `protobuf:"bytes,1,opt,name=theater"`
-	xxx_hidden_TargetDates *[]*common.LocalDate   `protobuf:"bytes,2,rep,name=target_dates,json=targetDates"`
-	xxx_hidden_Locale      *string                `protobuf:"bytes,3,opt,name=locale"`
-	xxx_hidden_TimeZone    *string                `protobuf:"bytes,4,opt,name=time_zone,json=timeZone"`
+	xxx_hidden_Locale      *string                `protobuf:"bytes,2,opt,name=locale"`
+	xxx_hidden_TimeZone    *string                `protobuf:"bytes,3,opt,name=time_zone,json=timeZone"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -653,15 +652,6 @@ func (x *CatalogTask) GetTheater() *catalog.Theater {
 	return nil
 }
 
-func (x *CatalogTask) GetTargetDates() []*common.LocalDate {
-	if x != nil {
-		if x.xxx_hidden_TargetDates != nil {
-			return *x.xxx_hidden_TargetDates
-		}
-	}
-	return nil
-}
-
 func (x *CatalogTask) GetLocale() string {
 	if x != nil {
 		if x.xxx_hidden_Locale != nil {
@@ -686,18 +676,14 @@ func (x *CatalogTask) SetTheater(v *catalog.Theater) {
 	x.xxx_hidden_Theater = v
 }
 
-func (x *CatalogTask) SetTargetDates(v []*common.LocalDate) {
-	x.xxx_hidden_TargetDates = &v
-}
-
 func (x *CatalogTask) SetLocale(v string) {
 	x.xxx_hidden_Locale = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 4)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 3)
 }
 
 func (x *CatalogTask) SetTimeZone(v string) {
 	x.xxx_hidden_TimeZone = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 4)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 3)
 }
 
 func (x *CatalogTask) HasTheater() bool {
@@ -711,14 +697,14 @@ func (x *CatalogTask) HasLocale() bool {
 	if x == nil {
 		return false
 	}
-	return protoimpl.X.Present(&(x.XXX_presence[0]), 2)
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 1)
 }
 
 func (x *CatalogTask) HasTimeZone() bool {
 	if x == nil {
 		return false
 	}
-	return protoimpl.X.Present(&(x.XXX_presence[0]), 3)
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 2)
 }
 
 func (x *CatalogTask) ClearTheater() {
@@ -726,22 +712,21 @@ func (x *CatalogTask) ClearTheater() {
 }
 
 func (x *CatalogTask) ClearLocale() {
-	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 2)
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 1)
 	x.xxx_hidden_Locale = nil
 }
 
 func (x *CatalogTask) ClearTimeZone() {
-	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 3)
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 2)
 	x.xxx_hidden_TimeZone = nil
 }
 
 type CatalogTask_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
-	Theater     *catalog.Theater
-	TargetDates []*common.LocalDate
-	Locale      *string
-	TimeZone    *string
+	Theater  *catalog.Theater
+	Locale   *string
+	TimeZone *string
 }
 
 func (b0 CatalogTask_builder) Build() *CatalogTask {
@@ -749,13 +734,12 @@ func (b0 CatalogTask_builder) Build() *CatalogTask {
 	b, x := &b0, m0
 	_, _ = b, x
 	x.xxx_hidden_Theater = b.Theater
-	x.xxx_hidden_TargetDates = &b.TargetDates
 	if b.Locale != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 4)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 3)
 		x.xxx_hidden_Locale = b.Locale
 	}
 	if b.TimeZone != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 4)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 3)
 		x.xxx_hidden_TimeZone = b.TimeZone
 	}
 	return m0
@@ -2699,14 +2683,12 @@ const file_cineko_observation_observation_proto_rawDesc = "" +
 	"\x06locale\x18\x03 \x01(\tB\n" +
 	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\x06locale\x12'\n" +
 	"\ttime_zone\x18\x04 \x01(\tB\n" +
-	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\btimeZone\"\xde\x01\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\btimeZone\"\x95\x01\n" +
 	"\vCatalogTask\x129\n" +
-	"\atheater\x18\x01 \x01(\v2\x17.cineko.catalog.TheaterB\x06\xbaH\x03\xc8\x01\x01R\atheater\x12G\n" +
-	"\ftarget_dates\x18\x02 \x03(\v2\x18.cineko.common.LocalDateB\n" +
-	"\xbaH\a\x92\x01\x04\b\x01\x10\x0eR\vtargetDates\x12\"\n" +
-	"\x06locale\x18\x03 \x01(\tB\n" +
+	"\atheater\x18\x01 \x01(\v2\x17.cineko.catalog.TheaterB\x06\xbaH\x03\xc8\x01\x01R\atheater\x12\"\n" +
+	"\x06locale\x18\x02 \x01(\tB\n" +
 	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\x06locale\x12'\n" +
-	"\ttime_zone\x18\x04 \x01(\tB\n" +
+	"\ttime_zone\x18\x03 \x01(\tB\n" +
 	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\btimeZone\"\xd8\x02\n" +
 	"\vSeatMapTask\x129\n" +
 	"\atheater\x18\x01 \x01(\v2\x17.cineko.catalog.TheaterB\x06\xbaH\x03\xc8\x01\x01R\atheater\x12B\n" +
@@ -2822,40 +2804,39 @@ var file_cineko_observation_observation_proto_depIdxs = []int32{
 	19, // 4: cineko.observation.ScheduleTask.theater:type_name -> cineko.catalog.Theater
 	20, // 5: cineko.observation.ScheduleTask.target_dates:type_name -> cineko.common.LocalDate
 	19, // 6: cineko.observation.CatalogTask.theater:type_name -> cineko.catalog.Theater
-	20, // 7: cineko.observation.CatalogTask.target_dates:type_name -> cineko.common.LocalDate
-	19, // 8: cineko.observation.SeatMapTask.theater:type_name -> cineko.catalog.Theater
-	21, // 9: cineko.observation.SeatMapTask.auditorium:type_name -> cineko.catalog.Auditorium
-	22, // 10: cineko.observation.SeatMapTask.showtime:type_name -> cineko.catalog.Showtime
-	20, // 11: cineko.observation.SeatMapTask.target_dates:type_name -> cineko.common.LocalDate
-	19, // 12: cineko.observation.SeatAvailabilityTask.theater:type_name -> cineko.catalog.Theater
-	21, // 13: cineko.observation.SeatAvailabilityTask.auditorium:type_name -> cineko.catalog.Auditorium
-	22, // 14: cineko.observation.SeatAvailabilityTask.showtime:type_name -> cineko.catalog.Showtime
-	23, // 15: cineko.observation.AssignmentTask.egress:type_name -> cineko.common.EgressPolicy
-	5,  // 16: cineko.observation.AssignmentTask.schedule:type_name -> cineko.observation.ScheduleTask
-	6,  // 17: cineko.observation.AssignmentTask.catalog:type_name -> cineko.observation.CatalogTask
-	7,  // 18: cineko.observation.AssignmentTask.seat_map:type_name -> cineko.observation.SeatMapTask
-	8,  // 19: cineko.observation.AssignmentTask.seat_availability:type_name -> cineko.observation.SeatAvailabilityTask
-	20, // 20: cineko.observation.Capture.target_date:type_name -> cineko.common.LocalDate
-	24, // 21: cineko.observation.Capture.observed_at:type_name -> google.protobuf.Timestamp
-	22, // 22: cineko.observation.Capture.showtimes:type_name -> cineko.catalog.Showtime
-	10, // 23: cineko.observation.ScheduleCaptures.captures:type_name -> cineko.observation.Capture
-	11, // 24: cineko.observation.Completed.schedule:type_name -> cineko.observation.ScheduleCaptures
-	25, // 25: cineko.observation.Completed.catalog:type_name -> cineko.catalog.CatalogSnapshot
-	26, // 26: cineko.observation.Completed.live_seat:type_name -> cineko.seatmap.LiveSeatObservation
-	27, // 27: cineko.observation.Deferred.reason:type_name -> cineko.collection.DeferredReason
-	28, // 28: cineko.observation.Failed.reason:type_name -> cineko.collection.FailureReason
-	24, // 29: cineko.observation.AssignmentResult.started_at:type_name -> google.protobuf.Timestamp
-	24, // 30: cineko.observation.AssignmentResult.finished_at:type_name -> google.protobuf.Timestamp
-	12, // 31: cineko.observation.AssignmentResult.completed:type_name -> cineko.observation.Completed
-	13, // 32: cineko.observation.AssignmentResult.deferred:type_name -> cineko.observation.Deferred
-	14, // 33: cineko.observation.AssignmentResult.failed:type_name -> cineko.observation.Failed
-	17, // 34: cineko.observation.ResultReceipt.accepted:type_name -> cineko.observation.Accepted
-	18, // 35: cineko.observation.ResultReceipt.duplicate:type_name -> cineko.observation.Duplicate
-	36, // [36:36] is the sub-list for method output_type
-	36, // [36:36] is the sub-list for method input_type
-	36, // [36:36] is the sub-list for extension type_name
-	36, // [36:36] is the sub-list for extension extendee
-	0,  // [0:36] is the sub-list for field type_name
+	19, // 7: cineko.observation.SeatMapTask.theater:type_name -> cineko.catalog.Theater
+	21, // 8: cineko.observation.SeatMapTask.auditorium:type_name -> cineko.catalog.Auditorium
+	22, // 9: cineko.observation.SeatMapTask.showtime:type_name -> cineko.catalog.Showtime
+	20, // 10: cineko.observation.SeatMapTask.target_dates:type_name -> cineko.common.LocalDate
+	19, // 11: cineko.observation.SeatAvailabilityTask.theater:type_name -> cineko.catalog.Theater
+	21, // 12: cineko.observation.SeatAvailabilityTask.auditorium:type_name -> cineko.catalog.Auditorium
+	22, // 13: cineko.observation.SeatAvailabilityTask.showtime:type_name -> cineko.catalog.Showtime
+	23, // 14: cineko.observation.AssignmentTask.egress:type_name -> cineko.common.EgressPolicy
+	5,  // 15: cineko.observation.AssignmentTask.schedule:type_name -> cineko.observation.ScheduleTask
+	6,  // 16: cineko.observation.AssignmentTask.catalog:type_name -> cineko.observation.CatalogTask
+	7,  // 17: cineko.observation.AssignmentTask.seat_map:type_name -> cineko.observation.SeatMapTask
+	8,  // 18: cineko.observation.AssignmentTask.seat_availability:type_name -> cineko.observation.SeatAvailabilityTask
+	20, // 19: cineko.observation.Capture.target_date:type_name -> cineko.common.LocalDate
+	24, // 20: cineko.observation.Capture.observed_at:type_name -> google.protobuf.Timestamp
+	22, // 21: cineko.observation.Capture.showtimes:type_name -> cineko.catalog.Showtime
+	10, // 22: cineko.observation.ScheduleCaptures.captures:type_name -> cineko.observation.Capture
+	11, // 23: cineko.observation.Completed.schedule:type_name -> cineko.observation.ScheduleCaptures
+	25, // 24: cineko.observation.Completed.catalog:type_name -> cineko.catalog.CatalogSnapshot
+	26, // 25: cineko.observation.Completed.live_seat:type_name -> cineko.seatmap.LiveSeatObservation
+	27, // 26: cineko.observation.Deferred.reason:type_name -> cineko.collection.DeferredReason
+	28, // 27: cineko.observation.Failed.reason:type_name -> cineko.collection.FailureReason
+	24, // 28: cineko.observation.AssignmentResult.started_at:type_name -> google.protobuf.Timestamp
+	24, // 29: cineko.observation.AssignmentResult.finished_at:type_name -> google.protobuf.Timestamp
+	12, // 30: cineko.observation.AssignmentResult.completed:type_name -> cineko.observation.Completed
+	13, // 31: cineko.observation.AssignmentResult.deferred:type_name -> cineko.observation.Deferred
+	14, // 32: cineko.observation.AssignmentResult.failed:type_name -> cineko.observation.Failed
+	17, // 33: cineko.observation.ResultReceipt.accepted:type_name -> cineko.observation.Accepted
+	18, // 34: cineko.observation.ResultReceipt.duplicate:type_name -> cineko.observation.Duplicate
+	35, // [35:35] is the sub-list for method output_type
+	35, // [35:35] is the sub-list for method input_type
+	35, // [35:35] is the sub-list for extension type_name
+	35, // [35:35] is the sub-list for extension extendee
+	0,  // [0:35] is the sub-list for field type_name
 }
 
 func init() { file_cineko_observation_observation_proto_init() }
