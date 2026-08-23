@@ -15,10 +15,10 @@ it does not duplicate field definitions.
 ## State inventory
 
 - Seat-map resolution: an optional cached snapshot plus one required `cineko.collection.State` (idle, queued, collecting, waiting for showtime, retry scheduled, or blocked).
-- Client live-seat report: one mutation identity plus the atomic layout and availability observed during the authenticated pre-booking recheck.
+- Client live-seat report: one collection claim authority or execution lease authority plus the atomic layout and availability observed in the authenticated Client.
 - Probe kind: container or Client-owned.
 - Probe health: healthy, degraded, or unhealthy.
-- Observation task: schedule, catalog, static seat-map, or exact-showtime live-seat capture.
+- Probe observation task: schedule or catalog capture. Seat-map and exact-seat tasks are authenticated Client objectives and are never Probe assignments.
 - Observation result: completed, deferred, or failed, with typed reasons for deferred and failed outcomes.
 - Client resource: settings, preset, monitor, reservation, external operation, or application event.
 - Monitor state: pending, running, triggered, payment unknown, booked, failed, or stopped.

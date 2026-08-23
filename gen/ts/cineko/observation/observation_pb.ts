@@ -11,8 +11,6 @@ import type { DeferredReason, FailureReason } from "../collection/collection_pb"
 import { file_cineko_collection_collection } from "../collection/collection_pb";
 import type { EgressPolicy, LocalDate } from "../common/common_pb";
 import { file_cineko_common_common } from "../common/common_pb";
-import type { LiveSeatObservation } from "../seatmap/seatmap_pb";
-import { file_cineko_seatmap_seatmap } from "../seatmap/seatmap_pb";
 import type { Timestamp } from "@bufbuild/protobuf/wkt";
 import { file_google_protobuf_timestamp } from "@bufbuild/protobuf/wkt";
 import type { Message } from "@bufbuild/protobuf";
@@ -21,7 +19,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file cineko/observation/observation.proto.
  */
 export const file_cineko_observation_observation: GenFile = /*@__PURE__*/
-  fileDesc("CiRjaW5la28vb2JzZXJ2YXRpb24vb2JzZXJ2YXRpb24ucHJvdG8SEmNpbmVrby5vYnNlcnZhdGlvbiIRCg9TY2hlZHVsZUNhcHR1cmUiEAoOQ2F0YWxvZ0NhcHR1cmUiEAoOU2VhdE1hcENhcHR1cmUiGQoXU2VhdEF2YWlsYWJpbGl0eUNhcHR1cmUiswIKCkNhcGFiaWxpdHkSPwoQc2NoZWR1bGVfY2FwdHVyZRgBIAEoCzIjLmNpbmVrby5vYnNlcnZhdGlvbi5TY2hlZHVsZUNhcHR1cmVIABI9Cg9jYXRhbG9nX2NhcHR1cmUYAiABKAsyIi5jaW5la28ub2JzZXJ2YXRpb24uQ2F0YWxvZ0NhcHR1cmVIABI+ChBzZWF0X21hcF9jYXB0dXJlGAMgASgLMiIuY2luZWtvLm9ic2VydmF0aW9uLlNlYXRNYXBDYXB0dXJlSAASUAoZc2VhdF9hdmFpbGFiaWxpdHlfY2FwdHVyZRgEIAEoCzIrLmNpbmVrby5vYnNlcnZhdGlvbi5TZWF0QXZhaWxhYmlsaXR5Q2FwdHVyZUgAQhMKCmNhcGFiaWxpdHkSBbpIAggBIrcBCgxTY2hlZHVsZVRhc2sSMAoHdGhlYXRlchgBIAEoCzIXLmNpbmVrby5jYXRhbG9nLlRoZWF0ZXJCBrpIA8gBARI6Cgx0YXJnZXRfZGF0ZXMYAiADKAsyGC5jaW5la28uY29tbW9uLkxvY2FsRGF0ZUIKukgHkgEECAEQDhIaCgZsb2NhbGUYAyABKAlCCrpIB8gBAXICEAESHQoJdGltZV96b25lGAQgASgJQgq6SAfIAQFyAhABImkKC0NhdGFsb2dUYXNrEh8KC3Byb3ZpZGVyX2lkGAEgASgJQgq6SAfIAQFyAhABEhoKBmxvY2FsZRgCIAEoCUIKukgHyAEBcgIQARIdCgl0aW1lX3pvbmUYAyABKAlCCrpIB8gBAXICEAEimgIKC1NlYXRNYXBUYXNrEjAKB3RoZWF0ZXIYASABKAsyFy5jaW5la28uY2F0YWxvZy5UaGVhdGVyQga6SAPIAQESNgoKYXVkaXRvcml1bRgCIAEoCzIaLmNpbmVrby5jYXRhbG9nLkF1ZGl0b3JpdW1CBrpIA8gBARIqCghzaG93dGltZRgDIAEoCzIYLmNpbmVrby5jYXRhbG9nLlNob3d0aW1lEhoKBmxvY2FsZRgEIAEoCUIKukgHyAEBcgIQARIdCgl0aW1lX3pvbmUYBSABKAlCCrpIB8gBAXICEAESOgoMdGFyZ2V0X2RhdGVzGAYgAygLMhguY2luZWtvLmNvbW1vbi5Mb2NhbERhdGVCCrpIB5IBBAgBEA4i7wEKFFNlYXRBdmFpbGFiaWxpdHlUYXNrEjAKB3RoZWF0ZXIYASABKAsyFy5jaW5la28uY2F0YWxvZy5UaGVhdGVyQga6SAPIAQESNgoKYXVkaXRvcml1bRgCIAEoCzIaLmNpbmVrby5jYXRhbG9nLkF1ZGl0b3JpdW1CBrpIA8gBARIyCghzaG93dGltZRgDIAEoCzIYLmNpbmVrby5jYXRhbG9nLlNob3d0aW1lQga6SAPIAQESGgoGbG9jYWxlGAQgASgJQgq6SAfIAQFyAhABEh0KCXRpbWVfem9uZRgFIAEoCUIKukgHyAEBcgIQASK6AgoOQXNzaWdubWVudFRhc2sSMwoGZWdyZXNzGAEgASgLMhsuY2luZWtvLmNvbW1vbi5FZ3Jlc3NQb2xpY3lCBrpIA8gBARI0CghzY2hlZHVsZRgCIAEoCzIgLmNpbmVrby5vYnNlcnZhdGlvbi5TY2hlZHVsZVRhc2tIABIyCgdjYXRhbG9nGAMgASgLMh8uY2luZWtvLm9ic2VydmF0aW9uLkNhdGFsb2dUYXNrSAASMwoIc2VhdF9tYXAYBCABKAsyHy5jaW5la28ub2JzZXJ2YXRpb24uU2VhdE1hcFRhc2tIABJFChFzZWF0X2F2YWlsYWJpbGl0eRgFIAEoCzIoLmNpbmVrby5vYnNlcnZhdGlvbi5TZWF0QXZhaWxhYmlsaXR5VGFza0gAQg0KBHRhc2sSBbpIAggBIrwBCgdDYXB0dXJlEi0KC3RhcmdldF9kYXRlGAEgASgLMhguY2luZWtvLmNvbW1vbi5Mb2NhbERhdGUSEAoIY29tcGxldGUYAiABKAgSLwoLb2JzZXJ2ZWRfYXQYAyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEhIKCmVycm9yX2NvZGUYBCABKAkSKwoJc2hvd3RpbWVzGAUgAygLMhguY2luZWtvLmNhdGFsb2cuU2hvd3RpbWUiSwoQU2NoZWR1bGVDYXB0dXJlcxI3CghjYXB0dXJlcxgBIAMoCzIbLmNpbmVrby5vYnNlcnZhdGlvbi5DYXB0dXJlQgi6SAWSAQIIASLFAQoJQ29tcGxldGVkEjgKCHNjaGVkdWxlGAEgASgLMiQuY2luZWtvLm9ic2VydmF0aW9uLlNjaGVkdWxlQ2FwdHVyZXNIABIyCgdjYXRhbG9nGAIgASgLMh8uY2luZWtvLmNhdGFsb2cuQ2F0YWxvZ1NuYXBzaG90SAASOAoJbGl2ZV9zZWF0GAMgASgLMiMuY2luZWtvLnNlYXRtYXAuTGl2ZVNlYXRPYnNlcnZhdGlvbkgAQhAKB3BheWxvYWQSBbpIAggBIkUKCERlZmVycmVkEjkKBnJlYXNvbhgBIAEoCzIhLmNpbmVrby5jb2xsZWN0aW9uLkRlZmVycmVkUmVhc29uQga6SAPIAQEiQgoGRmFpbGVkEjgKBnJlYXNvbhgBIAEoCzIgLmNpbmVrby5jb2xsZWN0aW9uLkZhaWx1cmVSZWFzb25CBrpIA8gBASLDAwoQQXNzaWdubWVudFJlc3VsdBIaCgZydW5faWQYASABKAlCCrpIB8gBAXICEAESNgoKc3RhcnRlZF9hdBgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBCBrpIA8gBARI3CgtmaW5pc2hlZF9hdBgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBCBrpIA8gBARIyCgljb21wbGV0ZWQYBCABKAsyHS5jaW5la28ub2JzZXJ2YXRpb24uQ29tcGxldGVkSAASMAoIZGVmZXJyZWQYBSABKAsyHC5jaW5la28ub2JzZXJ2YXRpb24uRGVmZXJyZWRIABIsCgZmYWlsZWQYBiABKAsyGi5jaW5la28ub2JzZXJ2YXRpb24uRmFpbGVkSAA6fLpIeRp3Chdhc3NpZ25tZW50X3J1bl9pbnRlcnZhbBI3ZmluaXNoZWRfYXQgbXVzdCBiZSBncmVhdGVyIHRoYW4gb3IgZXF1YWwgdG8gc3RhcnRlZF9hdBojdGhpcy5maW5pc2hlZF9hdCA+PSB0aGlzLnN0YXJ0ZWRfYXRCEAoHb3V0Y29tZRIFukgCCAEi+gEKDVJlc3VsdFJlY2VpcHQSIQoNYXNzaWdubWVudF9pZBgBIAEoCUIKukgHyAEBcgIQARIaCgZydW5faWQYAiABKAlCCrpIB8gBAXICEAESLgoMY29udGVudF9oYXNoGAMgASgJQhi6SBXIAQFyEDIOXlswLTlhLWZdezY0fSQSMAoIYWNjZXB0ZWQYBCABKAsyHC5jaW5la28ub2JzZXJ2YXRpb24uQWNjZXB0ZWRIABIyCglkdXBsaWNhdGUYBSABKAsyHS5jaW5la28ub2JzZXJ2YXRpb24uRHVwbGljYXRlSABCFAoLZGlzcG9zaXRpb24SBbpIAggBIgoKCEFjY2VwdGVkIgsKCUR1cGxpY2F0ZUJKWkhnaXRodWIuY29tL2NpbmVrby1vcmcvY29udHJhY3RzL3YzL2dlbi9nby9jaW5la28vb2JzZXJ2YXRpb247b2JzZXJ2YXRpb25iCGVkaXRpb25zcOkH", [file_buf_validate_validate, file_cineko_catalog_catalog, file_cineko_collection_collection, file_cineko_common_common, file_cineko_seatmap_seatmap, file_google_protobuf_timestamp]);
+  fileDesc("CiRjaW5la28vb2JzZXJ2YXRpb24vb2JzZXJ2YXRpb24ucHJvdG8SEmNpbmVrby5vYnNlcnZhdGlvbiIRCg9TY2hlZHVsZUNhcHR1cmUiEAoOQ2F0YWxvZ0NhcHR1cmUioQEKCkNhcGFiaWxpdHkSPwoQc2NoZWR1bGVfY2FwdHVyZRgBIAEoCzIjLmNpbmVrby5vYnNlcnZhdGlvbi5TY2hlZHVsZUNhcHR1cmVIABI9Cg9jYXRhbG9nX2NhcHR1cmUYAiABKAsyIi5jaW5la28ub2JzZXJ2YXRpb24uQ2F0YWxvZ0NhcHR1cmVIAEITCgpjYXBhYmlsaXR5EgW6SAIIASK3AQoMU2NoZWR1bGVUYXNrEjAKB3RoZWF0ZXIYASABKAsyFy5jaW5la28uY2F0YWxvZy5UaGVhdGVyQga6SAPIAQESOgoMdGFyZ2V0X2RhdGVzGAIgAygLMhguY2luZWtvLmNvbW1vbi5Mb2NhbERhdGVCCrpIB5IBBAgBEA4SGgoGbG9jYWxlGAMgASgJQgq6SAfIAQFyAhABEh0KCXRpbWVfem9uZRgEIAEoCUIKukgHyAEBcgIQASJpCgtDYXRhbG9nVGFzaxIfCgtwcm92aWRlcl9pZBgBIAEoCUIKukgHyAEBcgIQARIaCgZsb2NhbGUYAiABKAlCCrpIB8gBAXICEAESHQoJdGltZV96b25lGAMgASgJQgq6SAfIAQFyAhABIrgICgtTZWF0TWFwVGFzaxIwCgd0aGVhdGVyGAEgASgLMhcuY2luZWtvLmNhdGFsb2cuVGhlYXRlckIGukgDyAEBEjYKCmF1ZGl0b3JpdW0YAiABKAsyGi5jaW5la28uY2F0YWxvZy5BdWRpdG9yaXVtQga6SAPIAQESMgoIc2hvd3RpbWUYAyABKAsyGC5jaW5la28uY2F0YWxvZy5TaG93dGltZUIGukgDyAEBEhoKBmxvY2FsZRgEIAEoCUIKukgHyAEBcgIQARIdCgl0aW1lX3pvbmUYBSABKAlCCrpIB8gBAXICEAE6zwa6SMsGGsgGCiVzZWF0X21hcF90YXNrX2V4YWN0X3Byb3ZpZGVyX2lkZW50aXR5El10aGVhdGVyLCBhdWRpdG9yaXVtLCBhbmQgc2hvd3RpbWUgbXVzdCBoYXZlIHRoZSBzYW1lIHByb3ZpZGVyIHRoZWF0ZXIgYW5kIGF1ZGl0b3JpdW0gaWRlbnRpdHkavwVoYXModGhpcy50aGVhdGVyLmlkZW50aXR5LmNndikgJiYgaGFzKHRoaXMuYXVkaXRvcml1bS5pZGVudGl0eS5jZ3YpICYmIGhhcyh0aGlzLnNob3d0aW1lLmlkZW50aXR5LmNndikgJiYgdGhpcy50aGVhdGVyLmlkZW50aXR5LmNndi5zaXRlX25vID09IHRoaXMuYXVkaXRvcml1bS5pZGVudGl0eS5jZ3Yuc2l0ZV9ubyAmJiB0aGlzLnRoZWF0ZXIuaWRlbnRpdHkuY2d2LnNpdGVfbm8gPT0gdGhpcy5zaG93dGltZS5pZGVudGl0eS5jZ3Yuc2l0ZV9ubyAmJiB0aGlzLmF1ZGl0b3JpdW0uaWRlbnRpdHkuY2d2LnNjcmVlbl9ubyA9PSB0aGlzLnNob3d0aW1lLmlkZW50aXR5LmNndi5zY3JlZW5fbm8gJiYgdGhpcy5zaG93dGltZS5wcm92aWRlcl9pZCA9PSB0aGlzLnRoZWF0ZXIucHJvdmlkZXJfaWQgJiYgdGhpcy5hdWRpdG9yaXVtLnRoZWF0ZXJfaWQgPT0gdGhpcy50aGVhdGVyLmlkICYmIHRoaXMuc2hvd3RpbWUudGhlYXRlcl9pZCA9PSB0aGlzLnRoZWF0ZXIuaWQgJiYgKCFoYXModGhpcy5zaG93dGltZS5hdWRpdG9yaXVtKSB8fCAodGhpcy5zaG93dGltZS5hdWRpdG9yaXVtLmlkID09IHRoaXMuYXVkaXRvcml1bS5pZCAmJiB0aGlzLnNob3d0aW1lLmF1ZGl0b3JpdW0udGhlYXRlcl9pZCA9PSB0aGlzLnRoZWF0ZXIuaWQgJiYgdGhpcy5zaG93dGltZS5hdWRpdG9yaXVtLmlkZW50aXR5ID09IHRoaXMuYXVkaXRvcml1bS5pZGVudGl0eSkpIu8BChRTZWF0QXZhaWxhYmlsaXR5VGFzaxIwCgd0aGVhdGVyGAEgASgLMhcuY2luZWtvLmNhdGFsb2cuVGhlYXRlckIGukgDyAEBEjYKCmF1ZGl0b3JpdW0YAiABKAsyGi5jaW5la28uY2F0YWxvZy5BdWRpdG9yaXVtQga6SAPIAQESMgoIc2hvd3RpbWUYAyABKAsyGC5jaW5la28uY2F0YWxvZy5TaG93dGltZUIGukgDyAEBEhoKBmxvY2FsZRgEIAEoCUIKukgHyAEBcgIQARIdCgl0aW1lX3pvbmUYBSABKAlCCrpIB8gBAXICEAEivgEKDkFzc2lnbm1lbnRUYXNrEjMKBmVncmVzcxgBIAEoCzIbLmNpbmVrby5jb21tb24uRWdyZXNzUG9saWN5Qga6SAPIAQESNAoIc2NoZWR1bGUYAiABKAsyIC5jaW5la28ub2JzZXJ2YXRpb24uU2NoZWR1bGVUYXNrSAASMgoHY2F0YWxvZxgDIAEoCzIfLmNpbmVrby5vYnNlcnZhdGlvbi5DYXRhbG9nVGFza0gAQg0KBHRhc2sSBbpIAggBIrwBCgdDYXB0dXJlEi0KC3RhcmdldF9kYXRlGAEgASgLMhguY2luZWtvLmNvbW1vbi5Mb2NhbERhdGUSEAoIY29tcGxldGUYAiABKAgSLwoLb2JzZXJ2ZWRfYXQYAyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEhIKCmVycm9yX2NvZGUYBCABKAkSKwoJc2hvd3RpbWVzGAUgAygLMhguY2luZWtvLmNhdGFsb2cuU2hvd3RpbWUiSwoQU2NoZWR1bGVDYXB0dXJlcxI3CghjYXB0dXJlcxgBIAMoCzIbLmNpbmVrby5vYnNlcnZhdGlvbi5DYXB0dXJlQgi6SAWSAQIIASKLAQoJQ29tcGxldGVkEjgKCHNjaGVkdWxlGAEgASgLMiQuY2luZWtvLm9ic2VydmF0aW9uLlNjaGVkdWxlQ2FwdHVyZXNIABIyCgdjYXRhbG9nGAIgASgLMh8uY2luZWtvLmNhdGFsb2cuQ2F0YWxvZ1NuYXBzaG90SABCEAoHcGF5bG9hZBIFukgCCAEiRQoIRGVmZXJyZWQSOQoGcmVhc29uGAEgASgLMiEuY2luZWtvLmNvbGxlY3Rpb24uRGVmZXJyZWRSZWFzb25CBrpIA8gBASJCCgZGYWlsZWQSOAoGcmVhc29uGAEgASgLMiAuY2luZWtvLmNvbGxlY3Rpb24uRmFpbHVyZVJlYXNvbkIGukgDyAEBIsMDChBBc3NpZ25tZW50UmVzdWx0EhoKBnJ1bl9pZBgBIAEoCUIKukgHyAEBcgIQARI2CgpzdGFydGVkX2F0GAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEIGukgDyAEBEjcKC2ZpbmlzaGVkX2F0GAMgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEIGukgDyAEBEjIKCWNvbXBsZXRlZBgEIAEoCzIdLmNpbmVrby5vYnNlcnZhdGlvbi5Db21wbGV0ZWRIABIwCghkZWZlcnJlZBgFIAEoCzIcLmNpbmVrby5vYnNlcnZhdGlvbi5EZWZlcnJlZEgAEiwKBmZhaWxlZBgGIAEoCzIaLmNpbmVrby5vYnNlcnZhdGlvbi5GYWlsZWRIADp8ukh5GncKF2Fzc2lnbm1lbnRfcnVuX2ludGVydmFsEjdmaW5pc2hlZF9hdCBtdXN0IGJlIGdyZWF0ZXIgdGhhbiBvciBlcXVhbCB0byBzdGFydGVkX2F0GiN0aGlzLmZpbmlzaGVkX2F0ID49IHRoaXMuc3RhcnRlZF9hdEIQCgdvdXRjb21lEgW6SAIIASL6AQoNUmVzdWx0UmVjZWlwdBIhCg1hc3NpZ25tZW50X2lkGAEgASgJQgq6SAfIAQFyAhABEhoKBnJ1bl9pZBgCIAEoCUIKukgHyAEBcgIQARIuCgxjb250ZW50X2hhc2gYAyABKAlCGLpIFcgBAXIQMg5eWzAtOWEtZl17NjR9JBIwCghhY2NlcHRlZBgEIAEoCzIcLmNpbmVrby5vYnNlcnZhdGlvbi5BY2NlcHRlZEgAEjIKCWR1cGxpY2F0ZRgFIAEoCzIdLmNpbmVrby5vYnNlcnZhdGlvbi5EdXBsaWNhdGVIAEIUCgtkaXNwb3NpdGlvbhIFukgCCAEiCgoIQWNjZXB0ZWQiCwoJRHVwbGljYXRlQkpaSGdpdGh1Yi5jb20vY2luZWtvLW9yZy9jb250cmFjdHMvdjMvZ2VuL2dvL2NpbmVrby9vYnNlcnZhdGlvbjtvYnNlcnZhdGlvbmIIZWRpdGlvbnNw6Qc", [file_buf_validate_validate, file_cineko_catalog_catalog, file_cineko_collection_collection, file_cineko_common_common, file_google_protobuf_timestamp]);
 
 /**
  * @generated from message cineko.observation.ScheduleCapture
@@ -50,32 +48,6 @@ export const CatalogCaptureSchema: GenMessage<CatalogCapture> = /*@__PURE__*/
   messageDesc(file_cineko_observation_observation, 1);
 
 /**
- * @generated from message cineko.observation.SeatMapCapture
- */
-export type SeatMapCapture = Message<"cineko.observation.SeatMapCapture"> & {
-};
-
-/**
- * Describes the message cineko.observation.SeatMapCapture.
- * Use `create(SeatMapCaptureSchema)` to create a new message.
- */
-export const SeatMapCaptureSchema: GenMessage<SeatMapCapture> = /*@__PURE__*/
-  messageDesc(file_cineko_observation_observation, 2);
-
-/**
- * @generated from message cineko.observation.SeatAvailabilityCapture
- */
-export type SeatAvailabilityCapture = Message<"cineko.observation.SeatAvailabilityCapture"> & {
-};
-
-/**
- * Describes the message cineko.observation.SeatAvailabilityCapture.
- * Use `create(SeatAvailabilityCaptureSchema)` to create a new message.
- */
-export const SeatAvailabilityCaptureSchema: GenMessage<SeatAvailabilityCapture> = /*@__PURE__*/
-  messageDesc(file_cineko_observation_observation, 3);
-
-/**
  * @generated from message cineko.observation.Capability
  */
 export type Capability = Message<"cineko.observation.Capability"> & {
@@ -94,18 +66,6 @@ export type Capability = Message<"cineko.observation.Capability"> & {
      */
     value: CatalogCapture;
     case: "catalogCapture";
-  } | {
-    /**
-     * @generated from field: cineko.observation.SeatMapCapture seat_map_capture = 3;
-     */
-    value: SeatMapCapture;
-    case: "seatMapCapture";
-  } | {
-    /**
-     * @generated from field: cineko.observation.SeatAvailabilityCapture seat_availability_capture = 4;
-     */
-    value: SeatAvailabilityCapture;
-    case: "seatAvailabilityCapture";
   } | { case: undefined; value?: undefined };
 };
 
@@ -114,7 +74,7 @@ export type Capability = Message<"cineko.observation.Capability"> & {
  * Use `create(CapabilitySchema)` to create a new message.
  */
 export const CapabilitySchema: GenMessage<Capability> = /*@__PURE__*/
-  messageDesc(file_cineko_observation_observation, 4);
+  messageDesc(file_cineko_observation_observation, 2);
 
 /**
  * @generated from message cineko.observation.ScheduleTask
@@ -146,7 +106,7 @@ export type ScheduleTask = Message<"cineko.observation.ScheduleTask"> & {
  * Use `create(ScheduleTaskSchema)` to create a new message.
  */
 export const ScheduleTaskSchema: GenMessage<ScheduleTask> = /*@__PURE__*/
-  messageDesc(file_cineko_observation_observation, 5);
+  messageDesc(file_cineko_observation_observation, 3);
 
 /**
  * @generated from message cineko.observation.CatalogTask
@@ -173,7 +133,7 @@ export type CatalogTask = Message<"cineko.observation.CatalogTask"> & {
  * Use `create(CatalogTaskSchema)` to create a new message.
  */
 export const CatalogTaskSchema: GenMessage<CatalogTask> = /*@__PURE__*/
-  messageDesc(file_cineko_observation_observation, 6);
+  messageDesc(file_cineko_observation_observation, 4);
 
 /**
  * @generated from message cineko.observation.SeatMapTask
@@ -203,11 +163,6 @@ export type SeatMapTask = Message<"cineko.observation.SeatMapTask"> & {
    * @generated from field: string time_zone = 5;
    */
   timeZone: string;
-
-  /**
-   * @generated from field: repeated cineko.common.LocalDate target_dates = 6;
-   */
-  targetDates: LocalDate[];
 };
 
 /**
@@ -215,7 +170,7 @@ export type SeatMapTask = Message<"cineko.observation.SeatMapTask"> & {
  * Use `create(SeatMapTaskSchema)` to create a new message.
  */
 export const SeatMapTaskSchema: GenMessage<SeatMapTask> = /*@__PURE__*/
-  messageDesc(file_cineko_observation_observation, 7);
+  messageDesc(file_cineko_observation_observation, 5);
 
 /**
  * @generated from message cineko.observation.SeatAvailabilityTask
@@ -252,7 +207,7 @@ export type SeatAvailabilityTask = Message<"cineko.observation.SeatAvailabilityT
  * Use `create(SeatAvailabilityTaskSchema)` to create a new message.
  */
 export const SeatAvailabilityTaskSchema: GenMessage<SeatAvailabilityTask> = /*@__PURE__*/
-  messageDesc(file_cineko_observation_observation, 8);
+  messageDesc(file_cineko_observation_observation, 6);
 
 /**
  * @generated from message cineko.observation.AssignmentTask
@@ -278,18 +233,6 @@ export type AssignmentTask = Message<"cineko.observation.AssignmentTask"> & {
      */
     value: CatalogTask;
     case: "catalog";
-  } | {
-    /**
-     * @generated from field: cineko.observation.SeatMapTask seat_map = 4;
-     */
-    value: SeatMapTask;
-    case: "seatMap";
-  } | {
-    /**
-     * @generated from field: cineko.observation.SeatAvailabilityTask seat_availability = 5;
-     */
-    value: SeatAvailabilityTask;
-    case: "seatAvailability";
   } | { case: undefined; value?: undefined };
 };
 
@@ -298,7 +241,7 @@ export type AssignmentTask = Message<"cineko.observation.AssignmentTask"> & {
  * Use `create(AssignmentTaskSchema)` to create a new message.
  */
 export const AssignmentTaskSchema: GenMessage<AssignmentTask> = /*@__PURE__*/
-  messageDesc(file_cineko_observation_observation, 9);
+  messageDesc(file_cineko_observation_observation, 7);
 
 /**
  * @generated from message cineko.observation.Capture
@@ -335,7 +278,7 @@ export type Capture = Message<"cineko.observation.Capture"> & {
  * Use `create(CaptureSchema)` to create a new message.
  */
 export const CaptureSchema: GenMessage<Capture> = /*@__PURE__*/
-  messageDesc(file_cineko_observation_observation, 10);
+  messageDesc(file_cineko_observation_observation, 8);
 
 /**
  * @generated from message cineko.observation.ScheduleCaptures
@@ -352,7 +295,7 @@ export type ScheduleCaptures = Message<"cineko.observation.ScheduleCaptures"> & 
  * Use `create(ScheduleCapturesSchema)` to create a new message.
  */
 export const ScheduleCapturesSchema: GenMessage<ScheduleCaptures> = /*@__PURE__*/
-  messageDesc(file_cineko_observation_observation, 11);
+  messageDesc(file_cineko_observation_observation, 9);
 
 /**
  * @generated from message cineko.observation.Completed
@@ -373,12 +316,6 @@ export type Completed = Message<"cineko.observation.Completed"> & {
      */
     value: CatalogSnapshot;
     case: "catalog";
-  } | {
-    /**
-     * @generated from field: cineko.seatmap.LiveSeatObservation live_seat = 3;
-     */
-    value: LiveSeatObservation;
-    case: "liveSeat";
   } | { case: undefined; value?: undefined };
 };
 
@@ -387,7 +324,7 @@ export type Completed = Message<"cineko.observation.Completed"> & {
  * Use `create(CompletedSchema)` to create a new message.
  */
 export const CompletedSchema: GenMessage<Completed> = /*@__PURE__*/
-  messageDesc(file_cineko_observation_observation, 12);
+  messageDesc(file_cineko_observation_observation, 10);
 
 /**
  * @generated from message cineko.observation.Deferred
@@ -404,7 +341,7 @@ export type Deferred = Message<"cineko.observation.Deferred"> & {
  * Use `create(DeferredSchema)` to create a new message.
  */
 export const DeferredSchema: GenMessage<Deferred> = /*@__PURE__*/
-  messageDesc(file_cineko_observation_observation, 13);
+  messageDesc(file_cineko_observation_observation, 11);
 
 /**
  * @generated from message cineko.observation.Failed
@@ -421,7 +358,7 @@ export type Failed = Message<"cineko.observation.Failed"> & {
  * Use `create(FailedSchema)` to create a new message.
  */
 export const FailedSchema: GenMessage<Failed> = /*@__PURE__*/
-  messageDesc(file_cineko_observation_observation, 14);
+  messageDesc(file_cineko_observation_observation, 12);
 
 /**
  * @generated from message cineko.observation.AssignmentResult
@@ -471,7 +408,7 @@ export type AssignmentResult = Message<"cineko.observation.AssignmentResult"> & 
  * Use `create(AssignmentResultSchema)` to create a new message.
  */
 export const AssignmentResultSchema: GenMessage<AssignmentResult> = /*@__PURE__*/
-  messageDesc(file_cineko_observation_observation, 15);
+  messageDesc(file_cineko_observation_observation, 13);
 
 /**
  * @generated from message cineko.observation.ResultReceipt
@@ -515,7 +452,7 @@ export type ResultReceipt = Message<"cineko.observation.ResultReceipt"> & {
  * Use `create(ResultReceiptSchema)` to create a new message.
  */
 export const ResultReceiptSchema: GenMessage<ResultReceipt> = /*@__PURE__*/
-  messageDesc(file_cineko_observation_observation, 16);
+  messageDesc(file_cineko_observation_observation, 14);
 
 /**
  * @generated from message cineko.observation.Accepted
@@ -528,7 +465,7 @@ export type Accepted = Message<"cineko.observation.Accepted"> & {
  * Use `create(AcceptedSchema)` to create a new message.
  */
 export const AcceptedSchema: GenMessage<Accepted> = /*@__PURE__*/
-  messageDesc(file_cineko_observation_observation, 17);
+  messageDesc(file_cineko_observation_observation, 15);
 
 /**
  * @generated from message cineko.observation.Duplicate
@@ -541,4 +478,4 @@ export type Duplicate = Message<"cineko.observation.Duplicate"> & {
  * Use `create(DuplicateSchema)` to create a new message.
  */
 export const DuplicateSchema: GenMessage<Duplicate> = /*@__PURE__*/
-  messageDesc(file_cineko_observation_observation, 18);
+  messageDesc(file_cineko_observation_observation, 16);
