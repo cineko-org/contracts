@@ -2795,49 +2795,6 @@ func (b0 BurstMode_builder) Build() *BurstMode {
 	return m0
 }
 
-type SeatAvailabilityMode struct {
-	state         protoimpl.MessageState `protogen:"opaque.v1"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *SeatAvailabilityMode) Reset() {
-	*x = SeatAvailabilityMode{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[25]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *SeatAvailabilityMode) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SeatAvailabilityMode) ProtoMessage() {}
-
-func (x *SeatAvailabilityMode) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[25]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-type SeatAvailabilityMode_builder struct {
-	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
-
-}
-
-func (b0 SeatAvailabilityMode_builder) Build() *SeatAvailabilityMode {
-	m0 := &SeatAvailabilityMode{}
-	b, x := &b0, m0
-	_, _ = b, x
-	return m0
-}
-
 type ObservationMode struct {
 	state           protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Mode isObservationMode_Mode `protobuf_oneof:"mode"`
@@ -2847,7 +2804,7 @@ type ObservationMode struct {
 
 func (x *ObservationMode) Reset() {
 	*x = ObservationMode{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[26]
+	mi := &file_cineko_admin_admin_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2859,7 +2816,7 @@ func (x *ObservationMode) String() string {
 func (*ObservationMode) ProtoMessage() {}
 
 func (x *ObservationMode) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[26]
+	mi := &file_cineko_admin_admin_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2897,15 +2854,6 @@ func (x *ObservationMode) GetBurst() *BurstMode {
 	return nil
 }
 
-func (x *ObservationMode) GetSeatAvailability() *SeatAvailabilityMode {
-	if x != nil {
-		if x, ok := x.xxx_hidden_Mode.(*observationMode_SeatAvailability); ok {
-			return x.SeatAvailability
-		}
-	}
-	return nil
-}
-
 func (x *ObservationMode) SetBaseline(v *BaselineMode) {
 	if v == nil {
 		x.xxx_hidden_Mode = nil
@@ -2928,14 +2876,6 @@ func (x *ObservationMode) SetBurst(v *BurstMode) {
 		return
 	}
 	x.xxx_hidden_Mode = &observationMode_Burst{v}
-}
-
-func (x *ObservationMode) SetSeatAvailability(v *SeatAvailabilityMode) {
-	if v == nil {
-		x.xxx_hidden_Mode = nil
-		return
-	}
-	x.xxx_hidden_Mode = &observationMode_SeatAvailability{v}
 }
 
 func (x *ObservationMode) HasMode() bool {
@@ -2969,14 +2909,6 @@ func (x *ObservationMode) HasBurst() bool {
 	return ok
 }
 
-func (x *ObservationMode) HasSeatAvailability() bool {
-	if x == nil {
-		return false
-	}
-	_, ok := x.xxx_hidden_Mode.(*observationMode_SeatAvailability)
-	return ok
-}
-
 func (x *ObservationMode) ClearMode() {
 	x.xxx_hidden_Mode = nil
 }
@@ -2999,17 +2931,10 @@ func (x *ObservationMode) ClearBurst() {
 	}
 }
 
-func (x *ObservationMode) ClearSeatAvailability() {
-	if _, ok := x.xxx_hidden_Mode.(*observationMode_SeatAvailability); ok {
-		x.xxx_hidden_Mode = nil
-	}
-}
-
 const ObservationMode_Mode_not_set_case case_ObservationMode_Mode = 0
 const ObservationMode_Baseline_case case_ObservationMode_Mode = 1
 const ObservationMode_Demand_case case_ObservationMode_Mode = 2
 const ObservationMode_Burst_case case_ObservationMode_Mode = 3
-const ObservationMode_SeatAvailability_case case_ObservationMode_Mode = 4
 
 func (x *ObservationMode) WhichMode() case_ObservationMode_Mode {
 	if x == nil {
@@ -3022,8 +2947,6 @@ func (x *ObservationMode) WhichMode() case_ObservationMode_Mode {
 		return ObservationMode_Demand_case
 	case *observationMode_Burst:
 		return ObservationMode_Burst_case
-	case *observationMode_SeatAvailability:
-		return ObservationMode_SeatAvailability_case
 	default:
 		return ObservationMode_Mode_not_set_case
 	}
@@ -3033,10 +2956,9 @@ type ObservationMode_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
 	// Fields of oneof xxx_hidden_Mode:
-	Baseline         *BaselineMode
-	Demand           *DemandMode
-	Burst            *BurstMode
-	SeatAvailability *SeatAvailabilityMode
+	Baseline *BaselineMode
+	Demand   *DemandMode
+	Burst    *BurstMode
 	// -- end of xxx_hidden_Mode
 }
 
@@ -3053,16 +2975,13 @@ func (b0 ObservationMode_builder) Build() *ObservationMode {
 	if b.Burst != nil {
 		x.xxx_hidden_Mode = &observationMode_Burst{b.Burst}
 	}
-	if b.SeatAvailability != nil {
-		x.xxx_hidden_Mode = &observationMode_SeatAvailability{b.SeatAvailability}
-	}
 	return m0
 }
 
 type case_ObservationMode_Mode protoreflect.FieldNumber
 
 func (x case_ObservationMode_Mode) String() string {
-	md := file_cineko_admin_admin_proto_msgTypes[26].Descriptor()
+	md := file_cineko_admin_admin_proto_msgTypes[25].Descriptor()
 	if x == 0 {
 		return "not set"
 	}
@@ -3085,17 +3004,11 @@ type observationMode_Burst struct {
 	Burst *BurstMode `protobuf:"bytes,3,opt,name=burst,oneof"`
 }
 
-type observationMode_SeatAvailability struct {
-	SeatAvailability *SeatAvailabilityMode `protobuf:"bytes,4,opt,name=seat_availability,json=seatAvailability,oneof"`
-}
-
 func (*observationMode_Baseline) isObservationMode_Mode() {}
 
 func (*observationMode_Demand) isObservationMode_Mode() {}
 
 func (*observationMode_Burst) isObservationMode_Mode() {}
-
-func (*observationMode_SeatAvailability) isObservationMode_Mode() {}
 
 type CompletedOutcome struct {
 	state         protoimpl.MessageState `protogen:"opaque.v1"`
@@ -3105,7 +3018,7 @@ type CompletedOutcome struct {
 
 func (x *CompletedOutcome) Reset() {
 	*x = CompletedOutcome{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[27]
+	mi := &file_cineko_admin_admin_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3117,7 +3030,7 @@ func (x *CompletedOutcome) String() string {
 func (*CompletedOutcome) ProtoMessage() {}
 
 func (x *CompletedOutcome) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[27]
+	mi := &file_cineko_admin_admin_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3148,7 +3061,7 @@ type PartialOutcome struct {
 
 func (x *PartialOutcome) Reset() {
 	*x = PartialOutcome{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[28]
+	mi := &file_cineko_admin_admin_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3160,7 +3073,7 @@ func (x *PartialOutcome) String() string {
 func (*PartialOutcome) ProtoMessage() {}
 
 func (x *PartialOutcome) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[28]
+	mi := &file_cineko_admin_admin_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3191,7 +3104,7 @@ type FailedOutcome struct {
 
 func (x *FailedOutcome) Reset() {
 	*x = FailedOutcome{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[29]
+	mi := &file_cineko_admin_admin_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3203,7 +3116,7 @@ func (x *FailedOutcome) String() string {
 func (*FailedOutcome) ProtoMessage() {}
 
 func (x *FailedOutcome) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[29]
+	mi := &file_cineko_admin_admin_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3234,7 +3147,7 @@ type MissedOutcome struct {
 
 func (x *MissedOutcome) Reset() {
 	*x = MissedOutcome{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[30]
+	mi := &file_cineko_admin_admin_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3246,7 +3159,7 @@ func (x *MissedOutcome) String() string {
 func (*MissedOutcome) ProtoMessage() {}
 
 func (x *MissedOutcome) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[30]
+	mi := &file_cineko_admin_admin_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3278,7 +3191,7 @@ type ObservationOutcome struct {
 
 func (x *ObservationOutcome) Reset() {
 	*x = ObservationOutcome{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[31]
+	mi := &file_cineko_admin_admin_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3290,7 +3203,7 @@ func (x *ObservationOutcome) String() string {
 func (*ObservationOutcome) ProtoMessage() {}
 
 func (x *ObservationOutcome) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[31]
+	mi := &file_cineko_admin_admin_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3493,7 +3406,7 @@ func (b0 ObservationOutcome_builder) Build() *ObservationOutcome {
 type case_ObservationOutcome_Outcome protoreflect.FieldNumber
 
 func (x case_ObservationOutcome_Outcome) String() string {
-	md := file_cineko_admin_admin_proto_msgTypes[31].Descriptor()
+	md := file_cineko_admin_admin_proto_msgTypes[30].Descriptor()
 	if x == 0 {
 		return "not set"
 	}
@@ -3554,7 +3467,7 @@ type ObservationPolicy struct {
 
 func (x *ObservationPolicy) Reset() {
 	*x = ObservationPolicy{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[32]
+	mi := &file_cineko_admin_admin_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3566,7 +3479,7 @@ func (x *ObservationPolicy) String() string {
 func (*ObservationPolicy) ProtoMessage() {}
 
 func (x *ObservationPolicy) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[32]
+	mi := &file_cineko_admin_admin_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4022,7 +3935,7 @@ type ListObservationPoliciesRequest struct {
 
 func (x *ListObservationPoliciesRequest) Reset() {
 	*x = ListObservationPoliciesRequest{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[33]
+	mi := &file_cineko_admin_admin_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4034,7 +3947,7 @@ func (x *ListObservationPoliciesRequest) String() string {
 func (*ListObservationPoliciesRequest) ProtoMessage() {}
 
 func (x *ListObservationPoliciesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[33]
+	mi := &file_cineko_admin_admin_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4066,7 +3979,7 @@ type ListObservationPoliciesResponse struct {
 
 func (x *ListObservationPoliciesResponse) Reset() {
 	*x = ListObservationPoliciesResponse{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[34]
+	mi := &file_cineko_admin_admin_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4078,7 +3991,7 @@ func (x *ListObservationPoliciesResponse) String() string {
 func (*ListObservationPoliciesResponse) ProtoMessage() {}
 
 func (x *ListObservationPoliciesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[34]
+	mi := &file_cineko_admin_admin_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4125,7 +4038,7 @@ type CreateObservationPolicyRequest struct {
 
 func (x *CreateObservationPolicyRequest) Reset() {
 	*x = CreateObservationPolicyRequest{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[35]
+	mi := &file_cineko_admin_admin_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4137,7 +4050,7 @@ func (x *CreateObservationPolicyRequest) String() string {
 func (*CreateObservationPolicyRequest) ProtoMessage() {}
 
 func (x *CreateObservationPolicyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[35]
+	mi := &file_cineko_admin_admin_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4193,7 +4106,7 @@ type CreateObservationPolicyResponse struct {
 
 func (x *CreateObservationPolicyResponse) Reset() {
 	*x = CreateObservationPolicyResponse{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[36]
+	mi := &file_cineko_admin_admin_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4205,7 +4118,7 @@ func (x *CreateObservationPolicyResponse) String() string {
 func (*CreateObservationPolicyResponse) ProtoMessage() {}
 
 func (x *CreateObservationPolicyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[36]
+	mi := &file_cineko_admin_admin_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4265,7 +4178,7 @@ type UpdateObservationPolicyRequest struct {
 
 func (x *UpdateObservationPolicyRequest) Reset() {
 	*x = UpdateObservationPolicyRequest{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[37]
+	mi := &file_cineko_admin_admin_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4277,7 +4190,7 @@ func (x *UpdateObservationPolicyRequest) String() string {
 func (*UpdateObservationPolicyRequest) ProtoMessage() {}
 
 func (x *UpdateObservationPolicyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[37]
+	mi := &file_cineko_admin_admin_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4394,7 +4307,7 @@ type UpdateObservationPolicyResponse struct {
 
 func (x *UpdateObservationPolicyResponse) Reset() {
 	*x = UpdateObservationPolicyResponse{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[38]
+	mi := &file_cineko_admin_admin_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4406,7 +4319,7 @@ func (x *UpdateObservationPolicyResponse) String() string {
 func (*UpdateObservationPolicyResponse) ProtoMessage() {}
 
 func (x *UpdateObservationPolicyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[38]
+	mi := &file_cineko_admin_admin_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4465,7 +4378,7 @@ type DeleteObservationPolicyRequest struct {
 
 func (x *DeleteObservationPolicyRequest) Reset() {
 	*x = DeleteObservationPolicyRequest{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[39]
+	mi := &file_cineko_admin_admin_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4477,7 +4390,7 @@ func (x *DeleteObservationPolicyRequest) String() string {
 func (*DeleteObservationPolicyRequest) ProtoMessage() {}
 
 func (x *DeleteObservationPolicyRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[39]
+	mi := &file_cineko_admin_admin_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4569,7 +4482,7 @@ type DeleteObservationPolicyResponse struct {
 
 func (x *DeleteObservationPolicyResponse) Reset() {
 	*x = DeleteObservationPolicyResponse{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[40]
+	mi := &file_cineko_admin_admin_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4581,7 +4494,7 @@ func (x *DeleteObservationPolicyResponse) String() string {
 func (*DeleteObservationPolicyResponse) ProtoMessage() {}
 
 func (x *DeleteObservationPolicyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[40]
+	mi := &file_cineko_admin_admin_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4617,7 +4530,7 @@ type ClientPinUser struct {
 
 func (x *ClientPinUser) Reset() {
 	*x = ClientPinUser{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[41]
+	mi := &file_cineko_admin_admin_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4629,7 +4542,7 @@ func (x *ClientPinUser) String() string {
 func (*ClientPinUser) ProtoMessage() {}
 
 func (x *ClientPinUser) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[41]
+	mi := &file_cineko_admin_admin_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4746,7 +4659,7 @@ type ClientPinIssue struct {
 
 func (x *ClientPinIssue) Reset() {
 	*x = ClientPinIssue{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[42]
+	mi := &file_cineko_admin_admin_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4758,7 +4671,7 @@ func (x *ClientPinIssue) String() string {
 func (*ClientPinIssue) ProtoMessage() {}
 
 func (x *ClientPinIssue) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[42]
+	mi := &file_cineko_admin_admin_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4845,7 +4758,7 @@ type ListClientUsersRequest struct {
 
 func (x *ListClientUsersRequest) Reset() {
 	*x = ListClientUsersRequest{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[43]
+	mi := &file_cineko_admin_admin_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4857,7 +4770,7 @@ func (x *ListClientUsersRequest) String() string {
 func (*ListClientUsersRequest) ProtoMessage() {}
 
 func (x *ListClientUsersRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[43]
+	mi := &file_cineko_admin_admin_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4889,7 +4802,7 @@ type ListClientUsersResponse struct {
 
 func (x *ListClientUsersResponse) Reset() {
 	*x = ListClientUsersResponse{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[44]
+	mi := &file_cineko_admin_admin_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4901,7 +4814,7 @@ func (x *ListClientUsersResponse) String() string {
 func (*ListClientUsersResponse) ProtoMessage() {}
 
 func (x *ListClientUsersResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[44]
+	mi := &file_cineko_admin_admin_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4950,7 +4863,7 @@ type CreateClientUserRequest struct {
 
 func (x *CreateClientUserRequest) Reset() {
 	*x = CreateClientUserRequest{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[45]
+	mi := &file_cineko_admin_admin_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4962,7 +4875,7 @@ func (x *CreateClientUserRequest) String() string {
 func (*CreateClientUserRequest) ProtoMessage() {}
 
 func (x *CreateClientUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[45]
+	mi := &file_cineko_admin_admin_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5026,7 +4939,7 @@ type CreateClientUserResponse struct {
 
 func (x *CreateClientUserResponse) Reset() {
 	*x = CreateClientUserResponse{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[46]
+	mi := &file_cineko_admin_admin_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5038,7 +4951,7 @@ func (x *CreateClientUserResponse) String() string {
 func (*CreateClientUserResponse) ProtoMessage() {}
 
 func (x *CreateClientUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[46]
+	mi := &file_cineko_admin_admin_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5096,7 +5009,7 @@ type RotateClientPinRequest struct {
 
 func (x *RotateClientPinRequest) Reset() {
 	*x = RotateClientPinRequest{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[47]
+	mi := &file_cineko_admin_admin_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5108,7 +5021,7 @@ func (x *RotateClientPinRequest) String() string {
 func (*RotateClientPinRequest) ProtoMessage() {}
 
 func (x *RotateClientPinRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[47]
+	mi := &file_cineko_admin_admin_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5172,7 +5085,7 @@ type RotateClientPinResponse struct {
 
 func (x *RotateClientPinResponse) Reset() {
 	*x = RotateClientPinResponse{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[48]
+	mi := &file_cineko_admin_admin_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5184,7 +5097,7 @@ func (x *RotateClientPinResponse) String() string {
 func (*RotateClientPinResponse) ProtoMessage() {}
 
 func (x *RotateClientPinResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[48]
+	mi := &file_cineko_admin_admin_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5242,7 +5155,7 @@ type DeleteClientUserRequest struct {
 
 func (x *DeleteClientUserRequest) Reset() {
 	*x = DeleteClientUserRequest{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[49]
+	mi := &file_cineko_admin_admin_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5254,7 +5167,7 @@ func (x *DeleteClientUserRequest) String() string {
 func (*DeleteClientUserRequest) ProtoMessage() {}
 
 func (x *DeleteClientUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[49]
+	mi := &file_cineko_admin_admin_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5317,7 +5230,7 @@ type DeleteClientUserResponse struct {
 
 func (x *DeleteClientUserResponse) Reset() {
 	*x = DeleteClientUserResponse{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[50]
+	mi := &file_cineko_admin_admin_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5329,7 +5242,7 @@ func (x *DeleteClientUserResponse) String() string {
 func (*DeleteClientUserResponse) ProtoMessage() {}
 
 func (x *DeleteClientUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[50]
+	mi := &file_cineko_admin_admin_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5353,35 +5266,33 @@ func (b0 DeleteClientUserResponse_builder) Build() *DeleteClientUserResponse {
 }
 
 type ReconcileReport struct {
-	state                             protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_Leader                 bool                   `protobuf:"varint,1,opt,name=leader"`
-	xxx_hidden_StartedAt              *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=started_at,json=startedAt"`
-	xxx_hidden_FinishedAt             *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=finished_at,json=finishedAt"`
-	xxx_hidden_StaleProbes            int32                  `protobuf:"varint,4,opt,name=stale_probes,json=staleProbes"`
-	xxx_hidden_DeletedProbes          int32                  `protobuf:"varint,5,opt,name=deleted_probes,json=deletedProbes"`
-	xxx_hidden_DeletedClientEvents    int64                  `protobuf:"varint,6,opt,name=deleted_client_events,json=deletedClientEvents"`
-	xxx_hidden_ExpiredLeases          int32                  `protobuf:"varint,7,opt,name=expired_leases,json=expiredLeases"`
-	xxx_hidden_RequeuedAssignments    int32                  `protobuf:"varint,8,opt,name=requeued_assignments,json=requeuedAssignments"`
-	xxx_hidden_FailedAssignments      int32                  `protobuf:"varint,9,opt,name=failed_assignments,json=failedAssignments"`
-	xxx_hidden_MissedAssignments      int32                  `protobuf:"varint,10,opt,name=missed_assignments,json=missedAssignments"`
-	xxx_hidden_AdvancedPolicies       int32                  `protobuf:"varint,11,opt,name=advanced_policies,json=advancedPolicies"`
-	xxx_hidden_CreatedAssignments     int32                  `protobuf:"varint,12,opt,name=created_assignments,json=createdAssignments"`
-	xxx_hidden_DeferredPolicies       int32                  `protobuf:"varint,13,opt,name=deferred_policies,json=deferredPolicies"`
-	xxx_hidden_SuspendedPolicies      int32                  `protobuf:"varint,14,opt,name=suspended_policies,json=suspendedPolicies"`
-	xxx_hidden_CatalogRefreshCreated  bool                   `protobuf:"varint,15,opt,name=catalog_refresh_created,json=catalogRefreshCreated"`
-	xxx_hidden_CatalogRefreshWaiting  bool                   `protobuf:"varint,16,opt,name=catalog_refresh_waiting,json=catalogRefreshWaiting"`
-	xxx_hidden_SeatMapBackfillCreated bool                   `protobuf:"varint,17,opt,name=seat_map_backfill_created,json=seatMapBackfillCreated"`
-	xxx_hidden_SeatMapBackfillWaiting bool                   `protobuf:"varint,18,opt,name=seat_map_backfill_waiting,json=seatMapBackfillWaiting"`
-	xxx_hidden_OldestDueAgeSeconds    int64                  `protobuf:"varint,19,opt,name=oldest_due_age_seconds,json=oldestDueAgeSeconds"`
-	XXX_raceDetectHookData            protoimpl.RaceDetectHookData
-	XXX_presence                      [1]uint32
-	unknownFields                     protoimpl.UnknownFields
-	sizeCache                         protoimpl.SizeCache
+	state                            protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_Leader                bool                   `protobuf:"varint,1,opt,name=leader"`
+	xxx_hidden_StartedAt             *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=started_at,json=startedAt"`
+	xxx_hidden_FinishedAt            *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=finished_at,json=finishedAt"`
+	xxx_hidden_StaleProbes           int32                  `protobuf:"varint,4,opt,name=stale_probes,json=staleProbes"`
+	xxx_hidden_DeletedProbes         int32                  `protobuf:"varint,5,opt,name=deleted_probes,json=deletedProbes"`
+	xxx_hidden_DeletedClientEvents   int64                  `protobuf:"varint,6,opt,name=deleted_client_events,json=deletedClientEvents"`
+	xxx_hidden_ExpiredLeases         int32                  `protobuf:"varint,7,opt,name=expired_leases,json=expiredLeases"`
+	xxx_hidden_RequeuedAssignments   int32                  `protobuf:"varint,8,opt,name=requeued_assignments,json=requeuedAssignments"`
+	xxx_hidden_FailedAssignments     int32                  `protobuf:"varint,9,opt,name=failed_assignments,json=failedAssignments"`
+	xxx_hidden_MissedAssignments     int32                  `protobuf:"varint,10,opt,name=missed_assignments,json=missedAssignments"`
+	xxx_hidden_AdvancedPolicies      int32                  `protobuf:"varint,11,opt,name=advanced_policies,json=advancedPolicies"`
+	xxx_hidden_CreatedAssignments    int32                  `protobuf:"varint,12,opt,name=created_assignments,json=createdAssignments"`
+	xxx_hidden_DeferredPolicies      int32                  `protobuf:"varint,13,opt,name=deferred_policies,json=deferredPolicies"`
+	xxx_hidden_SuspendedPolicies     int32                  `protobuf:"varint,14,opt,name=suspended_policies,json=suspendedPolicies"`
+	xxx_hidden_CatalogRefreshCreated bool                   `protobuf:"varint,15,opt,name=catalog_refresh_created,json=catalogRefreshCreated"`
+	xxx_hidden_CatalogRefreshWaiting bool                   `protobuf:"varint,16,opt,name=catalog_refresh_waiting,json=catalogRefreshWaiting"`
+	xxx_hidden_OldestDueAgeSeconds   int64                  `protobuf:"varint,19,opt,name=oldest_due_age_seconds,json=oldestDueAgeSeconds"`
+	XXX_raceDetectHookData           protoimpl.RaceDetectHookData
+	XXX_presence                     [1]uint32
+	unknownFields                    protoimpl.UnknownFields
+	sizeCache                        protoimpl.SizeCache
 }
 
 func (x *ReconcileReport) Reset() {
 	*x = ReconcileReport{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[51]
+	mi := &file_cineko_admin_admin_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5393,7 +5304,7 @@ func (x *ReconcileReport) String() string {
 func (*ReconcileReport) ProtoMessage() {}
 
 func (x *ReconcileReport) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[51]
+	mi := &file_cineko_admin_admin_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5516,20 +5427,6 @@ func (x *ReconcileReport) GetCatalogRefreshWaiting() bool {
 	return false
 }
 
-func (x *ReconcileReport) GetSeatMapBackfillCreated() bool {
-	if x != nil {
-		return x.xxx_hidden_SeatMapBackfillCreated
-	}
-	return false
-}
-
-func (x *ReconcileReport) GetSeatMapBackfillWaiting() bool {
-	if x != nil {
-		return x.xxx_hidden_SeatMapBackfillWaiting
-	}
-	return false
-}
-
 func (x *ReconcileReport) GetOldestDueAgeSeconds() int64 {
 	if x != nil {
 		return x.xxx_hidden_OldestDueAgeSeconds
@@ -5539,7 +5436,7 @@ func (x *ReconcileReport) GetOldestDueAgeSeconds() int64 {
 
 func (x *ReconcileReport) SetLeader(v bool) {
 	x.xxx_hidden_Leader = v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 19)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 17)
 }
 
 func (x *ReconcileReport) SetStartedAt(v *timestamppb.Timestamp) {
@@ -5552,82 +5449,72 @@ func (x *ReconcileReport) SetFinishedAt(v *timestamppb.Timestamp) {
 
 func (x *ReconcileReport) SetStaleProbes(v int32) {
 	x.xxx_hidden_StaleProbes = v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 19)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 17)
 }
 
 func (x *ReconcileReport) SetDeletedProbes(v int32) {
 	x.xxx_hidden_DeletedProbes = v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 4, 19)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 4, 17)
 }
 
 func (x *ReconcileReport) SetDeletedClientEvents(v int64) {
 	x.xxx_hidden_DeletedClientEvents = v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 5, 19)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 5, 17)
 }
 
 func (x *ReconcileReport) SetExpiredLeases(v int32) {
 	x.xxx_hidden_ExpiredLeases = v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 6, 19)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 6, 17)
 }
 
 func (x *ReconcileReport) SetRequeuedAssignments(v int32) {
 	x.xxx_hidden_RequeuedAssignments = v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 7, 19)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 7, 17)
 }
 
 func (x *ReconcileReport) SetFailedAssignments(v int32) {
 	x.xxx_hidden_FailedAssignments = v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 8, 19)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 8, 17)
 }
 
 func (x *ReconcileReport) SetMissedAssignments(v int32) {
 	x.xxx_hidden_MissedAssignments = v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 9, 19)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 9, 17)
 }
 
 func (x *ReconcileReport) SetAdvancedPolicies(v int32) {
 	x.xxx_hidden_AdvancedPolicies = v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 10, 19)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 10, 17)
 }
 
 func (x *ReconcileReport) SetCreatedAssignments(v int32) {
 	x.xxx_hidden_CreatedAssignments = v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 11, 19)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 11, 17)
 }
 
 func (x *ReconcileReport) SetDeferredPolicies(v int32) {
 	x.xxx_hidden_DeferredPolicies = v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 12, 19)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 12, 17)
 }
 
 func (x *ReconcileReport) SetSuspendedPolicies(v int32) {
 	x.xxx_hidden_SuspendedPolicies = v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 13, 19)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 13, 17)
 }
 
 func (x *ReconcileReport) SetCatalogRefreshCreated(v bool) {
 	x.xxx_hidden_CatalogRefreshCreated = v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 14, 19)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 14, 17)
 }
 
 func (x *ReconcileReport) SetCatalogRefreshWaiting(v bool) {
 	x.xxx_hidden_CatalogRefreshWaiting = v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 15, 19)
-}
-
-func (x *ReconcileReport) SetSeatMapBackfillCreated(v bool) {
-	x.xxx_hidden_SeatMapBackfillCreated = v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 16, 19)
-}
-
-func (x *ReconcileReport) SetSeatMapBackfillWaiting(v bool) {
-	x.xxx_hidden_SeatMapBackfillWaiting = v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 17, 19)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 15, 17)
 }
 
 func (x *ReconcileReport) SetOldestDueAgeSeconds(v int64) {
 	x.xxx_hidden_OldestDueAgeSeconds = v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 18, 19)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 16, 17)
 }
 
 func (x *ReconcileReport) HasLeader() bool {
@@ -5742,25 +5629,11 @@ func (x *ReconcileReport) HasCatalogRefreshWaiting() bool {
 	return protoimpl.X.Present(&(x.XXX_presence[0]), 15)
 }
 
-func (x *ReconcileReport) HasSeatMapBackfillCreated() bool {
-	if x == nil {
-		return false
-	}
-	return protoimpl.X.Present(&(x.XXX_presence[0]), 16)
-}
-
-func (x *ReconcileReport) HasSeatMapBackfillWaiting() bool {
-	if x == nil {
-		return false
-	}
-	return protoimpl.X.Present(&(x.XXX_presence[0]), 17)
-}
-
 func (x *ReconcileReport) HasOldestDueAgeSeconds() bool {
 	if x == nil {
 		return false
 	}
-	return protoimpl.X.Present(&(x.XXX_presence[0]), 18)
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 16)
 }
 
 func (x *ReconcileReport) ClearLeader() {
@@ -5841,43 +5714,31 @@ func (x *ReconcileReport) ClearCatalogRefreshWaiting() {
 	x.xxx_hidden_CatalogRefreshWaiting = false
 }
 
-func (x *ReconcileReport) ClearSeatMapBackfillCreated() {
-	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 16)
-	x.xxx_hidden_SeatMapBackfillCreated = false
-}
-
-func (x *ReconcileReport) ClearSeatMapBackfillWaiting() {
-	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 17)
-	x.xxx_hidden_SeatMapBackfillWaiting = false
-}
-
 func (x *ReconcileReport) ClearOldestDueAgeSeconds() {
-	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 18)
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 16)
 	x.xxx_hidden_OldestDueAgeSeconds = 0
 }
 
 type ReconcileReport_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
-	Leader                 *bool
-	StartedAt              *timestamppb.Timestamp
-	FinishedAt             *timestamppb.Timestamp
-	StaleProbes            *int32
-	DeletedProbes          *int32
-	DeletedClientEvents    *int64
-	ExpiredLeases          *int32
-	RequeuedAssignments    *int32
-	FailedAssignments      *int32
-	MissedAssignments      *int32
-	AdvancedPolicies       *int32
-	CreatedAssignments     *int32
-	DeferredPolicies       *int32
-	SuspendedPolicies      *int32
-	CatalogRefreshCreated  *bool
-	CatalogRefreshWaiting  *bool
-	SeatMapBackfillCreated *bool
-	SeatMapBackfillWaiting *bool
-	OldestDueAgeSeconds    *int64
+	Leader                *bool
+	StartedAt             *timestamppb.Timestamp
+	FinishedAt            *timestamppb.Timestamp
+	StaleProbes           *int32
+	DeletedProbes         *int32
+	DeletedClientEvents   *int64
+	ExpiredLeases         *int32
+	RequeuedAssignments   *int32
+	FailedAssignments     *int32
+	MissedAssignments     *int32
+	AdvancedPolicies      *int32
+	CreatedAssignments    *int32
+	DeferredPolicies      *int32
+	SuspendedPolicies     *int32
+	CatalogRefreshCreated *bool
+	CatalogRefreshWaiting *bool
+	OldestDueAgeSeconds   *int64
 }
 
 func (b0 ReconcileReport_builder) Build() *ReconcileReport {
@@ -5885,73 +5746,65 @@ func (b0 ReconcileReport_builder) Build() *ReconcileReport {
 	b, x := &b0, m0
 	_, _ = b, x
 	if b.Leader != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 19)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 17)
 		x.xxx_hidden_Leader = *b.Leader
 	}
 	x.xxx_hidden_StartedAt = b.StartedAt
 	x.xxx_hidden_FinishedAt = b.FinishedAt
 	if b.StaleProbes != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 19)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 17)
 		x.xxx_hidden_StaleProbes = *b.StaleProbes
 	}
 	if b.DeletedProbes != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 4, 19)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 4, 17)
 		x.xxx_hidden_DeletedProbes = *b.DeletedProbes
 	}
 	if b.DeletedClientEvents != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 5, 19)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 5, 17)
 		x.xxx_hidden_DeletedClientEvents = *b.DeletedClientEvents
 	}
 	if b.ExpiredLeases != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 6, 19)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 6, 17)
 		x.xxx_hidden_ExpiredLeases = *b.ExpiredLeases
 	}
 	if b.RequeuedAssignments != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 7, 19)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 7, 17)
 		x.xxx_hidden_RequeuedAssignments = *b.RequeuedAssignments
 	}
 	if b.FailedAssignments != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 8, 19)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 8, 17)
 		x.xxx_hidden_FailedAssignments = *b.FailedAssignments
 	}
 	if b.MissedAssignments != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 9, 19)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 9, 17)
 		x.xxx_hidden_MissedAssignments = *b.MissedAssignments
 	}
 	if b.AdvancedPolicies != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 10, 19)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 10, 17)
 		x.xxx_hidden_AdvancedPolicies = *b.AdvancedPolicies
 	}
 	if b.CreatedAssignments != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 11, 19)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 11, 17)
 		x.xxx_hidden_CreatedAssignments = *b.CreatedAssignments
 	}
 	if b.DeferredPolicies != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 12, 19)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 12, 17)
 		x.xxx_hidden_DeferredPolicies = *b.DeferredPolicies
 	}
 	if b.SuspendedPolicies != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 13, 19)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 13, 17)
 		x.xxx_hidden_SuspendedPolicies = *b.SuspendedPolicies
 	}
 	if b.CatalogRefreshCreated != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 14, 19)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 14, 17)
 		x.xxx_hidden_CatalogRefreshCreated = *b.CatalogRefreshCreated
 	}
 	if b.CatalogRefreshWaiting != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 15, 19)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 15, 17)
 		x.xxx_hidden_CatalogRefreshWaiting = *b.CatalogRefreshWaiting
 	}
-	if b.SeatMapBackfillCreated != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 16, 19)
-		x.xxx_hidden_SeatMapBackfillCreated = *b.SeatMapBackfillCreated
-	}
-	if b.SeatMapBackfillWaiting != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 17, 19)
-		x.xxx_hidden_SeatMapBackfillWaiting = *b.SeatMapBackfillWaiting
-	}
 	if b.OldestDueAgeSeconds != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 18, 19)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 16, 17)
 		x.xxx_hidden_OldestDueAgeSeconds = *b.OldestDueAgeSeconds
 	}
 	return m0
@@ -5975,7 +5828,7 @@ type ReconcileStatus struct {
 
 func (x *ReconcileStatus) Reset() {
 	*x = ReconcileStatus{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[52]
+	mi := &file_cineko_admin_admin_proto_msgTypes[51]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -5987,7 +5840,7 @@ func (x *ReconcileStatus) String() string {
 func (*ReconcileStatus) ProtoMessage() {}
 
 func (x *ReconcileStatus) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[52]
+	mi := &file_cineko_admin_admin_proto_msgTypes[51]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6237,7 +6090,7 @@ type Status struct {
 
 func (x *Status) Reset() {
 	*x = Status{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[53]
+	mi := &file_cineko_admin_admin_proto_msgTypes[52]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6249,7 +6102,7 @@ func (x *Status) String() string {
 func (*Status) ProtoMessage() {}
 
 func (x *Status) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[53]
+	mi := &file_cineko_admin_admin_proto_msgTypes[52]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6333,7 +6186,7 @@ type GetStatusRequest struct {
 
 func (x *GetStatusRequest) Reset() {
 	*x = GetStatusRequest{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[54]
+	mi := &file_cineko_admin_admin_proto_msgTypes[53]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6345,7 +6198,7 @@ func (x *GetStatusRequest) String() string {
 func (*GetStatusRequest) ProtoMessage() {}
 
 func (x *GetStatusRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[54]
+	mi := &file_cineko_admin_admin_proto_msgTypes[53]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6377,7 +6230,7 @@ type GetStatusResponse struct {
 
 func (x *GetStatusResponse) Reset() {
 	*x = GetStatusResponse{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[55]
+	mi := &file_cineko_admin_admin_proto_msgTypes[54]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6389,7 +6242,7 @@ func (x *GetStatusResponse) String() string {
 func (*GetStatusResponse) ProtoMessage() {}
 
 func (x *GetStatusResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[55]
+	mi := &file_cineko_admin_admin_proto_msgTypes[54]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6444,7 +6297,7 @@ type CatalogRefreshRunning struct {
 
 func (x *CatalogRefreshRunning) Reset() {
 	*x = CatalogRefreshRunning{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[56]
+	mi := &file_cineko_admin_admin_proto_msgTypes[55]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6456,7 +6309,7 @@ func (x *CatalogRefreshRunning) String() string {
 func (*CatalogRefreshRunning) ProtoMessage() {}
 
 func (x *CatalogRefreshRunning) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[56]
+	mi := &file_cineko_admin_admin_proto_msgTypes[55]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6487,7 +6340,7 @@ type CatalogRefreshReady struct {
 
 func (x *CatalogRefreshReady) Reset() {
 	*x = CatalogRefreshReady{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[57]
+	mi := &file_cineko_admin_admin_proto_msgTypes[56]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6499,7 +6352,7 @@ func (x *CatalogRefreshReady) String() string {
 func (*CatalogRefreshReady) ProtoMessage() {}
 
 func (x *CatalogRefreshReady) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[57]
+	mi := &file_cineko_admin_admin_proto_msgTypes[56]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6530,7 +6383,7 @@ type CatalogRefreshWaitingForProbe struct {
 
 func (x *CatalogRefreshWaitingForProbe) Reset() {
 	*x = CatalogRefreshWaitingForProbe{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[58]
+	mi := &file_cineko_admin_admin_proto_msgTypes[57]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6542,7 +6395,7 @@ func (x *CatalogRefreshWaitingForProbe) String() string {
 func (*CatalogRefreshWaitingForProbe) ProtoMessage() {}
 
 func (x *CatalogRefreshWaitingForProbe) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[58]
+	mi := &file_cineko_admin_admin_proto_msgTypes[57]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6573,7 +6426,7 @@ type CatalogRefreshQueued struct {
 
 func (x *CatalogRefreshQueued) Reset() {
 	*x = CatalogRefreshQueued{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[59]
+	mi := &file_cineko_admin_admin_proto_msgTypes[58]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6585,7 +6438,7 @@ func (x *CatalogRefreshQueued) String() string {
 func (*CatalogRefreshQueued) ProtoMessage() {}
 
 func (x *CatalogRefreshQueued) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[59]
+	mi := &file_cineko_admin_admin_proto_msgTypes[58]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6625,7 +6478,7 @@ type CatalogRefreshStatus struct {
 
 func (x *CatalogRefreshStatus) Reset() {
 	*x = CatalogRefreshStatus{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[60]
+	mi := &file_cineko_admin_admin_proto_msgTypes[59]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -6637,7 +6490,7 @@ func (x *CatalogRefreshStatus) String() string {
 func (*CatalogRefreshStatus) ProtoMessage() {}
 
 func (x *CatalogRefreshStatus) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[60]
+	mi := &file_cineko_admin_admin_proto_msgTypes[59]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7007,7 +6860,7 @@ func (b0 CatalogRefreshStatus_builder) Build() *CatalogRefreshStatus {
 type case_CatalogRefreshStatus_State protoreflect.FieldNumber
 
 func (x case_CatalogRefreshStatus_State) String() string {
-	md := file_cineko_admin_admin_proto_msgTypes[60].Descriptor()
+	md := file_cineko_admin_admin_proto_msgTypes[59].Descriptor()
 	if x == 0 {
 		return "not set"
 	}
@@ -7050,7 +6903,7 @@ type GetCatalogRefreshStatusRequest struct {
 
 func (x *GetCatalogRefreshStatusRequest) Reset() {
 	*x = GetCatalogRefreshStatusRequest{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[61]
+	mi := &file_cineko_admin_admin_proto_msgTypes[60]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7062,7 +6915,7 @@ func (x *GetCatalogRefreshStatusRequest) String() string {
 func (*GetCatalogRefreshStatusRequest) ProtoMessage() {}
 
 func (x *GetCatalogRefreshStatusRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[61]
+	mi := &file_cineko_admin_admin_proto_msgTypes[60]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7094,7 +6947,7 @@ type GetCatalogRefreshStatusResponse struct {
 
 func (x *GetCatalogRefreshStatusResponse) Reset() {
 	*x = GetCatalogRefreshStatusResponse{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[62]
+	mi := &file_cineko_admin_admin_proto_msgTypes[61]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7106,7 +6959,7 @@ func (x *GetCatalogRefreshStatusResponse) String() string {
 func (*GetCatalogRefreshStatusResponse) ProtoMessage() {}
 
 func (x *GetCatalogRefreshStatusResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[62]
+	mi := &file_cineko_admin_admin_proto_msgTypes[61]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7161,7 +7014,7 @@ type RequestCatalogRefreshRequest struct {
 
 func (x *RequestCatalogRefreshRequest) Reset() {
 	*x = RequestCatalogRefreshRequest{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[63]
+	mi := &file_cineko_admin_admin_proto_msgTypes[62]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7173,7 +7026,7 @@ func (x *RequestCatalogRefreshRequest) String() string {
 func (*RequestCatalogRefreshRequest) ProtoMessage() {}
 
 func (x *RequestCatalogRefreshRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[63]
+	mi := &file_cineko_admin_admin_proto_msgTypes[62]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7205,7 +7058,7 @@ type RequestCatalogRefreshResponse struct {
 
 func (x *RequestCatalogRefreshResponse) Reset() {
 	*x = RequestCatalogRefreshResponse{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[64]
+	mi := &file_cineko_admin_admin_proto_msgTypes[63]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7217,7 +7070,7 @@ func (x *RequestCatalogRefreshResponse) String() string {
 func (*RequestCatalogRefreshResponse) ProtoMessage() {}
 
 func (x *RequestCatalogRefreshResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[64]
+	mi := &file_cineko_admin_admin_proto_msgTypes[63]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7285,7 +7138,7 @@ type OpeningPattern struct {
 
 func (x *OpeningPattern) Reset() {
 	*x = OpeningPattern{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[65]
+	mi := &file_cineko_admin_admin_proto_msgTypes[64]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7297,7 +7150,7 @@ func (x *OpeningPattern) String() string {
 func (*OpeningPattern) ProtoMessage() {}
 
 func (x *OpeningPattern) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[65]
+	mi := &file_cineko_admin_admin_proto_msgTypes[64]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7659,7 +7512,7 @@ type DemandPattern struct {
 
 func (x *DemandPattern) Reset() {
 	*x = DemandPattern{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[66]
+	mi := &file_cineko_admin_admin_proto_msgTypes[65]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -7671,7 +7524,7 @@ func (x *DemandPattern) String() string {
 func (*DemandPattern) ProtoMessage() {}
 
 func (x *DemandPattern) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[66]
+	mi := &file_cineko_admin_admin_proto_msgTypes[65]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8096,7 +7949,7 @@ type ObservationIntelligence struct {
 
 func (x *ObservationIntelligence) Reset() {
 	*x = ObservationIntelligence{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[67]
+	mi := &file_cineko_admin_admin_proto_msgTypes[66]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8108,7 +7961,7 @@ func (x *ObservationIntelligence) String() string {
 func (*ObservationIntelligence) ProtoMessage() {}
 
 func (x *ObservationIntelligence) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[67]
+	mi := &file_cineko_admin_admin_proto_msgTypes[66]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8251,7 +8104,7 @@ type GetObservationIntelligenceRequest struct {
 
 func (x *GetObservationIntelligenceRequest) Reset() {
 	*x = GetObservationIntelligenceRequest{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[68]
+	mi := &file_cineko_admin_admin_proto_msgTypes[67]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8263,7 +8116,7 @@ func (x *GetObservationIntelligenceRequest) String() string {
 func (*GetObservationIntelligenceRequest) ProtoMessage() {}
 
 func (x *GetObservationIntelligenceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[68]
+	mi := &file_cineko_admin_admin_proto_msgTypes[67]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8295,7 +8148,7 @@ type GetObservationIntelligenceResponse struct {
 
 func (x *GetObservationIntelligenceResponse) Reset() {
 	*x = GetObservationIntelligenceResponse{}
-	mi := &file_cineko_admin_admin_proto_msgTypes[69]
+	mi := &file_cineko_admin_admin_proto_msgTypes[68]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -8307,7 +8160,7 @@ func (x *GetObservationIntelligenceResponse) String() string {
 func (*GetObservationIntelligenceResponse) ProtoMessage() {}
 
 func (x *GetObservationIntelligenceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_admin_admin_proto_msgTypes[69]
+	mi := &file_cineko_admin_admin_proto_msgTypes[68]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8452,13 +8305,11 @@ const file_cineko_admin_admin_proto_rawDesc = "" +
 	"\fBaselineMode\"\f\n" +
 	"\n" +
 	"DemandMode\"\v\n" +
-	"\tBurstMode\"\x16\n" +
-	"\x14SeatAvailabilityMode\"\x92\x02\n" +
+	"\tBurstMode\"\xbf\x01\n" +
 	"\x0fObservationMode\x128\n" +
 	"\bbaseline\x18\x01 \x01(\v2\x1a.cineko.admin.BaselineModeH\x00R\bbaseline\x122\n" +
 	"\x06demand\x18\x02 \x01(\v2\x18.cineko.admin.DemandModeH\x00R\x06demand\x12/\n" +
-	"\x05burst\x18\x03 \x01(\v2\x17.cineko.admin.BurstModeH\x00R\x05burst\x12Q\n" +
-	"\x11seat_availability\x18\x04 \x01(\v2\".cineko.admin.SeatAvailabilityModeH\x00R\x10seatAvailabilityB\r\n" +
+	"\x05burst\x18\x03 \x01(\v2\x17.cineko.admin.BurstModeH\x00R\x05burstB\r\n" +
 	"\x04mode\x12\x05\xbaH\x02\b\x01\"\x12\n" +
 	"\x10CompletedOutcome\"\x10\n" +
 	"\x0ePartialOutcome\"\x0f\n" +
@@ -8533,7 +8384,7 @@ const file_cineko_admin_admin_proto_rawDesc = "" +
 	"\x17DeleteClientUserRequest\x12#\n" +
 	"\auser_id\x18\x01 \x01(\tB\n" +
 	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\x06userId\"\x1a\n" +
-	"\x18DeleteClientUserResponse\"\xac\a\n" +
+	"\x18DeleteClientUserResponse\"\xb6\x06\n" +
 	"\x0fReconcileReport\x12\x16\n" +
 	"\x06leader\x18\x01 \x01(\bR\x06leader\x129\n" +
 	"\n" +
@@ -8553,9 +8404,7 @@ const file_cineko_admin_admin_proto_rawDesc = "" +
 	"\x11deferred_policies\x18\r \x01(\x05R\x10deferredPolicies\x12-\n" +
 	"\x12suspended_policies\x18\x0e \x01(\x05R\x11suspendedPolicies\x126\n" +
 	"\x17catalog_refresh_created\x18\x0f \x01(\bR\x15catalogRefreshCreated\x126\n" +
-	"\x17catalog_refresh_waiting\x18\x10 \x01(\bR\x15catalogRefreshWaiting\x129\n" +
-	"\x19seat_map_backfill_created\x18\x11 \x01(\bR\x16seatMapBackfillCreated\x129\n" +
-	"\x19seat_map_backfill_waiting\x18\x12 \x01(\bR\x16seatMapBackfillWaiting\x123\n" +
+	"\x17catalog_refresh_waiting\x18\x10 \x01(\bR\x15catalogRefreshWaiting\x123\n" +
 	"\x16oldest_due_age_seconds\x18\x13 \x01(\x03R\x13oldestDueAgeSeconds\"\x8d\x03\n" +
 	"\x0fReconcileStatus\x12\x18\n" +
 	"\arunning\x18\x01 \x01(\bR\arunning\x12\x18\n" +
@@ -8662,7 +8511,7 @@ const file_cineko_admin_admin_proto_rawDesc = "" +
 	"\x0fRotateClientPin\x12$.cineko.admin.RotateClientPinRequest\x1a%.cineko.admin.RotateClientPinResponse\x12a\n" +
 	"\x10DeleteClientUser\x12%.cineko.admin.DeleteClientUserRequest\x1a&.cineko.admin.DeleteClientUserResponseB>Z<github.com/cineko-org/contracts/v3/gen/go/cineko/admin;adminb\beditionsp\xe9\a"
 
-var file_cineko_admin_admin_proto_msgTypes = make([]protoimpl.MessageInfo, 70)
+var file_cineko_admin_admin_proto_msgTypes = make([]protoimpl.MessageInfo, 69)
 var file_cineko_admin_admin_proto_goTypes = []any{
 	(*Principal)(nil),                          // 0: cineko.admin.Principal
 	(*LoginRequest)(nil),                       // 1: cineko.admin.LoginRequest
@@ -8689,166 +8538,164 @@ var file_cineko_admin_admin_proto_goTypes = []any{
 	(*BaselineMode)(nil),                       // 22: cineko.admin.BaselineMode
 	(*DemandMode)(nil),                         // 23: cineko.admin.DemandMode
 	(*BurstMode)(nil),                          // 24: cineko.admin.BurstMode
-	(*SeatAvailabilityMode)(nil),               // 25: cineko.admin.SeatAvailabilityMode
-	(*ObservationMode)(nil),                    // 26: cineko.admin.ObservationMode
-	(*CompletedOutcome)(nil),                   // 27: cineko.admin.CompletedOutcome
-	(*PartialOutcome)(nil),                     // 28: cineko.admin.PartialOutcome
-	(*FailedOutcome)(nil),                      // 29: cineko.admin.FailedOutcome
-	(*MissedOutcome)(nil),                      // 30: cineko.admin.MissedOutcome
-	(*ObservationOutcome)(nil),                 // 31: cineko.admin.ObservationOutcome
-	(*ObservationPolicy)(nil),                  // 32: cineko.admin.ObservationPolicy
-	(*ListObservationPoliciesRequest)(nil),     // 33: cineko.admin.ListObservationPoliciesRequest
-	(*ListObservationPoliciesResponse)(nil),    // 34: cineko.admin.ListObservationPoliciesResponse
-	(*CreateObservationPolicyRequest)(nil),     // 35: cineko.admin.CreateObservationPolicyRequest
-	(*CreateObservationPolicyResponse)(nil),    // 36: cineko.admin.CreateObservationPolicyResponse
-	(*UpdateObservationPolicyRequest)(nil),     // 37: cineko.admin.UpdateObservationPolicyRequest
-	(*UpdateObservationPolicyResponse)(nil),    // 38: cineko.admin.UpdateObservationPolicyResponse
-	(*DeleteObservationPolicyRequest)(nil),     // 39: cineko.admin.DeleteObservationPolicyRequest
-	(*DeleteObservationPolicyResponse)(nil),    // 40: cineko.admin.DeleteObservationPolicyResponse
-	(*ClientPinUser)(nil),                      // 41: cineko.admin.ClientPinUser
-	(*ClientPinIssue)(nil),                     // 42: cineko.admin.ClientPinIssue
-	(*ListClientUsersRequest)(nil),             // 43: cineko.admin.ListClientUsersRequest
-	(*ListClientUsersResponse)(nil),            // 44: cineko.admin.ListClientUsersResponse
-	(*CreateClientUserRequest)(nil),            // 45: cineko.admin.CreateClientUserRequest
-	(*CreateClientUserResponse)(nil),           // 46: cineko.admin.CreateClientUserResponse
-	(*RotateClientPinRequest)(nil),             // 47: cineko.admin.RotateClientPinRequest
-	(*RotateClientPinResponse)(nil),            // 48: cineko.admin.RotateClientPinResponse
-	(*DeleteClientUserRequest)(nil),            // 49: cineko.admin.DeleteClientUserRequest
-	(*DeleteClientUserResponse)(nil),           // 50: cineko.admin.DeleteClientUserResponse
-	(*ReconcileReport)(nil),                    // 51: cineko.admin.ReconcileReport
-	(*ReconcileStatus)(nil),                    // 52: cineko.admin.ReconcileStatus
-	(*Status)(nil),                             // 53: cineko.admin.Status
-	(*GetStatusRequest)(nil),                   // 54: cineko.admin.GetStatusRequest
-	(*GetStatusResponse)(nil),                  // 55: cineko.admin.GetStatusResponse
-	(*CatalogRefreshRunning)(nil),              // 56: cineko.admin.CatalogRefreshRunning
-	(*CatalogRefreshReady)(nil),                // 57: cineko.admin.CatalogRefreshReady
-	(*CatalogRefreshWaitingForProbe)(nil),      // 58: cineko.admin.CatalogRefreshWaitingForProbe
-	(*CatalogRefreshQueued)(nil),               // 59: cineko.admin.CatalogRefreshQueued
-	(*CatalogRefreshStatus)(nil),               // 60: cineko.admin.CatalogRefreshStatus
-	(*GetCatalogRefreshStatusRequest)(nil),     // 61: cineko.admin.GetCatalogRefreshStatusRequest
-	(*GetCatalogRefreshStatusResponse)(nil),    // 62: cineko.admin.GetCatalogRefreshStatusResponse
-	(*RequestCatalogRefreshRequest)(nil),       // 63: cineko.admin.RequestCatalogRefreshRequest
-	(*RequestCatalogRefreshResponse)(nil),      // 64: cineko.admin.RequestCatalogRefreshResponse
-	(*OpeningPattern)(nil),                     // 65: cineko.admin.OpeningPattern
-	(*DemandPattern)(nil),                      // 66: cineko.admin.DemandPattern
-	(*ObservationIntelligence)(nil),            // 67: cineko.admin.ObservationIntelligence
-	(*GetObservationIntelligenceRequest)(nil),  // 68: cineko.admin.GetObservationIntelligenceRequest
-	(*GetObservationIntelligenceResponse)(nil), // 69: cineko.admin.GetObservationIntelligenceResponse
-	(*timestamppb.Timestamp)(nil),              // 70: google.protobuf.Timestamp
-	(*probe.ProbeKind)(nil),                    // 71: cineko.probe.ProbeKind
-	(*common.Runtime)(nil),                     // 72: cineko.common.Runtime
-	(*probe.ProbeHealth)(nil),                  // 73: cineko.probe.ProbeHealth
-	(*catalog.Theater)(nil),                    // 74: cineko.catalog.Theater
-	(*client.User)(nil),                        // 75: cineko.client.User
+	(*ObservationMode)(nil),                    // 25: cineko.admin.ObservationMode
+	(*CompletedOutcome)(nil),                   // 26: cineko.admin.CompletedOutcome
+	(*PartialOutcome)(nil),                     // 27: cineko.admin.PartialOutcome
+	(*FailedOutcome)(nil),                      // 28: cineko.admin.FailedOutcome
+	(*MissedOutcome)(nil),                      // 29: cineko.admin.MissedOutcome
+	(*ObservationOutcome)(nil),                 // 30: cineko.admin.ObservationOutcome
+	(*ObservationPolicy)(nil),                  // 31: cineko.admin.ObservationPolicy
+	(*ListObservationPoliciesRequest)(nil),     // 32: cineko.admin.ListObservationPoliciesRequest
+	(*ListObservationPoliciesResponse)(nil),    // 33: cineko.admin.ListObservationPoliciesResponse
+	(*CreateObservationPolicyRequest)(nil),     // 34: cineko.admin.CreateObservationPolicyRequest
+	(*CreateObservationPolicyResponse)(nil),    // 35: cineko.admin.CreateObservationPolicyResponse
+	(*UpdateObservationPolicyRequest)(nil),     // 36: cineko.admin.UpdateObservationPolicyRequest
+	(*UpdateObservationPolicyResponse)(nil),    // 37: cineko.admin.UpdateObservationPolicyResponse
+	(*DeleteObservationPolicyRequest)(nil),     // 38: cineko.admin.DeleteObservationPolicyRequest
+	(*DeleteObservationPolicyResponse)(nil),    // 39: cineko.admin.DeleteObservationPolicyResponse
+	(*ClientPinUser)(nil),                      // 40: cineko.admin.ClientPinUser
+	(*ClientPinIssue)(nil),                     // 41: cineko.admin.ClientPinIssue
+	(*ListClientUsersRequest)(nil),             // 42: cineko.admin.ListClientUsersRequest
+	(*ListClientUsersResponse)(nil),            // 43: cineko.admin.ListClientUsersResponse
+	(*CreateClientUserRequest)(nil),            // 44: cineko.admin.CreateClientUserRequest
+	(*CreateClientUserResponse)(nil),           // 45: cineko.admin.CreateClientUserResponse
+	(*RotateClientPinRequest)(nil),             // 46: cineko.admin.RotateClientPinRequest
+	(*RotateClientPinResponse)(nil),            // 47: cineko.admin.RotateClientPinResponse
+	(*DeleteClientUserRequest)(nil),            // 48: cineko.admin.DeleteClientUserRequest
+	(*DeleteClientUserResponse)(nil),           // 49: cineko.admin.DeleteClientUserResponse
+	(*ReconcileReport)(nil),                    // 50: cineko.admin.ReconcileReport
+	(*ReconcileStatus)(nil),                    // 51: cineko.admin.ReconcileStatus
+	(*Status)(nil),                             // 52: cineko.admin.Status
+	(*GetStatusRequest)(nil),                   // 53: cineko.admin.GetStatusRequest
+	(*GetStatusResponse)(nil),                  // 54: cineko.admin.GetStatusResponse
+	(*CatalogRefreshRunning)(nil),              // 55: cineko.admin.CatalogRefreshRunning
+	(*CatalogRefreshReady)(nil),                // 56: cineko.admin.CatalogRefreshReady
+	(*CatalogRefreshWaitingForProbe)(nil),      // 57: cineko.admin.CatalogRefreshWaitingForProbe
+	(*CatalogRefreshQueued)(nil),               // 58: cineko.admin.CatalogRefreshQueued
+	(*CatalogRefreshStatus)(nil),               // 59: cineko.admin.CatalogRefreshStatus
+	(*GetCatalogRefreshStatusRequest)(nil),     // 60: cineko.admin.GetCatalogRefreshStatusRequest
+	(*GetCatalogRefreshStatusResponse)(nil),    // 61: cineko.admin.GetCatalogRefreshStatusResponse
+	(*RequestCatalogRefreshRequest)(nil),       // 62: cineko.admin.RequestCatalogRefreshRequest
+	(*RequestCatalogRefreshResponse)(nil),      // 63: cineko.admin.RequestCatalogRefreshResponse
+	(*OpeningPattern)(nil),                     // 64: cineko.admin.OpeningPattern
+	(*DemandPattern)(nil),                      // 65: cineko.admin.DemandPattern
+	(*ObservationIntelligence)(nil),            // 66: cineko.admin.ObservationIntelligence
+	(*GetObservationIntelligenceRequest)(nil),  // 67: cineko.admin.GetObservationIntelligenceRequest
+	(*GetObservationIntelligenceResponse)(nil), // 68: cineko.admin.GetObservationIntelligenceResponse
+	(*timestamppb.Timestamp)(nil),              // 69: google.protobuf.Timestamp
+	(*probe.ProbeKind)(nil),                    // 70: cineko.probe.ProbeKind
+	(*common.Runtime)(nil),                     // 71: cineko.common.Runtime
+	(*probe.ProbeHealth)(nil),                  // 72: cineko.probe.ProbeHealth
+	(*catalog.Theater)(nil),                    // 73: cineko.catalog.Theater
+	(*client.User)(nil),                        // 74: cineko.client.User
 }
 var file_cineko_admin_admin_proto_depIdxs = []int32{
-	70, // 0: cineko.admin.Principal.expires_at:type_name -> google.protobuf.Timestamp
+	69, // 0: cineko.admin.Principal.expires_at:type_name -> google.protobuf.Timestamp
 	0,  // 1: cineko.admin.LoginResponse.principal:type_name -> cineko.admin.Principal
 	0,  // 2: cineko.admin.GetSessionResponse.principal:type_name -> cineko.admin.Principal
 	7,  // 3: cineko.admin.GetConfigurationResponse.configuration:type_name -> cineko.admin.Configuration
 	10, // 4: cineko.admin.ProbeState.online:type_name -> cineko.admin.OnlineProbe
 	11, // 5: cineko.admin.ProbeState.offline:type_name -> cineko.admin.OfflineProbe
-	71, // 6: cineko.admin.Probe.kind:type_name -> cineko.probe.ProbeKind
-	72, // 7: cineko.admin.Probe.runtime:type_name -> cineko.common.Runtime
+	70, // 6: cineko.admin.Probe.kind:type_name -> cineko.probe.ProbeKind
+	71, // 7: cineko.admin.Probe.runtime:type_name -> cineko.common.Runtime
 	12, // 8: cineko.admin.Probe.state:type_name -> cineko.admin.ProbeState
-	73, // 9: cineko.admin.Probe.health:type_name -> cineko.probe.ProbeHealth
-	70, // 10: cineko.admin.Probe.last_heartbeat_at:type_name -> google.protobuf.Timestamp
-	70, // 11: cineko.admin.Probe.updated_at:type_name -> google.protobuf.Timestamp
+	72, // 9: cineko.admin.Probe.health:type_name -> cineko.probe.ProbeHealth
+	69, // 10: cineko.admin.Probe.last_heartbeat_at:type_name -> google.protobuf.Timestamp
+	69, // 11: cineko.admin.Probe.updated_at:type_name -> google.protobuf.Timestamp
 	13, // 12: cineko.admin.ListProbesResponse.probes:type_name -> cineko.admin.Probe
-	70, // 13: cineko.admin.DataSummary.latest_schedule_observed_at:type_name -> google.protobuf.Timestamp
+	69, // 13: cineko.admin.DataSummary.latest_schedule_observed_at:type_name -> google.protobuf.Timestamp
 	18, // 14: cineko.admin.GetDataSummaryResponse.summary:type_name -> cineko.admin.DataSummary
 	22, // 15: cineko.admin.ObservationMode.baseline:type_name -> cineko.admin.BaselineMode
 	23, // 16: cineko.admin.ObservationMode.demand:type_name -> cineko.admin.DemandMode
 	24, // 17: cineko.admin.ObservationMode.burst:type_name -> cineko.admin.BurstMode
-	25, // 18: cineko.admin.ObservationMode.seat_availability:type_name -> cineko.admin.SeatAvailabilityMode
-	27, // 19: cineko.admin.ObservationOutcome.completed:type_name -> cineko.admin.CompletedOutcome
-	28, // 20: cineko.admin.ObservationOutcome.partial:type_name -> cineko.admin.PartialOutcome
-	29, // 21: cineko.admin.ObservationOutcome.failed:type_name -> cineko.admin.FailedOutcome
-	30, // 22: cineko.admin.ObservationOutcome.missed:type_name -> cineko.admin.MissedOutcome
-	74, // 23: cineko.admin.ObservationPolicy.theater:type_name -> cineko.catalog.Theater
-	21, // 24: cineko.admin.ObservationPolicy.input:type_name -> cineko.admin.ObservationPolicyInput
-	26, // 25: cineko.admin.ObservationPolicy.effective_mode:type_name -> cineko.admin.ObservationMode
-	70, // 26: cineko.admin.ObservationPolicy.burst_until:type_name -> google.protobuf.Timestamp
-	70, // 27: cineko.admin.ObservationPolicy.next_run_at:type_name -> google.protobuf.Timestamp
-	70, // 28: cineko.admin.ObservationPolicy.last_finished_at:type_name -> google.protobuf.Timestamp
-	31, // 29: cineko.admin.ObservationPolicy.last_outcome:type_name -> cineko.admin.ObservationOutcome
-	70, // 30: cineko.admin.ObservationPolicy.created_at:type_name -> google.protobuf.Timestamp
-	70, // 31: cineko.admin.ObservationPolicy.updated_at:type_name -> google.protobuf.Timestamp
-	32, // 32: cineko.admin.ListObservationPoliciesResponse.policies:type_name -> cineko.admin.ObservationPolicy
-	21, // 33: cineko.admin.CreateObservationPolicyRequest.policy:type_name -> cineko.admin.ObservationPolicyInput
-	32, // 34: cineko.admin.CreateObservationPolicyResponse.policy:type_name -> cineko.admin.ObservationPolicy
-	21, // 35: cineko.admin.UpdateObservationPolicyRequest.policy:type_name -> cineko.admin.ObservationPolicyInput
-	32, // 36: cineko.admin.UpdateObservationPolicyResponse.policy:type_name -> cineko.admin.ObservationPolicy
-	75, // 37: cineko.admin.ClientPinUser.user:type_name -> cineko.client.User
-	75, // 38: cineko.admin.ClientPinIssue.user:type_name -> cineko.client.User
-	41, // 39: cineko.admin.ListClientUsersResponse.users:type_name -> cineko.admin.ClientPinUser
-	42, // 40: cineko.admin.CreateClientUserResponse.issue:type_name -> cineko.admin.ClientPinIssue
-	42, // 41: cineko.admin.RotateClientPinResponse.issue:type_name -> cineko.admin.ClientPinIssue
-	70, // 42: cineko.admin.ReconcileReport.started_at:type_name -> google.protobuf.Timestamp
-	70, // 43: cineko.admin.ReconcileReport.finished_at:type_name -> google.protobuf.Timestamp
-	70, // 44: cineko.admin.ReconcileStatus.last_attempt_at:type_name -> google.protobuf.Timestamp
-	70, // 45: cineko.admin.ReconcileStatus.last_success_at:type_name -> google.protobuf.Timestamp
-	70, // 46: cineko.admin.ReconcileStatus.last_error_at:type_name -> google.protobuf.Timestamp
-	51, // 47: cineko.admin.ReconcileStatus.last_report:type_name -> cineko.admin.ReconcileReport
-	52, // 48: cineko.admin.Status.reconciler:type_name -> cineko.admin.ReconcileStatus
-	53, // 49: cineko.admin.GetStatusResponse.status:type_name -> cineko.admin.Status
-	56, // 50: cineko.admin.CatalogRefreshStatus.running:type_name -> cineko.admin.CatalogRefreshRunning
-	57, // 51: cineko.admin.CatalogRefreshStatus.ready:type_name -> cineko.admin.CatalogRefreshReady
-	58, // 52: cineko.admin.CatalogRefreshStatus.waiting_for_probe:type_name -> cineko.admin.CatalogRefreshWaitingForProbe
-	59, // 53: cineko.admin.CatalogRefreshStatus.queued:type_name -> cineko.admin.CatalogRefreshQueued
-	70, // 54: cineko.admin.CatalogRefreshStatus.requested_at:type_name -> google.protobuf.Timestamp
-	70, // 55: cineko.admin.CatalogRefreshStatus.last_attempted_at:type_name -> google.protobuf.Timestamp
-	60, // 56: cineko.admin.GetCatalogRefreshStatusResponse.status:type_name -> cineko.admin.CatalogRefreshStatus
-	60, // 57: cineko.admin.RequestCatalogRefreshResponse.status:type_name -> cineko.admin.CatalogRefreshStatus
-	70, // 58: cineko.admin.OpeningPattern.last_observed_at:type_name -> google.protobuf.Timestamp
-	70, // 59: cineko.admin.DemandPattern.last_observed_at:type_name -> google.protobuf.Timestamp
-	70, // 60: cineko.admin.ObservationIntelligence.last_observed_at:type_name -> google.protobuf.Timestamp
-	65, // 61: cineko.admin.ObservationIntelligence.opening_patterns:type_name -> cineko.admin.OpeningPattern
-	66, // 62: cineko.admin.ObservationIntelligence.demand_patterns:type_name -> cineko.admin.DemandPattern
-	67, // 63: cineko.admin.GetObservationIntelligenceResponse.intelligence:type_name -> cineko.admin.ObservationIntelligence
-	1,  // 64: cineko.admin.AdminService.Login:input_type -> cineko.admin.LoginRequest
-	3,  // 65: cineko.admin.AdminService.Logout:input_type -> cineko.admin.LogoutRequest
-	5,  // 66: cineko.admin.AdminService.GetSession:input_type -> cineko.admin.GetSessionRequest
-	54, // 67: cineko.admin.AdminService.GetStatus:input_type -> cineko.admin.GetStatusRequest
-	8,  // 68: cineko.admin.AdminService.GetConfiguration:input_type -> cineko.admin.GetConfigurationRequest
-	61, // 69: cineko.admin.AdminService.GetCatalogRefreshStatus:input_type -> cineko.admin.GetCatalogRefreshStatusRequest
-	63, // 70: cineko.admin.AdminService.RequestCatalogRefresh:input_type -> cineko.admin.RequestCatalogRefreshRequest
-	14, // 71: cineko.admin.AdminService.ListProbes:input_type -> cineko.admin.ListProbesRequest
-	16, // 72: cineko.admin.AdminService.DeleteProbe:input_type -> cineko.admin.DeleteProbeRequest
-	19, // 73: cineko.admin.AdminService.GetDataSummary:input_type -> cineko.admin.GetDataSummaryRequest
-	33, // 74: cineko.admin.AdminService.ListObservationPolicies:input_type -> cineko.admin.ListObservationPoliciesRequest
-	35, // 75: cineko.admin.AdminService.CreateObservationPolicy:input_type -> cineko.admin.CreateObservationPolicyRequest
-	37, // 76: cineko.admin.AdminService.UpdateObservationPolicy:input_type -> cineko.admin.UpdateObservationPolicyRequest
-	39, // 77: cineko.admin.AdminService.DeleteObservationPolicy:input_type -> cineko.admin.DeleteObservationPolicyRequest
-	68, // 78: cineko.admin.AdminService.GetObservationIntelligence:input_type -> cineko.admin.GetObservationIntelligenceRequest
-	43, // 79: cineko.admin.AdminService.ListClientUsers:input_type -> cineko.admin.ListClientUsersRequest
-	45, // 80: cineko.admin.AdminService.CreateClientUser:input_type -> cineko.admin.CreateClientUserRequest
-	47, // 81: cineko.admin.AdminService.RotateClientPin:input_type -> cineko.admin.RotateClientPinRequest
-	49, // 82: cineko.admin.AdminService.DeleteClientUser:input_type -> cineko.admin.DeleteClientUserRequest
-	2,  // 83: cineko.admin.AdminService.Login:output_type -> cineko.admin.LoginResponse
-	4,  // 84: cineko.admin.AdminService.Logout:output_type -> cineko.admin.LogoutResponse
-	6,  // 85: cineko.admin.AdminService.GetSession:output_type -> cineko.admin.GetSessionResponse
-	55, // 86: cineko.admin.AdminService.GetStatus:output_type -> cineko.admin.GetStatusResponse
-	9,  // 87: cineko.admin.AdminService.GetConfiguration:output_type -> cineko.admin.GetConfigurationResponse
-	62, // 88: cineko.admin.AdminService.GetCatalogRefreshStatus:output_type -> cineko.admin.GetCatalogRefreshStatusResponse
-	64, // 89: cineko.admin.AdminService.RequestCatalogRefresh:output_type -> cineko.admin.RequestCatalogRefreshResponse
-	15, // 90: cineko.admin.AdminService.ListProbes:output_type -> cineko.admin.ListProbesResponse
-	17, // 91: cineko.admin.AdminService.DeleteProbe:output_type -> cineko.admin.DeleteProbeResponse
-	20, // 92: cineko.admin.AdminService.GetDataSummary:output_type -> cineko.admin.GetDataSummaryResponse
-	34, // 93: cineko.admin.AdminService.ListObservationPolicies:output_type -> cineko.admin.ListObservationPoliciesResponse
-	36, // 94: cineko.admin.AdminService.CreateObservationPolicy:output_type -> cineko.admin.CreateObservationPolicyResponse
-	38, // 95: cineko.admin.AdminService.UpdateObservationPolicy:output_type -> cineko.admin.UpdateObservationPolicyResponse
-	40, // 96: cineko.admin.AdminService.DeleteObservationPolicy:output_type -> cineko.admin.DeleteObservationPolicyResponse
-	69, // 97: cineko.admin.AdminService.GetObservationIntelligence:output_type -> cineko.admin.GetObservationIntelligenceResponse
-	44, // 98: cineko.admin.AdminService.ListClientUsers:output_type -> cineko.admin.ListClientUsersResponse
-	46, // 99: cineko.admin.AdminService.CreateClientUser:output_type -> cineko.admin.CreateClientUserResponse
-	48, // 100: cineko.admin.AdminService.RotateClientPin:output_type -> cineko.admin.RotateClientPinResponse
-	50, // 101: cineko.admin.AdminService.DeleteClientUser:output_type -> cineko.admin.DeleteClientUserResponse
-	83, // [83:102] is the sub-list for method output_type
-	64, // [64:83] is the sub-list for method input_type
-	64, // [64:64] is the sub-list for extension type_name
-	64, // [64:64] is the sub-list for extension extendee
-	0,  // [0:64] is the sub-list for field type_name
+	26, // 18: cineko.admin.ObservationOutcome.completed:type_name -> cineko.admin.CompletedOutcome
+	27, // 19: cineko.admin.ObservationOutcome.partial:type_name -> cineko.admin.PartialOutcome
+	28, // 20: cineko.admin.ObservationOutcome.failed:type_name -> cineko.admin.FailedOutcome
+	29, // 21: cineko.admin.ObservationOutcome.missed:type_name -> cineko.admin.MissedOutcome
+	73, // 22: cineko.admin.ObservationPolicy.theater:type_name -> cineko.catalog.Theater
+	21, // 23: cineko.admin.ObservationPolicy.input:type_name -> cineko.admin.ObservationPolicyInput
+	25, // 24: cineko.admin.ObservationPolicy.effective_mode:type_name -> cineko.admin.ObservationMode
+	69, // 25: cineko.admin.ObservationPolicy.burst_until:type_name -> google.protobuf.Timestamp
+	69, // 26: cineko.admin.ObservationPolicy.next_run_at:type_name -> google.protobuf.Timestamp
+	69, // 27: cineko.admin.ObservationPolicy.last_finished_at:type_name -> google.protobuf.Timestamp
+	30, // 28: cineko.admin.ObservationPolicy.last_outcome:type_name -> cineko.admin.ObservationOutcome
+	69, // 29: cineko.admin.ObservationPolicy.created_at:type_name -> google.protobuf.Timestamp
+	69, // 30: cineko.admin.ObservationPolicy.updated_at:type_name -> google.protobuf.Timestamp
+	31, // 31: cineko.admin.ListObservationPoliciesResponse.policies:type_name -> cineko.admin.ObservationPolicy
+	21, // 32: cineko.admin.CreateObservationPolicyRequest.policy:type_name -> cineko.admin.ObservationPolicyInput
+	31, // 33: cineko.admin.CreateObservationPolicyResponse.policy:type_name -> cineko.admin.ObservationPolicy
+	21, // 34: cineko.admin.UpdateObservationPolicyRequest.policy:type_name -> cineko.admin.ObservationPolicyInput
+	31, // 35: cineko.admin.UpdateObservationPolicyResponse.policy:type_name -> cineko.admin.ObservationPolicy
+	74, // 36: cineko.admin.ClientPinUser.user:type_name -> cineko.client.User
+	74, // 37: cineko.admin.ClientPinIssue.user:type_name -> cineko.client.User
+	40, // 38: cineko.admin.ListClientUsersResponse.users:type_name -> cineko.admin.ClientPinUser
+	41, // 39: cineko.admin.CreateClientUserResponse.issue:type_name -> cineko.admin.ClientPinIssue
+	41, // 40: cineko.admin.RotateClientPinResponse.issue:type_name -> cineko.admin.ClientPinIssue
+	69, // 41: cineko.admin.ReconcileReport.started_at:type_name -> google.protobuf.Timestamp
+	69, // 42: cineko.admin.ReconcileReport.finished_at:type_name -> google.protobuf.Timestamp
+	69, // 43: cineko.admin.ReconcileStatus.last_attempt_at:type_name -> google.protobuf.Timestamp
+	69, // 44: cineko.admin.ReconcileStatus.last_success_at:type_name -> google.protobuf.Timestamp
+	69, // 45: cineko.admin.ReconcileStatus.last_error_at:type_name -> google.protobuf.Timestamp
+	50, // 46: cineko.admin.ReconcileStatus.last_report:type_name -> cineko.admin.ReconcileReport
+	51, // 47: cineko.admin.Status.reconciler:type_name -> cineko.admin.ReconcileStatus
+	52, // 48: cineko.admin.GetStatusResponse.status:type_name -> cineko.admin.Status
+	55, // 49: cineko.admin.CatalogRefreshStatus.running:type_name -> cineko.admin.CatalogRefreshRunning
+	56, // 50: cineko.admin.CatalogRefreshStatus.ready:type_name -> cineko.admin.CatalogRefreshReady
+	57, // 51: cineko.admin.CatalogRefreshStatus.waiting_for_probe:type_name -> cineko.admin.CatalogRefreshWaitingForProbe
+	58, // 52: cineko.admin.CatalogRefreshStatus.queued:type_name -> cineko.admin.CatalogRefreshQueued
+	69, // 53: cineko.admin.CatalogRefreshStatus.requested_at:type_name -> google.protobuf.Timestamp
+	69, // 54: cineko.admin.CatalogRefreshStatus.last_attempted_at:type_name -> google.protobuf.Timestamp
+	59, // 55: cineko.admin.GetCatalogRefreshStatusResponse.status:type_name -> cineko.admin.CatalogRefreshStatus
+	59, // 56: cineko.admin.RequestCatalogRefreshResponse.status:type_name -> cineko.admin.CatalogRefreshStatus
+	69, // 57: cineko.admin.OpeningPattern.last_observed_at:type_name -> google.protobuf.Timestamp
+	69, // 58: cineko.admin.DemandPattern.last_observed_at:type_name -> google.protobuf.Timestamp
+	69, // 59: cineko.admin.ObservationIntelligence.last_observed_at:type_name -> google.protobuf.Timestamp
+	64, // 60: cineko.admin.ObservationIntelligence.opening_patterns:type_name -> cineko.admin.OpeningPattern
+	65, // 61: cineko.admin.ObservationIntelligence.demand_patterns:type_name -> cineko.admin.DemandPattern
+	66, // 62: cineko.admin.GetObservationIntelligenceResponse.intelligence:type_name -> cineko.admin.ObservationIntelligence
+	1,  // 63: cineko.admin.AdminService.Login:input_type -> cineko.admin.LoginRequest
+	3,  // 64: cineko.admin.AdminService.Logout:input_type -> cineko.admin.LogoutRequest
+	5,  // 65: cineko.admin.AdminService.GetSession:input_type -> cineko.admin.GetSessionRequest
+	53, // 66: cineko.admin.AdminService.GetStatus:input_type -> cineko.admin.GetStatusRequest
+	8,  // 67: cineko.admin.AdminService.GetConfiguration:input_type -> cineko.admin.GetConfigurationRequest
+	60, // 68: cineko.admin.AdminService.GetCatalogRefreshStatus:input_type -> cineko.admin.GetCatalogRefreshStatusRequest
+	62, // 69: cineko.admin.AdminService.RequestCatalogRefresh:input_type -> cineko.admin.RequestCatalogRefreshRequest
+	14, // 70: cineko.admin.AdminService.ListProbes:input_type -> cineko.admin.ListProbesRequest
+	16, // 71: cineko.admin.AdminService.DeleteProbe:input_type -> cineko.admin.DeleteProbeRequest
+	19, // 72: cineko.admin.AdminService.GetDataSummary:input_type -> cineko.admin.GetDataSummaryRequest
+	32, // 73: cineko.admin.AdminService.ListObservationPolicies:input_type -> cineko.admin.ListObservationPoliciesRequest
+	34, // 74: cineko.admin.AdminService.CreateObservationPolicy:input_type -> cineko.admin.CreateObservationPolicyRequest
+	36, // 75: cineko.admin.AdminService.UpdateObservationPolicy:input_type -> cineko.admin.UpdateObservationPolicyRequest
+	38, // 76: cineko.admin.AdminService.DeleteObservationPolicy:input_type -> cineko.admin.DeleteObservationPolicyRequest
+	67, // 77: cineko.admin.AdminService.GetObservationIntelligence:input_type -> cineko.admin.GetObservationIntelligenceRequest
+	42, // 78: cineko.admin.AdminService.ListClientUsers:input_type -> cineko.admin.ListClientUsersRequest
+	44, // 79: cineko.admin.AdminService.CreateClientUser:input_type -> cineko.admin.CreateClientUserRequest
+	46, // 80: cineko.admin.AdminService.RotateClientPin:input_type -> cineko.admin.RotateClientPinRequest
+	48, // 81: cineko.admin.AdminService.DeleteClientUser:input_type -> cineko.admin.DeleteClientUserRequest
+	2,  // 82: cineko.admin.AdminService.Login:output_type -> cineko.admin.LoginResponse
+	4,  // 83: cineko.admin.AdminService.Logout:output_type -> cineko.admin.LogoutResponse
+	6,  // 84: cineko.admin.AdminService.GetSession:output_type -> cineko.admin.GetSessionResponse
+	54, // 85: cineko.admin.AdminService.GetStatus:output_type -> cineko.admin.GetStatusResponse
+	9,  // 86: cineko.admin.AdminService.GetConfiguration:output_type -> cineko.admin.GetConfigurationResponse
+	61, // 87: cineko.admin.AdminService.GetCatalogRefreshStatus:output_type -> cineko.admin.GetCatalogRefreshStatusResponse
+	63, // 88: cineko.admin.AdminService.RequestCatalogRefresh:output_type -> cineko.admin.RequestCatalogRefreshResponse
+	15, // 89: cineko.admin.AdminService.ListProbes:output_type -> cineko.admin.ListProbesResponse
+	17, // 90: cineko.admin.AdminService.DeleteProbe:output_type -> cineko.admin.DeleteProbeResponse
+	20, // 91: cineko.admin.AdminService.GetDataSummary:output_type -> cineko.admin.GetDataSummaryResponse
+	33, // 92: cineko.admin.AdminService.ListObservationPolicies:output_type -> cineko.admin.ListObservationPoliciesResponse
+	35, // 93: cineko.admin.AdminService.CreateObservationPolicy:output_type -> cineko.admin.CreateObservationPolicyResponse
+	37, // 94: cineko.admin.AdminService.UpdateObservationPolicy:output_type -> cineko.admin.UpdateObservationPolicyResponse
+	39, // 95: cineko.admin.AdminService.DeleteObservationPolicy:output_type -> cineko.admin.DeleteObservationPolicyResponse
+	68, // 96: cineko.admin.AdminService.GetObservationIntelligence:output_type -> cineko.admin.GetObservationIntelligenceResponse
+	43, // 97: cineko.admin.AdminService.ListClientUsers:output_type -> cineko.admin.ListClientUsersResponse
+	45, // 98: cineko.admin.AdminService.CreateClientUser:output_type -> cineko.admin.CreateClientUserResponse
+	47, // 99: cineko.admin.AdminService.RotateClientPin:output_type -> cineko.admin.RotateClientPinResponse
+	49, // 100: cineko.admin.AdminService.DeleteClientUser:output_type -> cineko.admin.DeleteClientUserResponse
+	82, // [82:101] is the sub-list for method output_type
+	63, // [63:82] is the sub-list for method input_type
+	63, // [63:63] is the sub-list for extension type_name
+	63, // [63:63] is the sub-list for extension extendee
+	0,  // [0:63] is the sub-list for field type_name
 }
 
 func init() { file_cineko_admin_admin_proto_init() }
@@ -8860,19 +8707,18 @@ func file_cineko_admin_admin_proto_init() {
 		(*probeState_Online)(nil),
 		(*probeState_Offline)(nil),
 	}
-	file_cineko_admin_admin_proto_msgTypes[26].OneofWrappers = []any{
+	file_cineko_admin_admin_proto_msgTypes[25].OneofWrappers = []any{
 		(*observationMode_Baseline)(nil),
 		(*observationMode_Demand)(nil),
 		(*observationMode_Burst)(nil),
-		(*observationMode_SeatAvailability)(nil),
 	}
-	file_cineko_admin_admin_proto_msgTypes[31].OneofWrappers = []any{
+	file_cineko_admin_admin_proto_msgTypes[30].OneofWrappers = []any{
 		(*observationOutcome_Completed)(nil),
 		(*observationOutcome_Partial)(nil),
 		(*observationOutcome_Failed)(nil),
 		(*observationOutcome_Missed)(nil),
 	}
-	file_cineko_admin_admin_proto_msgTypes[60].OneofWrappers = []any{
+	file_cineko_admin_admin_proto_msgTypes[59].OneofWrappers = []any{
 		(*catalogRefreshStatus_Running)(nil),
 		(*catalogRefreshStatus_Ready)(nil),
 		(*catalogRefreshStatus_WaitingForProbe)(nil),
@@ -8884,7 +8730,7 @@ func file_cineko_admin_admin_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cineko_admin_admin_proto_rawDesc), len(file_cineko_admin_admin_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   70,
+			NumMessages:   69,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

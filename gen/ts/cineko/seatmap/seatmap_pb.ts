@@ -359,8 +359,8 @@ export const AvailabilitySnapshotSchema: GenMessage<AvailabilitySnapshot> = /*@_
   messageDesc(file_cineko_seatmap_seatmap, 6);
 
 /**
- * LiveSeatObservation is the atomic Probe result for an exact showtime. The
- * provider response supplies both the current layout and current availability.
+ * LiveSeatObservation is one authenticated Client observation for an exact
+ * showtime. One provider response supplies both layout and availability.
  *
  * @generated from message cineko.seatmap.LiveSeatObservation
  */

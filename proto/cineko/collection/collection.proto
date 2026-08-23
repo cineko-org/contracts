@@ -7,7 +7,6 @@ import "google/protobuf/timestamp.proto";
 
 option go_package = "github.com/cineko-org/contracts/v3/gen/go/cineko/collection;collection";
 
-message NoBookableShowtime {}
 message ShowtimeNotDiscovered {}
 message TargetDateUnavailable {}
 
@@ -27,7 +26,6 @@ message DeferredReason {
   oneof reason {
     option (buf.validate.oneof).required = true;
 
-    NoBookableShowtime no_bookable_showtime = 1;
     TargetDateUnavailable target_date_unavailable = 2;
   }
 }
@@ -37,7 +35,6 @@ message WaitingReason {
     option (buf.validate.oneof).required = true;
 
     ShowtimeNotDiscovered showtime_not_discovered = 1;
-    NoBookableShowtime no_bookable_showtime = 2;
     TargetDateUnavailable target_date_unavailable = 3;
   }
 }
@@ -88,11 +85,12 @@ message Queued {
 }
 
 message Collecting {
-  string assignment_id = 1 [
+  string claim_id = 1 [
     (buf.validate.field).required = true,
     (buf.validate.field).string.min_len = 1
   ];
   google.protobuf.Timestamp started_at = 2 [(buf.validate.field).required = true];
+  google.protobuf.Timestamp expires_at = 3 [(buf.validate.field).required = true];
 }
 
 message WaitingForShowtime {

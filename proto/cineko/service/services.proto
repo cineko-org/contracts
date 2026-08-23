@@ -11,6 +11,7 @@ import "cineko/observation/observation.proto";
 import "cineko/probe/probe.proto";
 import "cineko/release/release.proto";
 import "cineko/seatmap/seatmap.proto";
+import "google/protobuf/timestamp.proto";
 
 option go_package = "github.com/cineko-org/contracts/v3/gen/go/cineko/service;service";
 
@@ -172,8 +173,50 @@ message ResolveSeatMapRequest {
     (buf.validate.field).string.min_len = 1
   ];
 }
+message SeatMapCollectionAuthority {
+  string claim_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string claim_token = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+}
+message ExecutionObservationAuthority {
+  string command_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string lease_token = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+}
+message SeatMapCollectionClaim {
+  SeatMapCollectionAuthority authority = 1 [(buf.validate.field).required = true];
+  google.protobuf.Timestamp expires_at = 2 [(buf.validate.field).required = true];
+  cineko.observation.SeatMapTask task = 3 [(buf.validate.field).required = true];
+}
 message ResolveSeatMapResponse {
+  option (buf.validate.message).cel = {
+    id: "seat_map_resolution_collection_claim"
+    message: "a seat-map collection claim must match the collecting state and is forbidden with a cached snapshot"
+    expression:
+      "has(this.resolution.snapshot) ? !has(this.collection) : "
+      "(has(this.collection) ? "
+      "(has(this.resolution.state.collecting) && "
+      "this.collection.authority.claim_id == this.resolution.state.collecting.claim_id && "
+      "this.collection.expires_at == this.resolution.state.collecting.expires_at) : "
+      "(!has(this.resolution.state.queued) && "
+      "(has(this.resolution.state.collecting) || has(this.resolution.state.waiting_for_showtime) || "
+      "has(this.resolution.state.retry_scheduled) || has(this.resolution.state.blocked))))"
+  };
+
   cineko.seatmap.Resolution resolution = 1 [(buf.validate.field).required = true];
+  // Central atomically claims one exact future showtime for this authenticated
+  // Client. The Client must echo the authority when it submits the observation.
+  SeatMapCollectionClaim collection = 2;
 }
 message WatchSeatMapRequest {
   string auditorium_id = 1 [
@@ -194,8 +237,13 @@ message SubmitCatalogSnapshotResponse {
   ];
 }
 message SubmitLiveSeatObservationRequest {
-  cineko.common.MutationIdentity mutation = 1 [(buf.validate.field).required = true];
-  cineko.seatmap.LiveSeatObservation observation = 2 [(buf.validate.field).required = true];
+  oneof authority {
+    option (buf.validate.oneof).required = true;
+
+    SeatMapCollectionAuthority collection = 1;
+    ExecutionObservationAuthority execution = 2;
+  }
+  cineko.seatmap.LiveSeatObservation observation = 3 [(buf.validate.field).required = true];
 }
 message SubmitLiveSeatObservationResponse {
   cineko.seatmap.Snapshot snapshot = 1 [(buf.validate.field).required = true];

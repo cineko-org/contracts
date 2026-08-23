@@ -129,14 +129,12 @@ message ObservationPolicyInput {
 message BaselineMode {}
 message DemandMode {}
 message BurstMode {}
-message SeatAvailabilityMode {}
 message ObservationMode {
   oneof mode {
     option (buf.validate.oneof).required = true;
     BaselineMode baseline = 1;
     DemandMode demand = 2;
     BurstMode burst = 3;
-    SeatAvailabilityMode seat_availability = 4;
   }
 }
 
@@ -261,8 +259,6 @@ message ReconcileReport {
   int32 suspended_policies = 14;
   bool catalog_refresh_created = 15;
   bool catalog_refresh_waiting = 16;
-  bool seat_map_backfill_created = 17;
-  bool seat_map_backfill_waiting = 18;
   int64 oldest_due_age_seconds = 19;
 }
 message ReconcileStatus {

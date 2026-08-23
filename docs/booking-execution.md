@@ -20,16 +20,16 @@ flowchart LR
   the bounded provider-date subset selected by Central for that cycle; ordinary
   baseline work eventually covers the complete horizon.
 - Results are shared across auditoriums, movies, and users. Matching monitors never create duplicate theater fetches.
-- One booking monitor covers both stages: it raises discovery cadence before a showtime is found, then keeps watching
-  the same target for newly available preferred seats until booking succeeds or the monitor expires.
+- One booking monitor covers both stages: it raises shared discovery cadence before a showtime is found, then the
+  authenticated Client retains one exact seat page for newly available preferred seats until booking succeeds,
+  execution is cancelled, protection stops the session, or showtime starts.
 - The first observation of a showtime is a detection event, not proof of the exact CGV opening time.
 
 Discovery work is ordered by lane before its due time:
 
 1. `P0` — an active booking target whose matching showtime has not been found;
-2. `P1` — an exact-showtime live-seat watch after the showtime is known;
-3. `P2` — a theater/date range with a recently changed schedule;
-4. `P3` — ordinary catalog and schedule observation.
+2. `P2` — a theater/date range with a recently changed schedule;
+3. `P3` — ordinary catalog and schedule observation.
 
 A lower lane can never outrank a due higher lane by accumulating a numeric score. Within a lane, the oldest due work
 runs first. Recent-change priority expires after the configured observation window, returning the work to its normal
@@ -38,19 +38,22 @@ lane. The scheduler must reserve capacity for ordinary observation so sustained 
 ## Execution
 
 - Central sends the exact observed showtime and grants one short, renewable execution lease.
-- CGV account login is optional for entering seat selection. The Client uses a private local browser session and may
-  continue through CGV's non-member flow. Account cookies, non-member details, and payment authentication never leave
-  the device.
+- Every live-seat submission is fenced by its source: layout collection echoes
+  the Central `claimId/claimToken`, while booking and cancellation work echoes
+  the execution `commandId/leaseToken`. The two authorities are not interchangeable.
+- CGV member login or non-member phone verification is required before seat selection. Cineko's automated path uses
+  the authenticated member session completed by the user in a visible CAPTCHA browser. Account cookies, credentials,
+  and payment authentication never leave the device.
 - The Client opens the live seat-selection flow immediately, reads the current layout and availability, applies the
   preset, selects seats, and stops at payment.
 - Losing the execution lease cancels browser work and leaves the outcome ambiguous.
   Central marks the same monitor `payment_unknown`; no Client may claim another
   execution until the user verifies CGV history and explicitly rearms it.
-- A missing preferred seat or a showtime that is not yet selectable does not trigger immediate browser retries.
-  Central waits for a distinct later live-seat snapshot that changes the matching result from false to true, then
-  rearms that exact command once. A positive aggregate seat count or elapsed cooldown alone is not a signal.
-  Other transient preparation failures use the explicit `retry_requested` result and retain the bounded execution
-  retry budget. A `failed` result is never inferred to be retryable from an arbitrary reason string.
+- A missing preferred seat keeps the same authenticated page open and refreshes it at a randomized 1.5-2.5 second
+  interval until a seat is held or showtime starts. Central does not run an anonymous availability assignment or
+  rearm from a positive aggregate count. Other transient preparation failures use the explicit `retry_requested`
+  result and retain the bounded execution retry budget. A `failed` result is terminal and is never inferred to be
+  retryable from an arbitrary reason string.
 - Authentication, CAPTCHA, provider protection, and provider-contract failures stop automatically and require
   visible user action. Lease loss or Client interruption is ambiguous and moves the monitor to `payment_unknown`
   rather than risking a duplicate attempt.
@@ -59,8 +62,9 @@ lane. The scheduler must reserve capacity for ordinary observation so sustained 
 
 - Remembering a CGV account is opt-in. The account ID and password are stored only in the operating system's local
   credential vault; they are never sent to Central, exported in a `.cnk` file, logged, or placed in ordinary settings.
-- While the user has an active booking target, the Client prepares isolated browser capacity. It restores and checks
-  a member-session snapshot when one exists and otherwise prepares the supported non-member path.
+- While the authenticated user has an active booking target, the Client prepares isolated browser capacity. It
+  restores and checks the member-session snapshot; missing or expired authentication requests no warm capacity and
+  asks the user to complete the visible login flow.
 - Saved credentials may prefill an explicit visible login flow. A CAPTCHA, additional verification, repeated
   authentication failure, or changed login contract always asks the user to continue locally; Cineko never submits
   credentials in a hidden browser or bypasses a challenge.
@@ -75,8 +79,8 @@ adjacent-seat requirement, preferred rows and types, edge avoidance, and
 optional explicit candidate labels. When explicit labels are absent, every
 currently available seat is a candidate.
 
-The cached layout is not the live availability authority. Central must have an
-exact layout-aware live observation before emitting an execution command for a
-seat-constrained monitor. Client still reads the provider's live seats
-immediately before selection and stops if the current response no longer proves
-the command.
+The cached layout is not the live availability authority. Central emits an
+execution when a matching future showtime is discovered even if aggregate
+availability is zero or sold out. Client reads the provider's live seats on the
+exact page, applies the preset there, and keeps that same page for cancellation
+seats; only the current authenticated response can authorize a seat hold.

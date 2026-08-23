@@ -1845,8 +1845,8 @@ func (b0 AvailabilitySnapshot_builder) Build() *AvailabilitySnapshot {
 	return m0
 }
 
-// LiveSeatObservation is the atomic Probe result for an exact showtime. The
-// provider response supplies both the current layout and current availability.
+// LiveSeatObservation is one authenticated Client observation for an exact
+// showtime. One provider response supplies both layout and availability.
 type LiveSeatObservation struct {
 	state                   protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Layout       *Snapshot              `protobuf:"bytes,1,opt,name=layout"`
