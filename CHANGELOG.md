@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.7.0](https://github.com/cineko-org/contracts/compare/v3.6.1...v3.7.0) (2026-08-24)
+
+
+### Features
+
+* hard cut client-owned runtime contracts ([#37](https://github.com/cineko-org/contracts/issues/37)) ([bdd230f](https://github.com/cineko-org/contracts/commit/bdd230faeb92147945cd3ce9c8f8de589848784b))
+* move live seat collection to authenticated clients ([#35](https://github.com/cineko-org/contracts/issues/35)) ([c9ed117](https://github.com/cineko-org/contracts/commit/c9ed1170b929036f0020ae5ab105139210ed8688))
+
 ## [3.6.1](https://github.com/cineko-org/contracts/compare/v3.6.0...v3.6.1) (2026-08-22)
 
 
