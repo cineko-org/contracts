@@ -11,6 +11,7 @@ import (
 	catalog "github.com/cineko-org/contracts/v3/gen/go/cineko/catalog"
 	collection "github.com/cineko-org/contracts/v3/gen/go/cineko/collection"
 	common "github.com/cineko-org/contracts/v3/gen/go/cineko/common"
+	seatmap "github.com/cineko-org/contracts/v3/gen/go/cineko/seatmap"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -111,6 +112,92 @@ func (b0 CatalogCapture_builder) Build() *CatalogCapture {
 	return m0
 }
 
+type SeatMapCapture struct {
+	state         protoimpl.MessageState `protogen:"opaque.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SeatMapCapture) Reset() {
+	*x = SeatMapCapture{}
+	mi := &file_cineko_observation_observation_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SeatMapCapture) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SeatMapCapture) ProtoMessage() {}
+
+func (x *SeatMapCapture) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_observation_observation_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+type SeatMapCapture_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+}
+
+func (b0 SeatMapCapture_builder) Build() *SeatMapCapture {
+	m0 := &SeatMapCapture{}
+	b, x := &b0, m0
+	_, _ = b, x
+	return m0
+}
+
+type SeatAvailabilityCapture struct {
+	state         protoimpl.MessageState `protogen:"opaque.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SeatAvailabilityCapture) Reset() {
+	*x = SeatAvailabilityCapture{}
+	mi := &file_cineko_observation_observation_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SeatAvailabilityCapture) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SeatAvailabilityCapture) ProtoMessage() {}
+
+func (x *SeatAvailabilityCapture) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_observation_observation_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+type SeatAvailabilityCapture_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+}
+
+func (b0 SeatAvailabilityCapture_builder) Build() *SeatAvailabilityCapture {
+	m0 := &SeatAvailabilityCapture{}
+	b, x := &b0, m0
+	_, _ = b, x
+	return m0
+}
+
 type Capability struct {
 	state                 protoimpl.MessageState  `protogen:"opaque.v1"`
 	xxx_hidden_Capability isCapability_Capability `protobuf_oneof:"capability"`
@@ -120,7 +207,7 @@ type Capability struct {
 
 func (x *Capability) Reset() {
 	*x = Capability{}
-	mi := &file_cineko_observation_observation_proto_msgTypes[2]
+	mi := &file_cineko_observation_observation_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -132,7 +219,7 @@ func (x *Capability) String() string {
 func (*Capability) ProtoMessage() {}
 
 func (x *Capability) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_observation_observation_proto_msgTypes[2]
+	mi := &file_cineko_observation_observation_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -161,6 +248,24 @@ func (x *Capability) GetCatalogCapture() *CatalogCapture {
 	return nil
 }
 
+func (x *Capability) GetSeatMapCapture() *SeatMapCapture {
+	if x != nil {
+		if x, ok := x.xxx_hidden_Capability.(*capability_SeatMapCapture); ok {
+			return x.SeatMapCapture
+		}
+	}
+	return nil
+}
+
+func (x *Capability) GetSeatAvailabilityCapture() *SeatAvailabilityCapture {
+	if x != nil {
+		if x, ok := x.xxx_hidden_Capability.(*capability_SeatAvailabilityCapture); ok {
+			return x.SeatAvailabilityCapture
+		}
+	}
+	return nil
+}
+
 func (x *Capability) SetScheduleCapture(v *ScheduleCapture) {
 	if v == nil {
 		x.xxx_hidden_Capability = nil
@@ -175,6 +280,22 @@ func (x *Capability) SetCatalogCapture(v *CatalogCapture) {
 		return
 	}
 	x.xxx_hidden_Capability = &capability_CatalogCapture{v}
+}
+
+func (x *Capability) SetSeatMapCapture(v *SeatMapCapture) {
+	if v == nil {
+		x.xxx_hidden_Capability = nil
+		return
+	}
+	x.xxx_hidden_Capability = &capability_SeatMapCapture{v}
+}
+
+func (x *Capability) SetSeatAvailabilityCapture(v *SeatAvailabilityCapture) {
+	if v == nil {
+		x.xxx_hidden_Capability = nil
+		return
+	}
+	x.xxx_hidden_Capability = &capability_SeatAvailabilityCapture{v}
 }
 
 func (x *Capability) HasCapability() bool {
@@ -200,6 +321,22 @@ func (x *Capability) HasCatalogCapture() bool {
 	return ok
 }
 
+func (x *Capability) HasSeatMapCapture() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_Capability.(*capability_SeatMapCapture)
+	return ok
+}
+
+func (x *Capability) HasSeatAvailabilityCapture() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_Capability.(*capability_SeatAvailabilityCapture)
+	return ok
+}
+
 func (x *Capability) ClearCapability() {
 	x.xxx_hidden_Capability = nil
 }
@@ -216,9 +353,23 @@ func (x *Capability) ClearCatalogCapture() {
 	}
 }
 
+func (x *Capability) ClearSeatMapCapture() {
+	if _, ok := x.xxx_hidden_Capability.(*capability_SeatMapCapture); ok {
+		x.xxx_hidden_Capability = nil
+	}
+}
+
+func (x *Capability) ClearSeatAvailabilityCapture() {
+	if _, ok := x.xxx_hidden_Capability.(*capability_SeatAvailabilityCapture); ok {
+		x.xxx_hidden_Capability = nil
+	}
+}
+
 const Capability_Capability_not_set_case case_Capability_Capability = 0
 const Capability_ScheduleCapture_case case_Capability_Capability = 1
 const Capability_CatalogCapture_case case_Capability_Capability = 2
+const Capability_SeatMapCapture_case case_Capability_Capability = 3
+const Capability_SeatAvailabilityCapture_case case_Capability_Capability = 4
 
 func (x *Capability) WhichCapability() case_Capability_Capability {
 	if x == nil {
@@ -229,6 +380,10 @@ func (x *Capability) WhichCapability() case_Capability_Capability {
 		return Capability_ScheduleCapture_case
 	case *capability_CatalogCapture:
 		return Capability_CatalogCapture_case
+	case *capability_SeatMapCapture:
+		return Capability_SeatMapCapture_case
+	case *capability_SeatAvailabilityCapture:
+		return Capability_SeatAvailabilityCapture_case
 	default:
 		return Capability_Capability_not_set_case
 	}
@@ -238,8 +393,10 @@ type Capability_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
 	// Fields of oneof xxx_hidden_Capability:
-	ScheduleCapture *ScheduleCapture
-	CatalogCapture  *CatalogCapture
+	ScheduleCapture         *ScheduleCapture
+	CatalogCapture          *CatalogCapture
+	SeatMapCapture          *SeatMapCapture
+	SeatAvailabilityCapture *SeatAvailabilityCapture
 	// -- end of xxx_hidden_Capability
 }
 
@@ -253,13 +410,19 @@ func (b0 Capability_builder) Build() *Capability {
 	if b.CatalogCapture != nil {
 		x.xxx_hidden_Capability = &capability_CatalogCapture{b.CatalogCapture}
 	}
+	if b.SeatMapCapture != nil {
+		x.xxx_hidden_Capability = &capability_SeatMapCapture{b.SeatMapCapture}
+	}
+	if b.SeatAvailabilityCapture != nil {
+		x.xxx_hidden_Capability = &capability_SeatAvailabilityCapture{b.SeatAvailabilityCapture}
+	}
 	return m0
 }
 
 type case_Capability_Capability protoreflect.FieldNumber
 
 func (x case_Capability_Capability) String() string {
-	md := file_cineko_observation_observation_proto_msgTypes[2].Descriptor()
+	md := file_cineko_observation_observation_proto_msgTypes[4].Descriptor()
 	if x == 0 {
 		return "not set"
 	}
@@ -278,16 +441,27 @@ type capability_CatalogCapture struct {
 	CatalogCapture *CatalogCapture `protobuf:"bytes,2,opt,name=catalog_capture,json=catalogCapture,oneof"`
 }
 
+type capability_SeatMapCapture struct {
+	SeatMapCapture *SeatMapCapture `protobuf:"bytes,3,opt,name=seat_map_capture,json=seatMapCapture,oneof"`
+}
+
+type capability_SeatAvailabilityCapture struct {
+	SeatAvailabilityCapture *SeatAvailabilityCapture `protobuf:"bytes,4,opt,name=seat_availability_capture,json=seatAvailabilityCapture,oneof"`
+}
+
 func (*capability_ScheduleCapture) isCapability_Capability() {}
 
 func (*capability_CatalogCapture) isCapability_Capability() {}
 
+func (*capability_SeatMapCapture) isCapability_Capability() {}
+
+func (*capability_SeatAvailabilityCapture) isCapability_Capability() {}
+
 type ScheduleTask struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Theater     *catalog.Theater       `protobuf:"bytes,1,opt,name=theater"`
-	xxx_hidden_TargetDates *[]*common.LocalDate   `protobuf:"bytes,2,rep,name=target_dates,json=targetDates"`
-	xxx_hidden_Locale      *string                `protobuf:"bytes,3,opt,name=locale"`
-	xxx_hidden_TimeZone    *string                `protobuf:"bytes,4,opt,name=time_zone,json=timeZone"`
+	xxx_hidden_Locale      *string                `protobuf:"bytes,2,opt,name=locale"`
+	xxx_hidden_TimeZone    *string                `protobuf:"bytes,3,opt,name=time_zone,json=timeZone"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -296,7 +470,7 @@ type ScheduleTask struct {
 
 func (x *ScheduleTask) Reset() {
 	*x = ScheduleTask{}
-	mi := &file_cineko_observation_observation_proto_msgTypes[3]
+	mi := &file_cineko_observation_observation_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -308,7 +482,7 @@ func (x *ScheduleTask) String() string {
 func (*ScheduleTask) ProtoMessage() {}
 
 func (x *ScheduleTask) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_observation_observation_proto_msgTypes[3]
+	mi := &file_cineko_observation_observation_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -322,15 +496,6 @@ func (x *ScheduleTask) ProtoReflect() protoreflect.Message {
 func (x *ScheduleTask) GetTheater() *catalog.Theater {
 	if x != nil {
 		return x.xxx_hidden_Theater
-	}
-	return nil
-}
-
-func (x *ScheduleTask) GetTargetDates() []*common.LocalDate {
-	if x != nil {
-		if x.xxx_hidden_TargetDates != nil {
-			return *x.xxx_hidden_TargetDates
-		}
 	}
 	return nil
 }
@@ -359,18 +524,14 @@ func (x *ScheduleTask) SetTheater(v *catalog.Theater) {
 	x.xxx_hidden_Theater = v
 }
 
-func (x *ScheduleTask) SetTargetDates(v []*common.LocalDate) {
-	x.xxx_hidden_TargetDates = &v
-}
-
 func (x *ScheduleTask) SetLocale(v string) {
 	x.xxx_hidden_Locale = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 4)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 3)
 }
 
 func (x *ScheduleTask) SetTimeZone(v string) {
 	x.xxx_hidden_TimeZone = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 4)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 3)
 }
 
 func (x *ScheduleTask) HasTheater() bool {
@@ -384,14 +545,14 @@ func (x *ScheduleTask) HasLocale() bool {
 	if x == nil {
 		return false
 	}
-	return protoimpl.X.Present(&(x.XXX_presence[0]), 2)
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 1)
 }
 
 func (x *ScheduleTask) HasTimeZone() bool {
 	if x == nil {
 		return false
 	}
-	return protoimpl.X.Present(&(x.XXX_presence[0]), 3)
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 2)
 }
 
 func (x *ScheduleTask) ClearTheater() {
@@ -399,22 +560,21 @@ func (x *ScheduleTask) ClearTheater() {
 }
 
 func (x *ScheduleTask) ClearLocale() {
-	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 2)
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 1)
 	x.xxx_hidden_Locale = nil
 }
 
 func (x *ScheduleTask) ClearTimeZone() {
-	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 3)
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 2)
 	x.xxx_hidden_TimeZone = nil
 }
 
 type ScheduleTask_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
-	Theater     *catalog.Theater
-	TargetDates []*common.LocalDate
-	Locale      *string
-	TimeZone    *string
+	Theater  *catalog.Theater
+	Locale   *string
+	TimeZone *string
 }
 
 func (b0 ScheduleTask_builder) Build() *ScheduleTask {
@@ -422,32 +582,32 @@ func (b0 ScheduleTask_builder) Build() *ScheduleTask {
 	b, x := &b0, m0
 	_, _ = b, x
 	x.xxx_hidden_Theater = b.Theater
-	x.xxx_hidden_TargetDates = &b.TargetDates
 	if b.Locale != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 4)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 3)
 		x.xxx_hidden_Locale = b.Locale
 	}
 	if b.TimeZone != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 4)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 3)
 		x.xxx_hidden_TimeZone = b.TimeZone
 	}
 	return m0
 }
 
 type CatalogTask struct {
-	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_ProviderId  *string                `protobuf:"bytes,1,opt,name=provider_id,json=providerId"`
-	xxx_hidden_Locale      *string                `protobuf:"bytes,2,opt,name=locale"`
-	xxx_hidden_TimeZone    *string                `protobuf:"bytes,3,opt,name=time_zone,json=timeZone"`
-	XXX_raceDetectHookData protoimpl.RaceDetectHookData
-	XXX_presence           [1]uint32
-	unknownFields          protoimpl.UnknownFields
-	sizeCache              protoimpl.SizeCache
+	state                           protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_ProviderId           *string                `protobuf:"bytes,1,opt,name=provider_id,json=providerId"`
+	xxx_hidden_Locale               *string                `protobuf:"bytes,2,opt,name=locale"`
+	xxx_hidden_TimeZone             *string                `protobuf:"bytes,3,opt,name=time_zone,json=timeZone"`
+	xxx_hidden_CachedPosterMovieIds []string               `protobuf:"bytes,4,rep,name=cached_poster_movie_ids,json=cachedPosterMovieIds"`
+	XXX_raceDetectHookData          protoimpl.RaceDetectHookData
+	XXX_presence                    [1]uint32
+	unknownFields                   protoimpl.UnknownFields
+	sizeCache                       protoimpl.SizeCache
 }
 
 func (x *CatalogTask) Reset() {
 	*x = CatalogTask{}
-	mi := &file_cineko_observation_observation_proto_msgTypes[4]
+	mi := &file_cineko_observation_observation_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -459,7 +619,7 @@ func (x *CatalogTask) String() string {
 func (*CatalogTask) ProtoMessage() {}
 
 func (x *CatalogTask) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_observation_observation_proto_msgTypes[4]
+	mi := &file_cineko_observation_observation_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -500,19 +660,30 @@ func (x *CatalogTask) GetTimeZone() string {
 	return ""
 }
 
+func (x *CatalogTask) GetCachedPosterMovieIds() []string {
+	if x != nil {
+		return x.xxx_hidden_CachedPosterMovieIds
+	}
+	return nil
+}
+
 func (x *CatalogTask) SetProviderId(v string) {
 	x.xxx_hidden_ProviderId = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 3)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 4)
 }
 
 func (x *CatalogTask) SetLocale(v string) {
 	x.xxx_hidden_Locale = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 3)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 4)
 }
 
 func (x *CatalogTask) SetTimeZone(v string) {
 	x.xxx_hidden_TimeZone = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 3)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 4)
+}
+
+func (x *CatalogTask) SetCachedPosterMovieIds(v []string) {
+	x.xxx_hidden_CachedPosterMovieIds = v
 }
 
 func (x *CatalogTask) HasProviderId() bool {
@@ -557,6 +728,10 @@ type CatalogTask_builder struct {
 	ProviderId *string
 	Locale     *string
 	TimeZone   *string
+	// The local Client supplies movies whose poster bytes are already cached.
+	// Its embedded Probe aborts those image requests before they reach the
+	// provider CDN.
+	CachedPosterMovieIds []string
 }
 
 func (b0 CatalogTask_builder) Build() *CatalogTask {
@@ -564,17 +739,18 @@ func (b0 CatalogTask_builder) Build() *CatalogTask {
 	b, x := &b0, m0
 	_, _ = b, x
 	if b.ProviderId != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 3)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 4)
 		x.xxx_hidden_ProviderId = b.ProviderId
 	}
 	if b.Locale != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 3)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 4)
 		x.xxx_hidden_Locale = b.Locale
 	}
 	if b.TimeZone != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 3)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 4)
 		x.xxx_hidden_TimeZone = b.TimeZone
 	}
+	x.xxx_hidden_CachedPosterMovieIds = b.CachedPosterMovieIds
 	return m0
 }
 
@@ -582,9 +758,8 @@ type SeatMapTask struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_Theater     *catalog.Theater       `protobuf:"bytes,1,opt,name=theater"`
 	xxx_hidden_Auditorium  *catalog.Auditorium    `protobuf:"bytes,2,opt,name=auditorium"`
-	xxx_hidden_Showtime    *catalog.Showtime      `protobuf:"bytes,3,opt,name=showtime"`
-	xxx_hidden_Locale      *string                `protobuf:"bytes,4,opt,name=locale"`
-	xxx_hidden_TimeZone    *string                `protobuf:"bytes,5,opt,name=time_zone,json=timeZone"`
+	xxx_hidden_Locale      *string                `protobuf:"bytes,3,opt,name=locale"`
+	xxx_hidden_TimeZone    *string                `protobuf:"bytes,4,opt,name=time_zone,json=timeZone"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -593,7 +768,7 @@ type SeatMapTask struct {
 
 func (x *SeatMapTask) Reset() {
 	*x = SeatMapTask{}
-	mi := &file_cineko_observation_observation_proto_msgTypes[5]
+	mi := &file_cineko_observation_observation_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -605,7 +780,7 @@ func (x *SeatMapTask) String() string {
 func (*SeatMapTask) ProtoMessage() {}
 
 func (x *SeatMapTask) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_observation_observation_proto_msgTypes[5]
+	mi := &file_cineko_observation_observation_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -626,13 +801,6 @@ func (x *SeatMapTask) GetTheater() *catalog.Theater {
 func (x *SeatMapTask) GetAuditorium() *catalog.Auditorium {
 	if x != nil {
 		return x.xxx_hidden_Auditorium
-	}
-	return nil
-}
-
-func (x *SeatMapTask) GetShowtime() *catalog.Showtime {
-	if x != nil {
-		return x.xxx_hidden_Showtime
 	}
 	return nil
 }
@@ -665,18 +833,14 @@ func (x *SeatMapTask) SetAuditorium(v *catalog.Auditorium) {
 	x.xxx_hidden_Auditorium = v
 }
 
-func (x *SeatMapTask) SetShowtime(v *catalog.Showtime) {
-	x.xxx_hidden_Showtime = v
-}
-
 func (x *SeatMapTask) SetLocale(v string) {
 	x.xxx_hidden_Locale = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 5)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 4)
 }
 
 func (x *SeatMapTask) SetTimeZone(v string) {
 	x.xxx_hidden_TimeZone = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 4, 5)
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 3, 4)
 }
 
 func (x *SeatMapTask) HasTheater() bool {
@@ -693,25 +857,18 @@ func (x *SeatMapTask) HasAuditorium() bool {
 	return x.xxx_hidden_Auditorium != nil
 }
 
-func (x *SeatMapTask) HasShowtime() bool {
-	if x == nil {
-		return false
-	}
-	return x.xxx_hidden_Showtime != nil
-}
-
 func (x *SeatMapTask) HasLocale() bool {
 	if x == nil {
 		return false
 	}
-	return protoimpl.X.Present(&(x.XXX_presence[0]), 3)
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 2)
 }
 
 func (x *SeatMapTask) HasTimeZone() bool {
 	if x == nil {
 		return false
 	}
-	return protoimpl.X.Present(&(x.XXX_presence[0]), 4)
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 3)
 }
 
 func (x *SeatMapTask) ClearTheater() {
@@ -722,17 +879,13 @@ func (x *SeatMapTask) ClearAuditorium() {
 	x.xxx_hidden_Auditorium = nil
 }
 
-func (x *SeatMapTask) ClearShowtime() {
-	x.xxx_hidden_Showtime = nil
-}
-
 func (x *SeatMapTask) ClearLocale() {
-	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 3)
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 2)
 	x.xxx_hidden_Locale = nil
 }
 
 func (x *SeatMapTask) ClearTimeZone() {
-	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 4)
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 3)
 	x.xxx_hidden_TimeZone = nil
 }
 
@@ -741,7 +894,6 @@ type SeatMapTask_builder struct {
 
 	Theater    *catalog.Theater
 	Auditorium *catalog.Auditorium
-	Showtime   *catalog.Showtime
 	Locale     *string
 	TimeZone   *string
 }
@@ -752,13 +904,12 @@ func (b0 SeatMapTask_builder) Build() *SeatMapTask {
 	_, _ = b, x
 	x.xxx_hidden_Theater = b.Theater
 	x.xxx_hidden_Auditorium = b.Auditorium
-	x.xxx_hidden_Showtime = b.Showtime
 	if b.Locale != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 5)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 4)
 		x.xxx_hidden_Locale = b.Locale
 	}
 	if b.TimeZone != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 4, 5)
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 3, 4)
 		x.xxx_hidden_TimeZone = b.TimeZone
 	}
 	return m0
@@ -779,7 +930,7 @@ type SeatAvailabilityTask struct {
 
 func (x *SeatAvailabilityTask) Reset() {
 	*x = SeatAvailabilityTask{}
-	mi := &file_cineko_observation_observation_proto_msgTypes[6]
+	mi := &file_cineko_observation_observation_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -791,7 +942,7 @@ func (x *SeatAvailabilityTask) String() string {
 func (*SeatAvailabilityTask) ProtoMessage() {}
 
 func (x *SeatAvailabilityTask) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_observation_observation_proto_msgTypes[6]
+	mi := &file_cineko_observation_observation_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -960,7 +1111,7 @@ type AssignmentTask struct {
 
 func (x *AssignmentTask) Reset() {
 	*x = AssignmentTask{}
-	mi := &file_cineko_observation_observation_proto_msgTypes[7]
+	mi := &file_cineko_observation_observation_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -972,7 +1123,7 @@ func (x *AssignmentTask) String() string {
 func (*AssignmentTask) ProtoMessage() {}
 
 func (x *AssignmentTask) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_observation_observation_proto_msgTypes[7]
+	mi := &file_cineko_observation_observation_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1008,6 +1159,24 @@ func (x *AssignmentTask) GetCatalog() *CatalogTask {
 	return nil
 }
 
+func (x *AssignmentTask) GetSeatMap() *SeatMapTask {
+	if x != nil {
+		if x, ok := x.xxx_hidden_Task.(*assignmentTask_SeatMap); ok {
+			return x.SeatMap
+		}
+	}
+	return nil
+}
+
+func (x *AssignmentTask) GetSeatAvailability() *SeatAvailabilityTask {
+	if x != nil {
+		if x, ok := x.xxx_hidden_Task.(*assignmentTask_SeatAvailability); ok {
+			return x.SeatAvailability
+		}
+	}
+	return nil
+}
+
 func (x *AssignmentTask) SetEgress(v *common.EgressPolicy) {
 	x.xxx_hidden_Egress = v
 }
@@ -1026,6 +1195,22 @@ func (x *AssignmentTask) SetCatalog(v *CatalogTask) {
 		return
 	}
 	x.xxx_hidden_Task = &assignmentTask_Catalog{v}
+}
+
+func (x *AssignmentTask) SetSeatMap(v *SeatMapTask) {
+	if v == nil {
+		x.xxx_hidden_Task = nil
+		return
+	}
+	x.xxx_hidden_Task = &assignmentTask_SeatMap{v}
+}
+
+func (x *AssignmentTask) SetSeatAvailability(v *SeatAvailabilityTask) {
+	if v == nil {
+		x.xxx_hidden_Task = nil
+		return
+	}
+	x.xxx_hidden_Task = &assignmentTask_SeatAvailability{v}
 }
 
 func (x *AssignmentTask) HasEgress() bool {
@@ -1058,6 +1243,22 @@ func (x *AssignmentTask) HasCatalog() bool {
 	return ok
 }
 
+func (x *AssignmentTask) HasSeatMap() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_Task.(*assignmentTask_SeatMap)
+	return ok
+}
+
+func (x *AssignmentTask) HasSeatAvailability() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_Task.(*assignmentTask_SeatAvailability)
+	return ok
+}
+
 func (x *AssignmentTask) ClearEgress() {
 	x.xxx_hidden_Egress = nil
 }
@@ -1078,9 +1279,23 @@ func (x *AssignmentTask) ClearCatalog() {
 	}
 }
 
+func (x *AssignmentTask) ClearSeatMap() {
+	if _, ok := x.xxx_hidden_Task.(*assignmentTask_SeatMap); ok {
+		x.xxx_hidden_Task = nil
+	}
+}
+
+func (x *AssignmentTask) ClearSeatAvailability() {
+	if _, ok := x.xxx_hidden_Task.(*assignmentTask_SeatAvailability); ok {
+		x.xxx_hidden_Task = nil
+	}
+}
+
 const AssignmentTask_Task_not_set_case case_AssignmentTask_Task = 0
 const AssignmentTask_Schedule_case case_AssignmentTask_Task = 2
 const AssignmentTask_Catalog_case case_AssignmentTask_Task = 3
+const AssignmentTask_SeatMap_case case_AssignmentTask_Task = 4
+const AssignmentTask_SeatAvailability_case case_AssignmentTask_Task = 5
 
 func (x *AssignmentTask) WhichTask() case_AssignmentTask_Task {
 	if x == nil {
@@ -1091,6 +1306,10 @@ func (x *AssignmentTask) WhichTask() case_AssignmentTask_Task {
 		return AssignmentTask_Schedule_case
 	case *assignmentTask_Catalog:
 		return AssignmentTask_Catalog_case
+	case *assignmentTask_SeatMap:
+		return AssignmentTask_SeatMap_case
+	case *assignmentTask_SeatAvailability:
+		return AssignmentTask_SeatAvailability_case
 	default:
 		return AssignmentTask_Task_not_set_case
 	}
@@ -1101,8 +1320,10 @@ type AssignmentTask_builder struct {
 
 	Egress *common.EgressPolicy
 	// Fields of oneof xxx_hidden_Task:
-	Schedule *ScheduleTask
-	Catalog  *CatalogTask
+	Schedule         *ScheduleTask
+	Catalog          *CatalogTask
+	SeatMap          *SeatMapTask
+	SeatAvailability *SeatAvailabilityTask
 	// -- end of xxx_hidden_Task
 }
 
@@ -1117,13 +1338,19 @@ func (b0 AssignmentTask_builder) Build() *AssignmentTask {
 	if b.Catalog != nil {
 		x.xxx_hidden_Task = &assignmentTask_Catalog{b.Catalog}
 	}
+	if b.SeatMap != nil {
+		x.xxx_hidden_Task = &assignmentTask_SeatMap{b.SeatMap}
+	}
+	if b.SeatAvailability != nil {
+		x.xxx_hidden_Task = &assignmentTask_SeatAvailability{b.SeatAvailability}
+	}
 	return m0
 }
 
 type case_AssignmentTask_Task protoreflect.FieldNumber
 
 func (x case_AssignmentTask_Task) String() string {
-	md := file_cineko_observation_observation_proto_msgTypes[7].Descriptor()
+	md := file_cineko_observation_observation_proto_msgTypes[9].Descriptor()
 	if x == 0 {
 		return "not set"
 	}
@@ -1142,9 +1369,21 @@ type assignmentTask_Catalog struct {
 	Catalog *CatalogTask `protobuf:"bytes,3,opt,name=catalog,oneof"`
 }
 
+type assignmentTask_SeatMap struct {
+	SeatMap *SeatMapTask `protobuf:"bytes,4,opt,name=seat_map,json=seatMap,oneof"`
+}
+
+type assignmentTask_SeatAvailability struct {
+	SeatAvailability *SeatAvailabilityTask `protobuf:"bytes,5,opt,name=seat_availability,json=seatAvailability,oneof"`
+}
+
 func (*assignmentTask_Schedule) isAssignmentTask_Task() {}
 
 func (*assignmentTask_Catalog) isAssignmentTask_Task() {}
+
+func (*assignmentTask_SeatMap) isAssignmentTask_Task() {}
+
+func (*assignmentTask_SeatAvailability) isAssignmentTask_Task() {}
 
 type Capture struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
@@ -1161,7 +1400,7 @@ type Capture struct {
 
 func (x *Capture) Reset() {
 	*x = Capture{}
-	mi := &file_cineko_observation_observation_proto_msgTypes[8]
+	mi := &file_cineko_observation_observation_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1173,7 +1412,7 @@ func (x *Capture) String() string {
 func (*Capture) ProtoMessage() {}
 
 func (x *Capture) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_observation_observation_proto_msgTypes[8]
+	mi := &file_cineko_observation_observation_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1329,7 +1568,7 @@ type ScheduleCaptures struct {
 
 func (x *ScheduleCaptures) Reset() {
 	*x = ScheduleCaptures{}
-	mi := &file_cineko_observation_observation_proto_msgTypes[9]
+	mi := &file_cineko_observation_observation_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1341,7 +1580,7 @@ func (x *ScheduleCaptures) String() string {
 func (*ScheduleCaptures) ProtoMessage() {}
 
 func (x *ScheduleCaptures) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_observation_observation_proto_msgTypes[9]
+	mi := &file_cineko_observation_observation_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1388,7 +1627,7 @@ type Completed struct {
 
 func (x *Completed) Reset() {
 	*x = Completed{}
-	mi := &file_cineko_observation_observation_proto_msgTypes[10]
+	mi := &file_cineko_observation_observation_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1400,7 +1639,7 @@ func (x *Completed) String() string {
 func (*Completed) ProtoMessage() {}
 
 func (x *Completed) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_observation_observation_proto_msgTypes[10]
+	mi := &file_cineko_observation_observation_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1429,6 +1668,24 @@ func (x *Completed) GetCatalog() *catalog.CatalogSnapshot {
 	return nil
 }
 
+func (x *Completed) GetSeatMap() *seatmap.Snapshot {
+	if x != nil {
+		if x, ok := x.xxx_hidden_Payload.(*completed_SeatMap); ok {
+			return x.SeatMap
+		}
+	}
+	return nil
+}
+
+func (x *Completed) GetLiveSeat() *seatmap.LiveSeatObservation {
+	if x != nil {
+		if x, ok := x.xxx_hidden_Payload.(*completed_LiveSeat); ok {
+			return x.LiveSeat
+		}
+	}
+	return nil
+}
+
 func (x *Completed) SetSchedule(v *ScheduleCaptures) {
 	if v == nil {
 		x.xxx_hidden_Payload = nil
@@ -1443,6 +1700,22 @@ func (x *Completed) SetCatalog(v *catalog.CatalogSnapshot) {
 		return
 	}
 	x.xxx_hidden_Payload = &completed_Catalog{v}
+}
+
+func (x *Completed) SetSeatMap(v *seatmap.Snapshot) {
+	if v == nil {
+		x.xxx_hidden_Payload = nil
+		return
+	}
+	x.xxx_hidden_Payload = &completed_SeatMap{v}
+}
+
+func (x *Completed) SetLiveSeat(v *seatmap.LiveSeatObservation) {
+	if v == nil {
+		x.xxx_hidden_Payload = nil
+		return
+	}
+	x.xxx_hidden_Payload = &completed_LiveSeat{v}
 }
 
 func (x *Completed) HasPayload() bool {
@@ -1468,6 +1741,22 @@ func (x *Completed) HasCatalog() bool {
 	return ok
 }
 
+func (x *Completed) HasSeatMap() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_Payload.(*completed_SeatMap)
+	return ok
+}
+
+func (x *Completed) HasLiveSeat() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_Payload.(*completed_LiveSeat)
+	return ok
+}
+
 func (x *Completed) ClearPayload() {
 	x.xxx_hidden_Payload = nil
 }
@@ -1484,9 +1773,23 @@ func (x *Completed) ClearCatalog() {
 	}
 }
 
+func (x *Completed) ClearSeatMap() {
+	if _, ok := x.xxx_hidden_Payload.(*completed_SeatMap); ok {
+		x.xxx_hidden_Payload = nil
+	}
+}
+
+func (x *Completed) ClearLiveSeat() {
+	if _, ok := x.xxx_hidden_Payload.(*completed_LiveSeat); ok {
+		x.xxx_hidden_Payload = nil
+	}
+}
+
 const Completed_Payload_not_set_case case_Completed_Payload = 0
 const Completed_Schedule_case case_Completed_Payload = 1
 const Completed_Catalog_case case_Completed_Payload = 2
+const Completed_SeatMap_case case_Completed_Payload = 3
+const Completed_LiveSeat_case case_Completed_Payload = 4
 
 func (x *Completed) WhichPayload() case_Completed_Payload {
 	if x == nil {
@@ -1497,6 +1800,10 @@ func (x *Completed) WhichPayload() case_Completed_Payload {
 		return Completed_Schedule_case
 	case *completed_Catalog:
 		return Completed_Catalog_case
+	case *completed_SeatMap:
+		return Completed_SeatMap_case
+	case *completed_LiveSeat:
+		return Completed_LiveSeat_case
 	default:
 		return Completed_Payload_not_set_case
 	}
@@ -1508,6 +1815,8 @@ type Completed_builder struct {
 	// Fields of oneof xxx_hidden_Payload:
 	Schedule *ScheduleCaptures
 	Catalog  *catalog.CatalogSnapshot
+	SeatMap  *seatmap.Snapshot
+	LiveSeat *seatmap.LiveSeatObservation
 	// -- end of xxx_hidden_Payload
 }
 
@@ -1521,13 +1830,19 @@ func (b0 Completed_builder) Build() *Completed {
 	if b.Catalog != nil {
 		x.xxx_hidden_Payload = &completed_Catalog{b.Catalog}
 	}
+	if b.SeatMap != nil {
+		x.xxx_hidden_Payload = &completed_SeatMap{b.SeatMap}
+	}
+	if b.LiveSeat != nil {
+		x.xxx_hidden_Payload = &completed_LiveSeat{b.LiveSeat}
+	}
 	return m0
 }
 
 type case_Completed_Payload protoreflect.FieldNumber
 
 func (x case_Completed_Payload) String() string {
-	md := file_cineko_observation_observation_proto_msgTypes[10].Descriptor()
+	md := file_cineko_observation_observation_proto_msgTypes[12].Descriptor()
 	if x == 0 {
 		return "not set"
 	}
@@ -1546,9 +1861,21 @@ type completed_Catalog struct {
 	Catalog *catalog.CatalogSnapshot `protobuf:"bytes,2,opt,name=catalog,oneof"`
 }
 
+type completed_SeatMap struct {
+	SeatMap *seatmap.Snapshot `protobuf:"bytes,3,opt,name=seat_map,json=seatMap,oneof"`
+}
+
+type completed_LiveSeat struct {
+	LiveSeat *seatmap.LiveSeatObservation `protobuf:"bytes,4,opt,name=live_seat,json=liveSeat,oneof"`
+}
+
 func (*completed_Schedule) isCompleted_Payload() {}
 
 func (*completed_Catalog) isCompleted_Payload() {}
+
+func (*completed_SeatMap) isCompleted_Payload() {}
+
+func (*completed_LiveSeat) isCompleted_Payload() {}
 
 type Deferred struct {
 	state             protoimpl.MessageState     `protogen:"opaque.v1"`
@@ -1559,7 +1886,7 @@ type Deferred struct {
 
 func (x *Deferred) Reset() {
 	*x = Deferred{}
-	mi := &file_cineko_observation_observation_proto_msgTypes[11]
+	mi := &file_cineko_observation_observation_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1571,7 +1898,7 @@ func (x *Deferred) String() string {
 func (*Deferred) ProtoMessage() {}
 
 func (x *Deferred) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_observation_observation_proto_msgTypes[11]
+	mi := &file_cineko_observation_observation_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1627,7 +1954,7 @@ type Failed struct {
 
 func (x *Failed) Reset() {
 	*x = Failed{}
-	mi := &file_cineko_observation_observation_proto_msgTypes[12]
+	mi := &file_cineko_observation_observation_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1639,7 +1966,7 @@ func (x *Failed) String() string {
 func (*Failed) ProtoMessage() {}
 
 func (x *Failed) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_observation_observation_proto_msgTypes[12]
+	mi := &file_cineko_observation_observation_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1700,7 +2027,7 @@ type AssignmentResult struct {
 
 func (x *AssignmentResult) Reset() {
 	*x = AssignmentResult{}
-	mi := &file_cineko_observation_observation_proto_msgTypes[13]
+	mi := &file_cineko_observation_observation_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1712,7 +2039,7 @@ func (x *AssignmentResult) String() string {
 func (*AssignmentResult) ProtoMessage() {}
 
 func (x *AssignmentResult) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_observation_observation_proto_msgTypes[13]
+	mi := &file_cineko_observation_observation_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1957,7 +2284,7 @@ func (b0 AssignmentResult_builder) Build() *AssignmentResult {
 type case_AssignmentResult_Outcome protoreflect.FieldNumber
 
 func (x case_AssignmentResult_Outcome) String() string {
-	md := file_cineko_observation_observation_proto_msgTypes[13].Descriptor()
+	md := file_cineko_observation_observation_proto_msgTypes[15].Descriptor()
 	if x == 0 {
 		return "not set"
 	}
@@ -2000,7 +2327,7 @@ type ResultReceipt struct {
 
 func (x *ResultReceipt) Reset() {
 	*x = ResultReceipt{}
-	mi := &file_cineko_observation_observation_proto_msgTypes[14]
+	mi := &file_cineko_observation_observation_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2012,7 +2339,7 @@ func (x *ResultReceipt) String() string {
 func (*ResultReceipt) ProtoMessage() {}
 
 func (x *ResultReceipt) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_observation_observation_proto_msgTypes[14]
+	mi := &file_cineko_observation_observation_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2235,7 +2562,7 @@ func (b0 ResultReceipt_builder) Build() *ResultReceipt {
 type case_ResultReceipt_Disposition protoreflect.FieldNumber
 
 func (x case_ResultReceipt_Disposition) String() string {
-	md := file_cineko_observation_observation_proto_msgTypes[14].Descriptor()
+	md := file_cineko_observation_observation_proto_msgTypes[16].Descriptor()
 	if x == 0 {
 		return "not set"
 	}
@@ -2266,7 +2593,7 @@ type Accepted struct {
 
 func (x *Accepted) Reset() {
 	*x = Accepted{}
-	mi := &file_cineko_observation_observation_proto_msgTypes[15]
+	mi := &file_cineko_observation_observation_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2278,7 +2605,7 @@ func (x *Accepted) String() string {
 func (*Accepted) ProtoMessage() {}
 
 func (x *Accepted) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_observation_observation_proto_msgTypes[15]
+	mi := &file_cineko_observation_observation_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2309,7 +2636,7 @@ type Duplicate struct {
 
 func (x *Duplicate) Reset() {
 	*x = Duplicate{}
-	mi := &file_cineko_observation_observation_proto_msgTypes[16]
+	mi := &file_cineko_observation_observation_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2321,7 +2648,7 @@ func (x *Duplicate) String() string {
 func (*Duplicate) ProtoMessage() {}
 
 func (x *Duplicate) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_observation_observation_proto_msgTypes[16]
+	mi := &file_cineko_observation_observation_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2348,23 +2675,25 @@ var File_cineko_observation_observation_proto protoreflect.FileDescriptor
 
 const file_cineko_observation_observation_proto_rawDesc = "" +
 	"\n" +
-	"$cineko/observation/observation.proto\x12\x12cineko.observation\x1a\x1bbuf/validate/validate.proto\x1a\x1ccineko/catalog/catalog.proto\x1a\"cineko/collection/collection.proto\x1a\x1acineko/common/common.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x11\n" +
+	"$cineko/observation/observation.proto\x12\x12cineko.observation\x1a\x1bbuf/validate/validate.proto\x1a\x1ccineko/catalog/catalog.proto\x1a\"cineko/collection/collection.proto\x1a\x1acineko/common/common.proto\x1a\x1ccineko/seatmap/seatmap.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x11\n" +
 	"\x0fScheduleCapture\"\x10\n" +
-	"\x0eCatalogCapture\"\xc2\x01\n" +
+	"\x0eCatalogCapture\"\x10\n" +
+	"\x0eSeatMapCapture\"\x19\n" +
+	"\x17SeatAvailabilityCapture\"\xfd\x02\n" +
 	"\n" +
 	"Capability\x12P\n" +
 	"\x10schedule_capture\x18\x01 \x01(\v2#.cineko.observation.ScheduleCaptureH\x00R\x0fscheduleCapture\x12M\n" +
-	"\x0fcatalog_capture\x18\x02 \x01(\v2\".cineko.observation.CatalogCaptureH\x00R\x0ecatalogCaptureB\x13\n" +
+	"\x0fcatalog_capture\x18\x02 \x01(\v2\".cineko.observation.CatalogCaptureH\x00R\x0ecatalogCapture\x12N\n" +
+	"\x10seat_map_capture\x18\x03 \x01(\v2\".cineko.observation.SeatMapCaptureH\x00R\x0eseatMapCapture\x12i\n" +
+	"\x19seat_availability_capture\x18\x04 \x01(\v2+.cineko.observation.SeatAvailabilityCaptureH\x00R\x17seatAvailabilityCaptureB\x13\n" +
 	"\n" +
-	"capability\x12\x05\xbaH\x02\b\x01\"\xdf\x01\n" +
+	"capability\x12\x05\xbaH\x02\b\x01\"\x96\x01\n" +
 	"\fScheduleTask\x129\n" +
-	"\atheater\x18\x01 \x01(\v2\x17.cineko.catalog.TheaterB\x06\xbaH\x03\xc8\x01\x01R\atheater\x12G\n" +
-	"\ftarget_dates\x18\x02 \x03(\v2\x18.cineko.common.LocalDateB\n" +
-	"\xbaH\a\x92\x01\x04\b\x01\x10\x0eR\vtargetDates\x12\"\n" +
-	"\x06locale\x18\x03 \x01(\tB\n" +
+	"\atheater\x18\x01 \x01(\v2\x17.cineko.catalog.TheaterB\x06\xbaH\x03\xc8\x01\x01R\atheater\x12\"\n" +
+	"\x06locale\x18\x02 \x01(\tB\n" +
 	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\x06locale\x12'\n" +
-	"\ttime_zone\x18\x04 \x01(\tB\n" +
-	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\btimeZone\"\x87\x01\n" +
+	"\ttime_zone\x18\x03 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\btimeZone\"\xd1\x01\n" +
 	"\vCatalogTask\x12+\n" +
 	"\vprovider_id\x18\x01 \x01(\tB\n" +
 	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\n" +
@@ -2372,18 +2701,18 @@ const file_cineko_observation_observation_proto_rawDesc = "" +
 	"\x06locale\x18\x02 \x01(\tB\n" +
 	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\x06locale\x12'\n" +
 	"\ttime_zone\x18\x03 \x01(\tB\n" +
-	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\btimeZone\"\xe9\b\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\btimeZone\x12H\n" +
+	"\x17cached_poster_movie_ids\x18\x04 \x03(\tB\x11\xbaH\x0e\x92\x01\v\x10\x80\x02\x18\x01\"\x04r\x02\x10\x01R\x14cachedPosterMovieIds\"\xeb\x02\n" +
 	"\vSeatMapTask\x129\n" +
 	"\atheater\x18\x01 \x01(\v2\x17.cineko.catalog.TheaterB\x06\xbaH\x03\xc8\x01\x01R\atheater\x12B\n" +
 	"\n" +
 	"auditorium\x18\x02 \x01(\v2\x1a.cineko.catalog.AuditoriumB\x06\xbaH\x03\xc8\x01\x01R\n" +
-	"auditorium\x12<\n" +
-	"\bshowtime\x18\x03 \x01(\v2\x18.cineko.catalog.ShowtimeB\x06\xbaH\x03\xc8\x01\x01R\bshowtime\x12\"\n" +
-	"\x06locale\x18\x04 \x01(\tB\n" +
+	"auditorium\x12\"\n" +
+	"\x06locale\x18\x03 \x01(\tB\n" +
 	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\x06locale\x12'\n" +
-	"\ttime_zone\x18\x05 \x01(\tB\n" +
-	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\btimeZone:\xcf\x06\xbaH\xcb\x06\x1a\xc8\x06\n" +
-	"%seat_map_task_exact_provider_identity\x12]theater, auditorium, and showtime must have the same provider theater and auditorium identity\x1a\xbf\x05has(this.theater.identity.cgv) && has(this.auditorium.identity.cgv) && has(this.showtime.identity.cgv) && this.theater.identity.cgv.site_no == this.auditorium.identity.cgv.site_no && this.theater.identity.cgv.site_no == this.showtime.identity.cgv.site_no && this.auditorium.identity.cgv.screen_no == this.showtime.identity.cgv.screen_no && this.showtime.provider_id == this.theater.provider_id && this.auditorium.theater_id == this.theater.id && this.showtime.theater_id == this.theater.id && (!has(this.showtime.auditorium) || (this.showtime.auditorium.id == this.auditorium.id && this.showtime.auditorium.theater_id == this.theater.id && this.showtime.auditorium.identity == this.auditorium.identity))\"\xa0\x02\n" +
+	"\ttime_zone\x18\x04 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\btimeZone:\x8f\x01\xbaH\x8b\x01\x1a\x88\x01\n" +
+	" seat_map_task_theater_auditorium\x125seat-map auditorium must belong to the target theater\x1a-this.theater.id == this.auditorium.theater_id\"\x8a\x06\n" +
 	"\x14SeatAvailabilityTask\x129\n" +
 	"\atheater\x18\x01 \x01(\v2\x17.cineko.catalog.TheaterB\x06\xbaH\x03\xc8\x01\x01R\atheater\x12B\n" +
 	"\n" +
@@ -2393,11 +2722,15 @@ const file_cineko_observation_observation_proto_rawDesc = "" +
 	"\x06locale\x18\x04 \x01(\tB\n" +
 	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\x06locale\x12'\n" +
 	"\ttime_zone\x18\x05 \x01(\tB\n" +
-	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\btimeZone\"\xd9\x01\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\btimeZone:\xe7\x03\xbaH\xe3\x03\x1a\x9a\x01\n" +
+	")seat_availability_task_theater_auditorium\x12>seat-availability auditorium must belong to the target theater\x1a-this.theater.id == this.auditorium.theater_id\x1a\xc3\x02\n" +
+	"&seat_availability_task_showtime_target\x12Kseat-availability showtime must belong to the target theater and auditorium\x1a\xcb\x01this.showtime.theater_id == this.theater.id && this.showtime.identity.cgv.site_no == this.auditorium.identity.cgv.site_no && this.showtime.identity.cgv.screen_no == this.auditorium.identity.cgv.screen_no\"\xf0\x02\n" +
 	"\x0eAssignmentTask\x12;\n" +
 	"\x06egress\x18\x01 \x01(\v2\x1b.cineko.common.EgressPolicyB\x06\xbaH\x03\xc8\x01\x01R\x06egress\x12>\n" +
 	"\bschedule\x18\x02 \x01(\v2 .cineko.observation.ScheduleTaskH\x00R\bschedule\x12;\n" +
-	"\acatalog\x18\x03 \x01(\v2\x1f.cineko.observation.CatalogTaskH\x00R\acatalogB\r\n" +
+	"\acatalog\x18\x03 \x01(\v2\x1f.cineko.observation.CatalogTaskH\x00R\acatalog\x12<\n" +
+	"\bseat_map\x18\x04 \x01(\v2\x1f.cineko.observation.SeatMapTaskH\x00R\aseatMap\x12W\n" +
+	"\x11seat_availability\x18\x05 \x01(\v2(.cineko.observation.SeatAvailabilityTaskH\x00R\x10seatAvailabilityB\r\n" +
 	"\x04task\x12\x05\xbaH\x02\b\x01\"\xf4\x01\n" +
 	"\aCapture\x129\n" +
 	"\vtarget_date\x18\x01 \x01(\v2\x18.cineko.common.LocalDateR\n" +
@@ -2409,10 +2742,12 @@ const file_cineko_observation_observation_proto_rawDesc = "" +
 	"error_code\x18\x04 \x01(\tR\terrorCode\x126\n" +
 	"\tshowtimes\x18\x05 \x03(\v2\x18.cineko.catalog.ShowtimeR\tshowtimes\"U\n" +
 	"\x10ScheduleCaptures\x12A\n" +
-	"\bcaptures\x18\x01 \x03(\v2\x1b.cineko.observation.CaptureB\b\xbaH\x05\x92\x01\x02\b\x01R\bcaptures\"\x9e\x01\n" +
+	"\bcaptures\x18\x01 \x03(\v2\x1b.cineko.observation.CaptureB\b\xbaH\x05\x92\x01\x02\b\x01R\bcaptures\"\x99\x02\n" +
 	"\tCompleted\x12B\n" +
 	"\bschedule\x18\x01 \x01(\v2$.cineko.observation.ScheduleCapturesH\x00R\bschedule\x12;\n" +
-	"\acatalog\x18\x02 \x01(\v2\x1f.cineko.catalog.CatalogSnapshotH\x00R\acatalogB\x10\n" +
+	"\acatalog\x18\x02 \x01(\v2\x1f.cineko.catalog.CatalogSnapshotH\x00R\acatalog\x125\n" +
+	"\bseat_map\x18\x03 \x01(\v2\x18.cineko.seatmap.SnapshotH\x00R\aseatMap\x12B\n" +
+	"\tlive_seat\x18\x04 \x01(\v2#.cineko.seatmap.LiveSeatObservationH\x00R\bliveSeatB\x10\n" +
 	"\apayload\x12\x05\xbaH\x02\b\x01\"M\n" +
 	"\bDeferred\x12A\n" +
 	"\x06reason\x18\x01 \x01(\v2!.cineko.collection.DeferredReasonB\x06\xbaH\x03\xc8\x01\x01R\x06reason\"J\n" +
@@ -2443,69 +2778,77 @@ const file_cineko_observation_observation_proto_rawDesc = "" +
 	"\bAccepted\"\v\n" +
 	"\tDuplicateBJZHgithub.com/cineko-org/contracts/v3/gen/go/cineko/observation;observationb\beditionsp\xe9\a"
 
-var file_cineko_observation_observation_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
+var file_cineko_observation_observation_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
 var file_cineko_observation_observation_proto_goTypes = []any{
-	(*ScheduleCapture)(nil),           // 0: cineko.observation.ScheduleCapture
-	(*CatalogCapture)(nil),            // 1: cineko.observation.CatalogCapture
-	(*Capability)(nil),                // 2: cineko.observation.Capability
-	(*ScheduleTask)(nil),              // 3: cineko.observation.ScheduleTask
-	(*CatalogTask)(nil),               // 4: cineko.observation.CatalogTask
-	(*SeatMapTask)(nil),               // 5: cineko.observation.SeatMapTask
-	(*SeatAvailabilityTask)(nil),      // 6: cineko.observation.SeatAvailabilityTask
-	(*AssignmentTask)(nil),            // 7: cineko.observation.AssignmentTask
-	(*Capture)(nil),                   // 8: cineko.observation.Capture
-	(*ScheduleCaptures)(nil),          // 9: cineko.observation.ScheduleCaptures
-	(*Completed)(nil),                 // 10: cineko.observation.Completed
-	(*Deferred)(nil),                  // 11: cineko.observation.Deferred
-	(*Failed)(nil),                    // 12: cineko.observation.Failed
-	(*AssignmentResult)(nil),          // 13: cineko.observation.AssignmentResult
-	(*ResultReceipt)(nil),             // 14: cineko.observation.ResultReceipt
-	(*Accepted)(nil),                  // 15: cineko.observation.Accepted
-	(*Duplicate)(nil),                 // 16: cineko.observation.Duplicate
-	(*catalog.Theater)(nil),           // 17: cineko.catalog.Theater
-	(*common.LocalDate)(nil),          // 18: cineko.common.LocalDate
-	(*catalog.Auditorium)(nil),        // 19: cineko.catalog.Auditorium
-	(*catalog.Showtime)(nil),          // 20: cineko.catalog.Showtime
-	(*common.EgressPolicy)(nil),       // 21: cineko.common.EgressPolicy
-	(*timestamppb.Timestamp)(nil),     // 22: google.protobuf.Timestamp
-	(*catalog.CatalogSnapshot)(nil),   // 23: cineko.catalog.CatalogSnapshot
-	(*collection.DeferredReason)(nil), // 24: cineko.collection.DeferredReason
-	(*collection.FailureReason)(nil),  // 25: cineko.collection.FailureReason
+	(*ScheduleCapture)(nil),             // 0: cineko.observation.ScheduleCapture
+	(*CatalogCapture)(nil),              // 1: cineko.observation.CatalogCapture
+	(*SeatMapCapture)(nil),              // 2: cineko.observation.SeatMapCapture
+	(*SeatAvailabilityCapture)(nil),     // 3: cineko.observation.SeatAvailabilityCapture
+	(*Capability)(nil),                  // 4: cineko.observation.Capability
+	(*ScheduleTask)(nil),                // 5: cineko.observation.ScheduleTask
+	(*CatalogTask)(nil),                 // 6: cineko.observation.CatalogTask
+	(*SeatMapTask)(nil),                 // 7: cineko.observation.SeatMapTask
+	(*SeatAvailabilityTask)(nil),        // 8: cineko.observation.SeatAvailabilityTask
+	(*AssignmentTask)(nil),              // 9: cineko.observation.AssignmentTask
+	(*Capture)(nil),                     // 10: cineko.observation.Capture
+	(*ScheduleCaptures)(nil),            // 11: cineko.observation.ScheduleCaptures
+	(*Completed)(nil),                   // 12: cineko.observation.Completed
+	(*Deferred)(nil),                    // 13: cineko.observation.Deferred
+	(*Failed)(nil),                      // 14: cineko.observation.Failed
+	(*AssignmentResult)(nil),            // 15: cineko.observation.AssignmentResult
+	(*ResultReceipt)(nil),               // 16: cineko.observation.ResultReceipt
+	(*Accepted)(nil),                    // 17: cineko.observation.Accepted
+	(*Duplicate)(nil),                   // 18: cineko.observation.Duplicate
+	(*catalog.Theater)(nil),             // 19: cineko.catalog.Theater
+	(*catalog.Auditorium)(nil),          // 20: cineko.catalog.Auditorium
+	(*catalog.Showtime)(nil),            // 21: cineko.catalog.Showtime
+	(*common.EgressPolicy)(nil),         // 22: cineko.common.EgressPolicy
+	(*common.LocalDate)(nil),            // 23: cineko.common.LocalDate
+	(*timestamppb.Timestamp)(nil),       // 24: google.protobuf.Timestamp
+	(*catalog.CatalogSnapshot)(nil),     // 25: cineko.catalog.CatalogSnapshot
+	(*seatmap.Snapshot)(nil),            // 26: cineko.seatmap.Snapshot
+	(*seatmap.LiveSeatObservation)(nil), // 27: cineko.seatmap.LiveSeatObservation
+	(*collection.DeferredReason)(nil),   // 28: cineko.collection.DeferredReason
+	(*collection.FailureReason)(nil),    // 29: cineko.collection.FailureReason
 }
 var file_cineko_observation_observation_proto_depIdxs = []int32{
 	0,  // 0: cineko.observation.Capability.schedule_capture:type_name -> cineko.observation.ScheduleCapture
 	1,  // 1: cineko.observation.Capability.catalog_capture:type_name -> cineko.observation.CatalogCapture
-	17, // 2: cineko.observation.ScheduleTask.theater:type_name -> cineko.catalog.Theater
-	18, // 3: cineko.observation.ScheduleTask.target_dates:type_name -> cineko.common.LocalDate
-	17, // 4: cineko.observation.SeatMapTask.theater:type_name -> cineko.catalog.Theater
-	19, // 5: cineko.observation.SeatMapTask.auditorium:type_name -> cineko.catalog.Auditorium
-	20, // 6: cineko.observation.SeatMapTask.showtime:type_name -> cineko.catalog.Showtime
-	17, // 7: cineko.observation.SeatAvailabilityTask.theater:type_name -> cineko.catalog.Theater
-	19, // 8: cineko.observation.SeatAvailabilityTask.auditorium:type_name -> cineko.catalog.Auditorium
-	20, // 9: cineko.observation.SeatAvailabilityTask.showtime:type_name -> cineko.catalog.Showtime
-	21, // 10: cineko.observation.AssignmentTask.egress:type_name -> cineko.common.EgressPolicy
-	3,  // 11: cineko.observation.AssignmentTask.schedule:type_name -> cineko.observation.ScheduleTask
-	4,  // 12: cineko.observation.AssignmentTask.catalog:type_name -> cineko.observation.CatalogTask
-	18, // 13: cineko.observation.Capture.target_date:type_name -> cineko.common.LocalDate
-	22, // 14: cineko.observation.Capture.observed_at:type_name -> google.protobuf.Timestamp
-	20, // 15: cineko.observation.Capture.showtimes:type_name -> cineko.catalog.Showtime
-	8,  // 16: cineko.observation.ScheduleCaptures.captures:type_name -> cineko.observation.Capture
-	9,  // 17: cineko.observation.Completed.schedule:type_name -> cineko.observation.ScheduleCaptures
-	23, // 18: cineko.observation.Completed.catalog:type_name -> cineko.catalog.CatalogSnapshot
-	24, // 19: cineko.observation.Deferred.reason:type_name -> cineko.collection.DeferredReason
-	25, // 20: cineko.observation.Failed.reason:type_name -> cineko.collection.FailureReason
-	22, // 21: cineko.observation.AssignmentResult.started_at:type_name -> google.protobuf.Timestamp
-	22, // 22: cineko.observation.AssignmentResult.finished_at:type_name -> google.protobuf.Timestamp
-	10, // 23: cineko.observation.AssignmentResult.completed:type_name -> cineko.observation.Completed
-	11, // 24: cineko.observation.AssignmentResult.deferred:type_name -> cineko.observation.Deferred
-	12, // 25: cineko.observation.AssignmentResult.failed:type_name -> cineko.observation.Failed
-	15, // 26: cineko.observation.ResultReceipt.accepted:type_name -> cineko.observation.Accepted
-	16, // 27: cineko.observation.ResultReceipt.duplicate:type_name -> cineko.observation.Duplicate
-	28, // [28:28] is the sub-list for method output_type
-	28, // [28:28] is the sub-list for method input_type
-	28, // [28:28] is the sub-list for extension type_name
-	28, // [28:28] is the sub-list for extension extendee
-	0,  // [0:28] is the sub-list for field type_name
+	2,  // 2: cineko.observation.Capability.seat_map_capture:type_name -> cineko.observation.SeatMapCapture
+	3,  // 3: cineko.observation.Capability.seat_availability_capture:type_name -> cineko.observation.SeatAvailabilityCapture
+	19, // 4: cineko.observation.ScheduleTask.theater:type_name -> cineko.catalog.Theater
+	19, // 5: cineko.observation.SeatMapTask.theater:type_name -> cineko.catalog.Theater
+	20, // 6: cineko.observation.SeatMapTask.auditorium:type_name -> cineko.catalog.Auditorium
+	19, // 7: cineko.observation.SeatAvailabilityTask.theater:type_name -> cineko.catalog.Theater
+	20, // 8: cineko.observation.SeatAvailabilityTask.auditorium:type_name -> cineko.catalog.Auditorium
+	21, // 9: cineko.observation.SeatAvailabilityTask.showtime:type_name -> cineko.catalog.Showtime
+	22, // 10: cineko.observation.AssignmentTask.egress:type_name -> cineko.common.EgressPolicy
+	5,  // 11: cineko.observation.AssignmentTask.schedule:type_name -> cineko.observation.ScheduleTask
+	6,  // 12: cineko.observation.AssignmentTask.catalog:type_name -> cineko.observation.CatalogTask
+	7,  // 13: cineko.observation.AssignmentTask.seat_map:type_name -> cineko.observation.SeatMapTask
+	8,  // 14: cineko.observation.AssignmentTask.seat_availability:type_name -> cineko.observation.SeatAvailabilityTask
+	23, // 15: cineko.observation.Capture.target_date:type_name -> cineko.common.LocalDate
+	24, // 16: cineko.observation.Capture.observed_at:type_name -> google.protobuf.Timestamp
+	21, // 17: cineko.observation.Capture.showtimes:type_name -> cineko.catalog.Showtime
+	10, // 18: cineko.observation.ScheduleCaptures.captures:type_name -> cineko.observation.Capture
+	11, // 19: cineko.observation.Completed.schedule:type_name -> cineko.observation.ScheduleCaptures
+	25, // 20: cineko.observation.Completed.catalog:type_name -> cineko.catalog.CatalogSnapshot
+	26, // 21: cineko.observation.Completed.seat_map:type_name -> cineko.seatmap.Snapshot
+	27, // 22: cineko.observation.Completed.live_seat:type_name -> cineko.seatmap.LiveSeatObservation
+	28, // 23: cineko.observation.Deferred.reason:type_name -> cineko.collection.DeferredReason
+	29, // 24: cineko.observation.Failed.reason:type_name -> cineko.collection.FailureReason
+	24, // 25: cineko.observation.AssignmentResult.started_at:type_name -> google.protobuf.Timestamp
+	24, // 26: cineko.observation.AssignmentResult.finished_at:type_name -> google.protobuf.Timestamp
+	12, // 27: cineko.observation.AssignmentResult.completed:type_name -> cineko.observation.Completed
+	13, // 28: cineko.observation.AssignmentResult.deferred:type_name -> cineko.observation.Deferred
+	14, // 29: cineko.observation.AssignmentResult.failed:type_name -> cineko.observation.Failed
+	17, // 30: cineko.observation.ResultReceipt.accepted:type_name -> cineko.observation.Accepted
+	18, // 31: cineko.observation.ResultReceipt.duplicate:type_name -> cineko.observation.Duplicate
+	32, // [32:32] is the sub-list for method output_type
+	32, // [32:32] is the sub-list for method input_type
+	32, // [32:32] is the sub-list for extension type_name
+	32, // [32:32] is the sub-list for extension extendee
+	0,  // [0:32] is the sub-list for field type_name
 }
 
 func init() { file_cineko_observation_observation_proto_init() }
@@ -2513,24 +2856,30 @@ func file_cineko_observation_observation_proto_init() {
 	if File_cineko_observation_observation_proto != nil {
 		return
 	}
-	file_cineko_observation_observation_proto_msgTypes[2].OneofWrappers = []any{
+	file_cineko_observation_observation_proto_msgTypes[4].OneofWrappers = []any{
 		(*capability_ScheduleCapture)(nil),
 		(*capability_CatalogCapture)(nil),
+		(*capability_SeatMapCapture)(nil),
+		(*capability_SeatAvailabilityCapture)(nil),
 	}
-	file_cineko_observation_observation_proto_msgTypes[7].OneofWrappers = []any{
+	file_cineko_observation_observation_proto_msgTypes[9].OneofWrappers = []any{
 		(*assignmentTask_Schedule)(nil),
 		(*assignmentTask_Catalog)(nil),
+		(*assignmentTask_SeatMap)(nil),
+		(*assignmentTask_SeatAvailability)(nil),
 	}
-	file_cineko_observation_observation_proto_msgTypes[10].OneofWrappers = []any{
+	file_cineko_observation_observation_proto_msgTypes[12].OneofWrappers = []any{
 		(*completed_Schedule)(nil),
 		(*completed_Catalog)(nil),
+		(*completed_SeatMap)(nil),
+		(*completed_LiveSeat)(nil),
 	}
-	file_cineko_observation_observation_proto_msgTypes[13].OneofWrappers = []any{
+	file_cineko_observation_observation_proto_msgTypes[15].OneofWrappers = []any{
 		(*assignmentResult_Completed)(nil),
 		(*assignmentResult_Deferred)(nil),
 		(*assignmentResult_Failed)(nil),
 	}
-	file_cineko_observation_observation_proto_msgTypes[14].OneofWrappers = []any{
+	file_cineko_observation_observation_proto_msgTypes[16].OneofWrappers = []any{
 		(*resultReceipt_Accepted)(nil),
 		(*resultReceipt_Duplicate)(nil),
 	}
@@ -2540,7 +2889,7 @@ func file_cineko_observation_observation_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cineko_observation_observation_proto_rawDesc), len(file_cineko_observation_observation_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   17,
+			NumMessages:   19,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

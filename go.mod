@@ -1,8 +1,8 @@
 module github.com/cineko-org/contracts/v3
 
-go 1.26
+go 1.27
 
-toolchain go1.26.6
+toolchain go1.27.0
 
 require (
 	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.36.12-20260709200747-435963d16310.1

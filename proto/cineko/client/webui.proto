@@ -27,6 +27,10 @@ message WebUIResourceList {
   repeated Resource resources = 1;
 }
 
+message WebUISeatMapResponse {
+  cineko.seatmap.Resolution resolution = 1 [(buf.validate.field).required = true];
+}
+
 message WebUITaskRunning {}
 message WebUITaskCompleted {}
 message WebUITaskFailed {}
@@ -67,23 +71,8 @@ message WebUIAccountState {
     WebUIAccountUnauthenticated unauthenticated = 3;
     WebUIAccountError error = 4;
   }
-  bool credentials_saved = 5;
-  string account_id = 6;
   string message = 7;
   google.protobuf.Timestamp checked_at = 8;
-}
-
-// AccountCredentials is accepted only by the local credential-vault
-// endpoint. It is never a Resource and must not be persisted in Central.
-message AccountCredentials {
-  string id = 1 [
-    (buf.validate.field).required = true,
-    (buf.validate.field).string.min_len = 1
-  ];
-  string password = 2 [
-    (buf.validate.field).required = true,
-    (buf.validate.field).string.min_len = 1
-  ];
 }
 
 message WebUIActionStarted {}

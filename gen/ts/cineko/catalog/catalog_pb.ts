@@ -15,7 +15,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file cineko/catalog/catalog.proto.
  */
 export const file_cineko_catalog_catalog: GenFile = /*@__PURE__*/
-  fileDesc("ChxjaW5la28vY2F0YWxvZy9jYXRhbG9nLnByb3RvEg5jaW5la28uY2F0YWxvZyIkCghQcm92aWRlchIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJIjMKEkNndlRoZWF0ZXJJZGVudGl0eRIdCgdzaXRlX25vGAEgASgJQgy6SAnIAQFyBBABGEAiOgoQQ2d2TW92aWVJZGVudGl0eRImCghtb3ZpZV9ubxgBIAEoCUIUukgRyAEBcgwQATIIXlswLTldKyQiXwoVQ2d2QXVkaXRvcml1bUlkZW50aXR5Eh0KB3NpdGVfbm8YASABKAlCDLpICcgBAXIEEAEYQBInCglzY3JlZW5fbm8YAiABKAlCFLpIEcgBAXIMEAEyCF5bMC05XSskIr4BChNDZ3ZTaG93dGltZUlkZW50aXR5Eh0KB3NpdGVfbm8YASABKAlCDLpICcgBAXIEEAEYQBI3Cg1zY2hlZHVsZV9kYXRlGAIgASgLMhguY2luZWtvLmNvbW1vbi5Mb2NhbERhdGVCBrpIA8gBARInCglzY3JlZW5fbm8YAyABKAlCFLpIEcgBAXIMEAEyCF5bMC05XSskEiYKCHNlcXVlbmNlGAQgASgJQhS6SBHIAQFyDBABMgheWzAtOV0rJCJXCg9UaGVhdGVySWRlbnRpdHkSMQoDY2d2GAEgASgLMiIuY2luZWtvLmNhdGFsb2cuQ2d2VGhlYXRlcklkZW50aXR5SABCEQoIcHJvdmlkZXISBbpIAggBIlMKDU1vdmllSWRlbnRpdHkSLwoDY2d2GAEgASgLMiAuY2luZWtvLmNhdGFsb2cuQ2d2TW92aWVJZGVudGl0eUgAQhEKCHByb3ZpZGVyEgW6SAIIASJdChJBdWRpdG9yaXVtSWRlbnRpdHkSNAoDY2d2GAEgASgLMiUuY2luZWtvLmNhdGFsb2cuQ2d2QXVkaXRvcml1bUlkZW50aXR5SABCEQoIcHJvdmlkZXISBbpIAggBIlkKEFNob3d0aW1lSWRlbnRpdHkSMgoDY2d2GAEgASgLMiMuY2luZWtvLmNhdGFsb2cuQ2d2U2hvd3RpbWVJZGVudGl0eUgAQhEKCHByb3ZpZGVyEgW6SAIIASKDAQoHVGhlYXRlchIKCgJpZBgBIAEoCRITCgtwcm92aWRlcl9pZBgCIAEoCRI5CghpZGVudGl0eRgDIAEoCzIfLmNpbmVrby5jYXRhbG9nLlRoZWF0ZXJJZGVudGl0eUIGukgDyAEBEg4KBnJlZ2lvbhgEIAEoCRIMCgRuYW1lGAUgASgJIoQBCgVNb3ZpZRIKCgJpZBgBIAEoCRITCgtwcm92aWRlcl9pZBgCIAEoCRI3CghpZGVudGl0eRgDIAEoCzIdLmNpbmVrby5jYXRhbG9nLk1vdmllSWRlbnRpdHlCBrpIA8gBARINCgV0aXRsZRgEIAEoCRISCgpwb3N0ZXJfdXJsGAUgASgJIr0BCgpBdWRpdG9yaXVtEgoKAmlkGAEgASgJEhIKCnRoZWF0ZXJfaWQYAiABKAkSPAoIaWRlbnRpdHkYAyABKAsyIi5jaW5la28uY2F0YWxvZy5BdWRpdG9yaXVtSWRlbnRpdHlCBrpIA8gBARIMCgRuYW1lGAQgASgJEhQKDHNjcmVlbl90eXBlcxgFIAMoCRIQCghjYXBhY2l0eRgGIAEoBRIbChNjdXJyZW50X2xheW91dF9oYXNoGAcgASgJIvoCCghTaG93dGltZRIKCgJpZBgBIAEoCRITCgtwcm92aWRlcl9pZBgCIAEoCRI6CghpZGVudGl0eRgDIAEoCzIgLmNpbmVrby5jYXRhbG9nLlNob3d0aW1lSWRlbnRpdHlCBrpIA8gBARISCgp0aGVhdGVyX2lkGAQgASgJEiQKBW1vdmllGAUgASgLMhUuY2luZWtvLmNhdGFsb2cuTW92aWUSLgoKYXVkaXRvcml1bRgGIAEoCzIaLmNpbmVrby5jYXRhbG9nLkF1ZGl0b3JpdW0SNQoJc3RhcnRzX2F0GAcgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEIGukgDyAEBEjMKB2VuZHNfYXQYCCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wQga6SAPIAQESFwoPYXZhaWxhYmxlX3NlYXRzGAkgASgFEhAKCGNhcGFjaXR5GAogASgFEhAKCHNvbGRfb3V0GAsgASgIIp4CCg9DYXRhbG9nU25hcHNob3QSKgoIcHJvdmlkZXIYASABKAsyGC5jaW5la28uY2F0YWxvZy5Qcm92aWRlchIpCgh0aGVhdGVycxgCIAMoCzIXLmNpbmVrby5jYXRhbG9nLlRoZWF0ZXISJQoGbW92aWVzGAMgAygLMhUuY2luZWtvLmNhdGFsb2cuTW92aWUSLwoLYXVkaXRvcml1bXMYBCADKAsyGi5jaW5la28uY2F0YWxvZy5BdWRpdG9yaXVtEisKCXNob3d0aW1lcxgFIAMoCzIYLmNpbmVrby5jYXRhbG9nLlNob3d0aW1lEi8KC29ic2VydmVkX2F0GAYgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCL/AQoMQ2F0YWxvZ0luZGV4EhIKCmdlbmVyYXRpb24YASABKAMSKwoJcHJvdmlkZXJzGAIgAygLMhguY2luZWtvLmNhdGFsb2cuUHJvdmlkZXISKQoIdGhlYXRlcnMYAyADKAsyFy5jaW5la28uY2F0YWxvZy5UaGVhdGVyEiUKBm1vdmllcxgEIAMoCzIVLmNpbmVrby5jYXRhbG9nLk1vdmllEi8KC2F1ZGl0b3JpdW1zGAUgAygLMhouY2luZWtvLmNhdGFsb2cuQXVkaXRvcml1bRIrCglzaG93dGltZXMYBiADKAsyGC5jaW5la28uY2F0YWxvZy5TaG93dGltZUJCWkBnaXRodWIuY29tL2NpbmVrby1vcmcvY29udHJhY3RzL3YzL2dlbi9nby9jaW5la28vY2F0YWxvZztjYXRhbG9nYghlZGl0aW9uc3DpBw", [file_buf_validate_validate, file_cineko_common_common, file_google_protobuf_timestamp]);
+  fileDesc("ChxjaW5la28vY2F0YWxvZy9jYXRhbG9nLnByb3RvEg5jaW5la28uY2F0YWxvZyIkCghQcm92aWRlchIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJIjMKEkNndlRoZWF0ZXJJZGVudGl0eRIdCgdzaXRlX25vGAEgASgJQgy6SAnIAQFyBBABGEAiOgoQQ2d2TW92aWVJZGVudGl0eRImCghtb3ZpZV9ubxgBIAEoCUIUukgRyAEBcgwQATIIXlswLTldKyQiXwoVQ2d2QXVkaXRvcml1bUlkZW50aXR5Eh0KB3NpdGVfbm8YASABKAlCDLpICcgBAXIEEAEYQBInCglzY3JlZW5fbm8YAiABKAlCFLpIEcgBAXIMEAEyCF5bMC05XSskIr4BChNDZ3ZTaG93dGltZUlkZW50aXR5Eh0KB3NpdGVfbm8YASABKAlCDLpICcgBAXIEEAEYQBI3Cg1zY2hlZHVsZV9kYXRlGAIgASgLMhguY2luZWtvLmNvbW1vbi5Mb2NhbERhdGVCBrpIA8gBARInCglzY3JlZW5fbm8YAyABKAlCFLpIEcgBAXIMEAEyCF5bMC05XSskEiYKCHNlcXVlbmNlGAQgASgJQhS6SBHIAQFyDBABMgheWzAtOV0rJCJXCg9UaGVhdGVySWRlbnRpdHkSMQoDY2d2GAEgASgLMiIuY2luZWtvLmNhdGFsb2cuQ2d2VGhlYXRlcklkZW50aXR5SABCEQoIcHJvdmlkZXISBbpIAggBIlMKDU1vdmllSWRlbnRpdHkSLwoDY2d2GAEgASgLMiAuY2luZWtvLmNhdGFsb2cuQ2d2TW92aWVJZGVudGl0eUgAQhEKCHByb3ZpZGVyEgW6SAIIASJdChJBdWRpdG9yaXVtSWRlbnRpdHkSNAoDY2d2GAEgASgLMiUuY2luZWtvLmNhdGFsb2cuQ2d2QXVkaXRvcml1bUlkZW50aXR5SABCEQoIcHJvdmlkZXISBbpIAggBIlkKEFNob3d0aW1lSWRlbnRpdHkSMgoDY2d2GAEgASgLMiMuY2luZWtvLmNhdGFsb2cuQ2d2U2hvd3RpbWVJZGVudGl0eUgAQhEKCHByb3ZpZGVyEgW6SAIIASKDAQoHVGhlYXRlchIKCgJpZBgBIAEoCRITCgtwcm92aWRlcl9pZBgCIAEoCRI5CghpZGVudGl0eRgDIAEoCzIfLmNpbmVrby5jYXRhbG9nLlRoZWF0ZXJJZGVudGl0eUIGukgDyAEBEg4KBnJlZ2lvbhgEIAEoCRIMCgRuYW1lGAUgASgJIoQBCgVNb3ZpZRIKCgJpZBgBIAEoCRITCgtwcm92aWRlcl9pZBgCIAEoCRI3CghpZGVudGl0eRgDIAEoCzIdLmNpbmVrby5jYXRhbG9nLk1vdmllSWRlbnRpdHlCBrpIA8gBARINCgV0aXRsZRgEIAEoCRISCgpwb3N0ZXJfdXJsGAUgASgJIrEBCgtNb3ZpZVBvc3RlchIcCghtb3ZpZV9pZBgBIAEoCUIKukgHyAEBcgIQARI1CgptZWRpYV90eXBlGAIgASgJQiG6SB7IAQFyGTIXXmltYWdlLyhqcGVnfHBuZ3x3ZWJwKSQSHQoEZGF0YRgDIAEoDEIPukgMyAEBegcQARiAgIAQEi4KDGNvbnRlbnRfaGFzaBgEIAEoCUIYukgVyAEBchAyDl5bMC05YS1mXXs2NH0kIr0BCgpBdWRpdG9yaXVtEgoKAmlkGAEgASgJEhIKCnRoZWF0ZXJfaWQYAiABKAkSPAoIaWRlbnRpdHkYAyABKAsyIi5jaW5la28uY2F0YWxvZy5BdWRpdG9yaXVtSWRlbnRpdHlCBrpIA8gBARIMCgRuYW1lGAQgASgJEhQKDHNjcmVlbl90eXBlcxgFIAMoCRIQCghjYXBhY2l0eRgGIAEoBRIbChNjdXJyZW50X2xheW91dF9oYXNoGAcgASgJIvoCCghTaG93dGltZRIKCgJpZBgBIAEoCRITCgtwcm92aWRlcl9pZBgCIAEoCRI6CghpZGVudGl0eRgDIAEoCzIgLmNpbmVrby5jYXRhbG9nLlNob3d0aW1lSWRlbnRpdHlCBrpIA8gBARISCgp0aGVhdGVyX2lkGAQgASgJEiQKBW1vdmllGAUgASgLMhUuY2luZWtvLmNhdGFsb2cuTW92aWUSLgoKYXVkaXRvcml1bRgGIAEoCzIaLmNpbmVrby5jYXRhbG9nLkF1ZGl0b3JpdW0SNQoJc3RhcnRzX2F0GAcgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEIGukgDyAEBEjMKB2VuZHNfYXQYCCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wQga6SAPIAQESFwoPYXZhaWxhYmxlX3NlYXRzGAkgASgFEhAKCGNhcGFjaXR5GAogASgFEhAKCHNvbGRfb3V0GAsgASgIItcCCg9DYXRhbG9nU25hcHNob3QSKgoIcHJvdmlkZXIYASABKAsyGC5jaW5la28uY2F0YWxvZy5Qcm92aWRlchIpCgh0aGVhdGVycxgCIAMoCzIXLmNpbmVrby5jYXRhbG9nLlRoZWF0ZXISJQoGbW92aWVzGAMgAygLMhUuY2luZWtvLmNhdGFsb2cuTW92aWUSLwoLYXVkaXRvcml1bXMYBCADKAsyGi5jaW5la28uY2F0YWxvZy5BdWRpdG9yaXVtEisKCXNob3d0aW1lcxgFIAMoCzIYLmNpbmVrby5jYXRhbG9nLlNob3d0aW1lEi8KC29ic2VydmVkX2F0GAYgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBI3Cgdwb3N0ZXJzGAcgAygLMhsuY2luZWtvLmNhdGFsb2cuTW92aWVQb3N0ZXJCCbpIBpIBAxCAASL/AQoMQ2F0YWxvZ0luZGV4EhIKCmdlbmVyYXRpb24YASABKAMSKwoJcHJvdmlkZXJzGAIgAygLMhguY2luZWtvLmNhdGFsb2cuUHJvdmlkZXISKQoIdGhlYXRlcnMYAyADKAsyFy5jaW5la28uY2F0YWxvZy5UaGVhdGVyEiUKBm1vdmllcxgEIAMoCzIVLmNpbmVrby5jYXRhbG9nLk1vdmllEi8KC2F1ZGl0b3JpdW1zGAUgAygLMhouY2luZWtvLmNhdGFsb2cuQXVkaXRvcml1bRIrCglzaG93dGltZXMYBiADKAsyGC5jaW5la28uY2F0YWxvZy5TaG93dGltZUJCWkBnaXRodWIuY29tL2NpbmVrby1vcmcvY29udHJhY3RzL3YzL2dlbi9nby9jaW5la28vY2F0YWxvZztjYXRhbG9nYghlZGl0aW9uc3DpBw", [file_buf_validate_validate, file_cineko_common_common, file_google_protobuf_timestamp]);
 
 /**
  * @generated from message cineko.catalog.Provider
@@ -281,6 +281,8 @@ export type Movie = Message<"cineko.catalog.Movie"> & {
   title: string;
 
   /**
+   * Client-local URL only. Provider/CDN URLs must never cross this contract.
+   *
    * @generated from field: string poster_url = 5;
    */
   posterUrl: string;
@@ -292,6 +294,41 @@ export type Movie = Message<"cineko.catalog.Movie"> & {
  */
 export const MovieSchema: GenMessage<Movie> = /*@__PURE__*/
   messageDesc(file_cineko_catalog_catalog, 10);
+
+/**
+ * MoviePoster is an image response naturally loaded by the provider page in
+ * the Probe browser. Probe must not issue a separate fetch for this asset.
+ *
+ * @generated from message cineko.catalog.MoviePoster
+ */
+export type MoviePoster = Message<"cineko.catalog.MoviePoster"> & {
+  /**
+   * @generated from field: string movie_id = 1;
+   */
+  movieId: string;
+
+  /**
+   * @generated from field: string media_type = 2;
+   */
+  mediaType: string;
+
+  /**
+   * @generated from field: bytes data = 3;
+   */
+  data: Uint8Array;
+
+  /**
+   * @generated from field: string content_hash = 4;
+   */
+  contentHash: string;
+};
+
+/**
+ * Describes the message cineko.catalog.MoviePoster.
+ * Use `create(MoviePosterSchema)` to create a new message.
+ */
+export const MoviePosterSchema: GenMessage<MoviePoster> = /*@__PURE__*/
+  messageDesc(file_cineko_catalog_catalog, 11);
 
 /**
  * @generated from message cineko.catalog.Auditorium
@@ -338,7 +375,7 @@ export type Auditorium = Message<"cineko.catalog.Auditorium"> & {
  * Use `create(AuditoriumSchema)` to create a new message.
  */
 export const AuditoriumSchema: GenMessage<Auditorium> = /*@__PURE__*/
-  messageDesc(file_cineko_catalog_catalog, 11);
+  messageDesc(file_cineko_catalog_catalog, 12);
 
 /**
  * @generated from message cineko.catalog.Showtime
@@ -405,7 +442,7 @@ export type Showtime = Message<"cineko.catalog.Showtime"> & {
  * Use `create(ShowtimeSchema)` to create a new message.
  */
 export const ShowtimeSchema: GenMessage<Showtime> = /*@__PURE__*/
-  messageDesc(file_cineko_catalog_catalog, 12);
+  messageDesc(file_cineko_catalog_catalog, 13);
 
 /**
  * @generated from message cineko.catalog.CatalogSnapshot
@@ -440,6 +477,11 @@ export type CatalogSnapshot = Message<"cineko.catalog.CatalogSnapshot"> & {
    * @generated from field: google.protobuf.Timestamp observed_at = 6;
    */
   observedAt?: Timestamp | undefined;
+
+  /**
+   * @generated from field: repeated cineko.catalog.MoviePoster posters = 7;
+   */
+  posters: MoviePoster[];
 };
 
 /**
@@ -447,7 +489,7 @@ export type CatalogSnapshot = Message<"cineko.catalog.CatalogSnapshot"> & {
  * Use `create(CatalogSnapshotSchema)` to create a new message.
  */
 export const CatalogSnapshotSchema: GenMessage<CatalogSnapshot> = /*@__PURE__*/
-  messageDesc(file_cineko_catalog_catalog, 13);
+  messageDesc(file_cineko_catalog_catalog, 14);
 
 /**
  * @generated from message cineko.catalog.CatalogIndex
@@ -489,4 +531,4 @@ export type CatalogIndex = Message<"cineko.catalog.CatalogIndex"> & {
  * Use `create(CatalogIndexSchema)` to create a new message.
  */
 export const CatalogIndexSchema: GenMessage<CatalogIndex> = /*@__PURE__*/
-  messageDesc(file_cineko_catalog_catalog, 14);
+  messageDesc(file_cineko_catalog_catalog, 15);

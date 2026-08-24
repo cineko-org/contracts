@@ -12,7 +12,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file cineko/release/release.proto.
  */
 export const file_cineko_release_release: GenFile = /*@__PURE__*/
-  fileDesc("ChxjaW5la28vcmVsZWFzZS9yZWxlYXNlLnByb3RvEg5jaW5la28ucmVsZWFzZSJJCghBcnRpZmFjdBILCgN1cmwYASABKAkSDAoEc2l6ZRgCIAEoAxIOCgZzaGEyNTYYAyABKAkSEgoKZXhlY3V0YWJsZRgEIAEoCSK6AwoNQ2xpZW50UmVsZWFzZRIPCgdjaGFubmVsGAEgASgJEhAKCHBsYXRmb3JtGAIgASgJEhQKDGFyY2hpdGVjdHVyZRgDIAEoCRIPCgd2ZXJzaW9uGAQgASgJEiAKGG1pbmltdW1fbGF1bmNoZXJfdmVyc2lvbhgFIAEoCRIgChhtaW5pbXVtX2Jyb3dzZXJfcmV2aXNpb24YBiABKAkSGgoScGxheXdyaWdodF92ZXJzaW9uGAcgASgJEioKCGFydGlmYWN0GAggASgLMhguY2luZWtvLnJlbGVhc2UuQXJ0aWZhY3QSYAobcHJvYmVfYm9vdHN0cmFwX3B1YmxpY19rZXlzGAkgAygLMjsuY2luZWtvLnJlbGVhc2UuQ2xpZW50UmVsZWFzZS5Qcm9iZUJvb3RzdHJhcFB1YmxpY0tleXNFbnRyeRIwCgxwdWJsaXNoZWRfYXQYCiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wGj8KHVByb2JlQm9vdHN0cmFwUHVibGljS2V5c0VudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoCToCOAEi4QEKDkJyb3dzZXJSZWxlYXNlEg8KB2NoYW5uZWwYASABKAkSEAoIcGxhdGZvcm0YAiABKAkSFAoMYXJjaGl0ZWN0dXJlGAMgASgJEhAKCHJldmlzaW9uGAQgASgJEiYKHmNvbXBhdGlibGVfcGxheXdyaWdodF92ZXJzaW9ucxgFIAMoCRIqCghhcnRpZmFjdBgGIAEoCzIYLmNpbmVrby5yZWxlYXNlLkFydGlmYWN0EjAKDHB1Ymxpc2hlZF9hdBgHIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiuwEKEVBsYXl3cmlnaHRSZWxlYXNlEg8KB2NoYW5uZWwYASABKAkSEAoIcGxhdGZvcm0YAiABKAkSFAoMYXJjaGl0ZWN0dXJlGAMgASgJEg8KB3ZlcnNpb24YBCABKAkSKgoIYXJ0aWZhY3QYBSABKAsyGC5jaW5la28ucmVsZWFzZS5BcnRpZmFjdBIwCgxwdWJsaXNoZWRfYXQYBiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIrkBCg9MYXVuY2hlclJlbGVhc2USDwoHY2hhbm5lbBgBIAEoCRIQCghwbGF0Zm9ybRgCIAEoCRIUCgxhcmNoaXRlY3R1cmUYAyABKAkSDwoHdmVyc2lvbhgEIAEoCRIqCghsYXVuY2hlchgFIAEoCzIYLmNpbmVrby5yZWxlYXNlLkFydGlmYWN0EjAKDHB1Ymxpc2hlZF9hdBgGIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAioQEKDFByb2JlUmVsZWFzZRIPCgdjaGFubmVsGAEgASgJEg8KB3ZlcnNpb24YAiABKAkSGAoQYnJvd3Nlcl9yZXZpc2lvbhgDIAEoCRINCgVpbWFnZRgEIAEoCRIUCgxpbWFnZV9kaWdlc3QYBSABKAkSMAoMcHVibGlzaGVkX2F0GAYgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCKnAQoOUnVudGltZVJlbGVhc2USLQoGY2xpZW50GAEgASgLMh0uY2luZWtvLnJlbGVhc2UuQ2xpZW50UmVsZWFzZRIvCgdicm93c2VyGAIgASgLMh4uY2luZWtvLnJlbGVhc2UuQnJvd3NlclJlbGVhc2USNQoKcGxheXdyaWdodBgDIAEoCzIhLmNpbmVrby5yZWxlYXNlLlBsYXl3cmlnaHRSZWxlYXNlIkMKEENsaWVudFJlbGVhc2VTZXQSLwoIcmVsZWFzZXMYASADKAsyHS5jaW5la28ucmVsZWFzZS5DbGllbnRSZWxlYXNlIkUKEUJyb3dzZXJSZWxlYXNlU2V0EjAKCHJlbGVhc2VzGAEgAygLMh4uY2luZWtvLnJlbGVhc2UuQnJvd3NlclJlbGVhc2UiSwoUUGxheXdyaWdodFJlbGVhc2VTZXQSMwoIcmVsZWFzZXMYASADKAsyIS5jaW5la28ucmVsZWFzZS5QbGF5d3JpZ2h0UmVsZWFzZSJHChJMYXVuY2hlclJlbGVhc2VTZXQSMQoIcmVsZWFzZXMYASADKAsyHy5jaW5la28ucmVsZWFzZS5MYXVuY2hlclJlbGVhc2UiQQoPUHJvYmVSZWxlYXNlU2V0Ei4KCHJlbGVhc2VzGAEgAygLMhwuY2luZWtvLnJlbGVhc2UuUHJvYmVSZWxlYXNlIqgCCghSZWdpc3RyeRISCgpnZW5lcmF0aW9uGAEgASgDEjEKB2NsaWVudHMYAiABKAsyIC5jaW5la28ucmVsZWFzZS5DbGllbnRSZWxlYXNlU2V0EjMKCGJyb3dzZXJzGAMgASgLMiEuY2luZWtvLnJlbGVhc2UuQnJvd3NlclJlbGVhc2VTZXQSOAoKcGxheXdyaWdodBgEIAEoCzIkLmNpbmVrby5yZWxlYXNlLlBsYXl3cmlnaHRSZWxlYXNlU2V0EjUKCWxhdW5jaGVycxgFIAEoCzIiLmNpbmVrby5yZWxlYXNlLkxhdW5jaGVyUmVsZWFzZVNldBIvCgZwcm9iZXMYBiABKAsyHy5jaW5la28ucmVsZWFzZS5Qcm9iZVJlbGVhc2VTZXRCQlpAZ2l0aHViLmNvbS9jaW5la28tb3JnL2NvbnRyYWN0cy92My9nZW4vZ28vY2luZWtvL3JlbGVhc2U7cmVsZWFzZWIIZWRpdGlvbnNw6Qc", [file_google_protobuf_timestamp]);
+  fileDesc("ChxjaW5la28vcmVsZWFzZS9yZWxlYXNlLnByb3RvEg5jaW5la28ucmVsZWFzZSJJCghBcnRpZmFjdBILCgN1cmwYASABKAkSDAoEc2l6ZRgCIAEoAxIOCgZzaGEyNTYYAyABKAkSEgoKZXhlY3V0YWJsZRgEIAEoCSKXAgoNQ2xpZW50UmVsZWFzZRIPCgdjaGFubmVsGAEgASgJEhAKCHBsYXRmb3JtGAIgASgJEhQKDGFyY2hpdGVjdHVyZRgDIAEoCRIPCgd2ZXJzaW9uGAQgASgJEiAKGG1pbmltdW1fbGF1bmNoZXJfdmVyc2lvbhgFIAEoCRIgChhtaW5pbXVtX2Jyb3dzZXJfcmV2aXNpb24YBiABKAkSGgoScGxheXdyaWdodF92ZXJzaW9uGAcgASgJEioKCGFydGlmYWN0GAggASgLMhguY2luZWtvLnJlbGVhc2UuQXJ0aWZhY3QSMAoMcHVibGlzaGVkX2F0GAkgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCLhAQoOQnJvd3NlclJlbGVhc2USDwoHY2hhbm5lbBgBIAEoCRIQCghwbGF0Zm9ybRgCIAEoCRIUCgxhcmNoaXRlY3R1cmUYAyABKAkSEAoIcmV2aXNpb24YBCABKAkSJgoeY29tcGF0aWJsZV9wbGF5d3JpZ2h0X3ZlcnNpb25zGAUgAygJEioKCGFydGlmYWN0GAYgASgLMhguY2luZWtvLnJlbGVhc2UuQXJ0aWZhY3QSMAoMcHVibGlzaGVkX2F0GAcgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCK7AQoRUGxheXdyaWdodFJlbGVhc2USDwoHY2hhbm5lbBgBIAEoCRIQCghwbGF0Zm9ybRgCIAEoCRIUCgxhcmNoaXRlY3R1cmUYAyABKAkSDwoHdmVyc2lvbhgEIAEoCRIqCghhcnRpZmFjdBgFIAEoCzIYLmNpbmVrby5yZWxlYXNlLkFydGlmYWN0EjAKDHB1Ymxpc2hlZF9hdBgGIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiuQEKD0xhdW5jaGVyUmVsZWFzZRIPCgdjaGFubmVsGAEgASgJEhAKCHBsYXRmb3JtGAIgASgJEhQKDGFyY2hpdGVjdHVyZRgDIAEoCRIPCgd2ZXJzaW9uGAQgASgJEioKCGxhdW5jaGVyGAUgASgLMhguY2luZWtvLnJlbGVhc2UuQXJ0aWZhY3QSMAoMcHVibGlzaGVkX2F0GAYgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCKnAQoOUnVudGltZVJlbGVhc2USLQoGY2xpZW50GAEgASgLMh0uY2luZWtvLnJlbGVhc2UuQ2xpZW50UmVsZWFzZRIvCgdicm93c2VyGAIgASgLMh4uY2luZWtvLnJlbGVhc2UuQnJvd3NlclJlbGVhc2USNQoKcGxheXdyaWdodBgDIAEoCzIhLmNpbmVrby5yZWxlYXNlLlBsYXl3cmlnaHRSZWxlYXNlIkMKEENsaWVudFJlbGVhc2VTZXQSLwoIcmVsZWFzZXMYASADKAsyHS5jaW5la28ucmVsZWFzZS5DbGllbnRSZWxlYXNlIkUKEUJyb3dzZXJSZWxlYXNlU2V0EjAKCHJlbGVhc2VzGAEgAygLMh4uY2luZWtvLnJlbGVhc2UuQnJvd3NlclJlbGVhc2UiSwoUUGxheXdyaWdodFJlbGVhc2VTZXQSMwoIcmVsZWFzZXMYASADKAsyIS5jaW5la28ucmVsZWFzZS5QbGF5d3JpZ2h0UmVsZWFzZSJHChJMYXVuY2hlclJlbGVhc2VTZXQSMQoIcmVsZWFzZXMYASADKAsyHy5jaW5la28ucmVsZWFzZS5MYXVuY2hlclJlbGVhc2Ui9wEKCFJlZ2lzdHJ5EhIKCmdlbmVyYXRpb24YASABKAMSMQoHY2xpZW50cxgCIAEoCzIgLmNpbmVrby5yZWxlYXNlLkNsaWVudFJlbGVhc2VTZXQSMwoIYnJvd3NlcnMYAyABKAsyIS5jaW5la28ucmVsZWFzZS5Ccm93c2VyUmVsZWFzZVNldBI4CgpwbGF5d3JpZ2h0GAQgASgLMiQuY2luZWtvLnJlbGVhc2UuUGxheXdyaWdodFJlbGVhc2VTZXQSNQoJbGF1bmNoZXJzGAUgASgLMiIuY2luZWtvLnJlbGVhc2UuTGF1bmNoZXJSZWxlYXNlU2V0QkJaQGdpdGh1Yi5jb20vY2luZWtvLW9yZy9jb250cmFjdHMvdjMvZ2VuL2dvL2NpbmVrby9yZWxlYXNlO3JlbGVhc2ViCGVkaXRpb25zcOkH", [file_google_protobuf_timestamp]);
 
 /**
  * @generated from message cineko.release.Artifact
@@ -91,12 +91,7 @@ export type ClientRelease = Message<"cineko.release.ClientRelease"> & {
   artifact?: Artifact | undefined;
 
   /**
-   * @generated from field: map<string, string> probe_bootstrap_public_keys = 9;
-   */
-  probeBootstrapPublicKeys: { [key: string]: string };
-
-  /**
-   * @generated from field: google.protobuf.Timestamp published_at = 10;
+   * @generated from field: google.protobuf.Timestamp published_at = 9;
    */
   publishedAt?: Timestamp | undefined;
 };
@@ -240,48 +235,6 @@ export const LauncherReleaseSchema: GenMessage<LauncherRelease> = /*@__PURE__*/
   messageDesc(file_cineko_release_release, 4);
 
 /**
- * @generated from message cineko.release.ProbeRelease
- */
-export type ProbeRelease = Message<"cineko.release.ProbeRelease"> & {
-  /**
-   * @generated from field: string channel = 1;
-   */
-  channel: string;
-
-  /**
-   * @generated from field: string version = 2;
-   */
-  version: string;
-
-  /**
-   * @generated from field: string browser_revision = 3;
-   */
-  browserRevision: string;
-
-  /**
-   * @generated from field: string image = 4;
-   */
-  image: string;
-
-  /**
-   * @generated from field: string image_digest = 5;
-   */
-  imageDigest: string;
-
-  /**
-   * @generated from field: google.protobuf.Timestamp published_at = 6;
-   */
-  publishedAt?: Timestamp | undefined;
-};
-
-/**
- * Describes the message cineko.release.ProbeRelease.
- * Use `create(ProbeReleaseSchema)` to create a new message.
- */
-export const ProbeReleaseSchema: GenMessage<ProbeRelease> = /*@__PURE__*/
-  messageDesc(file_cineko_release_release, 5);
-
-/**
  * @generated from message cineko.release.RuntimeRelease
  */
 export type RuntimeRelease = Message<"cineko.release.RuntimeRelease"> & {
@@ -306,7 +259,7 @@ export type RuntimeRelease = Message<"cineko.release.RuntimeRelease"> & {
  * Use `create(RuntimeReleaseSchema)` to create a new message.
  */
 export const RuntimeReleaseSchema: GenMessage<RuntimeRelease> = /*@__PURE__*/
-  messageDesc(file_cineko_release_release, 6);
+  messageDesc(file_cineko_release_release, 5);
 
 /**
  * @generated from message cineko.release.ClientReleaseSet
@@ -323,7 +276,7 @@ export type ClientReleaseSet = Message<"cineko.release.ClientReleaseSet"> & {
  * Use `create(ClientReleaseSetSchema)` to create a new message.
  */
 export const ClientReleaseSetSchema: GenMessage<ClientReleaseSet> = /*@__PURE__*/
-  messageDesc(file_cineko_release_release, 7);
+  messageDesc(file_cineko_release_release, 6);
 
 /**
  * @generated from message cineko.release.BrowserReleaseSet
@@ -340,7 +293,7 @@ export type BrowserReleaseSet = Message<"cineko.release.BrowserReleaseSet"> & {
  * Use `create(BrowserReleaseSetSchema)` to create a new message.
  */
 export const BrowserReleaseSetSchema: GenMessage<BrowserReleaseSet> = /*@__PURE__*/
-  messageDesc(file_cineko_release_release, 8);
+  messageDesc(file_cineko_release_release, 7);
 
 /**
  * @generated from message cineko.release.PlaywrightReleaseSet
@@ -357,7 +310,7 @@ export type PlaywrightReleaseSet = Message<"cineko.release.PlaywrightReleaseSet"
  * Use `create(PlaywrightReleaseSetSchema)` to create a new message.
  */
 export const PlaywrightReleaseSetSchema: GenMessage<PlaywrightReleaseSet> = /*@__PURE__*/
-  messageDesc(file_cineko_release_release, 9);
+  messageDesc(file_cineko_release_release, 8);
 
 /**
  * @generated from message cineko.release.LauncherReleaseSet
@@ -374,24 +327,7 @@ export type LauncherReleaseSet = Message<"cineko.release.LauncherReleaseSet"> & 
  * Use `create(LauncherReleaseSetSchema)` to create a new message.
  */
 export const LauncherReleaseSetSchema: GenMessage<LauncherReleaseSet> = /*@__PURE__*/
-  messageDesc(file_cineko_release_release, 10);
-
-/**
- * @generated from message cineko.release.ProbeReleaseSet
- */
-export type ProbeReleaseSet = Message<"cineko.release.ProbeReleaseSet"> & {
-  /**
-   * @generated from field: repeated cineko.release.ProbeRelease releases = 1;
-   */
-  releases: ProbeRelease[];
-};
-
-/**
- * Describes the message cineko.release.ProbeReleaseSet.
- * Use `create(ProbeReleaseSetSchema)` to create a new message.
- */
-export const ProbeReleaseSetSchema: GenMessage<ProbeReleaseSet> = /*@__PURE__*/
-  messageDesc(file_cineko_release_release, 11);
+  messageDesc(file_cineko_release_release, 9);
 
 /**
  * @generated from message cineko.release.Registry
@@ -421,11 +357,6 @@ export type Registry = Message<"cineko.release.Registry"> & {
    * @generated from field: cineko.release.LauncherReleaseSet launchers = 5;
    */
   launchers?: LauncherReleaseSet | undefined;
-
-  /**
-   * @generated from field: cineko.release.ProbeReleaseSet probes = 6;
-   */
-  probes?: ProbeReleaseSet | undefined;
 };
 
 /**
@@ -433,4 +364,4 @@ export type Registry = Message<"cineko.release.Registry"> & {
  * Use `create(RegistrySchema)` to create a new message.
  */
 export const RegistrySchema: GenMessage<Registry> = /*@__PURE__*/
-  messageDesc(file_cineko_release_release, 12);
+  messageDesc(file_cineko_release_release, 10);

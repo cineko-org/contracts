@@ -389,8 +389,8 @@ export const LiveSeatObservationSchema: GenMessage<LiveSeatObservation> = /*@__P
 export type Resolution = Message<"cineko.seatmap.Resolution"> & {
   /**
    * A cached layout may coexist with any collection state. The absence of a
-   * snapshot is valid only while collection is in progress; Central must never
-   * expose idle without a current snapshot.
+   * snapshot is valid only while collection is in progress; the Client must
+   * never expose idle without a current snapshot.
    *
    * @generated from field: cineko.seatmap.Snapshot snapshot = 1;
    */
