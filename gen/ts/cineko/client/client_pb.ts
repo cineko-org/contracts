@@ -7,9 +7,8 @@ import { fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv2";
 import { file_buf_validate_validate } from "../../buf/validate/validate_pb";
 import type { Auditorium, Showtime } from "../catalog/catalog_pb";
 import { file_cineko_catalog_catalog } from "../catalog/catalog_pb";
-import type { LocalDate, LocalTime, ResourceIdentity, Runtime } from "../common/common_pb";
+import type { LocalTime, ResourceIdentity } from "../common/common_pb";
 import { file_cineko_common_common } from "../common/common_pb";
-import type { Capability } from "../observation/observation_pb";
 import { file_cineko_observation_observation } from "../observation/observation_pb";
 import type { Timestamp } from "@bufbuild/protobuf/wkt";
 import { file_google_protobuf_duration, file_google_protobuf_timestamp } from "@bufbuild/protobuf/wkt";
@@ -19,7 +18,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file cineko/client/client.proto.
  */
 export const file_cineko_client_client: GenFile = /*@__PURE__*/
-  fileDesc("ChpjaW5la28vY2xpZW50L2NsaWVudC5wcm90bxINY2luZWtvLmNsaWVudCKIAQoEVXNlchIKCgJpZBgBIAEoCRIUCgxkaXNwbGF5X25hbWUYAiABKAkSLgoKY3JlYXRlZF9hdBgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLgoKdXBkYXRlZF9hdBgEIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAilAIKBkRldmljZRIXCg9pbnN0YWxsYXRpb25faWQYASABKAkSDwoHdXNlcl9pZBgCIAEoCRIRCglkZXZpY2VfaWQYAyABKAkSEAoIcGxhdGZvcm0YBCABKAkSFAoMYXJjaGl0ZWN0dXJlGAUgASgJEhMKC2FwcF92ZXJzaW9uGAYgASgJEjAKDGxhc3Rfc2Vlbl9hdBgHIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLgoKY3JlYXRlZF9hdBgIIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLgoKdXBkYXRlZF9hdBgJIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiDwoNRGlyZWN0TmV0d29yayJWCgxQcm94eU5ldHdvcmsSDAoEdXJscxgBIAMoCRIQCgh1c2VybmFtZRgCIAEoCRIQCghwYXNzd29yZBgDIAEoCRIUCgxoYXNfcGFzc3dvcmQYBCABKAgifgoPTmV0d29ya1NldHRpbmdzEi4KBmRpcmVjdBgBIAEoCzIcLmNpbmVrby5jbGllbnQuRGlyZWN0TmV0d29ya0gAEiwKBXByb3h5GAIgASgLMhsuY2luZWtvLmNsaWVudC5Qcm94eU5ldHdvcmtIAEINCgRtb2RlEgW6SAIIASKAAQoNV2ViaG9va1RhcmdldBIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJEgsKA3VybBgDIAEoCRIOCgZzZWNyZXQYBCABKAkSEwoLZXZlbnRfa2luZHMYBSADKAkSDwoHZW5hYmxlZBgGIAEoCBISCgpoYXNfc2VjcmV0GAcgASgIImsKCFNldHRpbmdzEi8KB25ldHdvcmsYASABKAsyHi5jaW5la28uY2xpZW50Lk5ldHdvcmtTZXR0aW5ncxIuCgh3ZWJob29rcxgCIAMoCzIcLmNpbmVrby5jbGllbnQuV2ViaG9va1RhcmdldCJkCghTZWF0Wm9uZRIMCgRuYW1lGAEgASgJEg0KBW1pbl94GAIgASgBEg0KBW1heF94GAMgASgBEg0KBW1pbl95GAQgASgBEg0KBW1heF95GAUgASgBEg4KBndlaWdodBgGIAEoBSKyAQoOU2VhdFByZWZlcmVuY2USFgoOZXhwbGljaXRfc2VhdHMYASADKAkSFgoOcHJlZmVycmVkX3Jvd3MYAiADKAkSMAoPcHJlZmVycmVkX3pvbmVzGAMgAygLMhcuY2luZWtvLmNsaWVudC5TZWF0Wm9uZRIXCg9wcmVmZXJyZWRfdHlwZXMYBCADKAkSEAoIdG9nZXRoZXIYBSABKAgSEwoLYXZvaWRfZWRnZXMYBiABKAgiigIKBlByZXNldBIKCgJpZBgBIAEoCRIPCgd1c2VyX2lkGAIgASgJEgwKBG5hbWUYAyABKAkSEgoKdGhlYXRlcl9pZBgEIAEoCRIVCg1hdWRpdG9yaXVtX2lkGAUgASgJEhIKCnNlYXRfY291bnQYBiABKAUSNgoPc2VhdF9wcmVmZXJlbmNlGAcgASgLMh0uY2luZWtvLmNsaWVudC5TZWF0UHJlZmVyZW5jZRIuCgpjcmVhdGVkX2F0GAggASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIuCgp1cGRhdGVkX2F0GAkgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCIQCg5Nb25pdG9yUGVuZGluZyIQCg5Nb25pdG9yUnVubmluZyISChBNb25pdG9yVHJpZ2dlcmVkIhcKFU1vbml0b3JQYXltZW50VW5rbm93biIPCg1Nb25pdG9yQm9va2VkIh8KDU1vbml0b3JGYWlsZWQSDgoGcmVhc29uGAEgASgJIhAKDk1vbml0b3JTdG9wcGVkIosDCgxNb25pdG9yU3RhdGUSMAoHcGVuZGluZxgBIAEoCzIdLmNpbmVrby5jbGllbnQuTW9uaXRvclBlbmRpbmdIABIwCgdydW5uaW5nGAIgASgLMh0uY2luZWtvLmNsaWVudC5Nb25pdG9yUnVubmluZ0gAEjQKCXRyaWdnZXJlZBgDIAEoCzIfLmNpbmVrby5jbGllbnQuTW9uaXRvclRyaWdnZXJlZEgAEi4KBmJvb2tlZBgEIAEoCzIcLmNpbmVrby5jbGllbnQuTW9uaXRvckJvb2tlZEgAEi4KBmZhaWxlZBgFIAEoCzIcLmNpbmVrby5jbGllbnQuTW9uaXRvckZhaWxlZEgAEjAKB3N0b3BwZWQYBiABKAsyHS5jaW5la28uY2xpZW50Lk1vbml0b3JTdG9wcGVkSAASPwoPcGF5bWVudF91bmtub3duGAcgASgLMiQuY2luZWtvLmNsaWVudC5Nb25pdG9yUGF5bWVudFVua25vd25IAEIOCgVzdGF0ZRIFukgCCAEioAQKB01vbml0b3ISCgoCaWQYASABKAkSDwoHdXNlcl9pZBgCIAEoCRIRCglwcmVzZXRfaWQYAyABKAkSEAoIbW92aWVfaWQYBCABKAkSEwoLbW92aWVfdGl0bGUYBSABKAkSOAoMdGFyZ2V0X2RhdGVzGAYgAygLMhguY2luZWtvLmNvbW1vbi5Mb2NhbERhdGVCCLpIBZIBAhAOEiMKD3RhcmdldF93ZWVrZGF5cxgHIAMoBUIKukgHkgEEEAcYARImChNzZWFyY2hfaG9yaXpvbl9kYXlzGAggASgFQgm6SAYaBBgOKAESLwoNZWFybGllc3RfdGltZRgJIAEoCzIYLmNpbmVrby5jb21tb24uTG9jYWxUaW1lEi0KC2xhdGVzdF90aW1lGAogASgLMhguY2luZWtvLmNvbW1vbi5Mb2NhbFRpbWUSKgoFc3RhdGUYCyABKAsyGy5jaW5la28uY2xpZW50Lk1vbml0b3JTdGF0ZRIzCg9sYXN0X2NoZWNrZWRfYXQYDCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEhYKDnJlc2VydmF0aW9uX2lkGA0gASgJEi4KCmNyZWF0ZWRfYXQYDiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi4KCnVwZGF0ZWRfYXQYDyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIv4ECgtSZXNlcnZhdGlvbhIKCgJpZBgBIAEoCRIPCgd1c2VyX2lkGAIgASgJEhIKCm1vbml0b3JfaWQYAyABKAkSFgoOYm9va2luZ19udW1iZXIYBCABKAkSEwoLc2VhdF9sYWJlbHMYBSADKAkSEwoLdG90YWxfcHJpY2UYBiABKAkSLQoJYm9va2VkX2F0GAcgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIwCgxjYW5jZWxsZWRfYXQYCCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEhUKDXJlZnVuZF9hbW91bnQYCSABKAkSNgoIcHJlcGFyZWQYCiABKAsyIi5jaW5la28uY2xpZW50LlJlc2VydmF0aW9uUHJlcGFyZWRIABIyCgZib29rZWQYCyABKAsyIC5jaW5la28uY2xpZW50LlJlc2VydmF0aW9uQm9va2VkSAASUwoXY2FuY2VsbGF0aW9uX2NvbW1pdHRpbmcYDCABKAsyMC5jaW5la28uY2xpZW50LlJlc2VydmF0aW9uQ2FuY2VsbGF0aW9uQ29tbWl0dGluZ0gAEk0KFGNhbmNlbGxhdGlvbl91bmtub3duGA0gASgLMi0uY2luZWtvLmNsaWVudC5SZXNlcnZhdGlvbkNhbmNlbGxhdGlvblVua25vd25IABI4CgljYW5jZWxsZWQYDiABKAsyIy5jaW5la28uY2xpZW50LlJlc2VydmF0aW9uQ2FuY2VsbGVkSAASKgoIc2hvd3RpbWUYDyABKAsyGC5jaW5la28uY2F0YWxvZy5TaG93dGltZUIOCgVzdGF0ZRIFukgCCAEiFQoTUmVzZXJ2YXRpb25QcmVwYXJlZCITChFSZXNlcnZhdGlvbkJvb2tlZCIjCiFSZXNlcnZhdGlvbkNhbmNlbGxhdGlvbkNvbW1pdHRpbmciIAoeUmVzZXJ2YXRpb25DYW5jZWxsYXRpb25Vbmtub3duIhYKFFJlc2VydmF0aW9uQ2FuY2VsbGVkIukEChFFeHRlcm5hbE9wZXJhdGlvbhIKCgJpZBgBIAEoCRIPCgd1c2VyX2lkGAIgASgJEhIKCm1vbml0b3JfaWQYAyABKAkSFgoOcmVzZXJ2YXRpb25faWQYBCABKAkSFQoNcmVmdW5kX2Ftb3VudBgFIAEoCRISCgpsYXN0X2Vycm9yGAYgASgJEi4KCmNyZWF0ZWRfYXQYByABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi4KCnVwZGF0ZWRfYXQYCCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEjwKDGNhbmNlbGxhdGlvbhgJIAEoCzIkLmNpbmVrby5jbGllbnQuQ2FuY2VsbGF0aW9uT3BlcmF0aW9uSAASNAoIcHJlcGFyZWQYCiABKAsyIC5jaW5la28uY2xpZW50Lk9wZXJhdGlvblByZXBhcmVkSAESMgoHdW5rbm93bhgLIAEoCzIfLmNpbmVrby5jbGllbnQuT3BlcmF0aW9uVW5rbm93bkgBEkcKEmF0dGVudGlvbl9yZXF1aXJlZBgMIAEoCzIpLmNpbmVrby5jbGllbnQuT3BlcmF0aW9uQXR0ZW50aW9uUmVxdWlyZWRIARI2Cgljb25maXJtZWQYDSABKAsyIS5jaW5la28uY2xpZW50Lk9wZXJhdGlvbkNvbmZpcm1lZEgBEjgKCnJlY29uY2lsZWQYDiABKAsyIi5jaW5la28uY2xpZW50Lk9wZXJhdGlvblJlY29uY2lsZWRIAUINCgRraW5kEgW6SAIIAUIOCgVzdGF0ZRIFukgCCAEiFwoVQ2FuY2VsbGF0aW9uT3BlcmF0aW9uIhMKEU9wZXJhdGlvblByZXBhcmVkIhIKEE9wZXJhdGlvblVua25vd24iHAoaT3BlcmF0aW9uQXR0ZW50aW9uUmVxdWlyZWQiFAoST3BlcmF0aW9uQ29uZmlybWVkIhUKE09wZXJhdGlvblJlY29uY2lsZWQi6AIKCEFwcEV2ZW50EgoKAmlkGAEgASgJEg8KB3VzZXJfaWQYAiABKAkSDAoEa2luZBgDIAEoCRIPCgdtZXNzYWdlGAQgASgJEi4KCmNyZWF0ZWRfYXQYBSABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEisKB3JlYWRfYXQYBiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEigKBGluZm8YByABKAsyGC5jaW5la28uY2xpZW50LkV2ZW50SW5mb0gAEi4KB3N1Y2Nlc3MYCCABKAsyGy5jaW5la28uY2xpZW50LkV2ZW50U3VjY2Vzc0gAEi4KB3dhcm5pbmcYCSABKAsyGy5jaW5la28uY2xpZW50LkV2ZW50V2FybmluZ0gAEioKBWVycm9yGAogASgLMhkuY2luZWtvLmNsaWVudC5FdmVudEVycm9ySABCDQoEdG9uZRIFukgCCAEiCwoJRXZlbnRJbmZvIg4KDEV2ZW50U3VjY2VzcyIOCgxFdmVudFdhcm5pbmciDAoKRXZlbnRFcnJvciLyAgoIUmVzb3VyY2USMQoIaWRlbnRpdHkYASABKAsyHy5jaW5la28uY29tbW9uLlJlc291cmNlSWRlbnRpdHkSKwoIc2V0dGluZ3MYAiABKAsyFy5jaW5la28uY2xpZW50LlNldHRpbmdzSAASJwoGcHJlc2V0GAMgASgLMhUuY2luZWtvLmNsaWVudC5QcmVzZXRIABIpCgdtb25pdG9yGAQgASgLMhYuY2luZWtvLmNsaWVudC5Nb25pdG9ySAASMQoLcmVzZXJ2YXRpb24YBSABKAsyGi5jaW5la28uY2xpZW50LlJlc2VydmF0aW9uSAASPgoSZXh0ZXJuYWxfb3BlcmF0aW9uGAYgASgLMiAuY2luZWtvLmNsaWVudC5FeHRlcm5hbE9wZXJhdGlvbkgAEiwKCWFwcF9ldmVudBgHIAEoCzIXLmNpbmVrby5jbGllbnQuQXBwRXZlbnRIAEIRCghyZXNvdXJjZRIFukgCCAEiEgoQU2V0dGluZ3NSZXNvdXJjZSIQCg5QcmVzZXRSZXNvdXJjZSIRCg9Nb25pdG9yUmVzb3VyY2UiFQoTUmVzZXJ2YXRpb25SZXNvdXJjZSIbChlFeHRlcm5hbE9wZXJhdGlvblJlc291cmNlIhIKEEFwcEV2ZW50UmVzb3VyY2Ui7wIKDFJlc291cmNlS2luZBIzCghzZXR0aW5ncxgBIAEoCzIfLmNpbmVrby5jbGllbnQuU2V0dGluZ3NSZXNvdXJjZUgAEi8KBnByZXNldBgCIAEoCzIdLmNpbmVrby5jbGllbnQuUHJlc2V0UmVzb3VyY2VIABIxCgdtb25pdG9yGAMgASgLMh4uY2luZWtvLmNsaWVudC5Nb25pdG9yUmVzb3VyY2VIABI5CgtyZXNlcnZhdGlvbhgEIAEoCzIiLmNpbmVrby5jbGllbnQuUmVzZXJ2YXRpb25SZXNvdXJjZUgAEkYKEmV4dGVybmFsX29wZXJhdGlvbhgFIAEoCzIoLmNpbmVrby5jbGllbnQuRXh0ZXJuYWxPcGVyYXRpb25SZXNvdXJjZUgAEjQKCWFwcF9ldmVudBgGIAEoCzIfLmNpbmVrby5jbGllbnQuQXBwRXZlbnRSZXNvdXJjZUgAQg0KBGtpbmQSBbpIAggBIsQCCglCb290c3RyYXASIQoEdXNlchgBIAEoCzITLmNpbmVrby5jbGllbnQuVXNlchIUCgxldmVudF9jdXJzb3IYAiABKAMSOgoJcmV2aXNpb25zGAMgAygLMicuY2luZWtvLmNsaWVudC5Cb290c3RyYXAuUmV2aXNpb25zRW50cnkSOAoIZmVhdHVyZXMYBCADKAsyJi5jaW5la28uY2xpZW50LkJvb3RzdHJhcC5GZWF0dXJlc0VudHJ5EiUKBmRldmljZRgFIAEoCzIVLmNpbmVrby5jbGllbnQuRGV2aWNlGjAKDlJldmlzaW9uc0VudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoAzoCOAEaLwoNRmVhdHVyZXNFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAg6AjgBIt4CCg1FdmVudFJlc291cmNlEgoKAmlkGAEgASgJEhAKCHJldmlzaW9uGAIgASgDEisKCHNldHRpbmdzGAMgASgLMhcuY2luZWtvLmNsaWVudC5TZXR0aW5nc0gAEicKBnByZXNldBgEIAEoCzIVLmNpbmVrby5jbGllbnQuUHJlc2V0SAASKQoHbW9uaXRvchgFIAEoCzIWLmNpbmVrby5jbGllbnQuTW9uaXRvckgAEjEKC3Jlc2VydmF0aW9uGAYgASgLMhouY2luZWtvLmNsaWVudC5SZXNlcnZhdGlvbkgAEj4KEmV4dGVybmFsX29wZXJhdGlvbhgHIAEoCzIgLmNpbmVrby5jbGllbnQuRXh0ZXJuYWxPcGVyYXRpb25IABIsCglhcHBfZXZlbnQYCCABKAsyFy5jaW5la28uY2xpZW50LkFwcEV2ZW50SABCDQoEa2luZBIFukgCCAEiiwIKC0NsaWVudEV2ZW50EhAKCHNlcXVlbmNlGAEgASgDEgoKAmlkGAIgASgJEi8KC29jY3VycmVkX2F0GAMgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIwCgh1cHNlcnRlZBgEIAEoCzIcLmNpbmVrby5jbGllbnQuRXZlbnRSZXNvdXJjZUgAEjEKB2RlbGV0ZWQYBSABKAsyHi5jaW5la28uY2xpZW50LkRlbGV0ZWRSZXNvdXJjZUgAEjgKD2V4ZWN1dGlvbl9yZWFkeRgGIAEoCzIdLmNpbmVrby5jbGllbnQuRXhlY3V0aW9uUmVhZHlIAEIOCgVldmVudBIFukgCCAEibAoORXhlY3V0aW9uUmVhZHkSHgoKY29tbWFuZF9pZBgBIAEoCUIKukgHyAEBcgIQARIeCgptb25pdG9yX2lkGAIgASgJQgq6SAfIAQFyAhABEhoKBnJlYXNvbhgDIAEoCUIKukgHyAEBcgIQASJiCg9EZWxldGVkUmVzb3VyY2USCgoCaWQYASABKAkSEAoIcmV2aXNpb24YAiABKAMSMQoEa2luZBgDIAEoCzIbLmNpbmVrby5jbGllbnQuUmVzb3VyY2VLaW5kQga6SAPIAQEiHQoLU3RyZWFtUmVhZHkSDgoGY3Vyc29yGAEgASgDIiEKD1N0cmVhbUhlYXJ0YmVhdBIOCgZjdXJzb3IYASABKAMiHgoMUmV0ZW50aW9uR2FwEg4KBmN1cnNvchgBIAEoAyIfCg1JbnZhbGlkQ3Vyc29yEg4KBmN1cnNvchgBIAEoAyKNAgoNU3RyZWFtQ29udHJvbBIaChJyZWxlYXNlX2dlbmVyYXRpb24YASABKAMSKwoFcmVhZHkYAiABKAsyGi5jaW5la28uY2xpZW50LlN0cmVhbVJlYWR5SAASMwoJaGVhcnRiZWF0GAMgASgLMh4uY2luZWtvLmNsaWVudC5TdHJlYW1IZWFydGJlYXRIABI0Cg1yZXRlbnRpb25fZ2FwGAQgASgLMhsuY2luZWtvLmNsaWVudC5SZXRlbnRpb25HYXBIABI2Cg5pbnZhbGlkX2N1cnNvchgFIAEoCzIcLmNpbmVrby5jbGllbnQuSW52YWxpZEN1cnNvckgAQhAKB2NvbnRyb2wSBbpIAggBIoMCCg1MYXVuY2hDb250ZXh0EhcKD2luc3RhbGxhdGlvbl9pZBgBIAEoCRIRCglkZXZpY2VfaWQYAiABKAkSGgoScmVsZWFzZV9nZW5lcmF0aW9uGAMgASgDEhYKDmNsaWVudF92ZXJzaW9uGAQgASgJEhcKD2FydGlmYWN0X3NoYTI1NhgFIAEoCRIYChBicm93c2VyX3JldmlzaW9uGAYgASgJEh8KF2Jyb3dzZXJfYXJ0aWZhY3Rfc2hhMjU2GAcgASgJEhoKEnBsYXl3cmlnaHRfdmVyc2lvbhgIIAEoCRIiChpwbGF5d3JpZ2h0X2FydGlmYWN0X3NoYTI1NhgJIAEoCSJWCg5MYXVuY2hFbnZlbG9wZRIVCg1sYXVuY2hfdGlja2V0GAEgASgJEi0KB2NvbnRleHQYAiABKAsyHC5jaW5la28uY2xpZW50LkxhdW5jaENvbnRleHQicgoSUGluRXhjaGFuZ2VSZXF1ZXN0EhgKA3BpbhgBIAEoCUILukgIyAEBcgOYAQYSIwoPaW5zdGFsbGF0aW9uX2lkGAIgASgJQgq6SAfIAQFyAhABEh0KCWRldmljZV9pZBgDIAEoCUIKukgHyAEBcgIQASJVChRUb2tlbkV4Y2hhbmdlUmVxdWVzdBIbCgd1c2VyX2lkGAEgASgJQgq6SAfIAQFyAhABEiAKDGFjY2Vzc190b2tlbhgCIAEoCUIKukgHyAEBcgIQASI4ChNUb2tlblJlZnJlc2hSZXF1ZXN0EiEKDXJlZnJlc2hfdG9rZW4YASABKAlCCrpIB8gBAXICEAEi/gEKFkF1dGhlbnRpY2F0aW9uUmVzcG9uc2USFAoMYWNjZXNzX3Rva2VuGAEgASgJEi4KCmV4cGlyZXNfYXQYAiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEhUKDXJlZnJlc2hfdG9rZW4YAyABKAkSNgoScmVmcmVzaF9leHBpcmVzX2F0GAQgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIhCgR1c2VyGAUgASgLMhMuY2luZWtvLmNsaWVudC5Vc2VyEiwKBmxhdW5jaBgGIAEoCzIcLmNpbmVrby5jbGllbnQuTGF1bmNoQ29udGV4dCJnChNMYXVuY2hUaWNrZXRSZXF1ZXN0EjUKB2NvbnRleHQYASABKAsyHC5jaW5la28uY2xpZW50LkxhdW5jaENvbnRleHRCBrpIA8gBARIZCgVub25jZRgCIAEoCUIKukgHyAEBcgIQASJdChRMYXVuY2hUaWNrZXRSZXNwb25zZRIVCg1sYXVuY2hfdGlja2V0GAEgASgJEi4KCmV4cGlyZXNfYXQYAiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIvcBChtQcm9iZUJvb3RzdHJhcFRpY2tldFJlcXVlc3QSIwoPaW5zdGFsbGF0aW9uX2lkGAEgASgJQgq6SAfIAQFyAhABEh0KCWRldmljZV9pZBgCIAEoCUIKukgHyAEBcgIQARI+CgxjYXBhYmlsaXRpZXMYAyADKAsyHi5jaW5la28ub2JzZXJ2YXRpb24uQ2FwYWJpbGl0eUIIukgFkgECCAESIwoPbWF4X2NvbmN1cnJlbmN5GAQgASgFQgq6SAfIAQEaAiAAEi8KB3J1bnRpbWUYBSABKAsyFi5jaW5la28uY29tbW9uLlJ1bnRpbWVCBrpIA8gBASJeChxQcm9iZUJvb3RzdHJhcFRpY2tldFJlc3BvbnNlEg4KBnRpY2tldBgBIAEoCRIuCgpleHBpcmVzX2F0GAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCJdChZTZXNzaW9uRXhjaGFuZ2VSZXF1ZXN0EiEKDWxhdW5jaF90aWNrZXQYASABKAlCCrpIB8gBAXICEAESIAoMY2xpZW50X25vbmNlGAIgASgJQgq6SAfIAQFyAhABIjMKDlNlYXRNYXBSZXF1ZXN0EiEKDWF1ZGl0b3JpdW1faWQYASABKAlCCrpIB8gBAXICEAEiRQoSQXVkaXRvcml1bVJlc3BvbnNlEi8KC2F1ZGl0b3JpdW1zGAEgAygLMhouY2luZWtvLmNhdGFsb2cuQXVkaXRvcml1bUJAWj5naXRodWIuY29tL2NpbmVrby1vcmcvY29udHJhY3RzL3YzL2dlbi9nby9jaW5la28vY2xpZW50O2NsaWVudGIIZWRpdGlvbnNw6Qc", [file_buf_validate_validate, file_cineko_catalog_catalog, file_cineko_common_common, file_cineko_observation_observation, file_google_protobuf_duration, file_google_protobuf_timestamp]);
+  fileDesc("ChpjaW5la28vY2xpZW50L2NsaWVudC5wcm90bxINY2luZWtvLmNsaWVudCKIAQoEVXNlchIKCgJpZBgBIAEoCRIUCgxkaXNwbGF5X25hbWUYAiABKAkSLgoKY3JlYXRlZF9hdBgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLgoKdXBkYXRlZF9hdBgEIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAilAIKBkRldmljZRIXCg9pbnN0YWxsYXRpb25faWQYASABKAkSDwoHdXNlcl9pZBgCIAEoCRIRCglkZXZpY2VfaWQYAyABKAkSEAoIcGxhdGZvcm0YBCABKAkSFAoMYXJjaGl0ZWN0dXJlGAUgASgJEhMKC2FwcF92ZXJzaW9uGAYgASgJEjAKDGxhc3Rfc2Vlbl9hdBgHIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLgoKY3JlYXRlZF9hdBgIIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLgoKdXBkYXRlZF9hdBgJIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiDwoNRGlyZWN0TmV0d29yayJWCgxQcm94eU5ldHdvcmsSDAoEdXJscxgBIAMoCRIQCgh1c2VybmFtZRgCIAEoCRIQCghwYXNzd29yZBgDIAEoCRIUCgxoYXNfcGFzc3dvcmQYBCABKAgifgoPTmV0d29ya1NldHRpbmdzEi4KBmRpcmVjdBgBIAEoCzIcLmNpbmVrby5jbGllbnQuRGlyZWN0TmV0d29ya0gAEiwKBXByb3h5GAIgASgLMhsuY2luZWtvLmNsaWVudC5Qcm94eU5ldHdvcmtIAEINCgRtb2RlEgW6SAIIASKAAQoNV2ViaG9va1RhcmdldBIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJEgsKA3VybBgDIAEoCRIOCgZzZWNyZXQYBCABKAkSEwoLZXZlbnRfa2luZHMYBSADKAkSDwoHZW5hYmxlZBgGIAEoCBISCgpoYXNfc2VjcmV0GAcgASgIImsKCFNldHRpbmdzEi8KB25ldHdvcmsYASABKAsyHi5jaW5la28uY2xpZW50Lk5ldHdvcmtTZXR0aW5ncxIuCgh3ZWJob29rcxgCIAMoCzIcLmNpbmVrby5jbGllbnQuV2ViaG9va1RhcmdldCJkCghTZWF0Wm9uZRIMCgRuYW1lGAEgASgJEg0KBW1pbl94GAIgASgBEg0KBW1heF94GAMgASgBEg0KBW1pbl95GAQgASgBEg0KBW1heF95GAUgASgBEg4KBndlaWdodBgGIAEoBSKyAQoOU2VhdFByZWZlcmVuY2USFgoOZXhwbGljaXRfc2VhdHMYASADKAkSFgoOcHJlZmVycmVkX3Jvd3MYAiADKAkSMAoPcHJlZmVycmVkX3pvbmVzGAMgAygLMhcuY2luZWtvLmNsaWVudC5TZWF0Wm9uZRIXCg9wcmVmZXJyZWRfdHlwZXMYBCADKAkSEAoIdG9nZXRoZXIYBSABKAgSEwoLYXZvaWRfZWRnZXMYBiABKAgi9gEKBlByZXNldBIKCgJpZBgBIAEoCRIPCgd1c2VyX2lkGAIgASgJEgwKBG5hbWUYAyABKAkSEgoKdGhlYXRlcl9pZBgEIAEoCRIVCg1hdWRpdG9yaXVtX2lkGAUgASgJEjYKD3NlYXRfcHJlZmVyZW5jZRgGIAEoCzIdLmNpbmVrby5jbGllbnQuU2VhdFByZWZlcmVuY2USLgoKY3JlYXRlZF9hdBgHIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLgoKdXBkYXRlZF9hdBgIIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiEAoOTW9uaXRvclBlbmRpbmciEAoOTW9uaXRvclJ1bm5pbmciEgoQTW9uaXRvclRyaWdnZXJlZCIXChVNb25pdG9yUGF5bWVudFVua25vd24iDwoNTW9uaXRvckJvb2tlZCIfCg1Nb25pdG9yRmFpbGVkEg4KBnJlYXNvbhgBIAEoCSIgCg5Nb25pdG9yU3RvcHBlZBIOCgZyZWFzb24YASABKAkiiwMKDE1vbml0b3JTdGF0ZRIwCgdwZW5kaW5nGAEgASgLMh0uY2luZWtvLmNsaWVudC5Nb25pdG9yUGVuZGluZ0gAEjAKB3J1bm5pbmcYAiABKAsyHS5jaW5la28uY2xpZW50Lk1vbml0b3JSdW5uaW5nSAASNAoJdHJpZ2dlcmVkGAMgASgLMh8uY2luZWtvLmNsaWVudC5Nb25pdG9yVHJpZ2dlcmVkSAASLgoGYm9va2VkGAQgASgLMhwuY2luZWtvLmNsaWVudC5Nb25pdG9yQm9va2VkSAASLgoGZmFpbGVkGAUgASgLMhwuY2luZWtvLmNsaWVudC5Nb25pdG9yRmFpbGVkSAASMAoHc3RvcHBlZBgGIAEoCzIdLmNpbmVrby5jbGllbnQuTW9uaXRvclN0b3BwZWRIABI/Cg9wYXltZW50X3Vua25vd24YByABKAsyJC5jaW5la28uY2xpZW50Lk1vbml0b3JQYXltZW50VW5rbm93bkgAQg4KBXN0YXRlEgW6SAIIASKbBAoHTW9uaXRvchIKCgJpZBgBIAEoCRIPCgd1c2VyX2lkGAIgASgJEhEKCXByZXNldF9pZBgDIAEoCRIQCghtb3ZpZV9pZBgEIAEoCRITCgttb3ZpZV90aXRsZRgFIAEoCRIjCg90YXJnZXRfd2Vla2RheXMYBiADKAVCCrpIB5IBBBAHGAESLwoNZWFybGllc3RfdGltZRgHIAEoCzIYLmNpbmVrby5jb21tb24uTG9jYWxUaW1lEi0KC2xhdGVzdF90aW1lGAggASgLMhguY2luZWtvLmNvbW1vbi5Mb2NhbFRpbWUSKgoFc3RhdGUYCSABKAsyGy5jaW5la28uY2xpZW50Lk1vbml0b3JTdGF0ZRIzCg9sYXN0X2NoZWNrZWRfYXQYCiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEhYKDnJlc2VydmF0aW9uX2lkGAsgASgJEi4KCmNyZWF0ZWRfYXQYDCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi4KCnVwZGF0ZWRfYXQYDSABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEh0KCnNlYXRfY291bnQYDiABKAVCCbpIBhoEGAgoARIaCglzZWF0X3R5cGUYDyABKAlCB7pIBHICEAESIAoYd2F0Y2hfY2FuY2VsbGF0aW9uX3NlYXRzGBAgASgIIv4ECgtSZXNlcnZhdGlvbhIKCgJpZBgBIAEoCRIPCgd1c2VyX2lkGAIgASgJEhIKCm1vbml0b3JfaWQYAyABKAkSFgoOYm9va2luZ19udW1iZXIYBCABKAkSEwoLc2VhdF9sYWJlbHMYBSADKAkSEwoLdG90YWxfcHJpY2UYBiABKAkSLQoJYm9va2VkX2F0GAcgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIwCgxjYW5jZWxsZWRfYXQYCCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEhUKDXJlZnVuZF9hbW91bnQYCSABKAkSNgoIcHJlcGFyZWQYCiABKAsyIi5jaW5la28uY2xpZW50LlJlc2VydmF0aW9uUHJlcGFyZWRIABIyCgZib29rZWQYCyABKAsyIC5jaW5la28uY2xpZW50LlJlc2VydmF0aW9uQm9va2VkSAASUwoXY2FuY2VsbGF0aW9uX2NvbW1pdHRpbmcYDCABKAsyMC5jaW5la28uY2xpZW50LlJlc2VydmF0aW9uQ2FuY2VsbGF0aW9uQ29tbWl0dGluZ0gAEk0KFGNhbmNlbGxhdGlvbl91bmtub3duGA0gASgLMi0uY2luZWtvLmNsaWVudC5SZXNlcnZhdGlvbkNhbmNlbGxhdGlvblVua25vd25IABI4CgljYW5jZWxsZWQYDiABKAsyIy5jaW5la28uY2xpZW50LlJlc2VydmF0aW9uQ2FuY2VsbGVkSAASKgoIc2hvd3RpbWUYDyABKAsyGC5jaW5la28uY2F0YWxvZy5TaG93dGltZUIOCgVzdGF0ZRIFukgCCAEiFQoTUmVzZXJ2YXRpb25QcmVwYXJlZCITChFSZXNlcnZhdGlvbkJvb2tlZCIjCiFSZXNlcnZhdGlvbkNhbmNlbGxhdGlvbkNvbW1pdHRpbmciIAoeUmVzZXJ2YXRpb25DYW5jZWxsYXRpb25Vbmtub3duIhYKFFJlc2VydmF0aW9uQ2FuY2VsbGVkIukEChFFeHRlcm5hbE9wZXJhdGlvbhIKCgJpZBgBIAEoCRIPCgd1c2VyX2lkGAIgASgJEhIKCm1vbml0b3JfaWQYAyABKAkSFgoOcmVzZXJ2YXRpb25faWQYBCABKAkSFQoNcmVmdW5kX2Ftb3VudBgFIAEoCRISCgpsYXN0X2Vycm9yGAYgASgJEi4KCmNyZWF0ZWRfYXQYByABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi4KCnVwZGF0ZWRfYXQYCCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEjwKDGNhbmNlbGxhdGlvbhgJIAEoCzIkLmNpbmVrby5jbGllbnQuQ2FuY2VsbGF0aW9uT3BlcmF0aW9uSAASNAoIcHJlcGFyZWQYCiABKAsyIC5jaW5la28uY2xpZW50Lk9wZXJhdGlvblByZXBhcmVkSAESMgoHdW5rbm93bhgLIAEoCzIfLmNpbmVrby5jbGllbnQuT3BlcmF0aW9uVW5rbm93bkgBEkcKEmF0dGVudGlvbl9yZXF1aXJlZBgMIAEoCzIpLmNpbmVrby5jbGllbnQuT3BlcmF0aW9uQXR0ZW50aW9uUmVxdWlyZWRIARI2Cgljb25maXJtZWQYDSABKAsyIS5jaW5la28uY2xpZW50Lk9wZXJhdGlvbkNvbmZpcm1lZEgBEjgKCnJlY29uY2lsZWQYDiABKAsyIi5jaW5la28uY2xpZW50Lk9wZXJhdGlvblJlY29uY2lsZWRIAUINCgRraW5kEgW6SAIIAUIOCgVzdGF0ZRIFukgCCAEiFwoVQ2FuY2VsbGF0aW9uT3BlcmF0aW9uIhMKEU9wZXJhdGlvblByZXBhcmVkIhIKEE9wZXJhdGlvblVua25vd24iHAoaT3BlcmF0aW9uQXR0ZW50aW9uUmVxdWlyZWQiFAoST3BlcmF0aW9uQ29uZmlybWVkIhUKE09wZXJhdGlvblJlY29uY2lsZWQi6AIKCEFwcEV2ZW50EgoKAmlkGAEgASgJEg8KB3VzZXJfaWQYAiABKAkSDAoEa2luZBgDIAEoCRIPCgdtZXNzYWdlGAQgASgJEi4KCmNyZWF0ZWRfYXQYBSABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEisKB3JlYWRfYXQYBiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEigKBGluZm8YByABKAsyGC5jaW5la28uY2xpZW50LkV2ZW50SW5mb0gAEi4KB3N1Y2Nlc3MYCCABKAsyGy5jaW5la28uY2xpZW50LkV2ZW50U3VjY2Vzc0gAEi4KB3dhcm5pbmcYCSABKAsyGy5jaW5la28uY2xpZW50LkV2ZW50V2FybmluZ0gAEioKBWVycm9yGAogASgLMhkuY2luZWtvLmNsaWVudC5FdmVudEVycm9ySABCDQoEdG9uZRIFukgCCAEiCwoJRXZlbnRJbmZvIg4KDEV2ZW50U3VjY2VzcyIOCgxFdmVudFdhcm5pbmciDAoKRXZlbnRFcnJvciLyAgoIUmVzb3VyY2USMQoIaWRlbnRpdHkYASABKAsyHy5jaW5la28uY29tbW9uLlJlc291cmNlSWRlbnRpdHkSKwoIc2V0dGluZ3MYAiABKAsyFy5jaW5la28uY2xpZW50LlNldHRpbmdzSAASJwoGcHJlc2V0GAMgASgLMhUuY2luZWtvLmNsaWVudC5QcmVzZXRIABIpCgdtb25pdG9yGAQgASgLMhYuY2luZWtvLmNsaWVudC5Nb25pdG9ySAASMQoLcmVzZXJ2YXRpb24YBSABKAsyGi5jaW5la28uY2xpZW50LlJlc2VydmF0aW9uSAASPgoSZXh0ZXJuYWxfb3BlcmF0aW9uGAYgASgLMiAuY2luZWtvLmNsaWVudC5FeHRlcm5hbE9wZXJhdGlvbkgAEiwKCWFwcF9ldmVudBgHIAEoCzIXLmNpbmVrby5jbGllbnQuQXBwRXZlbnRIAEIRCghyZXNvdXJjZRIFukgCCAEiEgoQU2V0dGluZ3NSZXNvdXJjZSIQCg5QcmVzZXRSZXNvdXJjZSIRCg9Nb25pdG9yUmVzb3VyY2UiFQoTUmVzZXJ2YXRpb25SZXNvdXJjZSIbChlFeHRlcm5hbE9wZXJhdGlvblJlc291cmNlIhIKEEFwcEV2ZW50UmVzb3VyY2Ui7wIKDFJlc291cmNlS2luZBIzCghzZXR0aW5ncxgBIAEoCzIfLmNpbmVrby5jbGllbnQuU2V0dGluZ3NSZXNvdXJjZUgAEi8KBnByZXNldBgCIAEoCzIdLmNpbmVrby5jbGllbnQuUHJlc2V0UmVzb3VyY2VIABIxCgdtb25pdG9yGAMgASgLMh4uY2luZWtvLmNsaWVudC5Nb25pdG9yUmVzb3VyY2VIABI5CgtyZXNlcnZhdGlvbhgEIAEoCzIiLmNpbmVrby5jbGllbnQuUmVzZXJ2YXRpb25SZXNvdXJjZUgAEkYKEmV4dGVybmFsX29wZXJhdGlvbhgFIAEoCzIoLmNpbmVrby5jbGllbnQuRXh0ZXJuYWxPcGVyYXRpb25SZXNvdXJjZUgAEjQKCWFwcF9ldmVudBgGIAEoCzIfLmNpbmVrby5jbGllbnQuQXBwRXZlbnRSZXNvdXJjZUgAQg0KBGtpbmQSBbpIAggBIsQCCglCb290c3RyYXASIQoEdXNlchgBIAEoCzITLmNpbmVrby5jbGllbnQuVXNlchIUCgxldmVudF9jdXJzb3IYAiABKAMSOgoJcmV2aXNpb25zGAMgAygLMicuY2luZWtvLmNsaWVudC5Cb290c3RyYXAuUmV2aXNpb25zRW50cnkSOAoIZmVhdHVyZXMYBCADKAsyJi5jaW5la28uY2xpZW50LkJvb3RzdHJhcC5GZWF0dXJlc0VudHJ5EiUKBmRldmljZRgFIAEoCzIVLmNpbmVrby5jbGllbnQuRGV2aWNlGjAKDlJldmlzaW9uc0VudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoAzoCOAEaLwoNRmVhdHVyZXNFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAg6AjgBIt4CCg1FdmVudFJlc291cmNlEgoKAmlkGAEgASgJEhAKCHJldmlzaW9uGAIgASgDEisKCHNldHRpbmdzGAMgASgLMhcuY2luZWtvLmNsaWVudC5TZXR0aW5nc0gAEicKBnByZXNldBgEIAEoCzIVLmNpbmVrby5jbGllbnQuUHJlc2V0SAASKQoHbW9uaXRvchgFIAEoCzIWLmNpbmVrby5jbGllbnQuTW9uaXRvckgAEjEKC3Jlc2VydmF0aW9uGAYgASgLMhouY2luZWtvLmNsaWVudC5SZXNlcnZhdGlvbkgAEj4KEmV4dGVybmFsX29wZXJhdGlvbhgHIAEoCzIgLmNpbmVrby5jbGllbnQuRXh0ZXJuYWxPcGVyYXRpb25IABIsCglhcHBfZXZlbnQYCCABKAsyFy5jaW5la28uY2xpZW50LkFwcEV2ZW50SABCDQoEa2luZBIFukgCCAEiiwIKC0NsaWVudEV2ZW50EhAKCHNlcXVlbmNlGAEgASgDEgoKAmlkGAIgASgJEi8KC29jY3VycmVkX2F0GAMgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIwCgh1cHNlcnRlZBgEIAEoCzIcLmNpbmVrby5jbGllbnQuRXZlbnRSZXNvdXJjZUgAEjEKB2RlbGV0ZWQYBSABKAsyHi5jaW5la28uY2xpZW50LkRlbGV0ZWRSZXNvdXJjZUgAEjgKD2V4ZWN1dGlvbl9yZWFkeRgGIAEoCzIdLmNpbmVrby5jbGllbnQuRXhlY3V0aW9uUmVhZHlIAEIOCgVldmVudBIFukgCCAEibAoORXhlY3V0aW9uUmVhZHkSHgoKY29tbWFuZF9pZBgBIAEoCUIKukgHyAEBcgIQARIeCgptb25pdG9yX2lkGAIgASgJQgq6SAfIAQFyAhABEhoKBnJlYXNvbhgDIAEoCUIKukgHyAEBcgIQASJiCg9EZWxldGVkUmVzb3VyY2USCgoCaWQYASABKAkSEAoIcmV2aXNpb24YAiABKAMSMQoEa2luZBgDIAEoCzIbLmNpbmVrby5jbGllbnQuUmVzb3VyY2VLaW5kQga6SAPIAQEiHQoLU3RyZWFtUmVhZHkSDgoGY3Vyc29yGAEgASgDIiEKD1N0cmVhbUhlYXJ0YmVhdBIOCgZjdXJzb3IYASABKAMiHgoMUmV0ZW50aW9uR2FwEg4KBmN1cnNvchgBIAEoAyIfCg1JbnZhbGlkQ3Vyc29yEg4KBmN1cnNvchgBIAEoAyKNAgoNU3RyZWFtQ29udHJvbBIaChJyZWxlYXNlX2dlbmVyYXRpb24YASABKAMSKwoFcmVhZHkYAiABKAsyGi5jaW5la28uY2xpZW50LlN0cmVhbVJlYWR5SAASMwoJaGVhcnRiZWF0GAMgASgLMh4uY2luZWtvLmNsaWVudC5TdHJlYW1IZWFydGJlYXRIABI0Cg1yZXRlbnRpb25fZ2FwGAQgASgLMhsuY2luZWtvLmNsaWVudC5SZXRlbnRpb25HYXBIABI2Cg5pbnZhbGlkX2N1cnNvchgFIAEoCzIcLmNpbmVrby5jbGllbnQuSW52YWxpZEN1cnNvckgAQhAKB2NvbnRyb2wSBbpIAggBIlMKDUxhdW5jaENvbnRleHQSFwoPaW5zdGFsbGF0aW9uX2lkGAEgASgJEhEKCWRldmljZV9pZBgCIAEoCRIWCg5jbGllbnRfdmVyc2lvbhgDIAEoCSI/Cg5MYXVuY2hFbnZlbG9wZRItCgdjb250ZXh0GAEgASgLMhwuY2luZWtvLmNsaWVudC5MYXVuY2hDb250ZXh0IjMKDlNlYXRNYXBSZXF1ZXN0EiEKDWF1ZGl0b3JpdW1faWQYASABKAlCCrpIB8gBAXICEAEiRQoSQXVkaXRvcml1bVJlc3BvbnNlEi8KC2F1ZGl0b3JpdW1zGAEgAygLMhouY2luZWtvLmNhdGFsb2cuQXVkaXRvcml1bUJAWj5naXRodWIuY29tL2NpbmVrby1vcmcvY29udHJhY3RzL3YzL2dlbi9nby9jaW5la28vY2xpZW50O2NsaWVudGIIZWRpdGlvbnNw6Qc", [file_buf_validate_validate, file_cineko_catalog_catalog, file_cineko_common_common, file_cineko_observation_observation, file_google_protobuf_duration, file_google_protobuf_timestamp]);
 
 /**
  * @generated from message cineko.client.User
@@ -367,22 +366,17 @@ export type Preset = Message<"cineko.client.Preset"> & {
   auditoriumId: string;
 
   /**
-   * @generated from field: int32 seat_count = 6;
-   */
-  seatCount: number;
-
-  /**
-   * @generated from field: cineko.client.SeatPreference seat_preference = 7;
+   * @generated from field: cineko.client.SeatPreference seat_preference = 6;
    */
   seatPreference?: SeatPreference | undefined;
 
   /**
-   * @generated from field: google.protobuf.Timestamp created_at = 8;
+   * @generated from field: google.protobuf.Timestamp created_at = 7;
    */
   createdAt?: Timestamp | undefined;
 
   /**
-   * @generated from field: google.protobuf.Timestamp updated_at = 9;
+   * @generated from field: google.protobuf.Timestamp updated_at = 8;
    */
   updatedAt?: Timestamp | undefined;
 };
@@ -480,6 +474,10 @@ export const MonitorFailedSchema: GenMessage<MonitorFailed> = /*@__PURE__*/
  * @generated from message cineko.client.MonitorStopped
  */
 export type MonitorStopped = Message<"cineko.client.MonitorStopped"> & {
+  /**
+   * @generated from field: string reason = 1;
+   */
+  reason: string;
 };
 
 /**
@@ -578,54 +576,59 @@ export type Monitor = Message<"cineko.client.Monitor"> & {
   movieTitle: string;
 
   /**
-   * @generated from field: repeated cineko.common.LocalDate target_dates = 6;
-   */
-  targetDates: LocalDate[];
-
-  /**
-   * @generated from field: repeated int32 target_weekdays = 7;
+   * @generated from field: repeated int32 target_weekdays = 6;
    */
   targetWeekdays: number[];
 
   /**
-   * @generated from field: int32 search_horizon_days = 8;
-   */
-  searchHorizonDays: number;
-
-  /**
-   * @generated from field: cineko.common.LocalTime earliest_time = 9;
+   * @generated from field: cineko.common.LocalTime earliest_time = 7;
    */
   earliestTime?: LocalTime | undefined;
 
   /**
-   * @generated from field: cineko.common.LocalTime latest_time = 10;
+   * @generated from field: cineko.common.LocalTime latest_time = 8;
    */
   latestTime?: LocalTime | undefined;
 
   /**
-   * @generated from field: cineko.client.MonitorState state = 11;
+   * @generated from field: cineko.client.MonitorState state = 9;
    */
   state?: MonitorState | undefined;
 
   /**
-   * @generated from field: google.protobuf.Timestamp last_checked_at = 12;
+   * @generated from field: google.protobuf.Timestamp last_checked_at = 10;
    */
   lastCheckedAt?: Timestamp | undefined;
 
   /**
-   * @generated from field: string reservation_id = 13;
+   * @generated from field: string reservation_id = 11;
    */
   reservationId: string;
 
   /**
-   * @generated from field: google.protobuf.Timestamp created_at = 14;
+   * @generated from field: google.protobuf.Timestamp created_at = 12;
    */
   createdAt?: Timestamp | undefined;
 
   /**
-   * @generated from field: google.protobuf.Timestamp updated_at = 15;
+   * @generated from field: google.protobuf.Timestamp updated_at = 13;
    */
   updatedAt?: Timestamp | undefined;
+
+  /**
+   * @generated from field: int32 seat_count = 14;
+   */
+  seatCount: number;
+
+  /**
+   * @generated from field: string seat_type = 15;
+   */
+  seatType: string;
+
+  /**
+   * @generated from field: bool watch_cancellation_seats = 16;
+   */
+  watchCancellationSeats: boolean;
 };
 
 /**
@@ -1618,39 +1621,9 @@ export type LaunchContext = Message<"cineko.client.LaunchContext"> & {
   deviceId: string;
 
   /**
-   * @generated from field: int64 release_generation = 3;
-   */
-  releaseGeneration: bigint;
-
-  /**
-   * @generated from field: string client_version = 4;
+   * @generated from field: string client_version = 3;
    */
   clientVersion: string;
-
-  /**
-   * @generated from field: string artifact_sha256 = 5;
-   */
-  artifactSha256: string;
-
-  /**
-   * @generated from field: string browser_revision = 6;
-   */
-  browserRevision: string;
-
-  /**
-   * @generated from field: string browser_artifact_sha256 = 7;
-   */
-  browserArtifactSha256: string;
-
-  /**
-   * @generated from field: string playwright_version = 8;
-   */
-  playwrightVersion: string;
-
-  /**
-   * @generated from field: string playwright_artifact_sha256 = 9;
-   */
-  playwrightArtifactSha256: string;
 };
 
 /**
@@ -1665,12 +1638,7 @@ export const LaunchContextSchema: GenMessage<LaunchContext> = /*@__PURE__*/
  */
 export type LaunchEnvelope = Message<"cineko.client.LaunchEnvelope"> & {
   /**
-   * @generated from field: string launch_ticket = 1;
-   */
-  launchTicket: string;
-
-  /**
-   * @generated from field: cineko.client.LaunchContext context = 2;
+   * @generated from field: cineko.client.LaunchContext context = 1;
    */
   context?: LaunchContext | undefined;
 };
@@ -1681,239 +1649,6 @@ export type LaunchEnvelope = Message<"cineko.client.LaunchEnvelope"> & {
  */
 export const LaunchEnvelopeSchema: GenMessage<LaunchEnvelope> = /*@__PURE__*/
   messageDesc(file_cineko_client_client, 56);
-
-/**
- * @generated from message cineko.client.PinExchangeRequest
- */
-export type PinExchangeRequest = Message<"cineko.client.PinExchangeRequest"> & {
-  /**
-   * @generated from field: string pin = 1;
-   */
-  pin: string;
-
-  /**
-   * @generated from field: string installation_id = 2;
-   */
-  installationId: string;
-
-  /**
-   * @generated from field: string device_id = 3;
-   */
-  deviceId: string;
-};
-
-/**
- * Describes the message cineko.client.PinExchangeRequest.
- * Use `create(PinExchangeRequestSchema)` to create a new message.
- */
-export const PinExchangeRequestSchema: GenMessage<PinExchangeRequest> = /*@__PURE__*/
-  messageDesc(file_cineko_client_client, 57);
-
-/**
- * @generated from message cineko.client.TokenExchangeRequest
- */
-export type TokenExchangeRequest = Message<"cineko.client.TokenExchangeRequest"> & {
-  /**
-   * @generated from field: string user_id = 1;
-   */
-  userId: string;
-
-  /**
-   * @generated from field: string access_token = 2;
-   */
-  accessToken: string;
-};
-
-/**
- * Describes the message cineko.client.TokenExchangeRequest.
- * Use `create(TokenExchangeRequestSchema)` to create a new message.
- */
-export const TokenExchangeRequestSchema: GenMessage<TokenExchangeRequest> = /*@__PURE__*/
-  messageDesc(file_cineko_client_client, 58);
-
-/**
- * @generated from message cineko.client.TokenRefreshRequest
- */
-export type TokenRefreshRequest = Message<"cineko.client.TokenRefreshRequest"> & {
-  /**
-   * @generated from field: string refresh_token = 1;
-   */
-  refreshToken: string;
-};
-
-/**
- * Describes the message cineko.client.TokenRefreshRequest.
- * Use `create(TokenRefreshRequestSchema)` to create a new message.
- */
-export const TokenRefreshRequestSchema: GenMessage<TokenRefreshRequest> = /*@__PURE__*/
-  messageDesc(file_cineko_client_client, 59);
-
-/**
- * @generated from message cineko.client.AuthenticationResponse
- */
-export type AuthenticationResponse = Message<"cineko.client.AuthenticationResponse"> & {
-  /**
-   * @generated from field: string access_token = 1;
-   */
-  accessToken: string;
-
-  /**
-   * @generated from field: google.protobuf.Timestamp expires_at = 2;
-   */
-  expiresAt?: Timestamp | undefined;
-
-  /**
-   * @generated from field: string refresh_token = 3;
-   */
-  refreshToken: string;
-
-  /**
-   * @generated from field: google.protobuf.Timestamp refresh_expires_at = 4;
-   */
-  refreshExpiresAt?: Timestamp | undefined;
-
-  /**
-   * @generated from field: cineko.client.User user = 5;
-   */
-  user?: User | undefined;
-
-  /**
-   * @generated from field: cineko.client.LaunchContext launch = 6;
-   */
-  launch?: LaunchContext | undefined;
-};
-
-/**
- * Describes the message cineko.client.AuthenticationResponse.
- * Use `create(AuthenticationResponseSchema)` to create a new message.
- */
-export const AuthenticationResponseSchema: GenMessage<AuthenticationResponse> = /*@__PURE__*/
-  messageDesc(file_cineko_client_client, 60);
-
-/**
- * @generated from message cineko.client.LaunchTicketRequest
- */
-export type LaunchTicketRequest = Message<"cineko.client.LaunchTicketRequest"> & {
-  /**
-   * @generated from field: cineko.client.LaunchContext context = 1;
-   */
-  context?: LaunchContext | undefined;
-
-  /**
-   * @generated from field: string nonce = 2;
-   */
-  nonce: string;
-};
-
-/**
- * Describes the message cineko.client.LaunchTicketRequest.
- * Use `create(LaunchTicketRequestSchema)` to create a new message.
- */
-export const LaunchTicketRequestSchema: GenMessage<LaunchTicketRequest> = /*@__PURE__*/
-  messageDesc(file_cineko_client_client, 61);
-
-/**
- * @generated from message cineko.client.LaunchTicketResponse
- */
-export type LaunchTicketResponse = Message<"cineko.client.LaunchTicketResponse"> & {
-  /**
-   * @generated from field: string launch_ticket = 1;
-   */
-  launchTicket: string;
-
-  /**
-   * @generated from field: google.protobuf.Timestamp expires_at = 2;
-   */
-  expiresAt?: Timestamp | undefined;
-};
-
-/**
- * Describes the message cineko.client.LaunchTicketResponse.
- * Use `create(LaunchTicketResponseSchema)` to create a new message.
- */
-export const LaunchTicketResponseSchema: GenMessage<LaunchTicketResponse> = /*@__PURE__*/
-  messageDesc(file_cineko_client_client, 62);
-
-/**
- * @generated from message cineko.client.ProbeBootstrapTicketRequest
- */
-export type ProbeBootstrapTicketRequest = Message<"cineko.client.ProbeBootstrapTicketRequest"> & {
-  /**
-   * @generated from field: string installation_id = 1;
-   */
-  installationId: string;
-
-  /**
-   * @generated from field: string device_id = 2;
-   */
-  deviceId: string;
-
-  /**
-   * @generated from field: repeated cineko.observation.Capability capabilities = 3;
-   */
-  capabilities: Capability[];
-
-  /**
-   * @generated from field: int32 max_concurrency = 4;
-   */
-  maxConcurrency: number;
-
-  /**
-   * @generated from field: cineko.common.Runtime runtime = 5;
-   */
-  runtime?: Runtime | undefined;
-};
-
-/**
- * Describes the message cineko.client.ProbeBootstrapTicketRequest.
- * Use `create(ProbeBootstrapTicketRequestSchema)` to create a new message.
- */
-export const ProbeBootstrapTicketRequestSchema: GenMessage<ProbeBootstrapTicketRequest> = /*@__PURE__*/
-  messageDesc(file_cineko_client_client, 63);
-
-/**
- * @generated from message cineko.client.ProbeBootstrapTicketResponse
- */
-export type ProbeBootstrapTicketResponse = Message<"cineko.client.ProbeBootstrapTicketResponse"> & {
-  /**
-   * @generated from field: string ticket = 1;
-   */
-  ticket: string;
-
-  /**
-   * @generated from field: google.protobuf.Timestamp expires_at = 2;
-   */
-  expiresAt?: Timestamp | undefined;
-};
-
-/**
- * Describes the message cineko.client.ProbeBootstrapTicketResponse.
- * Use `create(ProbeBootstrapTicketResponseSchema)` to create a new message.
- */
-export const ProbeBootstrapTicketResponseSchema: GenMessage<ProbeBootstrapTicketResponse> = /*@__PURE__*/
-  messageDesc(file_cineko_client_client, 64);
-
-/**
- * @generated from message cineko.client.SessionExchangeRequest
- */
-export type SessionExchangeRequest = Message<"cineko.client.SessionExchangeRequest"> & {
-  /**
-   * @generated from field: string launch_ticket = 1;
-   */
-  launchTicket: string;
-
-  /**
-   * @generated from field: string client_nonce = 2;
-   */
-  clientNonce: string;
-};
-
-/**
- * Describes the message cineko.client.SessionExchangeRequest.
- * Use `create(SessionExchangeRequestSchema)` to create a new message.
- */
-export const SessionExchangeRequestSchema: GenMessage<SessionExchangeRequest> = /*@__PURE__*/
-  messageDesc(file_cineko_client_client, 65);
 
 /**
  * @generated from message cineko.client.SeatMapRequest
@@ -1930,7 +1665,7 @@ export type SeatMapRequest = Message<"cineko.client.SeatMapRequest"> & {
  * Use `create(SeatMapRequestSchema)` to create a new message.
  */
 export const SeatMapRequestSchema: GenMessage<SeatMapRequest> = /*@__PURE__*/
-  messageDesc(file_cineko_client_client, 66);
+  messageDesc(file_cineko_client_client, 57);
 
 /**
  * @generated from message cineko.client.AuditoriumResponse
@@ -1947,4 +1682,4 @@ export type AuditoriumResponse = Message<"cineko.client.AuditoriumResponse"> & {
  * Use `create(AuditoriumResponseSchema)` to create a new message.
  */
 export const AuditoriumResponseSchema: GenMessage<AuditoriumResponse> = /*@__PURE__*/
-  messageDesc(file_cineko_client_client, 67);
+  messageDesc(file_cineko_client_client, 58);

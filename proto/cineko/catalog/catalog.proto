@@ -106,7 +106,30 @@ message Movie {
   string provider_id = 2;
   MovieIdentity identity = 3 [(buf.validate.field).required = true];
   string title = 4;
+  // Client-local URL only. Provider/CDN URLs must never cross this contract.
   string poster_url = 5;
+}
+
+// MoviePoster is an image response naturally loaded by the provider page in
+// the Probe browser. Probe must not issue a separate fetch for this asset.
+message MoviePoster {
+  string movie_id = 1 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.min_len = 1
+  ];
+  string media_type = 2 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.pattern = "^image/(jpeg|png|webp)$"
+  ];
+  bytes data = 3 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).bytes.min_len = 1,
+    (buf.validate.field).bytes.max_len = 33554432
+  ];
+  string content_hash = 4 [
+    (buf.validate.field).required = true,
+    (buf.validate.field).string.pattern = "^[0-9a-f]{64}$"
+  ];
 }
 
 message Auditorium {
@@ -140,6 +163,7 @@ message CatalogSnapshot {
   repeated Auditorium auditoriums = 4;
   repeated Showtime showtimes = 5;
   google.protobuf.Timestamp observed_at = 6;
+  repeated MoviePoster posters = 7 [(buf.validate.field).repeated.max_items = 128];
 }
 
 message CatalogIndex {

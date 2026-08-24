@@ -22,6 +22,49 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type NoBookableShowtime struct {
+	state         protoimpl.MessageState `protogen:"opaque.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *NoBookableShowtime) Reset() {
+	*x = NoBookableShowtime{}
+	mi := &file_cineko_collection_collection_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *NoBookableShowtime) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NoBookableShowtime) ProtoMessage() {}
+
+func (x *NoBookableShowtime) ProtoReflect() protoreflect.Message {
+	mi := &file_cineko_collection_collection_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+type NoBookableShowtime_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+}
+
+func (b0 NoBookableShowtime_builder) Build() *NoBookableShowtime {
+	m0 := &NoBookableShowtime{}
+	b, x := &b0, m0
+	_, _ = b, x
+	return m0
+}
+
 type ShowtimeNotDiscovered struct {
 	state         protoimpl.MessageState `protogen:"opaque.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -30,7 +73,7 @@ type ShowtimeNotDiscovered struct {
 
 func (x *ShowtimeNotDiscovered) Reset() {
 	*x = ShowtimeNotDiscovered{}
-	mi := &file_cineko_collection_collection_proto_msgTypes[0]
+	mi := &file_cineko_collection_collection_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -42,7 +85,7 @@ func (x *ShowtimeNotDiscovered) String() string {
 func (*ShowtimeNotDiscovered) ProtoMessage() {}
 
 func (x *ShowtimeNotDiscovered) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_collection_collection_proto_msgTypes[0]
+	mi := &file_cineko_collection_collection_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -73,7 +116,7 @@ type TargetDateUnavailable struct {
 
 func (x *TargetDateUnavailable) Reset() {
 	*x = TargetDateUnavailable{}
-	mi := &file_cineko_collection_collection_proto_msgTypes[1]
+	mi := &file_cineko_collection_collection_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -85,7 +128,7 @@ func (x *TargetDateUnavailable) String() string {
 func (*TargetDateUnavailable) ProtoMessage() {}
 
 func (x *TargetDateUnavailable) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_collection_collection_proto_msgTypes[1]
+	mi := &file_cineko_collection_collection_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -116,7 +159,7 @@ type IdentityMismatch struct {
 
 func (x *IdentityMismatch) Reset() {
 	*x = IdentityMismatch{}
-	mi := &file_cineko_collection_collection_proto_msgTypes[2]
+	mi := &file_cineko_collection_collection_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -128,7 +171,7 @@ func (x *IdentityMismatch) String() string {
 func (*IdentityMismatch) ProtoMessage() {}
 
 func (x *IdentityMismatch) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_collection_collection_proto_msgTypes[2]
+	mi := &file_cineko_collection_collection_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -159,7 +202,7 @@ type ProviderBlocked struct {
 
 func (x *ProviderBlocked) Reset() {
 	*x = ProviderBlocked{}
-	mi := &file_cineko_collection_collection_proto_msgTypes[3]
+	mi := &file_cineko_collection_collection_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -171,7 +214,7 @@ func (x *ProviderBlocked) String() string {
 func (*ProviderBlocked) ProtoMessage() {}
 
 func (x *ProviderBlocked) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_collection_collection_proto_msgTypes[3]
+	mi := &file_cineko_collection_collection_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -202,7 +245,7 @@ type ProviderThrottled struct {
 
 func (x *ProviderThrottled) Reset() {
 	*x = ProviderThrottled{}
-	mi := &file_cineko_collection_collection_proto_msgTypes[4]
+	mi := &file_cineko_collection_collection_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -214,7 +257,7 @@ func (x *ProviderThrottled) String() string {
 func (*ProviderThrottled) ProtoMessage() {}
 
 func (x *ProviderThrottled) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_collection_collection_proto_msgTypes[4]
+	mi := &file_cineko_collection_collection_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -245,7 +288,7 @@ type CaptchaRequired struct {
 
 func (x *CaptchaRequired) Reset() {
 	*x = CaptchaRequired{}
-	mi := &file_cineko_collection_collection_proto_msgTypes[5]
+	mi := &file_cineko_collection_collection_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -257,7 +300,7 @@ func (x *CaptchaRequired) String() string {
 func (*CaptchaRequired) ProtoMessage() {}
 
 func (x *CaptchaRequired) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_collection_collection_proto_msgTypes[5]
+	mi := &file_cineko_collection_collection_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -288,7 +331,7 @@ type AuthenticationRequired struct {
 
 func (x *AuthenticationRequired) Reset() {
 	*x = AuthenticationRequired{}
-	mi := &file_cineko_collection_collection_proto_msgTypes[6]
+	mi := &file_cineko_collection_collection_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -300,7 +343,7 @@ func (x *AuthenticationRequired) String() string {
 func (*AuthenticationRequired) ProtoMessage() {}
 
 func (x *AuthenticationRequired) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_collection_collection_proto_msgTypes[6]
+	mi := &file_cineko_collection_collection_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -331,7 +374,7 @@ type UIContractChanged struct {
 
 func (x *UIContractChanged) Reset() {
 	*x = UIContractChanged{}
-	mi := &file_cineko_collection_collection_proto_msgTypes[7]
+	mi := &file_cineko_collection_collection_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -343,7 +386,7 @@ func (x *UIContractChanged) String() string {
 func (*UIContractChanged) ProtoMessage() {}
 
 func (x *UIContractChanged) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_collection_collection_proto_msgTypes[7]
+	mi := &file_cineko_collection_collection_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -374,7 +417,7 @@ type BrowserStartFailed struct {
 
 func (x *BrowserStartFailed) Reset() {
 	*x = BrowserStartFailed{}
-	mi := &file_cineko_collection_collection_proto_msgTypes[8]
+	mi := &file_cineko_collection_collection_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -386,7 +429,7 @@ func (x *BrowserStartFailed) String() string {
 func (*BrowserStartFailed) ProtoMessage() {}
 
 func (x *BrowserStartFailed) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_collection_collection_proto_msgTypes[8]
+	mi := &file_cineko_collection_collection_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -417,7 +460,7 @@ type ProviderTransportFailed struct {
 
 func (x *ProviderTransportFailed) Reset() {
 	*x = ProviderTransportFailed{}
-	mi := &file_cineko_collection_collection_proto_msgTypes[9]
+	mi := &file_cineko_collection_collection_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -429,7 +472,7 @@ func (x *ProviderTransportFailed) String() string {
 func (*ProviderTransportFailed) ProtoMessage() {}
 
 func (x *ProviderTransportFailed) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_collection_collection_proto_msgTypes[9]
+	mi := &file_cineko_collection_collection_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -460,7 +503,7 @@ type ProviderServerError struct {
 
 func (x *ProviderServerError) Reset() {
 	*x = ProviderServerError{}
-	mi := &file_cineko_collection_collection_proto_msgTypes[10]
+	mi := &file_cineko_collection_collection_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -472,7 +515,7 @@ func (x *ProviderServerError) String() string {
 func (*ProviderServerError) ProtoMessage() {}
 
 func (x *ProviderServerError) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_collection_collection_proto_msgTypes[10]
+	mi := &file_cineko_collection_collection_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -503,7 +546,7 @@ type InvalidResult struct {
 
 func (x *InvalidResult) Reset() {
 	*x = InvalidResult{}
-	mi := &file_cineko_collection_collection_proto_msgTypes[11]
+	mi := &file_cineko_collection_collection_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -515,7 +558,7 @@ func (x *InvalidResult) String() string {
 func (*InvalidResult) ProtoMessage() {}
 
 func (x *InvalidResult) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_collection_collection_proto_msgTypes[11]
+	mi := &file_cineko_collection_collection_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -546,7 +589,7 @@ type Timeout struct {
 
 func (x *Timeout) Reset() {
 	*x = Timeout{}
-	mi := &file_cineko_collection_collection_proto_msgTypes[12]
+	mi := &file_cineko_collection_collection_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -558,7 +601,7 @@ func (x *Timeout) String() string {
 func (*Timeout) ProtoMessage() {}
 
 func (x *Timeout) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_collection_collection_proto_msgTypes[12]
+	mi := &file_cineko_collection_collection_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -590,7 +633,7 @@ type DeferredReason struct {
 
 func (x *DeferredReason) Reset() {
 	*x = DeferredReason{}
-	mi := &file_cineko_collection_collection_proto_msgTypes[13]
+	mi := &file_cineko_collection_collection_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -602,7 +645,7 @@ func (x *DeferredReason) String() string {
 func (*DeferredReason) ProtoMessage() {}
 
 func (x *DeferredReason) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_collection_collection_proto_msgTypes[13]
+	mi := &file_cineko_collection_collection_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -613,6 +656,15 @@ func (x *DeferredReason) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
+func (x *DeferredReason) GetNoBookableShowtime() *NoBookableShowtime {
+	if x != nil {
+		if x, ok := x.xxx_hidden_Reason.(*deferredReason_NoBookableShowtime); ok {
+			return x.NoBookableShowtime
+		}
+	}
+	return nil
+}
+
 func (x *DeferredReason) GetTargetDateUnavailable() *TargetDateUnavailable {
 	if x != nil {
 		if x, ok := x.xxx_hidden_Reason.(*deferredReason_TargetDateUnavailable); ok {
@@ -620,6 +672,14 @@ func (x *DeferredReason) GetTargetDateUnavailable() *TargetDateUnavailable {
 		}
 	}
 	return nil
+}
+
+func (x *DeferredReason) SetNoBookableShowtime(v *NoBookableShowtime) {
+	if v == nil {
+		x.xxx_hidden_Reason = nil
+		return
+	}
+	x.xxx_hidden_Reason = &deferredReason_NoBookableShowtime{v}
 }
 
 func (x *DeferredReason) SetTargetDateUnavailable(v *TargetDateUnavailable) {
@@ -637,6 +697,14 @@ func (x *DeferredReason) HasReason() bool {
 	return x.xxx_hidden_Reason != nil
 }
 
+func (x *DeferredReason) HasNoBookableShowtime() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_Reason.(*deferredReason_NoBookableShowtime)
+	return ok
+}
+
 func (x *DeferredReason) HasTargetDateUnavailable() bool {
 	if x == nil {
 		return false
@@ -649,6 +717,12 @@ func (x *DeferredReason) ClearReason() {
 	x.xxx_hidden_Reason = nil
 }
 
+func (x *DeferredReason) ClearNoBookableShowtime() {
+	if _, ok := x.xxx_hidden_Reason.(*deferredReason_NoBookableShowtime); ok {
+		x.xxx_hidden_Reason = nil
+	}
+}
+
 func (x *DeferredReason) ClearTargetDateUnavailable() {
 	if _, ok := x.xxx_hidden_Reason.(*deferredReason_TargetDateUnavailable); ok {
 		x.xxx_hidden_Reason = nil
@@ -656,6 +730,7 @@ func (x *DeferredReason) ClearTargetDateUnavailable() {
 }
 
 const DeferredReason_Reason_not_set_case case_DeferredReason_Reason = 0
+const DeferredReason_NoBookableShowtime_case case_DeferredReason_Reason = 1
 const DeferredReason_TargetDateUnavailable_case case_DeferredReason_Reason = 2
 
 func (x *DeferredReason) WhichReason() case_DeferredReason_Reason {
@@ -663,6 +738,8 @@ func (x *DeferredReason) WhichReason() case_DeferredReason_Reason {
 		return DeferredReason_Reason_not_set_case
 	}
 	switch x.xxx_hidden_Reason.(type) {
+	case *deferredReason_NoBookableShowtime:
+		return DeferredReason_NoBookableShowtime_case
 	case *deferredReason_TargetDateUnavailable:
 		return DeferredReason_TargetDateUnavailable_case
 	default:
@@ -674,6 +751,7 @@ type DeferredReason_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
 	// Fields of oneof xxx_hidden_Reason:
+	NoBookableShowtime    *NoBookableShowtime
 	TargetDateUnavailable *TargetDateUnavailable
 	// -- end of xxx_hidden_Reason
 }
@@ -682,6 +760,9 @@ func (b0 DeferredReason_builder) Build() *DeferredReason {
 	m0 := &DeferredReason{}
 	b, x := &b0, m0
 	_, _ = b, x
+	if b.NoBookableShowtime != nil {
+		x.xxx_hidden_Reason = &deferredReason_NoBookableShowtime{b.NoBookableShowtime}
+	}
 	if b.TargetDateUnavailable != nil {
 		x.xxx_hidden_Reason = &deferredReason_TargetDateUnavailable{b.TargetDateUnavailable}
 	}
@@ -691,7 +772,7 @@ func (b0 DeferredReason_builder) Build() *DeferredReason {
 type case_DeferredReason_Reason protoreflect.FieldNumber
 
 func (x case_DeferredReason_Reason) String() string {
-	md := file_cineko_collection_collection_proto_msgTypes[13].Descriptor()
+	md := file_cineko_collection_collection_proto_msgTypes[14].Descriptor()
 	if x == 0 {
 		return "not set"
 	}
@@ -702,9 +783,15 @@ type isDeferredReason_Reason interface {
 	isDeferredReason_Reason()
 }
 
+type deferredReason_NoBookableShowtime struct {
+	NoBookableShowtime *NoBookableShowtime `protobuf:"bytes,1,opt,name=no_bookable_showtime,json=noBookableShowtime,oneof"`
+}
+
 type deferredReason_TargetDateUnavailable struct {
 	TargetDateUnavailable *TargetDateUnavailable `protobuf:"bytes,2,opt,name=target_date_unavailable,json=targetDateUnavailable,oneof"`
 }
+
+func (*deferredReason_NoBookableShowtime) isDeferredReason_Reason() {}
 
 func (*deferredReason_TargetDateUnavailable) isDeferredReason_Reason() {}
 
@@ -717,7 +804,7 @@ type WaitingReason struct {
 
 func (x *WaitingReason) Reset() {
 	*x = WaitingReason{}
-	mi := &file_cineko_collection_collection_proto_msgTypes[14]
+	mi := &file_cineko_collection_collection_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -729,7 +816,7 @@ func (x *WaitingReason) String() string {
 func (*WaitingReason) ProtoMessage() {}
 
 func (x *WaitingReason) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_collection_collection_proto_msgTypes[14]
+	mi := &file_cineko_collection_collection_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -744,6 +831,15 @@ func (x *WaitingReason) GetShowtimeNotDiscovered() *ShowtimeNotDiscovered {
 	if x != nil {
 		if x, ok := x.xxx_hidden_Reason.(*waitingReason_ShowtimeNotDiscovered); ok {
 			return x.ShowtimeNotDiscovered
+		}
+	}
+	return nil
+}
+
+func (x *WaitingReason) GetNoBookableShowtime() *NoBookableShowtime {
+	if x != nil {
+		if x, ok := x.xxx_hidden_Reason.(*waitingReason_NoBookableShowtime); ok {
+			return x.NoBookableShowtime
 		}
 	}
 	return nil
@@ -764,6 +860,14 @@ func (x *WaitingReason) SetShowtimeNotDiscovered(v *ShowtimeNotDiscovered) {
 		return
 	}
 	x.xxx_hidden_Reason = &waitingReason_ShowtimeNotDiscovered{v}
+}
+
+func (x *WaitingReason) SetNoBookableShowtime(v *NoBookableShowtime) {
+	if v == nil {
+		x.xxx_hidden_Reason = nil
+		return
+	}
+	x.xxx_hidden_Reason = &waitingReason_NoBookableShowtime{v}
 }
 
 func (x *WaitingReason) SetTargetDateUnavailable(v *TargetDateUnavailable) {
@@ -789,6 +893,14 @@ func (x *WaitingReason) HasShowtimeNotDiscovered() bool {
 	return ok
 }
 
+func (x *WaitingReason) HasNoBookableShowtime() bool {
+	if x == nil {
+		return false
+	}
+	_, ok := x.xxx_hidden_Reason.(*waitingReason_NoBookableShowtime)
+	return ok
+}
+
 func (x *WaitingReason) HasTargetDateUnavailable() bool {
 	if x == nil {
 		return false
@@ -807,6 +919,12 @@ func (x *WaitingReason) ClearShowtimeNotDiscovered() {
 	}
 }
 
+func (x *WaitingReason) ClearNoBookableShowtime() {
+	if _, ok := x.xxx_hidden_Reason.(*waitingReason_NoBookableShowtime); ok {
+		x.xxx_hidden_Reason = nil
+	}
+}
+
 func (x *WaitingReason) ClearTargetDateUnavailable() {
 	if _, ok := x.xxx_hidden_Reason.(*waitingReason_TargetDateUnavailable); ok {
 		x.xxx_hidden_Reason = nil
@@ -815,6 +933,7 @@ func (x *WaitingReason) ClearTargetDateUnavailable() {
 
 const WaitingReason_Reason_not_set_case case_WaitingReason_Reason = 0
 const WaitingReason_ShowtimeNotDiscovered_case case_WaitingReason_Reason = 1
+const WaitingReason_NoBookableShowtime_case case_WaitingReason_Reason = 2
 const WaitingReason_TargetDateUnavailable_case case_WaitingReason_Reason = 3
 
 func (x *WaitingReason) WhichReason() case_WaitingReason_Reason {
@@ -824,6 +943,8 @@ func (x *WaitingReason) WhichReason() case_WaitingReason_Reason {
 	switch x.xxx_hidden_Reason.(type) {
 	case *waitingReason_ShowtimeNotDiscovered:
 		return WaitingReason_ShowtimeNotDiscovered_case
+	case *waitingReason_NoBookableShowtime:
+		return WaitingReason_NoBookableShowtime_case
 	case *waitingReason_TargetDateUnavailable:
 		return WaitingReason_TargetDateUnavailable_case
 	default:
@@ -836,6 +957,7 @@ type WaitingReason_builder struct {
 
 	// Fields of oneof xxx_hidden_Reason:
 	ShowtimeNotDiscovered *ShowtimeNotDiscovered
+	NoBookableShowtime    *NoBookableShowtime
 	TargetDateUnavailable *TargetDateUnavailable
 	// -- end of xxx_hidden_Reason
 }
@@ -847,6 +969,9 @@ func (b0 WaitingReason_builder) Build() *WaitingReason {
 	if b.ShowtimeNotDiscovered != nil {
 		x.xxx_hidden_Reason = &waitingReason_ShowtimeNotDiscovered{b.ShowtimeNotDiscovered}
 	}
+	if b.NoBookableShowtime != nil {
+		x.xxx_hidden_Reason = &waitingReason_NoBookableShowtime{b.NoBookableShowtime}
+	}
 	if b.TargetDateUnavailable != nil {
 		x.xxx_hidden_Reason = &waitingReason_TargetDateUnavailable{b.TargetDateUnavailable}
 	}
@@ -856,7 +981,7 @@ func (b0 WaitingReason_builder) Build() *WaitingReason {
 type case_WaitingReason_Reason protoreflect.FieldNumber
 
 func (x case_WaitingReason_Reason) String() string {
-	md := file_cineko_collection_collection_proto_msgTypes[14].Descriptor()
+	md := file_cineko_collection_collection_proto_msgTypes[15].Descriptor()
 	if x == 0 {
 		return "not set"
 	}
@@ -871,11 +996,17 @@ type waitingReason_ShowtimeNotDiscovered struct {
 	ShowtimeNotDiscovered *ShowtimeNotDiscovered `protobuf:"bytes,1,opt,name=showtime_not_discovered,json=showtimeNotDiscovered,oneof"`
 }
 
+type waitingReason_NoBookableShowtime struct {
+	NoBookableShowtime *NoBookableShowtime `protobuf:"bytes,2,opt,name=no_bookable_showtime,json=noBookableShowtime,oneof"`
+}
+
 type waitingReason_TargetDateUnavailable struct {
 	TargetDateUnavailable *TargetDateUnavailable `protobuf:"bytes,3,opt,name=target_date_unavailable,json=targetDateUnavailable,oneof"`
 }
 
 func (*waitingReason_ShowtimeNotDiscovered) isWaitingReason_Reason() {}
+
+func (*waitingReason_NoBookableShowtime) isWaitingReason_Reason() {}
 
 func (*waitingReason_TargetDateUnavailable) isWaitingReason_Reason() {}
 
@@ -888,7 +1019,7 @@ type FailureReason struct {
 
 func (x *FailureReason) Reset() {
 	*x = FailureReason{}
-	mi := &file_cineko_collection_collection_proto_msgTypes[15]
+	mi := &file_cineko_collection_collection_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -900,7 +1031,7 @@ func (x *FailureReason) String() string {
 func (*FailureReason) ProtoMessage() {}
 
 func (x *FailureReason) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_collection_collection_proto_msgTypes[15]
+	mi := &file_cineko_collection_collection_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1369,7 +1500,7 @@ func (b0 FailureReason_builder) Build() *FailureReason {
 type case_FailureReason_Reason protoreflect.FieldNumber
 
 func (x case_FailureReason_Reason) String() string {
-	md := file_cineko_collection_collection_proto_msgTypes[15].Descriptor()
+	md := file_cineko_collection_collection_proto_msgTypes[16].Descriptor()
 	if x == 0 {
 		return "not set"
 	}
@@ -1454,7 +1585,7 @@ type ClientRequest struct {
 
 func (x *ClientRequest) Reset() {
 	*x = ClientRequest{}
-	mi := &file_cineko_collection_collection_proto_msgTypes[16]
+	mi := &file_cineko_collection_collection_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1466,7 +1597,7 @@ func (x *ClientRequest) String() string {
 func (*ClientRequest) ProtoMessage() {}
 
 func (x *ClientRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_collection_collection_proto_msgTypes[16]
+	mi := &file_cineko_collection_collection_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1497,7 +1628,7 @@ type ActiveMonitor struct {
 
 func (x *ActiveMonitor) Reset() {
 	*x = ActiveMonitor{}
-	mi := &file_cineko_collection_collection_proto_msgTypes[17]
+	mi := &file_cineko_collection_collection_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1509,7 +1640,7 @@ func (x *ActiveMonitor) String() string {
 func (*ActiveMonitor) ProtoMessage() {}
 
 func (x *ActiveMonitor) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_collection_collection_proto_msgTypes[17]
+	mi := &file_cineko_collection_collection_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1540,7 +1671,7 @@ type LayoutMissing struct {
 
 func (x *LayoutMissing) Reset() {
 	*x = LayoutMissing{}
-	mi := &file_cineko_collection_collection_proto_msgTypes[18]
+	mi := &file_cineko_collection_collection_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1552,7 +1683,7 @@ func (x *LayoutMissing) String() string {
 func (*LayoutMissing) ProtoMessage() {}
 
 func (x *LayoutMissing) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_collection_collection_proto_msgTypes[18]
+	mi := &file_cineko_collection_collection_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1583,7 +1714,7 @@ type LayoutChanged struct {
 
 func (x *LayoutChanged) Reset() {
 	*x = LayoutChanged{}
-	mi := &file_cineko_collection_collection_proto_msgTypes[19]
+	mi := &file_cineko_collection_collection_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1595,7 +1726,7 @@ func (x *LayoutChanged) String() string {
 func (*LayoutChanged) ProtoMessage() {}
 
 func (x *LayoutChanged) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_collection_collection_proto_msgTypes[19]
+	mi := &file_cineko_collection_collection_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1626,7 +1757,7 @@ type CatalogRefresh struct {
 
 func (x *CatalogRefresh) Reset() {
 	*x = CatalogRefresh{}
-	mi := &file_cineko_collection_collection_proto_msgTypes[20]
+	mi := &file_cineko_collection_collection_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1638,7 +1769,7 @@ func (x *CatalogRefresh) String() string {
 func (*CatalogRefresh) ProtoMessage() {}
 
 func (x *CatalogRefresh) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_collection_collection_proto_msgTypes[20]
+	mi := &file_cineko_collection_collection_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1669,7 +1800,7 @@ type OperatorRequest struct {
 
 func (x *OperatorRequest) Reset() {
 	*x = OperatorRequest{}
-	mi := &file_cineko_collection_collection_proto_msgTypes[21]
+	mi := &file_cineko_collection_collection_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1681,7 +1812,7 @@ func (x *OperatorRequest) String() string {
 func (*OperatorRequest) ProtoMessage() {}
 
 func (x *OperatorRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_collection_collection_proto_msgTypes[21]
+	mi := &file_cineko_collection_collection_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1713,7 +1844,7 @@ type Trigger struct {
 
 func (x *Trigger) Reset() {
 	*x = Trigger{}
-	mi := &file_cineko_collection_collection_proto_msgTypes[22]
+	mi := &file_cineko_collection_collection_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1725,7 +1856,7 @@ func (x *Trigger) String() string {
 func (*Trigger) ProtoMessage() {}
 
 func (x *Trigger) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_collection_collection_proto_msgTypes[22]
+	mi := &file_cineko_collection_collection_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2004,7 +2135,7 @@ func (b0 Trigger_builder) Build() *Trigger {
 type case_Trigger_Trigger protoreflect.FieldNumber
 
 func (x case_Trigger_Trigger) String() string {
-	md := file_cineko_collection_collection_proto_msgTypes[22].Descriptor()
+	md := file_cineko_collection_collection_proto_msgTypes[23].Descriptor()
 	if x == 0 {
 		return "not set"
 	}
@@ -2059,7 +2190,7 @@ type Idle struct {
 
 func (x *Idle) Reset() {
 	*x = Idle{}
-	mi := &file_cineko_collection_collection_proto_msgTypes[23]
+	mi := &file_cineko_collection_collection_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2071,7 +2202,7 @@ func (x *Idle) String() string {
 func (*Idle) ProtoMessage() {}
 
 func (x *Idle) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_collection_collection_proto_msgTypes[23]
+	mi := &file_cineko_collection_collection_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2104,7 +2235,7 @@ type Queued struct {
 
 func (x *Queued) Reset() {
 	*x = Queued{}
-	mi := &file_cineko_collection_collection_proto_msgTypes[24]
+	mi := &file_cineko_collection_collection_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2116,7 +2247,7 @@ func (x *Queued) String() string {
 func (*Queued) ProtoMessage() {}
 
 func (x *Queued) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_collection_collection_proto_msgTypes[24]
+	mi := &file_cineko_collection_collection_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2188,19 +2319,18 @@ func (b0 Queued_builder) Build() *Queued {
 }
 
 type Collecting struct {
-	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_ClaimId     *string                `protobuf:"bytes,1,opt,name=claim_id,json=claimId"`
-	xxx_hidden_StartedAt   *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=started_at,json=startedAt"`
-	xxx_hidden_ExpiresAt   *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=expires_at,json=expiresAt"`
-	XXX_raceDetectHookData protoimpl.RaceDetectHookData
-	XXX_presence           [1]uint32
-	unknownFields          protoimpl.UnknownFields
-	sizeCache              protoimpl.SizeCache
+	state                   protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_AssignmentId *string                `protobuf:"bytes,1,opt,name=assignment_id,json=assignmentId"`
+	xxx_hidden_StartedAt    *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=started_at,json=startedAt"`
+	XXX_raceDetectHookData  protoimpl.RaceDetectHookData
+	XXX_presence            [1]uint32
+	unknownFields           protoimpl.UnknownFields
+	sizeCache               protoimpl.SizeCache
 }
 
 func (x *Collecting) Reset() {
 	*x = Collecting{}
-	mi := &file_cineko_collection_collection_proto_msgTypes[25]
+	mi := &file_cineko_collection_collection_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2212,7 +2342,7 @@ func (x *Collecting) String() string {
 func (*Collecting) ProtoMessage() {}
 
 func (x *Collecting) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_collection_collection_proto_msgTypes[25]
+	mi := &file_cineko_collection_collection_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2223,10 +2353,10 @@ func (x *Collecting) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-func (x *Collecting) GetClaimId() string {
+func (x *Collecting) GetAssignmentId() string {
 	if x != nil {
-		if x.xxx_hidden_ClaimId != nil {
-			return *x.xxx_hidden_ClaimId
+		if x.xxx_hidden_AssignmentId != nil {
+			return *x.xxx_hidden_AssignmentId
 		}
 		return ""
 	}
@@ -2240,27 +2370,16 @@ func (x *Collecting) GetStartedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-func (x *Collecting) GetExpiresAt() *timestamppb.Timestamp {
-	if x != nil {
-		return x.xxx_hidden_ExpiresAt
-	}
-	return nil
-}
-
-func (x *Collecting) SetClaimId(v string) {
-	x.xxx_hidden_ClaimId = &v
-	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 3)
+func (x *Collecting) SetAssignmentId(v string) {
+	x.xxx_hidden_AssignmentId = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 2)
 }
 
 func (x *Collecting) SetStartedAt(v *timestamppb.Timestamp) {
 	x.xxx_hidden_StartedAt = v
 }
 
-func (x *Collecting) SetExpiresAt(v *timestamppb.Timestamp) {
-	x.xxx_hidden_ExpiresAt = v
-}
-
-func (x *Collecting) HasClaimId() bool {
+func (x *Collecting) HasAssignmentId() bool {
 	if x == nil {
 		return false
 	}
@@ -2274,44 +2393,31 @@ func (x *Collecting) HasStartedAt() bool {
 	return x.xxx_hidden_StartedAt != nil
 }
 
-func (x *Collecting) HasExpiresAt() bool {
-	if x == nil {
-		return false
-	}
-	return x.xxx_hidden_ExpiresAt != nil
-}
-
-func (x *Collecting) ClearClaimId() {
+func (x *Collecting) ClearAssignmentId() {
 	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
-	x.xxx_hidden_ClaimId = nil
+	x.xxx_hidden_AssignmentId = nil
 }
 
 func (x *Collecting) ClearStartedAt() {
 	x.xxx_hidden_StartedAt = nil
 }
 
-func (x *Collecting) ClearExpiresAt() {
-	x.xxx_hidden_ExpiresAt = nil
-}
-
 type Collecting_builder struct {
 	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
 
-	ClaimId   *string
-	StartedAt *timestamppb.Timestamp
-	ExpiresAt *timestamppb.Timestamp
+	AssignmentId *string
+	StartedAt    *timestamppb.Timestamp
 }
 
 func (b0 Collecting_builder) Build() *Collecting {
 	m0 := &Collecting{}
 	b, x := &b0, m0
 	_, _ = b, x
-	if b.ClaimId != nil {
-		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 3)
-		x.xxx_hidden_ClaimId = b.ClaimId
+	if b.AssignmentId != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 2)
+		x.xxx_hidden_AssignmentId = b.AssignmentId
 	}
 	x.xxx_hidden_StartedAt = b.StartedAt
-	x.xxx_hidden_ExpiresAt = b.ExpiresAt
 	return m0
 }
 
@@ -2324,7 +2430,7 @@ type WaitingForShowtime struct {
 
 func (x *WaitingForShowtime) Reset() {
 	*x = WaitingForShowtime{}
-	mi := &file_cineko_collection_collection_proto_msgTypes[26]
+	mi := &file_cineko_collection_collection_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2336,7 +2442,7 @@ func (x *WaitingForShowtime) String() string {
 func (*WaitingForShowtime) ProtoMessage() {}
 
 func (x *WaitingForShowtime) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_collection_collection_proto_msgTypes[26]
+	mi := &file_cineko_collection_collection_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2393,7 +2499,7 @@ type RetryScheduled struct {
 
 func (x *RetryScheduled) Reset() {
 	*x = RetryScheduled{}
-	mi := &file_cineko_collection_collection_proto_msgTypes[27]
+	mi := &file_cineko_collection_collection_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2405,7 +2511,7 @@ func (x *RetryScheduled) String() string {
 func (*RetryScheduled) ProtoMessage() {}
 
 func (x *RetryScheduled) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_collection_collection_proto_msgTypes[27]
+	mi := &file_cineko_collection_collection_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2485,7 +2591,7 @@ type Blocked struct {
 
 func (x *Blocked) Reset() {
 	*x = Blocked{}
-	mi := &file_cineko_collection_collection_proto_msgTypes[28]
+	mi := &file_cineko_collection_collection_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2497,7 +2603,7 @@ func (x *Blocked) String() string {
 func (*Blocked) ProtoMessage() {}
 
 func (x *Blocked) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_collection_collection_proto_msgTypes[28]
+	mi := &file_cineko_collection_collection_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2553,7 +2659,7 @@ type State struct {
 
 func (x *State) Reset() {
 	*x = State{}
-	mi := &file_cineko_collection_collection_proto_msgTypes[29]
+	mi := &file_cineko_collection_collection_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2565,7 +2671,7 @@ func (x *State) String() string {
 func (*State) ProtoMessage() {}
 
 func (x *State) ProtoReflect() protoreflect.Message {
-	mi := &file_cineko_collection_collection_proto_msgTypes[29]
+	mi := &file_cineko_collection_collection_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2844,7 +2950,7 @@ func (b0 State_builder) Build() *State {
 type case_State_State protoreflect.FieldNumber
 
 func (x case_State_State) String() string {
-	md := file_cineko_collection_collection_proto_msgTypes[29].Descriptor()
+	md := file_cineko_collection_collection_proto_msgTypes[30].Descriptor()
 	if x == 0 {
 		return "not set"
 	}
@@ -2895,7 +3001,8 @@ var File_cineko_collection_collection_proto protoreflect.FileDescriptor
 
 const file_cineko_collection_collection_proto_rawDesc = "" +
 	"\n" +
-	"\"cineko/collection/collection.proto\x12\x11cineko.collection\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x17\n" +
+	"\"cineko/collection/collection.proto\x12\x11cineko.collection\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x14\n" +
+	"\x12NoBookableShowtime\"\x17\n" +
 	"\x15ShowtimeNotDiscovered\"\x17\n" +
 	"\x15TargetDateUnavailable\"\x12\n" +
 	"\x10IdentityMismatch\"\x11\n" +
@@ -2908,12 +3015,14 @@ const file_cineko_collection_collection_proto_rawDesc = "" +
 	"\x17ProviderTransportFailed\"\x15\n" +
 	"\x13ProviderServerError\"\x0f\n" +
 	"\rInvalidResult\"\t\n" +
-	"\aTimeout\"\x85\x01\n" +
-	"\x0eDeferredReason\x12b\n" +
+	"\aTimeout\"\xe0\x01\n" +
+	"\x0eDeferredReason\x12Y\n" +
+	"\x14no_bookable_showtime\x18\x01 \x01(\v2%.cineko.collection.NoBookableShowtimeH\x00R\x12noBookableShowtime\x12b\n" +
 	"\x17target_date_unavailable\x18\x02 \x01(\v2(.cineko.collection.TargetDateUnavailableH\x00R\x15targetDateUnavailableB\x0f\n" +
-	"\x06reason\x12\x05\xbaH\x02\b\x01\"\xe8\x01\n" +
+	"\x06reason\x12\x05\xbaH\x02\b\x01\"\xc3\x02\n" +
 	"\rWaitingReason\x12b\n" +
-	"\x17showtime_not_discovered\x18\x01 \x01(\v2(.cineko.collection.ShowtimeNotDiscoveredH\x00R\x15showtimeNotDiscovered\x12b\n" +
+	"\x17showtime_not_discovered\x18\x01 \x01(\v2(.cineko.collection.ShowtimeNotDiscoveredH\x00R\x15showtimeNotDiscovered\x12Y\n" +
+	"\x14no_bookable_showtime\x18\x02 \x01(\v2%.cineko.collection.NoBookableShowtimeH\x00R\x12noBookableShowtime\x12b\n" +
 	"\x17target_date_unavailable\x18\x03 \x01(\v2(.cineko.collection.TargetDateUnavailableH\x00R\x15targetDateUnavailableB\x0f\n" +
 	"\x06reason\x12\x05\xbaH\x02\b\x01\"\xd1\a\n" +
 	"\rFailureReason\x12R\n" +
@@ -2947,15 +3056,13 @@ const file_cineko_collection_collection_proto_rawDesc = "" +
 	"\x04Idle\"\x87\x01\n" +
 	"\x06Queued\x12?\n" +
 	"\tqueued_at\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampB\x06\xbaH\x03\xc8\x01\x01R\bqueuedAt\x12<\n" +
-	"\atrigger\x18\x02 \x01(\v2\x1a.cineko.collection.TriggerB\x06\xbaH\x03\xc8\x01\x01R\atrigger\"\xb9\x01\n" +
+	"\atrigger\x18\x02 \x01(\v2\x1a.cineko.collection.TriggerB\x06\xbaH\x03\xc8\x01\x01R\atrigger\"\x80\x01\n" +
 	"\n" +
-	"Collecting\x12%\n" +
-	"\bclaim_id\x18\x01 \x01(\tB\n" +
-	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\aclaimId\x12A\n" +
+	"Collecting\x12/\n" +
+	"\rassignment_id\x18\x01 \x01(\tB\n" +
+	"\xbaH\a\xc8\x01\x01r\x02\x10\x01R\fassignmentId\x12A\n" +
 	"\n" +
-	"started_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\x06\xbaH\x03\xc8\x01\x01R\tstartedAt\x12A\n" +
-	"\n" +
-	"expires_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampB\x06\xbaH\x03\xc8\x01\x01R\texpiresAt\"V\n" +
+	"started_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\x06\xbaH\x03\xc8\x01\x01R\tstartedAt\"V\n" +
 	"\x12WaitingForShowtime\x12@\n" +
 	"\x06reason\x18\x01 \x01(\v2 .cineko.collection.WaitingReasonB\x06\xbaH\x03\xc8\x01\x01R\x06reason\"\x9e\x01\n" +
 	"\x0eRetryScheduled\x12@\n" +
@@ -2974,80 +3081,82 @@ const file_cineko_collection_collection_proto_rawDesc = "" +
 	"\ablocked\x18\x06 \x01(\v2\x1a.cineko.collection.BlockedH\x00R\ablockedB\x0e\n" +
 	"\x05state\x12\x05\xbaH\x02\b\x01BHZFgithub.com/cineko-org/contracts/v3/gen/go/cineko/collection;collectionb\beditionsp\xe9\a"
 
-var file_cineko_collection_collection_proto_msgTypes = make([]protoimpl.MessageInfo, 30)
+var file_cineko_collection_collection_proto_msgTypes = make([]protoimpl.MessageInfo, 31)
 var file_cineko_collection_collection_proto_goTypes = []any{
-	(*ShowtimeNotDiscovered)(nil),   // 0: cineko.collection.ShowtimeNotDiscovered
-	(*TargetDateUnavailable)(nil),   // 1: cineko.collection.TargetDateUnavailable
-	(*IdentityMismatch)(nil),        // 2: cineko.collection.IdentityMismatch
-	(*ProviderBlocked)(nil),         // 3: cineko.collection.ProviderBlocked
-	(*ProviderThrottled)(nil),       // 4: cineko.collection.ProviderThrottled
-	(*CaptchaRequired)(nil),         // 5: cineko.collection.CaptchaRequired
-	(*AuthenticationRequired)(nil),  // 6: cineko.collection.AuthenticationRequired
-	(*UIContractChanged)(nil),       // 7: cineko.collection.UIContractChanged
-	(*BrowserStartFailed)(nil),      // 8: cineko.collection.BrowserStartFailed
-	(*ProviderTransportFailed)(nil), // 9: cineko.collection.ProviderTransportFailed
-	(*ProviderServerError)(nil),     // 10: cineko.collection.ProviderServerError
-	(*InvalidResult)(nil),           // 11: cineko.collection.InvalidResult
-	(*Timeout)(nil),                 // 12: cineko.collection.Timeout
-	(*DeferredReason)(nil),          // 13: cineko.collection.DeferredReason
-	(*WaitingReason)(nil),           // 14: cineko.collection.WaitingReason
-	(*FailureReason)(nil),           // 15: cineko.collection.FailureReason
-	(*ClientRequest)(nil),           // 16: cineko.collection.ClientRequest
-	(*ActiveMonitor)(nil),           // 17: cineko.collection.ActiveMonitor
-	(*LayoutMissing)(nil),           // 18: cineko.collection.LayoutMissing
-	(*LayoutChanged)(nil),           // 19: cineko.collection.LayoutChanged
-	(*CatalogRefresh)(nil),          // 20: cineko.collection.CatalogRefresh
-	(*OperatorRequest)(nil),         // 21: cineko.collection.OperatorRequest
-	(*Trigger)(nil),                 // 22: cineko.collection.Trigger
-	(*Idle)(nil),                    // 23: cineko.collection.Idle
-	(*Queued)(nil),                  // 24: cineko.collection.Queued
-	(*Collecting)(nil),              // 25: cineko.collection.Collecting
-	(*WaitingForShowtime)(nil),      // 26: cineko.collection.WaitingForShowtime
-	(*RetryScheduled)(nil),          // 27: cineko.collection.RetryScheduled
-	(*Blocked)(nil),                 // 28: cineko.collection.Blocked
-	(*State)(nil),                   // 29: cineko.collection.State
-	(*timestamppb.Timestamp)(nil),   // 30: google.protobuf.Timestamp
+	(*NoBookableShowtime)(nil),      // 0: cineko.collection.NoBookableShowtime
+	(*ShowtimeNotDiscovered)(nil),   // 1: cineko.collection.ShowtimeNotDiscovered
+	(*TargetDateUnavailable)(nil),   // 2: cineko.collection.TargetDateUnavailable
+	(*IdentityMismatch)(nil),        // 3: cineko.collection.IdentityMismatch
+	(*ProviderBlocked)(nil),         // 4: cineko.collection.ProviderBlocked
+	(*ProviderThrottled)(nil),       // 5: cineko.collection.ProviderThrottled
+	(*CaptchaRequired)(nil),         // 6: cineko.collection.CaptchaRequired
+	(*AuthenticationRequired)(nil),  // 7: cineko.collection.AuthenticationRequired
+	(*UIContractChanged)(nil),       // 8: cineko.collection.UIContractChanged
+	(*BrowserStartFailed)(nil),      // 9: cineko.collection.BrowserStartFailed
+	(*ProviderTransportFailed)(nil), // 10: cineko.collection.ProviderTransportFailed
+	(*ProviderServerError)(nil),     // 11: cineko.collection.ProviderServerError
+	(*InvalidResult)(nil),           // 12: cineko.collection.InvalidResult
+	(*Timeout)(nil),                 // 13: cineko.collection.Timeout
+	(*DeferredReason)(nil),          // 14: cineko.collection.DeferredReason
+	(*WaitingReason)(nil),           // 15: cineko.collection.WaitingReason
+	(*FailureReason)(nil),           // 16: cineko.collection.FailureReason
+	(*ClientRequest)(nil),           // 17: cineko.collection.ClientRequest
+	(*ActiveMonitor)(nil),           // 18: cineko.collection.ActiveMonitor
+	(*LayoutMissing)(nil),           // 19: cineko.collection.LayoutMissing
+	(*LayoutChanged)(nil),           // 20: cineko.collection.LayoutChanged
+	(*CatalogRefresh)(nil),          // 21: cineko.collection.CatalogRefresh
+	(*OperatorRequest)(nil),         // 22: cineko.collection.OperatorRequest
+	(*Trigger)(nil),                 // 23: cineko.collection.Trigger
+	(*Idle)(nil),                    // 24: cineko.collection.Idle
+	(*Queued)(nil),                  // 25: cineko.collection.Queued
+	(*Collecting)(nil),              // 26: cineko.collection.Collecting
+	(*WaitingForShowtime)(nil),      // 27: cineko.collection.WaitingForShowtime
+	(*RetryScheduled)(nil),          // 28: cineko.collection.RetryScheduled
+	(*Blocked)(nil),                 // 29: cineko.collection.Blocked
+	(*State)(nil),                   // 30: cineko.collection.State
+	(*timestamppb.Timestamp)(nil),   // 31: google.protobuf.Timestamp
 }
 var file_cineko_collection_collection_proto_depIdxs = []int32{
-	1,  // 0: cineko.collection.DeferredReason.target_date_unavailable:type_name -> cineko.collection.TargetDateUnavailable
-	0,  // 1: cineko.collection.WaitingReason.showtime_not_discovered:type_name -> cineko.collection.ShowtimeNotDiscovered
-	1,  // 2: cineko.collection.WaitingReason.target_date_unavailable:type_name -> cineko.collection.TargetDateUnavailable
-	2,  // 3: cineko.collection.FailureReason.identity_mismatch:type_name -> cineko.collection.IdentityMismatch
-	3,  // 4: cineko.collection.FailureReason.provider_blocked:type_name -> cineko.collection.ProviderBlocked
-	4,  // 5: cineko.collection.FailureReason.provider_throttled:type_name -> cineko.collection.ProviderThrottled
-	5,  // 6: cineko.collection.FailureReason.captcha_required:type_name -> cineko.collection.CaptchaRequired
-	6,  // 7: cineko.collection.FailureReason.authentication_required:type_name -> cineko.collection.AuthenticationRequired
-	7,  // 8: cineko.collection.FailureReason.ui_contract_changed:type_name -> cineko.collection.UIContractChanged
-	8,  // 9: cineko.collection.FailureReason.browser_start_failed:type_name -> cineko.collection.BrowserStartFailed
-	9,  // 10: cineko.collection.FailureReason.provider_transport_failed:type_name -> cineko.collection.ProviderTransportFailed
-	10, // 11: cineko.collection.FailureReason.provider_server_error:type_name -> cineko.collection.ProviderServerError
-	11, // 12: cineko.collection.FailureReason.invalid_result:type_name -> cineko.collection.InvalidResult
-	12, // 13: cineko.collection.FailureReason.timeout:type_name -> cineko.collection.Timeout
-	16, // 14: cineko.collection.Trigger.client_request:type_name -> cineko.collection.ClientRequest
-	17, // 15: cineko.collection.Trigger.active_monitor:type_name -> cineko.collection.ActiveMonitor
-	18, // 16: cineko.collection.Trigger.layout_missing:type_name -> cineko.collection.LayoutMissing
-	19, // 17: cineko.collection.Trigger.layout_changed:type_name -> cineko.collection.LayoutChanged
-	20, // 18: cineko.collection.Trigger.catalog_refresh:type_name -> cineko.collection.CatalogRefresh
-	21, // 19: cineko.collection.Trigger.operator_request:type_name -> cineko.collection.OperatorRequest
-	30, // 20: cineko.collection.Queued.queued_at:type_name -> google.protobuf.Timestamp
-	22, // 21: cineko.collection.Queued.trigger:type_name -> cineko.collection.Trigger
-	30, // 22: cineko.collection.Collecting.started_at:type_name -> google.protobuf.Timestamp
-	30, // 23: cineko.collection.Collecting.expires_at:type_name -> google.protobuf.Timestamp
-	14, // 24: cineko.collection.WaitingForShowtime.reason:type_name -> cineko.collection.WaitingReason
-	15, // 25: cineko.collection.RetryScheduled.reason:type_name -> cineko.collection.FailureReason
-	30, // 26: cineko.collection.RetryScheduled.next_attempt_at:type_name -> google.protobuf.Timestamp
-	15, // 27: cineko.collection.Blocked.reason:type_name -> cineko.collection.FailureReason
-	23, // 28: cineko.collection.State.idle:type_name -> cineko.collection.Idle
-	24, // 29: cineko.collection.State.queued:type_name -> cineko.collection.Queued
-	25, // 30: cineko.collection.State.collecting:type_name -> cineko.collection.Collecting
-	26, // 31: cineko.collection.State.waiting_for_showtime:type_name -> cineko.collection.WaitingForShowtime
-	27, // 32: cineko.collection.State.retry_scheduled:type_name -> cineko.collection.RetryScheduled
-	28, // 33: cineko.collection.State.blocked:type_name -> cineko.collection.Blocked
-	34, // [34:34] is the sub-list for method output_type
-	34, // [34:34] is the sub-list for method input_type
-	34, // [34:34] is the sub-list for extension type_name
-	34, // [34:34] is the sub-list for extension extendee
-	0,  // [0:34] is the sub-list for field type_name
+	0,  // 0: cineko.collection.DeferredReason.no_bookable_showtime:type_name -> cineko.collection.NoBookableShowtime
+	2,  // 1: cineko.collection.DeferredReason.target_date_unavailable:type_name -> cineko.collection.TargetDateUnavailable
+	1,  // 2: cineko.collection.WaitingReason.showtime_not_discovered:type_name -> cineko.collection.ShowtimeNotDiscovered
+	0,  // 3: cineko.collection.WaitingReason.no_bookable_showtime:type_name -> cineko.collection.NoBookableShowtime
+	2,  // 4: cineko.collection.WaitingReason.target_date_unavailable:type_name -> cineko.collection.TargetDateUnavailable
+	3,  // 5: cineko.collection.FailureReason.identity_mismatch:type_name -> cineko.collection.IdentityMismatch
+	4,  // 6: cineko.collection.FailureReason.provider_blocked:type_name -> cineko.collection.ProviderBlocked
+	5,  // 7: cineko.collection.FailureReason.provider_throttled:type_name -> cineko.collection.ProviderThrottled
+	6,  // 8: cineko.collection.FailureReason.captcha_required:type_name -> cineko.collection.CaptchaRequired
+	7,  // 9: cineko.collection.FailureReason.authentication_required:type_name -> cineko.collection.AuthenticationRequired
+	8,  // 10: cineko.collection.FailureReason.ui_contract_changed:type_name -> cineko.collection.UIContractChanged
+	9,  // 11: cineko.collection.FailureReason.browser_start_failed:type_name -> cineko.collection.BrowserStartFailed
+	10, // 12: cineko.collection.FailureReason.provider_transport_failed:type_name -> cineko.collection.ProviderTransportFailed
+	11, // 13: cineko.collection.FailureReason.provider_server_error:type_name -> cineko.collection.ProviderServerError
+	12, // 14: cineko.collection.FailureReason.invalid_result:type_name -> cineko.collection.InvalidResult
+	13, // 15: cineko.collection.FailureReason.timeout:type_name -> cineko.collection.Timeout
+	17, // 16: cineko.collection.Trigger.client_request:type_name -> cineko.collection.ClientRequest
+	18, // 17: cineko.collection.Trigger.active_monitor:type_name -> cineko.collection.ActiveMonitor
+	19, // 18: cineko.collection.Trigger.layout_missing:type_name -> cineko.collection.LayoutMissing
+	20, // 19: cineko.collection.Trigger.layout_changed:type_name -> cineko.collection.LayoutChanged
+	21, // 20: cineko.collection.Trigger.catalog_refresh:type_name -> cineko.collection.CatalogRefresh
+	22, // 21: cineko.collection.Trigger.operator_request:type_name -> cineko.collection.OperatorRequest
+	31, // 22: cineko.collection.Queued.queued_at:type_name -> google.protobuf.Timestamp
+	23, // 23: cineko.collection.Queued.trigger:type_name -> cineko.collection.Trigger
+	31, // 24: cineko.collection.Collecting.started_at:type_name -> google.protobuf.Timestamp
+	15, // 25: cineko.collection.WaitingForShowtime.reason:type_name -> cineko.collection.WaitingReason
+	16, // 26: cineko.collection.RetryScheduled.reason:type_name -> cineko.collection.FailureReason
+	31, // 27: cineko.collection.RetryScheduled.next_attempt_at:type_name -> google.protobuf.Timestamp
+	16, // 28: cineko.collection.Blocked.reason:type_name -> cineko.collection.FailureReason
+	24, // 29: cineko.collection.State.idle:type_name -> cineko.collection.Idle
+	25, // 30: cineko.collection.State.queued:type_name -> cineko.collection.Queued
+	26, // 31: cineko.collection.State.collecting:type_name -> cineko.collection.Collecting
+	27, // 32: cineko.collection.State.waiting_for_showtime:type_name -> cineko.collection.WaitingForShowtime
+	28, // 33: cineko.collection.State.retry_scheduled:type_name -> cineko.collection.RetryScheduled
+	29, // 34: cineko.collection.State.blocked:type_name -> cineko.collection.Blocked
+	35, // [35:35] is the sub-list for method output_type
+	35, // [35:35] is the sub-list for method input_type
+	35, // [35:35] is the sub-list for extension type_name
+	35, // [35:35] is the sub-list for extension extendee
+	0,  // [0:35] is the sub-list for field type_name
 }
 
 func init() { file_cineko_collection_collection_proto_init() }
@@ -3055,14 +3164,16 @@ func file_cineko_collection_collection_proto_init() {
 	if File_cineko_collection_collection_proto != nil {
 		return
 	}
-	file_cineko_collection_collection_proto_msgTypes[13].OneofWrappers = []any{
+	file_cineko_collection_collection_proto_msgTypes[14].OneofWrappers = []any{
+		(*deferredReason_NoBookableShowtime)(nil),
 		(*deferredReason_TargetDateUnavailable)(nil),
 	}
-	file_cineko_collection_collection_proto_msgTypes[14].OneofWrappers = []any{
+	file_cineko_collection_collection_proto_msgTypes[15].OneofWrappers = []any{
 		(*waitingReason_ShowtimeNotDiscovered)(nil),
+		(*waitingReason_NoBookableShowtime)(nil),
 		(*waitingReason_TargetDateUnavailable)(nil),
 	}
-	file_cineko_collection_collection_proto_msgTypes[15].OneofWrappers = []any{
+	file_cineko_collection_collection_proto_msgTypes[16].OneofWrappers = []any{
 		(*failureReason_IdentityMismatch)(nil),
 		(*failureReason_ProviderBlocked)(nil),
 		(*failureReason_ProviderThrottled)(nil),
@@ -3075,7 +3186,7 @@ func file_cineko_collection_collection_proto_init() {
 		(*failureReason_InvalidResult)(nil),
 		(*failureReason_Timeout)(nil),
 	}
-	file_cineko_collection_collection_proto_msgTypes[22].OneofWrappers = []any{
+	file_cineko_collection_collection_proto_msgTypes[23].OneofWrappers = []any{
 		(*trigger_ClientRequest)(nil),
 		(*trigger_ActiveMonitor)(nil),
 		(*trigger_LayoutMissing)(nil),
@@ -3083,7 +3194,7 @@ func file_cineko_collection_collection_proto_init() {
 		(*trigger_CatalogRefresh)(nil),
 		(*trigger_OperatorRequest)(nil),
 	}
-	file_cineko_collection_collection_proto_msgTypes[29].OneofWrappers = []any{
+	file_cineko_collection_collection_proto_msgTypes[30].OneofWrappers = []any{
 		(*state_Idle)(nil),
 		(*state_Queued)(nil),
 		(*state_Collecting)(nil),
@@ -3097,7 +3208,7 @@ func file_cineko_collection_collection_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cineko_collection_collection_proto_rawDesc), len(file_cineko_collection_collection_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   30,
+			NumMessages:   31,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

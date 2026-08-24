@@ -13,7 +13,20 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file cineko/collection/collection.proto.
  */
 export const file_cineko_collection_collection: GenFile = /*@__PURE__*/
-  fileDesc("CiJjaW5la28vY29sbGVjdGlvbi9jb2xsZWN0aW9uLnByb3RvEhFjaW5la28uY29sbGVjdGlvbiIXChVTaG93dGltZU5vdERpc2NvdmVyZWQiFwoVVGFyZ2V0RGF0ZVVuYXZhaWxhYmxlIhIKEElkZW50aXR5TWlzbWF0Y2giEQoPUHJvdmlkZXJCbG9ja2VkIhMKEVByb3ZpZGVyVGhyb3R0bGVkIhEKD0NhcHRjaGFSZXF1aXJlZCIYChZBdXRoZW50aWNhdGlvblJlcXVpcmVkIhMKEVVJQ29udHJhY3RDaGFuZ2VkIhQKEkJyb3dzZXJTdGFydEZhaWxlZCIZChdQcm92aWRlclRyYW5zcG9ydEZhaWxlZCIVChNQcm92aWRlclNlcnZlckVycm9yIg8KDUludmFsaWRSZXN1bHQiCQoHVGltZW91dCJuCg5EZWZlcnJlZFJlYXNvbhJLChd0YXJnZXRfZGF0ZV91bmF2YWlsYWJsZRgCIAEoCzIoLmNpbmVrby5jb2xsZWN0aW9uLlRhcmdldERhdGVVbmF2YWlsYWJsZUgAQg8KBnJlYXNvbhIFukgCCAEiugEKDVdhaXRpbmdSZWFzb24SSwoXc2hvd3RpbWVfbm90X2Rpc2NvdmVyZWQYASABKAsyKC5jaW5la28uY29sbGVjdGlvbi5TaG93dGltZU5vdERpc2NvdmVyZWRIABJLChd0YXJnZXRfZGF0ZV91bmF2YWlsYWJsZRgDIAEoCzIoLmNpbmVrby5jb2xsZWN0aW9uLlRhcmdldERhdGVVbmF2YWlsYWJsZUgAQg8KBnJlYXNvbhIFukgCCAEihQYKDUZhaWx1cmVSZWFzb24SQAoRaWRlbnRpdHlfbWlzbWF0Y2gYASABKAsyIy5jaW5la28uY29sbGVjdGlvbi5JZGVudGl0eU1pc21hdGNoSAASPgoQcHJvdmlkZXJfYmxvY2tlZBgCIAEoCzIiLmNpbmVrby5jb2xsZWN0aW9uLlByb3ZpZGVyQmxvY2tlZEgAEkIKEnByb3ZpZGVyX3Rocm90dGxlZBgDIAEoCzIkLmNpbmVrby5jb2xsZWN0aW9uLlByb3ZpZGVyVGhyb3R0bGVkSAASPgoQY2FwdGNoYV9yZXF1aXJlZBgEIAEoCzIiLmNpbmVrby5jb2xsZWN0aW9uLkNhcHRjaGFSZXF1aXJlZEgAEkwKF2F1dGhlbnRpY2F0aW9uX3JlcXVpcmVkGAUgASgLMikuY2luZWtvLmNvbGxlY3Rpb24uQXV0aGVudGljYXRpb25SZXF1aXJlZEgAEkMKE3VpX2NvbnRyYWN0X2NoYW5nZWQYBiABKAsyJC5jaW5la28uY29sbGVjdGlvbi5VSUNvbnRyYWN0Q2hhbmdlZEgAEkUKFGJyb3dzZXJfc3RhcnRfZmFpbGVkGAcgASgLMiUuY2luZWtvLmNvbGxlY3Rpb24uQnJvd3NlclN0YXJ0RmFpbGVkSAASTwoZcHJvdmlkZXJfdHJhbnNwb3J0X2ZhaWxlZBgIIAEoCzIqLmNpbmVrby5jb2xsZWN0aW9uLlByb3ZpZGVyVHJhbnNwb3J0RmFpbGVkSAASRwoVcHJvdmlkZXJfc2VydmVyX2Vycm9yGAkgASgLMiYuY2luZWtvLmNvbGxlY3Rpb24uUHJvdmlkZXJTZXJ2ZXJFcnJvckgAEjoKDmludmFsaWRfcmVzdWx0GAogASgLMiAuY2luZWtvLmNvbGxlY3Rpb24uSW52YWxpZFJlc3VsdEgAEi0KB3RpbWVvdXQYCyABKAsyGi5jaW5la28uY29sbGVjdGlvbi5UaW1lb3V0SABCDwoGcmVhc29uEgW6SAIIASIPCg1DbGllbnRSZXF1ZXN0Ig8KDUFjdGl2ZU1vbml0b3IiDwoNTGF5b3V0TWlzc2luZyIPCg1MYXlvdXRDaGFuZ2VkIhAKDkNhdGFsb2dSZWZyZXNoIhEKD09wZXJhdG9yUmVxdWVzdCKJAwoHVHJpZ2dlchI6Cg5jbGllbnRfcmVxdWVzdBgBIAEoCzIgLmNpbmVrby5jb2xsZWN0aW9uLkNsaWVudFJlcXVlc3RIABI6Cg5hY3RpdmVfbW9uaXRvchgCIAEoCzIgLmNpbmVrby5jb2xsZWN0aW9uLkFjdGl2ZU1vbml0b3JIABI6Cg5sYXlvdXRfbWlzc2luZxgDIAEoCzIgLmNpbmVrby5jb2xsZWN0aW9uLkxheW91dE1pc3NpbmdIABI6Cg5sYXlvdXRfY2hhbmdlZBgEIAEoCzIgLmNpbmVrby5jb2xsZWN0aW9uLkxheW91dENoYW5nZWRIABI8Cg9jYXRhbG9nX3JlZnJlc2gYBSABKAsyIS5jaW5la28uY29sbGVjdGlvbi5DYXRhbG9nUmVmcmVzaEgAEj4KEG9wZXJhdG9yX3JlcXVlc3QYBiABKAsyIi5jaW5la28uY29sbGVjdGlvbi5PcGVyYXRvclJlcXVlc3RIAEIQCgd0cmlnZ2VyEgW6SAIIASIGCgRJZGxlInQKBlF1ZXVlZBI1CglxdWV1ZWRfYXQYASABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wQga6SAPIAQESMwoHdHJpZ2dlchgCIAEoCzIaLmNpbmVrby5jb2xsZWN0aW9uLlRyaWdnZXJCBrpIA8gBASKaAQoKQ29sbGVjdGluZxIcCghjbGFpbV9pZBgBIAEoCUIKukgHyAEBcgIQARI2CgpzdGFydGVkX2F0GAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEIGukgDyAEBEjYKCmV4cGlyZXNfYXQYAyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wQga6SAPIAQEiTgoSV2FpdGluZ0ZvclNob3d0aW1lEjgKBnJlYXNvbhgBIAEoCzIgLmNpbmVrby5jb2xsZWN0aW9uLldhaXRpbmdSZWFzb25CBrpIA8gBASKHAQoOUmV0cnlTY2hlZHVsZWQSOAoGcmVhc29uGAEgASgLMiAuY2luZWtvLmNvbGxlY3Rpb24uRmFpbHVyZVJlYXNvbkIGukgDyAEBEjsKD25leHRfYXR0ZW1wdF9hdBgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBCBrpIA8gBASJDCgdCbG9ja2VkEjgKBnJlYXNvbhgBIAEoCzIgLmNpbmVrby5jb2xsZWN0aW9uLkZhaWx1cmVSZWFzb25CBrpIA8gBASLWAgoFU3RhdGUSJwoEaWRsZRgBIAEoCzIXLmNpbmVrby5jb2xsZWN0aW9uLklkbGVIABIrCgZxdWV1ZWQYAiABKAsyGS5jaW5la28uY29sbGVjdGlvbi5RdWV1ZWRIABIzCgpjb2xsZWN0aW5nGAMgASgLMh0uY2luZWtvLmNvbGxlY3Rpb24uQ29sbGVjdGluZ0gAEkUKFHdhaXRpbmdfZm9yX3Nob3d0aW1lGAQgASgLMiUuY2luZWtvLmNvbGxlY3Rpb24uV2FpdGluZ0ZvclNob3d0aW1lSAASPAoPcmV0cnlfc2NoZWR1bGVkGAUgASgLMiEuY2luZWtvLmNvbGxlY3Rpb24uUmV0cnlTY2hlZHVsZWRIABItCgdibG9ja2VkGAYgASgLMhouY2luZWtvLmNvbGxlY3Rpb24uQmxvY2tlZEgAQg4KBXN0YXRlEgW6SAIIAUJIWkZnaXRodWIuY29tL2NpbmVrby1vcmcvY29udHJhY3RzL3YzL2dlbi9nby9jaW5la28vY29sbGVjdGlvbjtjb2xsZWN0aW9uYghlZGl0aW9uc3DpBw", [file_buf_validate_validate, file_google_protobuf_timestamp]);
+  fileDesc("CiJjaW5la28vY29sbGVjdGlvbi9jb2xsZWN0aW9uLnByb3RvEhFjaW5la28uY29sbGVjdGlvbiIUChJOb0Jvb2thYmxlU2hvd3RpbWUiFwoVU2hvd3RpbWVOb3REaXNjb3ZlcmVkIhcKFVRhcmdldERhdGVVbmF2YWlsYWJsZSISChBJZGVudGl0eU1pc21hdGNoIhEKD1Byb3ZpZGVyQmxvY2tlZCITChFQcm92aWRlclRocm90dGxlZCIRCg9DYXB0Y2hhUmVxdWlyZWQiGAoWQXV0aGVudGljYXRpb25SZXF1aXJlZCITChFVSUNvbnRyYWN0Q2hhbmdlZCIUChJCcm93c2VyU3RhcnRGYWlsZWQiGQoXUHJvdmlkZXJUcmFuc3BvcnRGYWlsZWQiFQoTUHJvdmlkZXJTZXJ2ZXJFcnJvciIPCg1JbnZhbGlkUmVzdWx0IgkKB1RpbWVvdXQitQEKDkRlZmVycmVkUmVhc29uEkUKFG5vX2Jvb2thYmxlX3Nob3d0aW1lGAEgASgLMiUuY2luZWtvLmNvbGxlY3Rpb24uTm9Cb29rYWJsZVNob3d0aW1lSAASSwoXdGFyZ2V0X2RhdGVfdW5hdmFpbGFibGUYAiABKAsyKC5jaW5la28uY29sbGVjdGlvbi5UYXJnZXREYXRlVW5hdmFpbGFibGVIAEIPCgZyZWFzb24SBbpIAggBIoECCg1XYWl0aW5nUmVhc29uEksKF3Nob3d0aW1lX25vdF9kaXNjb3ZlcmVkGAEgASgLMiguY2luZWtvLmNvbGxlY3Rpb24uU2hvd3RpbWVOb3REaXNjb3ZlcmVkSAASRQoUbm9fYm9va2FibGVfc2hvd3RpbWUYAiABKAsyJS5jaW5la28uY29sbGVjdGlvbi5Ob0Jvb2thYmxlU2hvd3RpbWVIABJLChd0YXJnZXRfZGF0ZV91bmF2YWlsYWJsZRgDIAEoCzIoLmNpbmVrby5jb2xsZWN0aW9uLlRhcmdldERhdGVVbmF2YWlsYWJsZUgAQg8KBnJlYXNvbhIFukgCCAEihQYKDUZhaWx1cmVSZWFzb24SQAoRaWRlbnRpdHlfbWlzbWF0Y2gYASABKAsyIy5jaW5la28uY29sbGVjdGlvbi5JZGVudGl0eU1pc21hdGNoSAASPgoQcHJvdmlkZXJfYmxvY2tlZBgCIAEoCzIiLmNpbmVrby5jb2xsZWN0aW9uLlByb3ZpZGVyQmxvY2tlZEgAEkIKEnByb3ZpZGVyX3Rocm90dGxlZBgDIAEoCzIkLmNpbmVrby5jb2xsZWN0aW9uLlByb3ZpZGVyVGhyb3R0bGVkSAASPgoQY2FwdGNoYV9yZXF1aXJlZBgEIAEoCzIiLmNpbmVrby5jb2xsZWN0aW9uLkNhcHRjaGFSZXF1aXJlZEgAEkwKF2F1dGhlbnRpY2F0aW9uX3JlcXVpcmVkGAUgASgLMikuY2luZWtvLmNvbGxlY3Rpb24uQXV0aGVudGljYXRpb25SZXF1aXJlZEgAEkMKE3VpX2NvbnRyYWN0X2NoYW5nZWQYBiABKAsyJC5jaW5la28uY29sbGVjdGlvbi5VSUNvbnRyYWN0Q2hhbmdlZEgAEkUKFGJyb3dzZXJfc3RhcnRfZmFpbGVkGAcgASgLMiUuY2luZWtvLmNvbGxlY3Rpb24uQnJvd3NlclN0YXJ0RmFpbGVkSAASTwoZcHJvdmlkZXJfdHJhbnNwb3J0X2ZhaWxlZBgIIAEoCzIqLmNpbmVrby5jb2xsZWN0aW9uLlByb3ZpZGVyVHJhbnNwb3J0RmFpbGVkSAASRwoVcHJvdmlkZXJfc2VydmVyX2Vycm9yGAkgASgLMiYuY2luZWtvLmNvbGxlY3Rpb24uUHJvdmlkZXJTZXJ2ZXJFcnJvckgAEjoKDmludmFsaWRfcmVzdWx0GAogASgLMiAuY2luZWtvLmNvbGxlY3Rpb24uSW52YWxpZFJlc3VsdEgAEi0KB3RpbWVvdXQYCyABKAsyGi5jaW5la28uY29sbGVjdGlvbi5UaW1lb3V0SABCDwoGcmVhc29uEgW6SAIIASIPCg1DbGllbnRSZXF1ZXN0Ig8KDUFjdGl2ZU1vbml0b3IiDwoNTGF5b3V0TWlzc2luZyIPCg1MYXlvdXRDaGFuZ2VkIhAKDkNhdGFsb2dSZWZyZXNoIhEKD09wZXJhdG9yUmVxdWVzdCKJAwoHVHJpZ2dlchI6Cg5jbGllbnRfcmVxdWVzdBgBIAEoCzIgLmNpbmVrby5jb2xsZWN0aW9uLkNsaWVudFJlcXVlc3RIABI6Cg5hY3RpdmVfbW9uaXRvchgCIAEoCzIgLmNpbmVrby5jb2xsZWN0aW9uLkFjdGl2ZU1vbml0b3JIABI6Cg5sYXlvdXRfbWlzc2luZxgDIAEoCzIgLmNpbmVrby5jb2xsZWN0aW9uLkxheW91dE1pc3NpbmdIABI6Cg5sYXlvdXRfY2hhbmdlZBgEIAEoCzIgLmNpbmVrby5jb2xsZWN0aW9uLkxheW91dENoYW5nZWRIABI8Cg9jYXRhbG9nX3JlZnJlc2gYBSABKAsyIS5jaW5la28uY29sbGVjdGlvbi5DYXRhbG9nUmVmcmVzaEgAEj4KEG9wZXJhdG9yX3JlcXVlc3QYBiABKAsyIi5jaW5la28uY29sbGVjdGlvbi5PcGVyYXRvclJlcXVlc3RIAEIQCgd0cmlnZ2VyEgW6SAIIASIGCgRJZGxlInQKBlF1ZXVlZBI1CglxdWV1ZWRfYXQYASABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wQga6SAPIAQESMwoHdHJpZ2dlchgCIAEoCzIaLmNpbmVrby5jb2xsZWN0aW9uLlRyaWdnZXJCBrpIA8gBASJnCgpDb2xsZWN0aW5nEiEKDWFzc2lnbm1lbnRfaWQYASABKAlCCrpIB8gBAXICEAESNgoKc3RhcnRlZF9hdBgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBCBrpIA8gBASJOChJXYWl0aW5nRm9yU2hvd3RpbWUSOAoGcmVhc29uGAEgASgLMiAuY2luZWtvLmNvbGxlY3Rpb24uV2FpdGluZ1JlYXNvbkIGukgDyAEBIocBCg5SZXRyeVNjaGVkdWxlZBI4CgZyZWFzb24YASABKAsyIC5jaW5la28uY29sbGVjdGlvbi5GYWlsdXJlUmVhc29uQga6SAPIAQESOwoPbmV4dF9hdHRlbXB0X2F0GAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEIGukgDyAEBIkMKB0Jsb2NrZWQSOAoGcmVhc29uGAEgASgLMiAuY2luZWtvLmNvbGxlY3Rpb24uRmFpbHVyZVJlYXNvbkIGukgDyAEBItYCCgVTdGF0ZRInCgRpZGxlGAEgASgLMhcuY2luZWtvLmNvbGxlY3Rpb24uSWRsZUgAEisKBnF1ZXVlZBgCIAEoCzIZLmNpbmVrby5jb2xsZWN0aW9uLlF1ZXVlZEgAEjMKCmNvbGxlY3RpbmcYAyABKAsyHS5jaW5la28uY29sbGVjdGlvbi5Db2xsZWN0aW5nSAASRQoUd2FpdGluZ19mb3Jfc2hvd3RpbWUYBCABKAsyJS5jaW5la28uY29sbGVjdGlvbi5XYWl0aW5nRm9yU2hvd3RpbWVIABI8Cg9yZXRyeV9zY2hlZHVsZWQYBSABKAsyIS5jaW5la28uY29sbGVjdGlvbi5SZXRyeVNjaGVkdWxlZEgAEi0KB2Jsb2NrZWQYBiABKAsyGi5jaW5la28uY29sbGVjdGlvbi5CbG9ja2VkSABCDgoFc3RhdGUSBbpIAggBQkhaRmdpdGh1Yi5jb20vY2luZWtvLW9yZy9jb250cmFjdHMvdjMvZ2VuL2dvL2NpbmVrby9jb2xsZWN0aW9uO2NvbGxlY3Rpb25iCGVkaXRpb25zcOkH", [file_buf_validate_validate, file_google_protobuf_timestamp]);
+
+/**
+ * @generated from message cineko.collection.NoBookableShowtime
+ */
+export type NoBookableShowtime = Message<"cineko.collection.NoBookableShowtime"> & {
+};
+
+/**
+ * Describes the message cineko.collection.NoBookableShowtime.
+ * Use `create(NoBookableShowtimeSchema)` to create a new message.
+ */
+export const NoBookableShowtimeSchema: GenMessage<NoBookableShowtime> = /*@__PURE__*/
+  messageDesc(file_cineko_collection_collection, 0);
 
 /**
  * @generated from message cineko.collection.ShowtimeNotDiscovered
@@ -26,7 +39,7 @@ export type ShowtimeNotDiscovered = Message<"cineko.collection.ShowtimeNotDiscov
  * Use `create(ShowtimeNotDiscoveredSchema)` to create a new message.
  */
 export const ShowtimeNotDiscoveredSchema: GenMessage<ShowtimeNotDiscovered> = /*@__PURE__*/
-  messageDesc(file_cineko_collection_collection, 0);
+  messageDesc(file_cineko_collection_collection, 1);
 
 /**
  * @generated from message cineko.collection.TargetDateUnavailable
@@ -39,7 +52,7 @@ export type TargetDateUnavailable = Message<"cineko.collection.TargetDateUnavail
  * Use `create(TargetDateUnavailableSchema)` to create a new message.
  */
 export const TargetDateUnavailableSchema: GenMessage<TargetDateUnavailable> = /*@__PURE__*/
-  messageDesc(file_cineko_collection_collection, 1);
+  messageDesc(file_cineko_collection_collection, 2);
 
 /**
  * @generated from message cineko.collection.IdentityMismatch
@@ -52,7 +65,7 @@ export type IdentityMismatch = Message<"cineko.collection.IdentityMismatch"> & {
  * Use `create(IdentityMismatchSchema)` to create a new message.
  */
 export const IdentityMismatchSchema: GenMessage<IdentityMismatch> = /*@__PURE__*/
-  messageDesc(file_cineko_collection_collection, 2);
+  messageDesc(file_cineko_collection_collection, 3);
 
 /**
  * @generated from message cineko.collection.ProviderBlocked
@@ -65,7 +78,7 @@ export type ProviderBlocked = Message<"cineko.collection.ProviderBlocked"> & {
  * Use `create(ProviderBlockedSchema)` to create a new message.
  */
 export const ProviderBlockedSchema: GenMessage<ProviderBlocked> = /*@__PURE__*/
-  messageDesc(file_cineko_collection_collection, 3);
+  messageDesc(file_cineko_collection_collection, 4);
 
 /**
  * @generated from message cineko.collection.ProviderThrottled
@@ -78,7 +91,7 @@ export type ProviderThrottled = Message<"cineko.collection.ProviderThrottled"> &
  * Use `create(ProviderThrottledSchema)` to create a new message.
  */
 export const ProviderThrottledSchema: GenMessage<ProviderThrottled> = /*@__PURE__*/
-  messageDesc(file_cineko_collection_collection, 4);
+  messageDesc(file_cineko_collection_collection, 5);
 
 /**
  * @generated from message cineko.collection.CaptchaRequired
@@ -91,7 +104,7 @@ export type CaptchaRequired = Message<"cineko.collection.CaptchaRequired"> & {
  * Use `create(CaptchaRequiredSchema)` to create a new message.
  */
 export const CaptchaRequiredSchema: GenMessage<CaptchaRequired> = /*@__PURE__*/
-  messageDesc(file_cineko_collection_collection, 5);
+  messageDesc(file_cineko_collection_collection, 6);
 
 /**
  * @generated from message cineko.collection.AuthenticationRequired
@@ -104,7 +117,7 @@ export type AuthenticationRequired = Message<"cineko.collection.AuthenticationRe
  * Use `create(AuthenticationRequiredSchema)` to create a new message.
  */
 export const AuthenticationRequiredSchema: GenMessage<AuthenticationRequired> = /*@__PURE__*/
-  messageDesc(file_cineko_collection_collection, 6);
+  messageDesc(file_cineko_collection_collection, 7);
 
 /**
  * @generated from message cineko.collection.UIContractChanged
@@ -117,7 +130,7 @@ export type UIContractChanged = Message<"cineko.collection.UIContractChanged"> &
  * Use `create(UIContractChangedSchema)` to create a new message.
  */
 export const UIContractChangedSchema: GenMessage<UIContractChanged> = /*@__PURE__*/
-  messageDesc(file_cineko_collection_collection, 7);
+  messageDesc(file_cineko_collection_collection, 8);
 
 /**
  * @generated from message cineko.collection.BrowserStartFailed
@@ -130,7 +143,7 @@ export type BrowserStartFailed = Message<"cineko.collection.BrowserStartFailed">
  * Use `create(BrowserStartFailedSchema)` to create a new message.
  */
 export const BrowserStartFailedSchema: GenMessage<BrowserStartFailed> = /*@__PURE__*/
-  messageDesc(file_cineko_collection_collection, 8);
+  messageDesc(file_cineko_collection_collection, 9);
 
 /**
  * @generated from message cineko.collection.ProviderTransportFailed
@@ -143,7 +156,7 @@ export type ProviderTransportFailed = Message<"cineko.collection.ProviderTranspo
  * Use `create(ProviderTransportFailedSchema)` to create a new message.
  */
 export const ProviderTransportFailedSchema: GenMessage<ProviderTransportFailed> = /*@__PURE__*/
-  messageDesc(file_cineko_collection_collection, 9);
+  messageDesc(file_cineko_collection_collection, 10);
 
 /**
  * @generated from message cineko.collection.ProviderServerError
@@ -156,7 +169,7 @@ export type ProviderServerError = Message<"cineko.collection.ProviderServerError
  * Use `create(ProviderServerErrorSchema)` to create a new message.
  */
 export const ProviderServerErrorSchema: GenMessage<ProviderServerError> = /*@__PURE__*/
-  messageDesc(file_cineko_collection_collection, 10);
+  messageDesc(file_cineko_collection_collection, 11);
 
 /**
  * @generated from message cineko.collection.InvalidResult
@@ -169,7 +182,7 @@ export type InvalidResult = Message<"cineko.collection.InvalidResult"> & {
  * Use `create(InvalidResultSchema)` to create a new message.
  */
 export const InvalidResultSchema: GenMessage<InvalidResult> = /*@__PURE__*/
-  messageDesc(file_cineko_collection_collection, 11);
+  messageDesc(file_cineko_collection_collection, 12);
 
 /**
  * @generated from message cineko.collection.Timeout
@@ -182,7 +195,7 @@ export type Timeout = Message<"cineko.collection.Timeout"> & {
  * Use `create(TimeoutSchema)` to create a new message.
  */
 export const TimeoutSchema: GenMessage<Timeout> = /*@__PURE__*/
-  messageDesc(file_cineko_collection_collection, 12);
+  messageDesc(file_cineko_collection_collection, 13);
 
 /**
  * @generated from message cineko.collection.DeferredReason
@@ -192,6 +205,12 @@ export type DeferredReason = Message<"cineko.collection.DeferredReason"> & {
    * @generated from oneof cineko.collection.DeferredReason.reason
    */
   reason: {
+    /**
+     * @generated from field: cineko.collection.NoBookableShowtime no_bookable_showtime = 1;
+     */
+    value: NoBookableShowtime;
+    case: "noBookableShowtime";
+  } | {
     /**
      * @generated from field: cineko.collection.TargetDateUnavailable target_date_unavailable = 2;
      */
@@ -205,7 +224,7 @@ export type DeferredReason = Message<"cineko.collection.DeferredReason"> & {
  * Use `create(DeferredReasonSchema)` to create a new message.
  */
 export const DeferredReasonSchema: GenMessage<DeferredReason> = /*@__PURE__*/
-  messageDesc(file_cineko_collection_collection, 13);
+  messageDesc(file_cineko_collection_collection, 14);
 
 /**
  * @generated from message cineko.collection.WaitingReason
@@ -222,6 +241,12 @@ export type WaitingReason = Message<"cineko.collection.WaitingReason"> & {
     case: "showtimeNotDiscovered";
   } | {
     /**
+     * @generated from field: cineko.collection.NoBookableShowtime no_bookable_showtime = 2;
+     */
+    value: NoBookableShowtime;
+    case: "noBookableShowtime";
+  } | {
+    /**
      * @generated from field: cineko.collection.TargetDateUnavailable target_date_unavailable = 3;
      */
     value: TargetDateUnavailable;
@@ -234,7 +259,7 @@ export type WaitingReason = Message<"cineko.collection.WaitingReason"> & {
  * Use `create(WaitingReasonSchema)` to create a new message.
  */
 export const WaitingReasonSchema: GenMessage<WaitingReason> = /*@__PURE__*/
-  messageDesc(file_cineko_collection_collection, 14);
+  messageDesc(file_cineko_collection_collection, 15);
 
 /**
  * @generated from message cineko.collection.FailureReason
@@ -317,7 +342,7 @@ export type FailureReason = Message<"cineko.collection.FailureReason"> & {
  * Use `create(FailureReasonSchema)` to create a new message.
  */
 export const FailureReasonSchema: GenMessage<FailureReason> = /*@__PURE__*/
-  messageDesc(file_cineko_collection_collection, 15);
+  messageDesc(file_cineko_collection_collection, 16);
 
 /**
  * @generated from message cineko.collection.ClientRequest
@@ -330,7 +355,7 @@ export type ClientRequest = Message<"cineko.collection.ClientRequest"> & {
  * Use `create(ClientRequestSchema)` to create a new message.
  */
 export const ClientRequestSchema: GenMessage<ClientRequest> = /*@__PURE__*/
-  messageDesc(file_cineko_collection_collection, 16);
+  messageDesc(file_cineko_collection_collection, 17);
 
 /**
  * @generated from message cineko.collection.ActiveMonitor
@@ -343,7 +368,7 @@ export type ActiveMonitor = Message<"cineko.collection.ActiveMonitor"> & {
  * Use `create(ActiveMonitorSchema)` to create a new message.
  */
 export const ActiveMonitorSchema: GenMessage<ActiveMonitor> = /*@__PURE__*/
-  messageDesc(file_cineko_collection_collection, 17);
+  messageDesc(file_cineko_collection_collection, 18);
 
 /**
  * @generated from message cineko.collection.LayoutMissing
@@ -356,7 +381,7 @@ export type LayoutMissing = Message<"cineko.collection.LayoutMissing"> & {
  * Use `create(LayoutMissingSchema)` to create a new message.
  */
 export const LayoutMissingSchema: GenMessage<LayoutMissing> = /*@__PURE__*/
-  messageDesc(file_cineko_collection_collection, 18);
+  messageDesc(file_cineko_collection_collection, 19);
 
 /**
  * @generated from message cineko.collection.LayoutChanged
@@ -369,7 +394,7 @@ export type LayoutChanged = Message<"cineko.collection.LayoutChanged"> & {
  * Use `create(LayoutChangedSchema)` to create a new message.
  */
 export const LayoutChangedSchema: GenMessage<LayoutChanged> = /*@__PURE__*/
-  messageDesc(file_cineko_collection_collection, 19);
+  messageDesc(file_cineko_collection_collection, 20);
 
 /**
  * @generated from message cineko.collection.CatalogRefresh
@@ -382,7 +407,7 @@ export type CatalogRefresh = Message<"cineko.collection.CatalogRefresh"> & {
  * Use `create(CatalogRefreshSchema)` to create a new message.
  */
 export const CatalogRefreshSchema: GenMessage<CatalogRefresh> = /*@__PURE__*/
-  messageDesc(file_cineko_collection_collection, 20);
+  messageDesc(file_cineko_collection_collection, 21);
 
 /**
  * @generated from message cineko.collection.OperatorRequest
@@ -395,7 +420,7 @@ export type OperatorRequest = Message<"cineko.collection.OperatorRequest"> & {
  * Use `create(OperatorRequestSchema)` to create a new message.
  */
 export const OperatorRequestSchema: GenMessage<OperatorRequest> = /*@__PURE__*/
-  messageDesc(file_cineko_collection_collection, 21);
+  messageDesc(file_cineko_collection_collection, 22);
 
 /**
  * @generated from message cineko.collection.Trigger
@@ -448,7 +473,7 @@ export type Trigger = Message<"cineko.collection.Trigger"> & {
  * Use `create(TriggerSchema)` to create a new message.
  */
 export const TriggerSchema: GenMessage<Trigger> = /*@__PURE__*/
-  messageDesc(file_cineko_collection_collection, 22);
+  messageDesc(file_cineko_collection_collection, 23);
 
 /**
  * @generated from message cineko.collection.Idle
@@ -461,7 +486,7 @@ export type Idle = Message<"cineko.collection.Idle"> & {
  * Use `create(IdleSchema)` to create a new message.
  */
 export const IdleSchema: GenMessage<Idle> = /*@__PURE__*/
-  messageDesc(file_cineko_collection_collection, 23);
+  messageDesc(file_cineko_collection_collection, 24);
 
 /**
  * @generated from message cineko.collection.Queued
@@ -483,26 +508,21 @@ export type Queued = Message<"cineko.collection.Queued"> & {
  * Use `create(QueuedSchema)` to create a new message.
  */
 export const QueuedSchema: GenMessage<Queued> = /*@__PURE__*/
-  messageDesc(file_cineko_collection_collection, 24);
+  messageDesc(file_cineko_collection_collection, 25);
 
 /**
  * @generated from message cineko.collection.Collecting
  */
 export type Collecting = Message<"cineko.collection.Collecting"> & {
   /**
-   * @generated from field: string claim_id = 1;
+   * @generated from field: string assignment_id = 1;
    */
-  claimId: string;
+  assignmentId: string;
 
   /**
    * @generated from field: google.protobuf.Timestamp started_at = 2;
    */
   startedAt?: Timestamp | undefined;
-
-  /**
-   * @generated from field: google.protobuf.Timestamp expires_at = 3;
-   */
-  expiresAt?: Timestamp | undefined;
 };
 
 /**
@@ -510,7 +530,7 @@ export type Collecting = Message<"cineko.collection.Collecting"> & {
  * Use `create(CollectingSchema)` to create a new message.
  */
 export const CollectingSchema: GenMessage<Collecting> = /*@__PURE__*/
-  messageDesc(file_cineko_collection_collection, 25);
+  messageDesc(file_cineko_collection_collection, 26);
 
 /**
  * @generated from message cineko.collection.WaitingForShowtime
@@ -527,7 +547,7 @@ export type WaitingForShowtime = Message<"cineko.collection.WaitingForShowtime">
  * Use `create(WaitingForShowtimeSchema)` to create a new message.
  */
 export const WaitingForShowtimeSchema: GenMessage<WaitingForShowtime> = /*@__PURE__*/
-  messageDesc(file_cineko_collection_collection, 26);
+  messageDesc(file_cineko_collection_collection, 27);
 
 /**
  * @generated from message cineko.collection.RetryScheduled
@@ -549,7 +569,7 @@ export type RetryScheduled = Message<"cineko.collection.RetryScheduled"> & {
  * Use `create(RetryScheduledSchema)` to create a new message.
  */
 export const RetryScheduledSchema: GenMessage<RetryScheduled> = /*@__PURE__*/
-  messageDesc(file_cineko_collection_collection, 27);
+  messageDesc(file_cineko_collection_collection, 28);
 
 /**
  * @generated from message cineko.collection.Blocked
@@ -566,7 +586,7 @@ export type Blocked = Message<"cineko.collection.Blocked"> & {
  * Use `create(BlockedSchema)` to create a new message.
  */
 export const BlockedSchema: GenMessage<Blocked> = /*@__PURE__*/
-  messageDesc(file_cineko_collection_collection, 28);
+  messageDesc(file_cineko_collection_collection, 29);
 
 /**
  * @generated from message cineko.collection.State
@@ -619,4 +639,4 @@ export type State = Message<"cineko.collection.State"> & {
  * Use `create(StateSchema)` to create a new message.
  */
 export const StateSchema: GenMessage<State> = /*@__PURE__*/
-  messageDesc(file_cineko_collection_collection, 29);
+  messageDesc(file_cineko_collection_collection, 30);

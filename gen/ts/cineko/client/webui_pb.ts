@@ -11,6 +11,7 @@ import type { Monitor, Preset, Reservation, Resource, ResourceKind } from "./cli
 import { file_cineko_client_client } from "./client_pb";
 import type { MutationIdentity } from "../common/common_pb";
 import { file_cineko_common_common } from "../common/common_pb";
+import type { Resolution } from "../seatmap/seatmap_pb";
 import { file_cineko_seatmap_seatmap } from "../seatmap/seatmap_pb";
 import type { Timestamp } from "@bufbuild/protobuf/wkt";
 import { file_google_protobuf_timestamp } from "@bufbuild/protobuf/wkt";
@@ -20,7 +21,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file cineko/client/webui.proto.
  */
 export const file_cineko_client_webui: GenFile = /*@__PURE__*/
-  fileDesc("ChljaW5la28vY2xpZW50L3dlYnVpLnByb3RvEg1jaW5la28uY2xpZW50IowBCgpXZWJVSVN0YXRlEhsKB3VzZXJfaWQYASABKAlCCrpIB8gBAXICEAESNQoHY2F0YWxvZxgCIAEoCzIcLmNpbmVrby5jYXRhbG9nLkNhdGFsb2dJbmRleEIGukgDyAEBEioKCXJlc291cmNlcxgDIAMoCzIXLmNpbmVrby5jbGllbnQuUmVzb3VyY2UiPwoRV2ViVUlSZXNvdXJjZUxpc3QSKgoJcmVzb3VyY2VzGAEgAygLMhcuY2luZWtvLmNsaWVudC5SZXNvdXJjZSISChBXZWJVSVRhc2tSdW5uaW5nIhQKEldlYlVJVGFza0NvbXBsZXRlZCIRCg9XZWJVSVRhc2tGYWlsZWQiEgoQV2ViVUlUYXNrU3RvcHBlZCLTAgoOV2ViVUlUYXNrU3RhdGUSFgoCaWQYASABKAlCCrpIB8gBAXICEAESMgoHcnVubmluZxgCIAEoCzIfLmNpbmVrby5jbGllbnQuV2ViVUlUYXNrUnVubmluZ0gAEjYKCWNvbXBsZXRlZBgDIAEoCzIhLmNpbmVrby5jbGllbnQuV2ViVUlUYXNrQ29tcGxldGVkSAASMAoGZmFpbGVkGAQgASgLMh4uY2luZWtvLmNsaWVudC5XZWJVSVRhc2tGYWlsZWRIABIyCgdzdG9wcGVkGAUgASgLMh8uY2luZWtvLmNsaWVudC5XZWJVSVRhc2tTdG9wcGVkSAASDwoHbWVzc2FnZRgGIAEoCRI2Cgp1cGRhdGVkX2F0GAcgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEIGukgDyAEBQg4KBXN0YXRlEgW6SAIIASJHChdXZWJVSVRhc2tTdGF0dXNSZXNwb25zZRIsCgV0YXNrcxgBIAMoCzIdLmNpbmVrby5jbGllbnQuV2ViVUlUYXNrU3RhdGUiFgoUV2ViVUlBY2NvdW50Q2hlY2tpbmciGwoZV2ViVUlBY2NvdW50QXV0aGVudGljYXRlZCIdChtXZWJVSUFjY291bnRVbmF1dGhlbnRpY2F0ZWQiEwoRV2ViVUlBY2NvdW50RXJyb3IiiQMKEVdlYlVJQWNjb3VudFN0YXRlEjcKCGNoZWNraW5nGAEgASgLMiMuY2luZWtvLmNsaWVudC5XZWJVSUFjY291bnRDaGVja2luZ0gAEkEKDWF1dGhlbnRpY2F0ZWQYAiABKAsyKC5jaW5la28uY2xpZW50LldlYlVJQWNjb3VudEF1dGhlbnRpY2F0ZWRIABJFCg91bmF1dGhlbnRpY2F0ZWQYAyABKAsyKi5jaW5la28uY2xpZW50LldlYlVJQWNjb3VudFVuYXV0aGVudGljYXRlZEgAEjEKBWVycm9yGAQgASgLMiAuY2luZWtvLmNsaWVudC5XZWJVSUFjY291bnRFcnJvckgAEhkKEWNyZWRlbnRpYWxzX3NhdmVkGAUgASgIEhIKCmFjY291bnRfaWQYBiABKAkSDwoHbWVzc2FnZRgHIAEoCRIuCgpjaGVja2VkX2F0GAggASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEIOCgVzdGF0ZRIFukgCCAEiSgoSQWNjb3VudENyZWRlbnRpYWxzEhYKAmlkGAEgASgJQgq6SAfIAQFyAhABEhwKCHBhc3N3b3JkGAIgASgJQgq6SAfIAQFyAhABIhQKEldlYlVJQWN0aW9uU3RhcnRlZCIWChRXZWJVSUFjdGlvbkNvbXBsZXRlZCKUAQoRV2ViVUlBY3Rpb25TdGF0dXMSNAoHc3RhcnRlZBgBIAEoCzIhLmNpbmVrby5jbGllbnQuV2ViVUlBY3Rpb25TdGFydGVkSAASOAoJY29tcGxldGVkGAIgASgLMiMuY2luZWtvLmNsaWVudC5XZWJVSUFjdGlvbkNvbXBsZXRlZEgAQg8KBnJlc3VsdBIFukgCCAEiuQEKFVdlYlVJUmVzb3VyY2VNdXRhdGlvbhI5CghtdXRhdGlvbhgBIAEoCzIfLmNpbmVrby5jb21tb24uTXV0YXRpb25JZGVudGl0eUIGukgDyAEBEicKBnByZXNldBgCIAEoCzIVLmNpbmVrby5jbGllbnQuUHJlc2V0SAASKQoHbW9uaXRvchgDIAEoCzIWLmNpbmVrby5jbGllbnQuTW9uaXRvckgAQhEKCHJlc291cmNlEgW6SAIIASK6AQoVV2ViVUlSZXNvdXJjZURlbGV0aW9uEjkKCG11dGF0aW9uGAEgASgLMh8uY2luZWtvLmNvbW1vbi5NdXRhdGlvbklkZW50aXR5Qga6SAPIAQESGwoHdXNlcl9pZBgCIAEoCUIKukgHyAEBcgIQARIxCgRraW5kGAMgASgLMhsuY2luZWtvLmNsaWVudC5SZXNvdXJjZUtpbmRCBrpIA8gBARIWCgJpZBgEIAEoCUIKukgHyAEBcgIQASJcChhXZWJVSU1vbml0b3JSZXRyeVJlcXVlc3QSLwoHbW9uaXRvchgBIAEoCzIWLmNpbmVrby5jbGllbnQuTW9uaXRvckIGukgDyAEBEg8KB2hlYWRmdWwYAiABKAgifwojV2ViVUlSZXNlcnZhdGlvbkNhbmNlbGxhdGlvblJlcXVlc3QSNwoLcmVzZXJ2YXRpb24YASABKAsyGi5jaW5la28uY2xpZW50LlJlc2VydmF0aW9uQga6SAPIAQESDgoGY29tbWl0GAIgASgIEg8KB2hlYWRmdWwYAyABKAgibAoXV2ViVUlDYW5jZWxsYXRpb25SZXN1bHQSIgoOcmVzZXJ2YXRpb25faWQYASABKAlCCrpIB8gBAXICEAESFgoOYm9va2luZ19udW1iZXIYAiABKAkSFQoNcmVmdW5kX2Ftb3VudBgDIAEoCSI3ChhXZWJVSUFwcEV2ZW50VXNlclJlcXVlc3QSGwoHdXNlcl9pZBgBIAEoCUIKukgHyAEBcgIQAUJAWj5naXRodWIuY29tL2NpbmVrby1vcmcvY29udHJhY3RzL3YzL2dlbi9nby9jaW5la28vY2xpZW50O2NsaWVudGIIZWRpdGlvbnNw6Qc", [file_buf_validate_validate, file_cineko_catalog_catalog, file_cineko_client_client, file_cineko_common_common, file_cineko_seatmap_seatmap, file_google_protobuf_timestamp]);
+  fileDesc("ChljaW5la28vY2xpZW50L3dlYnVpLnByb3RvEg1jaW5la28uY2xpZW50IowBCgpXZWJVSVN0YXRlEhsKB3VzZXJfaWQYASABKAlCCrpIB8gBAXICEAESNQoHY2F0YWxvZxgCIAEoCzIcLmNpbmVrby5jYXRhbG9nLkNhdGFsb2dJbmRleEIGukgDyAEBEioKCXJlc291cmNlcxgDIAMoCzIXLmNpbmVrby5jbGllbnQuUmVzb3VyY2UiPwoRV2ViVUlSZXNvdXJjZUxpc3QSKgoJcmVzb3VyY2VzGAEgAygLMhcuY2luZWtvLmNsaWVudC5SZXNvdXJjZSJOChRXZWJVSVNlYXRNYXBSZXNwb25zZRI2CgpyZXNvbHV0aW9uGAEgASgLMhouY2luZWtvLnNlYXRtYXAuUmVzb2x1dGlvbkIGukgDyAEBIhIKEFdlYlVJVGFza1J1bm5pbmciFAoSV2ViVUlUYXNrQ29tcGxldGVkIhEKD1dlYlVJVGFza0ZhaWxlZCISChBXZWJVSVRhc2tTdG9wcGVkItMCCg5XZWJVSVRhc2tTdGF0ZRIWCgJpZBgBIAEoCUIKukgHyAEBcgIQARIyCgdydW5uaW5nGAIgASgLMh8uY2luZWtvLmNsaWVudC5XZWJVSVRhc2tSdW5uaW5nSAASNgoJY29tcGxldGVkGAMgASgLMiEuY2luZWtvLmNsaWVudC5XZWJVSVRhc2tDb21wbGV0ZWRIABIwCgZmYWlsZWQYBCABKAsyHi5jaW5la28uY2xpZW50LldlYlVJVGFza0ZhaWxlZEgAEjIKB3N0b3BwZWQYBSABKAsyHy5jaW5la28uY2xpZW50LldlYlVJVGFza1N0b3BwZWRIABIPCgdtZXNzYWdlGAYgASgJEjYKCnVwZGF0ZWRfYXQYByABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wQga6SAPIAQFCDgoFc3RhdGUSBbpIAggBIkcKF1dlYlVJVGFza1N0YXR1c1Jlc3BvbnNlEiwKBXRhc2tzGAEgAygLMh0uY2luZWtvLmNsaWVudC5XZWJVSVRhc2tTdGF0ZSIWChRXZWJVSUFjY291bnRDaGVja2luZyIbChlXZWJVSUFjY291bnRBdXRoZW50aWNhdGVkIh0KG1dlYlVJQWNjb3VudFVuYXV0aGVudGljYXRlZCITChFXZWJVSUFjY291bnRFcnJvciLaAgoRV2ViVUlBY2NvdW50U3RhdGUSNwoIY2hlY2tpbmcYASABKAsyIy5jaW5la28uY2xpZW50LldlYlVJQWNjb3VudENoZWNraW5nSAASQQoNYXV0aGVudGljYXRlZBgCIAEoCzIoLmNpbmVrby5jbGllbnQuV2ViVUlBY2NvdW50QXV0aGVudGljYXRlZEgAEkUKD3VuYXV0aGVudGljYXRlZBgDIAEoCzIqLmNpbmVrby5jbGllbnQuV2ViVUlBY2NvdW50VW5hdXRoZW50aWNhdGVkSAASMQoFZXJyb3IYBCABKAsyIC5jaW5la28uY2xpZW50LldlYlVJQWNjb3VudEVycm9ySAASDwoHbWVzc2FnZRgHIAEoCRIuCgpjaGVja2VkX2F0GAggASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEIOCgVzdGF0ZRIFukgCCAEiFAoSV2ViVUlBY3Rpb25TdGFydGVkIhYKFFdlYlVJQWN0aW9uQ29tcGxldGVkIpQBChFXZWJVSUFjdGlvblN0YXR1cxI0CgdzdGFydGVkGAEgASgLMiEuY2luZWtvLmNsaWVudC5XZWJVSUFjdGlvblN0YXJ0ZWRIABI4Cgljb21wbGV0ZWQYAiABKAsyIy5jaW5la28uY2xpZW50LldlYlVJQWN0aW9uQ29tcGxldGVkSABCDwoGcmVzdWx0EgW6SAIIASK5AQoVV2ViVUlSZXNvdXJjZU11dGF0aW9uEjkKCG11dGF0aW9uGAEgASgLMh8uY2luZWtvLmNvbW1vbi5NdXRhdGlvbklkZW50aXR5Qga6SAPIAQESJwoGcHJlc2V0GAIgASgLMhUuY2luZWtvLmNsaWVudC5QcmVzZXRIABIpCgdtb25pdG9yGAMgASgLMhYuY2luZWtvLmNsaWVudC5Nb25pdG9ySABCEQoIcmVzb3VyY2USBbpIAggBIroBChVXZWJVSVJlc291cmNlRGVsZXRpb24SOQoIbXV0YXRpb24YASABKAsyHy5jaW5la28uY29tbW9uLk11dGF0aW9uSWRlbnRpdHlCBrpIA8gBARIbCgd1c2VyX2lkGAIgASgJQgq6SAfIAQFyAhABEjEKBGtpbmQYAyABKAsyGy5jaW5la28uY2xpZW50LlJlc291cmNlS2luZEIGukgDyAEBEhYKAmlkGAQgASgJQgq6SAfIAQFyAhABIlwKGFdlYlVJTW9uaXRvclJldHJ5UmVxdWVzdBIvCgdtb25pdG9yGAEgASgLMhYuY2luZWtvLmNsaWVudC5Nb25pdG9yQga6SAPIAQESDwoHaGVhZGZ1bBgCIAEoCCJ/CiNXZWJVSVJlc2VydmF0aW9uQ2FuY2VsbGF0aW9uUmVxdWVzdBI3CgtyZXNlcnZhdGlvbhgBIAEoCzIaLmNpbmVrby5jbGllbnQuUmVzZXJ2YXRpb25CBrpIA8gBARIOCgZjb21taXQYAiABKAgSDwoHaGVhZGZ1bBgDIAEoCCJsChdXZWJVSUNhbmNlbGxhdGlvblJlc3VsdBIiCg5yZXNlcnZhdGlvbl9pZBgBIAEoCUIKukgHyAEBcgIQARIWCg5ib29raW5nX251bWJlchgCIAEoCRIVCg1yZWZ1bmRfYW1vdW50GAMgASgJIjcKGFdlYlVJQXBwRXZlbnRVc2VyUmVxdWVzdBIbCgd1c2VyX2lkGAEgASgJQgq6SAfIAQFyAhABQkBaPmdpdGh1Yi5jb20vY2luZWtvLW9yZy9jb250cmFjdHMvdjMvZ2VuL2dvL2NpbmVrby9jbGllbnQ7Y2xpZW50YghlZGl0aW9uc3DpBw", [file_buf_validate_validate, file_cineko_catalog_catalog, file_cineko_client_client, file_cineko_common_common, file_cineko_seatmap_seatmap, file_google_protobuf_timestamp]);
 
 /**
  * WebUIState is the complete local application snapshot rendered by the
@@ -71,6 +72,23 @@ export const WebUIResourceListSchema: GenMessage<WebUIResourceList> = /*@__PURE_
   messageDesc(file_cineko_client_webui, 1);
 
 /**
+ * @generated from message cineko.client.WebUISeatMapResponse
+ */
+export type WebUISeatMapResponse = Message<"cineko.client.WebUISeatMapResponse"> & {
+  /**
+   * @generated from field: cineko.seatmap.Resolution resolution = 1;
+   */
+  resolution?: Resolution | undefined;
+};
+
+/**
+ * Describes the message cineko.client.WebUISeatMapResponse.
+ * Use `create(WebUISeatMapResponseSchema)` to create a new message.
+ */
+export const WebUISeatMapResponseSchema: GenMessage<WebUISeatMapResponse> = /*@__PURE__*/
+  messageDesc(file_cineko_client_webui, 2);
+
+/**
  * @generated from message cineko.client.WebUITaskRunning
  */
 export type WebUITaskRunning = Message<"cineko.client.WebUITaskRunning"> & {
@@ -81,7 +99,7 @@ export type WebUITaskRunning = Message<"cineko.client.WebUITaskRunning"> & {
  * Use `create(WebUITaskRunningSchema)` to create a new message.
  */
 export const WebUITaskRunningSchema: GenMessage<WebUITaskRunning> = /*@__PURE__*/
-  messageDesc(file_cineko_client_webui, 2);
+  messageDesc(file_cineko_client_webui, 3);
 
 /**
  * @generated from message cineko.client.WebUITaskCompleted
@@ -94,7 +112,7 @@ export type WebUITaskCompleted = Message<"cineko.client.WebUITaskCompleted"> & {
  * Use `create(WebUITaskCompletedSchema)` to create a new message.
  */
 export const WebUITaskCompletedSchema: GenMessage<WebUITaskCompleted> = /*@__PURE__*/
-  messageDesc(file_cineko_client_webui, 3);
+  messageDesc(file_cineko_client_webui, 4);
 
 /**
  * @generated from message cineko.client.WebUITaskFailed
@@ -107,7 +125,7 @@ export type WebUITaskFailed = Message<"cineko.client.WebUITaskFailed"> & {
  * Use `create(WebUITaskFailedSchema)` to create a new message.
  */
 export const WebUITaskFailedSchema: GenMessage<WebUITaskFailed> = /*@__PURE__*/
-  messageDesc(file_cineko_client_webui, 4);
+  messageDesc(file_cineko_client_webui, 5);
 
 /**
  * @generated from message cineko.client.WebUITaskStopped
@@ -120,7 +138,7 @@ export type WebUITaskStopped = Message<"cineko.client.WebUITaskStopped"> & {
  * Use `create(WebUITaskStoppedSchema)` to create a new message.
  */
 export const WebUITaskStoppedSchema: GenMessage<WebUITaskStopped> = /*@__PURE__*/
-  messageDesc(file_cineko_client_webui, 5);
+  messageDesc(file_cineko_client_webui, 6);
 
 /**
  * @generated from message cineko.client.WebUITaskState
@@ -176,7 +194,7 @@ export type WebUITaskState = Message<"cineko.client.WebUITaskState"> & {
  * Use `create(WebUITaskStateSchema)` to create a new message.
  */
 export const WebUITaskStateSchema: GenMessage<WebUITaskState> = /*@__PURE__*/
-  messageDesc(file_cineko_client_webui, 6);
+  messageDesc(file_cineko_client_webui, 7);
 
 /**
  * @generated from message cineko.client.WebUITaskStatusResponse
@@ -193,7 +211,7 @@ export type WebUITaskStatusResponse = Message<"cineko.client.WebUITaskStatusResp
  * Use `create(WebUITaskStatusResponseSchema)` to create a new message.
  */
 export const WebUITaskStatusResponseSchema: GenMessage<WebUITaskStatusResponse> = /*@__PURE__*/
-  messageDesc(file_cineko_client_webui, 7);
+  messageDesc(file_cineko_client_webui, 8);
 
 /**
  * @generated from message cineko.client.WebUIAccountChecking
@@ -206,7 +224,7 @@ export type WebUIAccountChecking = Message<"cineko.client.WebUIAccountChecking">
  * Use `create(WebUIAccountCheckingSchema)` to create a new message.
  */
 export const WebUIAccountCheckingSchema: GenMessage<WebUIAccountChecking> = /*@__PURE__*/
-  messageDesc(file_cineko_client_webui, 8);
+  messageDesc(file_cineko_client_webui, 9);
 
 /**
  * @generated from message cineko.client.WebUIAccountAuthenticated
@@ -219,7 +237,7 @@ export type WebUIAccountAuthenticated = Message<"cineko.client.WebUIAccountAuthe
  * Use `create(WebUIAccountAuthenticatedSchema)` to create a new message.
  */
 export const WebUIAccountAuthenticatedSchema: GenMessage<WebUIAccountAuthenticated> = /*@__PURE__*/
-  messageDesc(file_cineko_client_webui, 9);
+  messageDesc(file_cineko_client_webui, 10);
 
 /**
  * @generated from message cineko.client.WebUIAccountUnauthenticated
@@ -232,7 +250,7 @@ export type WebUIAccountUnauthenticated = Message<"cineko.client.WebUIAccountUna
  * Use `create(WebUIAccountUnauthenticatedSchema)` to create a new message.
  */
 export const WebUIAccountUnauthenticatedSchema: GenMessage<WebUIAccountUnauthenticated> = /*@__PURE__*/
-  messageDesc(file_cineko_client_webui, 10);
+  messageDesc(file_cineko_client_webui, 11);
 
 /**
  * @generated from message cineko.client.WebUIAccountError
@@ -245,7 +263,7 @@ export type WebUIAccountError = Message<"cineko.client.WebUIAccountError"> & {
  * Use `create(WebUIAccountErrorSchema)` to create a new message.
  */
 export const WebUIAccountErrorSchema: GenMessage<WebUIAccountError> = /*@__PURE__*/
-  messageDesc(file_cineko_client_webui, 11);
+  messageDesc(file_cineko_client_webui, 12);
 
 /**
  * @generated from message cineko.client.WebUIAccountState
@@ -281,16 +299,6 @@ export type WebUIAccountState = Message<"cineko.client.WebUIAccountState"> & {
   } | { case: undefined; value?: undefined };
 
   /**
-   * @generated from field: bool credentials_saved = 5;
-   */
-  credentialsSaved: boolean;
-
-  /**
-   * @generated from field: string account_id = 6;
-   */
-  accountId: string;
-
-  /**
    * @generated from field: string message = 7;
    */
   message: string;
@@ -306,31 +314,6 @@ export type WebUIAccountState = Message<"cineko.client.WebUIAccountState"> & {
  * Use `create(WebUIAccountStateSchema)` to create a new message.
  */
 export const WebUIAccountStateSchema: GenMessage<WebUIAccountState> = /*@__PURE__*/
-  messageDesc(file_cineko_client_webui, 12);
-
-/**
- * AccountCredentials is accepted only by the local credential-vault
- * endpoint. It is never a Resource and must not be persisted in Central.
- *
- * @generated from message cineko.client.AccountCredentials
- */
-export type AccountCredentials = Message<"cineko.client.AccountCredentials"> & {
-  /**
-   * @generated from field: string id = 1;
-   */
-  id: string;
-
-  /**
-   * @generated from field: string password = 2;
-   */
-  password: string;
-};
-
-/**
- * Describes the message cineko.client.AccountCredentials.
- * Use `create(AccountCredentialsSchema)` to create a new message.
- */
-export const AccountCredentialsSchema: GenMessage<AccountCredentials> = /*@__PURE__*/
   messageDesc(file_cineko_client_webui, 13);
 
 /**

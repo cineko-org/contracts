@@ -22,8 +22,7 @@ message ClientRelease {
   string minimum_browser_revision = 6;
   string playwright_version = 7;
   Artifact artifact = 8;
-  map<string, string> probe_bootstrap_public_keys = 9;
-  google.protobuf.Timestamp published_at = 10;
+  google.protobuf.Timestamp published_at = 9;
 }
 
 message BrowserRelease {
@@ -54,15 +53,6 @@ message LauncherRelease {
   google.protobuf.Timestamp published_at = 6;
 }
 
-message ProbeRelease {
-  string channel = 1;
-  string version = 2;
-  string browser_revision = 3;
-  string image = 4;
-  string image_digest = 5;
-  google.protobuf.Timestamp published_at = 6;
-}
-
 message RuntimeRelease {
   ClientRelease client = 1;
   BrowserRelease browser = 2;
@@ -81,15 +71,10 @@ message PlaywrightReleaseSet {
 message LauncherReleaseSet {
   repeated LauncherRelease releases = 1;
 }
-message ProbeReleaseSet {
-  repeated ProbeRelease releases = 1;
-}
-
 message Registry {
   int64 generation = 1;
   ClientReleaseSet clients = 2;
   BrowserReleaseSet browsers = 3;
   PlaywrightReleaseSet playwright = 4;
   LauncherReleaseSet launchers = 5;
-  ProbeReleaseSet probes = 6;
 }

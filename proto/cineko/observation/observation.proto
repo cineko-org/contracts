@@ -6,12 +6,15 @@ import "buf/validate/validate.proto";
 import "cineko/catalog/catalog.proto";
 import "cineko/collection/collection.proto";
 import "cineko/common/common.proto";
+import "cineko/seatmap/seatmap.proto";
 import "google/protobuf/timestamp.proto";
 
 option go_package = "github.com/cineko-org/contracts/v3/gen/go/cineko/observation;observation";
 
 message ScheduleCapture {}
 message CatalogCapture {}
+message SeatMapCapture {}
+message SeatAvailabilityCapture {}
 
 message Capability {
   oneof capability {
@@ -19,20 +22,18 @@ message Capability {
 
     ScheduleCapture schedule_capture = 1;
     CatalogCapture catalog_capture = 2;
+    SeatMapCapture seat_map_capture = 3;
+    SeatAvailabilityCapture seat_availability_capture = 4;
   }
 }
 
 message ScheduleTask {
   cineko.catalog.Theater theater = 1 [(buf.validate.field).required = true];
-  repeated cineko.common.LocalDate target_dates = 2 [
-    (buf.validate.field).repeated.min_items = 1,
-    (buf.validate.field).repeated.max_items = 14
-  ];
-  string locale = 3 [
+  string locale = 2 [
     (buf.validate.field).required = true,
     (buf.validate.field).string.min_len = 1
   ];
-  string time_zone = 4 [
+  string time_zone = 3 [
     (buf.validate.field).required = true,
     (buf.validate.field).string.min_len = 1
   ];
@@ -51,39 +52,47 @@ message CatalogTask {
     (buf.validate.field).required = true,
     (buf.validate.field).string.min_len = 1
   ];
+  // The local Client supplies movies whose poster bytes are already cached.
+  // Its embedded Probe aborts those image requests before they reach the
+  // provider CDN.
+  repeated string cached_poster_movie_ids = 4 [
+    (buf.validate.field).repeated.unique = true,
+    (buf.validate.field).repeated.max_items = 256,
+    (buf.validate.field).repeated.items.string.min_len = 1
+  ];
 }
 
 message SeatMapTask {
   option (buf.validate.message).cel = {
-    id: "seat_map_task_exact_provider_identity"
-    message: "theater, auditorium, and showtime must have the same provider theater and auditorium identity"
-    expression:
-      "has(this.theater.identity.cgv) && has(this.auditorium.identity.cgv) && has(this.showtime.identity.cgv) && "
-      "this.theater.identity.cgv.site_no == this.auditorium.identity.cgv.site_no && "
-      "this.theater.identity.cgv.site_no == this.showtime.identity.cgv.site_no && "
-      "this.auditorium.identity.cgv.screen_no == this.showtime.identity.cgv.screen_no && "
-      "this.showtime.provider_id == this.theater.provider_id && "
-      "this.auditorium.theater_id == this.theater.id && this.showtime.theater_id == this.theater.id && "
-      "(!has(this.showtime.auditorium) || "
-      "(this.showtime.auditorium.id == this.auditorium.id && "
-      "this.showtime.auditorium.theater_id == this.theater.id && "
-      "this.showtime.auditorium.identity == this.auditorium.identity))"
+    id: "seat_map_task_theater_auditorium"
+    message: "seat-map auditorium must belong to the target theater"
+    expression: "this.theater.id == this.auditorium.theater_id"
   };
 
   cineko.catalog.Theater theater = 1 [(buf.validate.field).required = true];
   cineko.catalog.Auditorium auditorium = 2 [(buf.validate.field).required = true];
-  cineko.catalog.Showtime showtime = 3 [(buf.validate.field).required = true];
-  string locale = 4 [
+  string locale = 3 [
     (buf.validate.field).required = true,
     (buf.validate.field).string.min_len = 1
   ];
-  string time_zone = 5 [
+  string time_zone = 4 [
     (buf.validate.field).required = true,
     (buf.validate.field).string.min_len = 1
   ];
 }
 
 message SeatAvailabilityTask {
+  option (buf.validate.message).cel = {
+    id: "seat_availability_task_theater_auditorium"
+    message: "seat-availability auditorium must belong to the target theater"
+    expression: "this.theater.id == this.auditorium.theater_id"
+  };
+  option (buf.validate.message).cel = {
+    id: "seat_availability_task_showtime_target"
+    message: "seat-availability showtime must belong to the target theater and auditorium"
+    expression: "this.showtime.theater_id == this.theater.id && this.showtime.identity.cgv.site_no == this.auditorium.identity.cgv.site_no && this.showtime.identity.cgv.screen_no == this.auditorium.identity.cgv.screen_no"
+  };
+
   cineko.catalog.Theater theater = 1 [(buf.validate.field).required = true];
   cineko.catalog.Auditorium auditorium = 2 [(buf.validate.field).required = true];
   cineko.catalog.Showtime showtime = 3 [(buf.validate.field).required = true];
@@ -104,6 +113,8 @@ message AssignmentTask {
 
     ScheduleTask schedule = 2;
     CatalogTask catalog = 3;
+    SeatMapTask seat_map = 4;
+    SeatAvailabilityTask seat_availability = 5;
   }
 }
 
@@ -125,6 +136,8 @@ message Completed {
 
     ScheduleCaptures schedule = 1;
     cineko.catalog.CatalogSnapshot catalog = 2;
+    cineko.seatmap.Snapshot seat_map = 3;
+    cineko.seatmap.LiveSeatObservation live_seat = 4;
   }
 }
 

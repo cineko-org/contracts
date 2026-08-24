@@ -86,10 +86,9 @@ message Preset {
   string name = 3;
   string theater_id = 4;
   string auditorium_id = 5;
-  int32 seat_count = 6;
-  SeatPreference seat_preference = 7;
-  google.protobuf.Timestamp created_at = 8;
-  google.protobuf.Timestamp updated_at = 9;
+  SeatPreference seat_preference = 6;
+  google.protobuf.Timestamp created_at = 7;
+  google.protobuf.Timestamp updated_at = 8;
 }
 
 message MonitorPending {}
@@ -100,7 +99,9 @@ message MonitorBooked {}
 message MonitorFailed {
   string reason = 1;
 }
-message MonitorStopped {}
+message MonitorStopped {
+  string reason = 1;
+}
 
 message MonitorState {
   oneof state {
@@ -122,22 +123,23 @@ message Monitor {
   string preset_id = 3;
   string movie_id = 4;
   string movie_title = 5;
-  repeated cineko.common.LocalDate target_dates = 6 [(buf.validate.field).repeated.max_items = 14];
-  repeated int32 target_weekdays = 7 [
+  repeated int32 target_weekdays = 6 [
     (buf.validate.field).repeated.max_items = 7,
     (buf.validate.field).repeated.unique = true
   ];
-  int32 search_horizon_days = 8 [(buf.validate.field).int32 = {
+  cineko.common.LocalTime earliest_time = 7;
+  cineko.common.LocalTime latest_time = 8;
+  MonitorState state = 9;
+  google.protobuf.Timestamp last_checked_at = 10;
+  string reservation_id = 11;
+  google.protobuf.Timestamp created_at = 12;
+  google.protobuf.Timestamp updated_at = 13;
+  int32 seat_count = 14 [(buf.validate.field).int32 = {
     gte: 1
-    lte: 14
+    lte: 8
   }];
-  cineko.common.LocalTime earliest_time = 9;
-  cineko.common.LocalTime latest_time = 10;
-  MonitorState state = 11;
-  google.protobuf.Timestamp last_checked_at = 12;
-  string reservation_id = 13;
-  google.protobuf.Timestamp created_at = 14;
-  google.protobuf.Timestamp updated_at = 15;
+  string seat_type = 15 [(buf.validate.field).string.min_len = 1];
+  bool watch_cancellation_seats = 16;
 }
 
 message Reservation {
@@ -341,106 +343,11 @@ message StreamControl {
 message LaunchContext {
   string installation_id = 1;
   string device_id = 2;
-  int64 release_generation = 3;
-  string client_version = 4;
-  string artifact_sha256 = 5;
-  string browser_revision = 6;
-  string browser_artifact_sha256 = 7;
-  string playwright_version = 8;
-  string playwright_artifact_sha256 = 9;
+  string client_version = 3;
 }
 
 message LaunchEnvelope {
-  string launch_ticket = 1;
-  LaunchContext context = 2;
-}
-
-message PinExchangeRequest {
-  string pin = 1 [
-    (buf.validate.field).required = true,
-    (buf.validate.field).string.len = 6
-  ];
-  string installation_id = 2 [
-    (buf.validate.field).required = true,
-    (buf.validate.field).string.min_len = 1
-  ];
-  string device_id = 3 [
-    (buf.validate.field).required = true,
-    (buf.validate.field).string.min_len = 1
-  ];
-}
-
-message TokenExchangeRequest {
-  string user_id = 1 [
-    (buf.validate.field).required = true,
-    (buf.validate.field).string.min_len = 1
-  ];
-  string access_token = 2 [
-    (buf.validate.field).required = true,
-    (buf.validate.field).string.min_len = 1
-  ];
-}
-
-message TokenRefreshRequest {
-  string refresh_token = 1 [
-    (buf.validate.field).required = true,
-    (buf.validate.field).string.min_len = 1
-  ];
-}
-
-message AuthenticationResponse {
-  string access_token = 1;
-  google.protobuf.Timestamp expires_at = 2;
-  string refresh_token = 3;
-  google.protobuf.Timestamp refresh_expires_at = 4;
-  User user = 5;
-  LaunchContext launch = 6;
-}
-
-message LaunchTicketRequest {
-  LaunchContext context = 1 [(buf.validate.field).required = true];
-  string nonce = 2 [
-    (buf.validate.field).required = true,
-    (buf.validate.field).string.min_len = 1
-  ];
-}
-
-message LaunchTicketResponse {
-  string launch_ticket = 1;
-  google.protobuf.Timestamp expires_at = 2;
-}
-
-message ProbeBootstrapTicketRequest {
-  string installation_id = 1 [
-    (buf.validate.field).required = true,
-    (buf.validate.field).string.min_len = 1
-  ];
-  string device_id = 2 [
-    (buf.validate.field).required = true,
-    (buf.validate.field).string.min_len = 1
-  ];
-  repeated cineko.observation.Capability capabilities = 3 [(buf.validate.field).repeated.min_items = 1];
-  int32 max_concurrency = 4 [
-    (buf.validate.field).required = true,
-    (buf.validate.field).int32.gt = 0
-  ];
-  cineko.common.Runtime runtime = 5 [(buf.validate.field).required = true];
-}
-
-message ProbeBootstrapTicketResponse {
-  string ticket = 1;
-  google.protobuf.Timestamp expires_at = 2;
-}
-
-message SessionExchangeRequest {
-  string launch_ticket = 1 [
-    (buf.validate.field).required = true,
-    (buf.validate.field).string.min_len = 1
-  ];
-  string client_nonce = 2 [
-    (buf.validate.field).required = true,
-    (buf.validate.field).string.min_len = 1
-  ];
+  LaunchContext context = 1;
 }
 
 message SeatMapRequest {

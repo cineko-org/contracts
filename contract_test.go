@@ -6,16 +6,12 @@ import (
 	"time"
 
 	"buf.build/go/protovalidate"
-	adminpb "github.com/cineko-org/contracts/v3/gen/go/cineko/admin"
 	catalogpb "github.com/cineko-org/contracts/v3/gen/go/cineko/catalog"
 	clientpb "github.com/cineko-org/contracts/v3/gen/go/cineko/client"
 	collectionpb "github.com/cineko-org/contracts/v3/gen/go/cineko/collection"
 	commonpb "github.com/cineko-org/contracts/v3/gen/go/cineko/common"
-	executionpb "github.com/cineko-org/contracts/v3/gen/go/cineko/execution"
 	observationpb "github.com/cineko-org/contracts/v3/gen/go/cineko/observation"
-	probepb "github.com/cineko-org/contracts/v3/gen/go/cineko/probe"
 	"github.com/cineko-org/contracts/v3/gen/go/cineko/seatmap"
-	servicepb "github.com/cineko-org/contracts/v3/gen/go/cineko/service"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/types/known/timestamppb"
@@ -48,6 +44,24 @@ func TestGlobalCatalogAssignmentValidates(t *testing.T) {
 	}
 }
 
+func TestMoviePosterAcceptsObservedLargeCGVResponse(t *testing.T) {
+	t.Parallel()
+
+	validator, err := protovalidate.New()
+	if err != nil {
+		t.Fatalf("create validator: %v", err)
+	}
+	poster := catalogpb.MoviePoster_builder{
+		MovieId:     protoString("movie-1"),
+		MediaType:   protoString("image/jpeg"),
+		Data:        make([]byte, 12_132_418),
+		ContentHash: protoString(strings.Repeat("a", 64)),
+	}.Build()
+	if err := validator.Validate(poster); err != nil {
+		t.Fatalf("observed 12.1 MB CGV poster failed validation: %v", err)
+	}
+}
+
 func TestCatalogTaskRejectsStaleJSONFields(t *testing.T) {
 	t.Parallel()
 
@@ -69,36 +83,6 @@ func TestCatalogTaskRejectsStaleJSONFields(t *testing.T) {
 			}
 			if !strings.Contains(err.Error(), field.name) {
 				t.Fatalf("stale CatalogTask failed for an unexpected reason: %v", err)
-			}
-		})
-	}
-}
-
-func TestLatestSeatContractsRejectRemovedJSONFields(t *testing.T) {
-	t.Parallel()
-
-	tests := []struct {
-		name    string
-		payload string
-		message proto.Message
-	}{
-		{name: "Probe seat-map capability", payload: `{"seatMapCapture":{}}`, message: &observationpb.Capability{}},
-		{name: "Probe seat-availability capability", payload: `{"seatAvailabilityCapture":{}}`, message: &observationpb.Capability{}},
-		{name: "Probe seat-map assignment", payload: `{"seatMap":{}}`, message: &observationpb.AssignmentTask{}},
-		{name: "Probe seat completion", payload: `{"liveSeat":{}}`, message: &observationpb.Completed{}},
-		{name: "seat-map target date search", payload: `{"targetDates":[]}`, message: &observationpb.SeatMapTask{}},
-		{name: "no-bookable deferral", payload: `{"noBookableShowtime":{}}`, message: &collectionpb.DeferredReason{}},
-		{name: "Probe seat observation mode", payload: `{"seatAvailability":{}}`, message: &adminpb.ObservationMode{}},
-		{name: "collection assignment ID", payload: `{"assignmentId":"old"}`, message: &collectionpb.Collecting{}},
-		{name: "unclaimed collection task", payload: `{"collectionTask":{}}`, message: &servicepb.ResolveSeatMapResponse{}},
-		{name: "generic live-seat mutation", payload: `{"mutation":{}}`, message: &servicepb.SubmitLiveSeatObservationRequest{}},
-	}
-	for _, test := range tests {
-		test := test
-		t.Run(test.name, func(t *testing.T) {
-			t.Parallel()
-			if err := (protojson.UnmarshalOptions{DiscardUnknown: false}).Unmarshal([]byte(test.payload), test.message); err == nil {
-				t.Fatal("removed latest-only field passed strict ProtoJSON decoding")
 			}
 		})
 	}
@@ -134,132 +118,7 @@ func TestRequiredOneofRejectsUnsetState(t *testing.T) {
 	}
 }
 
-func TestResolveSeatMapResponseRequiresMatchingCollectionClaim(t *testing.T) {
-	t.Parallel()
-
-	validator, err := protovalidate.New()
-	if err != nil {
-		t.Fatalf("create validator: %v", err)
-	}
-	queued := collectionpb.State_builder{
-		Queued: collectionpb.Queued_builder{
-			QueuedAt: timestamppb.New(time.Unix(1, 0).UTC()),
-			Trigger: collectionpb.Trigger_builder{
-				ClientRequest: collectionpb.ClientRequest_builder{}.Build(),
-			}.Build(),
-		}.Build(),
-	}.Build()
-	response := servicepb.ResolveSeatMapResponse_builder{
-		Resolution: seatmap.Resolution_builder{State: queued}.Build(),
-	}.Build()
-	if err := validator.Validate(response); err == nil {
-		t.Fatal("snapshot-less queued response without a Client collection claim passed validation")
-	}
-
-	claimExpiry := timestamppb.New(time.Unix(60, 0).UTC())
-	collecting := collectionpb.State_builder{
-		Collecting: collectionpb.Collecting_builder{
-			ClaimId:   protoString("claim-1"),
-			StartedAt: timestamppb.New(time.Unix(1, 0).UTC()),
-			ExpiresAt: claimExpiry,
-		}.Build(),
-	}.Build()
-	response = servicepb.ResolveSeatMapResponse_builder{
-		Resolution: seatmap.Resolution_builder{State: collecting}.Build(),
-		Collection: servicepb.SeatMapCollectionClaim_builder{
-			Authority: servicepb.SeatMapCollectionAuthority_builder{
-				ClaimId: protoString("claim-1"), ClaimToken: protoString("token-1"),
-			}.Build(),
-			ExpiresAt: claimExpiry,
-			Task:      validSeatMapTask(),
-		}.Build(),
-	}.Build()
-	if err := validator.Validate(response); err != nil {
-		t.Fatalf("matching Client collection claim failed validation: %v", err)
-	}
-	response.GetCollection().GetAuthority().SetClaimId("claim-2")
-	if err := validator.Validate(response); err == nil {
-		t.Fatal("collection claim with a mismatched claim ID passed validation")
-	}
-	response.GetCollection().GetAuthority().SetClaimId("claim-1")
-	response.GetCollection().SetExpiresAt(timestamppb.New(time.Unix(61, 0).UTC()))
-	if err := validator.Validate(response); err == nil {
-		t.Fatal("collection claim with a mismatched expiry passed validation")
-	}
-
-	withoutCollection := servicepb.ResolveSeatMapResponse_builder{
-		Resolution: seatmap.Resolution_builder{State: collecting}.Build(),
-	}.Build()
-	if err := validator.Validate(withoutCollection); err != nil {
-		t.Fatalf("collection already claimed by another Client failed validation: %v", err)
-	}
-
-	waiting := collectionpb.State_builder{
-		WaitingForShowtime: collectionpb.WaitingForShowtime_builder{
-			Reason: collectionpb.WaitingReason_builder{
-				ShowtimeNotDiscovered: collectionpb.ShowtimeNotDiscovered_builder{}.Build(),
-			}.Build(),
-		}.Build(),
-	}.Build()
-	response = servicepb.ResolveSeatMapResponse_builder{
-		Resolution: seatmap.Resolution_builder{State: waiting}.Build(),
-	}.Build()
-	if err := validator.Validate(response); err != nil {
-		t.Fatalf("waiting-for-showtime response failed validation: %v", err)
-	}
-
-	withoutClaimStates := []struct {
-		name  string
-		state *collectionpb.State
-	}{
-		{
-			name: "retry scheduled",
-			state: collectionpb.State_builder{RetryScheduled: collectionpb.RetryScheduled_builder{
-				Reason: collectionpb.FailureReason_builder{
-					ProviderThrottled: collectionpb.ProviderThrottled_builder{}.Build(),
-				}.Build(),
-				NextAttemptAt: timestamppb.New(time.Unix(120, 0).UTC()),
-			}.Build()}.Build(),
-		},
-		{
-			name: "blocked",
-			state: collectionpb.State_builder{Blocked: collectionpb.Blocked_builder{
-				Reason: collectionpb.FailureReason_builder{
-					ProviderBlocked: collectionpb.ProviderBlocked_builder{}.Build(),
-				}.Build(),
-			}.Build()}.Build(),
-		},
-	}
-	for _, test := range withoutClaimStates {
-		test := test
-		t.Run(test.name, func(t *testing.T) {
-			candidate := servicepb.ResolveSeatMapResponse_builder{
-				Resolution: seatmap.Resolution_builder{State: test.state}.Build(),
-			}.Build()
-			if err := validator.Validate(candidate); err != nil {
-				t.Fatalf("state without a collection claim failed validation: %v", err)
-			}
-		})
-	}
-	response = servicepb.ResolveSeatMapResponse_builder{
-		Resolution: seatmap.Resolution_builder{
-			Snapshot: validSeatMapSnapshot("auditorium-1", strings.Repeat("a", 64)),
-			State:    collectionpb.State_builder{Idle: collectionpb.Idle_builder{}.Build()}.Build(),
-		}.Build(),
-		Collection: servicepb.SeatMapCollectionClaim_builder{
-			Authority: servicepb.SeatMapCollectionAuthority_builder{
-				ClaimId: protoString("claim-1"), ClaimToken: protoString("token-1"),
-			}.Build(),
-			ExpiresAt: claimExpiry,
-			Task:      validSeatMapTask(),
-		}.Build(),
-	}.Build()
-	if err := validator.Validate(response); err == nil {
-		t.Fatal("cached seat map with a collection claim passed validation")
-	}
-}
-
-func TestSeatMapTaskRequiresExactIdentity(t *testing.T) {
+func TestSeatMapTaskRequiresAuditorium(t *testing.T) {
 	t.Parallel()
 
 	validator, err := protovalidate.New()
@@ -268,11 +127,11 @@ func TestSeatMapTaskRequiresExactIdentity(t *testing.T) {
 	}
 	task := validSeatMapTask()
 	if err := validator.Validate(task); err != nil {
-		t.Fatalf("valid exact seat-map task failed validation: %v", err)
+		t.Fatalf("valid auditorium-scoped seat-map task failed validation: %v", err)
 	}
-	task.GetShowtime().GetIdentity().GetCgv().SetScreenNo("0008")
+	task.SetAuditorium(nil)
 	if err := validator.Validate(task); err == nil {
-		t.Fatal("seat-map task with a mismatched showtime auditorium passed validation")
+		t.Fatal("seat-map task without an auditorium passed validation")
 	}
 }
 
@@ -376,40 +235,6 @@ func TestLiveSeatObservationRequiresMatchingIdentity(t *testing.T) {
 	mismatchedSeatAuditorium.GetLayout().GetSeats()[0].SetAuditoriumId("auditorium-2")
 	if err := validator.Validate(mismatchedSeatAuditorium); err == nil {
 		t.Fatal("snapshot with a seat from another auditorium passed validation")
-	}
-}
-
-func TestLiveSeatObservationSubmissionRequiresAuthority(t *testing.T) {
-	t.Parallel()
-
-	validator, err := protovalidate.New()
-	if err != nil {
-		t.Fatalf("create validator: %v", err)
-	}
-	observation := validLiveSeatObservation()
-	collection := servicepb.SubmitLiveSeatObservationRequest_builder{
-		Collection: servicepb.SeatMapCollectionAuthority_builder{
-			ClaimId: protoString("claim-1"), ClaimToken: protoString("token-1"),
-		}.Build(),
-		Observation: observation,
-	}.Build()
-	if err := validator.Validate(collection); err != nil {
-		t.Fatalf("collection-authorized observation failed validation: %v", err)
-	}
-	execution := servicepb.SubmitLiveSeatObservationRequest_builder{
-		Execution: servicepb.ExecutionObservationAuthority_builder{
-			CommandId: protoString("command-1"), LeaseToken: protoString("lease-1"),
-		}.Build(),
-		Observation: observation,
-	}.Build()
-	if err := validator.Validate(execution); err != nil {
-		t.Fatalf("execution-authorized observation failed validation: %v", err)
-	}
-	withoutAuthority := servicepb.SubmitLiveSeatObservationRequest_builder{
-		Observation: observation,
-	}.Build()
-	if err := validator.Validate(withoutAuthority); err == nil {
-		t.Fatal("live-seat observation without claim or lease authority passed validation")
 	}
 }
 
@@ -524,144 +349,6 @@ func TestCompletedRequiresTypedPayload(t *testing.T) {
 	}
 }
 
-func TestInboundRequestValidationRejectsMissingIdentity(t *testing.T) {
-	t.Parallel()
-
-	validator, err := protovalidate.New()
-	if err != nil {
-		t.Fatalf("create validator: %v", err)
-	}
-	register := probepb.RegisterRequest_builder{
-		Kind: probepb.ProbeKind_builder{
-			Container: probepb.ContainerProbe_builder{}.Build(),
-		}.Build(),
-		Capabilities: []*observationpb.Capability{
-			observationpb.Capability_builder{
-				ScheduleCapture: observationpb.ScheduleCapture_builder{}.Build(),
-			}.Build(),
-		},
-		MaxConcurrency: protoInt32(1),
-		Runtime: commonpb.Runtime_builder{
-			ComponentVersion: protoString("1.0.0"),
-			BrowserRevision:  protoString("123"),
-			Platform:         protoString("linux"),
-			Architecture:     protoString("amd64"),
-		}.Build(),
-	}.Build()
-	if err := validator.Validate(register); err == nil {
-		t.Fatal("Probe registration without installation identity passed contract validation")
-	}
-
-	heartbeat := executionpb.HeartbeatRequest_builder{
-		LeaseToken: protoString("lease"),
-	}.Build()
-	if err := validator.Validate(heartbeat); err == nil {
-		t.Fatal("execution heartbeat without command identity passed contract validation")
-	}
-}
-
-func TestServiceRequiredEnvelopesRejectEmptyMessages(t *testing.T) {
-	t.Parallel()
-
-	validator, err := protovalidate.New()
-	if err != nil {
-		t.Fatalf("create validator: %v", err)
-	}
-
-	tests := []struct {
-		name    string
-		message proto.Message
-	}{
-		{name: "assignment result receipt", message: &servicepb.SubmitAssignmentResultResponse{}},
-		{name: "PIN exchange request", message: &servicepb.ExchangePinRequest{}},
-		{name: "PIN exchange response", message: &servicepb.ExchangePinResponse{}},
-		{name: "token exchange request", message: &servicepb.ExchangeTokenRequest{}},
-		{name: "token exchange response", message: &servicepb.ExchangeTokenResponse{}},
-		{name: "token refresh request", message: &servicepb.RefreshTokenRequest{}},
-		{name: "token refresh response", message: &servicepb.RefreshTokenResponse{}},
-		{name: "launch ticket request", message: &servicepb.CreateLaunchTicketRequest{}},
-		{name: "launch ticket response", message: &servicepb.CreateLaunchTicketResponse{}},
-		{name: "session exchange request", message: &servicepb.ExchangeSessionRequest{}},
-		{name: "session exchange response", message: &servicepb.ExchangeSessionResponse{}},
-		{name: "probe bootstrap ticket request", message: &servicepb.CreateProbeBootstrapTicketRequest{}},
-		{name: "probe bootstrap ticket response", message: &servicepb.CreateProbeBootstrapTicketResponse{}},
-		{name: "client bootstrap response", message: &servicepb.BootstrapResponse{}},
-		{name: "resource response", message: &servicepb.GetResourceResponse{}},
-		{name: "resource mutation request", message: &servicepb.PutResourceRequest{}},
-		{name: "resource mutation response", message: &servicepb.PutResourceResponse{}},
-		{name: "device mutation request", message: &servicepb.UpsertDeviceRequest{}},
-		{name: "device mutation response", message: &servicepb.UpsertDeviceResponse{}},
-		{name: "catalog response", message: &servicepb.GetCatalogResponse{}},
-		{name: "seat-map response", message: &servicepb.ResolveSeatMapResponse{}},
-		{name: "seat-map stream response", message: &servicepb.WatchSeatMapResponse{}},
-		{name: "catalog snapshot request", message: &servicepb.SubmitCatalogSnapshotRequest{}},
-		{name: "live-seat observation request", message: &servicepb.SubmitLiveSeatObservationRequest{}},
-		{name: "live-seat observation response", message: &servicepb.SubmitLiveSeatObservationResponse{}},
-		{name: "execution completion request", message: &servicepb.CompleteRequest{}},
-		{name: "runtime release request", message: &servicepb.GetRuntimeReleaseRequest{}},
-		{name: "runtime release response", message: &servicepb.GetRuntimeReleaseResponse{}},
-		{name: "launcher release request", message: &servicepb.GetLauncherReleaseRequest{}},
-		{name: "launcher release response", message: &servicepb.GetLauncherReleaseResponse{}},
-		{name: "release registry response", message: &servicepb.GetReleaseRegistryResponse{}},
-		{name: "client release publication", message: &servicepb.PublishClientRequest{}},
-		{name: "browser release publication", message: &servicepb.PublishBrowserRequest{}},
-		{name: "Playwright release publication", message: &servicepb.PublishPlaywrightRequest{}},
-		{name: "launcher release publication", message: &servicepb.PublishLauncherRequest{}},
-		{name: "probe release publication", message: &servicepb.PublishProbeRequest{}},
-	}
-
-	for _, test := range tests {
-		test := test
-		t.Run(test.name, func(t *testing.T) {
-			t.Parallel()
-			if err := validator.Validate(test.message); err == nil {
-				t.Fatal("empty service envelope passed contract validation")
-			}
-		})
-	}
-}
-
-func TestServiceOptionalPaginationAndCollectionsAllowOmission(t *testing.T) {
-	t.Parallel()
-
-	validator, err := protovalidate.New()
-	if err != nil {
-		t.Fatalf("create validator: %v", err)
-	}
-
-	messages := []proto.Message{
-		servicepb.ListResourcesRequest_builder{
-			Kind: clientpb.ResourceKind_builder{
-				Settings: clientpb.SettingsResource_builder{}.Build(),
-			}.Build(),
-		}.Build(),
-		&servicepb.ListResourcesResponse{},
-		&servicepb.GetAuditoriumsResponse{},
-	}
-	for _, message := range messages {
-		if err := validator.Validate(message); err != nil {
-			t.Fatalf("service message with omitted pagination or collection failed validation: %v", err)
-		}
-	}
-}
-
-func TestSubmitCatalogSnapshotResponseRequiresPositiveGeneration(t *testing.T) {
-	t.Parallel()
-
-	validator, err := protovalidate.New()
-	if err != nil {
-		t.Fatalf("create validator: %v", err)
-	}
-	if err := validator.Validate(&servicepb.SubmitCatalogSnapshotResponse{}); err == nil {
-		t.Fatal("zero catalog generation passed contract validation")
-	}
-	response := &servicepb.SubmitCatalogSnapshotResponse{}
-	response.SetGeneration(1)
-	if err := validator.Validate(response); err != nil {
-		t.Fatalf("positive catalog generation failed contract validation: %v", err)
-	}
-}
-
 func TestWebUIContractValidation(t *testing.T) {
 	t.Parallel()
 
@@ -674,7 +361,6 @@ func TestWebUIContractValidation(t *testing.T) {
 		name    string
 		message proto.Message
 	}{
-		{name: "credentials", message: &clientpb.AccountCredentials{}},
 		{name: "task state", message: &clientpb.WebUITaskState{}},
 		{name: "account state", message: &clientpb.WebUIAccountState{}},
 		{name: "action status", message: &clientpb.WebUIActionStatus{}},
@@ -746,17 +432,10 @@ func TestAvailabilitySnapshotRequiresExactIdentity(t *testing.T) {
 	}
 }
 
-func validSeatMapTaskDate() *commonpb.LocalDate {
-	return commonpb.LocalDate_builder{
-		Year: protoInt32(2026), Month: protoInt32(8), Day: protoInt32(24),
-	}.Build()
-}
-
 func validSeatMapTask() *observationpb.SeatMapTask {
 	return observationpb.SeatMapTask_builder{
 		Theater:    validSeatMapTaskTheater(),
 		Auditorium: validSeatMapTaskAuditorium(),
-		Showtime:   validSeatMapTaskShowtime(),
 		Locale:     protoString("ko-KR"),
 		TimeZone:   protoString("Asia/Seoul"),
 	}.Build()
@@ -785,23 +464,6 @@ func validSeatMapTaskAuditorium() *catalogpb.Auditorium {
 		}.Build(),
 		Name:     protoString("IMAX관"),
 		Capacity: protoInt32(624),
-	}.Build()
-}
-
-func validSeatMapTaskShowtime() *catalogpb.Showtime {
-	return catalogpb.Showtime_builder{
-		Id:         protoString("showtime-1"),
-		ProviderId: protoString("cgv"),
-		Identity: catalogpb.ShowtimeIdentity_builder{
-			Cgv: catalogpb.CgvShowtimeIdentity_builder{
-				SiteNo: protoString("0056"), ScheduleDate: validSeatMapTaskDate(),
-				ScreenNo: protoString("0007"), Sequence: protoString("0003"),
-			}.Build(),
-		}.Build(),
-		TheaterId: protoString("theater-1"),
-		StartsAt:  timestamppb.New(time.Date(2026, 8, 24, 10, 0, 0, 0, time.UTC)),
-		EndsAt:    timestamppb.New(time.Date(2026, 8, 24, 13, 0, 0, 0, time.UTC)),
-		Capacity:  protoInt32(624),
 	}.Build()
 }
 
